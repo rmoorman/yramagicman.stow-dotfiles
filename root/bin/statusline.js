@@ -44,16 +44,14 @@ let getSsid = function() {
     let d = new Date();
     let seconds = d.getSeconds();
     if (seconds % 30 === 0) {
-        exec('nmcli', {}, function(jsrr, out, err) {
-            let id = out.split('\n')[0];
-            id = id.split(' ');
-            if (id[3] === 'hide_yo_kids_hide_yo_wi-fi') {
-                id[3] = 'home';
-    } else {
-    id[3] = id[3];
-            }
-
-            ssidEvent.emit('event', id[3]);
+        exec('netctl list', {}, function(jsrr, out, err) {
+            let id = out.split('\n');
+            id = id.filter(function(profile) {
+                if (profile.includes('*')) {
+                    return profile;
+                }
+            });
+            ssidEvent.emit('event', id[0].split(' ')[1]);
             if (err) {
                 console.error(`error: ${ err }`);
             }
@@ -62,7 +60,7 @@ let getSsid = function() {
 };
 
 let dropboxStatus = function() {
-    exec('dropbox status', {}, function(jsrr, out, err) {
+    exec('dropbox-cli status', {}, function(jsrr, out, err) {
         dropboxEvent.emit('event', out.split('\n')[0].trim());
         if (err) {
             console.error(`error: ${ err }`);
@@ -106,7 +104,6 @@ let weather = function() {
 let network = function() {
     let net = networkInterfaces();
     let getAddr = function(iface) {
-        console.log(net[iface][0].address);
         try {
             return net[iface][0].address;
         } catch (e) {
@@ -114,19 +111,18 @@ let network = function() {
         }
     };
 
-    if (hostname() === 'k-nine') {
-        return getAddr('wlp2s0');
+    if (hostname() === 'serenity') {
+        return getAddr('wlo1');
     } else {
-    return getAddr('enp5s0');
+        return getAddr('enp5s0');
     }
 };
 
 let volume = function() {
-    let stat;
-    stat = exec('amixer -- get Master', {}, function(jsrr, out, err) {
+    exec('amixer -- get Master', {}, function(jsrr, out, err) {
         let vol = out.split('\n');
-    vol = vol[5].split(' ');
-    volumeEvent.emit('event', vol[6] + vol[7]);
+        vol = vol[5].split(' ');
+        volumeEvent.emit('event', vol[6] + vol[7]);
         if (err) {
             console.error(`error: ${ err }`);
         }
@@ -160,7 +156,7 @@ let updateRefresh = function() {
 
     hour = hour.getHours();
     if ((hour % 3 === 0) && (stat.mtime.getHours() !== hour)) {
-        let refresh = spawn('sudo', ['zypper', 'refresh']);
+        let refresh = spawn('checkupdates');
 
         refresh.stdout.on('data', function(data) {
             output.push(data);
@@ -185,7 +181,7 @@ let updateCount = function() {
 
     minute = minute.getMinutes();
     if ((minute % 5 === 0) && (stat.mtime.getMinutes() !== minute)) {
-        let refresh = spawn('zypper', ['lu']);
+        let refresh = spawn('checkupdates');
 
         refresh.stdout.on('data', function(data) {
 
@@ -194,7 +190,6 @@ let updateCount = function() {
                 'No updates found.\n',
                 '\n'
             ];
-            console.log(data.toString());
             if (data.toString() !== '' && !dontPrint.includes(data.toString())) {
                 let d = data.toString().split('\n');
                 d.forEach(function(item, index) {
