@@ -30,8 +30,6 @@ function _net_test() {
     fi
 }
 function _update() {
-
-    echo $1
     if [[ -z $UPDATE_INTERVAL ]];
     then
         UPDATE_INTERVAL=30
