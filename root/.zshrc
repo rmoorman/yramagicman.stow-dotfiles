@@ -31,19 +31,20 @@ function _net_test() {
 }
 function _update() {
 
+    echo $1
     if [[ -z $UPDATE_INTERVAL ]];
     then
         UPDATE_INTERVAL=30
     fi
 
-    if [[ ! -a $MODULES_DIR/$2/.updatetime ]];
+    if [[ ! -a $MODULES_DIR/$1/.updatetime ]];
     then
-        echo 0 > "$MODULES_DIR/$2/.updatetime"
+        echo 0 > "$MODULES_DIR/$1/.updatetime"
     fi
 
     day=$((24 * 60 * 60 ))
     gap=$(( $UPDATE_INTERVAL * $day ))
-    diff="$(( $(date +'%s') - $(cat $MODULES_DIR/$2/.updatetime) ))"
+    diff="$(( $(date +'%s') - $(cat $MODULES_DIR/$1/.updatetime) ))"
 
     if [[ $diff -gt $gap ]]; then
         (
@@ -51,11 +52,11 @@ function _update() {
         if [[ $? -eq 1 ]]; then
             return
         fi
-        echo "$( dirname $1)"
-        builtin cd "$( dirname $1 )" && git pull --rebase
+        echo  "$2"
+        builtin cd "$MODULES_DIR/$1/" && git pull --rebase
         echo "\n"
         )
-        date +'%s' > "$MODULES_DIR/$2/.updatetime"
+        date +'%s' > "$MODULES_DIR/$1/.updatetime"
     fi
 }
 
@@ -71,7 +72,7 @@ function source_or_install() {
             location="$tillcolon[-1]"
         fi
     else
-        cloneurl="git@github.com:/$2"
+        cloneurl="git@github.com:$2"
         location=$2
     fi
     if [[ -a $1 ]] then;
@@ -92,7 +93,7 @@ function source_or_install() {
         echo "\n"
         source $HOME/.zshrc
     fi
-    _update $1 $2
+    _update $location
 }
 
 function force_updates() {
