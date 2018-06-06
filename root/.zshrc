@@ -92,7 +92,7 @@ function source_or_install() {
         echo "\n"
         source $HOME/.zshrc
     fi
-    # _update $1 $2
+    _update $1 $2
 }
 
 function force_updates() {
