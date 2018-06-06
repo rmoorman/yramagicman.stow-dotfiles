@@ -1,4 +1,3 @@
-set packpath+=$HOME/.vim/pack/
 set packpath+=$HOME/.vim/pack/vendor
 function! s:sanity_check()
    if  exists("g:VimPack_Setup_Folders")
@@ -33,24 +32,34 @@ function! s:read_opt_dir()
     return split( globpath('$HOME/.vim/pack/vendor/opt', '*'), '\n' )
 endfunction
 
+function! s:mkurl(plug)
+    let urlparts = split(a:plug, '/')
+    if urlparts[0][1:] == 'https:' || urlparts[0][1:4] == 'git@' || urlparts[0][1:4] == 'git:'
+        return a:plug
+    elseif urlparts[0][1:] == 'http:'
+        echom 'Not secure, refusing to clone' . a:plug
+    else
+        return 'https://github.com/'. join(urlparts, '/')
+    endif
+endfunction
 
 let s:start_plugs = []
 function! s:install_start_plugins(plug)
-    let repo = split( a:plug, '/' )[0]
+    let url = s:mkurl(a:plug)
     let plug = split( a:plug, '/' )[1]
     let plug = plug[:-2]
     let destination = split( &packpath, ',')[-1] . '/start/'. plug
-    call add(s:start_plugs, [destination, 'git clone --quiet --depth 4 https://github.com/'.repo[1:].'/'.plug . ' ' . destination])
+    call add(s:start_plugs, [destination, 'git clone --quiet --depth 4 '. url . ' ' . destination])
 endfunction
 
 let s:opt_plugs = []
 
 function! s:install_opt_plugins(plug)
-    let repo = split( a:plug, '/' )[0]
+    let url = s:mkurl(a:plug)
     let plug = split( a:plug, '/' )[1]
     let plug = plug[:-2]
     let destination = split( &packpath, ',')[-1] . '/opt/'. plug
-    call add(s:opt_plugs, [destination, 'git clone --quiet --depth 4  https://github.com/'.repo[1:].'/'.plug . ' ' . destination])
+    call add(s:opt_plugs, [destination, 'git clone --quiet --depth 4 '. url . ' ' . destination])
 endfunction
 
 function! s:install_opts()
