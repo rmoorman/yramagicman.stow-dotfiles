@@ -1,5 +1,4 @@
-let b:ale_linters=['phpcs']
-let b:ale_linters=['phpcs']
+let b:ale_linters=['phpcs', 'php']
 let g:ale_php_phpcs_standard='PSR2'
 function! Runtests()
     normal :wa
@@ -7,3 +6,4 @@ function! Runtests()
 
 endfunction
 nnoremap <F5> :wa<cr>:!( arclear > /dev/null 2>&1) && ./vendor/bin/phpunit $(find ./tests/Unit -type f -name '*.php')<cr>
+" setlocal makeprg=./vendor/bin/phpcs\ %
