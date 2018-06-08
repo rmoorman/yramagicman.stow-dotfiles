@@ -67,3 +67,42 @@ function! functions#CompileJS()
     endif
 endfunction
 " }}}
+" {{{ rotate through numbering options
+function! functions#NumberToggle()
+
+    if !exists('g:NumState')
+        let g:NumState = 1
+    endif
+    if g:NumState == 1
+        set number
+        set norelativenumber
+        let g:NumState = 2
+    elseif g:NumState == 2
+        set relativenumber
+        set number
+        let g:NumState = 3
+    elseif g:NumState == 3
+        set relativenumber
+        set nonumber
+        let g:NumState = 0
+    else
+        set nonumber
+        set norelativenumber
+        let g:NumState = 1
+    endif
+endfunction
+"}}}
+" {{{ toggle foldcolumn
+function! functions#FoldColumnToggle()
+    if !exists('g:FoldColumn')
+        let g:FoldColumn = 1
+    endif
+    if g:FoldColumn == 1
+        hi FoldColumn ctermfg=0
+        let g:FoldColumn = 0
+    else
+        hi FoldColumn ctermfg=7
+        let g:FoldColumn = 1
+    endif
+endfunction
+"}}}

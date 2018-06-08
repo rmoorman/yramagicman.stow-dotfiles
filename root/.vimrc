@@ -100,13 +100,13 @@ set lazyredraw
 set ttyfast
 
 set laststatus=2
-set number
-set relativenumber
+set nonumber
+set norelativenumber
 set expandtab
 set eol
 set nowrapscan
 set showcmd
-set foldcolumn=2
+set foldcolumn=4
 set foldmethod=indent
 set wildmenu
 set foldlevel=999
@@ -264,10 +264,11 @@ inoremap <c-f> <c-x><c-f>
 nnoremap <leader><space> :set hlsearch!<cr>
 nnoremap <leader><leader> <C-^>
 nnoremap * :set hlsearch<cr>*
-nnoremap <F1> :set relativenumber!<cr>
+nnoremap <F1> :call functions#NumberToggle()<cr>
 nnoremap <F2> :call functions#WrapToggle()<cr>
 nnoremap <F3> :set list!<cr>
 nnoremap <F4> :call functions#StatusToggle()<cr>
+nnoremap <F6> :call functions#FoldColumnToggle()<cr>
 nnoremap <C-w>m :call functions#Maximize()<cr>
 command! Scratch call functions#Scratch()
 "}}}
