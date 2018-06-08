@@ -70,7 +70,7 @@ augroup extensions
     autocmd BufRead *.blade.php silent! set filetype=blade | redraw
     autocmd BufRead *.vue silent! packadd vim-vue | redraw
     autocmd BufRead *.vue silent! set filetype=vue | redraw
-    autocmd BufEnter,BufWrite * syntax sync fromstart
+    autocmd BufWrite * syntax sync fromstart
 augroup end
 "}}}
 "{{{ ale settings
@@ -182,24 +182,31 @@ if exists("&undodir")
     set undofile
 endif"}}}
 "{{{ statusline
+hi def focused ctermbg=2 ctermfg=0
 set statusline=\|\ %m\ %f\ %r\ \%y
 " Always show status line
 let f=system('[[ $(git diff --shortstat 2> /dev/null | tail -n1) != "" ]] && echo "*"')
 let b=system('git branch 2>/dev/null | grep \* | sed "s/\*//g"')
 let c=split(b, '')
 set laststatus=2
-set statusline=\|\ %m\ %f\ %r\ \%y
+augroup statusline
+    autocmd bufenter * setlocal statusline=%#focused#\|\ %m\ %f\ %r\ \%y%#normal#
+    autocmd bufleave * setlocal statusline=%#normal#\|\ %m\ %f\ %r\ \%y
+augroup end
 if len(c)
-    set statusline+=\ \%{c[0]}
+    setlocal statusline+=\ \%{c[0]}
 endif
 if len(f)
-    set statusline+=\ %{f[0]}
+    setlocal statusline+=\ %{f[0]}
 endif
-set statusline+=%=
-set statusline+=Line:
-set statusline+=%4l/%-4L
-set statusline+=\ Column\ %2c
-set statusline+=\ \|
+setlocal statusline+=%=
+setlocal statusline+=%l/%L\,\ %c
+setlocal statusline+=\ %P
+setlocal statusline+=\ \|
+function! MyStatusLine()
+    return "%{col('.')} %{line('.')}"
+endfunction
+"set statusline=%!MyStatusLine()
 "}}}
 set hidden
 set winheight=2
