@@ -70,7 +70,6 @@ augroup extensions
     autocmd BufRead *.blade.php silent! set filetype=blade | redraw
     autocmd BufRead *.vue silent! packadd vim-vue | redraw
     autocmd BufRead *.vue silent! set filetype=vue | redraw
-    autocmd BufWrite * syntax sync fromstart
 augroup end
 "}}}
 "{{{ ale settings
@@ -183,30 +182,17 @@ if exists("&undodir")
 endif"}}}
 "{{{ statusline
 hi def focused ctermbg=2 ctermfg=0
-set statusline=\|\ %m\ %f\ %r\ \%y
-" Always show status line
 let f=system('[[ $(git diff --shortstat 2> /dev/null | tail -n1) != "" ]] && echo "*"')
 let b=system('git branch 2>/dev/null | grep \* | sed "s/\*//g"')
 let c=split(b, '')
-set laststatus=2
 augroup statusline
-    autocmd bufenter * setlocal statusline=%#focused#\|\ %m\ %f\ %r\ \%y%#normal#
-    autocmd bufleave * setlocal statusline=%#normal#\|\ %m\ %f\ %r\ \%y
+    autocmd!
+    autocmd CursorHold,BufEnter,BufWritePost,ShellCmdPost * let f=system('[[ $(git diff --shortstat 2> /dev/null | tail -n1) != "" ]] && echo "*"')
+    autocmd CursorHold,VimEnter,BufEnter,ShellCmdPost * let b=system('git branch 2>/dev/null | grep \* | sed "s/\*//g"')
+    autocmd CursorHold,VimEnter,BufEnter,ShellCmdPost * let c=split(b, '')
+    autocmd BufEnter,BufWinEnter * call statusline#Active()
+    autocmd BufLeave,BufWinLeave * call statusline#InActive()
 augroup end
-if len(c)
-    setlocal statusline+=\ \%{c[0]}
-endif
-if len(f)
-    setlocal statusline+=\ %{f[0]}
-endif
-setlocal statusline+=%=
-setlocal statusline+=%l/%L\,\ %c
-setlocal statusline+=\ %P
-setlocal statusline+=\ \|
-function! MyStatusLine()
-    return "%{col('.')} %{line('.')}"
-endfunction
-"set statusline=%!MyStatusLine()
 "}}}
 set hidden
 set winheight=2
@@ -223,10 +209,6 @@ augroup defaults
     autocmd BufEnter * set cursorline
     autocmd BufLeave * set nocursorline
     autocmd BufEnter,BufLeave,BufWritePost * redraw!
-    autocmd CursorHold,BufEnter,BufWritePost,ShellCmdPost * let f=system('[[ $(git diff --shortstat 2> /dev/null | tail -n1) != "" ]] && echo "*"')
-    autocmd CursorHold,VimEnter,BufEnter,ShellCmdPost * let b=system('git branch 2>/dev/null | grep \* | sed "s/\*//g"')
-    autocmd CursorHold,VimEnter,BufEnter,ShellCmdPost * let c=split(b, '')
-    " autocmd VimEnter * source $MYVIMRC
     autocmd FileType * set textwidth=80
     autocmd FileType mail set textwidth=0
     autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
@@ -240,6 +222,7 @@ augroup defaults
     autocmd BufEnter,CursorHold * checktime
     autocmd CursorHold * call functions#Save()
     autocmd BufWritePost *.vue,*.js call functions#CompileJS()
+    autocmd TerminalOpen  * syntax sync fromstart
 augroup end
 "}}}
 hi ExtraWhitespace cterm=underline
