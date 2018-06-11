@@ -22,7 +22,6 @@ let g:VimPack_Update_Frequency = 5
 let g:VimPack_Auto_Install = 1
 let g:VimPack_Auto_Update = 1
 
-" set packpath+=~/.vim/pack/
 call pack#load()
 
 PlugStart 'editorconfig/editorconfig-vim'
@@ -51,7 +50,6 @@ if system('which fzf')[:-2] != 'fzf not found'
         cnoreabbrev fg GFiles<CR>
     endif
 endif
-command! -nargs=* Ack :packadd ack.vim | Ack <f-args>
 "}}}
 "{{{ autocommands for loading extensions
 augroup extensions
@@ -183,9 +181,6 @@ if exists("&undodir")
 endif"}}}
 "{{{ statusline
 hi def focused ctermbg=2 ctermfg=0
-let f=system('[[ $(git diff --shortstat 2> /dev/null | tail -n1) != "" ]] && echo "*"')
-let b=system('git branch 2>/dev/null | grep \* | sed "s/\*//g"')
-let c=split(b, '')
 augroup statusline
     autocmd!
     autocmd CursorHold,BufEnter,BufWritePost,ShellCmdPost * let f=system('[[ $(git diff --shortstat 2> /dev/null | tail -n1) != "" ]] && echo "*"')
