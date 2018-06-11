@@ -191,8 +191,7 @@ augroup statusline
     autocmd CursorHold,BufEnter,BufWritePost,ShellCmdPost * let f=system('[[ $(git diff --shortstat 2> /dev/null | tail -n1) != "" ]] && echo "*"')
     autocmd CursorHold,VimEnter,BufEnter,ShellCmdPost * let b=system('git branch 2>/dev/null | grep \* | sed "s/\*//g"')
     autocmd CursorHold,VimEnter,BufEnter,ShellCmdPost * let c=split(b, '')
-    autocmd BufEnter,BufWinEnter * call statusline#Active()
-    autocmd BufLeave,BufWinLeave * call statusline#InActive()
+    autocmd BufEnter,BufWritePost,CursorHold * call statusline#Refresh()
 augroup end
 "}}}
 set hidden
@@ -209,7 +208,7 @@ augroup defaults
     autocmd InsertLeave * call functions#Save()
     autocmd BufEnter * set cursorline
     autocmd BufLeave * set nocursorline
-    autocmd BufEnter,BufLeave,BufWritePost * redraw!
+    autocmd BufWritePost * redraw!
     autocmd FileType * set textwidth=80
     autocmd FileType mail set textwidth=0
     autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
@@ -223,7 +222,6 @@ augroup defaults
     autocmd BufEnter,CursorHold * checktime
     autocmd CursorHold * call functions#Save()
     autocmd BufWritePost *.vue,*.js call functions#CompileJS()
-    autocmd TerminalOpen  * syntax sync fromstart
 augroup end
 "}}}
 hi ExtraWhitespace cterm=underline
