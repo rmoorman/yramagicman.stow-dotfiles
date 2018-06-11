@@ -55,24 +55,24 @@
 (evil-map-key "C--" 'evil-font-decrease)
 (evil-map-key "C-0" 'evil-font-reset)
 
-(require 'general)
+; (require 'general)
 
-(setq general-default-prefix ",")
-(general-evil-setup t)
+; (setq general-default-prefix ",")
+; (general-evil-setup t)
 
-(nmap "ss" 'save-buffer
-      "m" 'save-buffer
-      "wq" 'save-buffers-kill-terminal
-      "z" 'narrow-to-defun
-      "a" 'widen
-      "o" 'evil-insert-line
-      "r" 'visual-line-mode)
-(vmap "z" 'narrow-to-region
-      "m" 'evil-normal-state)
+; (nmap "ss" 'save-buffer
+;       "m" 'save-buffer
+;       "wq" 'save-buffers-kill-terminal
+;       "z" 'narrow-to-defun
+;       "a" 'widen
+;       "o" 'evil-insert-line
+;       "r" 'visual-line-mode)
+; (vmap "z" 'narrow-to-region
+;       "m" 'evil-normal-state)
 
 
 (require 'evil-escape)
-(setq-default evil-escape-key-sequence ",m")
+(setq-default evil-escape-key-sequence "  ")
 (setq evil-escape-unordered-key-sequence t)
 (evil-escape-mode)
 (setq-default evil-escape-delay 0.2)

@@ -2,7 +2,7 @@
 ;;; Commentary:
 ;;; Code:
 
-;; Turn off mouse interface early in startup to avoid momentary display
+;;; Turn off mouse interface early in startup to avoid momentary display
 (if (fboundp 'menu-bar-mode) (menu-bar-mode -1))
 (if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
 (if (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
@@ -24,7 +24,7 @@
              evil-numbers
              auto-complete
              git-commit
-             muttrc-mode
+             general
              projectile
              racket-mode
              clojure-mode
@@ -67,7 +67,6 @@
 (require 'org)
 (require 'evil)
 (require 'auto-complete)
-;(require 'key-chord)
 (require 'ido)
 
 (ido-mode t)
@@ -82,14 +81,14 @@
 (global-linum-mode)
 
 
-(defun myterm (&optional prog)
-  "Run term with PROG or zsh."
-  (interactive)
-  (term (or prog "/usr/bin/zsh")))
-(global-set-key "\C-ct" 'myterm)
-(global-visual-line-mode t)
-(setq backup-inhibited t)
-(setq auto-save-default nil)
+;(defun myterm (&optional prog)
+;  "Run term with PROG or zsh."
+;  (interactive)
+;  (term (or prog "/usr/bin/zsh")))
+;(global-set-key "\C-ct" 'myterm)
+;(global-visual-line-mode t)
+;(setq backup-inhibited t)
+;(setq auto-save-default nil)
 
 
 
