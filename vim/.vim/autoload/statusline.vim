@@ -35,12 +35,12 @@ function! statusline#InActive()
     let c=split(b, '')
     let l:inactive = ''
     let l:inactive .= '%#normal#| %m %f %r %y'
-    if len(c)
-        let l:inactive .=' %{c[0]}'
-    endif
-    if len(f)
-        let l:inactive .=' %{f[0]}'
-    endif
+    " if len(c)
+        " let l:inactive .=' %{c[0]}'
+    " endif
+    " if len(f)
+    "     let l:inactive .=' %{f[0]}'
+    " endif
     let l:inactive .='%='
     " let l:inactive .='%l/%L, %c'
     let l:inactive .=' %P'
