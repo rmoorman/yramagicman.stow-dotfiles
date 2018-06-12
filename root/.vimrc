@@ -91,13 +91,20 @@ set omnifunc=syntaxcomplete#Complete
 packadd! matchit
 packadd! editexisting
 "}}}
+
+" auto-reload modified files
 set autoread
+" write files on buffer switch, and other actions
 set autowrite
 
+"terminal speed optimizations
 set lazyredraw
 set ttyfast
 
+" Show statusline, always
 set laststatus=2
+
+" Don't show line numbers by default, see mappings below for toggle
 set nonumber
 set norelativenumber
 set expandtab
@@ -119,7 +126,6 @@ set showbreak=…→
 
 set nojoinspaces
 
-" set equalalways
 set splitbelow
 set splitright
 set scrolloff=2
