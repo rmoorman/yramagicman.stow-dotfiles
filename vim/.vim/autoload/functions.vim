@@ -69,26 +69,25 @@ endfunction
 " }}}
 " {{{ rotate through numbering options
 function! functions#NumberToggle()
-
-    if !exists('g:NumState')
-        let g:NumState = 1
+    if !exists('b:NumState')
+        let b:NumState = 1
     endif
-    if g:NumState == 1
+    if b:NumState == 1
         set number
         set norelativenumber
-        let g:NumState = 2
-    elseif g:NumState == 2
+        let b:NumState = 2
+    elseif b:NumState == 2
         set relativenumber
         set number
-        let g:NumState = 3
-    elseif g:NumState == 3
+        let b:NumState = 3
+    elseif b:NumState == 3
         set relativenumber
         set nonumber
-        let g:NumState = 0
+        let b:NumState = 0
     else
         set nonumber
         set norelativenumber
-        let g:NumState = 1
+        let b:NumState = 1
     endif
 endfunction
 "}}}

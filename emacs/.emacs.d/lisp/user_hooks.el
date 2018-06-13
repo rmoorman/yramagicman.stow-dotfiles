@@ -1,12 +1,13 @@
 ; make sure files are unix!
-(add-hook 'before-save-hook
-          (lambda nil
-            (evil-normal-state)
-            (set-buffer-file-coding-system 'undecided-unix)
-            (delete-trailing-whitespace)
-            (untabify)))
+; (add-hook 'before-save-hook
+;           (lambda nil
+;             ; (evil-normal-state)
+;             (set-buffer-file-coding-system 'undecided-unix)
+;             (delete-trailing-whitespace)
+;             (untabify)))
 
-
+(add-hook 'evil-normal-state-entry-hook (lambda nil
+                                          (save-buffer)))
 
 (add-hook 'emacs-lisp-mode-hook
       (lambda nil
@@ -31,11 +32,11 @@
 (add-to-list 'auto-mode-alist '("/\\..*zsh\\'" . shell-script-mode))
 (add-to-list 'auto-mode-alist '("\\.*php$" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.*html$" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.*vue$" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.*scss$" . scss-mode))
 (add-to-list 'auto-mode-alist '(".zshrc" . shell-script-mode))
 (add-to-list 'auto-mode-alist '(".zpreztorc" . shell-script-mode))
 (add-to-list 'auto-mode-alist '(".zprofile" . shell-script-mode))
-(add-to-list 'auto-mode-alist '(".muttrc" . muttrc-mode))
 (add-to-list 'auto-mode-alist '("mutt-tardis*" . message-mode))
 (add-to-list 'auto-mode-alist '("mutt-k-nine*" . message-mode))
 (add-to-list 'auto-mode-alist '("COMMIT_EDITMSG" . diff-mode))

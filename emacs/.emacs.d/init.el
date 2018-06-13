@@ -78,17 +78,17 @@
 (setq-default indent-tabs-mode nil)
 (setq-default tab-width 4)
 (global-auto-complete-mode 1)
-(global-linum-mode)
+; (global-linum-mode)
 
 
-;(defun myterm (&optional prog)
-;  "Run term with PROG or zsh."
-;  (interactive)
-;  (term (or prog "/usr/bin/zsh")))
-;(global-set-key "\C-ct" 'myterm)
-;(global-visual-line-mode t)
-;(setq backup-inhibited t)
-;(setq auto-save-default nil)
+(defun myterm (&optional prog)
+  "Run term with PROG or zsh."
+  (interactive)
+  (term (or prog "/usr/bin/zsh")))
+(global-set-key "\C-ct" 'myterm)
+(global-visual-line-mode t)
+(setq backup-inhibited t)
+(setq auto-save-default nil)
 
 
 

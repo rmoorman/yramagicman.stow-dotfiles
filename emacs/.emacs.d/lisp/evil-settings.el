@@ -26,7 +26,7 @@
 (evil-map-key "C-k" 'evil-window-up)
 (evil-map-key "C-l" 'evil-window-right)
 ; Kill the annoyance of typing the wrong key
-(global-unset-key (kbd "C-x h"))
+; (global-unset-key (kbd "C-x h"))
 (define-key evil-normal-state-map (kbd "Q") 'fill-paragraph)
 ;(dolist (k '([mouse-1] [down-mouse-1] [drag-mouse-1] [double-mouse-1] [triple-mouse-1]
 ;             [mouse-2] [down-mouse-2] [drag-mouse-2] [double-mouse-2] [triple-mouse-2]
@@ -55,14 +55,13 @@
 (evil-map-key "C--" 'evil-font-decrease)
 (evil-map-key "C-0" 'evil-font-reset)
 
-; (require 'general)
+(require 'general)
 
 ; (setq general-default-prefix ",")
 ; (general-evil-setup t)
-
-; (nmap "ss" 'save-buffer
+; 
+; (nmap " " 'save-buffer
 ;       "m" 'save-buffer
-;       "wq" 'save-buffers-kill-terminal
 ;       "z" 'narrow-to-defun
 ;       "a" 'widen
 ;       "o" 'evil-insert-line
@@ -75,9 +74,10 @@
 (setq-default evil-escape-key-sequence "  ")
 (setq evil-escape-unordered-key-sequence t)
 (evil-escape-mode)
-(setq-default evil-escape-delay 0.2)
+(setq-default evil-escape-delay 0.4)
 
 
 
 
 (provide 'evil-settings)
+;;; evil-settings.el ends here
