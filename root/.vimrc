@@ -67,6 +67,7 @@ augroup extensions
     autocmd BufRead *.blade.php silent! packadd vim-blade | redraw
     autocmd BufRead *.blade.php silent! set filetype=blade | redraw
     autocmd BufRead *.vue silent! packadd vim-vue | redraw
+    autocmd BufRead *.vue silent! packadd ale | redraw
     autocmd BufRead *.vue silent! set filetype=vue | redraw
     autocmd FileType vue syn sync fromstart
 augroup end
