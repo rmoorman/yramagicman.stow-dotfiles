@@ -1,5 +1,6 @@
 ;;; package --- .emacs
 ;;; Commentary:
+;;; a comment
 ;;; Code:
 
 ;;; Turn off mouse interface early in startup to avoid momentary display
@@ -37,11 +38,6 @@
              markdown-mode
              ac-php
              web-mode
-             helm
-             helm-flycheck
-             helm-git
-             helm-fuzzy-find
-             helm-projectile
              ac-php-core
              php-eldoc
              flycheck
@@ -134,13 +130,16 @@ May be necessary for some GUI environments (e.g., Mac OS X)")
   (setq ispell-extra-args '("--sug-mode=ultra" "--lang=en_US"))
 
 (require 'user_hooks)
-(require 'helm-setting)
 
 (require 'server)
 (unless (server-running-p) (server-start))
 (provide 'init)
 ;;; init ends here
 
+(defun save-file ()
+  (interactive)
+  (when (file-writable-p ( buffer-file-name ))
+    (basic-save-buffer)))
 
 (defun worklist (&optional file)
     (interactive)

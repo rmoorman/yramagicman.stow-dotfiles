@@ -11,6 +11,7 @@
 
 (define-key evil-visual-state-map  (kbd "TAB") 'evilmi-jump-items)
 (define-key evil-normal-state-map  (kbd "TAB") 'evilmi-jump-items)
+(define-key evil-normal-state-map  (kbd "SPC SPC") 'save-file)
 (evil-map-key "C-S-z" 'evil-exit-emacs-state)
 (evil-map-key "C-M-z" 'evil-emacs-state)
 (evil-map-key "M-c" 'evil-force-normal-state)
@@ -25,15 +26,7 @@
 (evil-map-key "C-j" 'evil-window-down)
 (evil-map-key "C-k" 'evil-window-up)
 (evil-map-key "C-l" 'evil-window-right)
-; Kill the annoyance of typing the wrong key
-; (global-unset-key (kbd "C-x h"))
 (define-key evil-normal-state-map (kbd "Q") 'fill-paragraph)
-;(dolist (k '([mouse-1] [down-mouse-1] [drag-mouse-1] [double-mouse-1] [triple-mouse-1]
-;             [mouse-2] [down-mouse-2] [drag-mouse-2] [double-mouse-2] [triple-mouse-2]
-;             [mouse-3] [down-mouse-3] [drag-mouse-3] [double-mouse-3] [triple-mouse-3]
-;             [mouse-5] [down-mouse-4] [drag-mouse-4] [double-mouse-4] [triple-mouse-4]
-;             [mouse-5] [down-mouse-5] [drag-mouse-5] [double-mouse-5] [triple-mouse-5]))
-;  (global-unset-key k))
 
 (defun evil-font-increase nil
   (interactive)
@@ -57,17 +50,6 @@
 
 (require 'general)
 
-; (setq general-default-prefix ",")
-; (general-evil-setup t)
-; 
-; (nmap " " 'save-buffer
-;       "m" 'save-buffer
-;       "z" 'narrow-to-defun
-;       "a" 'widen
-;       "o" 'evil-insert-line
-;       "r" 'visual-line-mode)
-; (vmap "z" 'narrow-to-region
-;       "m" 'evil-normal-state)
 
 
 (require 'evil-escape)

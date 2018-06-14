@@ -1,13 +1,18 @@
-; make sure files are unix!
-; (add-hook 'before-save-hook
-;           (lambda nil
-;             ; (evil-normal-state)
-;             (set-buffer-file-coding-system 'undecided-unix)
-;             (delete-trailing-whitespace)
-;             (untabify)))
+;;; package --- Summary
+;;; user hooks for various modes
 
-(add-hook 'evil-normal-state-entry-hook (lambda nil
-                                          (save-buffer)))
+;;; Code
+; make sure files are unix!
+(add-hook 'before-save-hook
+          (lambda nil
+            ; (evil-normal-state)
+            (set-buffer-file-coding-system 'undecided-unix)
+            (delete-trailing-whitespace)
+            (untabify)))
+
+; hopefully save buffer if writable
+(add-hook 'evil-normal-state-entry-hook 'save-file)
+
 
 (add-hook 'emacs-lisp-mode-hook
       (lambda nil
