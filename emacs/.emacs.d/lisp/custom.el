@@ -16,12 +16,14 @@
  '(fringe-mode 15 nil (fringe))
  '(icomplete-mode t)
  '(ido-everywhere t)
+ '(indicate-buffer-boundaries nil)
+ '(indicate-empty-lines nil)
  '(inhibit-startup-screen t)
  '(linum-format (quote dynamic))
  '(mode-require-final-newline nil)
  '(package-selected-packages
    (quote
-    (evil-collection git-commit evil-escape general ac-php-core php-mode epc auto-complete evil-numbers evil-nerd-commenter evil-visualstar evil-visual-star evil-surround web-mode scss-mode sass-mode relative-line-numbers racket-mode projectile php-eldoc muttrc-mode markdown-mode magit jedi flycheck evil-matchit evil clojure-mode ac-php)))
+    (evil-commentary evil-collection git-commit evil-escape general ac-php-core php-mode epc auto-complete evil-numbers evil-nerd-commenter evil-visualstar evil-visual-star evil-surround web-mode scss-mode sass-mode relative-line-numbers racket-mode projectile php-eldoc muttrc-mode markdown-mode magit jedi flycheck evil-matchit evil clojure-mode ac-php)))
  '(require-final-newline nil)
  '(save-place t)
  '(scroll-bar-mode nil)
@@ -34,7 +36,9 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:inherit nil :stipple nil :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 120 :width normal :foundry "FBI " :family "Inconsolata")))))
+ '(default ((t (:inherit nil :stipple nil :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 120 :width normal :foundry "FBI " :family "Inconsolata"))))
+ '(mode-line ((t (:background "dark gray" :foreground "black"))))
+ '(mode-line-inactive ((t nil))))
 
 (provide 'custom.el)
 ;;; custom.el ends here

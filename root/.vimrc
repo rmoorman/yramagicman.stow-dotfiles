@@ -30,6 +30,7 @@ PlugStart 'vim-scripts/vim-indent-object'
 PlugStart 'tpope/vim-surround'
 PlugStart 'bronson/vim-visual-star-search'
 PlugStart 'tpope/vim-repeat'
+PlugStart 'Raimondi/delimitMate'
 PlugOpt 'dzeban/vim-log-syntax'
 PlugOpt 'w0rp/ale'
 PlugOpt 'mileszs/ack.vim'
@@ -106,8 +107,8 @@ set ttyfast
 set laststatus=2
 
 " Don't show line numbers by default, see mappings below for toggle
-set nonumber
-set norelativenumber
+set number
+set relativenumber
 set expandtab
 set eol
 set nowrapscan

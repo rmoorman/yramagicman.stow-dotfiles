@@ -100,8 +100,5 @@
     clean = git hawser clean %f
     smudge = git hawser smudge %f
     required = true
-[diff]
-    tool = vimdiff
-    external = $HOME/bin/diffit
 [difftool]
     prompt = false

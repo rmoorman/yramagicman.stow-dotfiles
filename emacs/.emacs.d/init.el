@@ -138,7 +138,7 @@ May be necessary for some GUI environments (e.g., Mac OS X)")
 
 (defun save-file ()
   (interactive)
-  (when (file-writable-p ( buffer-file-name ))
+  (when (and (buffer-file-name) (file-writable-p ( buffer-file-name ) ))
     (basic-save-buffer)))
 
 (defun worklist (&optional file)

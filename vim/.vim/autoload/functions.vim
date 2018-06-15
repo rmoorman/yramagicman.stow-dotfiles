@@ -72,6 +72,8 @@ function! functions#NumberToggle()
     if !exists('b:NumState')
         let b:NumState = 1
     endif
+    hi linenr ctermfg=12
+    hi cursorlinenr ctermfg=9
     if b:NumState == 1
         set number
         set norelativenumber
@@ -85,8 +87,10 @@ function! functions#NumberToggle()
         set nonumber
         let b:NumState = 0
     else
-        set nonumber
-        set norelativenumber
+        hi linenr ctermfg=0
+        hi cursorlinenr ctermfg=0
+        set number
+        set relativenumber
         let b:NumState = 1
     endif
 endfunction

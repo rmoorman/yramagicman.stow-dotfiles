@@ -2,7 +2,7 @@
 ;;; user hooks for various modes
 
 ;;; Code
-; make sure files are unix!
+
 (add-hook 'before-save-hook
           (lambda nil
             ; (evil-normal-state)
@@ -13,6 +13,8 @@
 ; hopefully save buffer if writable
 (add-hook 'evil-normal-state-entry-hook 'save-file)
 
+
+(add-hook 'evil-mode-hook 'evil-commentary-mode)
 
 (add-hook 'emacs-lisp-mode-hook
       (lambda nil
@@ -35,7 +37,8 @@
             (dired-omit-mode)))
 
 (add-to-list 'auto-mode-alist '("/\\..*zsh\\'" . shell-script-mode))
-(add-to-list 'auto-mode-alist '("\\.*php$" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.*php$" . php-mode))
+(add-to-list 'auto-mode-alist '("\\.*.blade.php$" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.*html$" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.*vue$" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.*scss$" . scss-mode))
@@ -49,3 +52,4 @@
 
 
 (provide 'user_hooks)
+;;; user_hooks.el ends here

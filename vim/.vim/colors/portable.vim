@@ -4,8 +4,8 @@ set background=dark
 let colors_name='portable'
 
 hi foldcolumn ctermbg=NONE ctermfg=0
-hi linenr ctermfg=12
-hi cursorlinenr ctermfg=9
+hi linenr ctermfg=0
+hi cursorlinenr ctermfg=0
 hi search cterm=REVERSE ctermfg=8 ctermbg=15
 hi diffadd ctermfg=4 ctermbg=0
 hi diffchange ctermfg=9 ctermbg=0
