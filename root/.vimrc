@@ -191,9 +191,6 @@ endif"}}}
 hi def focused ctermbg=2 ctermfg=0
 augroup statusline
     autocmd!
-    " autocmd BufEnter,BufWritePost,ShellCmdPost * let f=system('[[ $(git diff --shortstat 2> /dev/null | tail -n1) != "" ]] && echo "*"')
-    " autocmd VimEnter,BufEnter,ShellCmdPost * let b=system('git branch 2>/dev/null | grep \* | sed "s/\*//g"')
-    " autocmd VimEnter,BufEnter,ShellCmdPost * let c=split(b, '')
     autocmd BufEnter,BufWritePost,InsertEnter * call statusline#Refresh()
 augroup end
 "}}}

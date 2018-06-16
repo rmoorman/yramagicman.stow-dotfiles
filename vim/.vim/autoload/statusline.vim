@@ -1,5 +1,5 @@
 function! statusline#Refresh()
-    let b:modified = 'checking status'
+    let b:modified = ''
     let b:branch = 'checking branch '
     for l:nr in range(1, winnr('$'))
     if winnr() == l:nr
@@ -28,7 +28,7 @@ function! statusline#Branch(one, two)
     if len('l:bname') > 0
         let b:branch = l:bname
     else
-        let b:branch = ' '
+        let b:branch = ''
     endif
 endfunction
 
@@ -38,8 +38,8 @@ function! statusline#Active()
     let a=job_start(['/bin/sh', '-c', 'git status | grep modified'], { 'out_io': 'pipe', 'out_buf': 1, 'err_io':'null',  'out_cb': 'statusline#Modified'})
     let b=job_start(['/bin/sh', '-c', 'git branch | grep \*'], { 'out_io': 'pipe', 'out_buf': 1, 'err_io':'null',  'out_cb': 'statusline#Branch'})
     let l:active .= '%#focused#| %m %f %r %y %#normal#'
-        let l:active .=' %{b:branch}'
-        let l:active .=' %{b:modified}'
+    let l:active .=' %{b:branch}'
+    let l:active .=' %{b:modified}'
     let l:active .=' %='
     let l:active .=' %l/%L, %-02c'
     let l:active .= ' %P'
