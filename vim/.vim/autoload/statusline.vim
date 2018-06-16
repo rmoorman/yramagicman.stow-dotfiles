@@ -1,4 +1,6 @@
 function! statusline#Refresh()
+    let a=job_start(['/bin/sh', '-c', 'git status | grep modified'], { 'out_io': 'pipe', 'out_buf': 1, 'err_io':'null',  'out_cb': 'statusline#Modified'})
+    let b=job_start(['/bin/sh', '-c', 'git branch | grep \*'], { 'out_io': 'pipe', 'out_buf': 1, 'err_io':'null',  'out_cb': 'statusline#Branch'})
     for l:nr in range(1, winnr('$'))
     if winnr() == l:nr
         call setwinvar(l:nr, '&statusline', '%!statusline#Active()')
