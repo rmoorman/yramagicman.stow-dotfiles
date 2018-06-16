@@ -1,25 +1,46 @@
 function! statusline#Refresh()
     for l:nr in range(1, winnr('$'))
-        if winnr() == l:nr
-            call setwinvar(l:nr, '&statusline', '%!statusline#Active()')
-        else
-            call setwinvar(l:nr, '&statusline', '%!statusline#InActive()')
-        endif
+    if winnr() == l:nr
+        call setwinvar(l:nr, '&statusline', '%!statusline#Active()')
+    else
+        call setwinvar(l:nr, '&statusline', '%!statusline#InActive()')
+    endif
     endfor
+endfunction
+
+function! statusline#Modified(one, two)
+    let l:mod = split( a:two,':')
+    let l:mod = l:mod[0]
+    let l:mod = l:mod[1:]
+    if l:mod == 'modified'
+        let b:modified = '*'
+    else
+        let b:modified = ' '
+    endif
+endfunction
+
+function! statusline#Branch(one, two)
+    let l:bname = split( a:two,':')
+    let l:bname = l:bname[0]
+    let l:bname = l:bname[1:]
+    if len('l:bname') > 0
+        let b:branch = l:bname
+    else
+        let b:branch = ' '
+    endif
 endfunction
 
 function! statusline#Active()
     " Always show status line
     let l:active = ''
-    let f=system('[[ $(git diff --shortstat 2> /dev/null | tail -n1) != "" ]] && echo "*"')
-    let b=system('git branch 2>/dev/null | grep \* | sed "s/\*//g"')
-    let c=split(b, '')
+    let a=job_start(['/bin/sh', '-c', 'git status | grep modified'], { 'out_io': 'pipe', 'out_buf': 1, 'err_io':'null',  'out_cb': 'statusline#Modified'})
+    let b=job_start(['/bin/sh', '-c', 'git branch | grep \*'], { 'out_io': 'pipe', 'out_buf': 1, 'err_io':'null',  'out_cb': 'statusline#Branch'})
     let l:active .= '%#focused#| %m %f %r %y %#normal#'
-    if len(c)
-        let l:active .=' %{c[0]}'
+    if exists('b:branch')
+        let l:active .=' %{b:branch}'
     endif
-    if len(f)
-        let l:active .=' %{f[0]}'
+    if exists('b:modified')
+        let l:active .=' %{b:modified}'
     endif
     let l:active .=' %='
     let l:active .=' %l/%L, %-02c'
@@ -30,17 +51,8 @@ endfunction
 
 function! statusline#InActive()
     " Always show status line
-    let f=system('[[ $(git diff --shortstat 2> /dev/null | tail -n1) != "" ]] && echo "*"')
-    let b=system('git branch 2>/dev/null | grep \* | sed "s/\*//g"')
-    let c=split(b, '')
     let l:inactive = ''
     let l:inactive .= '%#normal#| %m %f %r %y'
-    " if len(c)
-        " let l:inactive .=' %{c[0]}'
-    " endif
-    " if len(f)
-    "     let l:inactive .=' %{f[0]}'
-    " endif
     let l:inactive .='%='
     " let l:inactive .='%l/%L, %c'
     let l:inactive .=' %P'
