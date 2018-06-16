@@ -1,6 +1,6 @@
 function! statusline#Refresh()
-    let a=job_start(['/bin/sh', '-c', 'git status | grep modified'], { 'out_io': 'pipe', 'out_buf': 1, 'err_io':'null',  'out_cb': 'statusline#Modified'})
-    let b=job_start(['/bin/sh', '-c', 'git branch | grep \*'], { 'out_io': 'pipe', 'out_buf': 1, 'err_io':'null',  'out_cb': 'statusline#Branch'})
+    let b:modified = ' '
+    let b:branch = ' '
     for l:nr in range(1, winnr('$'))
     if winnr() == l:nr
         call setwinvar(l:nr, '&statusline', '%!statusline#Active()')
@@ -38,12 +38,8 @@ function! statusline#Active()
     let a=job_start(['/bin/sh', '-c', 'git status | grep modified'], { 'out_io': 'pipe', 'out_buf': 1, 'err_io':'null',  'out_cb': 'statusline#Modified'})
     let b=job_start(['/bin/sh', '-c', 'git branch | grep \*'], { 'out_io': 'pipe', 'out_buf': 1, 'err_io':'null',  'out_cb': 'statusline#Branch'})
     let l:active .= '%#focused#| %m %f %r %y %#normal#'
-    if exists('b:branch')
         let l:active .=' %{b:branch}'
-    endif
-    if exists('b:modified')
         let l:active .=' %{b:modified}'
-    endif
     let l:active .=' %='
     let l:active .=' %l/%L, %-02c'
     let l:active .= ' %P'
