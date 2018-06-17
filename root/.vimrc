@@ -107,8 +107,8 @@ set ttyfast
 set laststatus=2
 
 " Don't show line numbers by default, see mappings below for toggle
-set number
-set relativenumber
+set nonumber
+set norelativenumber
 set expandtab
 set eol
 set nowrapscan

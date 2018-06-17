@@ -1,6 +1,6 @@
 function! statusline#Refresh()
     let b:modified = ''
-    let b:branch = 'checking branch '
+    let b:branch = ''
     for l:nr in range(1, winnr('$'))
     if winnr() == l:nr
         call setwinvar(l:nr, '&statusline', '%!statusline#Active()')
