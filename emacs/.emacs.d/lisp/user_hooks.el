@@ -30,11 +30,11 @@
 (add-hook 'dired-load-hook
           (lambda ()
             (require 'dired-x)))
-(add-hook 'dired-mode-hook
-          (lambda ()
-            (setq dired-omit-files "\*pyc")
-            (setq dired-omit-files-p t)
-            (dired-omit-mode)))
+;; (add-hook 'dired-mode-hook
+;;           (lambda ()
+;;             (setq dired-omit-files "\*pyc")
+;;             (setq dired-omit-files-p t)
+;;             (dired-omit-mode)))
 
 (add-to-list 'auto-mode-alist '("/\\..*zsh\\'" . shell-script-mode))
 (add-to-list 'auto-mode-alist '("\\.*php$" . php-mode))

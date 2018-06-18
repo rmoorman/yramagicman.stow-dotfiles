@@ -16,32 +16,33 @@
 
 (defvar cfg-var:packages)
 (setq cfg-var:packages '(
-             evil
-             evil-escape
-             evil-matchit
-             evil-surround
-             evil-visualstar
-             evil-nerd-commenter
-             evil-numbers
+             ac-php
+             ac-php-core
              auto-complete
-             git-commit
-             general
-             projectile
-             racket-mode
              clojure-mode
              epc
-             magit
+             evil
+             evil-escape
+             evil-magit
+             evil-matchit
+             evil-nerd-commenter
+             evil-numbers
+             evil-surround
+             evil-visualstar
+             flycheck
              general
+             general
+             git-commit
+             jedi
+             key-chord
+             magit
+             markdown-mode
+             php-eldoc
+             projectile
+             racket-mode
              sass-mode
              scss-mode
-             key-chord
-             markdown-mode
-             ac-php
-             web-mode
-             ac-php-core
-             php-eldoc
-             flycheck
-             jedi))
+             web-mode))
 
 (defun cfg:install-packages ()
   "Install packages from list."
@@ -70,7 +71,7 @@
       (expand-file-name "lisp/custom.el" user-emacs-directory))
 (load custom-file)
 
-(setq-default word-wrap t)
+;; (setq-default word-wrap t)
 (setq-default indent-tabs-mode nil)
 (setq-default tab-width 4)
 (global-auto-complete-mode 1)
