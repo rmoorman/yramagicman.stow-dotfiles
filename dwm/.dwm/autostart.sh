@@ -4,7 +4,7 @@ check_process(){
 
     if  ! pgrep "$1";
     then
-        $1 &
+        "$@" &
     fi
 
 }
@@ -19,6 +19,8 @@ fi
 ("$HOME/.fehbg") &
 
 "$HOME/bin/i3st" &
+
+(check_process emacs --daemon) &
 
 xsetroot -solid '#83F4E'
 
@@ -40,8 +42,8 @@ xset b off &
 # Autostart the Dropbox deamon
 (sleep 100s && dropbox-cli start) &
 
-# Update weather info on boot
 (sleep 45s && check_process redshift) &
+
 
 #limit the size of dirs history
 d=$(sort -u  "$HOME/.cache/zsh/dirs" )

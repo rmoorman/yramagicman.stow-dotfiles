@@ -7,8 +7,7 @@
           (lambda nil
             ; (evil-normal-state)
             (set-buffer-file-coding-system 'undecided-unix)
-            (delete-trailing-whitespace)
-            (untabify)))
+            (delete-trailing-whitespace)))
 
 ; hopefully save buffer if writable
 (add-hook 'evil-normal-state-entry-hook 'save-file)

@@ -25,11 +25,12 @@
              evil-escape
              evil-magit
              evil-matchit
-             evil-nerd-commenter
+             evil-commentary
              evil-numbers
              evil-surround
              evil-visualstar
              flycheck
+             fzf
              general
              general
              git-commit

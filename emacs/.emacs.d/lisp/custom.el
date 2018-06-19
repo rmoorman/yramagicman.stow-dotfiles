@@ -23,13 +23,17 @@
  '(mode-require-final-newline nil)
  '(package-selected-packages
    (quote
-    (evil-magit evil-commentary evil-collection git-commit evil-escape general ac-php-core php-mode epc auto-complete evil-numbers evil-nerd-commenter evil-visualstar evil-visual-star evil-surround web-mode scss-mode sass-mode relative-line-numbers racket-mode projectile php-eldoc muttrc-mode markdown-mode magit jedi flycheck evil-matchit evil clojure-mode ac-php)))
+    (fzf evil-magit evil-commentary evil-collection git-commit evil-escape general ac-php-core php-mode epc auto-complete evil-numbers evil-nerd-commenter evil-visualstar evil-visual-star evil-surround web-mode scss-mode sass-mode relative-line-numbers racket-mode projectile php-eldoc muttrc-mode markdown-mode magit jedi flycheck evil-matchit evil clojure-mode ac-php)))
  '(require-final-newline nil)
  '(save-place t)
  '(scroll-bar-mode nil)
  '(show-paren-delay 0.01)
  '(show-paren-mode t)
- '(tool-bar-mode nil))
+ '(tool-bar-mode nil)
+ '(whitespace-space-regexp "\\(^ +\\)")
+ '(whitespace-style
+   (quote
+    (trailing tabs spaces lines newline empty indentation space-after-tab tab-mark))))
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.

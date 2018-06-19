@@ -2,6 +2,7 @@
 (require 'evil-surround)
 (global-evil-surround-mode 1)
 (global-evil-visualstar-mode)
+(require 'evil-commentary)
 (evil-commentary-mode)
 (defun evil-map-key (key-str fn-quoted)
     "Map key for both insert and normal modes KEY-STR FN-QUOTED."
@@ -37,6 +38,7 @@
 (require 'evil-numbers)
 (define-key evil-normal-state-map ( kbd "C-a" ) 'evil-numbers/inc-at-pt)
 (define-key evil-normal-state-map ( kbd "C-x" ) 'evil-numbers/dec-at-pt)
+(global-set-key (kbd "C-x") 'evil-numbers/dec-at-pt)
 (define-key evil-normal-state-map ( kbd "C-+" ) 'evil-font-increase)
 (define-key evil-normal-state-map ( kbd "C-=" ) 'evil-font-increase)
 (define-key evil-normal-state-map ( kbd "C--" ) 'evil-font-decrease)
