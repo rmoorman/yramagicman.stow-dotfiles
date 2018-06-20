@@ -45,7 +45,7 @@ if system('which fzf')[:-2] != 'fzf not found'
     if filereadable('/usr/share/vim/vimfiles/plugin/fzf.vim')
         source /usr/share/vim/vimfiles/plugin/fzf.vim
         PlugStart 'junegunn/fzf.vim'
-        cnoreabbrev b Buffers<CR>
+        " cnoreabbrev b Buffers<CR>
         cnoreabbrev find Files<CR>
         cnoreabbrev gf GFiles<CR>
         cnoreabbrev fg GFiles<CR>
@@ -250,6 +250,7 @@ cnoremap <expr> %% expand('%:h').'/'
 inoremap <c-f> <c-x><c-f>
 "}}}
 "{{{ mappings
+tmap <space><space> <C-w>N
 nnoremap <leader><space> :set hlsearch!<cr>
 nnoremap <leader><leader> <C-^>
 nnoremap * :set hlsearch<cr>*

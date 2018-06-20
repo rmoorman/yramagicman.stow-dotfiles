@@ -346,11 +346,11 @@ setopt PUSHD_MINUS
 
 #}}}
 #{{{ start tmux,
-# if [[ -z "$TMUX" && -z "$EMACS" && -z "$VIM" && -z "$SSH_TTY" ]]; then
-#     if [[ -z $( pgrep tmux$ ) ]] then
-#         # s tmux
-#     fi
-# fi
+if [[ -z "$TMUX" && -z "$EMACS" && -z "$VIM" && -z "$SSH_TTY" ]]; then
+    if [[ -z $( pgrep tmux$ ) ]] then
+        s tmux
+    fi
+fi
 # }}}
 #{{{ end profiling script
 if [[ "$PROFILE_STARTUP" == true ]]; then
