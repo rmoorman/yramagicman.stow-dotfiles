@@ -168,8 +168,8 @@ if &diff
     augroup end
 endif
 if !has('nvim') && &ttimeoutlen == -1
-  set ttimeout
-  set ttimeoutlen=100
+    set ttimeout
+    set ttimeoutlen=100
 endif
 
 if exists('+breakindent')
@@ -191,7 +191,9 @@ endif"}}}
 hi def focused ctermbg=2 ctermfg=0
 augroup status
     autocmd!
-    autocmd BufEnter,BufWritePost,InsertEnter * call status#Refresh()
+    " autocmd BufEnter,BufWritePost,InsertEnter,ShellCmdPost *  let b:modified =''
+    " autocmd BufEnter,BufWritePost,InsertEnter,ShellCmdPost *  let b:branch =''
+    autocmd BufEnter,BufWritePost,InsertEnter,ShellCmdPost * call status#Refresh()
 augroup end
 "}}}
 set hidden
