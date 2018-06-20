@@ -348,7 +348,7 @@ setopt PUSHD_MINUS
 #{{{ start tmux,
 if [[ -z "$TMUX" && -z "$EMACS" && -z "$VIM" && -z "$SSH_TTY" ]]; then
     if [[ -z $( pgrep tmux$ ) ]] then
-        s tmux
+        # s tmux
     fi
 fi
 # }}}
