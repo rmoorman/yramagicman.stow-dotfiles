@@ -189,9 +189,9 @@ if exists("&undodir")
 endif"}}}
 "{{{ statusline
 hi def focused ctermbg=2 ctermfg=0
-augroup statusline
+augroup status
     autocmd!
-    autocmd BufEnter,BufWritePost,InsertEnter * call statusline#Refresh()
+    autocmd BufEnter,BufWritePost,InsertEnter * call status#Refresh()
 augroup end
 "}}}
 set hidden
