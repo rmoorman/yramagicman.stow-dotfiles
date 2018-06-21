@@ -1,5 +1,3 @@
-let b:branch = ''
-let b:modified = ''
 function! status#Refresh()
     for l:nr in s:listbufs()
         if winnr() == l:nr

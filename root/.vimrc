@@ -191,8 +191,6 @@ endif"}}}
 hi def focused ctermbg=2 ctermfg=0
 augroup status
     autocmd!
-    " autocmd BufEnter,BufWritePost,InsertEnter,ShellCmdPost *  let b:modified =''
-    " autocmd BufEnter,BufWritePost,InsertEnter,ShellCmdPost *  let b:branch =''
     autocmd BufEnter,BufWritePost,InsertEnter,ShellCmdPost * call status#Refresh()
 augroup end
 "}}}
