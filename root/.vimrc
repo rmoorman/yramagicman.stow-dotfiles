@@ -226,7 +226,6 @@ augroup end
 "}}}
 hi ExtraWhitespace cterm=underline
 match ExtraWhitespace /\s\+$/
-
 "{{{ kill arrow keys
 noremap <left>  <Nop>
 noremap <down>  <Nop>

@@ -85,7 +85,7 @@ function source_or_install() {
         git clone --depth 3 "$cloneurl" "$MODULES_DIR/$location"
         find $MODULES_DIR -type d -delete 2>/dev/null
         if [[ ! -d $MODULES_DIR/$location  ]]; then
-            echo "nothing cloned; trying https"
+            echo "nothing cloned"
         fi
         date +'%s' > "$MODULES_DIR/$location/.updatetime"
         echo "\n"
