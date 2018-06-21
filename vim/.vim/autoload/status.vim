@@ -3,9 +3,11 @@ function! status#Refresh()
     let b:modified = ''
     for l:nr in s:listbufs()
         if winnr() == l:nr
-            call setwinvar(l:nr, '&statusline', '%!status#Active()')
+            let l:active = status#Active()
+            call setwinvar(l:nr, '&statusline', l:active)
         else
-            call setwinvar(l:nr, '&statusline', '%!status#Inactive()')
+            let l:inactive = status#Inactive()
+            call setwinvar(l:nr, '&statusline', l:inactive)
         endif
     endfor
 endfunction
