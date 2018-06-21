@@ -25,7 +25,7 @@ fi
 xsetroot -solid '#83F4E'
 
 xset -dpms; xset s off &
-(sleep 1s && check_process compton -c) &
+(sleep 1s && check_process compton -b --paint-on-overlay --unredir-if-possible --backend xr_glx_hybrid --vsync drm --glx-swap-method -1 --glx-no-stencil)
 (sleep 1s && /usr/bin/xscreensaver -no-splash) &
 (sleep 10s && xfce4-power-manager) &
 (sleep 5s  && "$HOME/bin/get_remote_ip") &

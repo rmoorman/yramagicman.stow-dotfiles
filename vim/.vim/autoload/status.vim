@@ -27,7 +27,6 @@ function! status#Branch(one, two)
 endfunction
 
 function! status#Active()
-    " Always show status line
     let l:active = ''
     let a=job_start(['/bin/sh', '-c', 'git status | grep modified'], { 'out_io': 'pipe', 'err_io':'null',  'out_cb': 'status#Modified'})
     let b=job_start(['/bin/sh', '-c', 'git branch | grep \*'], { 'out_io': 'pipe', 'err_io':'null',  'out_cb': 'status#Branch'})
@@ -46,7 +45,6 @@ function! status#Active()
 endfunction
 
 function! status#Inactive()
-    " Always show status line
     let l:inactive = ''
     let l:inactive .= '%#normal#| %m %f %r %y'
     let l:inactive .='%='
