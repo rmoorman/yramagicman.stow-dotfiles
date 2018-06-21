@@ -1,6 +1,6 @@
+let b:branch = ''
+let b:modified = ''
 function! status#Refresh()
-    let b:branch = ''
-    let b:modified = ''
     for l:nr in s:listbufs()
         if winnr() == l:nr
             let l:active = status#Active()
