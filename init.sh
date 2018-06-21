@@ -1,19 +1,37 @@
-#!/usr/bin/env zsh
+#!/bin/sh
 
-if ! type "stow" > /dev/null; then
-    echo "Please install GNU Stow"
-    return
-fi
+if ! type "stow" > /dev/null
+then
+    if type "pacman" >/dev/null
+    then
+        echo "On Arch, installing stow automatically"
+        sudo pacman -S stow
+        else
+            echo "Please install GNU Stow"
 
-for f in $(find ./ -maxdepth 1 -type d | grep -Ev '.git$|config|zsh' | cut -d '/' -f 2 )
-    stow -R $f -t ~/
+            return
+        fi
+    else
+        echo ''
+    fi
 
-stow -R config -t ~/.config
+    find ~/ -maxdepth 1 -type f -iname '.*' | while read -r f
+    do
+        if test -f "./root/$(basename "$f")"
+        then
+            echo "Backing up $f"
+            mv -v "$f" "$f.bak"
+        fi
+    done
 
+    for f in $(find ./ -maxdepth 1 -type d | grep -Ev '.git$|config|zsh' | cut -d '/' -f 2 )
+    do
+        stow -R "$f" -t ~/
+    done
 
-split=("${(@s#/#)SHELL}")
-shell=$split[-1]
-if [[ $shell != 'zsh' ]]; then
-    chsh -s $(which zsh)
-fi
-source ~/.zshrc
+    if test ! -d "$HOME/.config"
+    then
+        echo "making ~/.config directory"
+        mkdir -p "$HOME/.config"
+    fi
+    stow -R config -t ~/.config
