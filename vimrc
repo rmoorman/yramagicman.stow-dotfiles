@@ -84,7 +84,7 @@ let mapleader=","
 set shell=zsh
 
 " Make backspace behave in a sane manner.
-set backspace=indent,eol,start
+set backspace=indent,eol
 
 " enable Omnicomplete
 set omnifunc=syntaxcomplete#Complete
@@ -106,8 +106,8 @@ set ttyfast
 set laststatus=2
 
 " Don't show line numbers by default, see mappings below for toggle
-set nonumber
-set norelativenumber
+set number
+set relativenumber
 set expandtab
 set eol
 set nowrapscan

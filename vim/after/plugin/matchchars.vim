@@ -3,9 +3,9 @@ inoremap (  ()<Left>
 inoremap [  []<Left>
 inoremap {  {}<Left>
 inoremap <  <><Left>
-inoremap [<CR> [<CR>]<ESC>O
-inoremap (<CR> (<CR>)<ESC>O
-inoremap {<CR> {<CR>}<ESC>O
+inoremap [<CR> [<CR>]<C-o>O
+inoremap (<CR> (<CR>)<C-o>O
+inoremap {<CR> {<CR>}<C-o>O
 inoremap <expr> )  strpart(getline('.'), col('.')-1, 1) == ")" ? "\<Right>" : ")"
 inoremap <expr> ]  strpart(getline('.'), col('.')-1, 1) == "]" ? "\<Right>": "]"
 inoremap <expr> }  strpart(getline('.'), col('.')-1, 1) == "}" ? "\<Right>" : "}"
