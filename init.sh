@@ -1,30 +1,19 @@
 #!/bin/sh
 
-if ! type "stow" > /dev/null
-then
-    if type "pacman" >/dev/null
-    then
-        echo "On Arch, installing stow automatically"
-        sudo pacman -S stow
-    else
-        echo "Please install GNU Stow"
-
-        return
-    fi
-fi
-
-find ~/ -maxdepth 1 -type f -iname '.*' | while read -r f
+find ./ -maxdepth 1 -type f  -not -name '.*' -and -not -name 'config' -and -not -name 'license.txt' -and -not -name 'README.md' | while read -r f
 do
-    if test -f "./root/$(basename "$f")"
-    then
-        echo "Backing up $f"
-        mv -v "$f" "$f.bak"
-    fi
+    ln -sv "$PWD/$(basename "$f")" "$HOME/.$(basename "$f")"
 done
 
-for f in $(find ./ -maxdepth 1 -type d | grep -Ev '.git$|config|zsh' | cut -d '/' -f 2 )
+find ./ -maxdepth 1 -type d  \
+    -not -name '.git' -and \
+    -not -name 'config' -and \
+    -not -name 'bin' | while read -r d
 do
-    stow -R "$f" -t ~/
+    if test ! -d "$HOME/.$(basename "$d" )"
+    then
+        ln -sv "$PWD/$(basename "$d")" "$HOME/.$(basename "$d")"
+    fi
 done
 
 if test ! -d "$HOME/.config"
@@ -32,4 +21,8 @@ then
     echo "making ~/.config directory"
     mkdir -p "$HOME/.config"
 fi
-stow -R config -t ~/.config
+find "$PWD/config/" -maxdepth 1 -not -name 'config' | while read -r directory
+do
+    ln -sv "$directory" "$HOME/.config/"
+done
+ln -sv "$PWD/bin" "$HOME/"
