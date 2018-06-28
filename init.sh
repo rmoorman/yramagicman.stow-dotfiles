@@ -1,6 +1,11 @@
 #!/bin/sh
 
-find ./ -maxdepth 1 -type f  -not -name '.*' -and -not -name 'config' -and -not -name 'license.txt' -and -not -name 'README.md' | while read -r f
+find ./ -maxdepth 1 -type f  \
+    -not -name '.*' -and \
+    -not -name 'config' -and \
+    -not -name 'license.txt' -and \
+    -not -name 'README.md' \
+    -not -name 'init.sh' | while read -r f
 do
     ln -sv "$PWD/$(basename "$f")" "$HOME/.$(basename "$f")"
 done
