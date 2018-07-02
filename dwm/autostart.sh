@@ -22,10 +22,19 @@ fi
 
 (check_process emacs --daemon) &
 
-xsetroot -solid '#83F4E'
+xsetroot -solid '#83F4E0'
 
 xset -dpms; xset s off &
-(sleep 1s && check_process compton -b --paint-on-overlay --unredir-if-possible --backend xr_glx_hybrid --vsync drm --glx-swap-method -1 --glx-no-stencil)
+
+if test "$(hostname)" == "observer"; then
+    (sleep 1s && check_process compton -b \
+        --paint-on-overlay --unredir-if-possible \
+        --backend xr_glx_hybrid --vsync drm \
+        --glx-swap-method -1 --glx-no-stencil)
+else
+    (sleep 1s && check_process compton -b)
+fi
+
 (sleep 1s && /usr/bin/xscreensaver -no-splash) &
 (sleep 10s && xfce4-power-manager) &
 (sleep 5s  && "$HOME/bin/get_remote_ip") &
@@ -74,5 +83,4 @@ echo '' > "$HOME/.config/msmtp.log"
 echo '' > "$HOME/.mpd/mpdstate"
 rm "$HOME/slacklogs"
 rm "$HOME/nohup"
-
 exit
