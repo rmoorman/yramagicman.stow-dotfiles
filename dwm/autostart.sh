@@ -18,7 +18,7 @@ if test "$( hostname )" == 'serenity'; then
 fi
 ("$HOME/.fehbg") &
 
-"$HOME/bin/i3st" &
+/usr/bin/node "/home/jonathan/bin/statusline.js" &
 
 (check_process emacs --daemon) &
 

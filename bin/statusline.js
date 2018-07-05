@@ -287,7 +287,7 @@ setInterval(function() {
     mail();
     weather();
     volume();
-    if (hostname() === 'k-nine') {
+    if (hostname() === 'serenity') {
         battery();
     }
     date();
@@ -295,7 +295,7 @@ setInterval(function() {
     line += `${statusLine.mail || ''} `;
     line += `${statusLine.updateCount || ''} `;
     line += `W:${statusLine.weather || ''} `;
-    if (hostname() === 'k-nine') {
+    if (hostname() === 'serenity') {
         line += `B:${statusLine.batteryLevel || ''} ${statusLine.batteryStat || ''} `;
     }
     if (statusLine.network) {
