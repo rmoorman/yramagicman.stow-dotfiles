@@ -221,7 +221,7 @@ let updateCount = function() {
 };
 
 let date = function() {
-    if (hostname() === 'k-nine') {
+    if (hostname() === 'serenity') {
         exec('date +"%d/%m/%Y %I:%M:%S"', {}, function(jsrr, out, err) {
             dateEvent.emit('event', out.trim());
             if (err) {
@@ -266,7 +266,6 @@ updateEvent.on('event', function(count) {
     if (count > 0 ) {
         statusLine.updateCount = 'U: ' + count;
     } else {
-
         statusLine.updateCount = '';
     }
 });
