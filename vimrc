@@ -124,9 +124,7 @@ set smartindent
 set list wrap linebreak sidescrolloff=15
 set listchars=tab:▸\ ,trail:·,eol:¬,extends:❯,precedes:❮
 set showbreak=…→
-
 set nojoinspaces
-
 set splitbelow
 set splitright
 set scrolloff=2
@@ -135,7 +133,6 @@ set t_Co=256
 "Use os clipboard
 set clipboard^=unnamedplus,unnamed
 set incsearch
-
 " Ignore case of searches
 set ignorecase
 set smartcase
