@@ -1,7 +1,7 @@
 #!/usr/bin/zsh
 hn=$(hostname)
 function my_date () {
-    if [[ "$hn" == "k-nine" ]];
+    if [[ "$hn" == "serenity" ]];
     then
         date +"%d/%m/%Y %I:%M:%S"
     else
@@ -30,11 +30,10 @@ function my_bat() {
 }
 
 function my_wifi(){
-    # ssid=$( nmcli | head -n 1 | awk -F ' ' '{print $4}' )
-    ssid = ''
+    ssid=$(netctl list | awk '/*/ {print $2}')
     ip=$($HOME/bin/tmuxip)
     strength=$(wifi_strength)
-    if [[ $ssid = 'hide_yo_kids_hide_yo_wi-fi' ]]; then
+    if [[ $ssid = 'wlo1-SA_PROFILE' ]]; then
         msg="\xe2\x8c\x82"
     else
         msg=$ssid
