@@ -62,3 +62,8 @@ function! s:listbufs()
     endfor
     return l:bufs
 endfunction
+function! status#Autocmd()
+    autocmd BufEnter,BufWritePre,ShellCmdPost * let b:modified = ''
+    autocmd BufEnter,BufWritePre,ShellCmdPost * let b:branch = 'none'
+    autocmd BufEnter,BufWritePost,InsertEnter,ShellCmdPost * call status#Refresh()
+endfunction
