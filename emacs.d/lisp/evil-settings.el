@@ -53,5 +53,9 @@
 (setq-default evil-escape-delay 0.4)
 (evil-escape-mode)
 
+
+(require `linum-relative)
+(linum-on)
+
 (provide 'evil-settings)
 ;;; evil-settings.el ends here

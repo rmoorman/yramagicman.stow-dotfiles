@@ -23,7 +23,7 @@
  '(mode-require-final-newline nil)
  '(package-selected-packages
    (quote
-    (fzf evil-magit evil-commentary evil-collection git-commit evil-escape general ac-php-core php-mode epc auto-complete evil-numbers evil-nerd-commenter evil-visualstar evil-visual-star evil-surround web-mode scss-mode sass-mode relative-line-numbers racket-mode projectile php-eldoc muttrc-mode markdown-mode magit jedi flycheck evil-matchit evil clojure-mode ac-php)))
+    (linum-relative fzf evil-magit evil-commentary evil-collection git-commit evil-escape general ac-php-core php-mode epc auto-complete evil-numbers evil-nerd-commenter evil-visualstar evil-visual-star evil-surround web-mode scss-mode sass-mode relative-line-numbers racket-mode projectile php-eldoc muttrc-mode markdown-mode magit jedi flycheck evil-matchit evil clojure-mode ac-php)))
  '(require-final-newline nil)
  '(save-place t)
  '(scroll-bar-mode nil)

@@ -131,7 +131,6 @@ setopt extendedglob
 #
 # Smart URLs
 #
-
 autoload -Uz url-quote-magic
 zle -N self-insert url-quote-magic
 
@@ -171,7 +170,6 @@ setopt correct
 bindkey -e
 # Disable some shell keyboard shortcuts
 stty -ixon > /dev/null 2>/dev/null
-
 #}}}
 #{{{ completion
 #{{{ options
