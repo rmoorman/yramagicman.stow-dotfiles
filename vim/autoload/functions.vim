@@ -55,7 +55,7 @@ endfunction
 "{{{ saving
 function! functions#Save()
     if filewritable(expand('%')) == 1
-        w
+        silent! w!
     endif
 endfunction
 "}}}

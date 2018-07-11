@@ -187,7 +187,10 @@ endif"}}}
 hi def focused ctermbg=2 ctermfg=0
 augroup status
     autocmd!
-    autocmd BufEnter,BufWritePost,InsertEnter,ShellCmdPost * call status#Refresh()
+    autocmd BufEnter,BufWritePre,ShellCmdPost * let b:modified = ''
+    autocmd BufEnter,BufWritePre,ShellCmdPost * let b:branch = 'none'
+    " Because BufWinEnter happens after BufEnter this works. I'm not sure why it's necessary to hack this like I have, but it is.
+    autocmd BufWinEnter,BufWritePost,InsertEnter,ShellCmdPost * call status#Refresh()
 augroup end
 "}}}
 set hidden

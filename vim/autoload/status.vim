@@ -16,6 +16,7 @@ function! status#Modified(one, two)
     let l:mod = l:mod[1:]
     if l:mod == 'modified'
         let b:modified = '*'
+        return
     endif
 endfunction
 
@@ -28,7 +29,7 @@ endfunction
 
 function! status#Active()
     let l:active = ''
-    let a=job_start(['/bin/sh', '-c', 'git status | grep modified'], { 'out_io': 'pipe', 'err_io':'null',  'out_cb': 'status#Modified'})
+    let a=job_start(['/bin/sh', '-c', 'git status | grep modified'], { 'out_io': 'pipe', 'err_io':'pipe',  'out_cb': 'status#Modified', 'err_cb': 'status#Modified'})
     let b=job_start(['/bin/sh', '-c', 'git branch | grep \*'], { 'out_io': 'pipe', 'err_io':'null',  'out_cb': 'status#Branch'})
     let l:active .= '%#focused#| %m %f %r %y %#normal#'
     if exists('b:branch')
