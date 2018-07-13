@@ -39,7 +39,7 @@ function! status#Active()
         let l:active .=' %{b:modified}'
     endif
     let l:active .=' %='
-    let l:active .=' %l/%L, %-02c'
+    let l:active .=' %3l/%L, %-03c'
     let l:active .= ' %P'
     let l:active .= ' |'
     return l:active
