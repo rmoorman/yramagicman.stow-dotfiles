@@ -5,7 +5,6 @@ import re
 
 
 home = expanduser('~')
-
 mailfiles = [home + '/.config/mail/Inbox/new/',
              home + '/.config/mail/Inbox/cur/']
 junkfile = home + '/.config/mail/junk'
@@ -41,7 +40,6 @@ for f in froms:
             if len(e.findall(line)) and '/new/' in f and not len(r.findall(line)):
                 not_junk['new'].append(line.strip())
         mail.close()
-
 if len(not_junk['seen']) + len(not_junk['new']):
     message = ' M: ' + str(len(not_junk['seen']) + len(not_junk['new']))
     print(message)

@@ -187,7 +187,7 @@ setopt AUTO_LIST
 setopt AUTO_PARAM_SLASH
 setopt NO_COMPLETE_ALIASES
 # Do not autoselect the first completion entry.
-unsetopt MENU_COMPLETE
+setopt MENU_COMPLETE
 # Disable start/stop characters in shell editor.
 unsetopt FLOW_CONTROL
 #}}}
