@@ -27,10 +27,7 @@ xsetroot -solid '#83F4E0'
 xset -dpms; xset s off &
 
 if test "$(hostname)" == "observer"; then
-    (sleep 1s && check_process compton -b \
-        --paint-on-overlay --unredir-if-possible \
-        --backend xr_glx_hybrid --vsync drm \
-        --glx-swap-method -1 --glx-no-stencil)
+    true
 else
     (sleep 1s && check_process compton -b)
 fi
