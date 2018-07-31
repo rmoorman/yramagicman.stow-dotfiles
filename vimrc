@@ -108,7 +108,8 @@ set laststatus=2
 " Don't show line numbers by default, see mappings below for toggle
 set number
 set relativenumber
-set expandtab
+" set expandtab " set by .editorconfig
+set tabstop=4
 set eol
 set nowrapscan
 set showcmd
@@ -117,11 +118,11 @@ set foldmethod=indent
 set wildmenu
 set foldlevel=999
 set wildmode=full
-set shiftwidth=4
-set softtabstop=4
+"set shiftwidth=4
+"set softtabstop=4
 set autoindent
 set smartindent
-set list wrap linebreak sidescrolloff=15
+set wrap linebreak sidescrolloff=15
 set listchars=tab:▸\ ,trail:·,eol:¬,extends:❯,precedes:❮
 set showbreak=…→
 set nojoinspaces
@@ -217,7 +218,7 @@ augroup defaults
     autocmd BufRead,BufEnter .env :ALEDisableBuffer
     autocmd BufEnter,CursorHold * checktime
     autocmd CursorHold * call functions#Save()
-    autocmd BufWritePost *.vue,*.js call functions#CompileJS()
+    "autocmd BufWritePost *.vue,*.js call functions#CompileJS()
 augroup end
 "}}}
 hi ExtraWhitespace cterm=underline
