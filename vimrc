@@ -218,7 +218,7 @@ augroup defaults
     autocmd BufRead,BufEnter .env :ALEDisableBuffer
     autocmd BufEnter,CursorHold * checktime
     autocmd CursorHold * call functions#Save()
-    "autocmd BufWritePost *.vue,*.js call functions#CompileJS()
+    autocmd BufEnter *.vue source $HOME/Gits/dots/vim/after/ftplugin/js.vim
 augroup end
 "}}}
 hi ExtraWhitespace cterm=underline
