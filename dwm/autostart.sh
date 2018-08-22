@@ -41,7 +41,7 @@ fi
 ## preferances.
 xset r rate 250 25 &
 
-pulseaudio --start
+pulseaudio -D
 ## Turn on/off system beep
 xset b off &
 
