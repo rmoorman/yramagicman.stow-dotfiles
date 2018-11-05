@@ -8,7 +8,6 @@ check_process(){
     fi
 
 }
-
 ( /home/jonathan/.screenlayout/default.sh ) &
 if test "$( hostname )" == 'serenity'; then
     if test "$(xrandr | awk '/HDMI1/ {print $2}' )" == 'connected'; then
