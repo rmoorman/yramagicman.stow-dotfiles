@@ -10,14 +10,15 @@ check_process(){
 }
 ( /home/jonathan/.screenlayout/default.sh ) &
 if test "$( hostname )" == 'serenity'; then
+    amixer -c 0  --  set  Master  0
     if test "$(xrandr | awk '/HDMI1/ {print $2}' )" == 'connected'; then
 
         ( /home/jonathan/.screenlayout/work.sh ) &
     fi
 fi
+"$HOME/bin/statusloop" &
 ("$HOME/.fehbg") &
 
-"$HOME/bin/statusloop" &
 
 (check_process emacs --daemon) &
 
@@ -32,7 +33,6 @@ else
 fi
 
 (sleep 1s && /usr/bin/xscreensaver -no-splash) &
-(sleep 10s && xfce4-power-manager) &
 (sleep 5s  && "$HOME/bin/get_remote_ip") &
 
 ## Set keyboard settings - 250 ms delay and 25 cps (characters per
@@ -40,7 +40,7 @@ fi
 ## preferances.
 xset r rate 250 25 &
 
-pulseaudio -D
+pulseaudio &
 ## Turn on/off system beep
 xset b off &
 
@@ -51,18 +51,25 @@ xset b off &
 
 
 #limit the size of dirs history
+(
 d=$(sort -u  "$HOME/.cache/zsh/dirs" )
 rm "$HOME/.cache/zsh/dirs"
 echo "$d" > "$HOME/.cache/zsh/dirs"
+) &
 
+(
 h=$(sort -u  "$HOME/.surf/history.txt" )
 rm "$HOME/.surf/history.txt"
 echo "$h" > "$HOME/.surf/history.txt"
+) &
 # make sure tmux digests file isn't overly large
+(
 z=$(tail  "$HOME/.tmux.d/digests" -n "$(find  "$HOME/.tmux.d/" | wc -l)" )
 rm "$HOME/.tmux.d/digests"
 echo "$z" > "$HOME/.tmux.d/digests"
+) &
 
+(
 echo "" > "$HOME/.xsession-errors"
 if ! stat "$HOME/.xsession-errors.old" > /dev/null; then
     rm "$HOME/.xsession-errors.old"
@@ -71,12 +78,15 @@ fi
 if  stat "$HOME/.cache/updates" > /dev/null; then
     rm "$HOME/.cache/updates"
 fi
+) &
 fetchmail &
 
+(
 echo '' > "$HOME/.config/fetchmail.log"
 echo '' > "$HOME/.config/procmail.log"
 echo '' > "$HOME/.config/msmtp.log"
 echo '' > "$HOME/.mpd/mpdstate"
 rm "$HOME/slacklogs"
 rm "$HOME/nohup"
+) &
 exit
