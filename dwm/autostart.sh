@@ -21,7 +21,7 @@ fi
 
 (check_process emacs --daemon) &
 
-xsetroot -solid '#83F4E0'
+xsetroot -solid '#2b303b'
 
 xset -dpms; xset s off &
 
