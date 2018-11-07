@@ -46,6 +46,7 @@ typeset -gU cdpath fpath mailpath path
 # Set the list of directories that Zsh searches for programs.
 path=(
   $HOME/bin
+  $HOME/.local/bin
   $HOME/.gem/ruby/2.5.0/bin
   $HOME/.config/composer/vendor/bin
   /opt/php71/usr/bin
