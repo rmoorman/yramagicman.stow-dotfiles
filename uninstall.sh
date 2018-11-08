@@ -29,3 +29,4 @@ do
         rm -v "$HOME/.config/$(basename "$config")"
     fi
 done
+
