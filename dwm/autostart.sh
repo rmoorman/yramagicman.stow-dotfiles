@@ -26,7 +26,7 @@ xset -dpms; xset s off &
 if test "$(hostname)" == "observer"; then
     true
 else
-    (sleep 1s && check_process compton -b)
+    #(sleep 1s && check_process compton -b)
 fi
 
 (sleep 1s && /usr/bin/xscreensaver -no-splash) &
