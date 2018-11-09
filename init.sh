@@ -1,7 +1,6 @@
 #!/bin/sh
-set -e
 
-dotdir="$(realpath "$0")"
+dotdir="$(dirname $(realpath "$0") )"
 find ./ -maxdepth 1 -type f  \
     -not -name '.*' -and \
     -not -name 'config' -and \
