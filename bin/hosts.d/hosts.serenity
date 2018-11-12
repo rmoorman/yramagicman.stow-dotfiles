@@ -15,4 +15,5 @@
 127.0.0.1  multicore.local
 127.0.0.1  jonshvac2.local
 127.0.0.1  jonshvac.local
-0.0.0.0    hvac.media3.net
+127.0.0.1  wordpress.local
+127.0.0.1  hvac.local

@@ -76,7 +76,7 @@ if  stat "$HOME/.cache/updates" > /dev/null; then
     rm "$HOME/.cache/updates"
 fi
 ) &
-fetchmail &
+fetchmail
 
 (
 echo '' > "$HOME/.config/fetchmail.log"
