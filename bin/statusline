@@ -76,30 +76,13 @@ function my_weather() {
 
 
 function my_update() {
-    if [[ ! -e $HOME/.cache/updates ]];
+    if [[ ! -f /var/spool/cron/root ]]
     then
-        cower -u > $HOME/.cache/u
-        checkupdates >> $HOME/.cache/u
-        sort -u $HOME/.cache/u > $HOME/.cache/updates
-        updates=' U:'$(cat $HOME/.cache/updates | wc -l)
+        notify-send 'check your root crontab'
     fi
-    mm=$(stat $HOME/.cache/updates | awk '/Modify/ {split($3, arr, ":"); print arr[2]}')
-    if [[ "$(( $(date +"%H" ) % 2 ))" -eq 0 && "$(date +"%M")" -eq 15 && ! $mm  -eq 15 ]]
+    if [[ "$( pacman -Qu | wc -l )" -gt 0 ]];
     then
-        cower -u > $HOME/.cache/u
-        checkupdates >> $HOME/.cache/u
-        sort -u $HOME/.cache/u > $HOME/.cache/updates
-        rm $HOME/.cache/u
-        if [[ $( cat $HOME/.cache/updates | wc -l  ) -gt 10 ]]; then
-            msg="$(head -n 15 $HOME/.cache/updates) <br>with $(wc -l $HOME/.cache/updates | cut -d ' ' -f 1) total updates"
-            notify-send "$msg"
-        fi
-    else
-        updates=' U:'$(cat -s $HOME/.cache/updates | wc -l )
-    fi
-    if [[ $( cat $HOME/.cache/updates | wc -l  ) -gt 10 ]]
-    then
-        echo $updates
+        echo " U: $(pacman -Qu | wc -l)"
     fi
 }
 
@@ -132,4 +115,4 @@ line="$line $(my_wifi) $(dbox) $(my_volume) $(my_date)"
 
 xsetroot -name $line
 
-# echo $line
+#echo $line
