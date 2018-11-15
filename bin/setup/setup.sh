@@ -10,6 +10,4 @@ cd yay
 makepkg -sic
 )
 rm -rf yay
-
-sudo pacman -S --needed $(cat "$HOME/bin/setup/packages" | xargs)
-yay -S --needed $(cat "$HOME/bin/setup/aur" | xargs)
+yay -S --needed $(cat "$HOME/bin/setup/packages" | xargs)
