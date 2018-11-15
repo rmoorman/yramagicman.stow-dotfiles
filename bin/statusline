@@ -80,7 +80,7 @@ function my_update() {
     then
         notify-send 'check your root crontab'
     fi
-    if [[ "$( pacman -Qu | wc -l )" -gt 0 ]];
+    if [[ "$( pacman -Qu | wc -l )" -gt 10 ]];
     then
         echo " U: $(pacman -Qu | wc -l)"
     fi
