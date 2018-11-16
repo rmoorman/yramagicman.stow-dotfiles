@@ -1,0 +1,2 @@
+*/20 */2 * * * pacman -Syw > /tmp/cronlog
+30 12 */5 * * yes | pacman -Sc
