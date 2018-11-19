@@ -1,5 +1,11 @@
 #!/bin/sh
 xbacklight -set 25
+setxkbmap -option compose:menu
+setxkbmap -option caps:none
+if test "$( hostname )" = "k-nine" || test "$( hostname )" = "serenity"
+then
+    "$HOME/bin/setmouse" &
+fi
 check_process(){
 
     if  ! pgrep "$1";
@@ -23,9 +29,11 @@ xsetroot -solid '#2b303b'
 
 xset -dpms; xset s off &
 
-if test "$(hostname)" == "observer"; then
+if test "$(hostname)" == "observer"
+then
     true
 else
+    true
     #(sleep 1s && check_process compton -b)
 fi
 
@@ -76,6 +84,7 @@ if  stat "$HOME/.cache/updates" > /dev/null; then
     rm "$HOME/.cache/updates"
 fi
 ) &
+
 fetchmail
 
 (

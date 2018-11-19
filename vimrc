@@ -164,6 +164,7 @@ if &diff
         autocmd VimEnter * ALEDisable
     augroup end
 endif
+
 if !has('nvim') && &ttimeoutlen == -1
     set ttimeout
     set ttimeoutlen=100
@@ -172,6 +173,7 @@ endif
 if exists('+breakindent')
     set breakindent
 endif
+"
 " Centralize backups, swapfiles and undo history
 if exists("&backupdir")
     set backupdir=~/.vim/backup//
@@ -183,7 +185,8 @@ if exists("&undodir")
     set undolevels=5000
     set undodir=~/.vim/undo//
     set undofile
-endif"}}}
+endif
+"}}}
 "{{{ statusline
 hi def focused ctermbg=2 ctermfg=0
 augroup status

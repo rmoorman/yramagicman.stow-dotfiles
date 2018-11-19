@@ -37,12 +37,6 @@ if [ -d /etc/X11/xinit/xinitrc.d ] ; then
 fi
 
 
-if test "$( hostname )" = "k-nine" || test "$( hostname )" = "serenity"
-then
-    $HOME/bin/setmouse &
-fi
-setxkbmap -option compose:menu
-setxkbmap -option caps:none
 if stat $HOME/Gits/st/st 2>&1 > /dev/null; then
     export TERMINAL="$HOME/Gits/st/st"
 elif which st > /dev/null; then
