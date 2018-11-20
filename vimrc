@@ -262,5 +262,15 @@ nnoremap <F4> :call functions#StatusToggle()<cr>
 nnoremap <F6> :call functions#FoldColumnToggle()<cr>
 nnoremap <C-w>m :call functions#Maximize()<cr>
 nnoremap <leader>r :syn sync fromstart<cr>
+"{{{ command line movement mappings
+cnoremap <C-a>  <Home>
+cnoremap <C-b>  <Left>
+cnoremap <C-f>  <Right>
+cnoremap <C-d>  <Delete>
+cnoremap <Esc>b <S-Left>
+cnoremap <Esc>f <S-Right>
+cnoremap <Esc>d <S-right><Delete>
+cnoremap <C-e>  <End>
+"}}}
 command! Scratch call functions#Scratch()
 "}}}
