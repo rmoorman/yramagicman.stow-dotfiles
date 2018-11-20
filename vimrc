@@ -49,6 +49,8 @@ if system('which fzf')[:-2] != 'fzf not found'
         cnoreabbrev gf GFiles<CR>
         cnoreabbrev fg GFiles<CR>
     endif
+else
+    cnoreabbrev b ls<CR> :b
 endif
 "}}}
 "{{{ autocommands for loading extensions
