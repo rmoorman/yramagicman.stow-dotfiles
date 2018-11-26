@@ -133,6 +133,7 @@ ghc-libs
 ghostscript
 giflib
 gimp
+girara
 git
 gksu
 glances
@@ -483,11 +484,13 @@ libsmbios
 libsndfile
 libsoup
 libsoxr
+libspectre
 libspiro
 libssh
 libssh2
 libstaroffice
 libstemmer
+libsynctex
 libsystemd
 libtar
 libtasn1
@@ -963,6 +966,9 @@ xz
 yajl
 yay
 youtube-dl
+zathura
+zathura-pdf-mupdf
+zathura-ps
 zita-alsa-pcmi
 zita-resampler
 zlib
