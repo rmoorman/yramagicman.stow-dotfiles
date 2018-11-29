@@ -251,8 +251,11 @@ cnoremap <expr> %% expand('%:h').'/'
 inoremap <c-f> <c-x><c-f>
 "}}}
 "{{{ mappings
+"{{{ terminal mode mappings
 tmap <space><space> <C-w>N
 tmap :: <C-w>N:
+"}}}
+"{{{ normal mode mappings
 nnoremap <leader><space> :set hlsearch!<cr>
 nnoremap <leader><leader> <C-^>
 nnoremap * :set hlsearch<cr>*
@@ -263,6 +266,11 @@ nnoremap <F4> :call functions#StatusToggle()<cr>
 nnoremap <F6> :call functions#FoldColumnToggle()<cr>
 nnoremap <C-w>m :call functions#Maximize()<cr>
 nnoremap <leader>r :syn sync fromstart<cr>
+"}}}
+"{{{ visual mode mappings
+vnoremap > >gv
+vnoremap < <gv
+"}}}
 "{{{ command line movement mappings
 cnoremap <C-a>  <Home>
 cnoremap <C-b>  <Left>
