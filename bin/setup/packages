@@ -507,6 +507,7 @@ libupnp
 libusb
 libusbmuxd
 libutempter
+libutf8proc
 libutil-linux
 libuv
 libva
@@ -573,6 +574,7 @@ lmdb
 logrotate
 lpsolve
 lshw
+lsof
 lua
 lua52
 lv2
@@ -802,6 +804,7 @@ sdl2
 sed
 semver
 serd
+serf
 shaderc
 shadow
 shared-mime-info
@@ -823,6 +826,7 @@ sratom
 startup-notification
 stfl
 stow
+subversion
 sudo
 suil
 suitesparse
@@ -850,6 +854,8 @@ tslib
 ttf-dejavu
 ttf-inconsolata
 ttf-liberation
+ttf-mac-fonts
+ttf-ms-fonts
 ttf-sourcesanspro
 twolame
 tzdata

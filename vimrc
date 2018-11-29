@@ -252,6 +252,7 @@ inoremap <c-f> <c-x><c-f>
 "}}}
 "{{{ mappings
 tmap <space><space> <C-w>N
+tmap :: <C-w>N:
 nnoremap <leader><space> :set hlsearch!<cr>
 nnoremap <leader><leader> <C-^>
 nnoremap * :set hlsearch<cr>*
