@@ -7,6 +7,10 @@ function! status#Refresh()
             let l:inactive = status#Inactive()
             call setwinvar(l:nr, '&statusline', l:inactive)
         endif
+        if !exists('&statusline')
+            let l:broken = status#Broken()
+            call setwinvar(l:nr, '&statusline', l:broken)
+        endif
     endfor
 endfunction
 
@@ -53,6 +57,16 @@ function! status#Inactive()
     let l:inactive .=' %P'
     let l:inactive .=' |'
     return l:inactive
+endfunction
+
+function! status#Broken()
+    let l:broken = ''
+    let l:broken .= '%#visual#| %m %f %r %y %#normal#'
+    let l:broken .=' %='
+    let l:broken .=' %3l/%L, %-03c'
+    let l:broken .= ' %P'
+    let l:broken .= ' |'
+    return l:broken
 endfunction
 
 function! s:listbufs()
