@@ -114,5 +114,6 @@ line="$line $(my_wifi) $(dbox) $(my_volume) $(my_date)"
 
 
 xsetroot -name $line
-
-#echo $line
+if [[ -n "$(pgrep i3)" ]]; then
+    echo $line
+fi

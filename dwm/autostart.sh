@@ -25,7 +25,7 @@ fi
 "$HOME/bin/statusloop" &
 ("$HOME/.fehbg") &
 
-xsetroot -solid '#2b303b'
+xsetroot -solid '#000000'
 
 xset -dpms; xset s off &
 

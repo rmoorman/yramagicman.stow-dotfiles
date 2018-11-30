@@ -3,7 +3,7 @@ set -e
 
 st_dir=$HOME/Gits/st/
 dwm_dir=$HOME/Gits/dwm/
-config_dir="$HOME/Gits/dots/root/"
+config_dir="$HOME/Gits/dots/"
 
 if [[ $1 == '' ]]; then
     echo "You're currently using: "
@@ -14,23 +14,24 @@ if [[ $1 == '' ]]; then
     exit
 fi
 
+sed -i "s/$(awk '/xsetroot/ {print $3}' $config_dir/dwm/autostart.sh)/\'$(awk '/*.background:/ {print $2}' $HOME/.Xresources)\'/" "$config_dir/dwm/autostart.sh"
 #remove color info from .xresources
-sed -e 's/i3wm.*$//' -i $config_dir/.Xresources
-sed -e 's/^\*.*$//' -i $config_dir/.Xresources
-sed -e 's/! [a-z]*$//' -i $config_dir/.Xresources
+sed -e 's/i3wm.*$//' -i $config_dir/Xresources
+sed -e 's/^\*.*$//' -i $config_dir/Xresources
+sed -e 's/! [a-z]*$//' -i $config_dir/Xresources
 
 # make sure i3wm has the right color info. For some reason it doesn't respect
 # wildcard colors.
-sed -e 's/\*/i3wm/' $HOME/.colors/$1'.xresources'  >> $config_dir/.Xresources
+sed -e 's/\*/i3wm/' $HOME/.colors/$1'.xresources'  >> $config_dir/Xresources
 
 # append the rest of the colors so everything else gets the right info
-cat $HOME/.colors/$1'.xresources' >> $config_dir/.Xresources
+cat $HOME/.colors/$1'.xresources' >> $config_dir/Xresources
 
 # make sure there aren't any extra blank lines
-cat -s $config_dir/.Xresources > $config_dir/Xresources
+cat -s $config_dir/Xresources > $config_dir/xresources
 
 # move the new file into place
-mv  $config_dir/Xresources $config_dir/.Xresources
+mv  $config_dir/xresources $config_dir/Xresources
 
 # make sure st color file has the necessary values, and isn't static anywhere
 if [[ -z $(grep defaultrcs $HOME/.colors/$1'.h') ]]; then
@@ -50,16 +51,17 @@ sed -i "s/$(awk '/char border1/ {print $6}' $dwm_dir/config.h)//" "$dwm_dir/conf
 # sed -i "s/$(awk '/char border2/ {print $6}' $dwm_dir/config.h)//" "$dwm_dir/config.h"
 
 # Set new dwm colors from .xresources file.
-sed -i "s/char background1\[\]\s*=/& \"$(awk '/*.color0/ {print $2}' $HOME/.Xresources)\"/" "$dwm_dir/config.h"
-sed -i "s/char background2\[\]\s*=/& \"$(awk '/*.color13:/ {print $2}' $HOME/.Xresources)\"/" "$dwm_dir/config.h"
+sed -i "s/char background1\[\]\s*=/& \"$(awk '/*.color0:/ {print $2}' $HOME/.Xresources)\"/" "$dwm_dir/config.h"
+sed -i "s/char background2\[\]\s*=/& \"$(awk '/*.color9:/ {print $2}' $HOME/.Xresources)\"/" "$dwm_dir/config.h"
 sed -i "s/char foreground1\[\]\s*=/& \"$(awk '/*.color7:/ {print $2}' $HOME/.Xresources)\"/" "$dwm_dir/config.h"
 sed -i "s/char foreground2\[\]\s*=/& \"$(awk '/*.color0:/ {print $2}' $HOME/.Xresources)\"/" "$dwm_dir/config.h"
-sed -i "s/char border1\[\]\s*=/& \"$(awk '/*.color8:/ {print $2}' $HOME/.Xresources)\"/" "$dwm_dir/config.h"
-sed -i "s/char border2\[\]\s*=/& \"$(awk '/*.color13:/ {print $2}' $HOME/.Xresources)\"/" "$dwm_dir/config.h"
+sed -i "s/char border1\[\]\s*=/& \"$(awk '/*.color1:/ {print $2}' $HOME/.Xresources)\"/" "$dwm_dir/config.h"
+sed -i "s/char border2\[\]\s*=/& \"$(awk '/*.color9:/ {print $2}' $HOME/.Xresources)\"/" "$dwm_dir/config.h"
 
 # Append semicolons to lines without them.
 sed -i 's/"\s$/";/g' "$dwm_dir/config.h"
 
+less "$dwm_dir/config.h"
 # Build DWM
 builtin cd $dwm_dir
 make
