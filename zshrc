@@ -8,6 +8,16 @@ if [[ "$PROFILE_STARTUP" == true ]]; then
     setopt xtrace prompt_subst
 fi
 #}}}
+# {{{ reset shell level
+if [[ -z $_user_shell ]]; then
+    export _user_shell=true
+    export SHLVL=1
+fi
+if [[ -n $TMUX && -z $_tmux_user_shell ]]; then
+    export _tmux_user_shell=true
+    export SHLVL=1
+fi
+#}}}
 #{{{ install functions
 MODULES_DIR="$HOME/.zsh_modules"
 UPDATE_INTERVAL=5
