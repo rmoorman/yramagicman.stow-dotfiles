@@ -8,10 +8,10 @@ static const int topbar             = 0;        /* 0 means bottom bar */
 static const char *fonts[]          = { "Inconsolata:size=11" };
 static const char dmenufont[]       = "Inconsolata:size=12";
 
-static const char border1[]         = "#5e5e5e";
+static const char border1[]         = "#a13a38";
 static const char border2[]         = "#ffa59a";
 
-static const char background1[]     = "#303030";
+static const char background1[]     = "#000000";
 static const char background2[]     = "#ffa59a";
 
 static const char foreground1[]     = "#c6c6c6";
