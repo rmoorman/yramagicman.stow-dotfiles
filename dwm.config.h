@@ -8,14 +8,14 @@ static const int topbar             = 0;        /* 0 means bottom bar */
 static const char *fonts[]          = { "Inconsolata:size=11" };
 static const char dmenufont[]       = "Inconsolata:size=12";
 
-static const char border1[]         = "#a13a38";
-static const char border2[]         = "#ffa59a";
+static const char border1[]         = "#303030";
+static const char border2[]         = "#a13a38";
 
 static const char background1[]     = "#000000";
-static const char background2[]     = "#ffa59a";
+static const char background2[]     = "#a13a38";
 
 static const char foreground1[]     = "#c6c6c6";
-static const char foreground2[]     = "#303030";
+static const char foreground2[]     = "#000000";
 static const char *colors[][3]      = {
     /*               fg         bg         border   */
     [SchemeNorm] = { foreground1, background1, border1 },
@@ -40,7 +40,8 @@ static const Rule rules[] = {
     {   "Firefox",             NULL,     NULL,  1,         0,          0     },
     {   "firefox",             NULL,     NULL,  1,         0,          0     },
     {   "Surf",                NULL,     NULL,  1,         0,          0     },
-    {   "krita",               NULL,     NULL,  5,         0,          0     },
+    {   "krita",               NULL,     NULL,  1 << 3,    0,          0     },
+    {   "Krita",               NULL,     NULL,  1 << 3,    0,          0     },
     {   "Chromium-browser",    NULL,     NULL,  2,         0,          0     },
     {   "chromium-browser",    NULL,     NULL,  2,         0,          0     },
     {   "Chromium",            NULL,     NULL,  2,         0,          0     },
