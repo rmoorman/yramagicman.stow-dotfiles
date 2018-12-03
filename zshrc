@@ -1,118 +1,118 @@
 #{{{ profiling tools
 PROFILE_STARTUP=false
 if [[ "$PROFILE_STARTUP" == true ]]; then
-	zmodload zsh/zprof
-	# http://zsh.sourceforge.net/Doc/Release/Prompt-Expansion.html
-	PS4=$'%D{%M%S%.} %N:%i> '
-	exec 3>&2 2>$HOME/startlog.$$
-	setopt xtrace prompt_subst
+    zmodload zsh/zprof
+    # http://zsh.sourceforge.net/Doc/Release/Prompt-Expansion.html
+    PS4=$'%D{%M%S%.} %N:%i> '
+    exec 3>&2 2>$HOME/startlog.$$
+    setopt xtrace prompt_subst
 fi
 #}}}
 # {{{ reset shell level
 if [[ -z $_user_shell ]]; then
-	export _user_shell=true
-	export SHLVL=1
+    export _user_shell=true
+    export SHLVL=1
 fi
 if [[ -n $TMUX && -z $_tmux_user_shell ]]; then
-	export _tmux_user_shell=true
-	export SHLVL=1
+    export _tmux_user_shell=true
+    export SHLVL=1
 fi
 #}}}
 #{{{ install functions
 MODULES_DIR="$HOME/.zsh_modules"
 UPDATE_INTERVAL=5
 function _net_test() {
-	netflag="/tmp/network_down"
-	touch $netflag
-	if [[ $(curl -s --max-time 4 -I http://example.com | grep -q 200) ]]; then
-		command rm $netflag >/dev/null
-		return 0
-	elif [[ -a $netflag ]]; then
-		return 1
-	elif [[ ! $(curl -s --max-time 4 -I http://example.com | grep -q 200) ]]; then
-		echo "NO NETWORK"
-		tput bel
-		touch $netflag
-		return 1
-	else
-		command rm $netflag >/dev/null
-		return 0
-	fi
+    netflag="/tmp/network_down"
+    touch $netflag
+    if [[ -n "$(curl -s --max-time 4 -I http://example.com | grep 200)" ]]; then
+        command rm $netflag >/dev/null
+        return 0
+    elif [[ -a $netflag ]]; then
+        return 1
+    elif [[ -z "$(curl -s --max-time 4 -I http://example.com | grep 200)" ]]; then
+        echo "NO NETWORK"
+        tput bel
+        touch $netflag
+        return 1
+    else
+        command rm $netflag >/dev/null
+        return 0
+    fi
 }
 function _update() {
-	if [[ -z $UPDATE_INTERVAL ]];
-	then
-		UPDATE_INTERVAL=30
-	fi
+    if [[ -z $UPDATE_INTERVAL ]];
+    then
+        UPDATE_INTERVAL=30
+    fi
 
-	if [[ ! -a $MODULES_DIR/$1/.updatetime ]];
-	then
-		echo 0 > "$MODULES_DIR/$1/.updatetime"
-	fi
+    if [[ ! -a $MODULES_DIR/$1/.updatetime ]];
+    then
+        echo 0 > "$MODULES_DIR/$1/.updatetime"
+    fi
 
-	day=$((24 * 60 * 60 ))
-	gap=$(( $UPDATE_INTERVAL * $day ))
-	diff="$(( $(date +'%s') - $(cat $MODULES_DIR/$1/.updatetime) ))"
+    day=$((24 * 60 * 60 ))
+    gap=$(( $UPDATE_INTERVAL * $day ))
+    diff="$(( $(date +'%s') - $(cat $MODULES_DIR/$1/.updatetime) ))"
 
-	if [[ $diff -gt $gap ]]; then
-		(
-		_net_test
-		if [[ $? -eq 1 ]]; then
-			return
-		fi
-		echo  "$2"
-		builtin cd "$MODULES_DIR/$1/" && git pull --rebase
-		echo "\n"
-		)
-		date +'%s' > "$MODULES_DIR/$1/.updatetime"
-	fi
+    if [[ $diff -gt $gap ]]; then
+        (
+        _net_test
+        if [[ $? -eq 1 ]]; then
+            return
+        fi
+        echo  "$2"
+        builtin cd "$MODULES_DIR/$1/" && git pull --rebase
+        echo "\n"
+        )
+        date +'%s' > "$MODULES_DIR/$1/.updatetime"
+    fi
 }
 
 function source_or_install() {
 
-	if [[ ! -d "$MODULES_DIR" ]]; then
-		mkdir -p "$MODULES_DIR"
-	fi
-	if [[ $2 =~ '^(git@|https)' ]]; then
-		tillcolon=("${(@s/:/)2}")
-		cloneurl=$2
-		if [[ $tillcolon[1] = 'https' ]]; then
-			atslashes=("${(@s#/#)tillcolon}")
-			location="$atslashes[-2]/$atslashes[-1]"
-		else
-			location="$tillcolon[-1]"
-		fi
-	else
-		cloneurl="git@github.com:$2"
-		location=$2
-	fi
-	if [[ -a $1 ]] then;
-		source $1
-	else
-		_net_test
-		if [[ $? -eq 1 ]]; then
-			echo "oops"
-			return
-		fi
+    if [[ ! -d "$MODULES_DIR" ]]; then
+        mkdir -p "$MODULES_DIR"
+    fi
+    if [[ $2 =~ '^(git@|https)' ]]; then
+        tillcolon=("${(@s/:/)2}")
+        cloneurl=$2
+        if [[ $tillcolon[1] = 'https' ]]; then
+            atslashes=("${(@s#/#)tillcolon}")
+            location="$atslashes[-2]/$atslashes[-1]"
+        else
+            location="$tillcolon[-1]"
+        fi
+    else
+        cloneurl="git@github.com:$2"
+        location=$2
+    fi
+    if [[ -a $1 ]] then;
+        source $1
+    else
+        _net_test
+        if [[ $? -eq 1 ]]; then
+            echo "oops"
+            return
+        fi
 
-		git clone --depth 3 "$cloneurl" "$MODULES_DIR/$location"
-		find $MODULES_DIR -type d -delete 2>/dev/null
-		if [[ ! -d $MODULES_DIR/$location  ]]; then
-			echo "nothing cloned"
-		fi
-		date +'%s' > "$MODULES_DIR/$location/.updatetime"
-		echo "\n"
-		source $HOME/.zshrc
-	fi
-	_update $location
+        git clone --depth 3 "$cloneurl" "$MODULES_DIR/$location"
+        find $MODULES_DIR -type d -delete 2>/dev/null
+        if [[ ! -d $MODULES_DIR/$location  ]]; then
+            echo "nothing cloned"
+        fi
+        date +'%s' > "$MODULES_DIR/$location/.updatetime"
+        echo "\n"
+        source $HOME/.zshrc
+    fi
+    _update $location
 }
 
 function force_updates() {
-	(
-	builtin cd $MODULES_DIR
-	find ./ -type f -name '.updatetime' -delete
-	source $HOME/.zshrc
-	)
+    (
+    builtin cd $MODULES_DIR
+    find ./ -type f -name '.updatetime' -delete
+    source $HOME/.zshrc
+    )
 }
 #}}}
 #{{{ The base package, containing all the essentials, including my prompt
@@ -256,9 +256,9 @@ setopt EXTENDED_HISTORY
 #}}}
 #{{{ prompt. If serenity isn't there use a default
 if [[ $(  prompt -l | grep serenity  ) ]]; then
-	prompt serenity
+    prompt serenity
 else
-	prompt adam2
+    prompt adam2
 fi
 #}}}
 #{{{ grab the rest of the packages
@@ -267,40 +267,40 @@ source_or_install "$MODULES_DIR/marzocchi/zsh-notify/notify.plugin.zsh" marzocch
 source_or_install "$MODULES_DIR/srijanshetty/zsh-pandoc-completion/zsh-pandoc-completion.plugin.zsh" srijanshetty/zsh-pandoc-completion
 # source_or_install "$MODULES_DIR/Tarrasch/zsh-autoenv/autoenv.plugin.zsh" Tarrasch/zsh-autoenv
 if [[ -f /usr/share/doc/pkgfile/command-not-found.zsh ]]; then
-	source /usr/share/doc/pkgfile/command-not-found.zsh
+    source /usr/share/doc/pkgfile/command-not-found.zsh
 fi
 if [[ -d /usr/share/fzf ]]; then
-	source /usr/share/fzf/key-bindings.zsh
-	source /usr/share/fzf/completion.zsh
+    source /usr/share/fzf/key-bindings.zsh
+    source /usr/share/fzf/completion.zsh
 fi
 
 #}}}
 #{{{ lazy load stuff
 if [[ "$TMUX" != '' ]]; then
-	if [[ -z "$(pgrep tmuxcopy )" ]];
-	then
-		tmuxcopy &
-	fi
+    if [[ -z "$(pgrep tmuxcopy )" ]];
+    then
+        tmuxcopy &
+    fi
 fi
 
 function workon() {
-	echo " working.."
-	if [[ -f $VIRTUALENVWRAPPER_SCRIPT ]] then
-		source $VIRTUALENVWRAPPER_SCRIPT   &> /dev/null
-		workon "$@"
-	else
-		echo "virtualenvwrapper.sh not at  /usr/bin/virtualenvwrapper.sh"
-	fi
+    echo " working.."
+    if [[ -f $VIRTUALENVWRAPPER_SCRIPT ]] then
+        source $VIRTUALENVWRAPPER_SCRIPT   &> /dev/null
+        workon "$@"
+    else
+        echo "virtualenvwrapper.sh not at  /usr/bin/virtualenvwrapper.sh"
+    fi
 }
 
 function z() {
-	source_or_install "$MODULES_DIR/rupa/z/z.sh" rupa/z
-	_z $@
+    source_or_install "$MODULES_DIR/rupa/z/z.sh" rupa/z
+    _z $@
 }
 
 function artisan() {
-	source_or_install "$MODULES_DIR/crazybooot/laravel-zsh-plugin/laravel-artisan.plugin.zsh" crazybooot/laravel-zsh-plugin
-	php artisan $*
+    source_or_install "$MODULES_DIR/crazybooot/laravel-zsh-plugin/laravel-artisan.plugin.zsh" crazybooot/laravel-zsh-plugin
+    php artisan $*
 }
 setopt NO_BEEP
 #}}}
@@ -330,18 +330,18 @@ DIRSTACKFILE="$HOME/.cache/zsh/dirs"
 
 # make DIRSTACKFILE if it's not there
 if [[ ! -a $DIRSTACKFILE ]]; then
-	mkdir -p $DIRSTACKFILE[0,-5]
-	touch $DIRSTACKFILE
+    mkdir -p $DIRSTACKFILE[0,-5]
+    touch $DIRSTACKFILE
 fi
 
 if [[ -f $DIRSTACKFILE ]] && [[ $#dirstack -eq 0 ]]; then
-	dirstack=( ${(f)"$(< $DIRSTACKFILE)"} )
+    dirstack=( ${(f)"$(< $DIRSTACKFILE)"} )
 fi
 
 chpwd() {
-	print -l $PWD ${(u)dirstack} >>$DIRSTACKFILE
-	d="$(sort -u $DIRSTACKFILE )"
-	echo "$d" > $DIRSTACKFILE
+    print -l $PWD ${(u)dirstack} >>$DIRSTACKFILE
+    d="$(sort -u $DIRSTACKFILE )"
+    echo "$d" > $DIRSTACKFILE
 
 }
 
@@ -358,15 +358,15 @@ setopt PUSHD_MINUS
 #}}}
 #{{{ start tmux,
 if [[ -z "$TMUX" && -z "$EMACS" && -z "$VIM" && -z "$SSH_TTY" ]]; then
-	if [[ -z $( pgrep tmux$ ) ]] then
-		s tmux
-	fi
+    if [[ -z $( pgrep tmux$ ) ]] then
+        s tmux
+    fi
 fi
 # }}}
 #{{{ end profiling script
 if [[ "$PROFILE_STARTUP" == true ]]; then
-	unsetopt xtrace
-	exec 2>&3 3>&-
-	zprof > ~/zshprofile
+    unsetopt xtrace
+    exec 2>&3 3>&-
+    zprof > ~/zshprofile
 fi
 #}}}
