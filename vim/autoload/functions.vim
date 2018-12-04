@@ -54,7 +54,7 @@ endfunction
 "}}}
 "{{{ saving
 function! functions#Save()
-    if filewritable(expand('%')) == 1
+    if filewritable(expand('%')) == 1 || ! findfile(expand('%:t'), expand('%:h'))
         silent! w!
     endif
 endfunction
@@ -105,3 +105,9 @@ function! functions#FoldColumnToggle()
     endif
 endfunction
 "}}}
+
+" expand( '%:e') extension
+" expand( '%:h') filename
+" expand( '%:p') real path
+" expand( '%:t') directory
+" expand( '%:S') path as string

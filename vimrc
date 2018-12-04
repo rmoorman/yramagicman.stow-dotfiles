@@ -110,7 +110,7 @@ set laststatus=2
 " Don't show line numbers by default, see mappings below for toggle
 set nonumber
 set norelativenumber
-" set expandtab " set by .editorconfig
+set expandtab " set by .editorconfig
 set tabstop=4
 set eol
 set nowrapscan
@@ -120,8 +120,8 @@ set foldmethod=indent
 set wildmenu
 set foldlevel=999
 set wildmode=full
-"set shiftwidth=4
-"set softtabstop=4
+set shiftwidth=4
+set softtabstop=4
 set autoindent
 set smartindent
 set wrap linebreak sidescrolloff=15
@@ -140,14 +140,14 @@ set incsearch
 set ignorecase
 set smartcase
 set startofline
-set shortmess+=A " ignore annoying swapfile messages{{{
+set shortmess+=A " ignore annoying swapfile messages
 set shortmess+=I " no splash screen
 set shortmess+=O " file-read message overwrites previous
 set shortmess+=T " truncate non-file messages in middle
 set shortmess+=W " don't echo "[w]"/"[written]" when writing
 set shortmess+=a " use abbreviations in messages eg. `[RO]` instead of `[readonly]`
 set shortmess+=o " overwrite file-written messages
-set shortmess+=t " truncate file messages at start}}}
+set shortmess+=t " truncate file messages at start
 "{{{ turn off error bells
 set novisualbell
 set noerrorbells
@@ -282,5 +282,9 @@ cnoremap <Esc>f <S-Right>
 cnoremap <Esc>d <S-right><Delete>
 cnoremap <C-e>  <End>
 "}}}
+ "{{{ git mappings
+nnoremap <leader>c :!git add %<cr>:!git commit -m '
+nnoremap <leader>p :!git push<cr>
+ "}}}
 command! Scratch call functions#Scratch()
 "}}}

@@ -445,6 +445,8 @@ libmpeg2
 libmspub
 libmwaw
 libmypaint
+libnetfilter_conntrack
+libnfnetlink
 libnftnl
 libnghttp2
 libnl
