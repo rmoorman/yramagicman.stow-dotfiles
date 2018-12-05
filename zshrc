@@ -17,6 +17,10 @@ if [[ -n $TMUX && -z $_tmux_user_shell ]]; then
     export _tmux_user_shell=true
     export SHLVL=1
 fi
+if [[ -n $VIM && -z $_vim_user_shell ]]; then
+    export _vim_user_shell=true
+    export SHLVL=1
+fi
 #}}}
 #{{{ install functions
 MODULES_DIR="$HOME/.zsh_modules"
