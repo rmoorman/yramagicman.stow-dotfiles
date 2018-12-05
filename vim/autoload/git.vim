@@ -7,3 +7,7 @@ function! git#Cd()
         execute 'cd ' l:repopath
     endif
 endfunction
+function! git#Commit(msg)
+    call term_start(['git', 'add', expand('%')], {'term_name': 'gitcommit' })
+    call term_start(['git','commit','-m' , a:msg ], { 'term_name': 'gitcommit' })
+endfunction
