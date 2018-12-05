@@ -8,8 +8,12 @@ function! git#Cd()
     endif
 endfunction
 function! git#CommitFile(msg)
-    call job_start(['/bin/sh', '-c', 'git', 'add', expand('%')] )
+    call term_start(['git', 'add', expand('%')], {'term_finish': 'close'} )
     call term_start(['git','commit','-m' , a:msg ], { 'term_name': 'gitcommit' })
 endfunction
 
+function! git#Log(number)
+    call term_start(['git','log','--oneline', '--graph', '--decorate' , '-n', a:msg ], { 'term_name': 'gitcommit' })
+endfunction
 command! -nargs=1 GCommitFile call git#CommitFile('<args>')
+command! -nargs=1 GLog call git#Log('<args>')
