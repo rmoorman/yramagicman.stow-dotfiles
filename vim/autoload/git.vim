@@ -8,7 +8,7 @@ function! git#Cd()
     endif
 endfunction
 function! git#CommitFile(msg)
-    call term_start(['git', 'add', expand('%')], {'term_finish': 'close', 'hidden': 1} )
+    call term_start(['git', 'add', expand('%')], {'term_finish': 'close', 'hidden': 'true'} )
     call term_start(['git','commit','-m' , a:msg ], { 'term_name': 'gitcommit', 'term_rows': '4' })
 endfunction
 
