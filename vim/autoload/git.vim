@@ -8,7 +8,7 @@ function! git#Cd()
     endif
 endfunction
 function! git#CommitFile(msg)
-    call term_start(['git', 'add', expand('%')], {'term_name': 'gitcommit' })
+    call job_start(['/bin/sh', '-c', 'git', 'add', expand('%')] )
     call term_start(['git','commit','-m' , a:msg ], { 'term_name': 'gitcommit' })
 endfunction
 
