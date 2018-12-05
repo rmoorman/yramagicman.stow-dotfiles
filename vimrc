@@ -17,7 +17,7 @@ syntax on
 colorscheme portable
 set background=dark
 "{{{ Plugin loading and settings
-let g:VimPack_Setup_Folders = ['after', 'autoload', 'backup', 'colors', 'doc', 'snippets', 'spell', 'swaps', 'syntax', 'tags', 'undo']
+let g:VimPack_Setup_Folders = ['after', 'autoload', 'backup', 'colors', 'doc', 'snippets', 'spell', 'swaps', 'syntax','plugin', 'tags', 'undo']
 let g:VimPack_Update_Frequency = 5
 let g:VimPack_Auto_Install = 1
 let g:VimPack_Auto_Update = 1
@@ -283,10 +283,6 @@ cnoremap <Esc>f <S-Right>
 cnoremap <Esc>d <S-right><Delete>
 cnoremap <C-e>  <End>
 "}}}
- "{{{ git mappings
-nnoremap <leader>c :!git add %<cr>:!git commit -m '
-nnoremap <leader>p :!git push<cr>
- "}}}
 command! Scratch call functions#Scratch()
 "}}}
 "
