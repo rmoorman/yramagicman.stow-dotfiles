@@ -9,11 +9,19 @@ function! git#Cd()
 endfunction
 function! git#CommitFile(msg)
     call term_start(['git', 'add', expand('%')], {'term_finish': 'close'} )
-    call term_start(['git','commit','-m' , a:msg ], { 'term_name': 'gitcommit' })
+    call term_start(['git','commit','-m' , a:msg ], { 'term_name': 'gitcommit', 'term_rows': 10 })
 endfunction
 
 function! git#Log(number)
-    call term_start(['git','log','--oneline', '--graph', '--decorate' , '-n', a:msg ], { 'term_name': 'gitcommit' })
+    call term_start(['git','log','--oneline', '--graph', '--decorate' , '-n', a:number ], { 'term_name': 'gitcommit' })
+endfunction
+function! git#Logv(number)
+    call term_start(['git','log', '-n', a:number ], { 'term_name': 'gitcommit' })
+endfunction
+function! git#Status()
+    call term_start(['git','status'], { 'term_name': 'gitcommit' })
 endfunction
 command! -nargs=1 GCommitFile call git#CommitFile('<args>')
 command! -nargs=1 GLog call git#Log('<args>')
+command! -nargs=1 GLogVerbose call git#Logv('<args>')
+command! -nargs=0 GStatus call git#Status()
