@@ -288,3 +288,9 @@ nnoremap <leader>p :!git push<cr>
  "}}}
 command! Scratch call functions#Scratch()
 "}}}
+"
+" expand( '%:e') extension
+" expand( '%:h') filename
+" expand( '%:p') real path
+" expand( '%:t') directory
+" expand( '%:S') path as string
