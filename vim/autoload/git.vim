@@ -7,6 +7,7 @@ function! git#Cd()
         execute 'cd ' l:repopath
     endif
 endfunction
+
 function! git#AddBuffer()
     call job_start(['git', 'add', expand('%')])
 endfunction
@@ -18,9 +19,11 @@ endfunction
 function! git#Log(number)
     call term_start(['git','log','--oneline', '--graph', '--decorate' , '-n', a:number ], { 'term_name': 'gitlog' })
 endfunction
+
 function! git#Logv(number)
     call term_start(['git','log', '-n', a:number ], { 'term_name': 'gitlog' })
 endfunction
+
 function! git#Status()
     call term_start(['git','status'], { 'term_name': 'gitstatus' })
 endfunction
