@@ -32,8 +32,7 @@ function! git#CommitM(msg)
 endfunction
 
 function! git#Commit()
-    execute '!git commit -v'
-    redraw!
+    execute '!git commit -v' | redraw!
 endfunction
 
 function! git#Log(number)
