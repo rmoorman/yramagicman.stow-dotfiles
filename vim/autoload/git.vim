@@ -33,6 +33,7 @@ endfunction
 
 function! git#Commit()
     execute '!git commit -v'
+    redraw!
 endfunction
 
 function! git#Log(number)
