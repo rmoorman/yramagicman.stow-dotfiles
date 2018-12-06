@@ -16,16 +16,15 @@ function! git#Commit(msg)
 endfunction
 
 function! git#Log(number)
-    call term_start(['git','log','--oneline', '--graph', '--decorate' , '-n', a:number ], { 'term_name': 'gitcommit' })
+    call term_start(['git','log','--oneline', '--graph', '--decorate' , '-n', a:number ], { 'term_name': 'gitlog' })
 endfunction
 function! git#Logv(number)
-    call term_start(['git','log', '-n', a:number ], { 'term_name': 'gitcommit' })
+    call term_start(['git','log', '-n', a:number ], { 'term_name': 'gitlog' })
 endfunction
 function! git#Status()
-    call term_start(['git','status'], { 'term_name': 'gitcommit' })
+    call term_start(['git','status'], { 'term_name': 'gitstatus' })
 endfunction
-command! -nargs=1 GCommit call git#Commit('<args>')
-command! -nargs=1 GLog call git#Log('<args>')
-command! -nargs=1 GLogVerbose call git#Logv('<args>')
-command! -nargs=0 GStatus call git#Status()
-command! -nargs=0 GAddB call git#AddBuffer()
+
+function! git#Push()
+    call term_start(['git','push'], { 'term_name': 'gitpush' })
+endfunction
