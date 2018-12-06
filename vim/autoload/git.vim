@@ -9,7 +9,7 @@ function! git#Cd()
 endfunction
 
 function! git#AddBuffer()
-    call job_start(['git', 'add', expand('%')])
+    call term_start(['git', 'add', '-v', expand('%')], { 'term_name': 'gitcommit', 'term_rows': '4', 'hidden': 1})
 endfunction
 
 function! git#Commit(msg)
