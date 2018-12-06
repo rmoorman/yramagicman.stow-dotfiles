@@ -7,9 +7,12 @@ function! git#Cd()
         execute 'cd ' l:repopath
     endif
 endfunction
-function! git#CommitFile(msg)
-    call term_start(['git', 'add', expand('%')], {'term_finish': 'close' } )
-    call term_start(['git','commit','-m' , a:msg ], { 'term_name': 'gitcommit', 'term_rows': '4' })
+function! git#AddBuffer()
+    call job_start(['git', 'add', expand('%')])
+endfunction
+
+function! git#Commit(msg)
+    call term_start(['git','commit','-m' , a:msg], { 'term_name': 'gitcommit', 'term_rows': '4' })
 endfunction
 
 function! git#Log(number)
@@ -21,7 +24,8 @@ endfunction
 function! git#Status()
     call term_start(['git','status'], { 'term_name': 'gitcommit' })
 endfunction
-command! -nargs=1 GCommitFile call git#CommitFile('<args>')
+command! -nargs=1 GCommit call git#Commit('<args>')
 command! -nargs=1 GLog call git#Log('<args>')
 command! -nargs=1 GLogVerbose call git#Logv('<args>')
 command! -nargs=0 GStatus call git#Status()
+command! -nargs=0 GAddB call git#AddBuffer()

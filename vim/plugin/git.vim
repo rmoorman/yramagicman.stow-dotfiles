@@ -1,2 +1,5 @@
-nnoremap <leader>c :!git add %<cr>:!git commit -m '
-nnoremap <leader>p :!git push<cr>
+command! -nargs=1 GCommit call git#Commit('<args>')
+command! -nargs=1 GLog call git#Log('<args>')
+command! -nargs=1 GLogVerbose call git#Logv('<args>')
+command! -nargs=0 GStatus call git#Status()
+command! -nargs=0 GAddB call git#AddBuffer()
