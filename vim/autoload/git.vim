@@ -7,15 +7,18 @@ function! git#Cd()
         execute 'cd ' l:repopath
     endif
 endfunction
+
 function! s:closebuf()
     if bufexists('vimgit')
         execute 'bwipeout vimgit'
     endif
 endfunction
+
 function! s:termJob(job, rows)
     call s:closebuf()
     call term_start(a:job, { 'term_name': 'vimgit', 'term_rows': a:rows })
 endfunction
+
 function! git#AddBuffer()
     call s:termJob(['git', 'add', '-v', expand('%')], '2 ')
 endfunction
@@ -37,6 +40,5 @@ function! git#Status()
 endfunction
 
 function! git#Push()
-    call s:closebuf()
     call s:termJob(['git','push'], '7')
 endfunction
