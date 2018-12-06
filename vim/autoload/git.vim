@@ -9,25 +9,25 @@ function! git#Cd()
 endfunction
 
 function! git#AddBuffer()
-    call term_start(['git', 'add', '-v', expand('%')], { 'term_name': 'gitcommit', 'term_rows': '4', 'hidden': 1})
+    call term_start(['git', 'add', '-v', expand('%')], { 'term_name': 'vimgit', 'term_rows': '4' })
 endfunction
 
 function! git#Commit(msg)
-    call term_start(['git','commit','-m' , a:msg], { 'term_name': 'gitcommit', 'term_rows': '4' })
+    call term_start(['git','commit','-m' , a:msg], { 'term_name': 'vimgit', 'term_rows': '4' })
 endfunction
 
 function! git#Log(number)
-    call term_start(['git','log','--oneline', '--graph', '--decorate' , '-n', a:number ], { 'term_name': 'gitlog' })
+    call term_start(['git','log','--oneline', '--graph', '--decorate' , '-n', a:number ], { 'term_name': 'vimgit' })
 endfunction
 
 function! git#Logv(number)
-    call term_start(['git','log', '-n', a:number ], { 'term_name': 'gitlog' })
+    call term_start(['git','log', '-n', a:number ], { 'term_name': 'vimgit' })
 endfunction
 
 function! git#Status()
-    call term_start(['git','status'], { 'term_name': 'gitstatus' })
+    call term_start(['git','status'], { 'term_name': 'vimgit' })
 endfunction
 
 function! git#Push()
-    call term_start(['git','push'], { 'term_name': 'gitpush' })
+    call term_start(['git','push'], { 'term_name': 'vimgit' })
 endfunction
