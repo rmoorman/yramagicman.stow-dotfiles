@@ -51,6 +51,7 @@ if system('which fzf')[:-2] != 'fzf not found'
     endif
 else
     cnoreabbrev b ls<CR> :b
+    cnoreabbrev find find **/
 endif
 "}}}
 "{{{ autocommands for loading extensions
@@ -110,8 +111,12 @@ set laststatus=2
 " Don't show line numbers by default, see mappings below for toggle
 set nonumber
 set norelativenumber
-set expandtab " set by .editorconfig
+set expandtab
 set tabstop=4
+set shiftwidth=4
+set softtabstop=4
+set autoindent
+set smartindent
 set eol
 set nowrapscan
 set showcmd
@@ -119,11 +124,7 @@ set foldcolumn=4
 set foldmethod=indent
 set wildmenu
 set foldlevel=999
-set wildmode=full
-set shiftwidth=4
-set softtabstop=4
-set autoindent
-set smartindent
+set wildmode=longest:full,full
 set wrap linebreak sidescrolloff=15
 set listchars=tab:▸\ ,trail:·,eol:¬,extends:❯,precedes:❮
 set showbreak=…→
