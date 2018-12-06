@@ -35,6 +35,14 @@ function! git#Commit()
     execute '!git commit -v' | redraw!
 endfunction
 
+function! git#CommitAll()
+    execute '!git commit -av' | redraw!
+endfunction
+
+function! git#CommitAllM(msg)
+    call s:termJob(['git','commit','-am' , a:msg], '4')
+endfunction
+
 function! git#Log(number)
     call s:termJob(['git','log','--oneline', '--graph', '--decorate' , '-n', a:number ],  '7')
 endfunction

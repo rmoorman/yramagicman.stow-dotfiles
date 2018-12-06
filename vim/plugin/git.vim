@@ -1,4 +1,6 @@
 command! -nargs=1 GCommit call git#CommitM('<args>')
+command! -nargs=0 GCommitAllV call git#CommitAll()
+command! -nargs=1 GCommitAll call git#CommitAllM('<args>')
 command! -nargs=0 GCommitV call git#Commit()
 command! -nargs=1 GLog call git#Log('<args>')
 command! -nargs=1 GLogVerbose call git#Logv('<args>')
