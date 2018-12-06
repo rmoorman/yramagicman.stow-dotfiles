@@ -14,8 +14,12 @@ filetype plugin indent on
 " Switch syntax highlighting on
 syntax on
 "}}}
+"{{{ colors
 colorscheme portable
 set background=dark
+" 256 colors
+set t_Co=256
+"}}}
 "{{{ Plugin loading and settings
 let g:VimPack_Setup_Folders = ['after', 'autoload', 'backup', 'colors', 'doc', 'snippets', 'spell', 'swaps', 'syntax','plugin', 'tags', 'undo']
 let g:VimPack_Update_Frequency = 5
@@ -89,58 +93,61 @@ set shell=zsh
 " Make backspace behave in a sane manner.
 set backspace=indent,eol,start
 
-" enable Omnicomplete
+"{{{ completions
 set omnifunc=syntaxcomplete#Complete
+set wildmenu
+set wildmode=longest:full,full
+"}}}
 "{{{ builtin plugins
 packadd! matchit
 packadd! editexisting
 "}}}
-
+"{{{ file handling
 " auto-reload modified files
 set autoread
 " write files on buffer switch, and other actions
 set autowrite
-
-"terminal speed optimizations
+"}}}
+"{{{ terminal speed optimizations
 set lazyredraw
 set ttyfast
-
-" Show statusline, always
-set laststatus=2
-
-" Don't show line numbers by default, see mappings below for toggle
+"}}}
+"{{{ Don't show line numbers by default, see mappings below for toggle
 set nonumber
 set norelativenumber
+"}}}
+"{{{ tab settings
 set expandtab
 set tabstop=4
 set shiftwidth=4
 set softtabstop=4
 set autoindent
 set smartindent
-set eol
-set nowrapscan
+"}}}
 set showcmd
+"{{{ fold settings
 set foldcolumn=4
 set foldmethod=indent
-set wildmenu
 set foldlevel=999
-set wildmode=longest:full,full
-set wrap linebreak sidescrolloff=15
-set listchars=tab:▸\ ,trail:·,eol:¬,extends:❯,precedes:❮
-set showbreak=…→
-set nojoinspaces
-set splitbelow
-set splitright
+"}}}
+"{{{ wrap and scrolling
+set wrap linebreak
+set sidescrolloff=15
 set scrolloff=2
-" 256 colors
-set t_Co=256
+"}}}
+set listchars=tab:▸\ ,trail:·,eol:¬,extends:❯,precedes:❮"{{{
+set showbreak=…→"}}}
+set nojoinspaces
+set startofline
 "Use os clipboard
 set clipboard^=unnamedplus,unnamed
+"{{{ search settings
+set nowrapscan
 set incsearch
-" Ignore case of searches
 set ignorecase
 set smartcase
-set startofline
+"}}}
+"{{{ shortmess
 set shortmess+=A " ignore annoying swapfile messages
 set shortmess+=I " no splash screen
 set shortmess+=O " file-read message overwrites previous
@@ -149,6 +156,7 @@ set shortmess+=W " don't echo "[w]"/"[written]" when writing
 set shortmess+=a " use abbreviations in messages eg. `[RO]` instead of `[readonly]`
 set shortmess+=o " overwrite file-written messages
 set shortmess+=t " truncate file messages at start
+"}}}
 "{{{ turn off error bells
 set novisualbell
 set noerrorbells
@@ -191,20 +199,27 @@ if exists("&undodir")
 endif
 "}}}
 "{{{ statusline
+" Show statusline, always
+set laststatus=2
 hi def focused ctermbg=2 ctermfg=0
 augroup status
-    autocmd!
-    autocmd VimEnter * let &statusline = status#Active()
-    autocmd VimEnter * call status#Autocmd()
+autocmd!
+autocmd VimEnter * let &statusline = status#Active()
+autocmd VimEnter * call status#Autocmd()
 augroup end
 "}}}
+"{{{ splits and buffers
 set hidden
+set splitbelow
+set splitright
 set winheight=2
 set winminheight=2
+"}}}
 "{{{ autocmds for everything else
 augroup defaults
     autocmd!
-    autocmd BufWritePost $MYVIMRC source %
+    autocmd BufWritePost $MYVIMRC,*.vim source %
+    autocmd CursorMoved $MYVIMRC set foldmethod=marker
     autocmd BufWritePre,InsertLeave * checktime
     autocmd BufWritePre,InsertLeave * :%s/\s\+$//e
     autocmd BufWritePre * silent! :%s#\($\n\s*\)\+\%$##
@@ -286,7 +301,7 @@ cnoremap <C-e>  <End>
 "}}}
 command! Scratch call functions#Scratch()
 "}}}
-"
+
 " expand( '%:e') extension
 " expand( '%:h') filename
 " expand( '%:p') real path
