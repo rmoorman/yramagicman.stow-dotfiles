@@ -9,7 +9,7 @@ function! git#Cd()
 endfunction
 function! s:closebuf()
     if bufexists('vimgit')
-        bwipeout 'vimgit'
+        execute 'bwipeout vimgit'
     endif
 endfunction
 function! git#AddBuffer()
