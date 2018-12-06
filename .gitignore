@@ -17,3 +17,8 @@ vim/pack/
 vim/spell/
 vim/swaps/
 vim/undo/
+config/ranger/bookmarks
+config/ranger/colorschemes/__init__.pyo
+config/ranger/colorschemes/default.pyo
+config/ranger/history
+screenlayout/i3.sh

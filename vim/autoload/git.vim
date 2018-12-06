@@ -20,11 +20,19 @@ function! s:termJob(job, rows)
 endfunction
 
 function! git#AddBuffer()
-    call s:termJob(['git', 'add', '-v', expand('%')], '2 ')
+    call s:termJob(['git', 'add', '-v', expand('%')], '2')
 endfunction
 
-function! git#Commit(msg)
+function! git#AddAll()
+    call s:termJob(['git', 'add', '-v', '.'], '2')
+endfunction
+
+function! git#CommitM(msg)
     call s:termJob(['git','commit','-m' , a:msg], '4')
+endfunction
+
+function! git#Commit()
+    execute '!git commit -v'
 endfunction
 
 function! git#Log(number)
