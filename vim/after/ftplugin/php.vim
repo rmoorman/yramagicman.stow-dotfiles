@@ -7,4 +7,4 @@ function! Runtests()
 endfunction
 nnoremap <F5> :wa<cr>:!( arclear > /dev/null 2>&1) && ./vendor/bin/phpunit $(find ./tests/Unit -type f -name '*.php')<cr>
 " setlocal makeprg=./vendor/bin/phpcs\ %
-set list
+setlocal list
