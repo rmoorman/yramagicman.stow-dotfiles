@@ -56,5 +56,9 @@ function! git#Status()
 endfunction
 
 function! git#Push()
-    call s:termJob(['git','push'], '7')
+    call s:termJob(['git','push'], '10')
+endfunction
+
+function! git#Pull()
+    call s:termJob(['git','pull'], '10')
 endfunction
