@@ -87,69 +87,9 @@ let g:ale_echo_msg_warning_str = 'W'
 let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
 "}}}
 let mapleader=","
-"{{{ autocmds for everything else
-augroup defaults
-    autocmd!
-    autocmd BufWritePost $MYVIMRC,*.vim source %
-    autocmd CursorMoved $MYVIMRC,*.vim set foldmethod=marker
-    autocmd BufWritePre,InsertLeave * checktime
-    autocmd BufWritePre,InsertLeave * :%s/\s\+$//e
-    autocmd BufWritePre * silent! :%s#\($\n\s*\)\+\%$##
-    autocmd BufWritePre,InsertLeave * silent! :retab!
-    autocmd BufEnter * call git#Cd()
-    autocmd InsertLeave * call functions#Save()
-    autocmd BufEnter * set cursorline
-    autocmd BufLeave * set nocursorline
-    autocmd BufWritePost * redraw!
-    autocmd FileType * set textwidth=80
-    autocmd FileType vim set foldmethod=marker
-    autocmd FileType mail set textwidth=0
-    autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-    autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-    autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-    autocmd FileType python setlocal omnifunc=python3complete#Complete
-    autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
-    autocmd FileType clojure setlocal omnifunc=clojurecomplete#Complete
-    autocmd FileType sql setlocal omnifunc=sqlcomplete#Complete
-    autocmd BufRead,BufEnter .env :ALEDisableBuffer
-    autocmd BufEnter,CursorHold * checktime
-    autocmd CursorHold * call functions#Save()
-    autocmd BufEnter *.vue source $HOME/Gits/dots/vim/after/ftplugin/js.vim
-augroup end
-"}}}
 hi ExtraWhitespace cterm=underline
 match ExtraWhitespace /\s\+$/
 "{{{ mappings
-"{{{ terminal mode mappings
-tmap <space><space> <C-w>N
-tmap :: <C-w>N:
-"}}}
-"{{{ normal mode mappings
-nnoremap <leader><space> :set hlsearch!<cr>
-nnoremap <leader><leader> <C-^>
-nnoremap * :set hlsearch<cr>*
-nnoremap <F1> :call functions#NumberToggle()<cr>
-nnoremap <F2> :call functions#WrapToggle()<cr>
-nnoremap <F3> :set list!<cr>
-nnoremap <F4> :call functions#StatusToggle()<cr>
-nnoremap <F6> :call functions#FoldColumnToggle()<cr>
-nnoremap <C-w>m :call functions#Maximize()<cr>
-nnoremap <leader>r :syn sync fromstart<cr>
-"}}}
-"{{{ visual mode mappings
-vnoremap > >gv
-vnoremap < <gv
-"}}}
-"{{{ command line movement mappings
-cnoremap <C-a>  <Home>
-cnoremap <C-b>  <Left>
-cnoremap <C-f>  <Right>
-cnoremap <C-d>  <Delete>
-cnoremap <Esc>b <S-Left>
-cnoremap <Esc>f <S-Right>
-cnoremap <Esc>d <S-right><Delete>
-cnoremap <C-e>  <End>
-"}}}
 command! Scratch call functions#Scratch()
 "}}}
 
