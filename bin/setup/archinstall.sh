@@ -46,6 +46,6 @@ mnt_drives "$device"
 sed -i 's/^#//' /etc/pacman.d/mirrorlist
 rankmirrors /etc/pacman.d/mirrorlist | tee/tmp/mirrorlist
 #pacstrap /mnt base base-devel
-genfstab -U /mnt >> /mnt/etc/fstab
-arch-chroot /mnt
-pwd
+#genfstab -U /mnt >> /mnt/etc/fstab
+#arch-chroot /mnt
+#pwd
