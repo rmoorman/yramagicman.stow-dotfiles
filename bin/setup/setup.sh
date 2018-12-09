@@ -1,6 +1,6 @@
 #!/bin/sh
 set -e
-sudo pacman --needed -S sudo wget
+sudo pacman --needed -S wget
 mkdir yay
 (
 cd yay
@@ -10,4 +10,4 @@ cd yay
 makepkg -sic
 )
 rm -rf yay
-yay -S --needed $(cat "$HOME/bin/setup/packages" | xargs)
+yay -S --needed $(xargs < "$HOME/bin/setup/packages"  )
