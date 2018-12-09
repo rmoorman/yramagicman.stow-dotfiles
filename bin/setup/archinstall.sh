@@ -19,16 +19,10 @@ partition() {
 mnt_drives() {
 
 }
-if ! curl https://example.com > /dev/null; then
-    wifi-menu
-    if ! curl https://example.com; then
-        printf 'no internet. please reconnect and try again'
-        #exit
-    fi
-fi
+
 timedatectl set-ntp true
 printf "Please input the drive you wish to partition."
 read device
 printf "Please input the size of your root partition, accepts MiB and GiB"
-read $size
+read size
 partition($device, $size)
