@@ -30,8 +30,8 @@ mnt_drives() {
         mount "$1""1" /mnt/boot
         mount "$1""3" /mnt/home
     else
-        mkdir -p /mnt/home
         mount "$1""1" /mnt
+        mkdir -p /mnt/home
         mount "$1""2" /mnt/home
     fi
 }
