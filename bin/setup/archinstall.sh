@@ -1,3 +1,5 @@
+#/bin/sh
+
 partition() {
     if [ -d /sys/firmware/efi/efivars ]
     then
