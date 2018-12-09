@@ -14,18 +14,18 @@ partition() {
         echo "parted $1 mkpart primary ext4 1MiB $2"
         echo "parted $1 set 1 boot on"
         echo "parted $1 mkpart primary ext4 $2 100%"
-        echo "mkfs.ext4 $11"
-        echo "mkfs.ext4 $12"
+        echo "mkfs.ext4 $1"
+        echo "mkfs.ext4 $1"
     fi
 }
 
 mnt_drives() {
-
+    true;
 }
 
 timedatectl set-ntp true
 printf "Please input the drive you wish to partition."
-read device
+read -r device
 printf "Please input the size of your root partition, accepts MiB and GiB"
-read size
-partition($device, $size)
+read -r size
+partition "$device" "$size"
