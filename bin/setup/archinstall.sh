@@ -32,7 +32,7 @@ mnt_drives() {
     else
         mkdir -p /mnt/home
         mount "$1""1" /mnt
-        mkfs.ext4 "$1""2" /mnt/home
+        mount "$1""2" /mnt/home
     fi
 }
 
@@ -43,9 +43,7 @@ printf "Please input the size of your root partition, accepts MiB and GiB"
 read -r size
 partition "$device" "$size"
 mnt_drives "$device"
-sed -i 's/^#//' /etc/pacman.d/mirrorlist
-rankmirrors /etc/pacman.d/mirrorlist | tee/tmp/mirrorlist
-#pacstrap /mnt base base-devel
-#genfstab -U /mnt >> /mnt/etc/fstab
-#arch-chroot /mnt
-#pwd
+pacstrap /mnt base base-devel
+genfstab -U /mnt >> /mnt/etc/fstab
+arch-chroot /mnt
+pwd
