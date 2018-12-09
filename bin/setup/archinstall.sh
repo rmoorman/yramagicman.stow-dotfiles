@@ -9,9 +9,9 @@ partition() {
         mkfs.ext4 "$1""2"
         mkfs.ext4 "$1""3"
     else
-        parted $1 mkpart primary ext4 1MiB $2
-        parted $1 set 1 boot on
-        parted $1 mkpart primary ext4 $2 100%
+        parted "$1" mkpart primary ext4 1MiB $2
+        parted "$1" set 1 boot on
+        parted "$1" mkpart primary ext4 $2 100%
         mkfs.ext4 "$1""1"
         mkfs.ext4 "$1""2"
     fi
