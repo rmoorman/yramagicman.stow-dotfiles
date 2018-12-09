@@ -1,4 +1,3 @@
-set -e
 partition() {
     if test -n "$(ls /sys/firmware/efi/efivars)"; then
         echo parted "$1" mkpart primary fat32 1MiB 551MiB
@@ -24,7 +23,7 @@ if ! curl https://example.com > /dev/null; then
     wifi-menu
     if ! curl https://example.com; then
         printf 'no internet. please reconnect and try again'
-        exit
+        #exit
     fi
 fi
 timedatectl set-ntp true
