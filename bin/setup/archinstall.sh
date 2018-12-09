@@ -42,4 +42,4 @@ read -r device
 printf "Please input the size of your root partition, accepts MiB and GiB"
 read -r size
 partition "$device" "$size"
-mnt_dirves "$device"
+mnt_drives "$device"
