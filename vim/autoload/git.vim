@@ -17,6 +17,7 @@ endfunction
 function! s:termJob(job, rows)
     call s:closebuf()
     call term_start(a:job, { 'term_name': 'vimgit', 'term_rows': a:rows })
+    wincmd k
 endfunction
 
 function! git#AddBuffer()
