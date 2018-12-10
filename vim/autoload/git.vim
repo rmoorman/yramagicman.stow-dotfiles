@@ -63,3 +63,7 @@ endfunction
 function! git#Pull()
     call s:termJob(['git','pull'], '10')
 endfunction
+
+function! git#Checkout(buffer)
+    call s:termJob(['git','checkout', a:buffer], '10')
+endfunction
