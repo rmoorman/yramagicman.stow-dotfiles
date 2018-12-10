@@ -52,7 +52,7 @@ function! git#Logv(number)
 endfunction
 
 function! git#Status()
-    call s:termJob(['git','status'], '10')
+    call s:termJob(['git','status'], '15')
 endfunction
 
 function! git#Push()
