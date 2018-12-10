@@ -1,4 +1,4 @@
-#/bin/sh
+#!/bin/sh
 
 partition() {
     if [ -d /sys/firmware/efi/efivars ]
@@ -37,12 +37,13 @@ mnt_drives() {
 }
 
 timedatectl set-ntp true
-printf "Please input the drive you wish to partition."
+printf "Please input the drive you wish to partition.\n"
 read -r device
-printf "Please input the size of your root partition, accepts MiB and GiB"
+printf "Please input the size of your root partition, accepts MiB and GiB\n"
 read -r size
 partition "$device" "$size"
 mnt_drives "$device"
 pacstrap /mnt base base-devel
 genfstab -U /mnt >> /mnt/etc/fstab
+git clone https://gitlab.com/yramagicman/stow-dotfiles /mnt/root/stow-dotfiles
 arch-chroot /mnt
