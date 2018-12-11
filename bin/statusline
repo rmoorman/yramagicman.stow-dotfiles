@@ -16,9 +16,9 @@ function my_bat() {
     if [[ $(date +'%S') -eq 30 ]]
     then
         if [[ $( echo "$bat_level < 20" | bc) -eq 1 && (  $notify_when -eq 0 ) && $status != 'Charging'  ]]
-         then
-             notify-send "Battery low " "$bat_level remaining"
-         fi
+        then
+            notify-send "Battery low " "$bat_level remaining"
+        fi
     fi
     if [[ "$bat_stat" == "Discharging" ]]
     then
@@ -43,7 +43,7 @@ function my_wifi(){
 
 function wifi_strength() {
     awk '/[0-9]*/ {if ($3/1 != 0) print $3}' /proc/net/wireless
-}
+    }
 
 function my_load() {
     load=$( ps -eo cmd,%cpu --sort=-%cpu | awk -F ' ' '{sum += $(NF)} END {print sum}' | cut -d '.' -f 1 )
@@ -80,9 +80,12 @@ function my_update() {
     then
         notify-send 'check your root crontab'
     fi
-    if [[ "$( pacman -Qu | wc -l )" -gt 10 ]];
+    if [[ "$(date  +'%S' )" -lt 7 ]];
     then
-        echo " U: $(pacman -Qu | wc -l)"
+        pacman -Qu > $HOME/.cache/updates
+    fi
+    if [[ "$(cat  $HOME/.cache/updates | wc -l)" -gt 10 ]]; then
+        echo "U: $(cat $HOME/.cache/updates | wc -l)"
     fi
 }
 
@@ -108,7 +111,7 @@ function dbox() {
 
 line="$(my_update)$(my_mail)$(my_weather) $(my_load)"
 if [[ -d /sys/class/power_supply/BAT1/ ]]; then
-line="$line $(my_bat)"
+    line="$line $(my_bat)"
 fi
 line="$line $(my_wifi) $(dbox) $(my_volume) $(my_date)"
 
