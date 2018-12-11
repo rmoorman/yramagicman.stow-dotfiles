@@ -298,8 +298,18 @@ setopt NO_BEEP
 # Allow command line editing in an external editor.
 autoload -Uz edit-command-line
 zle -N edit-command-line
-
+bindkey -M emacs "^[[Z" reverse-menu-complete
 bindkey -M emacs "\C-X\C-E" edit-command-line
+
+# Runs bindkey but for all of the keymaps. Running it with no arguments will
+# print out the mappings for all of the keymaps.
+function bindkey-all {
+  local keymap=''
+  for keymap in $(bindkey -l); do
+    [[ "$#" -eq 0 ]] && printf "#### %s\n" "${keymap}" 1>&2
+    bindkey -M "${keymap}" "$@"
+  done
+}
 #}}}
 #{{{ virtualenv stuff
 export WORKON_HOME=$HOME/.virtualenvs
