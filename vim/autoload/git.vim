@@ -67,3 +67,7 @@ endfunction
 function! git#Checkout(buffer)
     call s:termJob(['git','checkout', a:buffer], '10')
 endfunction
+
+function! git#Diff(buffer)
+    call s:termJob(['git','diff', a:buffer], '10')
+endfunction
