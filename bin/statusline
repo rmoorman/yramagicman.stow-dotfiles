@@ -85,7 +85,7 @@ function my_update() {
         pacman -Qu > $HOME/.cache/updates
     fi
     if [[ "$(cat  $HOME/.cache/updates | wc -l)" -gt 10 ]]; then
-        echo "U: $(cat $HOME/.cache/updates | wc -l)"
+        echo " U: $(cat $HOME/.cache/updates | wc -l)"
     fi
 }
 
