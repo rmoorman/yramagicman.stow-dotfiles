@@ -1,3 +1,4 @@
+let g:GitCloseWindowLimit = 4
 function! git#Cd()
     let l:gitdir = finddir('.git',expand('%:h') .';' . $HOME)
     if index( split( l:gitdir,'/' ), '.git' ) > 0
@@ -5,6 +6,18 @@ function! git#Cd()
         let l:repopath = '/'. join( l:repopath, '/' ) . '/'
         echom l:repopath
         execute 'cd ' l:repopath
+    endif
+endfunction
+
+function! s:gitCloseWindow()
+    if exists('g:GitCloseWindowCount')
+        let g:GitCloseWindowCount = g:GitCloseWindowCount + 1
+    else
+        let g:GitCloseWindowCount = 0
+    endif
+    if g:GitCloseWindowCount == g:GitCloseWindowLimit
+        call s:closebuf()
+        let g:GitCloseWindowCount = 0
     endif
 endfunction
 
@@ -16,7 +29,11 @@ endfunction
 
 function! s:termJob(job, rows)
     call s:closebuf()
+    let g:GitCloseWindowCount = 0
     call term_start(a:job, { 'term_name': 'vimgit', 'term_rows': a:rows })
+    if bufexists('vimgit')
+        autocmd! CursorHold,CursorHoldI,InsertLeave * call s:gitCloseWindow()
+    endif
     wincmd k
 endfunction
 
@@ -68,6 +85,6 @@ function! git#Checkout(buffer)
     call s:termJob(['git','checkout', a:buffer], '10')
 endfunction
 
-function! git#Diff(buffer)
-    call s:termJob(['git','diff', a:buffer], '10')
+function! git#Diff()
+    call s:termJob(['git','diff'], '10')
 endfunction
