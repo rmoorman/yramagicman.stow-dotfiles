@@ -50,5 +50,3 @@ cnoremap <Esc>f <S-Right>
 cnoremap <Esc>d <S-right><Delete>
 cnoremap <C-e>  <End>
 "}}}
-command! -nargs=1 -complete=customlist,reload#Completion Reload call reload#Reload('<args>')
-command! VReload source $MYVIMRC
