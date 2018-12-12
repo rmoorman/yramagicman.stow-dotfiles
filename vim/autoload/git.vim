@@ -1,4 +1,6 @@
-let g:GitCloseWindowLimit = 4
+if !exists('g:GitCloseWindowLimit ')
+    let g:GitCloseWindowLimit = 4
+endif
 function! git#Cd()
     let l:gitdir = finddir('.git',expand('%:h') .';' . $HOME)
     if index( split( l:gitdir,'/' ), '.git' ) > 0
