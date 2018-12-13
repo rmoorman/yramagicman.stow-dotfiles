@@ -76,13 +76,9 @@ function my_weather() {
 
 
 function my_update() {
-    if [[ ! -f /var/spool/cron/root ]]
+    if [[ ! -f /var/spool/cron/jonathan ]]
     then
-        notify-send 'check your root crontab'
-    fi
-    if [[ "$(date  +'%S' )" -lt 7 ]];
-    then
-        pacman -Qu > $HOME/.cache/updates
+        notify-send 'check your user crontab'
     fi
     if [[ "$(cat  $HOME/.cache/updates | wc -l)" -gt 10 ]]; then
         echo " U: $(cat $HOME/.cache/updates | wc -l)"
