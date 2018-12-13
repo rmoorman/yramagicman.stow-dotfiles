@@ -3,9 +3,9 @@ hn=$(hostname)
 function my_date () {
     if [[ "$hn" == "serenity" ]];
     then
-        date +"%d/%m/%Y %I:%M:%S"
+        date +"%a %d/%m/%Y %I:%M:%S"
     else
-        echo "$(date +"%a %d %b %Y %I:%M:%S")"
+        date +"%a %d %b %Y %I:%M:%S"
     fi
 }
 
