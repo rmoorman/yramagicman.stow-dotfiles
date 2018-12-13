@@ -35,6 +35,8 @@ nnoremap <F4> :call functions#StatusToggle()<cr>
 nnoremap <F6> :call functions#FoldColumnToggle()<cr>
 nnoremap <C-w>m :call functions#Maximize()<cr>
 nnoremap <leader>r :syn sync fromstart<cr>
+nnoremap >> V>gv
+nnoremap << V<gv
 "}}}
 "{{{ visual mode mappings
 vnoremap > >gv

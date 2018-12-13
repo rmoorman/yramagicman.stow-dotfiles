@@ -804,6 +804,7 @@ rxvt-unicode
 rxvt-unicode-terminfo
 s-nail
 screenkey
+sdl
 sdl2
 sed
 semver
@@ -877,6 +878,8 @@ vamp-plugin-sdk
 vi
 vid.stab
 vim-runtime
+virtualbox
+virtualbox-host-modules-arch
 vlc
 volume_key
 vulkan-icd-loader
