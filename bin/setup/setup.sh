@@ -1,16 +1,15 @@
 #!/bin/sh
-set -e
 sudo pacman --needed -S wget
 mkdir yay
 (
-cd yay
+cd yay || return
 wget https://aur.archlinux.org/cgit/aur.git/snapshot/yay.tar.gz
 tar -xf yay.tar.gz
-cd yay
+cd yay || return
 makepkg -sic
 )
 rm -rf yay
 for p in $(cat ./packages)
 do
-    sudo pacman -S "$p"
+    sudo pacman -S --needed "$p"
 done
