@@ -9,7 +9,7 @@ read -r hstname
 
 echo "$hstname" > /etc/hostname
 
-cat << EOF > /etc/hostname
+cat << EOF > /etc/hosts
 127.0.0.1   localhost
 ::1     localhost
 127.0.1.1  $hstname
@@ -26,7 +26,7 @@ useradd -m -g users -G wheel -s /bin/sh "$username"
 printf 'and password\n'
 passwd "$username"
 
-pacman -S grub
+pacman -S grub dhcpcd wifi-menu dialog
 
 if [ -d /sys/firmware/efi/efivars ]; then
     pacman -S efibootmgr
@@ -35,6 +35,6 @@ if [ -d /sys/firmware/efi/efivars ]; then
 else
     grub-install --target=i386-pc /dev/sda
 fi
-
+systemctl enable dhcpcd
 grub-mkconfig -o /boot/grub/grub.cfg
 source ./setup.sh
