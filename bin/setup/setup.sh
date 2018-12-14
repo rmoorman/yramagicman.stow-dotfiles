@@ -11,5 +11,5 @@ makepkg -sic
 rm -rf yay
 for p in $(cat ./packages)
 do
-    sudo pacman -S --needed "$p"
+    sudo pacman -S --needed --noconfirm "$p"
 done
