@@ -37,3 +37,4 @@ else
 fi
 
 grub-mkconfig -o /boot/grub/grub.cfg
+source ./setup.sh
