@@ -27,7 +27,7 @@ useradd -m -g users -G wheel -s /bin/sh "$username"
 printf 'and password\n'
 passwd "$username"
 
-pacman -Syu grub dhcpcd wifi-menu dialog
+pacman -Syu --needed --noconfirm grub dialog wpa_supplicant
 
 if [ -d /sys/firmware/efi/efivars ]; then
     pacman -S efibootmgr
