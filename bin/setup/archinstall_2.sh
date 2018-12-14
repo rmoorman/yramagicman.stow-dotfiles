@@ -1,4 +1,5 @@
 #!/bin/sh
+set -e
 ln -sf /usr/share/zoneinfo/America/New_York /etc/localtime
 hwclock --systohc
 sed -i 's/# en_US.UTF-8 UTF-8/en_US.UTF-8 UTF-8/' /etc/locale.gen
@@ -26,7 +27,7 @@ useradd -m -g users -G wheel -s /bin/sh "$username"
 printf 'and password\n'
 passwd "$username"
 
-pacman -S grub dhcpcd wifi-menu dialog
+pacman -Syu grub dhcpcd wifi-menu dialog
 
 if [ -d /sys/firmware/efi/efivars ]; then
     pacman -S efibootmgr
@@ -37,4 +38,4 @@ else
 fi
 systemctl enable dhcpcd
 grub-mkconfig -o /boot/grub/grub.cfg
-source ./setup.sh
+#source ./setup.sh
