@@ -10,4 +10,7 @@ cd yay
 makepkg -sic
 )
 rm -rf yay
-yay -S --needed $(xargs < "$HOME/bin/setup/packages"  )
+for p in $(cat ./packages)
+do
+    sudo pacman -S "$p"
+done
