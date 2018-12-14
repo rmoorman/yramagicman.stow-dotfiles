@@ -1,6 +1,6 @@
 #!/bin/sh
 
-dotdir="$(dirname $(realpath "$0") )"
+dotdir="$(dirname "$(realpath "$0")" )"
 find ./ -maxdepth 1 -type f  \
     -not -name '.*' -and \
     -not -name 'config' -and \
@@ -10,9 +10,9 @@ find ./ -maxdepth 1 -type f  \
     -not -name 'uninstall.sh' -and \
     -not -name 'init.sh' | while read -r f
 do
-    ln -sv "$PWD/$(basename "$f")" "$HOME/.$(basename "$f")"
+    ln -sv "$dotdir/$(basename "$f")" "$HOME/.$(basename "$f")"
 done
-
+sudo ln -s "$dotdir/joncron" "/var/spool/conron/jonathan"
 find ./ -maxdepth 1 -type d  \
     -not -name '.git' -and \
     -not -name 'config' -and \
@@ -57,3 +57,5 @@ then
     make
     sudo make install
 fi
+
+chsh -s "$(which zsh)"
