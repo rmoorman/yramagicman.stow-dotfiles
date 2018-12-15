@@ -37,4 +37,5 @@ else
 fi
 systemctl enable dhcpcd
 grub-mkconfig -o /boot/grub/grub.cfg
+exit
 #source ./setup.sh
