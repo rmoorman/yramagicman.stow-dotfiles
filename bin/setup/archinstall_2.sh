@@ -21,10 +21,9 @@ mkinitcpio -p linux
 printf 'set root password \n'
 passwd
 
-printf 'input username for non-root user:\n'
+printf 'input username and password for non-root user:\n\n'
 read -r username
 useradd -m -g users -G wheel -s /bin/sh "$username"
-printf 'and password\n'
 passwd "$username"
 
 pacman -Syu --needed --noconfirm grub dialog wpa_supplicant
