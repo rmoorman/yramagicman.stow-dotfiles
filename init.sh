@@ -12,7 +12,7 @@ find ./ -maxdepth 1 -type f  \
 do
     ln -sv "$dotdir/$(basename "$f")" "$HOME/.$(basename "$f")"
 done
-sudo ln -s "$dotdir/joncron" "/var/spool/conron/jonathan"
+cp "$dotdir/joncron" "/var/spool/conron/jonathan"
 find ./ -maxdepth 1 -type d  \
     -not -name '.git' -and \
     -not -name 'config' -and \
@@ -57,5 +57,4 @@ then
     make
     sudo make install
 fi
-
-chsh -s "$(which zsh)"
+chsh -s "$(command -v zsh)"
