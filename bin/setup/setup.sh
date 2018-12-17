@@ -9,7 +9,7 @@ cd yay || return
 makepkg -sic
 )
 rm -rf yay
-for p in $(cat ./packages)
+while read -r p
 do
-    sudo pacman -S --needed --noconfirm "$p"
-done
+    yay -S --needed --noconfirm "$p"
+done < ./packages
