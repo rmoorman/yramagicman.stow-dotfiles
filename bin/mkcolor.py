@@ -92,29 +92,69 @@ def list_colors():
     return set([f.split('.')[0] for f in os.listdir(colors_dir)])
 
 
-def dwm_mod_color(line, color):
-    print(line.split())
+def find_color(selection, color):
+    with open(colors_dir + selection + '.xresources') as xr:
+        for line in xr.readlines():
+            if color in line:
+                return line.split()[-1]
 
 
-def dwm_update():
+def dwm_mod_color(line, selection, color):
+    color = find_color(selection, color)
+    new = line.split()
+    new[-1] = color + ';\n'
+    return ' '.join(new)
+
+
+def dwm_update(selection):
+    headerlines = []
     with open(dwm_dir + 'config.h') as dwm:
         for line in dwm.readlines():
             if 'char background' in line:
-                dwm_mod_color(line)
-            if 'char sel_background' in line:
-                dwm_mod_color(line)
-            if 'char foreground' in line:
-                dwm_mod_color(line)
-            if 'char sel_foreground' in line:
-                dwm_mod_color(line)
-            if 'char border' in line:
-                dwm_mod_color(line)
-            if 'char sel_border' in line:
-                dwm_mod_color(line)
+                line = dwm_mod_color(line, selection, background)
+                headerlines.append(line)
+            elif 'char sel_background' in line:
+                line = dwm_mod_color(line, selection, sel_background)
+                headerlines.append(line)
+            elif 'char foreground' in line:
+                line = dwm_mod_color(line, selection, foreground)
+                headerlines.append(line)
+            elif 'char sel_foreground' in line:
+                line = dwm_mod_color(line, selection, sel_foreground)
+                headerlines.append(line)
+            elif 'char border' in line:
+                line = dwm_mod_color(line, selection, border)
+                headerlines.append(line)
+            elif 'char sel_border' in line:
+                line = dwm_mod_color(line, selection, sel_border)
+                headerlines.append(line)
+            else:
+                headerlines.append(line)
+        dwm.close()
+    with open('/tmp/dwm.h', 'w+') as header:
+        for line in headerlines:
+            header.write(line)
+        header.close()
+
+
+def st_update(selection):
+    config = []
+    with open(st_dir + 'config.h') as st:
+        for line in st.readlines():
+            if '#include' in line:
+                new = line.strip().split('/')
+                new[-1] = selection + '.h";\n'
+                config.append('/'.join(new))
+            else:
+                config.append(line)
+        st.close()
+    with open('/tmp/st.h', 'w+') as header:
+        for line in config:
+            header.write(line)
+        header.close()
 
 
 if len(sys.argv) < 2:
-    dwm_update()
     print('you are currently using ' + read_color())
     print('Possible arguments are:')
     for c in list_colors():
@@ -122,3 +162,5 @@ if len(sys.argv) < 2:
 else:
     empty_xresources()
     rebuild_colors(sys.argv[-1])
+    dwm_update(sys.argv[-1])
+    st_update(sys.argv[-1])
