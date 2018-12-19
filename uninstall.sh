@@ -1,6 +1,7 @@
 #!/bin/sh
 
-find ./ -maxdepth 1 -type f | while read -r file
+dotdir="$(dirname "$(realpath "$0")" )"
+find "$dotdir" -maxdepth 1 -type f | while read -r file
 do
     if test -f "$HOME/.$(basename "$file")"
     then
@@ -8,7 +9,7 @@ do
     fi
 done
 
-find ./ -maxdepth 1 -type d | while read -r dir
+find "$dotdir" -maxdepth 1 -type d | while read -r dir
 do
     if test -d "$HOME/.$(basename "$dir")"
     then
@@ -19,7 +20,7 @@ do
     fi
 done
 
-find ./config/ -maxdepth 1  | while read -r config
+find "$dotdir/config/" -maxdepth 1  | while read -r config
 do
     if test -f "$HOME/.config/$(basename "$config")"
     then
@@ -29,4 +30,13 @@ do
         rm -v "$HOME/.config/$(basename "$config")"
     fi
 done
-
+if test -d "$HOME/Gits/st/"
+then
+    cd "$HOME/Gits/st/" || exit
+    sudo make uninstall
+fi
+if test -d "$HOME/Gits/dwm/"
+then
+    cd "$HOME/Gits/dwm/" || exit
+    sudo make uninstall
+fi
