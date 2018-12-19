@@ -14,14 +14,14 @@ check_process(){
     fi
 
 }
-( /home/jonathan/.screenlayout/default.sh ) &
-if test "$( hostname )" == 'serenity'; then
-    amixer -c 0  --  set  Master  0
-    if test "$(xrandr | awk '/HDMI1/ {print $2}' )" == 'connected'; then
+# ( /home/jonathan/.screenlayout/default.sh ) &
+# if test "$( hostname )" == 'serenity'; then
+#     amixer -c 0  --  set  Master  0
+#     if test "$(xrandr | awk '/HDMI1/ {print $2}' )" == 'connected'; then
 
-        ( /home/jonathan/.screenlayout/work.sh ) &
-    fi
-fi
+#         ( /home/jonathan/.screenlayout/work.sh ) &
+#     fi
+# fi
 "$HOME/bin/statusloop" &
 ("$HOME/.fehbg") &
 

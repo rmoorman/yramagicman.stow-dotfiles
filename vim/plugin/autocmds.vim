@@ -6,7 +6,7 @@ augroup defaults
     autocmd BufWritePre,InsertLeave * :%s/\s\+$//e
     autocmd BufWritePre * silent! :%s#\($\n\s*\)\+\%$##
     autocmd BufWritePre,InsertLeave * silent! :retab!
-    autocmd BufEnter * call git#Cd()
+    "autocmd BufEnter * call git#Cd()
     autocmd InsertLeave * call functions#Save()
     autocmd BufEnter * set cursorline
     autocmd BufLeave * set nocursorline

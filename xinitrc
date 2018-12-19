@@ -29,28 +29,37 @@ fi
 
 # start some nice programs
 
-if [ -d /etc/X11/xinit/xinitrc.d ] ; then
- for f in /etc/X11/xinit/xinitrc.d/?*.sh ; do
-  [ -x "$f" ] && . "$f"
- done
- unset f
-fi
+# if [ -d /etc/X11/xinit/xinitrc.d ] ; then
+#  for f in /etc/X11/xinit/xinitrc.d/?*.sh ; do
+#   [ -x "$f" ] && . "$f"
+#  done
+#  unset f
+# fi
 
 
-if stat $HOME/Gits/st/st 2>&1 > /dev/null; then
+if stat "$HOME/Gits/st/st"  > /dev/null 2>&1 ; then
     export TERMINAL="$HOME/Gits/st/st"
-elif which st > /dev/null; then
+elif command -v st > /dev/null; then
     export TERMINAL=st
-elif which urxvt-256color > /dev/null; then
+elif command -v urxvt-256color > /dev/null; then
     export TERMINAL=urxvt-256color
-elif which urxvt > /dev/null; then
+elif command -v urxvt > /dev/null; then
     export TERMINAL=urxvt
-elif which uxterm > /dev/null; then
+elif command -v uxterm > /dev/null; then
     export TERMINAL=uxterm
 else
     export TERMINAL=xterm
 fi
 
+( "$HOME/.screenlayout/default.sh" ) &
+if test "$( hostname )" == 'serenity'; then
+    amixer -c 0  --  set  Master  0
+    if test "$(xrandr | awk '/HDMI1/ {print $2}' )" == 'connected'; then
 
-exec $HOME/.dwm/autostart.sh &
-exec $HOME/bin/dwmrestart
+        ( "$HOME.screenlayout/work.sh" ) &
+    fi
+fi
+
+exec "$HOME/.dwm/autostart.sh" &
+exec "$HOME/bin/statusline" &
+exec "$HOME/bin/dwmrestart"
