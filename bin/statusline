@@ -46,8 +46,8 @@ function wifi_strength() {
     }
 
 function my_load() {
-    load=$( ps -eo cmd,%cpu --sort=-%cpu | awk -F ' ' '{sum += $(NF)} END {print sum}' | cut -d '.' -f 1 )
-    cmd=$( ps -eo cmd,%cpu --sort=-%cpu | awk -F ' ' '{print $1}' | head -n 2 | tail -n 1 )
+    load=$( ps -eo cmd,%cpu --sort=-%cpu | awk -F ' ' '{sum += $(NF)} END {split (sum, a, "."); print a[1]}' )
+    cmd=$(ps -eo cmd,%cpu -U jonathan --sort=-%cpu |  awk  '/[\w\/]/ { n=split( $1, a, "/" ); print a[n] }' | sed '1q')
     temp=$(sensors | awk '/Package/ {print $4}')
     echo "Top CMD:$(basename $cmd ) CPU:$load% TEMP:$temp"
 }
