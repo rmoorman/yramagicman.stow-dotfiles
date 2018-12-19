@@ -107,7 +107,6 @@ def find_color(selection, color):
     with open(colors_dir + selection + '.xresources') as xr:
         for line in xr.readlines():
             if color in line:
-                print(color, line)
                 return line.split()[-1]
 
 
@@ -175,11 +174,13 @@ def move_into_place():
         errors = errors + 1
     try:
         copyfile('/tmp/dwm.h', dwm_dir + 'config.h')
+        copyfile('/tmp/dwm.h', config_dir + 'dwm.config.h')
     except IOError:
         print("couldn't copy /tmp/dwm.h into place. Leaving it up to you")
         errors = errors + 1
     try:
         copyfile('/tmp/st.h', st_dir + 'config.h')
+        copyfile('/tmp/st.h', config_dir + 'st.config.h')
     except IOError:
         print("couldn't copy /tmp/st.h into place. Leaving it up to you")
         errors = errors + 1

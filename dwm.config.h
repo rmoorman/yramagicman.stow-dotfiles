@@ -8,18 +8,18 @@ static const int topbar             = 0;        /* 0 means bottom bar */
 static const char *fonts[]          = { "Inconsolata:size=11" };
 static const char dmenufont[]       = "Inconsolata:size=12";
 
-static const char border1[]         = "#303030";
-static const char border2[]         = "#a13a38";
+static const char border[] = "#120c15";
+static const char sel_border[] = "#e8cef5";
 
-static const char background1[]     = "#000000";
-static const char background2[]     = "#a13a38";
+static const char background[] = "#0a060c";
+static const char sel_background[] = "#e8cef5";
 
-static const char foreground1[]     = "#c6c6c6";
-static const char foreground2[]     = "#000000";
+static const char foreground[] = "#ddd4e2";
+static const char sel_foreground[] = "#120c15";
 static const char *colors[][3]      = {
     /*               fg         bg         border   */
-    [SchemeNorm] = { foreground1, background1, border1 },
-    [SchemeSel] =  { foreground2, background2, border2  },
+    [SchemeNorm] = { foreground, background, border },
+    [SchemeSel] =  { sel_foreground, sel_background, sel_border  },
 };
 
 /* tagging */
@@ -80,8 +80,8 @@ static const Layout layouts[] = {
 
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
-static const char *dmenucmd[] = { "dmenu_run", "-p", ">>", "-fn", dmenufont, "-nb", background1, "-nf", foreground1, "-sb", background2, "-sf", foreground2, "-l", "20", NULL };
-static const char *passmenu[] = { "passmenu", "-p", "*>", "-fn", dmenufont, "-nb", background1, "-nf", foreground1, "-sb", background2, "-sf", foreground2, "-l", "20", NULL };
+static const char *dmenucmd[] = { "dmenu_run", "-p", ">>", "-fn", dmenufont, "-nb", background, "-nf", foreground, "-sb", sel_background, "-sf", sel_foreground, "-l", "20", NULL };
+static const char *passmenu[] = { "passmenu", "-p", "*>", "-fn", dmenufont, "-nb", background, "-nf", foreground, "-sb", sel_background, "-sf", sel_foreground, "-l", "20", NULL };
 static const char *termcmd[]  = { "/home/jonathan/.dwm/scripts/termcmd", NULL };
 static const char *emacs[]  = { "emacsclient", "-c", ".", NULL };
 static const char *browser[]  = { "surf", "start.duckduckgo.com" };
