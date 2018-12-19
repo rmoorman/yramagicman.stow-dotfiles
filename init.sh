@@ -12,7 +12,7 @@ find ./ -maxdepth 1 -type f  \
 do
     ln -sv "$dotdir/$(basename "$f")" "$HOME/.$(basename "$f")"
 done
-cp "$dotdir/joncron" "/var/spool/conron/jonathan"
+crontab "$dotdir/joncron"
 find ./ -maxdepth 1 -type d  \
     -not -name '.git' -and \
     -not -name 'config' -and \
