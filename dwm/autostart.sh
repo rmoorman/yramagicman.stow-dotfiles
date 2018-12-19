@@ -14,6 +14,7 @@ check_process(){
     fi
 
 }
+
 # ( /home/jonathan/.screenlayout/default.sh ) &
 # if test "$( hostname )" == 'serenity'; then
 #     amixer -c 0  --  set  Master  0
@@ -22,6 +23,7 @@ check_process(){
 #         ( /home/jonathan/.screenlayout/work.sh ) &
 #     fi
 # fi
+
 "$HOME/bin/statusloop" &
 ("$HOME/.fehbg") &
 
