@@ -25,80 +25,58 @@ URxvt.secondaryScreen: 1
 URxvt.secondaryScroll: 0
 URxvt.secondaryWheel: 1
 URxvt.internalBorder: 3
-! URxvt.letterSpace: 1.2
-!*******************************************************************************!
-!                                   Colors
-!*******************************************************************************!
-
+i3wm.foreground:   #ddd4e2
+i3wm.background:   #0a060c
+i3wm.cursorColor:  #ddd4e2
+i3wm.color0:       #120c15
+i3wm.color8:       #d898f2
+i3wm.color1:       #1f1622
+i3wm.color9:       #e8cef5
+i3wm.color2:       #322538
+i3wm.color10:      #e8bcfb
+i3wm.color3:       #4e3c56
+i3wm.color11:      #88c453
+i3wm.color4:       #71587c
+i3wm.color12:      #71f8e2
+i3wm.color5:       #9a7ba7
+i3wm.color13:      #80edda
+i3wm.color6:       #beabc7
+i3wm.color14:      #93d1fa
+i3wm.color7:       #e7e0ea
+i3wm.color15:      #efdcf9
 ! special
-i3wm.foreground:   #919191
-i3wm.background:   #000000
-i3wm.cursorColor:  #919191
+*.foreground:   #ddd4e2
+*.background:   #0a060c
+*.cursorColor:  #ddd4e2
 
 ! black
-i3wm.color0:       #303030
-i3wm.color8:       #5e5e5e
+*.color0:       #120c15
+*.color8:       #d898f2
 
 ! red
-i3wm.color1:       #a13a38
-i3wm.color9:       #ffa59a
+*.color1:       #1f1622
+*.color9:       #e8cef5
 
 ! green
-i3wm.color2:       #00715d
-i3wm.color10:      #24dfc4
+*.color2:       #322538
+*.color10:      #e8bcfb
 
 ! yellow
-i3wm.color3:       #006f32
-i3wm.color11:      #73db95
+*.color3:       #4e3c56
+*.color11:      #88c453
 
 ! blue
-i3wm.color4:       #a43261
-i3wm.color12:      #ff9fc9
+*.color4:       #71587c
+*.color12:      #71f8e2
 
 ! magenta
-i3wm.color5:       #913e88
-i3wm.color13:      #ffa7f6
+*.color5:       #9a7ba7
+*.color13:      #80edda
 
 ! cyan
-i3wm.color6:       #007086
-i3wm.color14:      #00ddf4
+*.color6:       #beabc7
+*.color14:      #93d1fa
 
 ! white
-i3wm.color7:       #c6c6c6
-i3wm.color15:      #ffffff
-! special
-*.foreground:   #919191
-*.background:   #000000
-*.cursorColor:  #919191
-
-! black
-*.color0:       #303030
-*.color8:       #5e5e5e
-
-! red
-*.color1:       #a13a38
-*.color9:       #ffa59a
-
-! green
-*.color2:       #00715d
-*.color10:      #24dfc4
-
-! yellow
-*.color3:       #006f32
-*.color11:      #73db95
-
-! blue
-*.color4:       #a43261
-*.color12:      #ff9fc9
-
-! magenta
-*.color5:       #913e88
-*.color13:      #ffa7f6
-
-! cyan
-*.color6:       #007086
-*.color14:      #00ddf4
-
-! white
-*.color7:       #c6c6c6
-*.color15:      #ffffff
+*.color7:       #e7e0ea
+*.color15:      #efdcf9
