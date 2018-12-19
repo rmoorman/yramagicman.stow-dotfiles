@@ -29,10 +29,15 @@ function! s:closebuf()
     endif
 endfunction
 
+function! git#CloseBuffer(one)
+    call s:closebuf()
+endfunction
+
 function! s:termJob(job, rows)
     call s:closebuf()
     let g:GitCloseWindowCount = 0
     call term_start(a:job, { 'term_name': 'vimgit', 'term_rows': a:rows })
+    call timer_start(60000, 'git#CloseBuffer')
     if bufexists('vimgit')
         autocmd! CursorHold,CursorHoldI,InsertLeave * call s:gitCloseWindow()
     endif
