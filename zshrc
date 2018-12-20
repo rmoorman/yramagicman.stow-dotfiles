@@ -99,7 +99,6 @@ function source_or_install() {
     else
         _get_clone_url "$2"
     fi
-    echo $cloneurl
     if [[ ! -d "$MODULES_DIR" ]]; then
         mkdir -p "$MODULES_DIR"
     fi
@@ -120,7 +119,6 @@ function source_or_install() {
         fi
         date +'%s' > "$MODULES_DIR/$location/.updatetime"
         echo "\n"
-        source $HOME/.zshrc
     fi
     _update $location
     unset location
