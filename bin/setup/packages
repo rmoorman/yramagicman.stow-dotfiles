@@ -83,7 +83,6 @@ iputils
 iw
 jfsutils
 js-beautify
-kakoune-git
 krita
 leafpad
 less
@@ -118,6 +117,7 @@ net-tools
 netctl
 newsboat
 nmap
+nnn
 nodejs
 npm
 ntp
@@ -163,7 +163,6 @@ python-virtualenv
 python2-pip
 python2-virtualenv
 racket
-ranger
 redis
 redshift
 reiserfsprogs
@@ -203,6 +202,7 @@ urxvt-perls
 usbutils
 util-linux
 vi
+vidir
 virtualbox
 vlc
 w3m
