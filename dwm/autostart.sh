@@ -32,7 +32,7 @@ set_screen_layout
 ("$HOME/.fehbg") &
 
 set_screen_layout
-xsetroot -solid '#000000'
+xsetroot -solid '#0a060c'
 
 xset -dpms; xset s off &
 
