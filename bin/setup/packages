@@ -65,6 +65,7 @@ gptfdisk
 grep
 groff
 grub
+grunt-cli
 guvcview
 gvim
 gzip
