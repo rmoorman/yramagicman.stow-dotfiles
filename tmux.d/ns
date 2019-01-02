@@ -9,3 +9,4 @@ fi
 
 tmux new-session -d -s $1 -c '$HOME'
 $HOME/bin/switch_or_attach $1
+return 0

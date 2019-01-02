@@ -24,3 +24,4 @@ fi
 tmux send-keys -t $(hostname):"$pane" "vim $@" Enter
 
 $HOME/bin/switch_or_attach $(hostname):"$pane".left
+return 0

@@ -29,3 +29,4 @@ tmux send-keys -t django:shell "nohup google-chrome-beta --incognito http://127.
 tmux send-keys -t django:shell "nohup google-chrome-beta --incognito http://127.0.0.1:8000/admin &" Enter
 tmux send-keys -t django:shell "clear" Enter
 $HOME/bin/switch_or_attach django:1
+return 0

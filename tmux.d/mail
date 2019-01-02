@@ -11,3 +11,4 @@ tmux new-session -d -s mail -n mutt
 
 tmux send-keys -t mail:mutt "mutt" Enter
 $HOME/bin/switch_or_attach mail:mutt.left
+return 0
