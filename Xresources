@@ -25,58 +25,58 @@ URxvt.secondaryScreen: 1
 URxvt.secondaryScroll: 0
 URxvt.secondaryWheel: 1
 URxvt.internalBorder: 3
-i3wm.foreground:   #a2a2a2
-i3wm.background:   #292929
-i3wm.cursorColor:  #a2a2a2
-i3wm.color0:       #4e4e4e
-i3wm.color8:       #777777
-i3wm.color1:       #a9635d
-i3wm.color9:       #ffbbb2
-i3wm.color2:       #468459
-i3wm.color10:      #9ddeaf
-i3wm.color3:       #84763d
-i3wm.color11:      #e0ce91
-i3wm.color4:       #5879af
-i3wm.color12:      #b3d1ff
-i3wm.color5:       #9c6594
-i3wm.color13:      #fabdf0
-i3wm.color6:       #008592
-i3wm.color14:      #79e0ed
-i3wm.color7:       #cfcfcf
-i3wm.color15:      #ffffff
+i3wm.foreground:   #c0c5ce
+i3wm.background:   #2b303b
+i3wm.cursorColor:  #c0c5ce
+i3wm.color0:       #2b303b
+i3wm.color8:       #65737e
+i3wm.color1:       #bf616a
+i3wm.color9:       #bf616a
+i3wm.color2:       #a3be8c
+i3wm.color10:      #a3be8c
+i3wm.color3:       #ebcb8b
+i3wm.color11:      #ebcb8b
+i3wm.color4:       #8fa1b3
+i3wm.color12:      #8fa1b3
+i3wm.color5:       #b48ead
+i3wm.color13:      #b48ead
+i3wm.color6:       #96b5b4
+i3wm.color14:      #96b5b4
+i3wm.color7:       #c0c5ce
+i3wm.color15:      #eff1f5
 ! special
-*.foreground:   #a2a2a2
-*.background:   #292929
-*.cursorColor:  #a2a2a2
+*.foreground:   #c0c5ce
+*.background:   #2b303b
+*.cursorColor:  #c0c5ce
 
 ! black
-*.color0:       #4e4e4e
-*.color8:       #777777
+*.color0:       #2b303b
+*.color8:       #65737e
 
 ! red
-*.color1:       #a9635d
-*.color9:       #ffbbb2
+*.color1:       #bf616a
+*.color9:       #bf616a
 
 ! green
-*.color2:       #468459
-*.color10:      #9ddeaf
+*.color2:       #a3be8c
+*.color10:      #a3be8c
 
 ! yellow
-*.color3:       #84763d
-*.color11:      #e0ce91
+*.color3:       #ebcb8b
+*.color11:      #ebcb8b
 
 ! blue
-*.color4:       #5879af
-*.color12:      #b3d1ff
+*.color4:       #8fa1b3
+*.color12:      #8fa1b3
 
 ! magenta
-*.color5:       #9c6594
-*.color13:      #fabdf0
+*.color5:       #b48ead
+*.color13:      #b48ead
 
 ! cyan
-*.color6:       #008592
-*.color14:      #79e0ed
+*.color6:       #96b5b4
+*.color14:      #96b5b4
 
 ! white
-*.color7:       #cfcfcf
-*.color15:      #ffffff
+*.color7:       #c0c5ce
+*.color15:      #eff1f5
