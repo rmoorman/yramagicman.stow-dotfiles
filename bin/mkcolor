@@ -17,8 +17,8 @@ foreground = 'foreground'
 background = 'background'
 border = 'color0'
 sel_foreground = 'color0'
-sel_background = 'color9'
-sel_border = 'color9'
+sel_background = 'color1'
+sel_border = 'color1'
 
 
 def contains_color(str):
@@ -115,6 +115,17 @@ def dwm_mod_color(line, selection, color):
     new = line.split()
     new[-1] = '"' + color + '"' + ';\n'
     return ' '.join(new)
+
+
+def set_bg(selection):
+    color = find_color(selection, 'background')
+    with open(config_dir + 'dwm/scripts/bg.sh', 'w') as dwm:
+        write = ['#!/bin/sh',
+                 'convert -size 100x100 xc:' + color + ' /tmp/bg.png'
+                 ]
+        dwm.write('\n'.join(write))
+    call(config_dir + 'dwm/scripts/bg.sh')
+    call(home + '/.fehbg')
 
 
 def dwm_update(selection):
@@ -233,6 +244,7 @@ else:
     rebuild_colors(sys.argv[-1])
     dwm_update(sys.argv[-1])
     st_update(sys.argv[-1])
+    set_bg(sys.argv[-1])
     move_into_place()
     compile()
     install()

@@ -139,12 +139,6 @@ php-imap
 php-intl
 php-sqlite
 php-tidy
-php71
-php71-apache
-php71-gd
-php71-imap
-php71-mcrypt
-php71-tidy
 phpmyadmin
 pkgconf
 pkgfile
@@ -211,7 +205,6 @@ w3m
 weechat
 wget
 which
-wire-desktop-bin
 wpa_supplicant
 xclip
 xf86-video-intel

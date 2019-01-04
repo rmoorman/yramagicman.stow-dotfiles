@@ -29,10 +29,10 @@ set_screen_layout() {
 
 set_screen_layout
 "$HOME/bin/statusloop" &
-("$HOME/.fehbg") &
+("$HOME/.dwm/scripts/bg.sh") &
+(sleep 1s && "$HOME/.fehbg")
 
 set_screen_layout
-xsetroot -solid '#0a060c'
 
 xset -dpms; xset s off &
 
