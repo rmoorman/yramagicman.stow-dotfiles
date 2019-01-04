@@ -82,7 +82,9 @@ then
     make
     sudo make install
 fi
-chsh -s "$(command -v zsh)"
+if test "$SHELL" != "$(command -v zsh)"; then
+    chsh -s "$(command -v zsh)"
+fi
 
 printf "installing cronjobs for user\n"
 crontab "$dotdir/joncron"
