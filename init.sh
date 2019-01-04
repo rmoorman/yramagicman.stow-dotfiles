@@ -1,6 +1,6 @@
 #!/bin/sh
-
-printf '' > /tmp/initlog
+logfile=$HOME/initlog
+printf '' > "$logfile"
 dotdir="$(dirname "$(realpath "$0")" )"
 find ./ -maxdepth 1 -type f  \
     -not -name '.*' -and \
@@ -15,8 +15,8 @@ do
     then
         ln -sv "$dotdir/$(basename "$f")" "$HOME/.$(basename "$f")"
     else
-        printf 'Files Not Installed:\n' >> /tmp/initlog
-        printf "%s\n" "$f" >> /tmp/initlog
+        printf 'Files Not Installed: ' >> "$logfile"
+        printf "%s\n" "$f" >> "$logfile"
 
     fi
 done
@@ -29,8 +29,8 @@ do
     then
         ln -sv "$PWD/$(basename "$d")" "$HOME/.$(basename "$d")"
     else
-        printf '\nDot Directories Not Installed:\n' >> /tmp/initlog
-        printf "%s\n" "$d" >> /tmp/initlog
+        printf '\nDot Directories Not Installed: ' >> "$logfile"
+        printf "%s\n" "$d" >> "$logfile"
 
     fi
 done
@@ -46,8 +46,8 @@ do
     then
         ln -sv "$directory" "$HOME/.config/"
     else
-        printf '\nConfig files Not Installed:\n' >> /tmp/initlog
-        printf "%s\n" "$directory" >> /tmp/initlog
+        printf '\nConfig files Not Installed: ' >> "$logfile"
+        printf "%s\n" "$directory" >> "$logfile"
 
     fi
 done
@@ -56,8 +56,8 @@ if test ! -d "$HOME/bin"
 then
     ln -sv "$dotdir/bin" "$HOME/"
 else
-    printf '\nMisc files Not Installed:\n' >> /tmp/initlog
-    printf "%s\n" "$dotdir/bin" >> /tmp/initlog
+    printf '\nMisc files Not Installed: ' >> "$logfile"
+    printf "%s\n" "$dotdir/bin" >> "$logfile"
 fi
 
 if test ! -d "$HOME/Gits"
