@@ -11,8 +11,13 @@ function my_date () {
 
 function my_bat() {
     notify_when=$(echo "$(date +'%M') % 5" | bc)
-    bat_level=$( cat /sys/class/power_supply/BAT1/capacity )
-    bat_stat=$( cat /sys/class/power_supply/BAT1/status )
+    if [[ -d /sys/class/power_supply/BAT1 ]]; then
+        bat_level=$( cat /sys/class/power_supply/BAT1/capacity )
+        bat_stat=$( cat /sys/class/power_supply/BAT1/status )
+    else
+        bat_level=$( cat /sys/class/power_supply/BAT0/capacity )
+        bat_stat=$( cat /sys/class/power_supply/BAT0/status )
+    fi
     if [[ $(date +'%S') -eq 30 ]]
     then
         if [[ $( echo "$bat_level < 20" | bc) -eq 1 && (  $notify_when -eq 0 ) && $status != 'Charging'  ]]
@@ -107,6 +112,8 @@ function dbox() {
 
 line="$(my_update)$(my_mail)$(my_weather) $(my_load)"
 if [[ -d /sys/class/power_supply/BAT1/ ]]; then
+    line="$line $(my_bat)"
+elif [[ -d /sys/class/power_supply/BAT0/ ]]; then
     line="$line $(my_bat)"
 fi
 line="$line $(my_wifi) $(dbox) $(my_volume) $(my_date)"

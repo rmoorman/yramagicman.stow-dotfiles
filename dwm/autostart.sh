@@ -25,6 +25,9 @@ set_screen_layout() {
             ( /home/jonathan/.screenlayout/work.sh ) &
         fi
     fi
+    if test "$( hostname )" == 'artoo'; then
+        echo 'Xft.dpi: 192' | xrdb -override
+    fi
 }
 
 set_screen_layout
@@ -55,9 +58,10 @@ pulseaudio &
 ## Turn on/off system beep
 xset b off &
 
-# Autostart the Dropbox deamon
-(sleep 100s && dropbox-cli start) &
-
+if test "$(hostname)" != 'artoo'; then
+    # Autostart the Dropbox deamon
+    (sleep 100s && dropbox-cli start) &
+fi
 (sleep 45s && check_process redshift) &
 
 
