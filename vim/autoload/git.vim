@@ -89,7 +89,7 @@ function! git#Pull()
 endfunction
 
 function! git#Checkout(buffer)
-    call s:termJob(['git','checkout', a:buffer], '10')
+    call s:termJob(['git','checkout', a:buffer], '3')
 endfunction
 
 function! git#Diff()
