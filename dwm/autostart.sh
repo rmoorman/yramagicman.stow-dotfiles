@@ -30,7 +30,6 @@ set_screen_layout() {
 set_screen_layout
 "$HOME/bin/statusloop" &
 ("$HOME/.dwm/scripts/bg.sh") &
-(sleep 1s && "$HOME/.fehbg")
 
 set_screen_layout
 
