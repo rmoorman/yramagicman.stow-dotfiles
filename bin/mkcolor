@@ -122,6 +122,7 @@ def set_bg(selection):
     with open(config_dir + 'dwm/scripts/bg.sh', 'w') as dwm:
         write = ['#!/bin/sh',
                  'convert -size 100x100 xc:' + color + ' /tmp/bg.png\n'
+                 '"$HOME/.fehbg"\n'
                  ]
         dwm.write('\n'.join(write))
     call(config_dir + 'dwm/scripts/bg.sh')
