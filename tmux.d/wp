@@ -33,4 +33,4 @@ tmux send-keys -t $1:chrome "nohup google-chrome-beta --incognito http://tbs.loc
 tmux send-keys -t $1:chrome "nohup google-chrome-beta --incognito http://tbs.local/wp-admin &" Enter
 tmux send-keys -t $1:chrome "exit" Enter
 $HOME/bin/switch_or_attach $1:shell.left
-return 0
+exit 0
