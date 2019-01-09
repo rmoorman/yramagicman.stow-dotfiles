@@ -72,6 +72,10 @@ then
     cd "$HOME/Gits/st" || return
     make
     sudo make install
+else
+    cp "$dotdir/st.config.h" "$HOME/Gits/st/config.h"
+    cd "$HOME/Gits/st" || return
+    make
 fi
 if test ! -d "$HOME/Gits/dwm/"
 then
@@ -81,6 +85,10 @@ then
     cd "$HOME/Gits/dwm" || return
     make
     sudo make install
+else
+    cp "$dotdir/dwm.config.h" "$HOME/Gits/dwm/config.h"
+    cd "$HOME/Gits/dwm" || return
+    make
 fi
 if test "$SHELL" != "$(command -v zsh)"; then
     chsh -s "$(command -v zsh)"

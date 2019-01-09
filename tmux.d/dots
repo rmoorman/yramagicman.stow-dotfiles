@@ -17,4 +17,4 @@ tmux send-keys -t dots:ranger "vim ." Enter
 tmux new-window -t dots -c "$HOME/.zsh_modules/yramagicman/zsh-aliases/" -n aliases
 tmux send-keys -t dots:aliases "vim ." Enter
 $HOME/bin/switch_or_attach dots:dotfiles.left
-return 0
+exit 0
