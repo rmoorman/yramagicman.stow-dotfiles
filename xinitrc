@@ -54,9 +54,6 @@ else
     export TERMINAL=xterm
 fi
 
-if test "$( hostname )" == 'artoo'; then
-    export TERMINAL=urxvt
-fi
 ( "$HOME/.screenlayout/default.sh" ) &
 if test "$( hostname )" == 'serenity'; then
     amixer -c 0  --  set  Master  0
