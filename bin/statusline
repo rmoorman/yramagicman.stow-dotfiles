@@ -76,6 +76,9 @@ function my_weather() {
     else
         weather=' W:'$(cat $HOME/.cache/weather)
     fi
+    if [[ "$weather" == " W:error" ]]; then
+        $HOME/bin/weather.py > $HOME/.cache/weather
+    fi
     echo $weather
 }
 
