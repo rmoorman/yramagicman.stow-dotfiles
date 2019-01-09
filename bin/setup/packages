@@ -139,6 +139,10 @@ php-imap
 php-intl
 php-sqlite
 php-tidy
+php71-apache-noconflict
+php71-imap-noconflict
+php71-mcrypt-noconflict
+php71-noconflict
 phpmyadmin
 pkgconf
 pkgfile

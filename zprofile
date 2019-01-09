@@ -49,7 +49,6 @@ path=(
   $HOME/.local/bin
   $HOME/.gem/ruby/2.5.0/bin
   $HOME/.config/composer/vendor/bin
-  /opt/php71/usr/bin
   /usr/local/{bin,sbin}
   $path
 )
