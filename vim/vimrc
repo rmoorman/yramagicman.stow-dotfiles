@@ -36,27 +36,12 @@ PlugStart 'bronson/vim-visual-star-search'
 PlugStart 'tpope/vim-repeat'
 PlugOpt 'dzeban/vim-log-syntax'
 PlugOpt 'w0rp/ale'
-PlugOpt 'mileszs/ack.vim'
 PlugOpt 'leafgarland/typescript-vim'
-PlugOpt 'shawncplus/phpcomplete.vim'
 PlugOpt 'hail2u/vim-css3-syntax'
 PlugOpt 'vim-scripts/Sass'
 PlugOpt 'othree/html5.vim'
 PlugOpt 'jwalton512/vim-blade'
 PlugOpt 'posva/vim-vue'
-if system('which fzf')[:-2] != 'fzf not found'
-    if filereadable('/usr/share/vim/vimfiles/plugin/fzf.vim')
-        source /usr/share/vim/vimfiles/plugin/fzf.vim
-        PlugStart 'junegunn/fzf.vim'
-        cnoreabbrev b Buffers<CR>
-        cnoreabbrev find Files<CR>
-        cnoreabbrev gf GFiles<CR>
-        cnoreabbrev fg GFiles<CR>
-    endif
-else
-    cnoreabbrev b ls<CR> :b
-    cnoreabbrev find find **/
-endif
 "}}}
 "{{{ autocommands for loading extensions
 augroup extensions

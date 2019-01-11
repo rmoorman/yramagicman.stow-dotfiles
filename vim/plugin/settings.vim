@@ -7,9 +7,11 @@ set nojoinspaces
 set startofline
 "Use os clipboard
 set clipboard^=unnamedplus,unnamed
+set path-=/usr/include
 "{{{ completions
 set omnifunc=syntaxcomplete#Complete
 set wildmenu
+set wildcharm=<C-z>
 set wildmode=longest:full,full
 "}}}
 "{{{ builtin plugins

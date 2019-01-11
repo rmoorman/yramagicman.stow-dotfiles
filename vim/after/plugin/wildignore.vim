@@ -18,6 +18,7 @@ set wildignore+=node_modules/**
 set wildignore+=storage/**
 set wildignore+=vendor/**
 set wildignore+=public/**
+set wildignore+=undo/**
 set wildignore+=*.pyc
 
 set wildignore+=*.orig

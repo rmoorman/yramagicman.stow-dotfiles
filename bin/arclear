@@ -2,8 +2,8 @@
 
 composer dumpautoload
 composer clearcache
-php artisan route:clear
-php artisan view:clear
-php artisan clear-compiled
-php artisan cache:clear
-php artisan config:clear
+php71 artisan route:clear
+php71 artisan view:clear
+php71 artisan clear-compiled
+php71 artisan cache:clear
+php71 artisan config:clear

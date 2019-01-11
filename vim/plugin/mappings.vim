@@ -37,6 +37,9 @@ nnoremap <C-w>m :call functions#Maximize()<cr>
 nnoremap <leader>r :syn sync fromstart<cr>
 nnoremap >> V>gv
 nnoremap << V<gv
+nnoremap <leader>e :e **/*
+nnoremap <leader>f :find **/*
+nnoremap <leader>b :ls<cr>:b
 "}}}
 "{{{ visual mode mappings
 vnoremap > >gv
