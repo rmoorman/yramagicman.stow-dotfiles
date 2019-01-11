@@ -50,7 +50,6 @@ firefox
 flake8
 flex
 fwupd
-fzf
 gawk
 gcc
 gcc-libs
