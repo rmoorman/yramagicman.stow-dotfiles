@@ -312,8 +312,7 @@ function workon() {
 }
 
 function z() {
-    source_or_install "$MODULES_DIR/rupa/z/z.sh" rupa/z
-    _z $@
+    source_or_install "$MODULES_DIR/agkozak/zsh-z/zsh-z.plugin.zsh" agkozak/zsh-z
 }
 
 function artisan() {
