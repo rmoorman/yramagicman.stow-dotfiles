@@ -17,6 +17,7 @@ vim/pack/
 vim/spell/
 vim/swaps/
 vim/undo/
+vim/backup/
 config/ranger/bookmarks
 config/ranger/colorschemes/__init__.pyo
 config/ranger/colorschemes/default.pyo
