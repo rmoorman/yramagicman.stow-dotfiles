@@ -144,7 +144,17 @@ source_or_install "$MODULES_DIR/yramagicman/zsh-aliases/init.zsh" "git@gitlab.co
 #
 # Load the prompt system and completion system and initilize them
 autoload -Uz compinit promptinit
-compinit
+# Load and initialize the completion system ignoring insecure directories with a
+# cache time of 20 hours, so it should almost always regenerate the first time a
+# shell is opened each day.
+autoload -Uz compinit
+_comp_files=(${ZDOTDIR:-$HOME}/.zcompdump(Nm-20))
+if (( $#_comp_files )); then
+  compinit -i -C
+else
+  compinit -i
+fi
+unset _comp_files
 promptinit
 
 # load colors
@@ -240,6 +250,7 @@ zstyle ':completion::complete:*' cache-path "$HOME/.zcompcache"
 zstyle ':completion:*' list-colors $LS_COLORS
 zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#) ([0-9a-z-]#)*=01;34=0=01'
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
+zstyle ':completion:*:functions' ignored-patterns '(_*|pre(cmd|exec))'
 zstyle ':completion:*' rehash true
 #}}}
 #}}}
