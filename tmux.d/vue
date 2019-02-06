@@ -16,7 +16,7 @@ tmux new-session -c "$HOME/Sites/" -d -s "$1" -n dev
 tmux send-keys -t "$1":dev "cd $HOME/Sites/$1" Enter
 tmux send-keys -t "$1":dev "vim $HOME/Sites/$1" Enter
 
-tmux new-window -t "$1" -c "$HOME/Sites" -n shell
+tmux new-window -t "$1" -c "$HOME/Sites/$1" -n shell
 
 tmux new-window -t "$1" -c "$HOME/Sites/" -n server
 tmux send-keys -t "$1":server "cd $HOME/Sites/$1" Enter
