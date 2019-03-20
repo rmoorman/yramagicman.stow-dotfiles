@@ -224,7 +224,6 @@ xorg-fonts-misc
 xorg-fonts-type1
 xorg-iceauth
 xorg-luit
-xorg-mkfontdir
 xorg-mkfontscale
 xorg-server
 xorg-server-common
