@@ -109,7 +109,6 @@ mlocate
 mons
 mpv
 msmtp
-mu
 mutt
 nano
 neofetch
@@ -123,7 +122,6 @@ ntp
 openssh
 pacman
 pacman-contrib
-pandoc
 pass
 patch
 pavucontrol
@@ -139,7 +137,6 @@ phpmyadmin
 pkgconf
 pkgfile
 poppler-glib
-postman-bin
 powertop
 privoxy
 procmail
@@ -165,7 +162,6 @@ screenkey
 sed
 shadow
 shellcheck
-skypeforlinux-stable-bin
 smartmontools
 stow
 sudo
