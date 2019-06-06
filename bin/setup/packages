@@ -104,6 +104,8 @@ make
 man-db
 man-pages
 mariadb
+mariadb-clients
+mariadb-libs
 mdadm
 mlocate
 mons
@@ -158,7 +160,6 @@ rsync
 ruby
 rxvt-unicode
 s-nail
-screenkey
 sed
 shadow
 shellcheck
