@@ -39,6 +39,7 @@ PlugOpt 'vim-scripts/Sass'
 PlugOpt 'othree/html5.vim'
 PlugOpt 'jwalton512/vim-blade'
 PlugOpt 'posva/vim-vue'
+
 "}}}
 "{{{ autocommands for loading extensions
 augroup extensions
