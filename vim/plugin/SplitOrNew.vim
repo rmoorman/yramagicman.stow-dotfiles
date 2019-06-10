@@ -1,6 +1,5 @@
 " List to contain file paths of existing buffers
 let g:SplitOrNew_names = []
-let g:SplitOrNew_buf_track = 0
 
 " Populate g:SplitOrNew_names with the full paths of files in open buffers
 function! s:list_names()
