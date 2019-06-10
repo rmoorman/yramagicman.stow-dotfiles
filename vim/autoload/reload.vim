@@ -30,6 +30,7 @@ function! reload#Completion(arglead, cmdline, cursorpos)
         return join( split(a:value, '/')[-1:], '/')
     endfunction
     call map(files,  function('s:filenames'))
+    call add(files, split( $MYVIMRC, '/' )[-1])
     call filter(files,  function('s:completions'))
     return files
 endfunction
