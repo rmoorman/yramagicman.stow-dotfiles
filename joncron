@@ -10,6 +10,5 @@
 00 09 * * * /usr/bin/find "/home/jonathan/" -type f -name slacker.log -delete > /tmp/slacklogs
 00 10 * * * /usr/bin/find "/home/jonathan/" -type f -name nohup.out -delete > /tmp/nohup
 00 11 * * * /usr/bin/find "/home/jonathan/" -type f -name php_errors.log -delete > /tmp/nohup
-*/30  * * * * /usr/bin/mu index --maildir=/home/jonathan/.config/mail
 37 16 * * * /usr/bin/pacman -Qeq > /home/jonathan/Gits/dots/bin/setup/packages
 */15 * * * * checkupdates > /home/jonathan/.cache/updates
