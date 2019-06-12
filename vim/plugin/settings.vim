@@ -28,7 +28,7 @@ set autowrite
 set lazyredraw
 set ttyfast
 "}}}
-"{{{ Don't show line numbers by default, see mappings below for toggle
+"{{{ Show line numbers by default, see mappings below for toggle
 set number
 set relativenumber
 "}}}
@@ -112,9 +112,9 @@ endif
 set laststatus=2
 hi def focused ctermbg=2 ctermfg=0
 augroup status
-autocmd!
-autocmd VimEnter * let &statusline = status#Active()
-autocmd VimEnter * call status#Autocmd()
+    autocmd!
+    autocmd VimEnter * let &statusline = status#Active()
+    autocmd VimEnter * call status#Autocmd()
 augroup end
 "}}}
 "{{{ splits and buffers

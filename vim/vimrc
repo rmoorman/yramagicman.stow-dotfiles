@@ -51,9 +51,6 @@ augroup extensions
     autocmd FileType html packadd html5.vim
     autocmd FileType scss packadd Sass
     autocmd FileType scss,css packadd vim-css3-syntax
-    autocmd FileType org packadd vim-speeddating
-    autocmd FileType org packadd vim-orgmode
-    autocmd FileType php silent! packadd  phpcomplete.vim | redraw
     autocmd BufRead *.blade.php silent! packadd vim-blade | redraw
     autocmd BufRead *.blade.php silent! set filetype=blade | redraw
     autocmd BufRead *.vue silent! packadd vim-vue | redraw
