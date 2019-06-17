@@ -10,7 +10,7 @@ fi
 #}}}
 #{{{ install functions
 MODULES_DIR="$HOME/.zsh_modules"
-UPDATE_INTERVAL=5
+_flag_file="/tmp/z_loaded"
 function _net_test() {
     netflag="/tmp/network_down"
     touch $netflag
@@ -27,34 +27,6 @@ function _net_test() {
     else
         command rm $netflag >/dev/null
         return 0
-    fi
-}
-function _update() {
-    if [[ -z $UPDATE_INTERVAL ]];
-    then
-        UPDATE_INTERVAL=30
-    fi
-
-    if [[ ! -a $MODULES_DIR/$1/.updatetime ]];
-    then
-        echo 0 > "$MODULES_DIR/$1/.updatetime"
-    fi
-
-    day=$((24 * 60 * 60 ))
-    gap=$(( $UPDATE_INTERVAL * $day ))
-    diff="$(( $(date +'%s') - $(cat $MODULES_DIR/$1/.updatetime) ))"
-
-    if [[ $diff -gt $gap ]]; then
-        (
-        _net_test
-        if [[ $? -eq 1 ]]; then
-            return
-        fi
-        echo  "$2"
-        builtin cd "$MODULES_DIR/$1/" && git pull --rebase
-        echo "\n"
-        )
-        date +'%s' > "$MODULES_DIR/$1/.updatetime"
     fi
 }
 
@@ -77,6 +49,7 @@ function _get_clone_url() {
         fi
     fi
 }
+
 function _get_clone_dest() {
 
     if [[ $1 =~ '^(git@|https)' ]]; then
@@ -91,6 +64,50 @@ function _get_clone_dest() {
         location=$1
     fi
 }
+
+function update() {
+    local update_time=$(cat $MODULES_DIR/.updatetime)
+    if [[ -z $UPDATE_INTERVAL ]];
+    then
+        UPDATE_INTERVAL=30
+    fi
+
+    if [[ ! -a $MODULES_DIR/.updatetime ]];
+    then
+        echo 0 > "$MODULES_DIR/.updatetime"
+    fi
+
+    day=$((24 * 60 * 60 ))
+    gap=$(( $UPDATE_INTERVAL * $day ))
+    diff="$(( $(date +'%s') - $update_time ))"
+
+    if [[ $diff -gt $gap ]]; then
+        if [[ $diff -lt $(($gap * 3)) ]] && [[ ! -f '/tmp/no_z_update' ]]; then
+            echo "You last updated your plugins on $(date -d "@$update_time")"
+            echo "Plugins will auto-update on $(date -d "@$(($update_time + $(( $gap * 3 ))))")"
+            echo 'Update plugins? y/Y to confirm, anything else to ignore.'
+            read confirm
+            if [[ ! $confirm =~ '^(y|Y)' ]]; then
+                touch "/tmp/no_z_update"
+                return
+            fi
+        fi
+        for key value in ${(kv)@}; do
+            _get_clone_dest "$value"
+            (
+            _net_test
+            if [[ $? -eq 1 ]]; then
+                return
+            fi
+            echo $location
+            builtin cd "$MODULES_DIR/$location/" && git pull --rebase
+            echo "\n"
+        )
+        date +'%s' > "$MODULES_DIR/.updatetime"
+    done
+    fi
+}
+
 function source_or_install() {
 
     _get_clone_dest "$2"
@@ -101,6 +118,9 @@ function source_or_install() {
     fi
     if [[ ! -d "$MODULES_DIR" ]]; then
         mkdir -p "$MODULES_DIR"
+        if [[ -f $_flag_file ]]; then
+            rm $_flag_file
+        fi
     fi
     if [[ -a $1 ]] then;
         source $1
@@ -117,29 +137,44 @@ function source_or_install() {
             echo "nothing cloned"
             export HTTPS_CLONE=1
         fi
-        date +'%s' > "$MODULES_DIR/$location/.updatetime"
+        date +'%s' > "$MODULES_DIR/.updatetime"
         echo "\n"
     fi
-    _update $location
-    unset location
-    unset cloneurl
 }
 
-function force_updates() {
-    (
-    builtin cd $MODULES_DIR
-    find ./ -type f -name '.updatetime' -delete
-    source $HOME/.zshrc
-    )
+function load_pkgs() {
+    for key value in ${(kv)@}
+    do
+        source_or_install $key $value
+    done
+    if [[ -f $_flag_file ]]; then
+        return
+    else
+        touch $_flag_file
+        echo "reloading"
+        source $HOME/.zshrc
+    fi
 }
+
 #}}}
-#{{{ The base package, containing all the essentials, including my prompt
+#{{{ Load packages
 source ~/.zprofile
-source_or_install "$MODULES_DIR/yramagicman/zsh-aliases/init.zsh" "git@gitlab.com:yramagicman/zsh-aliases"
+function pkgs() {
+    local PKGS=(
+        "$MODULES_DIR/yramagicman/zsh-aliases/init.zsh" "git@gitlab.com:yramagicman/zsh-aliases"
+        "$MODULES_DIR/agkozak/zsh-z/zsh-z.plugin.zsh" agkozak/zsh-z
+        "$MODULES_DIR/zsh-users/zsh-completions/zsh-completions.plugin.zsh" zsh-users/zsh-completions
+    )
+    load_pkgs $PKGS
+    update $PKGS
+}
+pkgs
+unset _flag_file
+unfunction pkgs >/dev/null 2>&1
 #}}}
 # {{{ ls colors, and other colors
 # export LS_COLORS='no=00:fi=00:di=01;34:ln=00;36:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=41;33;01:ex=00;32:*.cmd=00;32:*.exe=01;32:*.com=01;32:*.bat=01;32:*.btm=01;32:*.dll=01;32:*.tar=00;31:*.tbz=00;31:*.tgz=00;31:*.rpm=00;31:*.deb=00;31:*.arj=00;31:*.taz=00;31:*.lzh=00;31:*.lzma=00;31:*.zip=00;31:*.zoo=00;31:*.z=00;31:*.Z=00;31:*.gz=00;31:*.bz2=00;31:*.tb2=00;31:*.tz2=00;31:*.tbz2=00;31:*.xz=00;31:*.avi=01;35:*.bmp=01;35:*.dl=01;35:*.fli=01;35:*.gif=01;35:*.gl=01;35:*.jpg=01;35:*.jpeg=01;35:*.mkv=01;35:*.mng=01;35:*.mov=01;35:*.mp4=01;35:*.mpg=01;35:*.pcx=01;35:*.pbm=01;35:*.pgm=01;35:*.png=01;35:*.ppm=01;35:*.svg=01;35:*.tga=01;35:*.tif=01;35:*.webm=01;35:*.webp=01;35:*.wmv=01;35:*.xbm=01;35:*.xcf=01;35:*.xpm=01;35:*.aiff=00;32:*.ape=00;32:*.au=00;32:*.flac=00;32:*.m4a=00;32:*.mid=00;32:*.mp3=00;32:*.mpc=00;32:*.ogg=00;32:*.voc=00;32:*.wav=00;32:*.wma=00;32:*.wv=00;32:'
-    # }}}
+# }}}
 #{{{ Set zsh options for general runtime.
 #
 # Load the prompt system and completion system and initilize them
@@ -291,10 +326,6 @@ else
 fi
 #}}}
 #{{{ grab the rest of the packages
-source_or_install "$MODULES_DIR/zsh-users/zsh-completions/zsh-completions.plugin.zsh" zsh-users/zsh-completions
-source_or_install "$MODULES_DIR/marzocchi/zsh-notify/notify.plugin.zsh" marzocchi/zsh-notify
-source_or_install "$MODULES_DIR/srijanshetty/zsh-pandoc-completion/zsh-pandoc-completion.plugin.zsh" srijanshetty/zsh-pandoc-completion
-# source_or_install "$MODULES_DIR/Tarrasch/zsh-autoenv/autoenv.plugin.zsh" Tarrasch/zsh-autoenv
 if [[ -f /usr/share/doc/pkgfile/command-not-found.zsh ]]; then
     source /usr/share/doc/pkgfile/command-not-found.zsh
 fi
@@ -320,10 +351,6 @@ function workon() {
     else
         echo "virtualenvwrapper.sh not at  /usr/bin/virtualenvwrapper.sh"
     fi
-}
-
-function z() {
-    source_or_install "$MODULES_DIR/agkozak/zsh-z/zsh-z.plugin.zsh" agkozak/zsh-z
 }
 
 function artisan() {
@@ -405,6 +432,6 @@ fi
 if [[ "$PROFILE_STARTUP" == true ]]; then
     unsetopt xtrace
     exec 2>&3 3>&-
-    zprof > ~/zshprofile
+    zprof > ~/zshprofile$(date +'%s')
 fi
 #}}}
