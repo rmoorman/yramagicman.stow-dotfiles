@@ -9,8 +9,13 @@ if [[ "$PROFILE_STARTUP" == true ]]; then
 fi
 #}}}
 #{{{ install functions
-MODULES_DIR="$HOME/.zsh_modules"
-_flag_file="/tmp/z_loaded"
+export XDG_CONFIG_HOME=$HOME/.config
+if [[ -z  $XDG_CONFIG_HOME ]];then
+    MODULES_DIR="$HOME/.zsh_modules"
+else
+    MODULES_DIR="$XDG_CONFIG_HOME/zsh_plugins"
+fi
+_flag_file="$MODULES_DIR/.z_loaded"
 function _net_test() {
     netflag="/tmp/network_down"
     touch $netflag
@@ -25,7 +30,9 @@ function _net_test() {
         touch $netflag
         return 1
     else
-        command rm $netflag >/dev/null
+        if [[ -f "$netflag" ]]; then
+            command rm $netflag >/dev/null
+        fi
         return 0
     fi
 }
@@ -65,8 +72,7 @@ function _get_clone_dest() {
     fi
 }
 
-function update() {
-    local update_time=$(cat $MODULES_DIR/.updatetime)
+function z_update() {
     if [[ -z $UPDATE_INTERVAL ]];
     then
         UPDATE_INTERVAL=30
@@ -77,20 +83,26 @@ function update() {
         echo 0 > "$MODULES_DIR/.updatetime"
     fi
 
+    local update_time=$(cat $MODULES_DIR/.updatetime)
+
     day=$((24 * 60 * 60 ))
     gap=$(( $UPDATE_INTERVAL * $day ))
     diff="$(( $(date +'%s') - $update_time ))"
 
     if [[ $diff -gt $gap ]]; then
-        if [[ $diff -lt $(($gap * 3)) ]] && [[ ! -f '/tmp/no_z_update' ]]; then
+        if [[ $diff -lt $(($gap * 3)) ]] && [[ ! -f "$HOME/.cache/zsh/no_z_update" ]]; then
             echo "You last updated your plugins on $(date -d "@$update_time")"
             echo "Plugins will auto-update on $(date -d "@$(($update_time + $(( $gap * 3 ))))")"
             echo 'Update plugins? y/Y to confirm, anything else to ignore.'
-            read confirm
-            if [[ ! $confirm =~ '^(y|Y)' ]]; then
-                touch "/tmp/no_z_update"
-                return
-            fi
+                read confirm
+                if [[ ! $confirm =~ '^(y|Y)' ]]; then
+                    touch "$HOME/.cache/zsh/no_z_update"
+                    return
+                fi
+            else
+                if [[ $diff -gt $(($gap * 3)) ]] && [[ -f "$HOME/.cache/zsh/no_z_update" ]]; then
+                    rm "$HOME/.cache/zsh/no_z_update"
+                fi
         fi
         for key value in ${(kv)@}; do
             _get_clone_dest "$value"
@@ -102,7 +114,7 @@ function update() {
             echo $location
             builtin cd "$MODULES_DIR/$location/" && git pull --rebase
             echo "\n"
-        )
+         )
         date +'%s' > "$MODULES_DIR/.updatetime"
     done
     fi
@@ -111,19 +123,13 @@ function update() {
 function source_or_install() {
 
     _get_clone_dest "$2"
-    if [[ $HTTPS_CLONE -eq 1 ]]; then
-        _get_clone_url "$2" 1
-    else
-        _get_clone_url "$2"
-    fi
+    _get_clone_url "$2" $HTTPS_CLONE
     if [[ ! -d "$MODULES_DIR" ]]; then
         mkdir -p "$MODULES_DIR"
-        if [[ -f $_flag_file ]]; then
-            rm $_flag_file
-        fi
     fi
     if [[ -a $1 ]] then;
         source $1
+        touch $_flag_file
     else
         _net_test
         if [[ $? -eq 1 ]]; then
@@ -166,7 +172,7 @@ function pkgs() {
         "$MODULES_DIR/zsh-users/zsh-completions/zsh-completions.plugin.zsh" zsh-users/zsh-completions
     )
     load_pkgs $PKGS
-    update $PKGS
+    z_update $PKGS
 }
 pkgs
 unset _flag_file
@@ -383,7 +389,6 @@ export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
 export VIRTUALENVWRAPPER_SCRIPT=/usr/bin/virtualenvwrapper.sh
 #}}}
 #{{{ random user opions
-export XDG_CONFIG_HOME=$HOME/.config
 export BROWSER=firefox
 export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -g ""'
 export FZF_CTRL_T_COMMAND='ag --hidden --ignore .git -g ""'
