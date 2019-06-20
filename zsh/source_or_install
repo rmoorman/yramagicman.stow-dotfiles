@@ -1,5 +1,4 @@
 function source_or_install() {
-    _flag_file="$MODULES_DIR/.z_loaded"
     _get_clone_dest "$1"
     _get_clone_url "$1" $HTTPS_CLONE
     _get_plugin_name
@@ -9,19 +8,14 @@ function source_or_install() {
     fi
     if [[ -a "$MODULES_DIR/$location/init.zsh" ]] then;
         source "$MODULES_DIR/$location/init.zsh"
-        touch $_flag_file
     elif [[ -a "$MODULES_DIR/$location/$plug_name.plugin.zsh" ]]; then
         source "$MODULES_DIR/$location/$plug_name.plugin.zsh"
-        touch $_flag_file
     elif [[ -a "$MODULES_DIR/$location/$plug_name.zsh-theme" ]]; then
         source "$MODULES_DIR/$location/$plug_name.zsh-theme"
-        touch $_flag_file
     elif [[ -a "$MODULES_DIR/$location/$2.plugin.zsh" ]]; then
         source "$MODULES_DIR/$location/$2.plugin.zsh"
-        touch $_flag_file
     elif [[ -a "$MODULES_DIR/$location/$2.zsh-theme" ]]; then
         source "$MODULES_DIR/$location/$2.zsh-theme"
-        touch $_flag_file
     else
         _net_test
         if [[ $? -eq 1 ]]; then
