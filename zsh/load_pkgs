@@ -1,0 +1,9 @@
+function load_pkgs() {
+    tput civis
+    for key value in ${(kv)@}
+    do
+        source_or_install $key $value
+    done
+    tput cnorm
+    unset _flag_file
+}

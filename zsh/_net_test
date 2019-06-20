@@ -1,0 +1,20 @@
+function _net_test() {
+    netflag="/tmp/network_down"
+    touch $netflag
+    if [[ -n "$(curl -s --max-time 4 -I http://example.com | grep 200)" ]]; then
+        command rm $netflag >/dev/null
+        return 0
+    elif [[ -a $netflag ]]; then
+        return 1
+    elif [[ -z "$(curl -s --max-time 4 -I http://example.com | grep 200)" ]]; then
+        echo "NO NETWORK"
+        tput bel
+        touch $netflag
+        return 1
+    else
+        if [[ -f "$netflag" ]]; then
+            command rm $netflag >/dev/null
+        fi
+        return 0
+    fi
+}

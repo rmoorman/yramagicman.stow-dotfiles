@@ -10,149 +10,15 @@ fi
 #}}}
 #{{{ install functions
 export XDG_CONFIG_HOME=$HOME/.config
+
 if [[ -z  $XDG_CONFIG_HOME ]];then
     MODULES_DIR="$HOME/.zsh_modules"
 else
     MODULES_DIR="$XDG_CONFIG_HOME/zsh_plugins"
 fi
-_flag_file="$MODULES_DIR/.z_loaded"
-function _net_test() {
-    netflag="/tmp/network_down"
-    touch $netflag
-    if [[ -n "$(curl -s --max-time 4 -I http://example.com | grep 200)" ]]; then
-        command rm $netflag >/dev/null
-        return 0
-    elif [[ -a $netflag ]]; then
-        return 1
-    elif [[ -z "$(curl -s --max-time 4 -I http://example.com | grep 200)" ]]; then
-        echo "NO NETWORK"
-        tput bel
-        touch $netflag
-        return 1
-    else
-        if [[ -f "$netflag" ]]; then
-            command rm $netflag >/dev/null
-        fi
-        return 0
-    fi
-}
 
-function _get_clone_url() {
-
-    if [[ $1 =~ '^(git@|https)' ]]; then
-        cloneurl="$1"
-        if [[ $2 -eq 1 ]]; then
-            if [[ $1 =~ '.*github.*' ]]; then
-                cloneurl="https://github.com/$location"
-            fi
-            if [[ $1 =~ '.*gitlab.*' ]]; then
-                cloneurl="https://gitlab.com/$location"
-            fi
-        fi
-    else
-        cloneurl="git@github.com:$1"
-        if [[ $2 -eq 1 ]]; then
-            cloneurl="https://github.com/$1"
-        fi
-    fi
-}
-
-function _get_clone_dest() {
-
-    if [[ $1 =~ '^(git@|https)' ]]; then
-        tillcolon=("${(@s/:/)1}")
-        if [[ $tillcolon[1] = 'https' ]]; then
-            atslashes=("${(@s#/#)tillcolon}")
-            location="$atslashes[-2]/$atslashes[-1]"
-        else
-            location="$tillcolon[-1]"
-        fi
-    else
-        location=$1
-    fi
-}
-
-function z_update() {
-    if [[ -z $UPDATE_INTERVAL ]];
-    then
-        UPDATE_INTERVAL=30
-    fi
-
-    if [[ ! -a $MODULES_DIR/.updatetime ]];
-    then
-        echo 0 > "$MODULES_DIR/.updatetime"
-    fi
-
-    local update_time=$(cat $MODULES_DIR/.updatetime)
-
-    day=$((24 * 60 * 60 ))
-    gap=$(( $UPDATE_INTERVAL * $day ))
-    diff="$(( $(date +'%s') - $update_time ))"
-
-    if [[ $diff -gt $gap ]]; then
-        if [[ $diff -lt $(($gap * 3)) ]] && [[ ! -f "$HOME/.cache/zsh/no_z_update" ]]; then
-            echo "You last updated your plugins on $(date -d "@$update_time")"
-            echo "Plugins will auto-update on $(date -d "@$(($update_time + $(( $gap * 3 ))))")"
-            echo 'Update plugins? y/Y to confirm, anything else to ignore.'
-                read confirm
-                if [[ ! $confirm =~ '^(y|Y)' ]]; then
-                    touch "$HOME/.cache/zsh/no_z_update"
-                    return
-                fi
-            else
-                if [[ $diff -gt $(($gap * 3)) ]] && [[ -f "$HOME/.cache/zsh/no_z_update" ]]; then
-                    rm "$HOME/.cache/zsh/no_z_update"
-                fi
-        fi
-        for key value in ${(kv)@}; do
-            _get_clone_dest "$value"
-            (
-            _net_test
-            if [[ $? -eq 1 ]]; then
-                return
-            fi
-            echo $location
-            builtin cd "$MODULES_DIR/$location/" && git pull --rebase
-            echo "\n"
-         )
-        date +'%s' > "$MODULES_DIR/.updatetime"
-    done
-    fi
-}
-
-function source_or_install() {
-
-    _get_clone_dest "$2"
-    _get_clone_url "$2" $HTTPS_CLONE
-    if [[ ! -d "$MODULES_DIR" ]]; then
-        mkdir -p "$MODULES_DIR"
-    fi
-    if [[ -a $1 ]] then;
-        source $1
-        touch $_flag_file
-    else
-        _net_test
-        if [[ $? -eq 1 ]]; then
-            echo "oops"
-            return
-        fi
-        setopt nonotify nomonitor
-        git clone -q --depth 3 "$cloneurl" "$MODULES_DIR/$location" &
-        echo "cloning $cloneurl into $location"
-        date +'%s' > "$MODULES_DIR/.updatetime"
-        echo "\n"
-    fi
-}
-
-function load_pkgs() {
-    tput civis
-    for key value in ${(kv)@}
-    do
-        source_or_install $key $value
-    done
-    tput cnorm
-}
-
+fpath=("$HOME/.zsh" $fpath)
+autoload $HOME/.zsh/*
 #}}}
 #{{{ Load packages
 source ~/.zprofile
@@ -166,7 +32,6 @@ function pkgs() {
     z_update $PKGS
 }
 pkgs
-unset _flag_file
 unfunction pkgs >/dev/null 2>&1
 #}}}
 # {{{ ls colors, and other colors

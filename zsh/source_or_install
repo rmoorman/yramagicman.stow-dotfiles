@@ -1,0 +1,24 @@
+function source_or_install() {
+
+    _flag_file="$MODULES_DIR/.z_loaded"
+    _get_clone_dest "$2"
+    _get_clone_url "$2" $HTTPS_CLONE
+    if [[ ! -d "$MODULES_DIR" ]]; then
+        mkdir -p "$MODULES_DIR"
+    fi
+    if [[ -a $1 ]] then;
+        source $1
+        touch $_flag_file
+    else
+        _net_test
+        if [[ $? -eq 1 ]]; then
+            echo "oops"
+            return
+        fi
+        setopt nonotify nomonitor
+        git clone -q --depth 3 "$cloneurl" "$MODULES_DIR/$location" &
+        echo "cloning $cloneurl into $location"
+        date +'%s' > "$MODULES_DIR/.updatetime"
+        echo "\n"
+    fi
+}
