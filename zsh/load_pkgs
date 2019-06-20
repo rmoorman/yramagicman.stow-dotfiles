@@ -5,5 +5,4 @@ function load_pkgs() {
         source_or_install $name $alt
     done
     tput cnorm
-    unset _flag_file
 }
