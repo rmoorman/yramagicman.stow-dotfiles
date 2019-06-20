@@ -136,30 +136,21 @@ function source_or_install() {
             echo "oops"
             return
         fi
-
-        git clone --depth 3 "$cloneurl" "$MODULES_DIR/$location"
-        find $MODULES_DIR -type d -delete 2>/dev/null
-        if [[ ! -d $MODULES_DIR/$location  ]]; then
-            echo "nothing cloned"
-            export HTTPS_CLONE=1
-        fi
+        setopt nonotify nomonitor
+        git clone -q --depth 3 "$cloneurl" "$MODULES_DIR/$location" &
+        echo "cloning $cloneurl into $location"
         date +'%s' > "$MODULES_DIR/.updatetime"
         echo "\n"
     fi
 }
 
 function load_pkgs() {
+    tput civis
     for key value in ${(kv)@}
     do
         source_or_install $key $value
     done
-    if [[ -f $_flag_file ]]; then
-        return
-    else
-        touch $_flag_file
-        echo "reloading"
-        source $HOME/.zshrc
-    fi
+    tput cnorm
 }
 
 #}}}
@@ -345,7 +336,11 @@ fi
 if [[ "$TMUX" != '' ]]; then
     if [[ -z "$(pgrep tmuxcopy )" ]];
     then
+
+        setopt nonotify nomonitor
         tmuxcopy &
+        disown
+        unsetopt nonotify nomonitor
     fi
 fi
 
