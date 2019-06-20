@@ -22,14 +22,15 @@ autoload $HOME/.zsh/*
 #}}}
 #{{{ Load packages
 source ~/.zprofile
+
 function pkgs() {
-    local PKGS=(
-        "$MODULES_DIR/yramagicman/zsh-aliases/init.zsh" "git@gitlab.com:yramagicman/zsh-aliases"
-        "$MODULES_DIR/agkozak/zsh-z/zsh-z.plugin.zsh" agkozak/zsh-z
-        "$MODULES_DIR/zsh-users/zsh-completions/zsh-completions.plugin.zsh" zsh-users/zsh-completions
-    )
-    load_pkgs $PKGS
-    z_update $PKGS
+    pkg init
+    pkg zsh-users/zsh-completions
+    pkg agkozak/zsh-z
+    pkg "git@gitlab.com:yramagicman/zsh-aliases"
+
+    load_pkgs
+    z_update
 }
 pkgs
 unfunction pkgs >/dev/null 2>&1
@@ -44,7 +45,6 @@ autoload -Uz compinit promptinit
 # Load and initialize the completion system ignoring insecure directories with a
 # cache time of 20 hours, so it should almost always regenerate the first time a
 # shell is opened each day.
-autoload -Uz compinit
 _comp_files=(${ZDOTDIR:-$HOME}/.zcompdump(Nm-20))
 if (( $#_comp_files )); then
   compinit -i -C

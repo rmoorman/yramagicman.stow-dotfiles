@@ -1,0 +1,11 @@
+function pkg() {
+    if [[ "$1" == 'init' ]]; then
+        pkgs=()
+        return
+    fi
+    if [[ ! -z $2 ]]; then
+        pkgs+=($1 $2)
+    else
+        pkgs+=($1 0)
+    fi
+}
