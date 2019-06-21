@@ -2,7 +2,7 @@ function _load_pkgs() {
     tput civis
     for name alt in ${(kv)pkgs}
     do
-        source_or_install $name $alt
+        _source_or_install $name $alt
     done
     tput cnorm
 }

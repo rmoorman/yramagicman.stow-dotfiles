@@ -4,6 +4,9 @@ function pkg() {
         return
     elif [[ "$1" == 'load' ]]; then
         _load_pkgs
+        return
+    elif [[ "$1" == 'update' ]]; then
+        _update $pkgs
     fi
     if [[ -z $2 ]]; then
         pkgs+=($1 0)

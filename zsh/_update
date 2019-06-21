@@ -1,4 +1,4 @@
-function z_update() {
+function _update() {
     if [[ -z $UPDATE_INTERVAL ]];
     then
         UPDATE_INTERVAL=30
@@ -31,7 +31,7 @@ function z_update() {
                 fi
         fi
         for key value in ${(kv)@}; do
-            _get_clone_dest "$value"
+            _get_clone_dest "$key"
             (
             _net_test
             if [[ $? -eq 1 ]]; then
