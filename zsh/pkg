@@ -3,7 +3,9 @@ function pkg() {
         pkgs=()
         return
     elif [[ "$1" == 'load' ]]; then
+        procs=()
         _load_pkgs
+        unset procs
         return
     elif [[ "$1" == 'update' ]]; then
         _update $pkgs

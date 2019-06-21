@@ -4,5 +4,24 @@ function _load_pkgs() {
     do
         _source_or_install $name $alt
     done
+    local dead=();
+    if [[ $#procs > 0 ]]; then
+        while [[ $#procs -ne $#dead ]]; do
+            for p in $procs; do
+                ps -p $p > /dev/null
+
+                if [[ $? > 0 ]];then
+
+                    if [[ ${dead[(Ie)$p]} -eq 0 ]]; then
+                        dead+=($p)
+                    fi
+                fi
+            done
+
+            builtin printf "\033[2K\rCompleted %s  of  %s " $#dead $#procs
+        done
+        source $HOME/.zshrc
+    fi
+    echo
     tput cnorm
 }

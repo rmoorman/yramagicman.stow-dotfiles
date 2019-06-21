@@ -23,9 +23,11 @@ function _source_or_install() {
             return
         fi
         setopt nonotify nomonitor
+
         git clone -q --depth 3 "$cloneurl" "$MODULES_DIR/$location" &
-        echo "cloning $cloneurl into $location"
+        procs+=($!)
+
+        echo "cloning $cloneurl into $MODULES_DIR/$location"
         date +'%s' > "$MODULES_DIR/.updatetime"
-        echo "\n"
     fi
 }
