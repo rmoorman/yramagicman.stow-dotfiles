@@ -1,4 +1,4 @@
-function source_or_install() {
+function _source_or_install() {
     _get_clone_dest "$1"
     _get_clone_url "$1" $HTTPS_CLONE
     _get_plugin_name

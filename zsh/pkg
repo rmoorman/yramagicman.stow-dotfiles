@@ -2,10 +2,12 @@ function pkg() {
     if [[ "$1" == 'init' ]]; then
         pkgs=()
         return
+    elif [[ "$1" == 'load' ]]; then
+        _load_pkgs
     fi
-    if [[ ! -z $2 ]]; then
-        pkgs+=($1 $2)
-    else
+    if [[ -z $2 ]]; then
         pkgs+=($1 0)
+    else
+        pkgs+=($1 $2)
     fi
 }

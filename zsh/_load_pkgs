@@ -1,4 +1,4 @@
-function load_pkgs() {
+function _load_pkgs() {
     tput civis
     for name alt in ${(kv)pkgs}
     do
