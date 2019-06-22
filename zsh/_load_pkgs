@@ -20,8 +20,8 @@ function _load_pkgs() {
 
             builtin printf "\033[2K\rCompleted %s  of  %s " $#dead $#procs
         done
+        echo
         source $HOME/.zshrc
     fi
-    echo
     tput cnorm
 }
