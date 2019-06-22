@@ -21,7 +21,10 @@ function _load_pkgs() {
             builtin printf "\033[2K\rCompleted %s  of  %s " $#dead $#procs
         done
         echo
-        source $HOME/.zshrc
+        if [[ -f /tmp/z_sourced ]]; then
+            source $HOME/.zshrc
+            touch /tmp/z_sourced
+        fi
     fi
     tput cnorm
 }

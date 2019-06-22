@@ -1,4 +1,7 @@
 function pkg() {
+    zparseopts -E -D -A opts a:=alt -alt:=alt f:=from -from:=from t=theme
+    alternate=$alt[2]
+    src=$from[2]
     if [[ "$1" == 'init' ]]; then
         pkgs=()
         return
@@ -10,9 +13,17 @@ function pkg() {
     elif [[ "$1" == 'update' ]]; then
         _update $pkgs
     fi
-    if [[ -z $2 ]]; then
-        pkgs+=($1 0)
+    if [[ $alternate ]]; then
+        pkgs+=($1 $alternate)
+    elif [[ $src ]]; then
+        if [[ $src=~'^(o|omz|ohmyzsh|oh-my-zsh)' ]]; then
+            if [[ $theme ]]; then
+                pkgs+=('robbyrussell/oh-my-zsh' "themes/$1")
+            else
+                pkgs+=('robbyrussell/oh-my-zsh' "plugins/$1/$1")
+            fi
+        fi
     else
-        pkgs+=($1 $2)
+        pkgs+=($1 0)
     fi
 }

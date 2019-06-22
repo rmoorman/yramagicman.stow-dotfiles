@@ -1,5 +1,5 @@
 #{{{ profiling tools
-PROFILE_STARTUP=false
+PROFILE_STARTUP=true
 if [[ "$PROFILE_STARTUP" == true ]]; then
     zmodload zsh/zprof
     # http://zsh.sourceforge.net/Doc/Release/Prompt-Expansion.html
