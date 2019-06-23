@@ -16,6 +16,10 @@ function _source_or_install() {
         source "$MODULES_DIR/$location/$2.plugin.zsh"
     elif [[ -a "$MODULES_DIR/$location/$2.zsh-theme" ]]; then
         source "$MODULES_DIR/$location/$2.zsh-theme"
+    elif [[ -a "$MODULES_DIR/$location/$2.zsh" ]]; then
+        source "$MODULES_DIR/$location/$2.zsh"
+    elif [[ -a "$MODULES_DIR/$location/$2.sh" ]]; then
+        source "$MODULES_DIR/$location/$2.sh"
     else
         _net_test
         if [[ $? -eq 1 ]]; then

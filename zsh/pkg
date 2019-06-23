@@ -1,13 +1,18 @@
 function pkg() {
-    zparseopts -E -D -A opts a:=alt -alt:=alt f:=from -from:=from t=theme
-    alternate=$alt[2]
-    src=$from[2]
+    zparseopts -E -D -A opts a:=alt -alt:=alt f:=from -from:=from t=theme d:=depends
+    local alternate=$alt[2]
+    local src=$from[2]
+    local deps=$depends[2]
     if [[ "$1" == 'init' ]]; then
         pkgs=()
         return
     elif [[ "$1" == 'load' ]]; then
         procs=()
         _load_pkgs
+        if [[ $#procs > 0 ]]; then
+            echo 'reloading...'
+            source $HOME/.zshrc
+        fi
         unset procs
         return
     elif [[ "$1" == 'update' ]]; then
@@ -17,10 +22,21 @@ function pkg() {
         pkgs+=($1 $alternate)
     elif [[ $src ]]; then
         if [[ $src=~'^(o|omz|ohmyzsh|oh-my-zsh)' ]]; then
+            local d=("${(@s#,#)deps}")
             if [[ $theme ]]; then
                 pkgs+=('robbyrussell/oh-my-zsh' "themes/$1")
+                if [[ $d ]]; then
+                    for p in $d; do
+                        pkgs+=('robbyrussell/oh-my-zsh' "$p")
+                    done
+                fi
             else
                 pkgs+=('robbyrussell/oh-my-zsh' "plugins/$1/$1")
+                if [[ $d ]]; then
+                    for p in $d; do
+                        pkgs+=('robbyrussell/oh-my-zsh' "$p")
+                    done
+                fi
             fi
         fi
     else

@@ -47,6 +47,7 @@ else
 fi
 unset _comp_files
 promptinit
+setopt prompt_subst
 
 # load colors
 autoload -U colors && colors

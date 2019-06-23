@@ -6,25 +6,13 @@ function _load_pkgs() {
     done
     local dead=();
     if [[ $#procs > 0 ]]; then
-        while [[ $#procs -ne $#dead ]]; do
-            for p in $procs; do
-                ps -p $p > /dev/null
-
-                if [[ $? > 0 ]];then
-
-                    if [[ ${dead[(Ie)$p]} -eq 0 ]]; then
-                        dead+=($p)
-                    fi
-                fi
-            done
-
-            builtin printf "\033[2K\rCompleted %s  of  %s " $#dead $#procs
+        count=1
+        for p in $procs; do
+            wait $p
+            builtin printf "\033[2K\rCompleted %s  of  %s " $count $#procs
+            count=$(( $count + 1 ))
         done
         echo
-        if [[ -f /tmp/z_sourced ]]; then
-            source $HOME/.zshrc
-            touch /tmp/z_sourced
-        fi
     fi
     tput cnorm
 }
