@@ -12,3 +12,4 @@
 00 11 * * * /usr/bin/find "/home/jonathan/" -type f -name php_errors.log -delete > /tmp/nohup
 37 16 * * * /usr/bin/pacman -Qeq > /home/jonathan/Gits/dots/bin/setup/packages
 */15 * * * * checkupdates > /home/jonathan/.cache/updates
+*/15 * * * * cower -u > /home/jonathan/.cache/aur

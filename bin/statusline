@@ -88,8 +88,12 @@ function my_update() {
     then
         notify-send 'check your user crontab'
     fi
-    if [[ "$(cat  $HOME/.cache/updates | wc -l )" -gt 10 ]]; then
+    if [[ "$(cat  $HOME/.cache/updates | wc -l )" -gt 10 ]] && [[ ! "$(cat $HOME/.cache/aur)" ]]; then
         echo " U: $(cat $HOME/.cache/updates | wc -l)"
+    elif [[ "$(cat  $HOME/.cache/updates | wc -l )" -gt 10 ]] && [[ "$(cat $HOME/.cache/aur | wc -l )"  ]]; then
+        echo " U: $(cat $HOME/.cache/updates | wc -l) + $(cat $HOME/.cache/aur | wc -l )"
+    else
+        # do nothing
     fi
 }
 
