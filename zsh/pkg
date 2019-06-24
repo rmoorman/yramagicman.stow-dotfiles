@@ -1,5 +1,5 @@
 function pkg() {
-    zparseopts -E -D -A opts a:=alt -alt:=alt f:=from -from:=from t=theme d:=depends
+    zparseopts -E -D -A opts a:=alt -alt:=alt f:=from -from:=from -theme=theme t=theme d:=depends
     local alternate=$alt[2]
     local src=$from[2]
     local deps=$depends[2]
@@ -25,21 +25,22 @@ function pkg() {
             local d=("${(@s#,#)deps}")
             if [[ $theme ]]; then
                 pkgs+=('robbyrussell/oh-my-zsh' "themes/$1")
-                if [[ $d ]]; then
-                    for p in $d; do
-                        pkgs+=('robbyrussell/oh-my-zsh' "$p")
-                    done
-                fi
+                _source_deps
             else
                 pkgs+=('robbyrussell/oh-my-zsh' "plugins/$1/$1")
-                if [[ $d ]]; then
-                    for p in $d; do
-                        pkgs+=('robbyrussell/oh-my-zsh' "$p")
-                    done
-                fi
+                _source_deps
             fi
         fi
     else
         pkgs+=($1 0)
+    fi
+}
+
+function _source_deps() {
+
+    if [[ $d ]]; then
+        for p in $d; do
+            pkgs+=('robbyrussell/oh-my-zsh' "$p")
+        done
     fi
 }
