@@ -33,9 +33,9 @@ function pkg() {
         fi
         if [[ $src =~ '^(prezto)' ]]; then
             pkgs+=('sorin-ionescu/prezto' "modules/$1/init")
-            if [[ "$1" == 'prompt' ]]; then
+            if [[ -d "$MODULES_DIR/$location/modules/$1/functions"  ]]; then
                 _get_clone_dest 'sorin-ionescu/prezto'
-                fpath=("$MODULES_DIR/$location/modules/prompt/functions" $fpath)
+                fpath=("$MODULES_DIR/$location/modules/$1/functions" $fpath)
                 unset location
             fi
         fi
