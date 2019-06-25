@@ -6,11 +6,16 @@ function _load_pkgs() {
     done
     local dead=();
     if [[ $#procs > 0 ]]; then
-        count=1
-        for p in $procs; do
+        errs=0
+        for p name in ${(kv)procs}; do
             wait $p
-            builtin printf "\033[2K\rCompleted %s  of  %s " $count $#procs
-            count=$(( $count + 1 ))
+            if [[ $? -eq 0 ]]; then
+                builtin printf "\n\rCompleted %s " $name
+            else
+                errs=$(( $errs + 1 ))
+                builtin printf "\r\nErrored out on  %s  of  %s %s\r\n " $errs $(( $#procs / 2 )) $name
+            fi
+
         done
         echo
     fi
