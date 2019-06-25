@@ -21,6 +21,7 @@ fpath=("$HOME/.zsh" $fpath)
 autoload $HOME/.zsh/*
 #}}}
 #{{{ Load packages
+
 source ~/.zprofile
 pkg init
 pkg zsh-users/zsh-completions

@@ -21,15 +21,19 @@ function pkg() {
     if [[ $alternate ]]; then
         pkgs+=($1 $alternate)
     elif [[ $src ]]; then
-        if [[ $src=~'^(o|omz|ohmyzsh|oh-my-zsh)' ]]; then
+        if [[ $src =~ '^(omz|ohmyzsh|oh-my-zsh)' ]]; then
             local d=("${(@s#,#)deps}")
             if [[ $theme ]]; then
                 pkgs+=('robbyrussell/oh-my-zsh' "themes/$1")
-                _source_deps
+                _source_deps 'robbyrussell/oh-my-zsh'
             else
                 pkgs+=('robbyrussell/oh-my-zsh' "plugins/$1/$1")
-                _source_deps
+                _source_deps 'robbyrussell/oh-my-zsh'
             fi
+        fi
+        if [[ $src =~ '^(prezto)' ]]; then
+            pkgs+=('sorin-ionescu/prezto' 0)
+            pkgs+=('sorin-ionescu/prezto' "modules/$1/init")
         fi
     else
         pkgs+=($1 0)
@@ -40,7 +44,7 @@ function _source_deps() {
 
     if [[ $d ]]; then
         for p in $d; do
-            pkgs+=('robbyrussell/oh-my-zsh' "$p")
+            pkgs+=("$1" "$p")
         done
     fi
 }

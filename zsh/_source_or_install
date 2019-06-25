@@ -6,7 +6,7 @@ function _source_or_install() {
     if [[ ! -d "$MODULES_DIR" ]]; then
         mkdir -p "$MODULES_DIR"
     fi
-    if [[ -a "$MODULES_DIR/$location/init.zsh" ]] then;
+    if [[ -a "$MODULES_DIR/$location/init.zsh" ]] && [[ "$2" == 0 ]] then;
         source "$MODULES_DIR/$location/init.zsh"
     elif [[ -a "$MODULES_DIR/$location/$plug_name.plugin.zsh" ]]; then
         source "$MODULES_DIR/$location/$plug_name.plugin.zsh"
@@ -28,10 +28,12 @@ function _source_or_install() {
         fi
         setopt nonotify nomonitor
 
-        git clone -q --depth 3 "$cloneurl" "$MODULES_DIR/$location" &
-        procs+=($!)
+        if [[ ! -d "$MODULES_DIR/$location" ]]; then
+            git clone -q --depth 3 "$cloneurl" "$MODULES_DIR/$location" &
+            procs+=($!)
 
-        echo "cloning $cloneurl into $MODULES_DIR/$location"
-        date +'%s' > "$MODULES_DIR/.updatetime"
+            echo "cloning $cloneurl into $MODULES_DIR/$location"
+            date +'%s' > "$MODULES_DIR/.updatetime"
+        fi
     fi
 }
