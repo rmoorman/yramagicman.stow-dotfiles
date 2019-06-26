@@ -29,8 +29,8 @@ function _source_or_install() {
         setopt nonotify nomonitor
 
         if [[ ! -d "$MODULES_DIR/$location" ]]; then
-            echo $location >>"$MODULES_DIR/log"
-            git clone -q --recursive --depth 3 "$cloneurl" "$MODULES_DIR/$location" 2>>"$MODULES_DIR/log" &
+            mkdir -p "$MODULES_DIR/logs"
+            git clone -q --recursive --depth 3 "$cloneurl" "$MODULES_DIR/$location" 2>>"$MODULES_DIR/logs/$$" &
             procs+=($! $location)
 
             echo "cloning $location into $MODULES_DIR/$location"

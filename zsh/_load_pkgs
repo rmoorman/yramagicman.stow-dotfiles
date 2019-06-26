@@ -13,7 +13,12 @@ function _load_pkgs() {
                 builtin printf "\n\rCompleted %s " $name
             else
                 errs=$(( $errs + 1 ))
-                builtin printf "\r\nErrored out on  %s  of  %s %s\r\n " $errs $(( $#procs / 2 )) $name
+                builtin printf "\r\nErrored out on  %s  of  %s %s check %s for more\r\n " $errs $(( $#procs / 2 )) $name "$MODULES_DIR/logs/$p"
+                    tput cnorm
+                    echo "Remove directory associated with failed clone?"
+                    atslashes=("${(@s#/#)name}")
+                    command rm -ri "$MODULES_DIR/$atslashes[1]"
+                    tput civis
             fi
 
         done

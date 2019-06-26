@@ -11,6 +11,7 @@ function pkg() {
         _load_pkgs
         if [[ $#procs -gt 0 ]] && [[ $errs -eq 0 ]]; then
             echo 'reloading...'
+            command rm -r "$MODULES_DIR/logs"
             source $HOME/.zshrc
         fi
         unset procs
