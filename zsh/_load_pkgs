@@ -4,23 +4,32 @@ function _load_pkgs() {
     do
         _source_or_install $name $alt
     done
-    local dead=();
+    local dead=-1;
     if [[ $#procs > 0 ]]; then
-        errs=0
-        for p name in ${(kv)procs}; do
-            wait $p
-            if [[ $? -eq 0 ]]; then
-                builtin printf "\n\rCompleted %s " $name
-            else
-                errs=$(( $errs + 1 ))
-                builtin printf "\r\nErrored out on  %s  of  %s %s check %s for more\r\n " $errs $(( $#procs / 2 )) $name "$MODULES_DIR/logs/$p"
-                    tput cnorm
-                    echo "Remove directory associated with failed clone?"
-                    atslashes=("${(@s#/#)name}")
-                    command rm -ri "$MODULES_DIR/$atslashes[1]"
-                    tput civis
-            fi
-
+        local errs=0
+        local count=0
+        local sleeptime=0.5
+        while [[ $dead -lt $(( ( $#procs / 2  ) + 1 )) ]]; do
+            for p name in ${(kv)procs}; do
+                ps -q $p > /dev/null
+                dead=$(( $dead + $?))
+            done
+            local msg=''
+            local spinner=('|' '\' '-' '/')
+            for p name in ${(kv)procs}; do
+                ps -q $p > /dev/null
+                if [[ $? -eq 1 ]]; then
+                    msg="$msg \033[2K\r"
+                    msg="$msg completed $name\n"
+                else
+                    msg="$msg \033[2K\r"
+                    msg="$msg $spinner[$(( ( $count % 4 ) + 1 ))] cloning $name into $MODULES_DIR/$name \n"
+                fi
+                count=$(( $count + 1))
+            done
+            printf "\033[%sA" "$(( $#pkgs / 2  ))"
+            builtin printf $msg
+            sleep $sleeptime
         done
         echo
     fi

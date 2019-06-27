@@ -11,7 +11,6 @@ function pkg() {
         _load_pkgs
         if [[ $#procs -gt 0 ]] && [[ $errs -eq 0 ]]; then
             echo 'reloading...'
-            command rm -r "$MODULES_DIR/logs"
             source $HOME/.zshrc
         fi
         unset procs
@@ -34,12 +33,7 @@ function pkg() {
         fi
         if [[ $src =~ '^(prezto)' ]]; then
             pkgs+=('sorin-ionescu/prezto' "modules/$1/init")
-            if [[ -d "$MODULES_DIR/$location/modules/$1/functions"  ]]; then
-                _get_clone_dest 'sorin-ionescu/prezto'
-                fpath=("$MODULES_DIR/$location/modules/$1/functions" $fpath)
-                _source_deps 'sorin-ionescu/prezto'
-                unset location
-            fi
+            _source_deps 'sorin-ionescu/prezto'
         fi
     else
         pkgs+=($1 0)
