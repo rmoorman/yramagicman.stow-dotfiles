@@ -6,7 +6,7 @@ function _load_pkgs() {
     done
     local dead=-1;
     if [[ $#procs > 0 ]]; then
-        local errs=0
+        errs=0
         local count=0
         local sleeptime=0.5
         while [[ $dead -lt $(( ( $#procs / 2  ) + 1 )) ]]; do
@@ -25,6 +25,10 @@ function _load_pkgs() {
                     msg="$msg \033[2K\r"
                     msg="$msg $spinner[$(( ( $count % 4 ) + 1 ))] cloning $name into $MODULES_DIR/$name \n"
                 fi
+                if grep -qi 'error' $MODULES_DIR/logs/*; then
+                    errs=$(( $errs + 1))
+                fi
+
                 count=$(( $count + 1))
             done
             printf "\033[%sA" "$(( $#pkgs / 2  ))"

@@ -11,10 +11,22 @@ function pkg() {
         _load_pkgs
         if [[ $#procs -gt 0 ]] && [[ $errs -eq 0 ]]; then
             echo 'reloading...'
+            mkdir -p "$MODULES_DIR/log_backups"
+            command mv $MODULES_DIR/logs/ $MODULES_DIR/log_backups/logs_$( date +'%j%H%M%S' )
+            # du -h "$MODULES_DIR/log_backups"
             source $HOME/.zshrc
+        elif [[ $errs -gt 0 ]]; then
+            _handle_errors
+        else
+            # do nothing
         fi
         unset procs
+        unset errs
         return
+    elif [[ $1 == 'clear-errors' ]]; then
+        _clear_errors
+    elif [[ $1 == 'clear-logs' ]]; then
+        _clear_logs
     elif [[ "$1" == 'update' ]]; then
         _update $pkgs
     fi
@@ -47,3 +59,48 @@ function _source_deps() {
         done
     fi
 }
+
+function _handle_errors {
+
+    echo 'There were errors cloning your plugins, showing them now'
+    echo "Errors are listed by PID in $MODULES_DIR/logs"
+    (
+    cd $MODULES_DIR/logs
+    if [[ $PAGER ]]; then
+        cat $(grep -li 'error' *) | $PAGER
+    elif [[ $( command -v less ) ]]; then
+        cat $(grep -li 'error' *) | less
+    elif [[ $( command -v more ) ]]; then
+        cat $(grep -li 'error' *) | more
+    else
+        cat $(grep -li 'error' *)
+    fi
+)
+_clear_errors
+}
+
+function _clear_errors() {
+
+    local clear
+    echo 'Clear errors? {y or yes to confirm, all else cancels}'
+        read clear
+        if [[ $clear =~ '^(y|Y|yes|Yes|YES)' ]]; then
+            command rm -r $MODULES_DIR/logs
+        fi
+        unset clear
+    }
+function _clear_logs() {
+
+    local clear
+    echo 'Clear logs? {y or yes to confirm, all else cancels}'
+        read clear
+        if [[ $clear =~ '^(y|Y|yes|Yes|YES)' ]]; then
+            if [[ -d  "$MODULES_DIR/logs" ]]; then
+                command rm -r "$MODULES_DIR/logs"
+            fi
+            if [[ -d  "$MODULES_DIR/log_backups" ]]; then
+                command rm -r "$MODULES_DIR/log_backups"
+            fi
+        fi
+        unset clear
+    }

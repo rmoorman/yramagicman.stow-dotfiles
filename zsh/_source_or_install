@@ -39,7 +39,7 @@ function _source_or_install() {
 
         if [[ ! -d "$MODULES_DIR/$location" ]]; then
             mkdir -p "$MODULES_DIR/logs"
-            git clone --recursive --depth 3 "$cloneurl" "$MODULES_DIR/$location" >> $MODULES_DIR/logs/$$ 2>&1 &
+            git clone --recursive --depth 3 "$cloneurl" "$MODULES_DIR/$location" >> $MODULES_DIR/logs/$! 2>&1 &
             procs+=($! $location)
 
             date +'%s' > "$MODULES_DIR/.updatetime"
