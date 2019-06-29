@@ -24,7 +24,6 @@ autoload $HOME/.zsh/*
 source ~/.zprofile
 pkg init
 pkg colored-man-pages -f omz
-pkg prompt -f prezto
 pkg zsh-users/zsh-completions
 pkg agkozak/zsh-z
 pkg "git@gitlab.com:yramagicman/zsh-aliases"
