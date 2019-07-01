@@ -79,8 +79,8 @@ function _handle_errors {
     else
         cat $(grep -li 'error' *)
     fi
-)
-_clear_errors
+    )
+    _clear_errors
 }
 
 function _clear_errors() {
@@ -93,6 +93,7 @@ function _clear_errors() {
         fi
         unset clear
     }
+
 function _clear_logs() {
 
     local clear
