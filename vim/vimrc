@@ -19,7 +19,6 @@ set t_Co=256
 "}}}
 "{{{ Plugin loading and settings
 let g:VimPack_Setup_Folders = ['after', 'autoload', 'backup', 'colors', 'doc', 'spell', 'swaps', 'syntax','plugin', 'undo']
-let g:VimPack_Update_Frequency = 5
 let g:VimPack_Auto_Install = 1
 let g:VimPack_Auto_Update = 1
 
