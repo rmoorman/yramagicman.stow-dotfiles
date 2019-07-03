@@ -215,7 +215,6 @@ function workon() {
 }
 
 function artisan() {
-    source_or_install "$MODULES_DIR/crazybooot/laravel-zsh-plugin/laravel-artisan.plugin.zsh" crazybooot/laravel-zsh-plugin
     php artisan $*
 }
 setopt NO_BEEP
