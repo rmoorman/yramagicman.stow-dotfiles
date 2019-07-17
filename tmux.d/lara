@@ -27,8 +27,8 @@ tmux send-keys -t "$1":dev "vim $HOME/Sites/$1" Enter
 tmux new-window -t "$1" -c "$HOME/Sites/$1" -n shell
 
 
-tmux new-window -t "$1" -c "$HOME/Sites/$1" -n slack
-tmux send-keys -t "$1":slack "weechat" Enter
+tmux new-window -t "$1" -c "$HOME/Sites/$1" -n server
+tmux send-keys -t "$1":server "php artisan serve" Enter
 
 "$HOME/bin/switch_or_attach" "$1":shell.left
 exit 0
