@@ -37,7 +37,7 @@ function! functions#InsertTabWrapper()
     if !col || getline('.')[col - 1] !~ '\k'
         return "\<tab>"
     elseif pumvisible()
-        return "\<C-n>"
+        return "\<C-x>\<C-o>"
     else
         return "\<c-n>"
     endif
