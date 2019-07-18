@@ -10,6 +10,7 @@ set clipboard^=unnamedplus,unnamed
 set path-=/usr/include
 "{{{ completions
 set omnifunc=syntaxcomplete#Complete
+set completeopt=menu,menuone,noinsert,noselect
 set wildmenu
 set wildcharm=<C-z>
 set wildmode=longest:full,full

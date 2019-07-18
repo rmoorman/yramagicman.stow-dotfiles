@@ -10,15 +10,19 @@ inoremap <right> <Nop>
 "}}}
 "{{{ escape and save
 inoremap <space><space> <Esc>
+inoremap <leader>m <Esc>
 vnoremap <space><space> <Esc>
 nnoremap <space><space> :call functions#Save()<cr>
 nnoremap .<space> i<space><Esc>
 "}}}
-"{{{ Tab complete keywords
-inoremap <expr> <tab> functions#InsertTabWrapper()
+"{{{ completion mappings
+inoremap <expr> <tab> completions#InsertTabWrapper()
+inoremap <expr> <c-k>  completions#CompleteKeyword()
+call completions#BindCompleteTag("\<c-t>")
+call completions#BindCompleteKeyword("\<c-k>")
+call completions#BindCompleteFile("\<c-f>")
 inoremap <expr><S-TAB>  pumvisible() ? "\<C-p>" : "\<S-TAB>"
 cnoremap <expr> %% expand('%:h').'/'
-inoremap <c-f> <c-x><c-f>
 "}}}
 "{{{ terminal mode mappings
 tmap <space><space> <C-w>N
