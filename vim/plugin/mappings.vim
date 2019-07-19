@@ -10,7 +10,6 @@ inoremap <right> <Nop>
 "}}}
 "{{{ escape and save
 inoremap <space><space> <Esc>
-inoremap <leader>m <Esc>
 vnoremap <space><space> <Esc>
 nnoremap <space><space> :call functions#Save()<cr>
 nnoremap .<space> i<space><Esc>
