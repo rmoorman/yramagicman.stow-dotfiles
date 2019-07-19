@@ -1,6 +1,11 @@
+"{{{ configure global variables that need to be initialized immmediately
 if ! exists('g:complete_timers')
     let g:complete_timers = 0
 endif
+if ! exists('g:completion_delay')
+    let g:completion_delay = 100
+endif
+"}}}
 "{{{ tab completion
 function! completions#InsertTabWrapper()
     let col = col('.') - 1
@@ -25,7 +30,7 @@ function! completions#insertComplete()
     let l:col = col('.') - 1
     if ! pumvisible() && getline('.')[l:col - 1] =~ '\k' && g:calls < 1
         call completions#clearTimer()
-        let g:complete_timers  = timer_start(100, 'Showmenu', {'repeat': 1})
+        let g:complete_timers  = timer_start(g:completion_delay, 'Showmenu', {'repeat': 1})
     endif
     if getline('.')[l:col - 1] !~ '\k'
         let g:calls = 0
