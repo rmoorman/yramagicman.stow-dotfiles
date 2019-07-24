@@ -1,4 +1,4 @@
-set packpath+=$HOME/.vim/pack/vendor
+set packpath+=$HOME/.vim/pack/
 function! s:sanity_check()
    if  exists("g:VimPack_Setup_Folders")
        for d in g:VimPack_Setup_Folders
