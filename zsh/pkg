@@ -7,7 +7,7 @@ function pkg() {
         pkgs=()
         return
     elif [[ "$1" == 'load' ]]; then
-        procs=()
+        local procs=()
         _load_pkgs
         if [[ $#procs -gt 0 ]] && [[ $errs -eq 0 ]]; then
             if [[ -d  "$MODULES_DIR/logs/" ]]; then
@@ -24,7 +24,6 @@ function pkg() {
         else
             # do nothing
         fi
-        unset procs
         unset errs
         return
     elif [[ $1 == 'clear-errors' ]]; then
@@ -32,7 +31,7 @@ function pkg() {
     elif [[ $1 == 'clear-logs' ]]; then
         _clear_logs
     elif [[ "$1" == 'update' ]]; then
-        _update $pkgs
+        update $pkgs
     fi
     if [[ $alternate ]]; then
         pkgs+=($1 $alternate)
