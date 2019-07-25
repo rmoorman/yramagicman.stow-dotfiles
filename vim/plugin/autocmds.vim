@@ -25,6 +25,4 @@ augroup defaults
     autocmd BufEnter,CursorHold * checktime
     autocmd CursorHold * call functions#Save()
     autocmd BufEnter *.vue source $HOME/Gits/dots/vim/after/ftplugin/js.vim
-    autocmd CursorMovedI * call completions#insertComplete()
-    autocmd InsertLeave * ++nested call completions#clearTimer()
 augroup end

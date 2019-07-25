@@ -15,12 +15,12 @@ nnoremap <space><space> :call functions#Save()<cr>
 nnoremap .<space> i<space><Esc>
 "}}}
 "{{{ completion mappings
-inoremap <expr> <tab> completions#InsertTabWrapper()
-inoremap <expr> <c-k>  completions#CompleteKeyword()
-call completions#BindCompleteTag("\<c-t>")
-call completions#BindCompleteKeyword("\<c-k>")
-call completions#BindCompleteFile("\<c-f>")
-inoremap <expr><S-TAB>  pumvisible() ? "\<C-p>" : "\<S-TAB>"
+"inoremap <expr> <tab> completions#InsertTabWrapper()
+"inoremap <expr> <c-k>  completions#CompleteKeyword()
+"call completions#BindCompleteTag("\<c-t>")
+"call completions#BindCompleteKeyword("\<c-k>")
+"call completions#BindCompleteFile("\<c-f>")
+" inoremap <expr><S-TAB>  pumvisible() ? "\<C-p>" : "\<S-TAB>"
 cnoremap <expr> %% expand('%:h').'/'
 "}}}
 "{{{ terminal mode mappings
