@@ -30,6 +30,7 @@ PlugStart 'vim-scripts/vim-indent-object'
 PlugStart 'tpope/vim-surround'
 PlugStart 'bronson/vim-visual-star-search'
 PlugStart 'tpope/vim-repeat'
+PlugStart 'git@gitlab.com:yramagicman/auto-omnicomplete'
 PlugOpt 'dzeban/vim-log-syntax'
 PlugOpt 'w0rp/ale'
 PlugOpt 'leafgarland/typescript-vim'
@@ -49,12 +50,12 @@ augroup extensions
     autocmd FileType typescript packadd typescript-vim
     autocmd FileType html packadd html5.vim
     autocmd FileType scss packadd Sass
-    autocmd FileType scss,css packadd vim-css3-syntax
+    autocmd FileType scss,css nested packadd vim-css3-syntax
     autocmd BufRead *.blade.php silent! packadd vim-blade | redraw
     autocmd BufRead *.blade.php silent! set filetype=blade | redraw
     autocmd BufRead *.vue silent! packadd vim-vue | redraw
-    autocmd BufRead *.vue silent! packadd ale | redraw
-    autocmd BufRead *.vue silent! set filetype=vue | redraw
+    autocmd BufRead *.vue nested silent! packadd ale | redraw
+    autocmd BufRead *.vue nested silent! set filetype=vue | redraw
     autocmd FileType vue syn sync fromstart
 augroup end
 "}}}
