@@ -34,16 +34,9 @@ set_screen_layout
 "$HOME/bin/statusloop" &
 ("$HOME/.dwm/scripts/bg.sh") &
 
-set_screen_layout
-
 xset -dpms; xset s off &
 
-if test "$(hostname)" == "observer"
-then
-    true
-else
-    (sleep 1s && check_process compton -b)
-fi
+(sleep 1s && check_process compton -b)
 
 (sleep 1s && /usr/bin/xscreensaver -no-splash) &
 (sleep 5s  && "$HOME/bin/get_remote_ip") &
