@@ -107,6 +107,12 @@ if exists("&undodir")
     set undodir=~/.vim/undo//
     set undofile
 endif
+
+if has('gui_running')
+    colorscheme darkblue
+    set guioptions -=m
+    set guioptions -=T
+endif
 "}}}
 "{{{ statusline
 " Show statusline, always
