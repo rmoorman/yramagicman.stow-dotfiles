@@ -11,7 +11,7 @@
 
 (require 'package)
 (add-to-list 'package-archives
-             '("melpa-stable" . "https://melpa.org/packages/"))
+             '("melpa" . "https://melpa.org/packages/"))
 
 (if (fboundp 'menu-bar-mode) (menu-bar-mode -1))
 (if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
