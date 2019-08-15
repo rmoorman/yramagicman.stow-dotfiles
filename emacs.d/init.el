@@ -53,6 +53,8 @@
   (evil-leader/set-leader ",")
   (evil-leader/set-key
     "," 'evil-switch-to-windows-last-buffer
+    "s" 'magit-status
+    "c" 'magit-commit-create
     "SPC" 'save-buffer)
   (global-evil-leader-mode 1))
 
