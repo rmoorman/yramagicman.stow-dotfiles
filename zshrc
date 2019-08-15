@@ -1,3 +1,4 @@
+#!usr/bin/env zsh
 #{{{ profiling tools
 PROFILE_STARTUP=false
 if [[ "$PROFILE_STARTUP" == true ]]; then
@@ -281,7 +282,7 @@ setopt PUSHD_MINUS
 
 #}}}
 #{{{ start tmux,
-if [[ -z "$TMUX" && -z "$EMACS" && -z "$VIM" && -z "$SSH_TTY" ]]; then
+if [[ -z "$TMUX" && -z "$INSIDE_EMACS" && -z "$VIM" && -z "$SSH_TTY" ]]; then
     if [[ -z $( pgrep tmux$ ) ]] then
         s tmux
     fi
