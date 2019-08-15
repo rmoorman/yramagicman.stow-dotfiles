@@ -1,4 +1,4 @@
-#!/usr/bin/zsh
+#!/usr/bin/env zsh
 hn=$(hostname)
 function my_date () {
     if [[ "$hn" == "serenity" ]];
