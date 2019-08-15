@@ -48,6 +48,7 @@
   (setq-default evil-escape-delay 0.2)
   :config
   (evil-escape-mode 1))
+
 (use-package evil-leader
   :config
   (evil-leader/set-leader ",")
@@ -55,6 +56,7 @@
     "," 'evil-switch-to-windows-last-buffer
     "s" 'magit-status
     "c" 'magit-commit-create
+    "f" 'find-file
     "SPC" 'save-buffer)
   (global-evil-leader-mode 1))
 
@@ -84,6 +86,8 @@
 (use-package linum-relative
   :config
   (linum-relative-global-mode))
+(use-package web-mode
+  :mode "\\.blade.php|.vue|.html\\'")
 (ido-mode 1)
 (show-paren-mode 1)
 
@@ -99,7 +103,7 @@
  '(electric-pair-mode t)
  '(package-selected-packages
    (quote
-    (evil-vimish-fold vimish-fold magit ac-php vterm linum-relative shell-script-mode use-package markdown-mode evil-leader php-mode auto-complete evil-escape undo-tree evil))))
+    (web-mode evil-vimish-fold vimish-fold magit ac-php vterm linum-relative shell-script-mode use-package markdown-mode evil-leader php-mode auto-complete evil-escape undo-tree evil))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
