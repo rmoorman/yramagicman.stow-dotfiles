@@ -38,7 +38,7 @@ function my_wifi(){
     ssid=$(nmcli | awk '/ connected / {print $4}')
     ip=$(ip --color=never addr show | awk '/([0-9\.]{1,3}){4}\/[0-9]{1,2} brd/ {print $2}')
     strength=$(wifi_strength)
-    if [[ $ssid = 'wlo1-SA_PROFILE' ]]; then
+    if [[ $ssid = 'SA_PROFILE' ]]; then
 	msg="\xe2\x8c\x82"
     else
 	msg=$ssid
@@ -56,7 +56,6 @@ function my_load() {
     temp=$(sensors | awk '/Package/ {print $4}')
     echo "Top CMD:$(basename $cmd ) CPU:$load% TEMP:$temp"
 }
-
 
 function my_mail() {
     $HOME/bin/mailmon
@@ -81,7 +80,6 @@ function my_weather() {
     fi
     echo $weather
 }
-
 
 function my_update() {
     if [[ ! -f /var/spool/cron/jonathan ]]
@@ -124,7 +122,6 @@ elif [[ -d /sys/class/power_supply/BAT0/ ]]; then
     line="$line $(my_bat)"
 fi
 line="$line $(my_wifi) $(dbox) $(my_volume) $(my_date)"
-
 
 xsetroot -name $line
 if [[ -n "$(pgrep i3)" ]]; then
