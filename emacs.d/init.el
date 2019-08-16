@@ -79,7 +79,8 @@
   (evil-vimish-fold-mode 1))
 
 ;; keybinds
-     (global-set-key (kbd "C-c C-b") 'buffer-menu)
+(global-set-key (kbd "C-c b") 'buffer-menu)
+(global-set-key (kbd "C-c t") 'vterm)
 ;; misc. packages
 (use-package magit)
 (use-package vterm)
@@ -92,7 +93,22 @@
   :mode "\\.blade.php|.vue|.html\\'")
 (ido-mode 1)
 (show-paren-mode 1)
+(message "loading mu4e")
+(add-to-list 'load-path "/usr/share/emacs/site-lisp/mu4e/")
+(require 'mu4e)
+;; default
+(setq mu4e-maildir (expand-file-name "~/.config/mail/"))
 
+(setq mu4e-drafts-folder "/Drafts")
+(setq mu4e-sent-folder   "/Sent")
+(setq mu4e-trash-folder  "/trash")
+(setq mu4e-sent-messages-behavior 'delete)
+;; setup some handy shortcuts
+(setq mu4e-maildir-shortcuts
+      '(("/Inbox"             . ?i)
+	("/Sent" . ?s)
+	("/trash"     . ?t)))
+(setq mu4e-get-mail-command "fetchmail")
 ;; hooks
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 
