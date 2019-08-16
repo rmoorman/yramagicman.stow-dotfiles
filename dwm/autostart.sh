@@ -40,6 +40,7 @@ xset -dpms; xset s off &
 
 (sleep 1s && /usr/bin/xscreensaver -no-splash) &
 (sleep 5s  && "$HOME/bin/get_remote_ip") &
+(sleep 5s  && emacs --bg-daemon) &
 
 ## Set keyboard settings - 250 ms delay and 25 cps (characters per
 ## second) repeat rate.  Adjust the values according to your
