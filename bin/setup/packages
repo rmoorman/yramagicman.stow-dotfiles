@@ -16,6 +16,7 @@ bluez-utils
 bzip2
 chromium
 cloc
+cmake
 composer
 compton
 coreutils
