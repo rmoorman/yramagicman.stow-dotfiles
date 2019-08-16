@@ -78,6 +78,8 @@
   :config
   (evil-vimish-fold-mode 1))
 
+;; keybinds
+     (global-set-key (kbd "C-c C-b") 'buffer-menu)
 ;; misc. packages
 (use-package magit)
 (use-package vterm)
