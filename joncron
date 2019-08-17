@@ -13,3 +13,4 @@
 37 16 * * * /usr/bin/pacman -Qeq > /home/jonathan/Gits/dots/bin/setup/packages
 */15 * * * * checkupdates > /home/jonathan/.cache/updates
 */15 * * * * cower -u > /home/jonathan/.cache/aur
+*/15 * * * * mu index -m /home/jonathan/.config/mail
