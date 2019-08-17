@@ -81,9 +81,9 @@
 ;; keybinds
 (global-set-key (kbd "C-c b") 'buffer-menu)
 (global-set-key (kbd "C-c t") 'vterm)
-;; misc. packages
-(use-package magit)
-(use-package vterm)
+(global-set-key (kbd "C-c e") 'mu4e)
+
+;; Modes
 (use-package markdown-mode
   :mode "\\.md\\'")
 (use-package linum-relative
@@ -91,12 +91,16 @@
   (linum-relative-global-mode))
 (use-package web-mode
   :mode "\\.blade.php|.vue|.html\\'")
+
+;; misc. packages
+(use-package magit)
+(use-package vterm)
 (ido-mode 1)
 (show-paren-mode 1)
-(message "loading mu4e")
+
+;; Mu4e
 (add-to-list 'load-path "/usr/share/emacs/site-lisp/mu4e/")
 (require 'mu4e)
-;; default
 (setq mu4e-maildir (expand-file-name "~/.config/mail/"))
 
 (setq mu4e-drafts-folder "/Drafts")
@@ -109,8 +113,16 @@
 	("/Sent" . ?s)
 	("/trash"     . ?t)))
 (setq mu4e-get-mail-command "fetchmail")
+(setq user-mail-address "jonathandavis@gilsons.org"
+      user-full-name "Jonathan")
+(setq message-send-mail-function 'message-send-mail-with-sendmail
+      sendmail-program "/bin/msmtp")
+
 ;; hooks
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
+
+;; settings
+(setq vc-follow-symlinks t)
 
 ;; Added by Customize menu
 (custom-set-variables
