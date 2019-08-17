@@ -60,6 +60,14 @@
     "SPC" 'save-buffer)
   (global-evil-leader-mode 1))
 
+(use-package evil-commentary
+  :config
+  (evil-commentary-mode 1))
+
+(use-package evil-surround
+  :config
+  (evil-surround-mode 1))
+
 ;; Completion settings
 (use-package auto-complete
   :config
@@ -123,6 +131,7 @@
 
 ;; settings
 (setq vc-follow-symlinks t)
+(setq make-backup-files nil)
 
 ;; Added by Customize menu
 (custom-set-variables
@@ -133,7 +142,7 @@
  '(electric-pair-mode t)
  '(package-selected-packages
    (quote
-    (web-mode evil-vimish-fold vimish-fold magit ac-php vterm linum-relative shell-script-mode use-package markdown-mode evil-leader php-mode auto-complete evil-escape undo-tree evil))))
+    (evil-surround evil-commentary web-mode evil-vimish-fold vimish-fold magit ac-php vterm linum-relative shell-script-mode use-package markdown-mode evil-leader php-mode auto-complete evil-escape undo-tree evil))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
