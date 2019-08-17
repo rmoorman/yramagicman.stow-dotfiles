@@ -24,7 +24,9 @@ autoload $HOME/.zsh/*
 #{{{ Load packages
 source ~/.zprofile
 pkg init
-pkg colored-man-pages -f omz
+if [[ -z "$INSIDE_EMACS" ]]; then
+    pkg colored-man-pages -f omz
+fi
 pkg zsh-users/zsh-completions
 pkg agkozak/zsh-z
 pkg "git@gitlab.com:yramagicman/zsh-aliases"
