@@ -116,10 +116,10 @@
 (setq mu4e-trash-folder  "/trash")
 (setq mu4e-sent-messages-behavior 'delete)
 ;; setup some handy shortcuts
-(setq mu4e-maildir-shortcuts
-      '(("/Inbox"             . ?i)
-	("/Sent" . ?s)
-	("/trash"     . ?t)))
+;; (setq mu4e-maildir-shortcuts
+;;       '(("/Inbox"             . ?i)
+;; 	("/Sent" . ?s)
+;; 	("/trash"     . ?t)))
 (setq mu4e-get-mail-command "fetchmail")
 (setq user-mail-address "jonathandavis@gilsons.org"
       user-full-name "Jonathan")
