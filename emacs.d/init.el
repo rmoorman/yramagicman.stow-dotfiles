@@ -66,7 +66,7 @@
 
 (use-package evil-surround
   :config
-  (evil-surround-mode 1))
+  (global-evil-surround-mode 1))
 
 ;; Completion settings
 (use-package auto-complete
