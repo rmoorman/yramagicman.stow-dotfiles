@@ -21,4 +21,3 @@ function! findtags#Findtags()
         silent! call Recurse(path, index)
     endif
 endfunction
-command! FindTags :call findtags#Findtags()

@@ -1,5 +1,4 @@
 "{{{ defaults
-scriptencoding utf-8
 if filereadable(expand('$VIMRUNTIME/defaults.vim'))
     unlet! g:skip_defaults_vim
     source $VIMRUNTIME/defaults.vim
@@ -13,9 +12,6 @@ syntax on
 "}}}
 "{{{ colors
 colorscheme portable
-set background=dark
-" 256 colors
-set t_Co=256
 "}}}
 "{{{ Plugin loading and settings
 let g:VimPack_Setup_Folders = ['after', 'autoload', 'backup', 'colors', 'doc', 'spell', 'swaps', 'syntax','plugin', 'undo']
@@ -24,39 +20,30 @@ let g:VimPack_Auto_Update = 1
 
 call pack#load()
 
-PlugStart 'editorconfig/editorconfig-vim'
-PlugStart 'tpope/vim-commentary'
-PlugStart 'vim-scripts/vim-indent-object'
-PlugStart 'tpope/vim-surround'
-PlugStart 'bronson/vim-visual-star-search'
-PlugStart 'tpope/vim-repeat'
-PlugStart 'git@gitlab.com:yramagicman/auto-omnicomplete'
 PlugOpt 'dzeban/vim-log-syntax'
 PlugOpt 'w0rp/ale'
-PlugOpt 'leafgarland/typescript-vim'
-PlugOpt 'hail2u/vim-css3-syntax'
-PlugOpt 'vim-scripts/Sass'
-PlugOpt 'othree/html5.vim'
-PlugOpt 'jwalton512/vim-blade'
-PlugOpt 'posva/vim-vue'
-
+PlugStart 'bronson/vim-visual-star-search'
+PlugStart 'editorconfig/editorconfig-vim'
+PlugStart 'git@gitlab.com:yramagicman/auto-omnicomplete'
+PlugStart 'hail2u/vim-css3-syntax'
+PlugStart 'jwalton512/vim-blade'
+PlugStart 'leafgarland/typescript-vim'
+PlugStart 'othree/html5.vim'
+PlugStart 'posva/vim-vue'
+PlugStart 'tpope/vim-commentary'
+PlugStart 'tpope/vim-repeat'
+PlugStart 'tpope/vim-surround'
+PlugStart 'vim-scripts/Sass'
+PlugStart 'vim-scripts/vim-indent-object'
+packadd! matchit
+packadd! editexisting
 let g:AutoOmniComplete_tab = 1
 "}}}
 "{{{ autocommands for loading extensions
 augroup extensions
     autocmd!
     autocmd FileType vim,css,scss,sass,html,javascript,python,php,c,cpp,typescript,zsh,sh silent! packadd ale | redraw
-    autocmd BufRead *.ts  set filetype=typescript
     autocmd BufRead *.org  set filetype=org
-    autocmd FileType typescript packadd typescript-vim
-    autocmd FileType html packadd html5.vim
-    autocmd FileType scss packadd Sass
-    autocmd FileType scss,css nested packadd vim-css3-syntax
-    autocmd BufRead *.blade.php silent! packadd vim-blade | redraw
-    autocmd BufRead *.blade.php silent! set filetype=blade | redraw
-    autocmd BufRead *.vue silent! packadd vim-vue | redraw
-    autocmd BufRead *.vue nested silent! packadd ale | redraw
-    autocmd BufRead *.vue nested silent! set filetype=vue | redraw
     autocmd FileType vue syn sync fromstart
 augroup end
 "}}}
@@ -68,8 +55,6 @@ let g:ale_echo_msg_warning_str = 'W'
 let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
 "}}}
 let mapleader=","
-hi ExtraWhitespace cterm=underline
-match ExtraWhitespace /\s\+$/
 
 " expand( '%:e') extension
 " expand( '%:h') filename

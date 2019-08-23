@@ -24,3 +24,5 @@ hi error ctermfg=1 ctermbg=0
 hi type ctermfg=6 ctermbg=0
 hi preproc ctermfg=3 ctermbg=0
 hi matchparen cterm=none ctermfg=9 ctermbg=0 term=none
+hi ExtraWhitespace cterm=underline
+call matchadd('ExtraWhitespace', "/\s\+$/")
