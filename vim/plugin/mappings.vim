@@ -10,7 +10,7 @@ inoremap <right> <Nop>
 "}}}
 "{{{ escape and save
 inoremap <space><space> <Esc>
-vnoremap <space><space> <Esc>
+xnoremap <space><space> <Esc>
 nnoremap <space><space> :call functions#Save()<cr>
 nnoremap .<space> i<space><Esc>
 "}}}
@@ -18,8 +18,8 @@ nnoremap .<space> i<space><Esc>
 cnoremap <expr> %% expand('%:h').'/'
 "}}}
 "{{{ terminal mode mappings
-tmap <space><space> <C-w>N
-tmap :: <C-w>N:
+tnoremap <space><space> <C-w>N
+tnoremap :: <C-w>N:
 "}}}
 "{{{ normal mode mappings
 nnoremap <leader><space> :set hlsearch!<cr>
@@ -39,8 +39,8 @@ nnoremap <leader>f :find **/*
 nnoremap <leader>b :ls<cr>:b
 "}}}
 "{{{ visual mode mappings
-vnoremap > >gv
-vnoremap < <gv
+xnoremap > >gv
+xnoremap < <gv
 "}}}
 "{{{ command line movement mappings
 cnoremap <C-a>  <Home>

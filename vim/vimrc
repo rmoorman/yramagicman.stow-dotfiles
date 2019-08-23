@@ -1,5 +1,4 @@
 "{{{ defaults
-scriptencoding utf-8
 if filereadable(expand('$VIMRUNTIME/defaults.vim'))
     unlet! g:skip_defaults_vim
     source $VIMRUNTIME/defaults.vim
@@ -13,9 +12,6 @@ syntax on
 "}}}
 "{{{ colors
 colorscheme portable
-set background=dark
-" 256 colors
-set t_Co=256
 "}}}
 "{{{ Plugin loading and settings
 let g:VimPack_Setup_Folders = ['after', 'autoload', 'backup', 'colors', 'doc', 'spell', 'swaps', 'syntax','plugin', 'undo']
@@ -39,7 +35,8 @@ PlugStart 'tpope/vim-repeat'
 PlugStart 'tpope/vim-surround'
 PlugStart 'vim-scripts/Sass'
 PlugStart 'vim-scripts/vim-indent-object'
-
+packadd! matchit
+packadd! editexisting
 let g:AutoOmniComplete_tab = 1
 "}}}
 "{{{ autocommands for loading extensions
@@ -58,8 +55,6 @@ let g:ale_echo_msg_warning_str = 'W'
 let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
 "}}}
 let mapleader=","
-hi ExtraWhitespace cterm=underline
-match ExtraWhitespace /\s\+$/
 
 " expand( '%:e') extension
 " expand( '%:h') filename

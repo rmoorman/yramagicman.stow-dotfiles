@@ -15,10 +15,6 @@ set wildmenu
 set wildcharm=<C-z>
 set wildmode=longest:full,full
 "}}}
-"{{{ builtin plugins
-packadd! matchit
-packadd! editexisting
-"}}}
 "{{{ file handling
 " auto-reload modified files
 set autoread

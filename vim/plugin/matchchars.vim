@@ -15,6 +15,7 @@ inoremap <expr> ' strpart(getline('.'), col('.')-1, 1) == "\'" ? "\<Right>" : "\
  "}}}
  "{{{ filetype specific mappings for characters and shortcuts
 augroup abbrevs
+    autocmd!
     autocmd FileType vim inoremap <buffer> " "
     autocmd FileType text,gitcommit,markdown,mail,lisp,racket,scheme inoremap <buffer> ' '
 augroup end
