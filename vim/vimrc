@@ -33,7 +33,7 @@ PlugStart 'posva/vim-vue'
 PlugStart 'tpope/vim-commentary'
 PlugStart 'tpope/vim-repeat'
 PlugStart 'tpope/vim-surround'
-PlugStart 'vim-scripts/Sass'
+PlugStart 'cakebaker/scss-syntax.vim'
 PlugStart 'vim-scripts/vim-indent-object'
 packadd! matchit
 packadd! editexisting
