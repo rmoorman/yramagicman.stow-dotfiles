@@ -1,7 +1,0 @@
-stages:
-    - build
-
-different_name:
-    stage: build
-    script:
-        - uname -a
