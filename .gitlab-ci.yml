@@ -1,6 +1,6 @@
 stages:
     - build
-job:
+build_job:
     stage: build
     script:
         - uname -a
