@@ -117,9 +117,10 @@ static unsigned int defaultattr = 11;
  * Beware that overloading Button1 will disable the selection.
  */
 static MouseShortcut mshortcuts[] = {
-    /* button               mask            string */
-    { Button4,              XK_ANY_MOD,     "\031" },
-    { Button5,              XK_ANY_MOD,     "\005" },
+    /* mask                 button   function        argument       release */
+    { XK_ANY_MOD,           Button2, selpaste,       {.i = 0},      1 },
+    { XK_ANY_MOD,           Button4, ttysend,        {.s = "\031"} },
+    { XK_ANY_MOD,           Button5, ttysend,        {.s = "\005"} },
 };
 
 /* Internal keyboard shortcuts. */
@@ -185,6 +186,14 @@ static uint ignoremod = Mod2Mask|XK_SWITCH_MOD;
  * modifier, set to 0 to not use it.
  */
 static uint forceselmod = ShiftMask;
+
+/*
+ * Force mouse select/shortcuts while mask is active (when MODE_MOUSE is set).
+ * Note that if you want to use ShiftMask with selmasks, set this to an other
+ * modifier, set to 0 to not use it.
+ */
+static uint forcemousemod = ShiftMask;
+
 
 /*
  * This is the huge key array which defines all compatibility to the Linux
