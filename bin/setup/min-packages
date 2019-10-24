@@ -3,6 +3,7 @@ alsa-utils
 apache
 arandr
 at
+auracle
 autoconf
 automake
 autopep8
@@ -20,7 +21,6 @@ cmake
 composer
 compton
 coreutils
-cower
 cronie
 cryptsetup
 ctags
@@ -70,10 +70,10 @@ gvim
 gzip
 htop
 hwinfo
-i3-wm
 i3blocks
 i3lock
 i3status
+i3-wm
 iftop
 inetutils
 intel-ucode
@@ -115,8 +115,8 @@ msmtp
 mutt
 nano
 neofetch
-net-tools
 netctl
+net-tools
 networkmanager
 newsboat
 nmap
@@ -134,9 +134,9 @@ php-apache
 php-gd
 php-imap
 php-intl
+phpmyadmin
 php-sqlite
 php-tidy
-phpmyadmin
 pkgconf
 pkgfile
 pngcrush
@@ -149,10 +149,10 @@ psmisc
 pulseaudio
 pulseaudio-alsa
 pwgen
-python-pip
-python-virtualenv
 python2-pip
 python2-virtualenv
+python-pip
+python-virtualenv
 racket
 redis
 redshift
@@ -161,11 +161,11 @@ rmlint
 rsync
 ruby
 rxvt-unicode
-s-nail
 sed
 shadow
 shellcheck
 smartmontools
+s-nail
 stow
 sudo
 sysfsutils
