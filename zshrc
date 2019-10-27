@@ -239,11 +239,12 @@ function bindkey-all {
     done
 }
 #}}}
-#{{{ virtualenv stuff
+#{{{ env vars
 export WORKON_HOME=$HOME/.virtualenvs
 export PROJECT_HOME=$HOME/Sites
 export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
 export VIRTUALENVWRAPPER_SCRIPT=/usr/bin/virtualenvwrapper.sh
+export CHROME_BIN=/usr/bin/chromium
 #}}}
 #{{{ random user opions
 export BROWSER=firefox
