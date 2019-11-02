@@ -31,7 +31,7 @@ function pkg() {
     elif [[ $1 == 'clear-logs' ]]; then
         _clear_logs
     elif [[ "$1" == 'update' ]]; then
-        update $pkgs
+        _pkgupdate $pkgs
     fi
     if [[ $alternate ]]; then
         pkgs+=($1 $alternate)

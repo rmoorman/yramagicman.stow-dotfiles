@@ -1,8 +1,9 @@
-function _update() {
+function _pkgupdate() {
     if [[ -z $UPDATE_INTERVAL ]];
     then
         UPDATE_INTERVAL=30
     fi
+
 
     if [[ ! -a $MODULES_DIR/.updatetime ]];
     then
