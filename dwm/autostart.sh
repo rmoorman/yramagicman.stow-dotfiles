@@ -88,7 +88,7 @@ if  stat "$HOME/.cache/updates" > /dev/null; then
 fi
 ) &
 
-fetchmail
+getmail -n
 
 (
 echo '' > "$HOME/.config/fetchmail.log"
@@ -98,4 +98,5 @@ echo '' > "$HOME/.mpd/mpdstate"
 rm "$HOME/slacklogs"
 rm "$HOME/nohup"
 ) &
+
 exit

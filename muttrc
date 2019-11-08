@@ -1,0 +1,99 @@
+# {{{ basic settings
+#
+set sendmail="/usr/bin/msmtp"
+set alias_file = ~/.mutt/aliases
+source $alias_file
+set editor = "vim"
+set delete
+set from = "jonathandavis@gilsons.org"
+set mbox_type=Maildir
+set spoolfile = "~/.config/mail/Inbox"
+set folder="~/.config/mail/Inbox"
+set postponed="~/.config/mail/drafts/"
+set record="~/.config/mail/Sent/"
+set move = no
+set date_format = "%d/%m/%y"
+set index_format = "%3C [%Z]  %D  %-20.20F  %s"
+set sort = reverse-date
+#set uncollapse_jump                        # don't collapse on an unread message
+#set sort_re                                # thread based on regex
+#set reply_regexp = "^(([Rr][Ee]?(\[[0-9]+\])?: *)?(\[[^]]+\] *)?)*"
+set fast_reply                       # skip to compose when replying
+set fcc_attach                       # save attachments with the body
+unset mime_forward                   # forward attachments as part of body
+set forward_format = "Fwd: %s"       # format of subject when forwarding
+set forward_decode                   # decode when forwarding
+set attribution = "On %d, %n wrote:" # format of quoting header
+set reply_to                         # reply to Reply to: field
+set reverse_name                     # reply as whomever it was to
+set include                          # include message in replies
+set forward_quote                    # include message in forwards
+auto_view text/html # view html automatically
+alternative_order text/plain text/enriched text/html     # save html for last
+# set my_msmtp_pass=`gpg -d ~/.password-store/email.gpg`
+mailboxes ! + ` for file in $(find ~/.config/mail/* -maxdepth 0 -type d); do basename $file 2 > /dev/null; done `
+#}}}
+# {{{ Index Key Bindings
+bind index g        noop
+bind index gg       first-entry
+bind index G        last-entry
+bind index p        recall-message
+bind index R        group-reply
+bind index <tab>    sync-mailbox
+bind index <space>  collapse-thread
+#set pager_context = 3      # number of context lines to show
+set pager_stop             # don't go to next message automatically
+set tilde                  # show tildes like in vim
+unset markers              # no ugly plus signs
+# pager key bindings
+bind pager k  previous-line
+bind pager j  next-line
+bind pager g  noop
+bind pager gg top
+bind pager G  bottom
+bind pager R  group-reply
+# View attachments properly.
+bind attach <return> view-mailcap
+set mail_check=30           # check for new mail every 60 seconds
+set timeout=15
+set mailcap_path="~/.mutt/mailcap"
+macro pager \Cu "|urlview<enter>" "call urlview to open links"
+auto_view text/html
+alternative_order text/plain text/enriched text/html
+macro index \Cd "T  ~d dd/mm/yy-dd/mm/yy"
+#}}}
+# {{{colorscheme
+color  normal      default   default
+color  indicator   color7    color8
+color  status      color7    default
+color  tree        color208  default
+color  signature   color102  default
+color  message     color253  default
+color  attachment  color117  default
+color  error       color30   default
+color  tilde       color130  default
+color  search      color100  default
+color  markers     color138  default
+color  quoted      color107  default
+color  quoted1     color66   default
+color  quoted2     color32   default
+color  quoted3     color30   default
+color  quoted4     color99   default
+color  quoted5     color36   default
+color  quoted6     color114  default
+color  quoted7     color109  default
+color  quoted8     color41   default
+color  quoted9     color138  default
+color  index       color39   default   ~N                 # New
+color  index       color39   default   ~O
+color  index       color229  color22   ~T                 # Tagged
+color  index       color240  default  ~D                 # Deleted
+color  hdrdefault  color253  default
+color  header      color253  default  '^date:'
+color  header      color253  default  '^(to|cc|bcc):'
+color  header      color253  default  '^from:'
+color  header      color253  default  '^subject:'
+color  header      color253  default  '^user-agent:'
+color  header      color253  default  '^reply-to:'
+color  index       color202  default  ~F                 # Flagged
+#}}}

@@ -12,6 +12,7 @@ emacs.d/projectile-bookmarks.eld
 emacs.d/transient/
 emacs.d/undohist/
 emacs.d/vimish-fold/
+getmail/
 mpd/mpdstate
 newsboat/cache.db
 newsboat/history.cmdline
