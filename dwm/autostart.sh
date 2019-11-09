@@ -88,7 +88,6 @@ if  stat "$HOME/.cache/updates" > /dev/null; then
 fi
 ) &
 
-getmail -n
 
 (
 echo '' > "$HOME/.config/fetchmail.log"
