@@ -12,6 +12,7 @@ fi
 #{{{ install functions
 export XDG_CONFIG_HOME=$HOME/.config
 
+export UPDATE_INTERVAL=15
 if [[ -z  $XDG_CONFIG_HOME ]];then
     MODULES_DIR="$HOME/.zsh_plugins"
 else
