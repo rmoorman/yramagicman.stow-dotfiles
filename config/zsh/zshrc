@@ -19,8 +19,8 @@ else
     MODULES_DIR="$ZDOTDIR/plugins"
 fi
 
-fpath=("$HOME/.zsh" $fpath)
-autoload $HOME/.zsh/*
+fpath=("$ZDOTDIR/zsh" $fpath)
+autoload $ZDOTDIR/zsh/*
 #}}}
 #{{{ Load packages
 source $ZDOTDIR/.zprofile
@@ -152,7 +152,7 @@ zstyle ':completion:*' rehash true
 #}}}
 #}}}
 #{{{ history
-HISTFILE="$HOME/.zhistory"
+HISTFILE="$ZDOTDIR/.zhistory"
 HISTSIZE=1000
 SAVEHIST=1000
 setopt appendhistory notify
