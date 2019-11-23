@@ -3,6 +3,13 @@ config/ranger/colorschemes/default.pyo
 config/ranger/colorschemes/__init__.pyo
 config/ranger/colorschemes/__pycache__/
 config/ranger/history
+config/zsh/.chpwd-recent-dirs
+config/zsh/plugins/
+config/zsh/.zcompdump
+config/zsh/.zhistory
+config/zsh/.zlogin
+config/zsh/.zprofile
+config/zsh/.zshrc
 emacs.d/ac-comphist.dat
 emacs.d/auto-save-list/
 emacs.d/elpa/
