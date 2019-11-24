@@ -103,7 +103,9 @@ if exists("&undodir")
     set undodir=~/.vim/undo//
     set undofile
 endif
-
+if has('viminfo')
+    set viminfofile=$HOME/.vim/viminfo
+endif
 if has('gui_running')
     colorscheme darkblue
     set guioptions -=m
