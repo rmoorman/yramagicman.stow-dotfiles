@@ -1,14 +1,16 @@
 function _get_clone_dest() {
-
     if [[ $1 =~ '^(git@|https)' ]]; then
-        tillcolon=("${(@s/:/)1}")
+        local tillcolon=("${(@s/:/)1}")
         if [[ $tillcolon[1] = 'https' ]]; then
-            atslashes=("${(@s#/#)tillcolon}")
-            location="$atslashes[-2]/$atslashes[-1]"
+            local atslashes=("${(@s#/#)tillcolon}")
+            location="$atslashes[-1]"
         else
-            location="$tillcolon[-1]"
+            local path="$tillcolon[-1]"
+            local atslashes=("${(@s#/#)path}")
+            location="$atslashes[-1]"
         fi
     else
-        location=$1
+            local atslashes=("${(@s#/#)1}")
+            location="$atslashes[-1]"
     fi
 }
