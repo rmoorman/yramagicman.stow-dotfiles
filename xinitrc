@@ -63,6 +63,6 @@ if test "$( hostname )" == 'serenity'; then
     fi
 fi
 
-exec "$HOME/.dwm/autostart.sh" &
+exec "$HOME/.config/dwm/autostart.sh" &
 exec "$HOME/bin/statusline" &
 exec "$HOME/bin/dwmrestart"

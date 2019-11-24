@@ -32,7 +32,7 @@ set_screen_layout() {
 
 set_screen_layout
 "$HOME/bin/statusloop" &
-("$HOME/.dwm/scripts/bg.sh") &
+("$HOME/.config/dwm/scripts/bg.sh") &
 
 xset -dpms; xset s off &
 
