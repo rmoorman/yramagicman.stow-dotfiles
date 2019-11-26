@@ -1,3 +1,10 @@
+function! s:jobfunc(job, opts)
+    if has('nvim')
+        return jobstart(a:job, a:opts)
+    else
+        return job_start(a:job, a:opts)
+    endif
+endfunction
 function! status#Refresh()
     for l:nr in s:listbufs()
         if winnr() == l:nr
@@ -33,8 +40,8 @@ endfunction
 
 function! status#Active()
     let l:active = ''
-    let a=job_start(['/bin/sh', '-c', 'git status | grep modified'], { 'out_io': 'pipe', 'err_io':'pipe',  'out_cb': 'status#Modified', 'err_cb': 'status#Modified'})
-    let b=job_start(['/bin/sh', '-c', 'git branch | grep \*'], { 'out_io': 'pipe', 'err_io':'null',  'out_cb': 'status#Branch'})
+    let a=s:jobfunc(['/bin/sh', '-c', 'git status | grep modified'], { 'out_io': 'pipe', 'err_io':'pipe',  'out_cb': 'status#Modified', 'err_cb': 'status#Modified'})
+    let b=s:jobfunc(['/bin/sh', '-c', 'git branch | grep \*'], { 'out_io': 'pipe', 'err_io':'null',  'out_cb': 'status#Branch'})
     let l:active .= '%#focused#| %m %f %r %y %#normal#'
     if exists('b:branch')
         let l:active .=' %{b:branch}'

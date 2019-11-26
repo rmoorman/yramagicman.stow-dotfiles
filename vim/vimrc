@@ -36,7 +36,9 @@ PlugStart 'tpope/vim-surround'
 PlugStart 'cakebaker/scss-syntax.vim'
 PlugStart 'vim-scripts/vim-indent-object'
 packadd! matchit
-packadd! editexisting
+if ! has('nvim')
+    packadd! editexisting
+endif
 let g:AutoOmniComplete_tab = 1
 "}}}
 "{{{ autocommands for loading extensions

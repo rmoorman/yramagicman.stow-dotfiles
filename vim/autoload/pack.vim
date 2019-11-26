@@ -1,35 +1,51 @@
-set packpath+=$HOME/.vim/pack/vendor/
+if has('nvim')
+    set packpath+=$HOME/.config/nvim/pack/vendor/
+    let s:optpath = $HOME.'/.config/nvim/pack/vendor/opt'
+    let s:startpath = $HOME.'/.config/nvim/pack/vendor/start'
+else
+    set packpath+=$HOME/.vim/pack/vendor/
+    let s:optpath = $HOME.'/.vim/pack/vendor/opt'
+    let s:startpath = $HOME.'/.vim/pack/vendor/start'
+endif
+function! s:jobstart(job )
+    if has('nvim')
+        return jobstart(a:job)
+    else
+        return job_start(a:job)
+    endif
+endfunction
 function! s:sanity_check()
-   if  exists("g:VimPack_Setup_Folders")
-       for d in g:VimPack_Setup_Folders
-           if !isdirectory($HOME.'/.vim/'.d)
-               call mkdir($HOME.'/.vim/'.d)
-           endif
-       endfor
-   endif
+    if  exists("g:VimPack_Setup_Folders")
+        for d in g:VimPack_Setup_Folders
+            if !isdirectory($HOME.'/.vim/'.d)
+                call mkdir($HOME.'/.vim/'.d)
+            endif
+        endfor
+    endif
 
     for d in split(&packpath, ',')
         if !isdirectory(d)
-            silent! call mkdir(d)
+            silent! call mkdir(d, 'p')
         endif
     endfor
-    if !isdirectory($HOME.'/.vim/pack/vendor/opt')
-        silent! call mkdir($HOME.'/.vim/pack/vendor/opt')
+    if !isdirectory(s:optpath)
+        silent! call mkdir(s:optpath)
     endif
 
-    if !isdirectory($HOME.'/.vim/pack/vendor/start')
-        silent! call mkdir($HOME.'/.vim/pack/vendor/start')
+    if !isdirectory(s:startpath)
+        silent! call mkdir(s:startpath)
     endif
 endfunction
 
 
 function! s:read_start_dir()
-    return split( globpath('$HOME/.vim/pack/vendor/start', '*'), '\n' )
+    echom globpath(s:startpath, '*')
+    return split( globpath(s:startpath, '*'), '\n' )
 endfunction
 
 
 function! s:read_opt_dir()
-    return split( globpath('$HOME/.vim/pack/vendor/opt', '*'), '\n' )
+    return split( globpath(s:optpath, '*'), '\n' )
 endfunction
 
 function! s:mkurl(plug)
@@ -66,8 +82,7 @@ function! s:install_opts()
     for package in s:opt_plugs
         if !isdirectory(package[0])
             let package_name = split(package[0], '/')[-1]
-            echom 'installing '. package_name
-            let j = job_start( ["/bin/sh", "-c", package[1]] )
+            let j = s:jobstart( ["/bin/sh", "-c", package[1]] )
         endif
     endfor
 endfunction
@@ -77,8 +92,7 @@ function! s:install_start()
     for package in s:start_plugs
         if !isdirectory(package[0])
             let package_name = split(package[0], '/')[-1]
-            echom 'installing '. package_name
-            let j = job_start( ["/bin/sh", "-c", package[1]] )
+            let j = s:jobstart( ["/bin/sh", "-c", package[1]] )
         endif
     endfor
 endfunction
@@ -108,7 +122,7 @@ function! s:clean_plugins()
         for q in start_in
             if index(start_list, q) == -1
                 echom 'removing ' . q
-                let path = '$HOME/.vim/pack/vendor/start/'
+                let path = s:startpath
                 echom join( systemlist('rm -rf '.path.q) )
             endif
         endfor
@@ -120,7 +134,7 @@ function! s:clean_plugins()
         for p in opt_in
             if index(opt_list, p) == -1
                 echom 'removing ' . q
-                let path = '$HOME/.vim/pack/vendor/opt/'
+                let path = s:optpath
                 echom join( systemlist('rm -rf '.path.p) )
             endif
         endfor
@@ -132,7 +146,7 @@ endfunction
 function! s:update_one(plug)
     echom 'updating ' . a:plug
     let cmd = 'cd ' . a:plug ." && git pull"
-    let j = job_start(["/bin/sh", "-c", cmd])
+    let j = s:jobstart(["/bin/sh", "-c", cmd])
     return j
 endfunction
 
@@ -145,6 +159,7 @@ function! s:update_all()
 
     while len(opt_jobs)
         for job in opt_jobs
+            echom job
             if job_status(job) != 'run'
                 call remove(opt_jobs, index(opt_jobs, job))
             endif
@@ -157,6 +172,7 @@ function! s:update_all()
     while len(start_jobs)
         for work in start_jobs
             if job_status(work) != 'run'
+                echom job
                 call remove(start_jobs, index(start_jobs, work))
             endif
         endfor
@@ -191,8 +207,8 @@ function! s:do_update()
         call s:do_update()
     endif
 endfunction
-
 function! s:install_all()
+    call s:read_start_dir()
     call s:sanity_check()
     call s:install_opts()
     call s:install_start()

@@ -1,4 +1,4 @@
- "{{{ autocomplete quotes and brackets
+"{{{ autocomplete quotes and brackets
 inoremap (  ()<Left>
 inoremap [  []<Left>
 inoremap {  {}<Left>
@@ -12,15 +12,15 @@ inoremap <expr> }  strpart(getline('.'), col('.')-1, 1) == "}" ? "\<Right>" : "}
 inoremap <expr> >  strpart(getline('.'), col('.')-1, 1) == ">" ? "\<Right>" : ">"
 inoremap <expr> " strpart(getline('.'), col('.')-1, 1) == "\"" ? "\<Right>" : "\"\"\<Left>"
 inoremap <expr> ' strpart(getline('.'), col('.')-1, 1) == "\'" ? "\<Right>" : "\'\'\<Left>"
- "}}}
- "{{{ filetype specific mappings for characters and shortcuts
+"}}}
+"{{{ filetype specific mappings for characters and shortcuts
 augroup abbrevs
     autocmd!
     autocmd FileType vim inoremap <buffer> " "
     autocmd FileType text,gitcommit,markdown,mail,lisp,racket,scheme inoremap <buffer> ' '
 augroup end
- "}}}
- "{{{ Make backspace work nicely with autopairs
+"}}}
+"{{{ Make backspace work nicely with autopairs
 function! Backspace()
     let l:current = strpart(getline('.'), col('.')-1, 1)
     let l:prev = strpart(getline('.'), col('.')-2, 1)
@@ -44,4 +44,4 @@ function! Backspace()
     endif
 endfunction
 inoremap <expr> <BS> Backspace()
- "}}}
+"}}}

@@ -18,8 +18,14 @@ nnoremap .<space> i<space><Esc>
 cnoremap <expr> %% expand('%:h').'/'
 "}}}
 "{{{ terminal mode mappings
-tnoremap <space><space> <C-w>N
-tnoremap :: <C-w>N:
+if ! has('nvim')
+    tnoremap <space><space> <C-w>N
+    tnoremap :: <C-w>N:
+else
+    tnoremap <space><space> <C-\><C-N>
+    tnoremap :: <C-\><C-N>:
+endif
+
 "}}}
 "{{{ normal mode mappings
 nnoremap <leader><space> :set hlsearch!<cr>
