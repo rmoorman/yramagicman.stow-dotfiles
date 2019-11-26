@@ -1,3 +1,0 @@
-[submodule ".vim/after/plugin/Vundle-Helper"]
-	path = .vim/after/plugin/Vundle-Helper
-	url = https://github.com/yramagicman/Vundle-Helper

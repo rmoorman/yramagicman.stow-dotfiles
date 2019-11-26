@@ -82,7 +82,7 @@ char *termname = "st-256color";
  */
 unsigned int tabspaces = 8;
 
-#include "/home/jonathan/.colors/ocean_dark.h"
+#include "/home/jonathan/.config/colors/ocean_dark.h"
 /*
  * Default shape of cursor
  * 2: Block ("█")

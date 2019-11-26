@@ -11,7 +11,7 @@ home = os.path.expanduser('~')
 st_dir = home + '/Gits/st/'
 dwm_dir = home + '/Gits/dwm/'
 config_dir = home + '/Gits/dots/'
-colors_dir = home + '/.colors/'
+colors_dir = home + '/.config/colors/'
 
 foreground = 'foreground'
 background = 'background'
@@ -119,13 +119,13 @@ def dwm_mod_color(line, selection, color):
 
 def set_bg(selection):
     color = find_color(selection, 'background')
-    with open(config_dir + 'dwm/scripts/bg.sh', 'w') as dwm:
+    with open(config_dir + 'config/dwm/scripts/bg.sh', 'w') as dwm:
         write = ['#!/bin/sh',
                  'convert -size 100x100 xc:' + color + ' /tmp/bg.png\n'
                  '"$HOME/.fehbg"\n'
                  ]
         dwm.write('\n'.join(write))
-    call(config_dir + 'dwm/scripts/bg.sh')
+    call(config_dir + 'config/dwm/scripts/bg.sh')
     call(home + '/.fehbg')
 
 
@@ -167,6 +167,8 @@ def st_update(selection):
             if '#include' in line:
                 new = line.strip().split('/')
                 new[-1] = selection + '.h"\n'
+                print(new)
+                exit
                 config.append('/'.join(new))
             else:
                 config.append(line)
