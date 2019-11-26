@@ -183,23 +183,23 @@ function! s:do_update()
     if exists('g:VimPack_Update_Frequency')
         let oneday = 24 * 60 * 60
         let today = split( system('date +%s') )[0]
-        if filereadable($HOME.'/.vim/lastupdate')
-            let updatetime = readfile($HOME.'/.vim/lastupdate')[1]
+        if filereadable($HOME.'/.vim/.lastupdate')
+            let updatetime = readfile($HOME.'/.vim/.lastupdate')[1]
             if today > updatetime
                 autocmd! VimLeavePre * call s:update_all()
                 autocmd! CursorHold * echom 'updating on close'
 
                 let nextupdate = today + (oneday * g:VimPack_Update_Frequency)
-                call writefile([today], $HOME.'/.vim/lastupdate')
-                call writefile([nextupdate], $HOME.'/.vim/lastupdate', "a")
+                call writefile([today], $HOME.'/.vim/.lastupdate')
+                call writefile([nextupdate], $HOME.'/.vim/.lastupdate', "a")
                 return
             endif
         else
             autocmd! VimLeavePre * call s:update_all()
             autocmd! CursorHold * echom 'updating on close'
             let nextupdate = today + (oneday * g:VimPack_Update_Frequency)
-            call writefile([today], $HOME.'/.vim/lastupdate')
-            call writefile([nextupdate], $HOME.'/.vim/lastupdate', "a")
+            call writefile([today], $HOME.'/.vim/.lastupdate')
+            call writefile([nextupdate], $HOME.'/.vim/.lastupdate', "a")
             return
         endif
     else

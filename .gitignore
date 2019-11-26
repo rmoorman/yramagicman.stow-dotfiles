@@ -29,6 +29,7 @@ screenlayout/i3.sh
 .tags
 tmux.d/digests
 vim/backup/
+vim/.lastupdate
 vim/lastupdate
 vim/.netrwhist
 vim/pack/
