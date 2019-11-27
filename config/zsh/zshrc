@@ -266,7 +266,7 @@ fi
 
 chpwd() {
     print -l $PWD ${(u)dirstack} >>$DIRSTACKFILE
-    d="$(sort -u $DIRSTACKFILE )"
+    local d="$(sort -u $DIRSTACKFILE )"
     echo "$d" > $DIRSTACKFILE
 
 }
