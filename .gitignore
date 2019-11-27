@@ -3,6 +3,7 @@ config/ranger/colorschemes/default.pyo
 config/ranger/colorschemes/__init__.pyo
 config/ranger/colorschemes/__pycache__/
 config/ranger/history
+config/vifm/vifminfo
 config/zsh/.chpwd-recent-dirs
 config/zsh/plugins/
 config/zsh/.zcompdump
