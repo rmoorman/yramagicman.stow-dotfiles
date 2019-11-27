@@ -6,7 +6,7 @@ then
     for f in *; do
         ln -s "$PWD/$f" "$PWD/.$f"
     done
-    rm -rf .plugins
+    rm -rf .plugins .zsh
 )
 elif [[ -f "$dotdir/.zshrc" ]]
 then
