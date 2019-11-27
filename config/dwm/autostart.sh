@@ -47,6 +47,8 @@ xset -dpms; xset s off &
 ## preferances.
 xset r rate 250 25 &
 
+dunst &
+
 pulseaudio &
 ## Turn on/off system beep
 xset b off &

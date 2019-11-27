@@ -8,5 +8,12 @@ then
     done
     rm -rf .plugins
 )
-ZDOTDIR="$dotdir"
+elif [[ -f "$dotdir/.zshrc" ]]
+then
+    ZDOTDIR="$dotdir"
+else
+    if [ -z "$DISPLAY" ] && [ -n "$XDG_VTNR" ] && [ "$XDG_VTNR" -eq 1 ]; then
+        echo 'no zshrc' > $HOME/nozshrc
+        exec startx
+    fi
 fi
