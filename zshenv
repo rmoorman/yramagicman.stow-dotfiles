@@ -8,5 +8,5 @@ then
     done
     rm -rf .plugins
 )
-fi
 ZDOTDIR="$dotdir"
+fi
