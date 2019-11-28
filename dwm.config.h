@@ -100,6 +100,7 @@ static const char *brightdown[]  = { "/home/jonathan/.config/dwm/scripts/brightd
 static const char *killscreensaver[]  = {"pkill", "xscreensaver", NULL };
 static const char *killmon[]  = {"mons", "-o", "HDMI1", "--off", NULL };
 static const char *attachmon[]  = {"/home/jonathan/.screenlayout/work.sh", NULL};
+static const char *help[]  = {"st", "-e","bash", "-c", "cat ~/.config/help & read", NULL};
 
 #define  XF86AudioMute          0x1008ff12
 #define  XF86AudioLowerVolume   0x1008ff11
@@ -140,6 +141,7 @@ static Key keys[] = {
     { MODKEY|ShiftMask,             XK_l,      tagmon,         {.i = +1 } },
     { ShiftMask,                    XK_F12,    spawn,          {.v = poweroff } },
     { ControlMask|ShiftMask,        XK_F12,    spawn,          {.v = reboot } },
+    { 0,                            XK_F1,     spawn,          {.v = help } },
     { 0,                            XK_F8,     spawn,          {.v = killscreensaver } },
     { 0,                            XK_F10,    spawn,          {.v = killmon } },
     { 0,                            XK_F11,    spawn,          {.v = attachmon } },

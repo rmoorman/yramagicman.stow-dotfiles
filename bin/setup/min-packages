@@ -22,7 +22,6 @@ chromium
 cloc
 cmake
 composer
-compton
 coreutils
 cronie
 cryptsetup
@@ -132,11 +131,11 @@ mutt
 nano
 ncmpcpp
 neofetch
+neovim
 net-tools
 netctl
 newsboat
 nmap
-nnn
 ntp
 openssh
 pacman
@@ -154,6 +153,7 @@ php-intl
 php-sqlite
 php-tidy
 phpmyadmin
+picom
 pkgconf
 pkgfile
 pngcrush
@@ -196,7 +196,6 @@ tcpdump
 terminus-font
 texinfo
 the_silver_searcher
-thunar
 thunderbird
 tlp
 tmux
@@ -213,9 +212,9 @@ usbutils
 util-linux
 vi
 vidir
+vifm
 vlc
 w3m
-weechat
 wget
 which
 wpa_supplicant
