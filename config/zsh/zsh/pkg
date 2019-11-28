@@ -3,6 +3,9 @@ function pkg() {
     local alternate=$alt[2]
     local src=$from[2]
     local deps=$depends[2]
+    if [[ -z $ZDOTDIR ]]; then
+        ZDOTDIR=$HOME
+    fi
     if [[ "$1" == 'init' ]]; then
         pkgs=()
         return
