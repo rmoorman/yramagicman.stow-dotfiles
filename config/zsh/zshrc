@@ -55,13 +55,15 @@ setopt prompt_subst
 autoload -U colors && colors
 
 # Use case-insensitve globbing.
-unsetopt CASE_GLOB
+unsetopt case_glob
 # glob dotfiles as well
-setopt GLOBDOTS
+setopt globdots
+# use extended globbing
+setopt extendedglob
+
 
 # Automatically change directory if a directory is entered
 setopt autocd
-setopt extendedglob
 
 #
 # Smart URLs
@@ -74,29 +76,29 @@ zle -N self-insert url-quote-magic
 #
 
 # Allow brace character class list expansion.
-setopt BRACE_CCL
+setopt brace_ccl
 # Combine zero-length punctuation characters (accents) with the base character.
-setopt COMBINING_CHARS
+setopt combining_chars
 # Allow 'Henry''s Garage' instead of 'Henry'\''s Garage'.
-setopt RC_QUOTES
+setopt rc_quotes
 # Don't print a warning message if a mail file has been accessed.
-unsetopt MAIL_WARNING
+unsetopt mail_warning
 
 #
 # Jobs
 #
 # List jobs in the long format by default.
-setopt LONG_LIST_JOBS
+setopt long_list_jobs
 # Attempt to resume existing job before creating a new process.
-setopt AUTO_RESUME
+setopt auto_resume
 # Report status of background jobs immediately.
-setopt NOTIFY
+setopt notify
 # Don't run all background jobs at a lower priority.
-unsetopt BG_NICE
+unsetopt bg_nice
 # Don't kill jobs on shell exit.
-unsetopt HUP
+unsetopt hup
 # Don't report on jobs when shell exit.
-unsetopt CHECK_JOBS
+unsetopt check_jobs
 
 # turn on corrections
 setopt correct
@@ -109,22 +111,22 @@ stty -ixon > /dev/null 2>/dev/null
 #{{{ completion
 #{{{ options
 # Complete from both ends of a word.
-setopt COMPLETE_IN_WORD
+setopt complete_in_word
 # Move cursor to the end of a completed word.
-setopt ALWAYS_TO_END
+setopt always_to_end
 # Perform path search even on command names with slashes.
-setopt PATH_DIRS
+setopt path_dirs
 # Show completion menu on a successive tab press.
-setopt AUTO_MENU
+setopt auto_menu
 # Automatically list choices on ambiguous completion.
-setopt AUTO_LIST
+setopt auto_list
 # If completed parameter is a directory, add a trailing slash.
-setopt AUTO_PARAM_SLASH
-setopt NO_COMPLETE_ALIASES
+setopt auto_param_slash
+setopt no_complete_aliases
 # Do not autoselect the first completion entry.
-setopt MENU_COMPLETE
+setopt menu_complete
 # Disable start/stop characters in shell editor.
-unsetopt FLOW_CONTROL
+unsetopt flow_control
 #}}}
 #{{{ zstyle
 zstyle ':completion:*:*:*:*:*' menu select
@@ -153,29 +155,29 @@ HISTFILE="$ZDOTDIR/.zhistory"
 HISTSIZE=1000
 SAVEHIST=1000
 setopt appendhistory notify
-unsetopt beep extendedglob nomatch
+unsetopt beep nomatch
 # Treat the '!' character specially during expansion.
-setopt BANG_HIST
+setopt bang_hist
 # Write to the history file immediately, not when the shell exits.
-setopt INC_APPEND_HISTORY
+setopt inc_append_history
 # Share history between all sessions.
-setopt SHARE_HISTORY
+setopt share_history
 # Expire a duplicate event first when trimming history.
-setopt HIST_EXPIRE_DUPS_FIRST
+setopt hist_expire_dups_first
 # Do not record an event that was just recorded again.
-setopt HIST_IGNORE_DUPS
+setopt hist_ignore_dups
 # Delete an old recorded event if a new event is a duplicate.
-setopt HIST_IGNORE_ALL_DUPS
+setopt hist_ignore_all_dups
 # Do not display a previously found event.
-setopt HIST_FIND_NO_DUPS
+setopt hist_find_no_dups
 # Do not record an event starting with a space.
-setopt HIST_IGNORE_SPACE
+setopt hist_ignore_space
 # Do not write a duplicate event to the history file.
-setopt HIST_SAVE_NO_DUPS
+setopt hist_save_no_dups
 # Do not execute immediately upon history expansion.
-setopt HIST_VERIFY
+setopt hist_verify
 # Show timestamp in history
-setopt EXTENDED_HISTORY
+setopt extended_history
 #}}}
 #{{{ prompt. If serenity isn't there use a default
 if [[ $(  prompt -l | grep serenity  ) ]]; then
@@ -219,7 +221,7 @@ function workon() {
 function artisan() {
     php artisan $*
 }
-setopt NO_BEEP
+setopt no_beep
 #}}}
 #{{{ key bindings,
 # Allow command line editing in an external editor.
@@ -274,13 +276,13 @@ chpwd() {
 
 DIRSTACKSIZE=20
 
-setopt AUTO_PUSHD PUSHD_SILENT PUSHD_TO_HOME
+setopt auto_pushd pushd_silent pushd_to_home
 
 # Remove duplicate entries
-setopt PUSHD_IGNORE_DUPS
+setopt pushd_ignore_dups
 
 # This reverts the +/- operators.
-setopt PUSHD_MINUS
+setopt pushd_minus
 
 #}}}
 #{{{ start tmux,
