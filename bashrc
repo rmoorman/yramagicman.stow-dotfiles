@@ -4,3 +4,5 @@ function cd() {
     builtin cd "$@" && ls
 }
 export PATH="$HOME/.local/bin:$PATH"
+
+export HISTFILE="$HOME/.cache/bash_history"
