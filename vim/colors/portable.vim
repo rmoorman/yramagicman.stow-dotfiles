@@ -2,7 +2,7 @@ hi clear
 syntax reset
 set background=dark
 let colors_name='portable'
-hi foldcolumn ctermbg=NONE ctermfg=0
+hi foldcolumn ctermbg=NONE ctermfg=12
 hi linenr ctermfg=12
 hi cursorlinenr ctermfg=9
 hi search cterm=REVERSE ctermfg=8 ctermbg=15
