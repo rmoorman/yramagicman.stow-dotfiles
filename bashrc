@@ -5,4 +5,4 @@ function cd() {
 }
 export PATH="$HOME/.local/bin:$PATH"
 
-export HISTFILE="$HOME/.cache/bash_history"
+HISTFILE="$HOME/.cache/bash_history"
