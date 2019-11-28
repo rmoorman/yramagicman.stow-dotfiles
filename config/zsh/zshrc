@@ -16,8 +16,8 @@ export UPDATE_INTERVAL=15
 MODULES_DIR="$ZDOTDIR/plugins"
 ZSHZ_DATA="$HOME/.cache/zsh/z"
 
-fpath=("$ZDOTDIR/zsh" $fpath)
-autoload $ZDOTDIR/zsh/*
+fpath=("$ZDOTDIR/pkg" $fpath)
+autoload $ZDOTDIR/pkg/*
 #}}}
 #{{{ Load packages
 source $ZDOTDIR/.zprofile
