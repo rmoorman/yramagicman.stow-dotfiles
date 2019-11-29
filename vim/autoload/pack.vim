@@ -207,6 +207,7 @@ function! s:do_update()
         call s:do_update()
     endif
 endfunction
+
 function! s:install_all()
     call s:read_start_dir()
     call s:sanity_check()
