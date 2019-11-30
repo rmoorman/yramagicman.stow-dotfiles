@@ -2,21 +2,19 @@
 xbacklight -set 25
 setxkbmap -option compose:menu
 setxkbmap -option caps:none
-if test "$( hostname )" = "k-nine" || test "$( hostname )" = "serenity"
+if test "$( hostname )" = "artoo"
 then
     "$HOME/bin/setmouse" &
 fi
-check_process(){
 
+check_process(){
     if  ! pgrep "$1";
     then
         "$@" &
     fi
-
 }
 
 set_screen_layout() {
-
     ( /home/jonathan/.screenlayout/default.sh ) &
     if test "$( hostname )" == 'serenity'; then
         amixer -c 0  --  set  Master  0
@@ -88,16 +86,6 @@ fi
 if  stat "$HOME/.cache/updates" > /dev/null; then
     rm "$HOME/.cache/updates"
 fi
-) &
-
-
-(
-echo '' > "$HOME/.config/fetchmail.log"
-echo '' > "$HOME/.config/procmail.log"
-echo '' > "$HOME/.config/msmtp.log"
-echo '' > "$HOME/.mpd/mpdstate"
-rm "$HOME/slacklogs"
-rm "$HOME/nohup"
 ) &
 
 exit
