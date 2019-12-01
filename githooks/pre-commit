@@ -1,20 +1,26 @@
 #!/bin/sh
 base=$(git rev-parse --show-toplevel)
-for f in "aliases" "certificates" "config"
+while read -r f
 do
-
-    if ! test -f "$base/mutt/$f.gpg"; then
-        echo gpg -r jonathandavis@gilsons.org -e "$base/mutt/$f"
+    if ! test -f "$base/$f.gpg"; then
+        # echo 'make file'
+        gpg -r jonathandavis@gilsons.org --encrypt "$base/$f"
     fi
-    if git status | grep -q "mutt/$f"; then
-        gpg -d --quiet "$base/mutt/$f.gpg" > "/tmp/$f"
-        if  /usr/bin/diff -q "$base/mutt/$f" "/tmp/$f"; then
-            exit 0
+    if git status | grep -q "$f"; then
+        gpg -d --quiet "$base/$f.gpg" > "/tmp/$(basename "$f" )"
+        if  /usr/bin/diff -q "$base/$f" "/tmp/$(basename "$f" )"; then
+            rm "/tmp/$(basename "$f" )"
+            exit 1
         else
-            rm "$base/mutt/$f.gpg"
-            gpg -r jonathandavis@gilsons.org --encrypt "$base/mutt/$f"
-            git rm --cached "$base/mutt/$f"
-            exit 0
+            echo encrypt
+            rm "$base/$f.gpg"
+            gpg -r jonathandavis@gilsons.org --encrypt "$base/$f"
+            git rm --cached "$base/$f"
+            rm "/tmp/$(basename "$f" )"
+            exit 1
         fi
     fi
-done
+    if test -f "/tmp/$f"; then
+        rm "/tmp/$(basename "$f" )"
+    fi
+done < "$base/config/crypt"
