@@ -4,7 +4,7 @@ for f in "aliases" "certificates" "config"
 do
 
     if ! test -f "$base/mutt/$f.gpg"; then
-        gpg -r jonathandavis@gilsons.org -e "$base/mutt/$f"
+        echo gpg -r jonathandavis@gilsons.org -e "$base/mutt/$f"
     fi
     if git status | grep -q "mutt/$f"; then
         gpg -d --quiet "$base/mutt/$f.gpg" > "/tmp/$f"
