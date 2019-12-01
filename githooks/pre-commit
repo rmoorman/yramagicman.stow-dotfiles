@@ -1,0 +1,22 @@
+#!/bin/sh
+
+base=$(git rev-parse --show-toplevel)
+for f in "aliases" "certificates" "config"
+do
+
+    if ! test -f "$base/mutt/$f.gpg"; then
+        gpg -r jonathandavis@gilsons.org -e "$base/mutt/$f"
+        exit 1
+    fi
+    if git status | grep -q "mutt/$f"; then
+        gpg -d --quiet "$base/mutt/$f.gpg" > "/tmp/$f"
+        if  /usr/bin/diff -q "$base/mutt/$f" "/tmp/$f"; then
+            exit 0
+        else
+            rm "$base/mutt/$f.gpg"
+            gpg -r jonathandavis@gilsons.org --encrypt "$base/mutt/$f"
+            git rm --cached "$base/mutt/$f"
+            exit 0
+        fi
+    fi
+done
