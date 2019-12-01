@@ -10,14 +10,14 @@ do
         gpg -d --quiet "$base/$f.gpg" > "/tmp/$(basename "$f" )"
         if  /usr/bin/diff -q "$base/$f" "/tmp/$(basename "$f" )"; then
             rm "/tmp/$(basename "$f" )"
-            exit 0
+            exit 1
         else
             echo encrypt
             rm "$base/$f.gpg"
             gpg -r jonathandavis@gilsons.org --encrypt "$base/$f"
             git rm --cached "$base/$f"
             rm "/tmp/$(basename "$f" )"
-            exit 0
+            exit 1
         fi
     fi
     if test -f "/tmp/$f"; then
