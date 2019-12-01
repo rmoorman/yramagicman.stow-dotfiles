@@ -1,0 +1,8 @@
+Host localserver
+    Hostname 192.168.1.126
+    User pi
+
+
+Host gitserver
+    Hostname 192.168.1.126
+    User git
