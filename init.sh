@@ -23,6 +23,7 @@ done
 find ./ -maxdepth 1 -type d  \
     -not -name '.git' -and \
     -not -name 'config' -and \
+    -not -name 'githooks' -and \
     -not -name 'bin' | while read -r d
 do
     if test ! -d "$HOME/.$(basename "$d" )"
@@ -52,6 +53,10 @@ do
     fi
 done
 
+for f in githooks/*; do
+    ln -sf "$dotdir/$f" "$dotdir/.git/hooks/$(basename "$f")"
+done
+
 if test ! -d "$HOME/bin"
 then
     ln -sv "$dotdir/bin" "$HOME/"
@@ -66,29 +71,37 @@ then
 fi
 if test ! -d "$HOME/Gits/st/"
 then
+    (
     cd "$HOME/Gits" || return
     git clone --depth 3 git://git.suckless.org/st
     cp "$dotdir/st.config.h" "$HOME/Gits/st/config.h"
     cd "$HOME/Gits/st" || return
     make
     sudo make install
+)
 else
+    (
     cp "$dotdir/st.config.h" "$HOME/Gits/st/config.h"
     cd "$HOME/Gits/st" || return
     make
+)
 fi
 if test ! -d "$HOME/Gits/dwm/"
 then
+    (
     cd "$HOME/Gits" || return
     git clone --depth 3 git://git.suckless.org/dwm
     cp "$dotdir/dwm.config.h" "$HOME/Gits/dwm/config.h"
     cd "$HOME/Gits/dwm" || return
     make
     sudo make install
+)
 else
+    (
     cp "$dotdir/dwm.config.h" "$HOME/Gits/dwm/config.h"
     cd "$HOME/Gits/dwm" || return
     make
+)
 fi
 if test "$SHELL" != "$(command -v zsh)"; then
     chsh -s "$(command -v zsh)"
