@@ -10,7 +10,7 @@ do
         gpg -d --quiet "$base/$f.gpg" > "/tmp/$(basename "$f" )"
         if  /usr/bin/diff -q "$base/$f" "/tmp/$(basename "$f" )"; then
             if git ls-files | grep -q "$f"; then
-                git rm --cached "$base/$f"
+                git rm --cached "$base/$f" > /dev/null 2>&1
             fi
             rm "/tmp/$(basename "$f" )"
         else
@@ -18,7 +18,7 @@ do
             rm "$base/$f.gpg"
             gpg -r jonathandavis@gilsons.org --encrypt "$base/$f"
             if git ls-files | grep -q "$f"; then
-                git rm --cached "$base/$f"
+                git rm --cached "$base/$f" > /dev/null 2>&1
             fi
             git add "$base/$f.gpg"
             rm "/tmp/$(basename "$f" )"
