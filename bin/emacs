@@ -3,6 +3,6 @@
 if [[ -e /tmp/emacs1000/server ]]; then
     emacsclient -a emacs -s /tmp/emacs1000/server -c $@
 else
-	command emacs --daemon
-	command emacsclient $@
+    /usr/bin/emacs --daemon
+    /usr/bin/emacsclient $@
 fi
