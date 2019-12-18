@@ -55,7 +55,7 @@
   :config
   (evil-leader/set-leader ",")
   (evil-leader/set-key
-    u          "," 'evil-switch-to-windows-last-buffer
+    "," 'evil-switch-to-windows-last-buffer
     "s" 'magit-status
     "c" 'magit-commit-create
     "f" 'find-file
@@ -122,7 +122,7 @@
 ;;       '(("/Inbox"             . ?i)
 ;;  ("/Sent" . ?s)
 ;;  ("/trash"     . ?t)))
-(setq mu4e-get-mail-command "getmail -n")
+(setq mu4e-get-mail-command "getmail -n && getmail -r gmail -n -d ")
 (setq user-mail-address "jonathandavis@gilsons.org"
       user-full-name "Jonathan")
 (setq message-send-mail-function 'message-send-mail-with-sendmail
