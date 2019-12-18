@@ -3,7 +3,7 @@
 set sendmail="/usr/bin/msmtp"
 set alias_file = ~/.mutt/aliases
 source $alias_file
-set editor = "vim"
+set editor = "$EDITOR"
 set delete
 set from = "jonathandavis@gilsons.org"
 set mbox_type=Maildir

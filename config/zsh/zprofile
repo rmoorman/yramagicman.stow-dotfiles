@@ -19,8 +19,8 @@ fi
 # Editors
 #
 
-export EDITOR='/usr/bin/nvim'
-export VISUAL='/usr/bin/nvim'
+export EDITOR='/home/jonathan/bin/emacs'
+export VISUAL='/home/jonathan/bin/emacs'
 export PAGER='less'
 
 #

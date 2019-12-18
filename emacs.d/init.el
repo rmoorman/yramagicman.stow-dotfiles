@@ -4,7 +4,7 @@
 ;;; Code:
 
 ;; Hide mouse interface quickly
-;; (if (fboundp 'menu-bar-mode) (menu-bar-mode -1))
+(if (fboundp 'menu-bar-mode) (menu-bar-mode -1))
 (if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
 (if (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
 
@@ -32,55 +32,60 @@
 (setq use-package-always-ensure t)
 
 ;; Evil config
+
+
 (use-package evil
-             :config
-             (evil-mode 1)
-             (add-hook 'evil-normal-state-entry-hook (lambda ()
-                                                       (if buffer-file-name
-                                                         (when
-                                                           (file-writable-p buffer-file-name)
-                                                           (save-buffer)))
-                                                       (lambda() nil))))
+  :config
+  (evil-mode 1)
+  (add-hook 'evil-normal-state-entry-hook (lambda ()
+                                            (if buffer-file-name
+                                                (when
+                                                    (file-writable-p buffer-file-name)
+                                                  (save-buffer)))
+                                            (lambda() nil))))
 
 (use-package evil-escape
-             :init
-             (setq-default evil-escape-key-sequence "  ")
-             (setq-default evil-escape-delay 0.2)
-             :config
-             (evil-escape-mode 1))
+  :init
+  (setq-default evil-escape-key-sequence "  ")
+  (setq-default evil-escape-delay 0.2)
+  :config
+  (evil-escape-mode 1))
 
 (use-package evil-leader
-             :config
-             (evil-leader/set-leader ",")
-             (evil-leader/set-key
-               "," 'evil-switch-to-windows-last-buffer
-               "s" 'magit-status
-               "c" 'magit-commit-create
-               "f" 'find-file
-               "SPC" 'save-buffer)
-             (global-evil-leader-mode 1))
+  :config
+  (evil-leader/set-leader ",")
+  (evil-leader/set-key
+    u          "," 'evil-switch-to-windows-last-buffer
+    "s" 'magit-status
+    "c" 'magit-commit-create
+    "f" 'find-file
+    "SPC" 'save-buffer)
+  (global-evil-leader-mode 1))
 
 (use-package evil-commentary
-             :config
-             (evil-commentary-mode 1))
+  :config
+  (evil-commentary-mode 1))
 
 (use-package evil-surround
-             :config
-             (global-evil-surround-mode 1))
+  :config
+  (global-evil-surround-mode 1))
 
 ;; Completion settings
 (use-package auto-complete
-             :config
-             (global-auto-complete-mode 1))
+  :config
+  (global-auto-complete-mode 1))
 
 (use-package php-mode
-             :mode "\\.php\\'"
-             :interpreter "php"
-             :config
-             (ac-php-mode))
+  :mode "\\.php\\'"
+  :interpreter "php"
+  :config
+  (ac-php-mode))
 (use-package ac-php)
 
 
+(use-package ivy
+  :config
+  (ivy-mode 1))
 ;; keybinds
 (global-set-key (kbd "C-c b") 'buffer-menu)
 (global-set-key (kbd "C-c t") 'vterm)
@@ -88,19 +93,19 @@
 
 ;; Modes
 (use-package markdown-mode
-             :mode "\\.md\\'")
+  :mode "\\.md\\'")
 (use-package linum-relative
-             :config
-             (linum-relative-global-mode))
+  :config
+  (linum-relative-global-mode))
 (use-package web-mode
-             :mode "\\.blade.php|.vue|.html\\'")
+  :mode "\\.blade.php|.vue|.html\\'")
 
 (use-package typescript-mode
-             :mode "\\.ts\\'")
+  :mode "\\.ts\\'")
 ;; misc. packages
 (use-package magit)
 (use-package vterm)
-(ido-mode 1)
+;; (ido-mode 1)
 (show-paren-mode 1)
 
 ;; Mu4e
@@ -125,6 +130,7 @@
 
 ;; hooks
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
+(add-hook 'before-save-hook (lambda nil "" (untabify (point-min) (point-max) )))
 
 ;; settings
 (setq vc-follow-symlinks t)
@@ -132,17 +138,18 @@
 
 ;; Added by Customize menu
 (custom-set-variables
-  ;; custom-set-variables was added by Custom.
-  ;; If you edit it by hand, you could mess it up, so be careful.
-  ;; Your init file should contain only one such instance.
-  ;; If there is more than one, they won't work right.
-  '(electric-pair-mode t)
-  '(package-selected-packages
-     (quote
-       (typescript-mode evil-surround evil-commentary web-mode evil-vimish-fold vimish-fold magit ac-php vterm linum-relative shell-script-mode use-package markdown-mode evil-leader php-mode auto-complete evil-escape undo-tree evil))))
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(electric-pair-mode t)
+ '(package-selected-packages
+   (quote
+    (ivy typescript-mode evil-surround evil-commentary web-mode evil-vimish-fold vimish-fold magit ac-php vterm linum-relative shell-script-mode use-package markdown-mode evil-leader php-mode auto-complete evil-escape undo-tree evil)))
+ '(tab-width 4))
 (custom-set-faces
-  ;; custom-set-faces was added by Custom.
-  ;; If you edit it by hand, you could mess it up, so be careful.
-  ;; Your init file should contain only one such instance.
-  ;; If there is more than one, they won't work right.
-  )
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
