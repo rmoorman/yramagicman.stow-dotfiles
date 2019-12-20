@@ -7,6 +7,7 @@ find ./ -maxdepth 1 -type f  \
     -not -name 'config' -and \
     -not -name 'license.txt' -and \
     -not -name '*.h' -and \
+    -not -name '*cron' -and \
     -not -name 'README.md' -and \
     -not -name 'uninstall.sh' -and \
     -not -name 'init.sh' | while read -r f
