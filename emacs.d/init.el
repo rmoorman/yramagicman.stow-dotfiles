@@ -33,7 +33,6 @@
 
 ;; Evil config
 
-
 (use-package evil
   :config
   (evil-mode 1)
@@ -75,6 +74,8 @@
   :config
   (global-auto-complete-mode 1))
 
+;; (use-package tss
+;;   :mode "\\.ts")
 (use-package php-mode
   :mode "\\.php\\'"
   :interpreter "php"
@@ -98,10 +99,18 @@
   :config
   (linum-relative-global-mode))
 (use-package web-mode
-  :mode "\\.blade.php|.vue|.html\\'")
+  :mode "\\.blade.php|.component.html|.vue|.html\\'")
 
 (use-package typescript-mode
   :mode "\\.ts\\'")
+
+(use-package flycheck
+  :config
+  (custom-set-variables
+   '(flycheck-typescript-tslint-executable "~/.local/bin/tslint"))'
+  (global-flycheck-mode))
+
+
 ;; misc. packages
 (use-package magit)
 (use-package vterm)
@@ -145,7 +154,7 @@
  '(electric-pair-mode t)
  '(package-selected-packages
    (quote
-    (ivy typescript-mode evil-surround evil-commentary web-mode evil-vimish-fold vimish-fold magit ac-php vterm linum-relative shell-script-mode use-package markdown-mode evil-leader php-mode auto-complete evil-escape undo-tree evil)))
+    (flycheck-eslint flycheck flymake-eslint ivy typescript-mode evil-surround evil-commentary web-mode evil-vimish-fold vimish-fold magit ac-php vterm linum-relative shell-script-mode use-package markdown-mode evil-leader php-mode auto-complete evil-escape undo-tree evil)))
  '(tab-width 4))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.

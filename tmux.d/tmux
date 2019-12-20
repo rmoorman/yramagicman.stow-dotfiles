@@ -10,5 +10,5 @@ fi
 tmux new-session -d -s $(hostname) -c '$HOME' -n emacs
 tmux send-keys -t $(hostname):emacs 'emacs $HOME' Enter
 tmux new-window -t $(hostname)
-tHOME/bin/switch_or_attach $(hostname)
+$HOME/bin/switch_or_attach $(hostname)
 exit 0
