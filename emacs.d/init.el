@@ -74,8 +74,7 @@
   :config
   (global-auto-complete-mode 1))
 
-;; (use-package tss
-;;   :mode "\\.ts")
+
 (use-package php-mode
   :mode "\\.php\\'"
   :interpreter "php"
@@ -95,14 +94,20 @@
 ;; Modes
 (use-package markdown-mode
   :mode "\\.md\\'")
+(use-package racket-mode
+  :mode "\\.rkt\\'")
 (use-package linum-relative
   :config
   (linum-relative-global-mode))
 (use-package web-mode
   :mode "\\.blade.php|.component.html|.vue|.html\\'")
 
+;; typescript
 (use-package typescript-mode
   :mode "\\.ts\\'")
+;; (use-package tss
+;;   :mode "\\.ts")
+
 
 (use-package flycheck
   :config
@@ -152,9 +157,10 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(electric-pair-mode t)
+ '(flycheck-typescript-tslint-executable "~/.local/bin/tslint")
  '(package-selected-packages
    (quote
-    (flycheck-eslint flycheck flymake-eslint ivy typescript-mode evil-surround evil-commentary web-mode evil-vimish-fold vimish-fold magit ac-php vterm linum-relative shell-script-mode use-package markdown-mode evil-leader php-mode auto-complete evil-escape undo-tree evil)))
+    (tss flycheck ivy typescript-mode evil-surround evil-commentary web-mode evil-vimish-fold vimish-fold magit ac-php vterm linum-relative shell-script-mode use-package markdown-mode evil-leader php-mode auto-complete evil-escape undo-tree evil)))
  '(tab-width 4))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.

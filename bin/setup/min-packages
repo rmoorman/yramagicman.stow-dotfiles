@@ -131,7 +131,6 @@ mutt
 nano
 ncmpcpp
 neofetch
-neovim
 net-tools
 netctl
 newsboat
@@ -231,7 +230,6 @@ xorg-iceauth
 xorg-luit
 xorg-server
 xorg-server-devel
-xorg-server-xdmx
 xorg-server-xephyr
 xorg-server-xnest
 xorg-server-xvfb
