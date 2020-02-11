@@ -42,11 +42,11 @@ function pkg() {
         if [[ $src =~ '^(omz|ohmyzsh|oh-my-zsh)' ]]; then
             local d=("${(@s#,#)deps}")
             if [[ $theme ]]; then
-                pkgs+=('robbyrussell/oh-my-zsh' "themes/$1")
-                _source_deps 'robbyrussell/oh-my-zsh'
+                pkgs+=('ohmyzsh/ohmyzsh' "themes/$1")
+                _source_deps 'ohmyzsh/ohmyzsh'
             else
-                pkgs+=('robbyrussell/oh-my-zsh' "plugins/$1/$1")
-                _source_deps 'robbyrussell/oh-my-zsh'
+                pkgs+=('ohmyzsh/ohmyzsh' "plugins/$1/$1")
+                _source_deps 'ohmyzsh/ohmyzsh'
             fi
         fi
         if [[ $src =~ '^(prezto)' ]]; then

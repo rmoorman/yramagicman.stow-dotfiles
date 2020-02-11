@@ -14,7 +14,7 @@ find ./ -maxdepth 1 -type f  \
 do
     if test ! -f "$HOME/.$(basename "$f" )"
     then
-        ln -sv "$dotdir/$(basename "$f")" "$HOME/.$(basename "$f")"
+        ln -sf "$dotdir/$(basename "$f")" "$HOME/.$(basename "$f")"
     else
         printf 'Files Not Installed: ' >> "$logfile"
         printf "%s\n" "$f" >> "$logfile"
@@ -29,7 +29,7 @@ find ./ -maxdepth 1 -type d  \
 do
     if test ! -d "$HOME/.$(basename "$d" )"
     then
-        ln -sv "$PWD/$(basename "$d")" "$HOME/.$(basename "$d")"
+        ln -sv "$dotdir/$(basename "$d")" "$HOME/.$(basename "$d")"
     else
         printf '\nDot Directories Not Installed: ' >> "$logfile"
         printf "%s\n" "$d" >> "$logfile"
@@ -70,39 +70,41 @@ if test ! -d "$HOME/Gits"
 then
     mkdir -p "$HOME/Gits"
 fi
-if test ! -d "$HOME/Gits/st/"
-then
-    (
-    cd "$HOME/Gits" || return
-    git clone --depth 3 git://git.suckless.org/st
-    cp "$dotdir/st.config.h" "$HOME/Gits/st/config.h"
-    cd "$HOME/Gits/st" || return
-    make
-    sudo make install
-)
+if test "$(uname)" != "Darwin"
+    if test ! -d "$HOME/Gits/st/"
+    then
+        (
+        cd "$HOME/Gits" || return
+        git clone --depth 3 git://git.suckless.org/st
+        cp "$dotdir/st.config.h" "$HOME/Gits/st/config.h"
+        cd "$HOME/Gits/st" || return
+        make
+        sudo make install
+    )
 else
     (
     cp "$dotdir/st.config.h" "$HOME/Gits/st/config.h"
     cd "$HOME/Gits/st" || return
     make
 )
-fi
-if test ! -d "$HOME/Gits/dwm/"
-then
-    (
-    cd "$HOME/Gits" || return
-    git clone --depth 3 git://git.suckless.org/dwm
-    cp "$dotdir/dwm.config.h" "$HOME/Gits/dwm/config.h"
-    cd "$HOME/Gits/dwm" || return
-    make
-    sudo make install
-)
+    fi
+    if test ! -d "$HOME/Gits/dwm/"
+    then
+        (
+        cd "$HOME/Gits" || return
+        git clone --depth 3 git://git.suckless.org/dwm
+        cp "$dotdir/dwm.config.h" "$HOME/Gits/dwm/config.h"
+        cd "$HOME/Gits/dwm" || return
+        make
+        sudo make install
+    )
 else
     (
     cp "$dotdir/dwm.config.h" "$HOME/Gits/dwm/config.h"
     cd "$HOME/Gits/dwm" || return
     make
 )
+    fi
 fi
 if test "$SHELL" != "$(command -v zsh)"; then
     chsh -s "$(command -v zsh)"
