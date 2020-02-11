@@ -10,8 +10,8 @@ hi diffadd ctermfg=4 ctermbg=0
 hi diffchange ctermfg=9 ctermbg=0
 hi diffdelete ctermfg=1 ctermbg=0
 hi difftext ctermbg=0 ctermfg=NONE
-hi pmenu ctermbg=0 ctermfg=15
-hi pmenusel cterm=REVERSE
+hi pmenu ctermbg=0 ctermfg=7
+hi pmenusel ctermfg=0 ctermbg=7
 hi statusline ctermbg=7 ctermfg=0 cterm=REVERSE
 hi statuslinenc ctermbg=0 ctermfg=7
 hi visual ctermbg=4 ctermfg=11
