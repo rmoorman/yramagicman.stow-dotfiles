@@ -25,13 +25,13 @@ function _load_pkgs() {
         local sleeptime=0.5
         while [[ $dead -lt $(( ( $#procs / 2  ) + 1 )) ]]; do
             for p name in ${(kv)procs}; do
-                ps -q $p > /dev/null
+                ps -o pid= -p $pid 2>/dev/null
                 dead=$(( $dead + $?))
             done
             local msg=''
             local spinner=('|' '\' '-' '/')
             for p name in ${(kv)procs}; do
-                ps -q $p > /dev/null
+                ps -o pid= -p $pid 2>/dev/null
                 if [[ $? -eq 1 ]]; then
                     msg="$msg \033[2K\r"
                     msg="$msg completed $name\n"
