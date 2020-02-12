@@ -1,3 +1,4 @@
+# vim: ft=zsh
 function _get_clone_url() {
 
     if [[ $1 =~ '^(git@|https)' ]]; then

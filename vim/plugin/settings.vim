@@ -129,3 +129,7 @@ set splitright
 set winheight=2
 set winminheight=2
 "}}}
+"{{{ modeline
+set modeline
+set modelines=3
+"}}}

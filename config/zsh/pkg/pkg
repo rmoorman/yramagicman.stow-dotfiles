@@ -1,3 +1,4 @@
+# vim: ft=zsh
 function pkg() {
     zparseopts -E -D -A opts a:=alt -alt:=alt f:=from -from:=from -theme=theme t=theme d:=depends
     local alternate=$alt[2]

@@ -1,3 +1,4 @@
+# vim: ft=zsh
 function _pkgupdate() {
     if [[ -z $UPDATE_INTERVAL ]];
     then

@@ -1,17 +1,4 @@
-
-
-
-# migrate this to below
-# while [[ $#pids > 0 ]]; do
-#   for pid in $pids; do
-#     # `ps` may diplay an error message such "Signal 18 (CONT) caught by ps
-#     # (procps-ng version 3.3.9).", see https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=732410
-#     if [[ $(ps -o pid= -p $pid 2>/dev/null) == "" ]]; then
-#       pids[$pids[(I)$pid]]=()
-#     fi
-#   done
-#   sleep .5
-# done
+# vim: ft=zsh
 function _load_pkgs() {
     tput civis
     for name alt in ${(kv)pkgs}

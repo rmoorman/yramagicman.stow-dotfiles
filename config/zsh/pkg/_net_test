@@ -1,3 +1,4 @@
+# vim: ft=zsh
 function _net_test() {
     netflag="/tmp/network_down"
     touch $netflag
