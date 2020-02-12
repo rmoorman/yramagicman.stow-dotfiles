@@ -25,7 +25,7 @@ pkg init
 if [[ -z "$INSIDE_EMACS" ]]; then
     pkg colored-man-pages -f omz
 fi
-pkg zsh-users/zsh-completions 1
+pkg zsh-users/zsh-completions
 pkg agkozak/zsh-z
 pkg "https://gitlab.com/yramagicman/zsh-aliases"
 pkg load
@@ -252,7 +252,7 @@ export BROWSER=firefox
 export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -g ""'
 export FZF_CTRL_T_COMMAND='ag --hidden --ignore .git -g ""'
 #}}}
-#{{{cdr, persistent cd
+#{{{ cdr, persistent cd
 autoload -Uz chpwd_recent_dirs cdr add-zsh-hook
 add-zsh-hook chpwd chpwd_recent_dirs
 DIRSTACKFILE="$HOME/.cache/zsh/dirs"
