@@ -71,6 +71,7 @@ then
     mkdir -p "$HOME/Gits"
 fi
 if test "$(uname)" != "Darwin"
+then
     if test ! -d "$HOME/Gits/st/"
     then
         (
