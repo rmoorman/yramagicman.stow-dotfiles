@@ -2,6 +2,7 @@
 function _get_clone_dest() {
     if [[ $1 =~ '^(git@|https)' ]]; then
         local tillcolon=("${(@s/:/)1}")
+        repopath=$tillcolon[-1]
         if [[ $tillcolon[1] = 'https' ]]; then
             local atslashes=("${(@s#/#)tillcolon}")
             location="$atslashes[-1]"
@@ -11,7 +12,8 @@ function _get_clone_dest() {
             location="$atslashes[-1]"
         fi
     else
-            local atslashes=("${(@s#/#)1}")
-            location="$atslashes[-1]"
+        local atslashes=("${(@s#/#)1}")
+        location="$atslashes[-1]"
+        repopath=$1;
     fi
 }
