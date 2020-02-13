@@ -27,7 +27,7 @@ if [[ -z "$INSIDE_EMACS" ]]; then
 fi
 pkg zsh-users/zsh-completions
 pkg agkozak/zsh-z
-pkg "https://gitlab.com/yramagicman/zsh-aliases"
+pkg "git@gitlab.com:yramagicman/zsh-aliases"
 pkg load
 pkg update
 #}}}
