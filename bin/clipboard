@@ -10,5 +10,7 @@ if command -v xclip 1>/dev/null; then
         xclip -o -selection clipboard
     fi
 else
-    notify-send "Remember to install xclip"
+    if command -v notify-send 1>/dev/null; then
+        notify-send "Remember to install xclip"
+    fi
 fi
