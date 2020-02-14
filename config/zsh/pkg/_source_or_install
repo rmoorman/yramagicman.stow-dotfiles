@@ -33,7 +33,7 @@ function _source_or_install() {
     else
         _net_test
         if [[ $? -eq 1 ]]; then
-            echo "oops"
+            echo "network down, try again later"
             return
         fi
         setopt nonotify nomonitor

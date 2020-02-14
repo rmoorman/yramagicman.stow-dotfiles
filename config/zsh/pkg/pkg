@@ -22,7 +22,10 @@ function pkg() {
                 echo "You have $( du -hs "$MODULES_DIR/log_backups" | awk '/[:space:]/ {print $1}' ) of log backups, clear them with pkg clear-logs"
             fi
             echo 'reloading...'
-            source $ZDOTDIR/.zshrc
+            if [[ ! -f /tmp/zreload ]]; then
+                source $ZDOTDIR/.zshrc
+                touch /tmp/zreload
+            fi
         elif [[ $errs -gt 0 ]]; then
             _handle_errors
         else
