@@ -1,14 +1,17 @@
 #!/usr/bin/env zsh
-
-if [[ -e /tmp/emacs1000/server ]] && [[ -z $@ ]]; then
-    emacsclient -a emacs -s /tmp/emacs1000/server .
-elif [[ -e /tmp/emacs1000/server ]]; then
-    emacsclient -a emacs -s /tmp/emacs1000/server $@
-else
-    /usr/bin/emacs --daemon
-    if [[ -z $@ ]]; then
-        /usr/bin/emacsclient .
+if [[ ! $(uname) == 'Darwin' ]]; then
+    if [[ -e /tmp/emacs1000/server ]] && [[ -z $@ ]]; then
+        emacsclient -a emacs -s /tmp/emacs1000/server .
+    elif [[ -e /tmp/emacs1000/server ]]; then
+        emacsclient -a emacs -s /tmp/emacs1000/server $@
     else
-        /usr/bin/emacsclient $@
+        /usr/bin/emacs --daemon
+        if [[ -z $@ ]]; then
+            /usr/bin/emacsclient .
+        else
+            /usr/bin/emacsclient $@
+        fi
     fi
+else
+     /usr/local/bin/emacs $@
 fi

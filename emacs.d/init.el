@@ -4,7 +4,9 @@
 ;;; Code:
 
 ;; Hide mouse interface quickly
-(if (fboundp 'menu-bar-mode) (menu-bar-mode -1))
+(if (and (fboundp 'menu-bar-mode)
+         (not (string= "darwin" system-type)))
+    (menu-bar-mode -1))
 (if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
 (if (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
 
@@ -112,7 +114,7 @@
 (use-package flycheck
   :config
   (custom-set-variables
-   '(flycheck-typescript-tslint-executable "~/.local/bin/tslint"))'
+   '(flycheck-typescript-tslint-executable "~/.local/bin/tslint"))
   (global-flycheck-mode))
 
 
@@ -122,8 +124,17 @@
 ;; (ido-mode 1)
 (show-paren-mode 1)
 
+(use-package base16-theme)
 ;; Mu4e
-(add-to-list 'load-path "/usr/share/emacs/site-lisp/mu4e/")
+;; (add-to-list 'load-path "/usr/share/emacs/site-lisp/mu4e/")
+(if (file-exists-p "/usr/share/emacs/site-lisp/mu4e/")
+    (add-to-list 'load-path "/usr/share/emacs/site-lisp/mu4e/")
+  (message "mu4e not found in /usr/share/emacs/site-lisp/mu4e/"))
+
+(if (file-exists-p "/usr/local/Cellar/mu/1.2.0_1/share/emacs/site-lisp/mu/mu4e" )
+    (add-to-list 'load-path "/usr/local/Cellar/mu/1.2.0_1/share/emacs/site-lisp/mu/mu4e" )
+  (message "mu4e not found in /usr/local/Cellar/mu/1.2.0_1/share/emacs/site-lisp/mu/mu4e"))
+
 (require 'mu4e)
 (setq mu4e-maildir (expand-file-name "~/.config/mail/"))
 
@@ -156,6 +167,10 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(custom-enabled-themes (quote (base16-ocean)))
+ '(custom-safe-themes
+   (quote
+    ("78c1c89192e172436dbf892bd90562bc89e2cc3811b5f9506226e735a953a9c6" default)))
  '(electric-pair-mode t)
  '(flycheck-typescript-tslint-executable "~/.local/bin/tslint")
  '(package-selected-packages
