@@ -122,12 +122,10 @@
 ;; misc. packages
 (use-package magit)
 (use-package vterm)
-;; (ido-mode 1)
 (show-paren-mode 1)
 
 (use-package base16-theme)
 ;; Mu4e
-;; (add-to-list 'load-path "/usr/share/emacs/site-lisp/mu4e/")
 (if (file-exists-p "/usr/share/emacs/site-lisp/mu4e/")
     (add-to-list 'load-path "/usr/share/emacs/site-lisp/mu4e/")
   (message "mu4e not found in /usr/share/emacs/site-lisp/mu4e/"))
@@ -143,11 +141,6 @@
 (setq mu4e-sent-folder   "/Sent")
 (setq mu4e-trash-folder  "/trash")
 (setq mu4e-sent-messages-behavior 'delete)
-;; setup some handy shortcuts
-;; (setq mu4e-maildir-shortcuts
-;;       '(("/Inbox"             . ?i)
-;;  ("/Sent" . ?s)
-;;  ("/trash"     . ?t)))
 (setq mu4e-get-mail-command "getmail -n && getmail -r gmail -n -d ")
 (setq user-mail-address "jonathandavis@gilsons.org"
       user-full-name "Jonathan")
