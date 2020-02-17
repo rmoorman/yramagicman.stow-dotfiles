@@ -1,0 +1,18 @@
+#!/bin/sh
+
+
+
+if uname | grep -q "Darwin"; then
+    pmset -g batt | awk '/discharging/ { if ( length($3) == 4 ) { print "B:"substr($3,
+    0, 2)"%" } else { print "B:"substr( $3, 0, 3 )"%" }}'
+else
+
+    if [[ -d /sys/class/power_supply/BAT1 ]]; then
+	bat_level=$( cat /sys/class/power_supply/BAT1/capacity )
+	bat_stat=$( cat /sys/class/power_supply/BAT1/status )
+    else
+	bat_level=$( cat /sys/class/power_supply/BAT0/capacity )
+	bat_stat=$( cat /sys/class/power_supply/BAT0/status )
+    fi
+    echo $bat_level
+fi
