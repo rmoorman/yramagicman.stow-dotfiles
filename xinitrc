@@ -66,3 +66,4 @@ fi
 exec "$HOME/.config/dwm/autostart.sh" &
 exec "$HOME/bin/statusline" &
 exec "$HOME/bin/dwmrestart"
+exec notify-send "logged in"
