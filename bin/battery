@@ -8,11 +8,11 @@ if uname | grep -q "Darwin"; then
 else
 
     if [[ -d /sys/class/power_supply/BAT1 ]]; then
-	bat_level=$( cat /sys/class/power_supply/BAT1/capacity )
-	bat_stat=$( cat /sys/class/power_supply/BAT1/status )
+    bat_level=$( cat /sys/class/power_supply/BAT1/capacity )
+    bat_stat=$( cat /sys/class/power_supply/BAT1/status )
     else
-	bat_level=$( cat /sys/class/power_supply/BAT0/capacity )
-	bat_stat=$( cat /sys/class/power_supply/BAT0/status )
+    bat_level=$( cat /sys/class/power_supply/BAT0/capacity )
+    bat_stat=$( cat /sys/class/power_supply/BAT0/status )
     fi
-    echo $bat_level
+    echo $bat_level"%"
 fi
