@@ -16,7 +16,7 @@ hi statusline ctermbg=7 ctermfg=0 cterm=REVERSE
 hi statuslinenc ctermbg=0 ctermfg=7
 hi visual ctermbg=4 ctermfg=11
 hi vertsplit ctermbg=8 ctermfg=0
-hi wildmenu ctermbg=0 ctermfg=15
+hi wildmenu ctermbg=0 ctermfg=15 cterm=REVERSE
 hi signcolumn ctermbg=none ctermfg=15
 " hi cursorline cterm=REVERSE
 hi folded ctermbg=0 ctermfg=7

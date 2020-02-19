@@ -7,34 +7,33 @@ my_date() {
 
 battery() {
     if uname | grep -q "Darwin"; then
-	pmset -g batt | awk '/discharging/ { if ( length($3) == 4 ) { print " B:"substr($3, 0, 2)"% " } else { print " B:"substr( $3, 0, 3 )"% " }}'
-	return
+        pmset -g batt | awk '/discharging/ { if ( length($3) == 4 ) { print " B:"substr($3, 0, 2)"% " } else { print " B:"substr( $3, 0, 3 )"% " }}'
+        return
     else
 
-	if [[ -d /sys/class/power_supply/BAT1 ]]; then
-	    bat_level=$( cat /sys/class/power_supply/BAT1/capacity )
-	    bat_stat=$( cat /sys/class/power_supply/BAT1/status )
-	else
-	    bat_level=$( cat /sys/class/power_supply/BAT0/capacity )
-	    bat_stat=$( cat /sys/class/power_supply/BAT0/status )
-	fi
-	echo " B:$bat_level "
-	return
+        if [[ -d /sys/class/power_supply/BAT1 ]]; then
+            bat_level=$( cat /sys/class/power_supply/BAT1/capacity )
+            bat_stat=$( cat /sys/class/power_supply/BAT1/status )
+        else
+            bat_level=$( cat /sys/class/power_supply/BAT0/capacity )
+            bat_stat=$( cat /sys/class/power_supply/BAT0/status )
+        fi
+        echo " B:$bat_level "
+        return
     fi
     echo ''
 }
 
 updates() {
     if uname | grep -q "Darwin"; then
-	updates=$( brew outdated | wc -l | awk '/[0-9]/ {print $1}' )
-	if test $updates -gt 0; then
-	    echo "$updates"
-	    return
-	fi
+        updates=$( brew outdated | wc -l | awk '/[0-9]/ {print $1}' )
+        if test $updates -gt 0; then
+            echo "$updates"
+            return
+        fi
     else
-
-	echo " U: $(cat $HOME/.cache/updates | wc -l) + $(cat $HOME/.cache/aur | wc -l ) "
-	return
+        echo " U: $(cat $HOME/.cache/updates | wc -l) + $(cat $HOME/.cache/aur | wc -l ) "
+        return
     fi
     echo ''
 
@@ -42,7 +41,7 @@ updates() {
 my_mail() {
     mail=$( ls ~/.config/mail/Inbox/new | wc -l| awk '/[0-9]/ {print $1}' )
     if test $mail -gt 0; then
-	echo " M: $mail "
+        echo " M: $mail "
     fi
 }
 echo "$(my_date)$(battery)$(updates)$(my_mail)"
