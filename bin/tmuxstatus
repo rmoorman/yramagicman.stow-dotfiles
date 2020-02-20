@@ -24,8 +24,8 @@ battery() {
 updates() {
     if uname | grep -q "Darwin"; then
         updates=$( brew outdated | wc -l | awk '/[0-9]/ {print $1}' )
-        if test "$updates" -gt 0; then
-            echo "$updates"
+	if test $updates -gt 0; then
+	    echo " U:$updates "
             return
         fi
     else
