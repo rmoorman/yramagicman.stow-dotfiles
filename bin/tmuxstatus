@@ -1,9 +1,8 @@
 #!/bin/sh
 
 my_date() {
-    date +'%D %I:%M %p'
+    date +"%a %d/%m/%Y %I:%M"
 }
-
 
 battery() {
     if uname | grep -q "Darwin"; then
@@ -11,12 +10,10 @@ battery() {
         return
     else
 
-        if [[ -d /sys/class/power_supply/BAT1 ]]; then
+        if test -d /sys/class/power_supply/BAT1; then
             bat_level=$( cat /sys/class/power_supply/BAT1/capacity )
-            bat_stat=$( cat /sys/class/power_supply/BAT1/status )
         else
             bat_level=$( cat /sys/class/power_supply/BAT0/capacity )
-            bat_stat=$( cat /sys/class/power_supply/BAT0/status )
         fi
         echo " B:$bat_level "
         return
@@ -27,20 +24,23 @@ battery() {
 updates() {
     if uname | grep -q "Darwin"; then
         updates=$( brew outdated | wc -l | awk '/[0-9]/ {print $1}' )
-        if test $updates -gt 0; then
+        if test "$updates" -gt 0; then
             echo "$updates"
             return
         fi
     else
-        echo " U: $(cat $HOME/.cache/updates | wc -l) + $(cat $HOME/.cache/aur | wc -l ) "
-        return
+        if test $(($( wc -l < "$HOME/.cache/updates" ) +
+            $( wc -l < "$HOME/.cache/aur" ))) -gt 10 ; then
+            echo " U: $( wc -l < "$HOME/.cache/updates" ) + $(wc -l < "$HOME/.cache/aur" ) "
+            return
+        fi
     fi
     echo ''
 
 }
 my_mail() {
-    mail=$( ls ~/.config/mail/Inbox/new | wc -l| awk '/[0-9]/ {print $1}' )
-    if test $mail -gt 0; then
+    mail=$( find ~/.config/mail/Inbox/new/ -type f | wc -l| awk '/[0-9]/ {print $1}' )
+    if test "$mail" -gt 0; then
         echo " M: $mail "
     fi
 }

@@ -1,9 +1,18 @@
 #!/usr/bin/env zsh
-
-docker-compose exec php-fpm composer dumpautoload
-docker-compose exec php-fpm composer clearcache
-docker-compose exec php-fpm php artisan route:clear
-docker-compose exec php-fpm php artisan view:clear
-docker-compose exec php-fpm php artisan clear-compiled
-docker-compose exec php-fpm php artisan cache:clear
-docker-compose exec php-fpm php artisan config:clear
+if hash -v docker-compose > /dev/null 2>&1; then
+    docker-compose exec php-fpm composer dumpautoload
+    docker-compose exec php-fpm composer clearcache
+    docker-compose exec php-fpm php artisan route:clear
+    docker-compose exec php-fpm php artisan view:clear
+    docker-compose exec php-fpm php artisan clear-compiled
+    docker-compose exec php-fpm php artisan cache:clear
+    docker-compose exec php-fpm php artisan config:clear
+else
+    composer dumpautoload
+    composer clearcache
+    php artisan route:clear
+    php artisan view:clear
+    php artisan clear-compiled
+    php artisan cache:clear
+    php artisan config:clear
+fi
