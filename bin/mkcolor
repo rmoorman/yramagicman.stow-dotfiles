@@ -17,8 +17,8 @@ foreground = 'foreground'
 background = 'background'
 border = 'color0'
 sel_foreground = 'color0'
-sel_background = 'color1'
-sel_border = 'color1'
+sel_background = 'color12'
+sel_border = 'color12'
 
 
 def contains_color(str):
