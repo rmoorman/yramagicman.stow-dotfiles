@@ -246,7 +246,13 @@ export PROJECT_HOME=$HOME/Sites
 export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
 export VIRTUALENVWRAPPER_SCRIPT=/usr/bin/virtualenvwrapper.sh
 export CHROME_BIN=/usr/bin/chromium
+
+if [[ -d '/usr/local/opt/php@7.3' ]]; then
+    export PATH="/usr/local/opt/php@7.3/bin:$PATH"
+    export PATH="/usr/local/opt/php@7.3/sbin:$PATH"
+fi
 #}}}
+
 #{{{ random user opions
 export BROWSER=firefox
 export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -g ""'
