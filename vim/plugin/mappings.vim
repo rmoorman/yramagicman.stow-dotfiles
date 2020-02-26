@@ -31,6 +31,7 @@ endif
 nnoremap <leader><space> :set hlsearch!<cr>
 nnoremap <leader><leader> <C-^>
 nnoremap * :set hlsearch<cr>*
+nnoremap # :set hlsearch<cr>#
 nnoremap <F1> :call functions#NumberToggle()<cr>
 nnoremap <F2> :call functions#WrapToggle()<cr>
 nnoremap <F3> :set list!<cr>
