@@ -252,7 +252,6 @@ if [[ -d '/usr/local/opt/php@7.3' ]]; then
     export PATH="/usr/local/opt/php@7.3/sbin:$PATH"
 fi
 #}}}
-
 #{{{ random user opions
 export BROWSER=firefox
 export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -g ""'
