@@ -22,6 +22,12 @@ call pack#load()
 
 PlugOpt 'dzeban/vim-log-syntax'
 PlugOpt 'w0rp/ale'
+if executable('fzf')
+    if isdirectory('/usr/local/opt/fzf')
+        set runtimepath+=/usr/local/opt/fzf
+    endif
+    PlugStart 'junegunn/fzf.vim'
+endif
 PlugStart 'bronson/vim-visual-star-search'
 PlugStart 'editorconfig/editorconfig-vim'
 PlugStart 'git@gitlab.com:yramagicman/auto-omnicomplete'
