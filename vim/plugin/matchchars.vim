@@ -1,3 +1,6 @@
+if exists('g:NoAutoPairs')
+    finish
+endif
 "{{{ autocomplete quotes and brackets
 inoremap (  ()<Left>
 inoremap [  []<Left>
