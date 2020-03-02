@@ -12,10 +12,14 @@ battery() {
 
         if test -d /sys/class/power_supply/BAT1; then
             bat_level=$( cat /sys/class/power_supply/BAT1/capacity )
-        else
+            echo " B:$bat_level "
+        elif test -d /sys/class/power_supply/BAT0; then
             bat_level=$( cat /sys/class/power_supply/BAT0/capacity )
+
+            echo " B:$bat_level "
+        else
+            return
         fi
-        echo " B:$bat_level "
         return
     fi
     echo ''
@@ -23,11 +27,11 @@ battery() {
 
 updates() {
     if uname | grep -q "Darwin"; then
-	updates=$( brew outdated | wc -l | awk '/[0-9]/ {print $1}' )
-	if test $updates -gt 5; then
-	    echo " U:$updates "
-	    return
-	fi
+        updates=$( brew outdated | wc -l | awk '/[0-9]/ {print $1}' )
+        if test "$updates" -gt 5; then
+            echo " U:$updates "
+            return
+        fi
     else
         if test $(($( wc -l < "$HOME/.cache/updates" ) +
             $( wc -l < "$HOME/.cache/aur" ))) -gt 10 ; then
