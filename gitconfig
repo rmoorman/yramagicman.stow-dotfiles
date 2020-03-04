@@ -27,6 +27,7 @@
     add = add -up
     pull = pull --rebase
     commit = commit --verbose
+    checkcode = "!git log --format=format: --name-only | sort | uniq -c | sort -rg | head -n 20"
 
 [apply]
     # Detect whitespace errors when applying a patch
