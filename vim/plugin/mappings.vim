@@ -45,6 +45,12 @@ nnoremap << V<gv
 nnoremap <leader>e :e **/*
 nnoremap <leader>f :find **/*
 nnoremap <leader>b :ls<cr>:b
+cnoreabbrev ,e e **/*
+cnoreabbrev ,f find **/*
+cnoreabbrev ,b ls<cr>:b
+cnoreabbrev e, e **/*
+cnoreabbrev f, find **/*
+cnoreabbrev b, ls<cr>:b
 "}}}
 "{{{ visual mode mappings
 xnoremap > >gv

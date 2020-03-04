@@ -126,8 +126,10 @@ augroup end
 set hidden
 set splitbelow
 set splitright
-set winheight=2
+set winheight=20
+set winwidth=100
 set winminheight=2
+set winminwidth=1
 "}}}
 "{{{ modeline
 set modeline
