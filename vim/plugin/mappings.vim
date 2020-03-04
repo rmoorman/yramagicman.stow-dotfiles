@@ -66,3 +66,8 @@ cnoremap <Esc>f <S-Right>
 cnoremap <Esc>d <S-right><Delete>
 cnoremap <C-e>  <End>
 "}}}
+"{{{ Kill annoying mapping
+nnoremap gs <nop>
+vnoremap gs <nop>
+inoremap gs <nop>
+"}}}
