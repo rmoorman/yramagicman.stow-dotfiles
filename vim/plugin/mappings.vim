@@ -68,6 +68,4 @@ cnoremap <C-e>  <End>
 "}}}
 "{{{ Kill annoying mapping
 nnoremap gs <nop>
-vnoremap gs <nop>
-inoremap gs <nop>
 "}}}
