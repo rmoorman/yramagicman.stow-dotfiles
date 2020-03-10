@@ -15,8 +15,6 @@ bc
 bind-tools
 binutils
 bison
-bluez
-bluez-utils
 bzip2
 chromium
 cloc
@@ -185,6 +183,7 @@ sed
 shadow
 shellcheck
 smartmontools
+speedtest-cli
 stow
 sudo
 sysfsutils
