@@ -1,6 +1,6 @@
 # {{{ basic settings
 #
-set sendmail="/usr/bin/msmtp"
+set sendmail="msmtp"
 set alias_file = ~/.mutt/aliases
 source $alias_file
 set editor = "$EDITOR"
