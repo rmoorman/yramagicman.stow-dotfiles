@@ -61,7 +61,6 @@ setopt globdots
 # use extended globbing
 setopt extendedglob
 
-
 # Automatically change directory if a directory is entered
 setopt autocd
 
@@ -103,6 +102,7 @@ unsetopt check_jobs
 # turn on corrections
 setopt correct
 
+setopt beep
 # use emacs bindings
 bindkey -e
 # Disable some shell keyboard shortcuts
@@ -221,7 +221,6 @@ function workon() {
 function artisan() {
     php artisan $*
 }
-setopt no_beep
 #}}}
 #{{{ key bindings,
 # Allow command line editing in an external editor.
