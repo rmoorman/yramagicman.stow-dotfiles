@@ -60,6 +60,7 @@ function pkg() {
     else
         pkgs+=($1 0)
     fi
+    unset location
 }
 
 function _source_deps() {
