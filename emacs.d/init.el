@@ -111,6 +111,8 @@
 ;; (use-package tss
 ;;   :mode "\\.ts")
 
+(use-package nroff-mode
+  :mode "\\.mom\\'")
 
 (use-package flycheck
   :config
