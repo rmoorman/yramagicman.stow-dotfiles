@@ -8,3 +8,6 @@ mailboxes = ALL
 [destination]
 type = Maildir
 path= ~/.config/mail/Inbox/
+
+
+# gmail app pw smgssjxthsptbbjo
