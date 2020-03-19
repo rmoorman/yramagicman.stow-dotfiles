@@ -44,13 +44,11 @@ if [[ -d '/usr/local/opt/php@7.3' ]]; then
     export PATH="/usr/local/opt/php@7.3/bin:$PATH"
     export PATH="/usr/local/opt/php@7.3/sbin:$PATH"
 fi
-export BROWSER=firefox
 export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -g ""'
 export FZF_CTRL_T_COMMAND='ag --hidden --ignore .git -g ""'
 #}}}
 #{{{ Browser
-
-[[ "$OSTYPE" == darwin* ]] && export BROWSER='open'
+[[ "$OSTYPE" == darwin* ]] && export BROWSER='open' || export BROWSER=firefox
 #}}}
 #{{{ Editors
 
