@@ -15,7 +15,6 @@ fpath=("$ZDOTDIR/pkg" $fpath)
 autoload $ZDOTDIR/pkg/*
 #}}}
 #{{{ Load packages
-source $ZDOTDIR/.zprofile
 pkg init
 [[ -z "$INSIDE_EMACS" ]] && pkg colored-man-pages -f omz
 pkg zsh-users/zsh-completions
