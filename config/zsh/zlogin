@@ -15,3 +15,7 @@
   fi
 } &!
 
+{
+    [[ -d "$ZDOTDIR/history" ]] && gunzip $ZDOTDIR/history/*.gz
+    cat $ZDOTDIR/history/* | sort -u >! "$HISTFILE"
+}&!

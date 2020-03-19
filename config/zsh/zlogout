@@ -1,0 +1,6 @@
+command mkdir -p "$ZDOTDIR/history" || exit
+[[ -d "$ZDOTDIR/history" ]] && command cp "$HISTFILE" "$ZDOTDIR/history/$(date +'%s')"
+[[ -f "$ZDOTDIR/history/$(date +'%s')" ]] && gzip "$ZDOTDIR/history/$(date +'%s')"
+for f in $ZDOTDIR/history/^*.gz; do
+    gzip $f
+done
