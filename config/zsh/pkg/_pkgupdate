@@ -1,15 +1,8 @@
 # vim: ft=zsh
 function _pkgupdate() {
-    if [[ -z $UPDATE_INTERVAL ]];
-    then
-        UPDATE_INTERVAL=30
-    fi
+    [[ -z $UPDATE_INTERVAL ]] && UPDATE_INTERVAL=30
 
-
-    if [[ ! -a $MODULES_DIR/.updatetime ]];
-    then
-        echo 0 > "$MODULES_DIR/.updatetime"
-    fi
+    [[ ! -a $MODULES_DIR/.updatetime ]] && echo 0 > "$MODULES_DIR/.updatetime"
 
     local update_time=$(cat $MODULES_DIR/.updatetime)
 

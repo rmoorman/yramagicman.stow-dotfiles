@@ -17,9 +17,7 @@ autoload $ZDOTDIR/pkg/*
 #{{{ Load packages
 source $ZDOTDIR/.zprofile
 pkg init
-if [[ -z "$INSIDE_EMACS" ]]; then
-    pkg colored-man-pages -f omz
-fi
+[[ -z "$INSIDE_EMACS" ]] && pkg colored-man-pages -f omz
 pkg zsh-users/zsh-completions
 pkg agkozak/zsh-z
 pkg "git@gitlab.com:yramagicman/zsh-aliases"
@@ -171,33 +169,24 @@ setopt hist_verify
 # Show timestamp in history
 setopt extended_history
 #}}}
-#{{{ prompt. If serenity isn't there use a default
-if [[ $(  prompt -l | grep serenity  ) ]]; then
-    prompt serenity
-else
-    prompt adam2
-fi
+#{{{ prompt
+prompt serenity || prompt adam2
 #}}}
 #{{{ grab the rest of the packages
-if [[ -f /usr/share/doc/pkgfile/command-not-found.zsh ]]; then
-    source /usr/share/doc/pkgfile/command-not-found.zsh
-fi
+
+[[ -f /usr/share/doc/pkgfile/command-not-found.zsh ]] && source /usr/share/doc/pkgfile/command-not-found.zsh
+
 if [[ -d /usr/share/fzf ]]; then
     source /usr/share/fzf/key-bindings.zsh
     source /usr/share/fzf/completion.zsh
 fi
-
 #}}}
 #{{{ lazy load stuff
-if [[ "$TMUX" != '' ]]; then
-    if [[ -z "$(pgrep tmuxcopy )" ]];
-    then
-
-        setopt nonotify nomonitor
-        tmuxcopy &
-        disown
-        unsetopt nonotify nomonitor
-    fi
+if [[ "$TMUX" != '' ]] && [[ -z "$(pgrep tmuxcopy)" ]]; then
+    setopt nonotify nomonitor
+    tmuxcopy &
+    disown
+    unsetopt nonotify nomonitor
 fi
 
 function workon() {
@@ -270,7 +259,7 @@ if [[ -z "$TMUX" && -z "$INSIDE_EMACS" && -z "$VIM" && -z "$SSH_TTY" ]]; then
         s tmux
     fi
 fi
-# }}}
+#}}}
 #{{{ end profiling script
 if [[ "$PROFILE_STARTUP" == true ]]; then
     unsetopt xtrace

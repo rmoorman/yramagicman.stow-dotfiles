@@ -13,9 +13,6 @@ function _net_test() {
         touch $netflag
         return 1
     else
-        if [[ -f "$netflag" ]]; then
-            command rm $netflag >/dev/null
-        fi
-        return 0
+        [[ -f "$netflag" ]] && command rm $netflag >/dev/null && return 0
     fi
 }
