@@ -139,6 +139,7 @@
 (require 'mu4e)
 (setq mu4e-maildir (expand-file-name "~/.config/mail/"))
 
+(setq mu4e-mu-binary (executable-find "mu"))
 (setq mu4e-drafts-folder "/Drafts")
 (setq mu4e-sent-folder   "/Sent")
 (setq mu4e-trash-folder  "/trash")
@@ -168,6 +169,9 @@
    (quote
     ("78c1c89192e172436dbf892bd90562bc89e2cc3811b5f9506226e735a953a9c6" default)))
  '(electric-pair-mode t)
+ '(exec-path
+   (quote
+    ("/usr/local/bin" "/usr/bin" "/bin" "/usr/sbin" "/sbin" "/Applications/Emacs.app/Contents/MacOS/bin-x86_64-10_14" "/Applications/Emacs.app/Contents/MacOS/libexec-x86_64-10_14" "/Applications/Emacs.app/Contents/MacOS/libexec" "/Applications/Emacs.app/Contents/MacOS/bin")))
  '(flycheck-typescript-tslint-executable "~/.local/bin/tslint")
  '(package-selected-packages
    (quote
