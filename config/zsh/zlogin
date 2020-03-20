@@ -23,7 +23,8 @@
         hist+=($line)
     done
 
-    mkdir -p "$TMPPREFIX"
+    [[ -d "$TMPPREFIX" ]] || mkdir -p "$TMPPREFIX"
+
 
     echo '' > "$TMPPREFIX/histfile"
     for f in $hist; do
