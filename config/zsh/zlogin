@@ -8,14 +8,27 @@
 
 # Execute code that does not affect the current session in the background.
 {
-  # Compile the completion dump to increase startup speed.
-  zcompdump="${ZDOTDIR:-$HOME}/.zcompdump"
-  if [[ -s "$zcompdump" && (! -s "${zcompdump}.zwc" || "$zcompdump" -nt "${zcompdump}.zwc") ]]; then
-    zcompile "$zcompdump"
-  fi
+    # Compile the completion dump to increase startup speed.
+    zcompdump="${ZDOTDIR:-$HOME}/.zcompdump"
+    if [[ -s "$zcompdump" && (! -s "${zcompdump}.zwc" || "$zcompdump" -nt "${zcompdump}.zwc") ]]; then
+        zcompile "$zcompdump"
+    fi
 } &!
 
 {
+
+    echo $TMPPREFIX
+    typeset -U hist
     [[ -d "$ZDOTDIR/history" ]] && gunzip $ZDOTDIR/history/*.gz
-    [[ -d "$ZDOTDIR/history" ]] && cat $ZDOTDIR/history/* | sort -u >! "$HISTFILE"
+
+    [[ -d "$ZDOTDIR/history" ]] && cat $ZDOTDIR/history/* | while read -r line; do
+        hist+=($line)
+    done
+
+    for f in $hist; do
+        echo $f >> $TMPPREFIX/histfile
+    done
+    command mv "$HISTFILE" "$HISTFILE$(date +'%s')"
+    command mv "$TMPPREFIX/histfile ""$HISTFILE"
+
 }&!

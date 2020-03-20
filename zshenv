@@ -54,7 +54,6 @@ fi
 [[ "$OSTYPE" == darwin* ]] && export BROWSER='open' || export BROWSER=firefox
 #}}}
 #{{{ Editors
-
 export EDITOR='vim'
 export VISUAL='vim'
 export PAGER='less'
@@ -100,4 +99,3 @@ fi
 #{{{ Temporary Files
 TMPPREFIX="$(mktemp -d)/zsh"
 #}}}
-
