@@ -16,8 +16,6 @@
 } &!
 
 {
-
-    echo $TMPPREFIX
     typeset -U hist
     [[ -d "$ZDOTDIR/history" ]] && gunzip $ZDOTDIR/history/*.gz
 
@@ -25,10 +23,15 @@
         hist+=($line)
     done
 
-    for f in $hist; do
-        echo $f >> $TMPPREFIX/histfile
-    done
-    command mv "$HISTFILE" "$HISTFILE$(date +'%s')"
-    command mv "$TMPPREFIX/histfile ""$HISTFILE"
+    mkdir -p "$TMPPREFIX"
 
+    echo '' > "$TMPPREFIX/histfile"
+    for f in $hist; do
+        echo $f >> "$TMPPREFIX/histfile"
+    done
+
+    [[ -f "$HISTFILE" ]] && command mv "$HISTFILE" "$TMPPREFIX/$(date +'%s')"
+    [[ -f "$TMPPREFIX/histfile" ]] && command cp "$TMPPREFIX/histfile" "$HISTFILE"
+    command rm $ZDOTDIR/history/*
+    [[ -f "$TMPPREFIX/histfile" ]] && command mv "$TMPPREFIX/histfile" "$ZDOTDIR/history/$(date +'%s')"
 }&!
