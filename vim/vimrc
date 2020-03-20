@@ -64,8 +64,6 @@ let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
 "}}}
 let mapleader=","
 let g:NoAutoPairs = 1
-let @q=":wgg/HEADdd/=======V/>>>>>xgg/HEADzz:w"
-nnoremap QQ :w<cr>bd<cr>
 " expand( '%:e') extension
 " expand( '%:h') filename
 " expand( '%:p') real path
