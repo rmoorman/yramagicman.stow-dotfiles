@@ -1,16 +1,16 @@
 #!usr/bin/env zsh
-#{{{ start xserver when necessary
-if [ -z "$DISPLAY" ] && [ -n "$XDG_VTNR" ] && [ "$XDG_VTNR" -eq 1 ]; then
-    exec startx
-fi
-#}}}
+##{{{ start xserver when necessary
+#if [ -z "$DISPLAY" ] && [ -n "$XDG_VTNR" ] && [ "$XDG_VTNR" -eq 1 ]; then
+#    exec startx
+#fi
+##}}}
 #{{{ set config variables and ensure files are linked
 local dotdir="$HOME/.config/zsh"
 
 if [[ ! -f "$dotdir/.zshrc" ]] && [[ -f "$dotdir/zshrc" ]]
 then
     (
-    cd "$dotdir" || exit;
+    builtin cd "$dotdir" || exit;
     for f in *; do
         ln -s "$PWD/$f" "$PWD/.$f"
     done
@@ -54,7 +54,6 @@ fi
 [[ "$OSTYPE" == darwin* ]] && export BROWSER='open' || export BROWSER=firefox
 #}}}
 #{{{ Editors
-
 export EDITOR='vim'
 export VISUAL='vim'
 export PAGER='less'
