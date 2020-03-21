@@ -1,9 +1,9 @@
 #!usr/bin/env zsh
-##{{{ start xserver when necessary
-#if [ -z "$DISPLAY" ] && [ -n "$XDG_VTNR" ] && [ "$XDG_VTNR" -eq 1 ]; then
-#    exec startx
-#fi
-##}}}
+#{{{ start xserver when necessary
+if [ -z "$DISPLAY" ] && [ -n "$XDG_VTNR" ] && [ "$XDG_VTNR" -eq 1 ]; then
+    exec startx
+fi
+#}}}
 #{{{ set config variables and ensure files are linked
 local dotdir="$HOME/.config/zsh"
 
