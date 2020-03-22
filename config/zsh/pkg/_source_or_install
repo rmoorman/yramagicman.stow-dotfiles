@@ -11,15 +11,15 @@ function _source_or_install() {
         mkdir -p "$MODULES_DIR"
     fi
     if [[ -a "$MODULES_DIR/$location/init.zsh" ]] && [[ "$2" == 0 ]] then;
-        jit-source "$MODULES_DIR/$location/init.zsh"
+        source "$MODULES_DIR/$location/init.zsh"
     elif [[ -a "$MODULES_DIR/$location/$plug_name.plugin.zsh" ]]; then
-        jit-source "$MODULES_DIR/$location/$plug_name.plugin.zsh"
+        source "$MODULES_DIR/$location/$plug_name.plugin.zsh"
     elif [[ -a "$MODULES_DIR/$location/$plug_name.zsh-theme" ]]; then
-        jig-source "$MODULES_DIR/$location/$plug_name.zsh-theme"
+        source "$MODULES_DIR/$location/$plug_name.zsh-theme"
     elif [[ -a "$MODULES_DIR/$location/$2.plugin.zsh" ]]; then
-        jit-source "$MODULES_DIR/$location/$2.plugin.zsh"
+        source "$MODULES_DIR/$location/$2.plugin.zsh"
     elif [[ -a "$MODULES_DIR/$location/$2.zsh-theme" ]]; then
-        jit-source "$MODULES_DIR/$location/$2.zsh-theme"
+        source "$MODULES_DIR/$location/$2.zsh-theme"
     elif [[ -a "$MODULES_DIR/$location/$2.zsh" ]]; then
         source "$MODULES_DIR/$location/$2.zsh"
         if [[ -d "$MODULES_DIR/$location/modules/$split_two[2]/functions" ]]; then

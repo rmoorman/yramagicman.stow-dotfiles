@@ -22,7 +22,6 @@ pkg agkozak/zsh-z
 pkg "git@gitlab.com:yramagicman/zsh-aliases"
 pkg load
 pkg update
-# jit-source $ZDOTDIR/plugins/zsh-aliases/init.zsh
 jit "$HOME/.zshenv"
 jit "$ZDOTDIR/.zshrc"
 #}}}
@@ -271,3 +270,4 @@ if [[ "$PROFILE_STARTUP" == true ]]; then
     zprof > ~/zshprofile$(date +'%s')
 fi
 #}}}
+find ./ -type f -name "*.zwc"

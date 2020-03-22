@@ -1,5 +1,0 @@
-# vim: ft=zsh
-function jit-source() {
-  emulate -L zsh
-  [[ -e $1 ]] && jit $1 && source -- $1
-}

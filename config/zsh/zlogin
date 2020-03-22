@@ -35,3 +35,15 @@
     command rm $ZDOTDIR/history/*
     [[ -f "$TMPPREFIX/histfile" ]] && command mv "$TMPPREFIX/histfile" "$ZDOTDIR/history/$(date +'%s')"
 }&!
+
+{
+    local exclude='.git|.txt|.md|.adoc|.svg|.zwc|.gif|.tags'
+    setopt extended_glob
+    for f in $fpath; do
+        if [[ $f =~ '/home/' ]]; then
+            for file in $f/**/*; do
+                [[ -f $file && ! $file =~ $exclude ]] && zcompile $file
+            done
+        fi
+    done
+}&!
