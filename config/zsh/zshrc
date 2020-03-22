@@ -270,4 +270,3 @@ if [[ "$PROFILE_STARTUP" == true ]]; then
     zprof > ~/zshprofile$(date +'%s')
 fi
 #}}}
-find ./ -type f -name "*.zwc"

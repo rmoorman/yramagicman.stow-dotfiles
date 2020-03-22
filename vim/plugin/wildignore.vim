@@ -17,6 +17,7 @@ set wildignore+=undo/**
 set wildignore+=*.pyc
 
 set wildignore+=*.orig
+set wildignore+=*.zwc
 
 set wildignore+=*.fasl
 set wildignore+=*.dx64fsl
