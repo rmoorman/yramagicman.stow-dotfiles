@@ -96,6 +96,3 @@ if (( $#commands[(i)lesspipe(|.sh)] )); then
 fi
 
 #}}}
-#{{{ Temporary Files
-TMPPREFIX="$(mktemp -d)/zsh"
-#}}}

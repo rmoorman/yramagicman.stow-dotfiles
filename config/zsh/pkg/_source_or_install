@@ -11,15 +11,15 @@ function _source_or_install() {
         mkdir -p "$MODULES_DIR"
     fi
     if [[ -a "$MODULES_DIR/$location/init.zsh" ]] && [[ "$2" == 0 ]] then;
-        source "$MODULES_DIR/$location/init.zsh"
+        jit-source "$MODULES_DIR/$location/init.zsh"
     elif [[ -a "$MODULES_DIR/$location/$plug_name.plugin.zsh" ]]; then
-        source "$MODULES_DIR/$location/$plug_name.plugin.zsh"
+        jit-source "$MODULES_DIR/$location/$plug_name.plugin.zsh"
     elif [[ -a "$MODULES_DIR/$location/$plug_name.zsh-theme" ]]; then
-        source "$MODULES_DIR/$location/$plug_name.zsh-theme"
+        jig-source "$MODULES_DIR/$location/$plug_name.zsh-theme"
     elif [[ -a "$MODULES_DIR/$location/$2.plugin.zsh" ]]; then
-        source "$MODULES_DIR/$location/$2.plugin.zsh"
+        jit-source "$MODULES_DIR/$location/$2.plugin.zsh"
     elif [[ -a "$MODULES_DIR/$location/$2.zsh-theme" ]]; then
-        source "$MODULES_DIR/$location/$2.zsh-theme"
+        jit-source "$MODULES_DIR/$location/$2.zsh-theme"
     elif [[ -a "$MODULES_DIR/$location/$2.zsh" ]]; then
         source "$MODULES_DIR/$location/$2.zsh"
         if [[ -d "$MODULES_DIR/$location/modules/$split_two[2]/functions" ]]; then
@@ -49,4 +49,21 @@ function _source_or_install() {
             echo "You have a plugin name wrong. $location does not contain $2. Check your list against the plugins included in any framworks you're using".
         fi
     fi
+}
+
+function jit() {
+  emulate -L zsh
+  [[ $1.zwc -nt $1 || ! -w ${1:h} ]] && return
+  zmodload -F zsh/files b:zf_mv b:zf_rm
+  local tmp=$1.tmp.$$.zwc
+  {
+    zcompile -R -- $tmp $1 && zf_mv -f -- $tmp $1.zwc || return
+  } always {
+    (( $? )) && zf_rm -f -- $tmp
+  }
+}
+
+function jit-source() {
+  emulate -L zsh
+  [[ -e $1 ]] && jit $1 && source -- $1
 }

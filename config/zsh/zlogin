@@ -17,7 +17,7 @@
 
 {
     typeset -U hist
-    [[ -d "$ZDOTDIR/history" ]] && gunzip $ZDOTDIR/history/*.gz
+    [[ -d "$ZDOTDIR/history" ]] && gunzip $ZDOTDIR/history/*.gz > /dev/null 2>&1
 
     [[ -d "$ZDOTDIR/history" ]] && cat $ZDOTDIR/history/* | while read -r line; do
         hist+=($line)

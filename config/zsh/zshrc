@@ -1,4 +1,5 @@
 #!usr/bin/env zsh
+emulate zsh
 #{{{ profiling tools
 PROFILE_STARTUP=false
 if [[ "$PROFILE_STARTUP" == true ]]; then
@@ -10,7 +11,6 @@ if [[ "$PROFILE_STARTUP" == true ]]; then
 fi
 #}}}
 #{{{ install functions
-
 fpath=("$ZDOTDIR/pkg" $fpath)
 autoload $ZDOTDIR/pkg/*
 #}}}
@@ -22,6 +22,9 @@ pkg agkozak/zsh-z
 pkg "git@gitlab.com:yramagicman/zsh-aliases"
 pkg load
 pkg update
+# jit-source $ZDOTDIR/plugins/zsh-aliases/init.zsh
+jit "$HOME/.zshenv"
+jit "$ZDOTDIR/.zshrc"
 #}}}
 #{{{ Set zsh options for general runtime.
 #
@@ -187,7 +190,6 @@ if [[ "$TMUX" != '' ]] && [[ -z "$(pgrep tmuxcopy)" ]]; then
     disown
     unsetopt nonotify nomonitor
 fi
-
 function workon() {
     echo " working.."
     if [[ -f $VIRTUALENVWRAPPER_SCRIPT ]] then
@@ -258,6 +260,9 @@ if [[ -z "$TMUX" && -z "$INSIDE_EMACS" && -z "$VIM" && -z "$SSH_TTY" ]]; then
         s tmux
     fi
 fi
+#}}}
+#{{{ Temporary Files
+TMPPREFIX="$(mktemp -d)/zsh"
 #}}}
 #{{{ end profiling script
 if [[ "$PROFILE_STARTUP" == true ]]; then
