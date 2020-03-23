@@ -172,8 +172,6 @@ setopt hist_save_no_dups
 setopt hist_verify
 # Show timestamp in history
 setopt extended_history
-# immediately write history
-setopt share_history
 #}}}
 #{{{ prompt
 prompt serenity > /dev/null
