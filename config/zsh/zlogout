@@ -4,3 +4,4 @@ command mkdir -p "$ZDOTDIR/history" || exit
 for f in $ZDOTDIR/history/^*.gz; do
     gzip $f
 done
+sleep 5s
