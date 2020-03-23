@@ -188,21 +188,12 @@ if [[ -d /usr/share/fzf ]]; then
 fi
 #}}}
 #{{{ lazy load stuff
-if [[ "$TMUX" != '' ]] && [[ -z "$(pgrep tmuxcopy)" ]]; then
+if [[ "$TMUX" != '' ]] && [[ -z "$(pgrep tmuxcopy)" ]] && [[ "$(uname)" != 'Darwin' ]]; then
     setopt nonotify nomonitor
     tmuxcopy &
     disown
     unsetopt nonotify nomonitor
 fi
-function workon() {
-    echo " working.."
-    if [[ -f $VIRTUALENVWRAPPER_SCRIPT ]] then
-        source $VIRTUALENVWRAPPER_SCRIPT   &> /dev/null
-        workon "$@"
-    else
-        echo "virtualenvwrapper.sh not at  /usr/bin/virtualenvwrapper.sh"
-    fi
-}
 
 function artisan() {
     php artisan $*
