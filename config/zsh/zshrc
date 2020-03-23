@@ -176,7 +176,7 @@ setopt extended_history
 setopt share_history
 #}}}
 #{{{ prompt
-prompt serenity
+prompt serenity > /dev/null
 #}}}
 #{{{ grab the rest of the packages
 
