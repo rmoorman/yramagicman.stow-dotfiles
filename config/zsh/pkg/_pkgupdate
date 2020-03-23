@@ -2,13 +2,13 @@
 function _pkgupdate() {
     [[ -z $UPDATE_INTERVAL ]] && UPDATE_INTERVAL=30
 
-    [[ ! -a $MODULES_DIR/.updatetime ]] && echo 0 > "$MODULES_DIR/.updatetime"
+    [[ ! -f $MODULES_DIR/.updatetime ]] && echo 0 > $MODULES_DIR/.updatetime
 
-    local update_time=$(cat $MODULES_DIR/.updatetime)
+    local update_time="$(cat $MODULES_DIR/.updatetime)"
 
     day=$((24 * 60 * 60 ))
     gap=$(( $UPDATE_INTERVAL * $day ))
-    diff="$(( $(date +'%s') - $update_time ))"
+    diff="$(( $EPOCHSECONDS - $update_time ))"
 
     if [[ $diff -gt $gap ]]; then
         if [[ $diff -lt $(($gap * 3)) ]] && [[ ! -f "$HOME/.cache/zsh/no_z_update" ]]; then
@@ -17,12 +17,12 @@ function _pkgupdate() {
             echo 'Update plugins? y/Y to confirm, anything else to ignore.'
                 read confirm
                 if [[ ! $confirm =~ '^(y|Y)' ]]; then
-                    touch "$HOME/.cache/zsh/no_z_update"
+                    echo '' > "$HOME/.cache/zsh/no_z_update"
                     return
                 fi
             else
                 if [[ $diff -gt $(($gap * 3)) ]] && [[ -f "$HOME/.cache/zsh/no_z_update" ]]; then
-                    rm "$HOME/.cache/zsh/no_z_update"
+                    zf_rm "$HOME/.cache/zsh/no_z_update"
                 fi
         fi
         for key value in ${(kv)@}; do
@@ -36,7 +36,8 @@ function _pkgupdate() {
             builtin cd "$MODULES_DIR/$location/" && git pull --rebase
             echo "\n"
          )
-        date +'%s' > "$MODULES_DIR/.updatetime"
     done
+        echo $EPOCHSECONDS > "$MODULES_DIR/.updatetime"
     fi
+
 }

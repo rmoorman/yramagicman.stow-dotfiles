@@ -1,5 +1,0 @@
-# vim: ft=zsh
-function _get_plugin_name() {
-    local atslashes=("${(@s#/#)location}")
-    plug_name="$atslashes[-1]"
-}

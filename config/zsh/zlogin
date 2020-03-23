@@ -16,34 +16,15 @@
 } &!
 
 {
-    typeset -U hist
-    [[ -d "$ZDOTDIR/history" ]] && gunzip $ZDOTDIR/history/*.gz > /dev/null 2>&1
-
-    [[ -d "$ZDOTDIR/history" ]] && cat $ZDOTDIR/history/* | while read -r line; do
-        hist+=($line)
-    done
-
-    [[ -d "$TMPPREFIX" ]] || mkdir -p "$TMPPREFIX"
-
-    echo '' > "$TMPPREFIX/histfile"
-    for f in $hist; do
-        echo $f >> "$TMPPREFIX/histfile"
-    done
-
-    [[ -f "$HISTFILE" ]] && command mv "$HISTFILE" "$TMPPREFIX/$(date +'%s')"
-    [[ -f "$TMPPREFIX/histfile" ]] && command cp "$TMPPREFIX/histfile" "$HISTFILE"
-    command rm $ZDOTDIR/history/*
-    [[ -f "$TMPPREFIX/histfile" ]] && command mv "$TMPPREFIX/histfile" "$ZDOTDIR/history/$(date +'%s')"
-}&!
-
-{
+    emulate -L zsh
     local exclude='.git|.txt|.md|.adoc|.svg|.zwc|.gif|.tags'
     setopt extended_glob
-    for f in $fpath; do
-        if [[ $f =~ '/home/' ]]; then
-            for file in $f/**/*; do
-                [[ $file.zwc -nt $file || ! -w ${file:h} ]] && return
+    for z in $fpath; do
+        if [[ $z =~ 'Users|home' ]]; then
+            for file in $z/**/*; do
+                [[ -f $file ]] && [[ $file.zwc -nt $file || ! -w ${file:h} ]] && break
                 [[ -f $file && ! $file =~ $exclude ]] && zcompile $file
+                unset file
             done
         fi
     done

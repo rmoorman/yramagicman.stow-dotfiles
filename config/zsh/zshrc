@@ -22,8 +22,11 @@ pkg agkozak/zsh-z
 pkg "git@gitlab.com:yramagicman/zsh-aliases"
 pkg load
 pkg update
-jit "$HOME/.zshenv"
-jit "$ZDOTDIR/.zshrc"
+{
+    jit "$HOME/.zshenv"
+    jit "$ZDOTDIR/.zshrc"
+    jit "$ZDOTDIR/.zlogin"
+}&!
 #}}}
 #{{{ Set zsh options for general runtime.
 #
@@ -169,6 +172,8 @@ setopt hist_save_no_dups
 setopt hist_verify
 # Show timestamp in history
 setopt extended_history
+# immediately write history
+setopt share_history
 #}}}
 #{{{ prompt
 prompt serenity || prompt adam2

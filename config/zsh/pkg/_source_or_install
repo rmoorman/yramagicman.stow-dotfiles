@@ -1,14 +1,16 @@
 # vim: ft=zsh
 function _source_or_install() {
+    # zmodload -m -F zsh/files b:zf_mkdir
+    # zmodload zsh/datetime
 
     split_two=("${(@s#/#)2}")
 
     _get_clone_dest "$1"
     _get_clone_url "$1" $HTTPS_CLONE
-    _get_plugin_name
+    plug_name=${location:t}
 
     if [[ ! -d "$MODULES_DIR" ]]; then
-        mkdir -p "$MODULES_DIR"
+        zf_mkdir -p "$MODULES_DIR"
     fi
     if [[ -a "$MODULES_DIR/$location/init.zsh" ]] && [[ "$2" == 0 ]] then;
         source "$MODULES_DIR/$location/init.zsh"
@@ -38,11 +40,11 @@ function _source_or_install() {
         fi
 
         if [[ ! -d "$MODULES_DIR/$location" ]]; then
-            mkdir -p "$MODULES_DIR/logs"
+            zf_mkdir -p "$MODULES_DIR/logs"
             git clone --recursive --depth 3 "$cloneurl" "$MODULES_DIR/$location" >> $MODULES_DIR/logs/$! 2>&1 &!
             procs+=($! $location)
 
-            date +'%s' > "$MODULES_DIR/.updatetime"
+            echo $EPOCSECONDS > "$MODULES_DIR/.updatetime"
             return
         else
             echo "You have a plugin name wrong. $location does not contain $2. Check your list against the plugins included in any framworks you're using".

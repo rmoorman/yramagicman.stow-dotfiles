@@ -1,5 +1,7 @@
 # vim: ft=zsh
 function pkg() {
+    zmodload zsh/datetime
+    zmodload -m -F zsh/files b:zf_rm b:zf_mkdir b:zf_mv
     zparseopts -E -D -A opts a:=alt -alt:=alt f:=from -from:=from -theme=theme t=theme d:=depends
     local alternate=$alt[2]
     local src=$from[2]
@@ -15,15 +17,15 @@ function pkg() {
         _load_pkgs
         if [[ $#procs -gt 0 ]] && [[ $errs -eq 0 ]]; then
             if [[ -d  "$MODULES_DIR/logs/" ]]; then
-                mkdir -p "$MODULES_DIR/log_backups"
-                command mv $MODULES_DIR/logs/ $MODULES_DIR/log_backups/logs_$( date +'%j%H%M%S' )
+                zf_mkdir -p "$MODULES_DIR/log_backups"
+                 zf_mv $MODULES_DIR/logs/ $MODULES_DIR/log_backups/logs_$( date +'%j%H%M%S' )
             fi
             if [[ -d  "$MODULES_DIR/log_backups" ]]; then
                 echo "You have $( du -hs "$MODULES_DIR/log_backups" | awk '/[:space:]/ {print $1}' ) of log backups, clear them with pkg clear-logs"
             fi
             echo 'reloading...'
             if [[ ! -f /tmp/zreload ]]; then
-                source $ZDOTDIR/.zshrc
+                source "$ZDOTDIR/.zshrc"
                 touch /tmp/zreload
             fi
         elif [[ $errs -gt 0 ]]; then
@@ -61,6 +63,7 @@ function pkg() {
         pkgs+=($1 0)
     fi
     unset location
+    zmodload -u zsh/datetime
 }
 
 function _source_deps() {
@@ -76,15 +79,15 @@ function _handle_errors {
     echo 'There were errors cloning your plugins, showing them now'
     echo "Errors are listed by PID in $MODULES_DIR/logs"
     (
-    cd $MODULES_DIR/logs
+    builtin cd $MODULES_DIR/logs
     if [[ $PAGER ]]; then
-        cat $(grep -li 'error' *) | $PAGER
+        $PAGER < $(grep -li 'error' *)
     elif [[ $( command -v less ) ]]; then
-        cat $(grep -li 'error' *) | less
+         less < $(grep -li 'error' *)
     elif [[ $( command -v more ) ]]; then
-        cat $(grep -li 'error' *) | more
+        more < $(grep -li 'error' *)
     else
-        cat $(grep -li 'error' *)
+        < $(grep -li 'error' *)
     fi
     )
     _clear_errors
@@ -96,7 +99,7 @@ function _clear_errors() {
     echo 'Clear errors? [ y or yes to confirm, all else cancels ]'
         read clear
         if [[ $clear =~ '^(y|Y|yes|Yes|YES)' ]]; then
-            command rm -r $MODULES_DIR/logs
+            zf_rm -r $MODULES_DIR/logs
         fi
         unset clear
     }
@@ -108,10 +111,10 @@ function _clear_logs() {
         read clear
         if [[ $clear =~ '^(y|Y|yes|Yes|YES)' ]]; then
             if [[ -d  "$MODULES_DIR/logs" ]]; then
-                command rm -r "$MODULES_DIR/logs"
+                zf_rm -r "$MODULES_DIR/logs"
             fi
             if [[ -d  "$MODULES_DIR/log_backups" ]]; then
-                command rm -r "$MODULES_DIR/log_backups"
+                zf_rm -r "$MODULES_DIR/log_backups"
             fi
         fi
         unset clear
