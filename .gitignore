@@ -31,7 +31,7 @@ newsboat/cache.db
 newsboat/history.cmdline
 newsboat/history.search
 screenlayout/i3.sh
-tmux.d/digests
+config/tmux.d/digests
 vim/.lastupdate
 vim/.netrwhist
 vim/backup/

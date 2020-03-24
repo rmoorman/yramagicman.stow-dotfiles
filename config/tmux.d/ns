@@ -2,11 +2,13 @@
 
 set -e
 
-if tmux has-session -t $1 2>/dev/null; then
+export XDG_CONFIG_HOME=$HOME/.config
+mux="tmux -f $XDG_CONFIG_HOME/tmux.d/tmux.conf"
+if $mux has-session -t $1 2>/dev/null; then
     $HOME/bin/switch_or_attach $1
     exit
 fi
 
-tmux new-session -d -s $1 -c '$HOME'
+$mux new-session -d -s $1 -c '$HOME'
 $HOME/bin/switch_or_attach $1
 exit 0
