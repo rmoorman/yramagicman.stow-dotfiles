@@ -2,9 +2,9 @@
 function _pkgupdate() {
     [[ -z $UPDATE_INTERVAL ]] && UPDATE_INTERVAL=30
 
-    [[ ! -f $MODULES_DIR/.updatetime ]] && echo 0 > $MODULES_DIR/.updatetime
-
-    local update_time="$(cat $MODULES_DIR/.updatetime)"
+    local update_time="$(< $MODULES_DIR/.updatetime)"
+    [[ ! -f $MODULES_DIR/.updatetime || ${#update_time} == 0 ]] && echo 0 > $MODULES_DIR/.updatetime
+    update_time="$(< $MODULES_DIR/.updatetime)"
 
     day=$((24 * 60 * 60 ))
     gap=$(( $UPDATE_INTERVAL * $day ))
