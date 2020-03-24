@@ -1,0 +1,26 @@
+#!/bin/sh
+
+set -e
+if test "$1" = ''; then
+    echo "please provide one of the following as an argument:"
+    find ~/Sites -maxdepth 2 -type f  -name 'babel.config.js'| cut -d '/' -f 5 | sort
+    exit
+fi
+
+if tmux has-session -t "$1" 2> /dev/null; then
+  "$HOME/bin/switch_or_attach" "$1"
+  exit
+fi
+
+tmux new-session -c "$HOME/Sites/" -d -s "$1" -n dev
+tmux send-keys -t "$1":dev "cd $HOME/Sites/$1" Enter
+tmux send-keys -t "$1":dev "vim $HOME/Sites/$1" Enter
+
+tmux new-window -t "$1" -c "$HOME/Sites/$1" -n shell
+
+tmux new-window -t "$1" -c "$HOME/Sites/" -n server
+tmux send-keys -t "$1":server "cd $HOME/Sites/$1" Enter
+tmux send-keys -t "$1":server "yarn serve" Enter
+
+"$HOME/bin/switch_or_attach" "$1":shell.left
+exit 0

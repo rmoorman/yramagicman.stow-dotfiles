@@ -15,12 +15,12 @@ check_process(){
 }
 
 set_screen_layout() {
-    ( /home/jonathan/.screenlayout/default.sh ) &
+    ( /home/jonathan/.config/screenlayout/default.sh ) &
     if test "$( hostname )" == 'serenity'; then
         amixer -c 0  --  set  Master  0
         if test "$(xrandr | awk '/HDMI1/ {print $2}' )" == 'connected'; then
 
-            ( /home/jonathan/.screenlayout/work.sh ) &
+            ( /home/jonathan/.config/screenlayout/work.sh ) &
         fi
     fi
     if test "$( hostname )" == 'artoo'; then
@@ -30,7 +30,7 @@ set_screen_layout() {
 
 set_screen_layout
 "$HOME/bin/statusloop" &
-("$HOME/.fehbg") &
+("$HOME/.config/fehbg") &
 
 xset -dpms; xset s off &
 
