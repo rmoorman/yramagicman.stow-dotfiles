@@ -32,6 +32,7 @@ export PROJECT_HOME=$HOME/Sites
 export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
 export VIRTUALENVWRAPPER_SCRIPT=/usr/bin/virtualenvwrapper.sh
 export CHROME_BIN=/usr/bin/chromium
+export GIT_TEMPLATE_DIR=$XDG_CONFIG_HOME/git/template
 
 if [[ -d '/usr/local/opt/php@7.3' ]]; then
     export PATH="/usr/local/opt/php@7.3/bin:$PATH"

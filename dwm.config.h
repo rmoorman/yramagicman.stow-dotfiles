@@ -99,7 +99,7 @@ static const char *brightup[]  = { "/home/jonathan/.config/dwm/scripts/brightup"
 static const char *brightdown[]  = { "/home/jonathan/.config/dwm/scripts/brightdown", NULL };
 static const char *killscreensaver[]  = {"pkill", "xscreensaver", NULL };
 static const char *killmon[]  = {"mons", "-o", "HDMI1", "--off", NULL };
-static const char *attachmon[]  = {"/home/jonathan/.screenlayout/work.sh", NULL};
+static const char *attachmon[]  = {"/home/jonathan/.config/screenlayout/work.sh", NULL};
 static const char *help[]  = {"st", "-e","bash", "-c", "cat ~/.config/help & read", NULL};
 
 #define  XF86AudioMute          0x1008ff12
