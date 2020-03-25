@@ -1,7 +1,7 @@
 #!usr/bin/env zsh
 #{{{ start xserver when necessary
 if [ -z "$DISPLAY" ] && [ -n "$XDG_VTNR" ] && [ "$XDG_VTNR" -eq 1 ]; then
-    exec startx
+    exec startx "$HOME.config/X11/xinitrc"
 fi
 #}}}
 #{{{ set config variables and ensure files are linked
@@ -27,18 +27,20 @@ zmodload -u zsh/files
 # export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
 # export VIRTUALENVWRAPPER_SCRIPT=/usr/bin/virtualenvwrapper.sh
 # export PROJECT_HOME=$HOME/Sites
-export XDG_CONFIG_HOME=$HOME/.config
-export XDG_CACHE_HOME=$HOME/.cache
+export XDG_CONFIG_HOME="$HOME/.config"
+export XDG_CACHE_HOME="$HOME/.cache"
 export UPDATE_INTERVAL=15
 export MODULES_DIR="$ZDOTDIR/plugins"
 export ZSHZ_DATA="$XDG_CACHE_HOME/zsh/z"
 export CHROME_BIN=/usr/bin/chromium
-export GIT_TEMPLATE_DIR=$XDG_CONFIG_HOME/git/template
-
+export GIT_TEMPLATE_DIR="$XDG_CONFIG_HOME/git/template"
+export XINITRC="$XDG_CONFIG_HOME/X12/xinitrc"
+export XSERVERRC="$XDG_CONFIG_HOME/X11/xserverrc"
 export GTK2_RC_FILES="$XDG_CONFIG_HOME/gtk-2.0/gtkrc-2.0"
 export LESSHISTFILE="/dev/null"
 export WGETRC="$XDG_CONFIG_HOME/wget/wgetrc"
 export INPUTRC="$XDG_CONFIG_HOME/inputrc"
+export MU_HOME="$XDG_CACHE_HOME/mu"
 # export PASSWORD_STORE_DIR="$HOME/.local/share/password-store"
 
 # Other program settings:
@@ -54,6 +56,7 @@ fi
 #}}}
 #{{{ Browser
 [[ "$OSTYPE" == darwin* ]] && export BROWSER='open' || export BROWSER=firefox
+export WWW_HOME="$XDG_CONFIG_HOME/www_data"
 #}}}
 #{{{ Editors
 export EDITOR='vim'

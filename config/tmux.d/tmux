@@ -4,7 +4,6 @@ set -e
 
 export XDG_CONFIG_HOME=$HOME/.config
 mux="tmux -f $XDG_CONFIG_HOME/tmux.d/tmux.conf"
-echo $XDG_CONFIG_HOME
 if $mux has-session -t $(hostname | cut -d '.' -f 1) 2>/dev/null; then
     $HOME/bin/switch_or_attach $(hostname | cut -d '.' -f 1)
     exit
