@@ -29,6 +29,7 @@ zmodload -u zsh/files
 # export PROJECT_HOME=$HOME/Sites
 export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_CACHE_HOME="$HOME/.cache"
+export XDG_DATA_HOME="$HOME/.local/share"
 export UPDATE_INTERVAL=15
 export MODULES_DIR="$ZDOTDIR/plugins"
 export ZSHZ_DATA="$XDG_CACHE_HOME/zsh/z"
@@ -41,6 +42,7 @@ export LESSHISTFILE="/dev/null"
 export WGETRC="$XDG_CONFIG_HOME/wget/wgetrc"
 export INPUTRC="$XDG_CONFIG_HOME/inputrc"
 export MU_HOME="$XDG_CACHE_HOME/mu"
+export PLTUSERHOME="$XDG_DATA_HOME/racket"
 # export PASSWORD_STORE_DIR="$HOME/.local/share/password-store"
 
 # Other program settings:
