@@ -150,11 +150,13 @@ do
     j="$(basename "$job" )"
     if test "$j" == 'root'
     then
-        echo sudo crontab "$job"
+        echo installing cron for "$j"
+        sudo crontab "$job"
     else
         if test "$(who | cut -d ' ' -f 1 | sed 1q)" == "$j"
         then
-            echo crontab -u "$j" "$job"
+            echo installing cron for "$j"
+            crontab "$job"
         fi
     fi
 done
@@ -181,7 +183,7 @@ for i
 do
     case "$i"
         in
-    -f)
+        -f)
         dotfiles
         shift;;
     -d)
