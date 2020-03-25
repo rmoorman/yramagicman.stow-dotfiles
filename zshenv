@@ -35,7 +35,7 @@ export MODULES_DIR="$ZDOTDIR/plugins"
 export ZSHZ_DATA="$XDG_CACHE_HOME/zsh/z"
 export CHROME_BIN=/usr/bin/chromium
 export GIT_TEMPLATE_DIR="$XDG_CONFIG_HOME/git/template"
-export XINITRC="$XDG_CONFIG_HOME/X12/xinitrc"
+export XINITRC="$XDG_CONFIG_HOME/X11/xinitrc"
 export XSERVERRC="$XDG_CONFIG_HOME/X11/xserverrc"
 export GTK2_RC_FILES="$XDG_CONFIG_HOME/gtk-2.0/gtkrc-2.0"
 export LESSHISTFILE="/dev/null"
@@ -43,7 +43,8 @@ export WGETRC="$XDG_CONFIG_HOME/wget/wgetrc"
 export INPUTRC="$XDG_CONFIG_HOME/inputrc"
 export MU_HOME="$XDG_CACHE_HOME/mu"
 export PLTUSERHOME="$XDG_DATA_HOME/racket"
-# export PASSWORD_STORE_DIR="$HOME/.local/share/password-store"
+export GNUPGHOME="$XDG_DATA_HOME/gnupg"
+export PASSWORD_STORE_DIR="$XDG_DATA_HOME/pass"
 
 # Other program settings:
 if [[ -d '/usr/local/opt/php@7.3' ]]; then

@@ -28,4 +28,10 @@
             done
         fi
     done
+
+    zmodload -m -F zsh/files b:zf_mkdir
+    for var in $XDG_CONFIG_HOME $XDG_CACHE_HOME $XDG_DATA_HOME; do
+        zf_mkdir -p $var
+    done
+    zmodload -u zsh/files
 }&!
