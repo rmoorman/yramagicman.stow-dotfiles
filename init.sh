@@ -18,6 +18,7 @@ dotfiles() {
             then
                 ln -sfv "$dotdir/$(basename "$f")" "$HOME/.$(basename "$f")"
             else
+                printf 'skipped %s\r\n' "$f"
                 printf 'Files Not Installed: ' >> "$logfile"
                 printf "%s\n" "$f" >> "$logfile"
 
@@ -37,6 +38,7 @@ dotdirs() {
             then
                 ln -sv "$dotdir/$(basename "$d")" "$HOME/.$(basename "$d")"
             else
+                printf 'skipped %s\r\n' "$d"
                 printf '\nDot Directories Not Installed: ' >> "$logfile"
                 printf "%s\n" "$d" >> "$logfile"
 
@@ -50,18 +52,21 @@ configdir() {
         echo "making ~/.config directory"
         mkdir -p "$HOME/.config"
     fi
-    find "$dotdir/config/" -maxdepth 1 -not -name 'config' | while read -r directory
-do
-    if test ! -d "$HOME/.config/$(basename "$directory" )" && test ! -f "$HOME/.config/$(basename "$directory")"
-    then
-        ln -sv "$directory" "$HOME/.config/"
-    else
-        printf '\nConfig files Not Installed: ' >> "$logfile"
-        printf "%s\n" "$directory" >> "$logfile"
+    find "$dotdir/config/" -maxdepth 1 \
+        -not -name 'config' \
+        -not -name 'nvim'  | while read -r directory
+        do
+            if test ! -d "$HOME/.config/$(basename "$directory" )" && test ! -f "$HOME/.config/$(basename "$directory")"
+            then
+                ln -sv "$directory" "$HOME/.config/"
+            else
+                printf 'skipped %s\r\n' "$directory"
+                printf '\nConfig files Not Installed: ' >> "$logfile"
+                printf "%s\n" "$directory" >> "$logfile"
 
-    fi
-done
-}
+            fi
+        done
+    }
 
 githooks() {
     for f in githooks/*; do
@@ -72,8 +77,9 @@ githooks() {
 bindir() {
     if test ! -d "$HOME/bin"
     then
-        ln -sv "$dotdir/bin" "$HOME/"
+        ln -sfv "$dotdir/bin" "$HOME/"
     else
+        printf 'skipped %s\r\n' "bin"
         printf '\nMisc files Not Installed: ' >> "$logfile"
         printf "%s\n" "$dotdir/bin" >> "$logfile"
     fi
