@@ -94,14 +94,23 @@ endif
 " Centralize backups, swapfiles and undo history
 if exists("&backupdir")
     set backupdir=~/.vim/backup//
+    if ! isdirectory('&backupdir')
+        call mkdir(&backupdir, 'p')
+    endif
 endif
 if exists("&directory")
     set directory=~/.vim/swaps//
+    if ! isdirectory('&directory')
+        call mkdir(&directory, 'p')
+    endif
 endif
 if exists("&undodir")
     set undolevels=5000
     set undodir=~/.vim/undo//
     set undofile
+    if ! isdirectory('&undodir')
+        call mkdir(&undodir, 'p')
+    endif
 endif
 if has('viminfo')
     set viminfofile=$HOME/.vim/viminfo

@@ -15,14 +15,6 @@ function! s:jobstart(job )
     endif
 endfunction
 function! s:sanity_check()
-    if  exists("g:VimPack_Setup_Folders")
-        for d in g:VimPack_Setup_Folders
-            if !isdirectory($HOME.'/.vim/'.d)
-                call mkdir($HOME.'/.vim/'.d)
-            endif
-        endfor
-    endif
-
     for d in split(&packpath, ',')
         if !isdirectory(d)
             silent! call mkdir(d, 'p')
