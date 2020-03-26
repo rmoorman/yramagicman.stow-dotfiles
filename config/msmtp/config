@@ -10,7 +10,7 @@ account gilsons
 host vps.gilsons.org
 port 465
 user jonathandavis@gilsons.org
-passwordeval  "gpg --quiet --for-your-eyes-only --no-tty --decrypt ~/.password-store/email.gpg"
+passwordeval  "pass show email"
 from jonathandavis@gilsons.org
 
 
