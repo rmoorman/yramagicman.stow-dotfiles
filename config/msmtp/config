@@ -1,7 +1,7 @@
 defaults
 auth           on
 tls            on
-# tls_trust_file /home/jonathan/.mutt/certificates
+# tls_trust_file /home/jonathan/.config/mutt/certificates
 tls_starttls off
 tls_certcheck off
 logfile        ~/.config/msmtp.log

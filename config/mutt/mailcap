@@ -1,0 +1,29 @@
+text/html; firefox %s;
+text/html; w3m -M -I utf-8 -dump %s; nametemplate=%s.html; copiousoutput
+
+# MS Word documents
+application/msword; ~/.config/mutt/view_attachment.sh %s "-" '/Applications/TextEdit.app'
+text/plain; ~/.config/mutt/view_attachment.sh %s "-" '/Applications/TextWrangler.app'
+application/vnd.openxmlformats-officedocument.wordprocessingml.document; ~/.config/mutt/view_attachment.sh %s "-" /Applications/Pages.app
+application/vnd.openxmlformats-officedocument.spreadsheetml.sheet; ~/.config/mutt/view_attachment.sh %s "-" /Applications/Numbers.app
+# Images
+image/jpg; ~/.config/mutt/view_attachment.sh %s jpg feh
+image/jpeg; ~/.config/mutt/view_attachment.sh %s jpg feh
+image/pjpeg; ~/.config/mutt/view_attachment.sh %s jpg feh
+image/png; ~/.config/mutt/view_attachment.sh %s png feh
+image/gif; ~/.config/mutt/view_attachment.sh %s gif feh
+image/tiff; ~/.config/mutt/view_attachment.sh %s gif feh
+image/svg+xml; ~/.config/mutt/view_attachment.sh %s svg
+# PDFs
+application/pdf; ~/.config/mutt/view_attachment.sh %s pdf zathura
+
+# HTML
+text/html; ~/.config/mutt/view_attachment.sh %s html
+application/zip; ~/.config/mutt/view_attachment.sh %s zip
+
+application/zip; ~/.config/mutt/view_attachment.sh %s zip
+
+application/x-mspublisher; ~/.config/mutt/view_attachment.sh %s txt
+
+# Unidentified files
+application/octet-seam; ~/.config/mutt/view_attachment.sh %s "-"

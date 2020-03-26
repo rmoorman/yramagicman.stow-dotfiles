@@ -1,3 +1,3 @@
-mutt/aliases
-mutt/certificates
-mutt/config
+config/mutt/aliases
+config/mutt/certificates
+config/mutt/config
