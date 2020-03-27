@@ -33,8 +33,9 @@ function _pkgupdate() {
             if [[ $? -eq 1 ]]; then
                 return
             fi
-            echo $location
-            builtin cd "$MODULES_DIR/$location/" && git pull --rebase
+            git submodule foreach '
+            echo $path
+            '
             echo "\n"
          )
     done

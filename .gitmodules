@@ -1,0 +1,9 @@
+[submodule "ohmyzsh"]
+	path = /Users/gilsonj/Documents/dots/config/zsh/plugins/ohmyzsh
+	url = git@github.com:ohmyzsh/ohmyzsh
+[submodule "zsh-completions"]
+	path = /Users/gilsonj/Documents/dots/config/zsh/plugins/zsh-completions
+	url = git@github.com:zsh-users/zsh-completions
+[submodule "zsh-z"]
+	path = /Users/gilsonj/Documents/dots/config/zsh/plugins/zsh-z
+	url = git@github.com:agkozak/zsh-z
