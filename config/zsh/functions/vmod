@@ -1,0 +1,3 @@
+function vmod() {
+    vim $(g s | egrep -v '\?\?|D' | awk -F ' ' '{print $2}')
+}

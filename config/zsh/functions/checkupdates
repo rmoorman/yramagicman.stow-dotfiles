@@ -1,0 +1,8 @@
+function checkupdates() {
+    if [[ -f  "$HOME/.cache/updates" ]] && [[ $( cat "$HOME/.cache/updates" "$HOME/.cache/aur" | wc -l  ) -gt 2 ]]; then
+        cat "$HOME/.cache/updates" "$HOME/.cache/aur"
+    else
+        command checkupdates
+    fi
+
+}

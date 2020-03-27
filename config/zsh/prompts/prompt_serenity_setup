@@ -1,0 +1,54 @@
+# vim: ft=zsh
+function prompt_serenity_precmd() {
+    vcs_info 'prompt'
+}
+
+function prompt_serenity_setup() {
+
+setopt LOCAL_OPTIONS
+unsetopt XTRACE KSH_ARRAYS
+prompt_opts=(cr percent subst)
+
+# Load required functions.
+autoload -Uz add-zsh-hook
+autoload -Uz vcs_info
+
+  # Add hook for calling vcs_info before each command.
+  add-zsh-hook precmd prompt_serenity_precmd
+
+# {{{ Formats:
+#   %b - branchname
+#   %u - unstagedstr (see below)
+#   %c - stagedstr (see below)
+#   %a - action (e.g. rebase-i)
+#   %R - repository path
+#   %S - path in the repository
+local branch_format=" (%F{6}%b %r%f%u%c) "
+local action_format=" (%F{9}%a %r%f%u%c) "
+local unstaged_format="%F{11}*%f"
+local staged_format="%F{10}+%f"
+local patch_format="%p%n%u %a"
+
+# Set vcs_info parameters.
+autoload -Uz vcs_info
+zstyle ':vcs_info:*' enable git
+zstyle ':vcs_info:*:prompt:*' check-for-changes true
+zstyle ':vcs_info:*:prompt:*' unstagedstr "${unstaged_format}"
+zstyle ':vcs_info:*:prompt:*' stagedstr "${staged_format}"
+zstyle ':vcs_info:*:prompt:*' actionformats "${branch_format}${action_format}"
+zstyle ':vcs_info:*:prompt:*' patchformats "${patch_format}"
+zstyle ':vcs_info:*:prompt:*' formats "${branch_format}"
+#zstyle ':vcs_info:*:prompt:*' get-revision true
+#}}}
+setopt prompt_subst
+PROMPT='
+%B%F{2}%m%f %~${vcs_info_msg_0_}%b
+%(?..!)%B%f${vcs_info_msg_1_}%b%L%B >%b '
+if [[ -z $INSIDE_EMACS && -z $VIM  ]]; then
+    RPROMPT='%F{7}[ %D{%I:%M %p} ] %f'
+else
+    RPROMPT=''
+fi
+}
+prompt_serenity_setup "$@"
+#}}}

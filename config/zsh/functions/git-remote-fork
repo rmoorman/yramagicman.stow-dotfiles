@@ -1,0 +1,3 @@
+function git-remote-fork() {
+    git remote add upstream $@
+}

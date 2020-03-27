@@ -12,21 +12,30 @@ fi
 #}}}
 #{{{ install functions
 fpath=("$ZDOTDIR/pkg" $fpath)
+fpath=("$ZDOTDIR/functions" $fpath)
+fpath=("$ZDOTDIR/prompts" $fpath)
 autoload $ZDOTDIR/pkg/*
+autoload $ZDOTDIR/functions/*
+autoload $ZDOTDIR/prompts/*
 #}}}
 #{{{ Load packages
 pkg init
 [[ -z "$INSIDE_EMACS" ]] && pkg colored-man-pages -f omz
 pkg zsh-users/zsh-completions
 pkg agkozak/zsh-z
-pkg "git@gitlab.com:yramagicman/zsh-aliases"
 pkg load
 pkg update
 {
     jit "$HOME/.zshenv"
     jit "$ZDOTDIR/.zshrc"
     jit "$ZDOTDIR/.zlogin"
+    jit "$ZDOTDIR/aliases/aliases.zsh"
 }&!
+source "$ZDOTDIR/aliases/aliases.zsh"
+if [[ "$(uname)" == 'Darwin' ]]; then
+    jit "$ZDOTDIR/aliases/darwin.zsh"
+    source "$ZDOTDIR/aliases/darwin.zsh"
+fi
 #}}}
 #{{{ Set zsh options for general runtime.
 #

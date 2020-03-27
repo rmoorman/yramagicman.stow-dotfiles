@@ -1,0 +1,7 @@
+function cmus() {
+    if [[ -z $(pgrep mpd) ]]; then
+        mpd >/dev/null 2>&1
+    fi
+    /usr/bin/ncmpcpp
+
+}

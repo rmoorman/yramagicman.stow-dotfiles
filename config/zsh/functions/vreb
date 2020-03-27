@@ -1,0 +1,7 @@
+function vreb() {
+    if [[ -n $( grep -l '<<< HEAD' $(git ls-files) | sort | uniq ) ]]; then
+        vim $( grep -l '<<< HEAD' $(git ls-files) | sort | uniq )
+    else
+        echo "\n\nno unresolved conflicts"
+    fi
+}

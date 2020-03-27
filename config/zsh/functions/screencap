@@ -1,0 +1,22 @@
+function screencap() {
+    echo "which monitor"
+    echo "input resolution, then x and y coordinates"
+    xrandr | awk '/ connected/ {print $0}'
+    echo "input resolution:"
+    read resolution
+    echo $resolution
+    echo "input x offset:"
+    read x
+    echo $x
+    echo "input y offset:"
+    read y
+    echo $y
+     #if [[ $mon -eq 1 ]]; then
+         #ffmpeg -video_size 1920x1080 -framerate 30 -f x11grab -i :0.0+0,0 $1.mp4
+         #fi
+
+     #if [[ $mon -eq 2 ]]; then
+         #ffmpeg -video_size 1920x1080 -framerate 30 -f x11grab -i :0.0+1920,0 $1.mp4
+     #fi
+     ffmpeg -video_size $resolution  -framerate 30 -f x11grab -i :0.0+$x,$y $1.mp4
+}

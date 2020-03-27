@@ -1,0 +1,3 @@
+function fuzzy-remove() {
+    yay -Rns $(pacman -Qqs $1)
+}

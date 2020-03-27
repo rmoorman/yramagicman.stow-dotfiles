@@ -1,0 +1,22 @@
+function s() {
+    # Check for .tmux file (poor man's Tmuxinator).
+    if [[ -x "$HOME/.config/tmux.d/$1" ]]; then
+        # Prompt the first time we see a given .tmux file before running it.
+        local DIGEST="$(openssl sha512 $HOME/.config/tmux.d/$1)"
+        if ! grep -q "$DIGEST" $HOME/.config/tmux.d/digests 2>/dev/null; then
+            < $HOME/.config/tmux.d/$1
+            read -k 1 -r \
+                'REPLY?Trust (and run) this .tmux file? (t = trust, otherwise = skip) '
+            echo
+            if [[ $REPLY =~ ^[Tt]$ ]]; then
+                echo "$DIGEST" >>$HOME/.config/tmux.d/digests
+                $HOME/.config/tmux.d/$1 $2
+                return
+            fi
+        else
+            echo "$@"
+            $HOME/.config/tmux.d/$1 $2
+            return
+        fi
+    fi
+}

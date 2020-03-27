@@ -1,0 +1,3 @@
+function treset() {
+    tmux kill-session -t $(tmux list-sessions | awk '/attached/ { print substr($1, 1, length($1)-1) }')
+}
