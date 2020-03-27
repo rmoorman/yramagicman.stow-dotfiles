@@ -41,23 +41,25 @@ function _source_or_install() {
 
         if [[ ! -d "$MODULES_DIR/$location" ]]; then
             zf_mkdir -p "$MODULES_DIR/logs"
-            echo '\r\n'
-            echo $location
             zshpath=("${(@s/./)MODULES_DIR}")
             repopath="$( git rev-parse --show-toplevel )"
 
             dest="$zshpath[2]/$location"
-            echo $dest
 
-            git submodule add --name $location "$cloneurl" "$dest"
-            procs+=($! $location)
+            (
+            repopath="$( git rev-parse --show-toplevel )"
+            builtin cd $MODULES_DIR
+            builtin cd $repopath
+            git submodule foreach 'git submodule update --init --recursive'
+            if [[ ! -d $dest ]]; then
+                git submodule add --force --name $location "$cloneurl" "$dest"
+            fi
+        )
 
-            echo '\r\n'
-            echo $location
-            echo $EPOCSECONDS > "$MODULES_DIR/.updatetime"
-            return
-        else
-            echo "You have a plugin name wrong. $location does not contain $2. Check your list against the plugins included in any framworks you're using".
+        echo $EPOCSECONDS > "$MODULES_DIR/.updatetime"
+        return
+    else
+        echo "You have a plugin name wrong. $location does not contain $2. Check your list against the plugins included in any framworks you're using".
         fi
     fi
 }
