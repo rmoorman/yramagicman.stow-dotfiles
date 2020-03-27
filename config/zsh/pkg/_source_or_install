@@ -46,7 +46,7 @@ function _source_or_install() {
             zshpath=("${(@s/./)MODULES_DIR}")
             repopath="$( git rev-parse --show-toplevel )"
 
-            dest="$repopath/$zshpath[2]/$location"
+            dest="$zshpath[2]/$location"
             echo $dest
 
             git submodule add --name $location "$cloneurl" "$dest"

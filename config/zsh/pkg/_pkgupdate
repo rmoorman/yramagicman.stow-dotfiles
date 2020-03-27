@@ -16,29 +16,21 @@ function _pkgupdate() {
             echo "You last updated your plugins on $(date -d "@$update_time")"
             echo "Plugins will auto-update on $(date -d "@$(($update_time + $(( $gap * 3 ))))")"
             echo 'Update plugins? y/Y to confirm, anything else to ignore.'
-                read confirm
-                if [[ ! $confirm =~ '^(y|Y)' ]]; then
-                    echo '' > "$HOME/.cache/zsh/no_z_update"
-                    return
-                fi
-            else
-                if [[ $diff -gt $(($gap * 3)) ]] && [[ -f "$HOME/.cache/zsh/no_z_update" ]]; then
-                    zf_rm "$HOME/.cache/zsh/no_z_update"
-                fi
-        fi
-        for key value in ${(kv)@}; do
-            _get_clone_dest "$key"
-            (
-            _net_test
-            if [[ $? -eq 1 ]]; then
+            read confirm
+            if [[ ! $confirm =~ '^(y|Y)' ]]; then
+                echo '' > "$HOME/.cache/zsh/no_z_update"
                 return
             fi
-            git submodule foreach '
-            echo $path
-            '
-            echo "\n"
-         )
-    done
+        else
+            if [[ $diff -gt $(($gap * 3)) ]] && [[ -f "$HOME/.cache/zsh/no_z_update" ]]; then
+                zf_rm "$HOME/.cache/zsh/no_z_update"
+            fi
+        fi
+        _net_test
+        if [[ $? -eq 1 ]]; then
+            return
+        fi
+        git submodule foreach 'git submodule update --init --recursive'
         echo $EPOCHSECONDS > "$MODULES_DIR/.updatetime"
     fi
 
