@@ -110,6 +110,7 @@ st() {
         cp "$dotdir/st.config.h" "$HOME/Gits/st/config.h"
         cd "$HOME/Gits/st" || return
         make
+        sudo make install
     )
         fi
     fi
@@ -133,6 +134,7 @@ dwm() {
         cp "$dotdir/dwm.config.h" "$HOME/Gits/dwm/config.h"
         cd "$HOME/Gits/dwm" || return
         make
+        sudo make install
     )
         fi
     fi
