@@ -81,7 +81,7 @@ static const Layout layouts[] = {
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_run", "-p", ">>", "-fn", dmenufont, "-nb", background, "-nf", foreground, "-sb", sel_background, "-sf", sel_foreground, "-l", "20", NULL };
-static const char *passmenu[] = { "passmenu", "-p", "*>", "-fn", dmenufont, "-nb", background, "-nf", foreground, "-sb", sel_background, "-sf", sel_foreground, "-l", "20", NULL };
+static const char *passmenu[] = { "/home/jonathan/bin/passmenu", "-p", "*>", "-fn", dmenufont, "-nb", background, "-nf", foreground, "-sb", sel_background, "-sf", sel_foreground, "-l", "20", NULL };
 static const char *termcmd[]  = { "/home/jonathan/.config/dwm/scripts/termcmd", NULL };
 static const char *emacs[]  = { "/home/jonathan/bin/emacs", ".", NULL };
 static const char *browser[]  = { "surf", "start.duckduckgo.com" };
