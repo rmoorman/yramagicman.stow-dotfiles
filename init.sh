@@ -1,7 +1,7 @@
 #!/bin/sh
 logfile=$HOME/initlog
 dotdir="$(dirname "$(realpath "$0")" )"
-reposdir="$HOME/Gits"
+reposdir="$HOME/Documents"
 printf '' > "$logfile"
 dotfiles() {
     find ./ -maxdepth 1 -type f  \
@@ -95,20 +95,20 @@ mkrepodir() {
 st() {
     if test "$(uname)" != "Darwin"
     then
-        if test ! -d "$HOME/Gits/st/"
+        if test ! -d "$reposdir/st/"
         then
             (
-            cd "$HOME/Gits" || return
+            cd "$reposdir" || return
             git clone --depth 3 git://git.suckless.org/st
-            cp "$dotdir/st.config.h" "$HOME/Gits/st/config.h"
-            cd "$HOME/Gits/st" || return
+            cp "$dotdir/st.config.h" "$reposdir/st/config.h"
+            cd "$reposdir/st" || return
             make
             sudo make install
         )
     else
         (
-        cp "$dotdir/st.config.h" "$HOME/Gits/st/config.h"
-        cd "$HOME/Gits/st" || return
+        cp "$dotdir/st.config.h" "$reposdir/st/config.h"
+        cd "$reposdir/st" || return
         make
         sudo make install
     )
@@ -119,20 +119,20 @@ st() {
 dwm() {
     if test "$(uname)" != "Darwin"
     then
-        if test ! -d "$HOME/Gits/dwm/"
+        if test ! -d "$reposdir/dwm/"
         then
             (
-            cd "$HOME/Gits" || return
+            cd "$reposdir" || return
             git clone --depth 3 git://git.suckless.org/dwm
-            cp "$dotdir/dwm.config.h" "$HOME/Gits/dwm/config.h"
-            cd "$HOME/Gits/dwm" || return
+            cp "$dotdir/dwm.config.h" "$reposdir/dwm/config.h"
+            cd "$reposdir/dwm" || return
             make
             sudo make install
         )
     else
         (
         cp "$dotdir/dwm.config.h" "$HOME/Gits/dwm/config.h"
-        cd "$HOME/Gits/dwm" || return
+        cd "$reposdir/dwm" || return
         make
         sudo make install
     )
