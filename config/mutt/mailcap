@@ -1,6 +1,5 @@
 text/html; firefox %s;
-text/html; w3m -M -I utf-8 -dump %s; nametemplate=%s.html; copiousoutput
-
+text/html; w3m -I %{charset} -T text/html; copiousoutput;
 # MS Word documents
 application/msword; ~/.config/mutt/view_attachment.sh %s "-" '/Applications/TextEdit.app'
 text/plain; ~/.config/mutt/view_attachment.sh %s "-" '/Applications/TextWrangler.app'

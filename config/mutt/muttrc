@@ -11,6 +11,7 @@ set spoolfile = "~/.config/mail/Inbox"
 set folder="~/.config/mail/Inbox"
 set postponed="~/.config/mail/drafts/"
 set record="~/.config/mail/Sent/"
+set mailcap_path="~/.config/mutt/mailcap"
 set move = no
 set date_format = "%d/%m/%y"
 set index_format = "%3C [%Z]  %D  %-20.20F  %s"
@@ -41,7 +42,7 @@ bind index p        recall-message
 bind index R        group-reply
 bind index <tab>    sync-mailbox
 bind index <space>  collapse-thread
-macro index \Cr "!getmail -n"<enter>
+macro index \Cr "!getmail -g $XDG_CONFIG_HOME/getmail -n"<enter>
 #set pager_context = 3      # number of context lines to show
 set pager_stop             # don't go to next message automatically
 set tilde                  # show tildes like in vim
@@ -57,7 +58,6 @@ bind pager R  group-reply
 bind attach <return> view-mailcap
 set mail_check=30           # check for new mail every 60 seconds
 set timeout=15
-set mailcap_path="~/.mutt/mailcap"
 macro pager \Cu "|urlview<enter>" "call urlview to open links"
 auto_view text/html
 alternative_order text/plain text/enriched text/html
