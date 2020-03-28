@@ -7,11 +7,12 @@ else
     let s:optpath = $HOME.'/.vim/pack/vendor/opt'
     let s:startpath = $HOME.'/.vim/pack/vendor/start'
 endif
-function! s:jobstart(job )
+function! s:jobstart(job)
     if has('nvim')
         return jobstart(a:job)
     else
-        return job_start(a:job)
+        echom a:job
+        call term_start(a:job)
     endif
 endfunction
 function! s:sanity_check()
@@ -31,7 +32,6 @@ endfunction
 
 
 function! s:read_start_dir()
-    echom globpath(s:startpath, '*')
     return split( globpath(s:startpath, '*'), '\n' )
 endfunction
 
@@ -57,7 +57,10 @@ function! s:install_start_plugins(plug)
     let plug = split( a:plug, '/' )[1]
     let plug = plug[:-2]
     let destination = split( &packpath, ',')[-1] . '/start/'. plug
-    call add(s:start_plugs, [destination, 'git clone --quiet --depth 4 '. url . ' ' . destination])
+    let moduledest = split(destination, '\.')[1]
+    let cdpath=join(split(moduledest,'/')[:-2], '/')
+
+    call add(s:start_plugs, [destination, 'git submodule add --force --name '.plug .' '. url . ' ' . moduledest])
 endfunction
 
 let s:opt_plugs = []
@@ -67,26 +70,37 @@ function! s:install_opt_plugins(plug)
     let plug = split( a:plug, '/' )[1]
     let plug = plug[:-2]
     let destination = split( &packpath, ',')[-1] . '/opt/'. plug
-    call add(s:opt_plugs, [destination, 'git clone --quiet --depth 4 '. url . ' ' . destination])
+    let moduledest = split(destination, '\.')[1]
+    let cdpath=join(split(moduledest,'/')[:-2], '/')
+
+    call add(s:opt_plugs, [destination, 'git submodule add --force --name '.plug .' '. url . ' ' . moduledest])
 endfunction
 
 function! s:install_opts()
+    let s:opt_job = 'bash -c "cd '. split(&packpath, ',')[-1]
+    let s:opt_job = s:opt_job . ' && cd $(git rev-parse --show-toplevel) && '
     for package in s:opt_plugs
         if !isdirectory(package[0])
-            let package_name = split(package[0], '/')[-1]
-            let j = s:jobstart( ["/bin/sh", "-c", package[1]] )
+             let s:opt_job = s:opt_job . ' ' . package[1] .' &&'
         endif
     endfor
+    let s:opt_job = s:opt_job . ' pwd"'
+    let @o = s:opt_job
+    call s:jobstart(s:opt_job)
 endfunction
 
 
 function! s:install_start()
+    let s:start_job = 'bash -c "cd '. split(&packpath, ',')[-1]
+    let s:start_job = s:start_job . ' && cd $(git rev-parse --show-toplevel) && '
     for package in s:start_plugs
         if !isdirectory(package[0])
-            let package_name = split(package[0], '/')[-1]
-            let j = s:jobstart( ["/bin/sh", "-c", package[1]] )
+             let s:start_job = s:start_job . ' ' . package[1] .' &&'
         endif
     endfor
+    let s:start_job = s:start_job . ' pwd"'
+    let @s = s:start_job
+    call s:jobstart(s:start_job)
 endfunction
 
 function! s:clean_plugins()
@@ -221,8 +235,8 @@ endfunction
 
 autocmd VimEnter *  call s:sanity_check()
 if exists('g:VimPack_Auto_Install')
-    autocmd BufEnter *  call s:install_all() | redraw
+    "autocmd BufEnter *  call s:install_all() | redraw
 endif
 if exists('g:VimPack_Auto_Update')
-    autocmd BufEnter *  call s:do_update()
+    "autocmd BufEnter *  call s:do_update()
 endif
