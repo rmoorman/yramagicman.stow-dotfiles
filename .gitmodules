@@ -53,3 +53,6 @@
 [submodule "vim-indent-object"]
 	path = vim/pack/vendor/start/vim-indent-object
 	url = https://github.com/vim-scripts/vim-indent-object
+[submodule "fzf.vim"]
+	path = vim/pack/vendor/start/fzf
+	url = https://github.com/junegunn/fzf.vim
