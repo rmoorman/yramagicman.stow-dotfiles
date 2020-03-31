@@ -6,7 +6,9 @@ my_date() {
 
 battery() {
     if uname | grep -q "Darwin"; then
-        pmset -g batt | awk '/discharging/ { if ( length($3) == 4 ) { print " B:"substr($3, 0, 2)"% " } else { print " B:"substr( $3, 0, 3 )"% " }}'
+        pmset -g batt | awk '/discharging/ { if ( length($3) == 4 ) { print " B:"substr($3, 0, 2)"% " }
+                else if (length($3) == 3) {print " B:"substr( $3, 0, 1 )"% " }
+                else { print " B:"substr( $3, 0, 3 )"% " }}'
         return
     else
 
