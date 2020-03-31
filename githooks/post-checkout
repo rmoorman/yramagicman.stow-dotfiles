@@ -7,5 +7,7 @@ do
     gpg -d --quiet "$base/$f.gpg" > "/tmp/$(basename "$f" )"
 done < "$base/config/crypt"
 
+git submodule foreach 'git checkout -f master'
+git submodule foreach 'git pull'
 git submodule foreach 'git submodule update --recursive --init'
 exit 0
