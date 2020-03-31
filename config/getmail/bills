@@ -1,0 +1,10 @@
+[retriever]
+type = SimpleIMAPSSLRetriever
+server = vps.gilsons.org
+username = ejbills@gilsons.org
+password_command = ("/usr/bin/pass","show","ejbills")
+mailboxes = ALL
+
+[destination]
+type = Maildir
+path= ~/.config/mail/Bills/
