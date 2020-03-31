@@ -26,7 +26,6 @@ config/zsh/.zprofile
 config/zsh/.zshrc
 config/zsh/history/
 config/zsh/plugins/.updatetime
-getmail/
 mpd/mpdstate
 newsboat/cache.db
 newsboat/history.cmdline
@@ -42,3 +41,5 @@ vim/undo/
 vim/viminfo
 vim/viminfo.tmp
 vim/viminfz.tmp
+config/getmail/gmail
+config/getmail/oldmail*
