@@ -14,7 +14,7 @@ battery() {
 
         if test -d /sys/class/power_supply/BAT1; then
             bat_level=$( cat /sys/class/power_supply/BAT1/capacity )
-            bat_stat=$( cat /sys/class/power_supply/BAT0/status )
+            bat_stat=$( cat /sys/class/power_supply/BAT1/status )
             if test "$bat_stat" == "Discharging"; then
                 echo " B: $bat_level%"
             fi
