@@ -6,4 +6,6 @@ while read -r f
 do
     gpg -d --quiet "$base/$f.gpg" > "/tmp/$(basename "$f" )"
 done < "$base/config/crypt"
+
+git submodule foreach 'git submodule update --recursive --init'
 exit 0
