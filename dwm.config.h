@@ -98,7 +98,7 @@ static const char *volmute[]  = { "amixer", "-c", "0",  "--",  "set",  "Master",
 static const char *brightup[]  = { "/home/jonathan/.config/dwm/scripts/brightup", NULL };
 static const char *brightdown[]  = { "/home/jonathan/.config/dwm/scripts/brightdown", NULL };
 static const char *killscreensaver[]  = {"pkill", "xscreensaver", NULL };
-static const char *killmon[]  = {"mons", "-o", "HDMI1", "--off", NULL };
+/* static const char *killmon[]  = {"mons", "-o", "HDMI1", "--off", NULL }; */
 static const char *attachmon[]  = {"/home/jonathan/.config/screenlayout/work.sh", NULL};
 static const char *help[]  = {"st", "-e","bash", "-c", "cat ~/.config/help & read", NULL};
 
@@ -143,7 +143,7 @@ static Key keys[] = {
     { ControlMask|ShiftMask,        XK_F12,    spawn,          {.v = reboot } },
     { 0,                            XK_F1,     spawn,          {.v = help } },
     { 0,                            XK_F8,     spawn,          {.v = killscreensaver } },
-    { 0,                            XK_F10,    spawn,          {.v = killmon } },
+    /* { 0,                            XK_F10,    spawn,          {.v = killmon } }, */
     { 0,                            XK_F11,    spawn,          {.v = attachmon } },
     TAGKEYS(                        XK_1,                      0)
     TAGKEYS(                        XK_2,                      1)
