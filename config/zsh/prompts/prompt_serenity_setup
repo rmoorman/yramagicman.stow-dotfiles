@@ -3,6 +3,12 @@ function prompt_serenity_precmd() {
     vcs_info 'prompt'
 }
 
+function prompt_serenity_nvm() {
+    which nvm > /dev/null
+    if [[ $? -eq 0 ]]; then
+        echo "$(nvm current)"
+    fi
+}
 function prompt_serenity_setup() {
 
 setopt LOCAL_OPTIONS
@@ -45,7 +51,7 @@ PROMPT='
 %B%F{2}%m%f %~${vcs_info_msg_0_}%b
 %(?..!)%B%f${vcs_info_msg_1_}%b%L%B >%b '
 if [[ -z $INSIDE_EMACS && -z $VIM  ]]; then
-    RPROMPT='%F{7}[ %D{%I:%M %p} ] %f'
+    RPROMPT='%F{7}[ %D{%I:%M %p} ] $( prompt_serenity_nvm )%f'
 else
     RPROMPT=''
 fi

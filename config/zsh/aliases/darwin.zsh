@@ -114,3 +114,4 @@ fi
 if [[ "$(pgrep docker | wc -l)" -eq 1 ]]; then
     open -a Docker.app
 fi
+[[ "$(which nvm > /dev/null)" ]] || nvm_load
