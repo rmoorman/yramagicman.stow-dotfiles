@@ -3,6 +3,7 @@ logfile=$HOME/initlog
 dotdir="$(dirname "$(realpath "$0")" )"
 reposdir="$HOME/Documents"
 printf '' > "$logfile"
+
 dotfiles() {
     find ./ -maxdepth 1 -type f  \
         -not -name '.*' -and \
@@ -109,6 +110,7 @@ st() {
         (
         cp "$dotdir/st.config.h" "$reposdir/st/config.h"
         cd "$reposdir/st" || return
+        make clean
         make
         sudo make install
     )
@@ -131,8 +133,9 @@ dwm() {
         )
     else
         (
-        cp "$dotdir/dwm.config.h" "$HOME/Gits/dwm/config.h"
+        cp "$dotdir/dwm.config.h" "$reposdir/dwm/config.h"
         cd "$reposdir/dwm" || return
+        make clean
         make
         sudo make install
     )
