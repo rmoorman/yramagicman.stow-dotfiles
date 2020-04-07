@@ -46,11 +46,6 @@ export PLTUSERHOME="$XDG_DATA_HOME/racket"
 export GNUPGHOME="$XDG_DATA_HOME/gnupg"
 export PASSWORD_STORE_DIR="$XDG_DATA_HOME/pass"
 
-# Other program settings:
-if [[ -d '/usr/local/opt/php@7.3' ]]; then
-    export PATH="/usr/local/opt/php@7.3/bin:$PATH"
-    export PATH="/usr/local/opt/php@7.3/sbin:$PATH"
-fi
 
 if ( hash fzf > /dev/null 2>&1 ); then
     export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -g ""'

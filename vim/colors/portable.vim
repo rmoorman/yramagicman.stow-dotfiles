@@ -5,7 +5,7 @@ let colors_name='portable'
 hi foldcolumn ctermbg=NONE ctermfg=12
 hi linenr ctermfg=12
 hi cursorlinenr ctermfg=9
-hi search ctermfg=15 ctermbg=16
+hi search ctermfg=3 ctermbg=16
 hi visual ctermfg=15 ctermbg=16
 hi diffadd ctermfg=4 ctermbg=0
 hi diffchange ctermfg=9 ctermbg=0
