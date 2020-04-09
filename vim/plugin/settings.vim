@@ -46,7 +46,8 @@ set sidescrolloff=15
 set scrolloff=2
 "}}}
 set listchars=tab:▸\ ,trail:·,eol:¬,extends:❯,precedes:❮"{{{
-set showbreak=…→"}}}
+set showbreak=…→
+"}}}
 "{{{ search settings
 set nowrapscan
 set incsearch
