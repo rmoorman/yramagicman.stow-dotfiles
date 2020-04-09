@@ -35,6 +35,7 @@
     done
     zmodload -u zsh/files
 }&!
+
 {
  cat ${ZSHZ_DATA:-$HOME/.z}* | awk -F '|' '{if ($2 > 25) print $2" " $1}' | sort -n | while read -r line
 do

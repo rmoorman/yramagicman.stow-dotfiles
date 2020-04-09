@@ -25,4 +25,5 @@ augroup defaults
     autocmd BufEnter,CursorHold * checktime
     autocmd CursorHold * call functions#Save()
     autocmd BufEnter *.vue source $HOME/Gits/dots/vim/after/ftplugin/js.vim
+    autocmd QuitPre * call range(1, bufnr('$'))->filter('getbufvar(v:val, "&buftype") == "terminal"')->map('term_setkill(v:val, "hup")')
 augroup end
