@@ -40,8 +40,8 @@ fi
 # fi
 
 
-if stat "$HOME/Gits/st/st"  > /dev/null 2>&1 ; then
-    export TERMINAL="$HOME/Gits/st/st"
+if command -v alacritty  > /dev/null 2>&1 ; then
+    export TERMINAL=alacritty
 elif command -v st > /dev/null; then
     export TERMINAL=st
 elif command -v urxvt-256color > /dev/null; then
