@@ -33,6 +33,7 @@ static const Rule rules[] = {
     /*  class                  instance  title  tags mask  isfloating  monitor */
     {   "Thunar",              NULL,     NULL,  2,         0,          1     },
     {   "st-256color",         NULL,     NULL,  1,         0,          1     },
+    {   "Alacritty",           NULL,     NULL,  1,         0,          1     },
     {   "urxvt-256color",      NULL,     NULL,  1,         0,          1     },
     {   "URxvt",               NULL,     NULL,  1,         0,          1     },
     {   "Emacs",               NULL,     NULL,  1,         0,          1     },
