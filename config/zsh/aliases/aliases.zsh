@@ -23,7 +23,6 @@ alias e="$EDITOR"
 alias v.="$EDITOR ."
 alias gvim="$EDITOR"
 alias oo="nohup xdg-open . > /dev/null &"
-alias cl="clear"
 alias t='tmux'
 alias :q='exit'
 alias bc='bc -l'
@@ -76,21 +75,12 @@ alias ls="command ls -F ${colorflag}"
 alias curl="curl -L --compressed"
 # Enhanced WHOIS lookups
 alias whois="whois -h whois-servers.net"
-alias iftop="sudo iftop -i wlp4s0"
-# View HTTP traffic
-alias sniff="sudo tcpdump -s 0 -A -i wlp4s0 port 80"
-alias httpdump="sudo tcpdump -i wlp4s0 -n -s 0 -w - | grep -a -o -E \"Host\: .*|GET \/.*\""
 alias rip="dig +short myip.opendns.com @resolver1.opendns.com"
 alias ip="ip --color=auto"
 #}}}
 # {{{ utilities
 # Canonical hex dump; some systems have this symlinked
 command -v hd >/dev/null || alias hd="hexdump -C"
-#{{{ cleanup Stuff
-alias sasscleanup="find . -type d -name '*.sass-cache' -ls -exec rm -rv {} \;"
-# Recursively delete `.DS_Store` files
-alias cleansym="find ./ -xtype l -ls -exec rm {} \;"
-#}}}
 # URL-encode strings
 alias urlencode='python2 -c "import sys, urllib as ul; print ul.quote_plus(sys.argv[1]);"'
 # Ring the terminal bell, and put a badge on Terminal.app’s Dock icon
@@ -114,12 +104,10 @@ alias tls="tmux ls"
 #{{{ uncategorized aliases
 alias poweroff="systemctl poweroff"
 alias reboot="systemctl reboot"
-alias blsrm="find $HOME/.config/ -type f -name '*.localstorage*' -ls -delete"
 alias mute="amixer -c 0 -- set Master playback -1000dB > /dev/null"
 alias unmute="amixer -c 0 -- set Master playback -20dB > /dev/null"
 #}}}
 #{{{ utility commands
-alias perms="< $HOME/.octal"
 alias q="exit"
 alias mypw="pwgen -c -n -s -y 16 -1"
 alias ndate="date \"+%d-%m-%y\""

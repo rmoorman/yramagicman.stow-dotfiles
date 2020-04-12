@@ -3,8 +3,6 @@
 alias flush="dscacheutil -flushcache && killall -HUP mDNSResponder"
 alias purge="sudo purge"
 alias toimg="hdiutil convert -format UDRW -o "
-alias musync="rsync -rav ~/Music/iTunes/iTunes\ Media/Music jonathan@10.0.1.8:/home/jonathan/Music"
-alias fastflix="sudo /sbin/ipfw add 2000 deny tcp from 173.194.55.0/24 to me; sudo /sbin/ipfw add 2001 deny tcp from 206.111.0.0/16 to me"
 alias dnd="launchctl unload -w /System/Library/LaunchAgents/com.apple.notificationcenterui.plist 2> /dev/null"
 alias udnd="launchctl load -w /System/Library/LaunchAgents/com.apple.notificationcenterui.plist 2> /dev/null"
 alias poweroff="emptytrash; sudo shutdown -h now"
@@ -13,13 +11,9 @@ alias ql="qlmanage -p"
 alias lsblk='diskutil list'
 alias eject="diskutil eject"
 alias rmspot="sudo rm -rfv ~/Library/Caches/com.spotify.client/Storage/"
-alias blsrm="find ~/Library/ -type f -name '*.localstorage*' -ls -delete"
-alias cwd="pwd | c"
 alias csleep="sudo shutdown -s now"
 # Get OS X Software Updates, and update installed Ruby gems, Homebrew, npm,
 # and their installed packages
-alias update='gp; npm install -g npm@latest;  npm update -g; \
-gem update; brew update; brew upgrade --all; brew linkapps; git checkout master;  bell'
 alias stfu="osascript -e 'set volume output muted true'"
 alias shutup="osascript -e 'set volume output muted true'"
 alias louder="osascript -e 'set volume 7'"
@@ -48,10 +42,6 @@ alias lscleanup="/System/Library/Frameworks/CoreServices.framework/Frameworks/La
 command -v md5sum > /dev/null || alias md5sum="md5"
 # OS X has no `sha1sum`, so use `shasum` as a fallback
 command -v sha1sum > /dev/null || alias sha1sum="shasum"
-# Trim new lines and copy to clipboard
-alias c="tr -d '\n' | pbcopy"
-alias iftop="iftop -i en1"
-alias eiftop="iftop -i en0"
 # View HTTP traffic
 alias sniff="sudo tcpdump -s 0 -A -i en1 port 80"
 alias httpdump="sudo tcpdump -i en1 -n -s 0 -w - | grep -a -o -E \"Host\: .*|GET \/.*\""
@@ -97,15 +87,14 @@ tell application "Reminders"
 end tell
 EOF
 }
+
 # Manually remove a downloaded app or file from the quarantine
 function unquarantine() {
     for attribute in com.apple.metadata:kMDItemDownloadedDate com.apple.metadata:kMDItemWhereFroms com.apple.quarantine; do
     xattr -r -d "$attribute" "$@"
     done
 }
-function shop(){
-    find ./ -name $1 -exec open -a /Applications/Adobe\ Photoshop\ CS6/Adobe\ Photoshop\ CS6.app {} \;
-}
+
 function tw(){
     open $@ -a TextWrangler.app
 }
@@ -114,4 +103,5 @@ fi
 if [[ "$(pgrep docker | wc -l)" -eq 1 ]]; then
     open -a Docker.app
 fi
+
 [[ "$(which nvm > /dev/null)" ]] || nvm_load
