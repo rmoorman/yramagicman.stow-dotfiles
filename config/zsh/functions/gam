@@ -1,3 +1,0 @@
-function gam() {
-    git add $(g s | egrep -v '\?\? | D |R' | awk -F ' ' '{print $2}')
-}
