@@ -36,7 +36,9 @@ if [[ "$(uname)" == 'Darwin' ]]; then
     jit "$ZDOTDIR/aliases/darwin.zsh"
     source "$ZDOTDIR/aliases/darwin.zsh"
 fi
-eval $(dircolors)
+if type "dircolors" > /dev/null; then
+    eval $(dircolors)
+fi
 #}}}
 #{{{ Set zsh options for general runtime.
 #
