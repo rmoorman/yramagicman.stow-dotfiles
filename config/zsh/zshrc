@@ -38,6 +38,8 @@ if [[ "$(uname)" == 'Darwin' ]]; then
 fi
 if type "dircolors" > /dev/null; then
     eval $(dircolors)
+elif type "gdircolors" > /dev/null; then
+    eval $(gdircolors)
 fi
 #}}}
 #{{{ Set zsh options for general runtime.
