@@ -167,6 +167,11 @@ do
 done
 }
 
+clean() {
+    if test $( wc -l < "$logfile" ) == 0; then
+        rm "$logfile"
+    fi
+}
 args="$(getopt fdcbrtwsja "$@")"
 if test -z "$1"
 then
@@ -228,6 +233,7 @@ do
         shift;;
     --)
         githooks
+        clean
         shift;
         break;;
 esac
