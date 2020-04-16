@@ -181,14 +181,6 @@ awful.screen.connect_for_each_screen(function(s)
         widget_template = {
             {
                 {
-                    -- {
-                    --     {
-                    --         id     = 'icon_role',
-                    --         widget = wibox.widget.imagebox,
-                    --     },
-                    --     margins = 2,
-                    --     widget  = wibox.container.margin,
-                    -- },
                     {
                         id     = 'text_role',
                         widget = wibox.widget.textbox,
@@ -202,9 +194,6 @@ awful.screen.connect_for_each_screen(function(s)
             id     = 'background_role',
             widget = wibox.container.background,
         },
-
-
-
     }
 
 
@@ -218,6 +207,7 @@ awful.screen.connect_for_each_screen(function(s)
     -- Create the wibox
     s.mywibox = awful.wibar({ position = "top", screen = s })
 
+    watchwidget = awful.widget.watch('/home/jonathan/bin/statusline', 1)
     -- Add widgets to the wibox
     s.mywibox:setup {
         layout = wibox.layout.align.horizontal,
@@ -231,9 +221,11 @@ awful.screen.connect_for_each_screen(function(s)
     s.mytasklist, -- Middle widget
     { -- Right widgets
     layout = wibox.layout.fixed.horizontal,
-    wibox.widget.systray(),
+    -- wibox.widget.systray(),
     -- mytextclock,
+    -- awful.widget.watch('date', 1)
     mywidget,
+    watchwidget
 },
     }
 end)
@@ -274,11 +266,13 @@ awful.key({ modkey,           }, "u", awful.client.urgent.jumpto,
 {description = "jump to urgent client", group = "client"}),
 
 awful.key({ modkey,           }, "t", function () awful.layout.set( awful.layout.suit.max )  end,
-{description = "jump to urgent client", group = "layout"}),
+{description = "Tile windows", group = "layout"}),
 
 awful.key({ modkey,           }, "e", function () awful.layout.set( awful.layout.suit.tile )  end,
-{description = "jump to urgent client", group = "layout"}),
+{description = "maximize windows", group = "layout"}),
 
+awful.key({ modkey,  "Control" }, "f", function () awful.layout.set( awful.layout.suit.floating )  end,
+{description = "maximize windows", group = "layout"}),
 awful.key({ modkey,           }, "Tab",
 function ()
     awful.client.focus.history.previous()
@@ -524,8 +518,12 @@ function one()
         properties = { screen = 1, tag = "1" } },
         { rule_any = { class = { "Chromium", "chromium" } },
         properties = { screen = 1, tag = "2" } },
-        { rule_any = { class = { "Thunderbird", "chromium" } },
+        { rule_any = { class = { "Thunderbird", "thunderbird" } },
         properties = { screen = 1, tag = "3" } },
+        { rule_any = { class = { "Signal", "signal" } },
+        properties = { screen = 1, tag = "9" } },
+        { rule_any = { class = { "Krita", "krita" } },
+        properties = { screen = 1, tag = "4" } },
     }
     for r = 1,#rules do
         table.insert(awful.rules.rules, rules[r])
@@ -559,5 +557,5 @@ end)
 client.connect_signal("focus", function(c) c.border_color = beautiful.border_focus end)
 client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
 -- }}}
-awful.spawn("pkill statusloop")
+
 awful.spawn.with_shell("~/.config/dwm/autostart.sh")

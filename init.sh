@@ -226,10 +226,10 @@ do
         cron
         dotdirs
         dotfiles
-        dwm
+        # dwm
         mkrepodir
         setshell
-        st
+        # st
         shift;;
     --)
         githooks

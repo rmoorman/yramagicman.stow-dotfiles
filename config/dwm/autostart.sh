@@ -16,20 +16,13 @@ check_process(){
 
 set_screen_layout() {
     ( /home/jonathan/.config/screenlayout/default.sh ) &
-    if test "$( hostname )" == 'serenity'; then
-        amixer -c 0  --  set  Master  0
-        if test "$(xrandr | awk '/HDMI1/ {print $2}' )" == 'connected'; then
-
-            ( /home/jonathan/.config/screenlayout/work.sh ) &
-        fi
-    fi
     if test "$( hostname )" == 'artoo'; then
         echo 'Xft.dpi: 192' | xrdb -override
     fi
 }
 
 set_screen_layout
-"$HOME/bin/statusloop" &
+test -n  "$( pgrep awesome )" || "$HOME/bin/statusloop" &
 ("$HOME/.config/fehbg") &
 
 xset -dpms; xset s off &
@@ -45,16 +38,14 @@ xset -dpms; xset s off &
 ## preferances.
 xset r rate 250 25 &
 
-dunst &
+# dunst &
 
 pulseaudio &
 ## Turn on/off system beep
 xset b off &
 
-if test "$(hostname)" != 'artoo'; then
-    # Autostart the Dropbox deamon
-    (sleep 100s && dropbox-cli start) &
-fi
+# Autostart the Dropbox deamon
+(sleep 100s && dropbox-cli start) &
 (sleep 45s && check_process redshift) &
 
 
