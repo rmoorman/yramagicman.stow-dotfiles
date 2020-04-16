@@ -206,8 +206,11 @@ awful.screen.connect_for_each_screen(function(s)
     }
     -- Create the wibox
     s.mywibox = awful.wibar({ position = "top", screen = s })
-
-    watchwidget = awful.widget.watch('/home/jonathan/bin/statusline', 1)
+    if s:focused() then
+        watchwidget = awful.widget.watch('/home/jonathan/bin/statusline', 1)
+    else
+        watchwidget =wibox.widget({text = '' })
+    end
     -- Add widgets to the wibox
     s.mywibox:setup {
         layout = wibox.layout.align.horizontal,
