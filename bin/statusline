@@ -127,3 +127,6 @@ xsetroot -name $line
 if [[ -n "$(pgrep i3)" ]]; then
     echo $line
 fi
+if [[ -n "$(pgrep awesome)" ]]; then
+    echo -e "mywidget.text = '$line'" | awesome-client
+fi
