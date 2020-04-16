@@ -15,13 +15,14 @@ check_process(){
 }
 
 set_screen_layout() {
-    ( /home/jonathan/.config/screenlayout/default.sh ) &
+    ( "$HOME"/.config/screenlayout/default.sh ) &
     if test "$( hostname )" == 'artoo'; then
         echo 'Xft.dpi: 192' | xrdb -override
     fi
 }
 
 set_screen_layout
+
 test -n  "$( pgrep awesome )" || "$HOME/bin/statusloop" &
 ("$HOME/.config/fehbg") &
 
@@ -33,21 +34,20 @@ xset -dpms; xset s off &
 (sleep 5s  && "$HOME/bin/get_remote_ip") &
 (sleep 5s  && emacs --bg-daemon) &
 
-## Set keyboard settings - 250 ms delay and 25 cps (characters per
-## second) repeat rate.  Adjust the values according to your
-## preferances.
+# Set keyboard settings - 250 ms delay and 25 cps (characters per
+# second) repeat rate.  Adjust the values according to your
+# preferances.
 xset r rate 250 25 &
 
-# dunst &
+test -n  "$( pgrep awesome )" || dunst &
 
 pulseaudio &
-## Turn on/off system beep
+# Turn on/off system beep
 xset b off &
 
 # Autostart the Dropbox deamon
 (sleep 100s && dropbox-cli start) &
 (sleep 45s && check_process redshift) &
-
 
 #limit the size of dirs history
 (
