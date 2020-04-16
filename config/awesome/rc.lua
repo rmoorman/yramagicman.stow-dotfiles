@@ -294,16 +294,16 @@ awful.key({ modkey, "Shift" }, "r", awesome.restart,
 awful.key({ modkey, "Shift"   }, "q", awesome.quit,
 {description = "quit awesome", group = "awesome"}),
 
-awful.key({ modkey, "Shift" }, "l",     function () awful.tag.incmwfact( 0.05)          end,
+awful.key({ modkey, "Control" }, "l",     function () awful.tag.incmwfact( 0.05)          end,
 {description = "increase master width factor", group = "layout"}),
 
-awful.key({ modkey,   "Shift" }, "h",     function () awful.tag.incmwfact(-0.05)          end,
+awful.key({ modkey,   "Control" }, "h",     function () awful.tag.incmwfact(-0.05)          end,
 {description = "decrease master width factor", group = "layout"}),
 
-awful.key({ modkey, "Control"   }, "h",     function () awful.tag.incnmaster( 1, nil, true) end,
+awful.key({ modkey, "Mod1"   }, "h",     function () awful.tag.incnmaster( 1, nil, true) end,
 {description = "increase the number of master clients", group = "layout"}),
 
-awful.key({ modkey, "Control"   }, "l",     function () awful.tag.incnmaster(-1, nil, true) end,
+awful.key({ modkey, "Mod1"   }, "l",     function () awful.tag.incnmaster(-1, nil, true) end,
 {description = "decrease the number of master clients", group = "layout"}),
 
 awful.key({ modkey, "Control", "Shift" }, "h",     function () awful.tag.incncol( 1, nil, true)    end,
@@ -374,12 +374,18 @@ awful.key({ modkey, }, "q",      function (c) c:kill()                         e
 awful.key({ modkey, "Control" }, "space",  awful.client.floating.toggle                     ,
 {description = "toggle floating", group = "client"}),
 
-awful.key({ modkey, }, "space", function (c) c:swap(awful.client.getmaster()) end,
+awful.key({ modkey, }, "space", function (c)
+    if awful.client.focus then
+        client.focus.swap(awful.client.getmaster(), client.focus)
+    end
+end,
 {description = "move to master", group = "client"}),
 
-awful.key({ modkey,           }, "o",      function (c) c:move_to_screen()               end,
+awful.key({ modkey,     "Shift"      }, "l",      function (c) c:move_to_screen( c.screen.index + 1 )               end,
 {description = "move to screen", group = "client"}),
 
+awful.key({ modkey,     "Shift"      }, "h",      function (c) c:move_to_screen( c.screen.index - 1 )               end,
+{description = "move to screen", group = "client"}),
 awful.key({ modkey,           }, "t",      function (c) c.ontop = not c.ontop            end,
 {description = "toggle keep on top", group = "client"}),
 
