@@ -173,32 +173,33 @@ font:
 
 # Colors (Tomorrow Night Bright)
 colors:
-      # Default colors
-      primary:
-            background: '0x001428'
-            foreground: '0xc5c8c6'
+  # Default colors
+  primary:
+    background: '0x001428'
+    foreground: '0xc5c8c6'
 
-      # Normal colors
-      normal:
-            black:   '0x113457'
-            red:     '0x7f0000'
-            green:   '0x409444'
-            yellow:  '0xbdab00'
-            blue:    '0x246ca7'
-            magenta: '0x6e3e7e'
-            cyan:    '0x0c7474'
-            white:   '0x696969'
+  # Normal colors
+  normal:
+    black:   '0x113457'
+    red:     '0x7f0000'
+    green:   '0x409444'
+    yellow:  '0xbdab00'
+    blue:    '0x246ca7'
+    magenta: '0x6e3e7e'
+    cyan:    '0x0f9595'
+    white:   '0x696969'
 
-      # Bright colors
-      bright:
-            black:   '0x114780'
-            red:     '0xcd3737'
-            green:   '0x51bb56'
-            yellow:  '0xe1cc00'
-            blue:    '0x56a1df'
-            magenta: '0xb374c5'
-            cyan:    '0x3cb2b2'
-            white:   '0xb7bab8'
+  # Bright colors
+  bright:
+    black:   '0x114780'
+    red:     '0xcd3737'
+    green:   '0x51bb56'
+    yellow:  '0xe1cc00'
+    blue:    '0x56a1df'
+    magenta: '0xb374c5'
+    cyan:    '0x51b2b2'
+    white:   '0xb7bab8'
+
 
       # Indexed Colors
       #
