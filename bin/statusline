@@ -7,8 +7,8 @@ function my_date () {
 
 function my_bat() {
     notify_when=$(echo "$(date +'%M') % 5" | bc)
-        bat_level=$( < $1/capacity )
-        bat_stat=$( < $1/status )
+    bat_level=$( < $1/capacity )
+    bat_stat=$( < $1/status )
     if [[ $(date +'%S') -eq 30 ]]
     then
         if [[ $( echo "$bat_level < 20" | bc) -eq 1 && (  $notify_when -eq 0 ) && $status != 'Charging'  ]]
@@ -23,7 +23,6 @@ function my_bat() {
         indicator="\xE2\x86\x91"
     fi
     echo "B:$bat_level% $indicator"
-    # echo $1
 }
 
 function my_wifi(){
@@ -112,9 +111,11 @@ function dbox() {
 }
 
 line="$(my_update)$(my_mail)$(my_weather)"
-for d in /sys/class/power_supply/BAT?/; do
-    line="$line $(my_bat $d)"
-done
+if [[ -d /sys/class/power_supply/BAT? ]]; then
+    for d in /sys/class/power_supply/BAT?/; do
+        line="$line $(my_bat $d)"
+    done
+fi
 line="$line $(my_wifi) $(dbox) $(my_volume) $(my_date)"
 
 xsetroot -name $line
