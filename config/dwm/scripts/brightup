@@ -3,6 +3,10 @@
 killall statusloop
 xbacklight -inc 2
 xsetroot -name "$( xbacklight )"
+if hash awesome-client > /dev/null; then
+    echo  "mywidget.text = '$( xbacklight )'" | awesome-client
+fi
+
 sleep 5s
 if test -z "$(pgrep statusloop)"; then
     "$HOME/bin/statusloop"

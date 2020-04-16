@@ -47,9 +47,10 @@ end
 beautiful.init(gears.filesystem.get_themes_dir() .. "xresources/theme.lua")
 beautiful.useless_gap = 0
 beautiful.font = 'Inconsolata'
+beautiful.wallpaper = ''
 
 -- This is used later as the default terminal and editor to run.
-terminal = "alacritty"
+terminal = gears.filesystem.get_xdg_config_home() .. 'dwm/scripts/termcmd'
 editor = os.getenv("EDITOR") or "nano"
 editor_cmd = terminal .. " -e " .. editor
 
@@ -94,9 +95,6 @@ menubar.utils.terminal = terminal -- Set the terminal for applications that requ
 -- }}}
 
 -- {{{ Wibar
--- Create a textclock widget
-mytextclock = wibox.widget.textclock()
-
 -- Create a wibox for each screen and add it
 local taglist_buttons = gears.table.join(
 awful.button({ }, 1, function(t) t:view_only() end),
@@ -179,16 +177,44 @@ awful.screen.connect_for_each_screen(function(s)
     s.mytasklist = awful.widget.tasklist {
         screen  = s,
         filter  = awful.widget.tasklist.filter.currenttags,
-        buttons = tasklist_buttons
+        -- buttons = tasklist_buttons
+        widget_template = {
+            {
+                {
+                    -- {
+                    --     {
+                    --         id     = 'icon_role',
+                    --         widget = wibox.widget.imagebox,
+                    --     },
+                    --     margins = 2,
+                    --     widget  = wibox.container.margin,
+                    -- },
+                    {
+                        id     = 'text_role',
+                        widget = wibox.widget.textbox,
+                    },
+                    layout = wibox.layout.fixed.horizontal,
+                },
+                left  = 10,
+                right = 10,
+                widget = wibox.container.margin
+            },
+            id     = 'background_role',
+            widget = wibox.container.background,
+        },
+
+
+
     }
 
-mywidget = wibox.widget{
-    text = '',
-    align  = 'center',
-    valign = 'center',
-    widget = wibox.widget.textbox,
-    screen = s,
-}
+
+    mywidget = wibox.widget{
+        text = '',
+        align  = 'center',
+        valign = 'center',
+        widget = wibox.widget.textbox,
+        screen = s,
+    }
     -- Create the wibox
     s.mywibox = awful.wibar({ position = "top", screen = s })
 
@@ -264,32 +290,6 @@ end,
 
 -- Standard program
 
-awful.key({ modkey,           }, "Return", function () awful.spawn(terminal) end,
-{description = "open a terminal", group = "launcher"}),
-
-awful.key({ modkey,           }, "m", function () awful.spawn("firefox --new-tab https://start.duckduckgo.com/lite") end,
-{description = "open firefox", group = "launcher"}),
-
-awful.key({ modkey,   "Shift" }, "m", function () awful.spawn("firefox --private-window") end,
-{description = "open firefox", group = "launcher"}),
-
-awful.key({ modkey,           }, "g", function () awful.spawn("chromium --force-dark-mode") end,
-{description = "open firefox", group = "launcher"}),
-
-awful.key({ modkey,   "Shift" }, "g", function () awful.spawn("chromium --force-dark-mode --incognito") end,
-{description = "open firefox", group = "launcher"}),
-
-awful.key({                   }, "F12", function () awful.spawn("systemctl suspend") end,
-{description = "suspend computer", group = "launcher"}),
-
-awful.key({ "Shift",          }, "F12", function () awful.spawn("systemctl poweroff") end,
-{description = "poweroff", group = "launcher"}),
-
-awful.key({ "Shift",  "Control" }, "F12", function () awful.spawn("systemctl reboot") end,
-{description = "poweroff", group = "launcher"}),
-
-awful.key({                 }, "Print", function () awful.spawn(gears.filesystem.get_xdg_config_home() .. 'dwm/scripts/screenshot') end,
-{description = "open firefox", group = "launcher"}),
 
 awful.key({ modkey, "Shift" }, "r", awesome.restart,
 {description = "reload awesome", group = "awesome"}),
@@ -317,7 +317,49 @@ awful.key({ modkey, "Control" , "Shift" }, "l",     function () awful.tag.incnco
 
 -- Menubar
 awful.key({ "Control" }, "space", function() menubar.show() end,
-{description = "show the menubar", group = "launcher"})
+{description = "show the menubar", group = "launcher"}),
+
+awful.key({ modkey,           }, "Return", function () awful.spawn(terminal) end,
+{description = "open a terminal", group = "launcher"}),
+
+awful.key({ modkey,           }, "m", function () awful.spawn("firefox --new-tab https://start.duckduckgo.com/lite") end,
+{description = "open firefox", group = "launcher"}),
+
+awful.key({ modkey,   "Shift" }, "m", function () awful.spawn("firefox --private-window") end,
+{description = "open firefox", group = "launcher"}),
+
+awful.key({ modkey,           }, "g", function () awful.spawn("chromium --force-dark-mode") end,
+{description = "open chromium", group = "launcher"}),
+
+awful.key({ modkey,   "Shift" }, "g", function () awful.spawn("chromium --force-dark-mode --incognito") end,
+{description = "open chromium incognito", group = "launcher"}),
+
+awful.key({                   }, "F12", function () awful.spawn("systemctl suspend") end,
+{description = "suspend computer", group = "launcher"}),
+
+awful.key({ "Shift",          }, "F12", function () awful.spawn("systemctl poweroff") end,
+{description = "poweroff", group = "launcher"}),
+
+awful.key({ "Shift",  "Control" }, "F12", function () awful.spawn("systemctl reboot") end,
+{description = "poweroff", group = "launcher"}),
+
+awful.key({                 }, "Print", function () awful.spawn(gears.filesystem.get_xdg_config_home() .. 'dwm/scripts/screenshot') end,
+{description = "open firefox", group = "launcher"}),
+
+awful.key({}, "XF86AudioMute", function () awful.spawn( "amixer -c 0  --  set  Master  0" ) end,
+{description = "mute audio", group = "launcher"}),
+
+awful.key({}, "XF86AudioLowerVolume", function () awful.spawn( "amixer -c 0  --  set  Master  1-" ) end,
+{description = "lower volume", group = "launcher"}),
+
+awful.key({}, "XF86AudioRaiseVolume", function () awful.spawn( "amixer -c 0  --  set  Master  1+" ) end,
+{description = "raise volume", group = "launcher"}),
+
+awful.key({}, "XF86MonBrightnessUp",    function() awful.spawn(gears.filesystem.get_xdg_config_home() .. 'dwm/scripts/brightup') end,
+{description = "brighter", group = "launcher"}),
+
+awful.key({}, "XF86MonBrightnessDown",    function() awful.spawn(gears.filesystem.get_xdg_config_home() .. 'dwm/scripts/brightdown') end,
+{description = "dimmer", group = "launcher"})
 )
 
 clientkeys = gears.table.join(
@@ -475,18 +517,23 @@ awful.rules.rules = {
         { rule_any = {type = { "normal", "dialog" }
     }, properties = { titlebars_enabled = true }
 },
-
-{ rule = { class = "Firefox" },
-properties = { screen = 1, tag = "1" } },
-{ rule = { class = "firefox" },
-properties = { screen = 1, tag = "1" } },
-{ rule = { class = "Chromium" },
-properties = { screen = 1, tag = "2" } },
-{ rule = { class = "chromium" },
-properties = { screen = 1, tag = "2" } },
-{ rule = { class = "Alacritty" },
-properties = { screen = 1, tag = "1" } },
 }
+function one()
+    local rules = {
+        { rule_any = { class = { "Firefox", "firefox", "Alacritty" } },
+        properties = { screen = 1, tag = "1" } },
+        { rule_any = { class = { "Chromium", "chromium" } },
+        properties = { screen = 1, tag = "2" } },
+        { rule_any = { class = { "Thunderbird", "chromium" } },
+        properties = { screen = 1, tag = "3" } },
+    }
+    for r = 1,#rules do
+        table.insert(awful.rules.rules, rules[r])
+    end
+end
+if screen.count() == 1 then
+    one()
+end
 -- }}}
 
 -- {{{ Signals
@@ -512,4 +559,5 @@ end)
 client.connect_signal("focus", function(c) c.border_color = beautiful.border_focus end)
 client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
 -- }}}
+awful.spawn("pkill statusloop")
 awful.spawn.with_shell("~/.config/dwm/autostart.sh")
