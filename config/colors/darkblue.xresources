@@ -8,8 +8,8 @@
 *.color8:       #114780
 
 ! red
-*.color1:       #cb2323
-*.color9:       #ff4444
+*.color1:       #7f0000
+*.color9:       #cd3737
 
 ! green
 *.color2:       #409444
