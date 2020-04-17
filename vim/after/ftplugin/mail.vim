@@ -1,2 +1,2 @@
-set spell
-set showbreak=
+setlocal spell
+setlocal showbreak=
