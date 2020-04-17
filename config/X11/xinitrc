@@ -55,16 +55,8 @@ else
 fi
 
 ( "$HOME/.config/screenlayout/default.sh" ) &
-if test "$( hostname )" == 'serenity'; then
-    amixer -c 0  --  set  Master  0
-    if test "$(xrandr | awk '/HDMI1/ {print $2}' )" == 'connected'; then
-
-        ( "$HOME.screenlayout/work.sh" ) &
-    fi
-fi
 
 # exec "$HOME/.config/dwm/autostart.sh" &
-exec "$HOME/bin/statusline" &
-exec awesome
+# exec "$HOME/bin/statusline" &
 # exec "$HOME/bin/dwmrestart"
-exec notify-send "logged in"
+exec awesome
