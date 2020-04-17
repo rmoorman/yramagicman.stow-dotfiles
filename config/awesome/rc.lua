@@ -206,11 +206,13 @@ awful.screen.connect_for_each_screen(function(s)
     }
     -- Create the wibox
     s.mywibox = awful.wibar({ position = "top", screen = s })
-    if awful.screen.focused() then
-        watchwidget = awful.widget.watch('/home/jonathan/bin/statusline', 1)
-    else
-        watchwidget =wibox.widget({text = '' })
-    end
+    datewidget = awful.widget.watch('date +"%a %d/%m/%Y %I:%M:%S"', 1)
+    updatewidget = awful.widget.watch("bash -c 'checkupdates | wc -l'", 1500, function (w, out)
+        if tonumber( out ) > 15 then
+            w:set_text( 'U: ' .. tostring(out) )
+        end
+    end)
+    sep = wibox.widget { widget = wibox.widget.separator, forced_width = 25 , opacity=0 }
     -- Add widgets to the wibox
     s.mywibox:setup {
         layout = wibox.layout.align.horizontal,
@@ -226,9 +228,10 @@ awful.screen.connect_for_each_screen(function(s)
     layout = wibox.layout.fixed.horizontal,
     -- wibox.widget.systray(),
     -- mytextclock,
-    -- awful.widget.watch('date', 1)
     mywidget,
-    watchwidget
+    updatewidget,
+    sep,
+    datewidget
 },
     }
 end)
