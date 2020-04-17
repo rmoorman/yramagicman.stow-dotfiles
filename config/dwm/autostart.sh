@@ -41,7 +41,7 @@ xset r rate 250 25 &
 
 test -n  "$( pgrep awesome )" || dunst &
 
-pulseaudio &
+pulseaudio --start &
 # Turn on/off system beep
 xset b off &
 
