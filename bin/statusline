@@ -26,15 +26,9 @@ function my_bat() {
 }
 
 function my_wifi(){
-    ssid=$(nmcli | awk '/ connected / {print $4}')
     ip=$(ip --color=never addr show | awk '/([0-9\.]{1,3}){4}\/[0-9]{1,2} brd/ {print $2}')
     strength=$(wifi_strength)
-    if [[ $ssid = 'SA_PROFILE' ]]; then
-        msg="\xe2\x8c\x82"
-    else
-        msg=$ssid
-    fi
-    echo "N:$msg $ip"
+    echo "N: $ip"
 }
 
 function wifi_strength() {
