@@ -538,8 +538,34 @@ function one()
         table.insert(awful.rules.rules, rules[r])
     end
 end
+
+function two()
+    local rules = {
+
+        { rule_any = { class = { "Alacritty" } },
+        properties = { screen = 2, tag = "1" } },
+        { rule_any = { class = { "Firefox", "firefox" } },
+        properties = { screen = 1, tag = "1" } },
+        { rule_any = { class = { "Chromium", "chromium" } },
+        properties = { screen = 1, tag = "2" } },
+        { rule_any = { class = { "Thunderbird", "thunderbird" } },
+        properties = { screen = 1, tag = "3" } },
+        { rule_any = { class = { "Signal", "signal" } },
+        properties = { screen = 1, tag = "9" } },
+        { rule_any = { class = { "Krita", "krita" } },
+        properties = { screen = 1, tag = "4" } },
+    }
+    for r = 1,#rules do
+        table.insert(awful.rules.rules, rules[r])
+    end
+end
+
 if screen.count() == 1 then
+    naughty.notify({ title = "Monitors", text = 'one monitor' })
     one()
+elseif screen.count() == 2 then
+    naughty.notify({ title = "Monitors", text = 'two monitors' })
+    two()
 end
 -- }}}
 
