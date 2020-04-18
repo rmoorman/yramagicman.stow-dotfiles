@@ -10,9 +10,6 @@ filetype plugin indent on
 " Switch syntax highlighting on
 syntax on
 "}}}
-"{{{ colors
-colorscheme portable
-"}}}
 "{{{ Plugin loading and settings
 let g:VimPack_Setup_Folders = ['after', 'autoload', 'backup', 'colors', 'doc', 'spell', 'swaps', 'syntax','plugin', 'undo']
 let g:VimPack_Auto_Install = 1
@@ -41,11 +38,16 @@ PlugStart 'tpope/vim-repeat'
 PlugStart 'tpope/vim-surround'
 PlugStart 'cakebaker/scss-syntax.vim'
 PlugStart 'vim-scripts/vim-indent-object'
+PlugStart 'morhetz/gruvbox'
 packadd! matchit
 if ! has('nvim')
     packadd! editexisting
 endif
 let g:AutoOmniComplete_tab = 1
+"}}}
+"{{{ colors
+set background=dark
+colorscheme gruvbox
 "}}}
 "{{{ autocommands for loading extensions
 augroup extensions

@@ -25,39 +25,39 @@ URxvt.secondaryScreen: 1
 URxvt.secondaryScroll: 0
 URxvt.secondaryWheel: 1
 URxvt.internalBorder: 3
-! special
-*.foreground:   #c5c8c6
-*.background:   #001428
-*.cursorColor:  #c5c8c6
+! -----------------------------------------------------------------------------
+! File: gruvbox-dark.xresources
+! Description: Retro groove colorscheme generalized
+! Author: morhetz <morhetz@gmail.com>
+! Source: https://github.com/morhetz/gruvbox-generalized
+! Last Modified: 6 Sep 2014
+! -----------------------------------------------------------------------------
 
-! black
-*.color0:       #113457
-*.color8:       #114780
-
-! red
-*.color1:       #7f0000
-*.color9:       #cd3737
-
-! green
-*.color2:       #409444
-*.color10:      #51bb56
-
-! yellow
-*.color3:       #bdab00
-*.color11:      #e1cc00
-
-! blue
-*.color4:       #246ca7
-*.color12:      #56a1df
-
-! magenta
-*.color5:       #6e3e7e
-*.color13:      #b374c5
-
-! cyan
-*.color6:       #0f9595
-*.color14:      #51b2b2
-
-! white
-*.color7:       #696969
-*.color15:      #b7bab8
+! hard contrast: *background: #1d2021
+*background: #282828
+! soft contrast: *background: #32302f
+*foreground: #ebdbb2
+! Black + DarkGrey
+*color0:  #282828
+*color8:  #928374
+! DarkRed + Red
+*color1:  #cc241d
+*color9:  #fb4934
+! DarkGreen + Green
+*color2:  #98971a
+*color10: #b8bb26
+! DarkYellow + Yellow
+*color3:  #d79921
+*color11: #fabd2f
+! DarkBlue + Blue
+*color4:  #458588
+*color12: #83a598
+! DarkMagenta + Magenta
+*color5:  #b16286
+*color13: #d3869b
+! DarkCyan + Cyan
+*color6:  #689d6a
+*color14: #8ec07c
+! LightGrey + White
+*color7:  #a89984
+*color15: #ebdbb2
