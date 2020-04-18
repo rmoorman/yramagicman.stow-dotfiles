@@ -13,6 +13,7 @@ local beautiful = require("beautiful")
 -- Notification library
 local naughty = require("naughty")
 local menubar = require("menubar")
+local widgets = require("widgets")
 -- local hotkeys_popup = require("awful.hotkeys_popup")
 -- Enable hotkeys help widget for VIM and other apps
 -- when client with a matching name is opened:
@@ -196,23 +197,59 @@ awful.screen.connect_for_each_screen(function(s)
         },
     }
 
-
-    mywidget = wibox.widget{
-        text = '',
-        align  = 'center',
-        valign = 'center',
-        widget = wibox.widget.textbox,
-        screen = s,
-    }
     -- Create the wibox
     s.mywibox = awful.wibar({ position = "top", screen = s })
-    datewidget = awful.widget.watch('date +"%a %d/%m/%Y %I:%M:%S"', 1)
-    updatewidget = awful.widget.watch("bash -c 'checkupdates | wc -l'", 1500, function (w, out)
+    datewidget = awful.widget.watch('date +"%a %d/%m/%Y %I:%M"', 1)
+
+    updatewidget = awful.widget.watch("bash -c 'cat /home/jonathan/.cache/updates | wc -l'", 10, function (w, out)
         if tonumber( out ) > 15 then
             w:set_text( 'U: ' .. tostring(out) )
         end
     end)
-    sep = wibox.widget { widget = wibox.widget.separator, forced_width = 25 , opacity=0 }
+
+    batcap = awful.widget.watch("bash -c 'cat /sys/class/power_supply/BAT?/capacity'", 1, function (w, out)
+        local outStr = tostring(out)
+        local trimmed = outStr:gsub("%s+", "")
+        w:set_text( 'B: ' .. trimmed .. '%' )
+    end)
+
+    batstat = awful.widget.watch("bash -c 'cat /sys/class/power_supply/BAT?/status'", 30, function (w, out)
+        local outStr = tostring(out)
+        local trimmed = outStr:gsub("%s+", "")
+        local indicator=""
+        if trimmed == 'Charging' then
+            indicator="\xE2\x86\x91"
+        elseif trimmed == 'Full' then
+            indicator="\xe2\x9c\x93"
+        else
+            indicator="\xE2\x86\x93"
+        end
+        w:set_text( indicator )
+    end)
+
+    dbox =awful.widget.watch(" bash -c 'dropbox-cli status' ", 1, function (w, out)
+        local message = ""
+        if out == "Dropbox isn't running!" then
+            message="off"
+        else
+            message = out:gsub("%s+$", "")
+        end
+        if message == "Up to date" then
+            message="\xe2\x9c\x93"
+        elseif message:find('Syncing') then
+            message = message
+        end
+        w:set_text('D: ' .. message)
+    end)
+
+    function sep(width)
+        return wibox.widget {
+            widget = wibox.widget.separator,
+            forced_width = width,
+            opacity=0
+        }
+    end
+
     -- Add widgets to the wibox
     s.mywibox:setup {
         layout = wibox.layout.align.horizontal,
@@ -226,12 +263,17 @@ awful.screen.connect_for_each_screen(function(s)
     s.mytasklist, -- Middle widget
     { -- Right widgets
     layout = wibox.layout.fixed.horizontal,
-    -- wibox.widget.systray(),
-    -- mytextclock,
-    mywidget,
-    updatewidget,
-    sep,
-    datewidget
+    -- mywidget,
+    -- sep(25),
+    -- dbox,
+    -- sep(5),
+    -- updatewidget,
+    -- sep(25),
+    -- batcap,
+    -- sep(10),
+    -- batstat,
+    -- sep(25),
+    widgets.date("%a %d/%m/%Y %I:%M")
 },
     }
 end)
@@ -289,7 +331,6 @@ end,
 {description = "go back", group = "client"}),
 
 -- Standard program
-
 
 awful.key({ modkey, "Shift" }, "r", awesome.restart,
 {description = "reload awesome", group = "awesome"}),
@@ -596,4 +637,4 @@ client.connect_signal("focus", function(c) c.border_color = beautiful.border_foc
 client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
 -- }}}
 
-awful.spawn.with_shell("~/.config/dwm/autostart.sh")
+awful.spawn.with_shell("~/.config/fehbg")
