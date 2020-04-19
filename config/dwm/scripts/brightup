@@ -4,13 +4,13 @@ killall statusloop
 xbacklight -inc 2
 xsetroot -name "$( xbacklight )"
 if hash awesome-client > /dev/null; then
-    echo  "mywidget.text = ' Brightness: $( xbacklight ) '" | awesome-client
+    echo  "showtext.text = ' Brightness: $( xbacklight | cut -d '.' -f1 ) '" | awesome-client
 fi
 
 sleep 5s
 
 if hash awesome-client > /dev/null; then
-    echo  "mywidget.text = ''" | awesome-client
+    echo  "showtext.text = ''" | awesome-client
     exit
 fi
 if test -z "$(pgrep statusloop)"; then

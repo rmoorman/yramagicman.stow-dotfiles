@@ -27,6 +27,7 @@ function my_bat() {
 
 function my_wifi(){
     ip=$(ip --color=never addr show | awk '/([0-9\.]{1,3}){4}\/[0-9]{1,2} brd/ {print $2}')
+    ssid=$(iwctl station wlan0 show | awk '/Connected/ {print $3}')
     strength=$(wifi_strength)
     echo "N: $ip"
 }

@@ -53,12 +53,24 @@ end
 -- }}}
 
 -- {{{ Variable definitions
+local xresources = require("beautiful.xresources")
+local dpi = xresources.apply_dpi
+local xrdb = xresources.get_current_theme()
 -- Themes define colours, icons, font and wallpapers.
-beautiful.init(gears.filesystem.get_themes_dir() .. "xresources/theme.lua")
-beautiful.useless_gap = 0
+-- beautiful.init(gears.filesystem.get_themes_dir() .. "sky/theme.lua")
+beautiful.border_width  = dpi(2)
+beautiful.useless_gap = dpi(0)
+beautiful.bg_normal = xrdb.background .. 'cc'
+beautiful.tasklist_bg_normal = xrdb.background ..'00'
+beautiful.bg_focus  = xrdb.color8 .. 'ff'
+beautiful.fg_focus  = xrdb.background .. 'ff'
+beautiful.fg_normal = xrdb.foreground
+beautiful.bg_urgent  = xrdb.color9 .. 'cc'
 beautiful.font = 'Inconsolata'
 beautiful.wallpaper = ''
-
+beautiful.border_focus= xrdb.foreground
+beautiful.border_normal= xrdb.background
+beautiful.bg_systray = beautiful.bg_normal
 -- This is used later as the default terminal and editor to run.
 terminal = gears.filesystem.get_xdg_config_home() .. 'dwm/scripts/termcmd'
 editor = os.getenv("EDITOR") or "nano"
@@ -73,17 +85,17 @@ modkey = "Mod4"
 
 -- Table of layouts to cover with awful.layout.inc, order matters.
 awful.layout.layouts = {
-    -- awful.layout.suit.floating,
     awful.layout.suit.tile,
     awful.layout.suit.tile.left,
     awful.layout.suit.tile.bottom,
     awful.layout.suit.tile.top,
     awful.layout.suit.fair,
     awful.layout.suit.fair.horizontal,
-    -- awful.layout.suit.spiral,
-    -- awful.layout.suit.spiral.dwindle,
     awful.layout.suit.max,
     awful.layout.suit.max.fullscreen,
+    -- awful.layout.suit.floating,
+    -- awful.layout.suit.spiral,
+    -- awful.layout.suit.spiral.dwindle,
     -- awful.layout.suit.magnifier,
     -- awful.layout.suit.corner.nw,
     -- awful.layout.suit.corner.ne,
@@ -146,11 +158,15 @@ awful.screen.connect_for_each_screen(function(s)
     -- Create the wibox
     s.mywibox = awful.wibar({ position = "top", screen = s })
 
-    local date = gizmos.date('%a %d/%m/%Y %I:%M:%S');
+    local date = gizmos.date('%a %d/%m/%Y %I:%M');
     local batstat = gizmos.batstat();
     local batcap = gizmos.batcap();
     local update = gizmos.update();
+    local aur = gizmos.aur();
     local dbox = gizmos.dbox()
+    local ip = gizmos.ip()
+    local ssid = gizmos.ssid('wlan0')
+    local netlabel = gizmos.showtext('N: ')
     showtext = gizmos.showtext('')
 
     -- Add widgets to the wibox
@@ -169,10 +185,15 @@ awful.screen.connect_for_each_screen(function(s)
     { -- Right widgets
     layout = wibox.layout.fixed.horizontal,
     showtext,
+    netlabel,
+    ssid,
+    gizmos.sep(10),
+    ip,
+    gizmos.sep(15),
+    update,
+    aur,
     gizmos.sep(15),
     dbox,
-    gizmos.sep(5),
-    update,
     gizmos.sep(15),
     batcap,
     gizmos.sep(10),
@@ -251,7 +272,7 @@ awful.rules.rules = {
 
      -- Add titlebars to normal clients and dialogs
      { rule_any = {type = { "normal", "dialog" }
- }, properties = { titlebars_enabled = true }
+ }, properties = { titlebars_enabled = false }
 },
 }
 

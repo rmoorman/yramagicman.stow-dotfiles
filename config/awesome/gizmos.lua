@@ -2,6 +2,7 @@ local gizmos = {}
 local awful = require("awful")
 local wibox = require("wibox")
 local buttons = require("buttons")
+local naughty = require("naughty")
 
 function gizmos.blanktext ()
     return wibox.widget{
@@ -39,41 +40,88 @@ function gizmos.update()
     end)
 end
 
-function gizmos.batcap()
-    return awful.widget.watch("bash -c 'cat /sys/class/power_supply/BAT?/capacity'", 1, function (w, out)
-        local outStr = tostring(out)
-        local trimmed = outStr:gsub("%s+", "")
-        w:set_text( 'B: ' .. trimmed .. '%' )
+function gizmos.aur()
+    return awful.widget.watch("bash -c 'cat /home/jonathan/.cache/aur | wc -l'", 10, function (w, out)
+        if tonumber(out) > 0 then
+            w:set_text(tostring(out) )
+        end
     end)
 end
 
+function gizmos.batcap()
+    local cap
+    return awful.widget.watch("bash -c 'cat /sys/class/power_supply/BAT?/capacity'", 30, function (w, out)
+        local outStr = tostring(out)
+        local trimmed = outStr:gsub("%s+", "")
+        if tonumber(trimmed) == 100 then
+            w:set_text( 'B:' )
+        else
+            w:set_text( 'B: ' .. trimmed .. '%' )
+        end
+        if tonumber( out ) < 20 then
+            gizmos.changeNotify(cap, out, "Battery Level", out)
+        end
+        cap = out
+    end)
+end
+
+function gizmos.ip()
+    return awful.widget.watch("ip --color=never addr show", 1, function(w, out)
+        local ip = out:match('%d+%.%d+%.%d+%.%d+/%d+ brd')
+        w:set_text(ip:gsub("/%d+ brd", ""))
+    end)
+end
+
+function gizmos.ssid(wlan)
+    return awful.widget.watch("iwctl station wlan0 show", 1, function(w, out)
+        local ip = out:match('Connected network%s+%g+')
+        w:set_text(ip:gsub('Connected network%s+', ''))
+    end)
+end
+
+function gizmos.changeNotify(cond1, cond2, title, text )
+        if cond1 ~= cond2 then
+            naughty.notify({
+            title = title,
+            text = text })
+        end
+end
+
 function gizmos.batstat()
-    return awful.widget.watch("bash -c 'cat /sys/class/power_supply/BAT?/status'", 30, function (w, out)
+    local stat
+    return awful.widget.watch("bash -c 'cat /sys/class/power_supply/BAT?/status'", 1, function (w, out)
+
         local outStr = tostring(out)
         local trimmed = outStr:gsub("%s+", "")
         local indicator=""
         if trimmed == 'Charging' then
             indicator="\xE2\x86\x91"
+            gizmos.changeNotify(stat, out, "Battery Status", "Charging")
+            stat = out
         elseif trimmed == 'Full' then
             indicator="\xe2\x9c\x93"
+            gizmos.changeNotify(stat, out, "Battery Status", "Full")
+            stat = out
         else
             indicator="\xE2\x86\x93"
+            gizmos.changeNotify(stat, out, "Battery Status", "Discharging")
+            stat = out
         end
+
         w:set_text( indicator )
     end)
 end
 
 function gizmos.dbox()
     return awful.widget.watch(" bash -c 'dropbox-cli status' ", 1, function (w, out)
-        local message = ""
-        if out == "Dropbox isn't running!" then
-            message="off"
-        else
-            message = out:gsub("%s+$", "")
-        end
-        if message == "Up to date" then
+        local message = out:gsub("%s+$", "")
+        if message == "Dropbox isn't running!" then
+            message = "off"
+        elseif message == "Up to date" then
             message="\xe2\x9c\x93"
         elseif message:find('Syncing') then
+            message = message
+        else
             message = message
         end
         w:set_text('D: ' .. message)
@@ -88,7 +136,7 @@ function gizmos.taglist(s)
     return awful.widget.taglist {
         screen  = s,
         filter  = awful.widget.taglist.filter.all,
-        buttons =buttons.taglist()
+        buttons = buttons.taglist(),
     }
 end
 
