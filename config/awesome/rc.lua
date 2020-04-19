@@ -162,22 +162,22 @@ awful.screen.connect_for_each_screen(function(s)
         s.mytaglist,
         gizmos.sep(5),
         s.mylayoutbox,
-        gizmos.sep(1),
+        gizmos.sep(3),
         s.mypromptbox,
     },
     s.mytasklist, -- Middle widget
     { -- Right widgets
     layout = wibox.layout.fixed.horizontal,
     showtext,
-    gizmos.sep(25),
+    gizmos.sep(15),
     dbox,
     gizmos.sep(5),
     update,
-    gizmos.sep(25),
+    gizmos.sep(15),
     batcap,
     gizmos.sep(10),
     batstat,
-    gizmos.sep(25),
+    gizmos.sep(15),
     date
 },
  }
@@ -258,7 +258,7 @@ awful.rules.rules = {
 if screen.count() == 1 then
     rules.one()
 elseif screen.count() == 2 then
-    two.two()
+    rules.two()
 end
 -- }}}
 
