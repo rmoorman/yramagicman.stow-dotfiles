@@ -105,3 +105,7 @@ if [[ "$(pgrep docker | wc -l)" -eq 1 ]]; then
 fi
 
 [[ "$(which nvm > /dev/null)" ]] || nvm_load
+if [[ -d /usr/local/opt/php@7.2/bin ]]; then
+    export PATH="/usr/local/opt/php@7.2/bin:$PATH"
+    export PATH="/usr/local/opt/php@7.2/sbin:$PATH"
+fi
