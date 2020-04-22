@@ -50,3 +50,17 @@ do
     cdpath+=($dir)
 done
 }
+
+{
+    if [[ $OSTYPE =~ 'darwin*' ]]; then
+        dots="$HOME/Documents/dots";
+        builtin cd $dots || exit
+        git checkout "./config/alacritty/alacritty.yml">/dev/null 2>&1
+        cat "$dots/config/alacritty/alacritty.yml" \
+            | sed "s/#altbind/$(cat "$dots/config/alacritty/keys.yml"  \
+            | tr '\n' '\t\t')/g" \
+            | tr '\t\t' '\n' \
+            | sed 's/x1b/\\x1b/'> "$dots/config/alacritty/alacritty.yml.mac"   \
+            && mv "$dots/config/alacritty/alacritty.yml.mac"  "$dots/config/alacritty/alacritty.yml"
+    fi
+}&!

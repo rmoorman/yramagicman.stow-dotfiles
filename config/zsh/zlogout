@@ -1,0 +1,6 @@
+{
+    if [[ $OSTYPE =~ 'darwin*' ]]; then
+        cd $dots || exit
+        git checkout ./config/alacritty/alacritty.yml>/dev/null 2>&1
+    fi
+}&!
