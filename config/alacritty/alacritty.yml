@@ -494,6 +494,8 @@ key_bindings:
   #- { key: W,      mods: Command,         action: Quit             }
   - { key: Return,      mods: Command, action: ToggleFullscreen }
 
+#altbind
+
   #- { key: Paste,                    action: Paste                            }
   #- { key: Copy,                     action: Copy                             }
   #- { key: L,         mods: Control, action: ClearLogNotice                   }
