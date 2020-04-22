@@ -32,31 +32,52 @@ function gizmos.sep(width)
     }
 end
 
-function gizmos.update()
-    return awful.widget.watch("bash -c 'cat /home/jonathan/.cache/updates | wc -l'", 10, function (w, out)
-        if tonumber( out ) > 15 then
-            w:set_text( 'U: ' .. tostring(out) )
+function gizmos.update(prefix, suffix, mincount)
+    if prefix == nil then
+        prefix = ''
+    end
+    if suffix == nil then
+        suffix = ''
+    end
+    return awful.widget.watch("bash -c 'checkupdates | wc -l'", 1500, function (w, out)
+        if tonumber( out ) > mincount then
+            message= prefix..out .. suffix
+        else
+            message = ''
         end
+        w:set_text(message)
     end)
 end
 
-function gizmos.aur()
-    return awful.widget.watch("bash -c 'cat /home/jonathan/.cache/aur | wc -l'", 10, function (w, out)
+function gizmos.aur(prefix, suffix)
+    if prefix == nil then
+        prefix = ''
+    end
+    if suffix == nil then
+        suffix = ''
+    end
+    return awful.widget.watch("bash -c 'auracle sync | wc -l'", 1500, function (w, out)
         if tonumber(out) > 0 then
-            w:set_text(tostring(out) )
+        w:set_text( prefix .. tostring(out) .. suffix)
         end
     end)
 end
 
-function gizmos.batcap()
+function gizmos.batcap(prefix, suffix)
+    if prefix == nil then
+        prefix = ''
+    end
+    if suffix == nil then
+        suffix = ''
+    end
     local cap
-    return awful.widget.watch("bash -c 'cat /sys/class/power_supply/BAT?/capacity'", 30, function (w, out)
+    return awful.widget.watch("bash -c 'cat /sys/class/power_supply/BAT?/capacity'", 60, function (w, out)
         local outStr = tostring(out)
         local trimmed = outStr:gsub("%s+", "")
         if tonumber(trimmed) == 100 then
-            w:set_text( 'B:' )
+        w:set_text( prefix )
         else
-            w:set_text( 'B: ' .. trimmed .. '%' )
+            w:set_text( prefix .. trimmed .. suffix)
         end
         if tonumber( out ) < 20 then
             gizmos.changeNotify(cap, out, "Battery Level", out)
@@ -65,17 +86,29 @@ function gizmos.batcap()
     end)
 end
 
-function gizmos.ip()
-    return awful.widget.watch("ip --color=never addr show", 1, function(w, out)
+function gizmos.ip(prefix, suffix)
+    if prefix == nil then
+        prefix = ''
+    end
+    if suffix == nil then
+        suffix = ''
+    end
+    return awful.widget.watch("ip --color=never addr show", 60, function(w, out)
         local ip = out:match('%d+%.%d+%.%d+%.%d+/%d+ brd')
-        w:set_text(ip:gsub("/%d+ brd", ""))
+        w:set_text(prefix.. ip:gsub("%s+brd", "") .. suffix)
     end)
 end
 
-function gizmos.ssid(wlan)
-    return awful.widget.watch("iwctl station wlan0 show", 1, function(w, out)
+function gizmos.ssid(wlan, prefix, suffix)
+    if prefix == nil then
+        prefix = ''
+    end
+    if suffix == nil then
+        suffix = ''
+    end
+    return awful.widget.watch("iwctl station wlan0 show", 10, function(w, out)
         local ip = out:match('Connected network%s+%g+')
-        w:set_text(ip:gsub('Connected network%s+', ''))
+        w:set_text(prefix .. ip:gsub('Connected network%s+', '') .. suffix)
     end)
 end
 
@@ -87,10 +120,15 @@ function gizmos.changeNotify(cond1, cond2, title, text )
         end
 end
 
-function gizmos.batstat()
+function gizmos.batstat(prefix, suffix)
+    if prefix == nil then
+        prefix = ''
+    end
+    if suffix == nil then
+        suffix = ''
+    end
     local stat
     return awful.widget.watch("bash -c 'cat /sys/class/power_supply/BAT?/status'", 1, function (w, out)
-
         local outStr = tostring(out)
         local trimmed = outStr:gsub("%s+", "")
         local indicator=""
@@ -107,12 +145,43 @@ function gizmos.batstat()
             gizmos.changeNotify(stat, out, "Battery Status", "Discharging")
             stat = out
         end
-
-        w:set_text( indicator )
+        w:set_text( prefix..indicator..suffix )
     end)
 end
 
-function gizmos.dbox()
+function gizmos.volume(prefix, suffix)
+    if prefix == nil then
+        prefix = ''
+    end
+    if suffix == nil then
+        suffix = ''
+    end
+    -- if showdb == nil then
+    --     showdb = false
+    -- end
+    return awful.widget.watch("bash -c 'amixer -c 0  -- get Master'", 1, function (w, out)
+        local outStr = tostring(out)
+        trimmed = outStr:gsub('%s+', '@')
+        index =trimmed:find('Mono:')
+        if  index > 0 then
+            local percent = trimmed:sub(index)
+            percent = percent:gsub('Mono:@Playback@%d+@', '')
+            percent = percent:gsub('@', '')
+            -- if showdb == true then
+                percent = percent:gsub('%[%d.%d%ddB%]', '')
+            -- end
+            w:set_text( prefix .. percent .. suffix)
+        end
+    end)
+end
+
+function gizmos.dbox(prefix, suffix)
+    if prefix == nil then
+        prefix = ''
+    end
+    if suffix == nil then
+        suffix = ''
+    end
     return awful.widget.watch(" bash -c 'dropbox-cli status' ", 1, function (w, out)
         local message = out:gsub("%s+$", "")
         if message == "Dropbox isn't running!" then
@@ -124,12 +193,22 @@ function gizmos.dbox()
         else
             message = message
         end
-        w:set_text('D: ' .. message)
+        w:set_text( prefix .. message .. suffix)
     end)
 end
 
-function gizmos.date(format)
-    return awful.widget.watch('date +"'.. format ..'"', 1)
+function gizmos.date(format, prefix, suffix)
+    if prefix == nil then
+        prefix = ''
+    end
+    if suffix == nil then
+        suffix = ''
+    end
+    return awful.widget.watch('date +"'.. format ..'"', 1, function(w, out)
+        out = out:gsub('\n','')
+        local message = prefix .. out .. suffix
+        w:set_text(message)
+    end)
 end
 
 function gizmos.taglist(s)

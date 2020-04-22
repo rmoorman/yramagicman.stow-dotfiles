@@ -57,20 +57,8 @@ local xresources = require("beautiful.xresources")
 local dpi = xresources.apply_dpi
 local xrdb = xresources.get_current_theme()
 -- Themes define colours, icons, font and wallpapers.
--- beautiful.init(gears.filesystem.get_themes_dir() .. "sky/theme.lua")
-beautiful.border_width  = dpi(2)
-beautiful.useless_gap = dpi(0)
-beautiful.bg_normal = xrdb.background .. 'cc'
-beautiful.tasklist_bg_normal = xrdb.background ..'00'
-beautiful.bg_focus  = xrdb.color8 .. 'ff'
-beautiful.fg_focus  = xrdb.background .. 'ff'
-beautiful.fg_normal = xrdb.foreground
-beautiful.bg_urgent  = xrdb.color9 .. 'cc'
-beautiful.font = 'Inconsolata'
-beautiful.wallpaper = ''
-beautiful.border_focus= xrdb.foreground
-beautiful.border_normal= xrdb.background
-beautiful.bg_systray = beautiful.bg_normal
+beautiful.init("/home/jonathan/.config/awesome/xresources/theme.lua")
+-- beautiful.use_icons = true
 -- This is used later as the default terminal and editor to run.
 terminal = gears.filesystem.get_xdg_config_home() .. 'dwm/scripts/termcmd'
 editor = os.getenv("EDITOR") or "nano"
@@ -158,15 +146,16 @@ awful.screen.connect_for_each_screen(function(s)
     -- Create the wibox
     s.mywibox = awful.wibar({ position = "top", screen = s })
 
+
     local date = gizmos.date('%a %d/%m/%Y %I:%M');
     local batstat = gizmos.batstat();
-    local batcap = gizmos.batcap();
-    local update = gizmos.update();
-    local aur = gizmos.aur();
-    local dbox = gizmos.dbox()
+    local batcap = gizmos.batcap('B:', '%');
+    local update = gizmos.update('U:', nil, 15);
+    local aur = gizmos.aur(' + ');
+    local dbox = gizmos.dbox('D:')
+    local vol = gizmos.volume('V: ' )
     local ip = gizmos.ip()
-    local ssid = gizmos.ssid('wlan0')
-    local netlabel = gizmos.showtext('N: ')
+    local ssid = gizmos.ssid('wlan0', ' N: ')
     showtext = gizmos.showtext('')
 
     -- Add widgets to the wibox
@@ -178,7 +167,7 @@ awful.screen.connect_for_each_screen(function(s)
         s.mytaglist,
         gizmos.sep(5),
         s.mylayoutbox,
-        gizmos.sep(3),
+        gizmos.sep(5),
         s.mypromptbox,
     },
     s.mytasklist, -- Middle widget
@@ -186,8 +175,8 @@ awful.screen.connect_for_each_screen(function(s)
     layout = wibox.layout.fixed.horizontal,
     gizmos.sep(5),
     showtext,
+    vol,
     gizmos.sep(5),
-    netlabel,
     ssid,
     gizmos.sep(10),
     ip,
