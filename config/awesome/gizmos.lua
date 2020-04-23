@@ -75,9 +75,12 @@ function gizmos.batcap(prefix, suffix)
         local outStr = tostring(out)
         local trimmed = outStr:gsub("%s+", "")
         if tonumber(trimmed) == 100 then
-        w:set_text( prefix )
+            w:set_text( prefix )
         else
             w:set_text( prefix .. trimmed .. suffix)
+        end
+        if outStr == '' then
+            w:set_text('')
         end
         if tonumber( out ) < 20 then
             gizmos.changeNotify(cap, out, "Battery Level", out)
@@ -146,6 +149,9 @@ function gizmos.batstat(prefix, suffix)
             stat = out
         end
         w:set_text( prefix..indicator..suffix )
+        if trimmed == '' then
+        w:set_text('')
+        end
     end)
 end
 
@@ -156,20 +162,15 @@ function gizmos.volume(prefix, suffix)
     if suffix == nil then
         suffix = ''
     end
-    -- if showdb == nil then
-    --     showdb = false
-    -- end
     return awful.widget.watch("bash -c 'amixer -c 0  -- get Master'", 1, function (w, out)
         local outStr = tostring(out)
         trimmed = outStr:gsub('%s+', '@')
-        index =trimmed:find('Mono:')
+        index = trimmed:find('Mono:')
         if  index > 0 then
             local percent = trimmed:sub(index)
             percent = percent:gsub('Mono:@Playback@%d+@', '')
             percent = percent:gsub('@', '')
-            -- if showdb == true then
-                percent = percent:gsub('%[%d.%d%ddB%]', '')
-            -- end
+            percent = percent:gsub('%[--%d+.%d%ddB%]', '')
             w:set_text( prefix .. percent .. suffix)
         end
     end)
