@@ -150,12 +150,12 @@ awful.screen.connect_for_each_screen(function(s)
     local date = gizmos.date('%a %d/%m/%Y %I:%M');
     local batstat = gizmos.batstat();
     local batcap = gizmos.batcap('B:', '%');
-    local update = gizmos.update('U:', nil, 15);
+    local update = gizmos.update('U:', nil, 10);
     local aur = gizmos.aur(' + ');
     local dbox = gizmos.dbox('D:')
-    local vol = gizmos.volume('V: ' )
+    local vol = gizmos.volume('V: ', '', false )
     local ip = gizmos.ip()
-    local ssid = gizmos.ssid('wlan0', ' N: ')
+    local ssid = gizmos.ssid('wlan0', 'N:')
     showtext = gizmos.showtext('')
 
     -- Add widgets to the wibox
@@ -176,11 +176,11 @@ awful.screen.connect_for_each_screen(function(s)
     showtext,
     gizmos.sep(15),
     vol,
-    gizmos.sep(5),
+    gizmos.sep(15),
     ssid,
-    gizmos.sep(10),
+    gizmos.sep(5),
     ip,
-    gizmos.sep(10),
+    gizmos.sep(15),
     update,
     aur,
     gizmos.sep(15),

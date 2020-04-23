@@ -41,7 +41,6 @@ xset r rate 250 25 &
 
 test -n  "$( pgrep awesome )" || dunst &
 
-pulseaudio --start &
 # Turn on/off system beep
 xset b off &
 
@@ -78,5 +77,8 @@ if  stat "$HOME/.cache/updates" > /dev/null; then
     rm "$HOME/.cache/updates"
 fi
 ) &
+
+(amixer -c 0 -- set Master on) &
+(amixer -c 0 -- set Master 100%) &
 
 exit

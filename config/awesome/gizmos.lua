@@ -111,7 +111,9 @@ function gizmos.ssid(wlan, prefix, suffix)
     end
     return awful.widget.watch("iwctl station wlan0 show", 10, function(w, out)
         local ip = out:match('Connected network%s+%g+')
-        w:set_text(prefix .. ip:gsub('Connected network%s+', '') .. suffix)
+        if awful.screen.focused() then
+            w:set_text(prefix .. ip:gsub('Connected network%s+', '') .. suffix)
+        end
     end)
 end
 
@@ -155,12 +157,15 @@ function gizmos.batstat(prefix, suffix)
     end)
 end
 
-function gizmos.volume(prefix, suffix)
+function gizmos.volume(prefix, suffix, showdb)
     if prefix == nil then
         prefix = ''
     end
     if suffix == nil then
         suffix = ''
+    end
+    if showdb == nil then
+        showdb = false
     end
     return awful.widget.watch("bash -c 'amixer -c 0  -- get Master'", 1, function (w, out)
         local outStr = tostring(out)
@@ -170,7 +175,9 @@ function gizmos.volume(prefix, suffix)
             local percent = trimmed:sub(index)
             percent = percent:gsub('Mono:@Playback@%d+@', '')
             percent = percent:gsub('@', '')
-            percent = percent:gsub('%[--%d+.%d%ddB%]', '')
+            if showdb == false then
+                percent = percent:gsub('%[--?%d+.%d%ddB%]', '')
+            end
             w:set_text( prefix .. percent .. suffix)
         end
     end)

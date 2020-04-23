@@ -3,5 +3,5 @@ function update() {
     gup
     yay -Syu --noconfirm --sudoloop
     bell
-    echo '' > $HOME/.cache/updates
+    # echo '' > $HOME/.cache/updates
 }
