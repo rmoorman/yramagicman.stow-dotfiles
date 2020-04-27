@@ -43,7 +43,7 @@ function gizmos.update(prefix, suffix, mincount)
         if tonumber( out ) > mincount then
             message= prefix..out .. suffix
         else
-            message = ''
+            message= prefix.."\xe2\x9c\x93"..suffix
         end
         w:set_text(message)
     end)
@@ -89,6 +89,40 @@ function gizmos.batcap(prefix, suffix)
     end)
 end
 
+function gizmos.batstat(prefix, suffix)
+    if prefix == nil then
+        prefix = ''
+    end
+    if suffix == nil then
+        suffix = ''
+    end
+    local stat
+    return awful.widget.watch("bash -c 'cat /sys/class/power_supply/BAT?/status'", 1, function (w, out)
+        local outStr = tostring(out)
+        local trimmed = outStr:gsub("%s+", "")
+        local indicator=""
+        if trimmed = '' then
+            indicator=""
+        elseif trimmed == 'Charging' then
+            indicator="\xE2\x86\x91"
+            gizmos.changeNotify(stat, out, "Battery Status", "Charging")
+            stat = out
+        elseif trimmed == 'Full' then
+            indicator="\xe2\x9c\x93"
+            gizmos.changeNotify(stat, out, "Battery Status", "Full")
+            stat = out
+        else
+            indicator="\xE2\x86\x93"
+            gizmos.changeNotify(stat, out, "Battery Status", "Discharging")
+            stat = out
+        end
+        w:set_text( prefix..indicator..suffix )
+        if trimmed == '' then
+        w:set_text('')
+        end
+    end)
+end
+
 function gizmos.ip(prefix, suffix)
     if prefix == nil then
         prefix = ''
@@ -125,37 +159,6 @@ function gizmos.changeNotify(cond1, cond2, title, text )
         end
 end
 
-function gizmos.batstat(prefix, suffix)
-    if prefix == nil then
-        prefix = ''
-    end
-    if suffix == nil then
-        suffix = ''
-    end
-    local stat
-    return awful.widget.watch("bash -c 'cat /sys/class/power_supply/BAT?/status'", 1, function (w, out)
-        local outStr = tostring(out)
-        local trimmed = outStr:gsub("%s+", "")
-        local indicator=""
-        if trimmed == 'Charging' then
-            indicator="\xE2\x86\x91"
-            gizmos.changeNotify(stat, out, "Battery Status", "Charging")
-            stat = out
-        elseif trimmed == 'Full' then
-            indicator="\xe2\x9c\x93"
-            gizmos.changeNotify(stat, out, "Battery Status", "Full")
-            stat = out
-        else
-            indicator="\xE2\x86\x93"
-            gizmos.changeNotify(stat, out, "Battery Status", "Discharging")
-            stat = out
-        end
-        w:set_text( prefix..indicator..suffix )
-        if trimmed == '' then
-        w:set_text('')
-        end
-    end)
-end
 
 function gizmos.volume(prefix, suffix, showdb)
     if prefix == nil then
