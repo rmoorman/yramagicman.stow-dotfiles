@@ -101,7 +101,7 @@ function gizmos.batstat(prefix, suffix)
         local outStr = tostring(out)
         local trimmed = outStr:gsub("%s+", "")
         local indicator=""
-        if trimmed = '' then
+        if trimmed == '' then
             indicator=""
         elseif trimmed == 'Charging' then
             indicator="\xE2\x86\x91"
