@@ -1,0 +1,6 @@
+#!/bin/sh
+while true;
+do
+bell: aliased to cvlc --play-and-exit /home/jonathan/.config/sounds/beep.mp3 2> /dev/null; tput bel
+sleep 3s
+done
