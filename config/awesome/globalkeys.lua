@@ -12,14 +12,18 @@ function globalkeys.keys(modkey)
     awful.key({ modkey, }, "j", function () awful.client.focus.byidx( 1) end,
     {description = "focus next by index", group = "client"}),
 
+    awful.key({ modkey, }, "k", function () awful.client.focus.byidx(-1) end,
+    {description = "focus previous by index", group = "client"}),
+
     awful.key({ modkey, }, "h", function () awful.screen.focus_relative(-1) end,
     {description = "focus the previous screen", group = "screen"}),
+
+    awful.key({ modkey, }, "l", function () awful.screen.focus_relative( 1) end,
+    {description = "focus the next screen", group = "screen"}),
 
     awful.key({ modkey, }, "u", awful.client.urgent.jumpto,
     {description = "jump to urgent client", group = "client"}),
 
-    awful.key({ modkey, }, "k", function () awful.client.focus.byidx(-1) end,
-    {description = "focus previous by index", group = "client"}),
     -- }}}
     -- {{{ Layout manipulation
     awful.key({ modkey, "Shift" }, "j", function () awful.client.swap.byidx( 1) end,
@@ -28,8 +32,6 @@ function globalkeys.keys(modkey)
     awful.key({ modkey, "Shift" }, "k", function () awful.client.swap.byidx( -1) end,
     {description = "swap with previous client by index", group = "client"}),
 
-    awful.key({ modkey, }, "l", function () awful.screen.focus_relative( 1) end,
-    {description = "focus the next screen", group = "screen"}),
 
 
     awful.key({ modkey, }, "t", function () awful.layout.set( awful.layout.suit.max ) end,
