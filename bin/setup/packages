@@ -6,6 +6,7 @@ apache
 arandr
 aspell
 at
+auracle-git
 autoconf
 automake
 autopep8
@@ -44,8 +45,6 @@ grunt-cli
 guvcview
 htop
 hwinfo
-i3-wm
-i3blocks
 iftop
 inetutils
 intel-ucode
@@ -116,6 +115,7 @@ rsync
 rxvt-unicode
 sbcl
 shellcheck
+signal-desktop
 speedtest-cli
 stow
 sudo
