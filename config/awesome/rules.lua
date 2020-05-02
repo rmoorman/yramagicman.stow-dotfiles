@@ -1,9 +1,7 @@
 local rules = {}
 local awful = require("awful")
-local naughty = require("naughty")
 
 function rules.one()
-    naughty.notify({ text = 'One monitor'})
     local rules = {
         { rule_any = { class = { "Firefox", "firefox", "Alacritty" } },
         properties = { screen = 1, tag = "1" } },
@@ -22,7 +20,6 @@ function rules.one()
 end
 
 function rules.two()
-    naughty.notify({ text = 'Two monitors'})
     local rules = {
         { rule_any = { class = { "Alacritty" } },
         properties = { screen = 2, tag = "1" } },
@@ -43,7 +40,6 @@ function rules.two()
 end
 
 function rules.three()
-    naughty.notify({ text = 'Three monitors'})
     local rules = {
         { rule_any = { class = { "Alacritty" } },
         properties = { screen = 1, tag = "1" } },
