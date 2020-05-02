@@ -145,8 +145,10 @@ function gizmos.ssid(wlan, prefix, suffix)
     end
     return awful.widget.watch("iwctl station ".. wlan .."  show", 10, function(w, out)
         local wlan = out:match('Connected network%s+%g+')
-        if awful.screen.focused() then
-            w:set_text(prefix .. wlan:gsub('Connected network%s+', '') .. suffix)
+        if wlan then
+            if awful.screen.focused() then
+                w:set_text(prefix .. wlan:gsub('Connected network%s+', '') .. suffix)
+            end
         end
     end)
 end
@@ -158,7 +160,6 @@ function gizmos.changeNotify(cond1, cond2, title, text )
             text = text })
         end
 end
-
 
 function gizmos.volume(prefix, suffix, showdb)
     if prefix == nil then
