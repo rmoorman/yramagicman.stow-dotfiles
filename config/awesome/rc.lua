@@ -271,6 +271,8 @@ if screen.count() == 1 then
     rules.one()
 elseif screen.count() == 2 then
     rules.two()
+elseif screen.count() == 3 then
+    rules.three()
 end
 -- }}}
 
