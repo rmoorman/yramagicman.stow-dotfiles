@@ -154,7 +154,7 @@ awful.screen.connect_for_each_screen(function(s)
     local aur = gizmos.aur(' + ');
     local dbox = gizmos.dbox('D:')
     local vol = gizmos.volume('V: ', '', false )
-    local ip = gizmos.ip('enp5s0')
+    local ip = gizmos.ip()
     local ssid = gizmos.ssid('wlan0', 'N:')
     showtext = gizmos.showtext('')
 
