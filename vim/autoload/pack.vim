@@ -76,33 +76,6 @@ function! s:install_opt_plugins(plug)
     call add(s:opt_plugs, [destination, 'git submodule add --force --name '.plug .' '. url . ' ' . moduledest])
 endfunction
 
-function! s:install_opts()
-    let s:opt_job = 'bash -c "cd '. split(&packpath, ',')[-1]
-    let s:opt_job = s:opt_job . ' && cd $(git rev-parse --show-toplevel) && '
-    for package in s:opt_plugs
-        if !isdirectory(package[0])
-             let s:opt_job = s:opt_job . ' ' . package[1] .' &&'
-        endif
-    endfor
-    let s:opt_job = s:opt_job . ' pwd"'
-    let @o = s:opt_job
-    call s:jobstart(s:opt_job)
-endfunction
-
-
-function! s:install_start()
-    let s:start_job = 'bash -c "cd '. split(&packpath, ',')[-1]
-    let s:start_job = s:start_job . ' && cd $(git rev-parse --show-toplevel) && '
-    for package in s:start_plugs
-        if !isdirectory(package[0])
-             let s:start_job = s:start_job . ' ' . package[1] .' &&'
-        endif
-    endfor
-    let s:start_job = s:start_job . ' pwd"'
-    let @s = s:start_job
-    call s:jobstart(s:start_job)
-endfunction
-
 function! s:clean_plugins()
     let start_in = []
     let start_list = []
