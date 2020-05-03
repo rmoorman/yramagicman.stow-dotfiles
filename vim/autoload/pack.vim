@@ -217,8 +217,18 @@ endfunction
 function! s:install_all()
     call s:read_start_dir()
     call s:sanity_check()
-    call s:install_opts()
-    call s:install_start()
+    let plugs = s:start_plugs + s:opt_plugs
+    echom s:start_plugs + s:opt_plugs
+    let s:start_job = 'bash -c "cd '. split(&packpath, ',')[-1]
+    let s:start_job = s:start_job . ' && cd $(git rev-parse --show-toplevel) && '
+    for package in l:plugs
+        if !isdirectory(package[0])
+             let s:start_job = s:start_job . ' ' . package[1] .' &&'
+        endif
+    endfor
+    let s:start_job = s:start_job . ' pwd"'
+    let @s = s:start_job
+    call s:jobstart(s:start_job)
     silent! helptags ALL
     echom ''
 endfunction
