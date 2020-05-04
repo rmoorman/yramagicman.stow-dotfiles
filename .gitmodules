@@ -1,61 +1,60 @@
-
 [submodule "ohmyzsh"]
-	path = config/zsh/plugins/ohmyzsh
-	url = git@github.com:ohmyzsh/ohmyzsh
+        path = config/zsh/plugins/ohmyzsh
+        url = git@github.com:ohmyzsh/ohmyzsh
 [submodule "zsh-completions"]
-	path = config/zsh/plugins/zsh-completions
-	url = git@github.com:zsh-users/zsh-completions
+        path = config/zsh/plugins/zsh-completions
+        url = git@github.com:zsh-users/zsh-completions
 [submodule "zsh-z"]
-	path = config/zsh/plugins/zsh-z
-	url = git@github.com:agkozak/zsh-z
+        path = config/zsh/plugins/zsh-z
+        url = git@github.com:agkozak/zsh-z
 [submodule "vim-visual-star-search"]
-	path = vim/pack/vendor/start/vim-visual-star-search
-	url = https://github.com/bronson/vim-visual-star-search
+        path = vim/pack/vendor/opt/vim-visual-star-search
+        url = https://github.com/bronson/vim-visual-star-search
 [submodule "vim-log-syntax"]
-	path = vim/pack/vendor/opt/vim-log-syntax
-	url = https://github.com/dzeban/vim-log-syntax
+        path = vim/pack/vendor/opt/vim-log-syntax
+        url = https://github.com/dzeban/vim-log-syntax
 [submodule "editorconfig-vim"]
-	path = vim/pack/vendor/start/editorconfig-vim
-	url = https://github.com/editorconfig/editorconfig-vim
+        path = vim/pack/vendor/opt/editorconfig-vim
+        url = https://github.com/editorconfig/editorconfig-vim
 [submodule "auto-omnicomplete"]
-	path = vim/pack/vendor/start/auto-omnicomplete
-	url = git@gitlab.com:yramagicman/auto-omnicomplete
+        path = vim/pack/vendor/opt/auto-omnicomplete
+        url = git@gitlab.com:yramagicman/auto-omnicomplete
 [submodule "vim-css3-syntax"]
-	path = vim/pack/vendor/start/vim-css3-syntax
-	url = https://github.com/hail2u/vim-css3-syntax
+        path = vim/pack/vendor/opt/vim-css3-syntax
+        url = https://github.com/hail2u/vim-css3-syntax
 [submodule "vim-blade"]
-	path = vim/pack/vendor/start/vim-blade
-	url = https://github.com/jwalton512/vim-blade
+        path = vim/pack/vendor/opt/vim-blade
+        url = https://github.com/jwalton512/vim-blade
 [submodule "typescript-vim"]
-	path = vim/pack/vendor/start/typescript-vim
-	url = https://github.com/leafgarland/typescript-vim
+        path = vim/pack/vendor/opt/typescript-vim
+        url = https://github.com/leafgarland/typescript-vim
 [submodule "html5.vim"]
-	path = vim/pack/vendor/start/html5
-	url = https://github.com/othree/html5.vim
+        path = vim/pack/vendor/opt/html5
+        url = https://github.com/othree/html5.vim
 [submodule "ale"]
-	path = vim/pack/vendor/opt/ale
-	url = https://github.com/w0rp/ale
+        path = vim/pack/vendor/opt/ale
+        url = https://github.com/w0rp/ale
 [submodule "vim-vue"]
-	path = vim/pack/vendor/start/vim-vue
-	url = https://github.com/posva/vim-vue
+        path = vim/pack/vendor/opt/vim-vue
+        url = https://github.com/posva/vim-vue
 [submodule "vim-commentary"]
-	path = vim/pack/vendor/start/vim-commentary
-	url = https://github.com/tpope/vim-commentary
+        path = vim/pack/vendor/opt/vim-commentary
+        url = https://github.com/tpope/vim-commentary
 [submodule "vim-repeat"]
-	path = vim/pack/vendor/start/vim-repeat
-	url = https://github.com/tpope/vim-repeat
+        path = vim/pack/vendor/opt/vim-repeat
+        url = https://github.com/tpope/vim-repeat
 [submodule "vim-surround"]
-	path = vim/pack/vendor/start/vim-surround
-	url = https://github.com/tpope/vim-surround
+        path = vim/pack/vendor/opt/vim-surround
+        url = https://github.com/tpope/vim-surround
 [submodule "scss-syntax.vim"]
-	path = vim/pack/vendor/start/scss-syntax
-	url = https://github.com/cakebaker/scss-syntax.vim
+        path = vim/pack/vendor/opt/scss-syntax
+        url = https://github.com/cakebaker/scss-syntax.vim
 [submodule "vim-indent-object"]
-	path = vim/pack/vendor/start/vim-indent-object
-	url = https://github.com/vim-scripts/vim-indent-object
+        path = vim/pack/vendor/opt/vim-indent-object
+        url = https://github.com/vim-scripts/vim-indent-object
 [submodule "fzf.vim"]
-	path = vim/pack/vendor/start/fzf
-	url = https://github.com/junegunn/fzf.vim
+        path = vim/pack/vendor/opt/fzf
+        url = https://github.com/junegunn/fzf.vim
 [submodule "gruvbox"]
-	path = vim/pack/vendor/start/gruvbox
-	url = https://github.com/morhetz/gruvbox
+        path = vim/pack/vendor/opt/gruvbox
+        url = https://github.com/morhetz/gruvbox

@@ -19,27 +19,44 @@ call pack#load()
 
 PlugOpt 'dzeban/vim-log-syntax'
 PlugOpt 'w0rp/ale'
+PlugOpt 'git@gitlab.com:yramagicman/auto-omnicomplete'
 if executable('fzf')
     if isdirectory('/usr/local/opt/fzf')
         set runtimepath+=/usr/local/opt/fzf
     endif
-    PlugStart 'junegunn/fzf.vim'
+    PlugOpt 'junegunn/fzf.vim'
+    packadd! fzf
 endif
-PlugStart 'bronson/vim-visual-star-search'
-PlugStart 'editorconfig/editorconfig-vim'
-PlugStart 'git@gitlab.com:yramagicman/auto-omnicomplete'
-PlugStart 'hail2u/vim-css3-syntax'
-PlugStart 'jwalton512/vim-blade'
-PlugStart 'leafgarland/typescript-vim'
-PlugStart 'othree/html5.vim'
-PlugStart 'posva/vim-vue'
-PlugStart 'tpope/vim-commentary'
-PlugStart 'tpope/vim-repeat'
-PlugStart 'tpope/vim-surround'
-PlugStart 'cakebaker/scss-syntax.vim'
-PlugStart 'vim-scripts/vim-indent-object'
-PlugStart 'morhetz/gruvbox'
+PlugOpt 'bronson/vim-visual-star-search'
+PlugOpt 'editorconfig/editorconfig-vim'
+PlugOpt 'hail2u/vim-css3-syntax'
+PlugOpt 'jwalton512/vim-blade'
+PlugOpt 'leafgarland/typescript-vim'
+PlugOpt 'othree/html5.vim'
+PlugOpt 'posva/vim-vue'
+PlugOpt 'tpope/vim-commentary'
+PlugOpt 'tpope/vim-repeat'
+PlugOpt 'tpope/vim-surround'
+PlugOpt 'cakebaker/scss-syntax.vim'
+PlugOpt 'vim-scripts/vim-indent-object'
+PlugOpt 'morhetz/gruvbox'
 packadd! matchit
+packadd! vim-log-syntax
+packadd! ale
+packadd! auto-omnicomplete
+packadd! vim-visual-star-search
+packadd! editorconfig-vim
+packadd! vim-css3-syntax
+packadd! vim-blade
+packadd! typescript-vim
+packadd! html5
+packadd! vim-vue
+packadd! vim-commentary
+packadd! vim-repeat
+packadd! vim-surround
+packadd! scss-syntax
+packadd! vim-indent-object
+packadd! gruvbox
 if ! has('nvim')
     packadd! editexisting
 endif
