@@ -49,7 +49,7 @@ autoload -Uz compinit promptinit
 # Load and initialize the completion system ignoring insecure directories with a
 # cache time of 20 hours, so it should almost always regenerate the first time a
 # shell is opened each day.
-_comp_files=(${ZDOTDIR:-$HOME}/.zcompdump(Nm-20))
+_comp_files=($XDG_CACHE_HOME/zsh/zcompcache(Nm-20))
 if (( $#_comp_files )); then
     compinit -i -C
 else
@@ -149,8 +149,8 @@ zstyle ':completion:*:default' list-prompt '%S%M matches%s'
 zstyle ':completion:*' format ' %F{yellow}-- %d --%f'
 zstyle ':completion:*' group-name ''
 zstyle ':completion:*' verbose yes
+zstyle ':completion::complete:*' cache-path "$XDG_CACHE_HOME/zsh/zcompcache"
 zstyle ':completion::complete:*' use-cache on
-zstyle ':completion::complete:*' cache-path "$HOME/.cache/zcompcache"
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#) ([0-9a-z-]#)*=01;34=0=01'
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
@@ -160,7 +160,7 @@ zmodload zsh/complist
 #}}}
 #}}}
 #{{{ history
-HISTFILE="$ZDOTDIR/.zhistory"
+HISTFILE="$XDG_CACHE_HOME/zsh/history"
 HISTSIZE=10000000
 SAVEHIST=10000000
 setopt appendhistory notify
