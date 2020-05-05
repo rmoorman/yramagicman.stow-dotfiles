@@ -25,6 +25,7 @@ else
     tnoremap <space><space> <C-\><C-N>
     tnoremap :: <C-\><C-N>:
 endif
+nnoremap <C-w>t :vert term<cr>
 
 "}}}
 "{{{ normal mode mappings
