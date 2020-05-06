@@ -51,9 +51,9 @@ autoload -Uz compinit promptinit
 # shell is opened each day.
 _comp_files=($XDG_CACHE_HOME/zsh/zcompcache(Nm-20))
 if (( $#_comp_files )); then
-    compinit -i -C
+    compinit -i -C -d "$XDG_CACHE_HOME/zsh/zcompcache"
 else
-    compinit -i
+    compinit -i -d "$XDG_CACHE_HOME/zsh/zcompcache"
 fi
 unset _comp_files
 promptinit
@@ -230,39 +230,33 @@ done
 }
 #}}}
 #{{{ cdr, persistent cd
-autoload -Uz chpwd_recent_dirs cdr add-zsh-hook
-add-zsh-hook chpwd chpwd_recent_dirs
-DIRSTACKFILE="$HOME/.cache/zsh/dirs"
+autoload -Uz add-zsh-hook
+autoload -Uz chpwd_recent_dirs cdr
 
-# make DIRSTACKFILE if it's not there
-if [[ ! -a $DIRSTACKFILE ]]; then
-    mkdir -p $DIRSTACKFILE[0,-5]
-    touch $DIRSTACKFILE
+DIRSTACKFILE="${XDG_CACHE_HOME:-$HOME/.cache}/zsh/dirs"
+if [[ -f "$DIRSTACKFILE" ]] && (( ${#dirstack} == 0 )); then
+    dirstack=("${(@f)"$(< "$DIRSTACKFILE")"}")
+    # [[ -d "${dirstack[1]}" ]] && cd -- "${dirstack[1]}"
 fi
-
-if [[ -f $DIRSTACKFILE ]] && [[ $#dirstack -eq 0 ]]; then
-    dirstack=( ${(f)"$(< $DIRSTACKFILE)"} )
-fi
-
-chpwd() {
-    print -l $PWD ${(u)dirstack} >>$DIRSTACKFILE
-    local d="$(sort -u $DIRSTACKFILE )"
-    echo "$d" > $DIRSTACKFILE
-
+chpwd_dirstack() {
+    print -l -- "$PWD" "${(u)dirstack[@]}" > "$DIRSTACKFILE"
 }
+add-zsh-hook -Uz chpwd chpwd_dirstack
 
-DIRSTACKSIZE=20
+DIRSTACKSIZE='20'
 
-setopt auto_pushd pushd_silent pushd_to_home
+setopt AUTO_PUSHD PUSHD_SILENT PUSHD_TO_HOME
 
 # Remove duplicate entries
-setopt pushd_ignore_dups
+setopt PUSHD_IGNORE_DUPS
 
 # This reverts the +/- operators.
-setopt pushd_minus
+setopt PUSHD_MINUS
 
+add-zsh-hook chpwd chpwd_recent_dirs
+zstyle ':chpwd:*' recent-dirs-file "$XDG_CACHE_HOME/chpwd-recent-dirs"
 #}}}
-#{{{ start tmux,
+# {{{ start tmux,
 if [[ -z "$TMUX" && -z "$INSIDE_EMACS" && -z "$VIM" && -z "$SSH_TTY" ]]; then
     if [[ -z $( pgrep tmux$ ) ]] then
         s tmux
