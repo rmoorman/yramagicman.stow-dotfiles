@@ -70,6 +70,12 @@ alias lsd='ls -Fl ${colorflag} | grep "^d"'
 alias ls="command ls -F ${colorflag}"
 #}}}
 #}}}
+#{{{ volume control
+alias maxvol="amixer -c 0 -- set Master 100%"
+alias headphones="amixer -c 0 -- set Master 45%"
+alias mute="amixer -c 0 -- set Master mute"
+alias unmute="amixer -c 0 -- set Master on"
+#}}}
 #{{{ network
 # Gzip-enabled `curl`
 alias curl="curl -L --compressed"
