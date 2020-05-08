@@ -43,6 +43,7 @@ bind index R        group-reply
 bind index <tab>    sync-mailbox
 bind index <space>  collapse-thread
 macro index \Cr "!$HOME/bin/getallmail"<enter>
+macro index \Cs "!mu find --format=links --linksdir=$HOME/.config/mail/results "
 #set pager_context = 3      # number of context lines to show
 set pager_stop             # don't go to next message automatically
 set tilde                  # show tildes like in vim
@@ -134,6 +135,7 @@ set sidebar_new_mail_only = yes
 sidebar_whitelist '/home/jonathan/.config/mail/Inbox'
 sidebar_whitelist '/home/jonathan/.config/mail/Gmail'
 sidebar_whitelist '/home/jonathan/.config/mail/Bills'
+sidebar_whitelist '/home/jonathan/.config/mail/results'
 
 # When searching for mailboxes containing new mail, should the search wrap
 # around when it reaches the end of the list?
