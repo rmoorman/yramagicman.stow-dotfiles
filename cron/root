@@ -9,3 +9,4 @@
 30 12 */5 * * yes | pacman -Sc
 15 * * * * updatedb
 30 */4 * * * ntpd -qg > /home/jonathan/.cache/ntp.log
+30 */5 * * * hwclock --systohc

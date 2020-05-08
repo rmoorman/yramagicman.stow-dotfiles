@@ -144,7 +144,7 @@
 (setq mu4e-sent-folder   "/Sent")
 (setq mu4e-trash-folder  "/trash")
 (setq mu4e-sent-messages-behavior 'delete)
-(setq mu4e-get-mail-command "getmail -n && getmail -r gmail -n -d ")
+(setq mu4e-get-mail-command (expand-file-name "~/bin/getallmail") )
 (setq user-mail-address "jonathandavis@gilsons.org"
       user-full-name "Jonathan")
 (setq message-send-mail-function 'message-send-mail-with-sendmail

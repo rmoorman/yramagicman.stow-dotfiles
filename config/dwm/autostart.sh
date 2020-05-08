@@ -80,5 +80,7 @@ fi
 
 (amixer -c 0 -- set Master on) &
 (amixer -c 0 -- set Master 100%) &
+notify-send 'getting mail in 6 seconds'
+(sleep 6s && "$HOME"/bin/getallmail) &
 
 exit

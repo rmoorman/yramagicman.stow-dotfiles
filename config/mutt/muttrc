@@ -9,7 +9,7 @@ set from = "jonathandavis@gilsons.org"
 set mbox_type=Maildir
 set spoolfile = "~/.config/mail/Inbox"
 set folder="~/.config/mail/Inbox"
-set postponed="~/.config/mail/drafts/"
+set postponed="~/.config/mail/Drafts/"
 set record="~/.config/mail/Sent/"
 set mailcap_path="~/.config/mutt/mailcap"
 set move = no
@@ -136,6 +136,8 @@ sidebar_whitelist '/home/jonathan/.config/mail/Inbox'
 sidebar_whitelist '/home/jonathan/.config/mail/Gmail'
 sidebar_whitelist '/home/jonathan/.config/mail/Bills'
 sidebar_whitelist '/home/jonathan/.config/mail/results'
+sidebar_whitelist '/home/jonathan/.config/mail/Drafts'
+sidebar_whitelist '/home/jonathan/.config/mail/trash'
 
 # When searching for mailboxes containing new mail, should the search wrap
 # around when it reaches the end of the list?
@@ -159,7 +161,7 @@ set sidebar_format = '%B%?F? [%F]?%* %?N?%N/?%S'
 #       new      - number of new messages
 #       path     - mailbox path
 #       unsorted - do not sort the mailboxes
-set sidebar_sort_method = 'unsorted'
+set sidebar_sort_method = 'count'
 
 # --------------------------------------------------------------------------
 # FUNCTIONS - shown with an example mapping
