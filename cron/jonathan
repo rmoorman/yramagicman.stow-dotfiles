@@ -13,4 +13,4 @@
 */15 * * * * checkupdates > /home/jonathan/.cache/updates
 */15 * * * * auracle sync > /home/jonathan/.cache/aur
 */15 * * * * mu index -m /home/jonathan/.config/mail -muhome /home/jonathan/.cache/mu
-*/5 * * * * /home/jonathan/getallmail
+*/5 * * * * /home/jonathan/bin/getallmail
