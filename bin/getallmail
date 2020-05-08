@@ -14,12 +14,16 @@ if [[ ! -d "/tmp/getmail" ]]; then
     done
     for f in $XDG_CONFIG_HOME/getmail/oldmail*
     do
-        ln -s $f /tmp/getmail/${f:t}
+        cp $f /tmp/getmail/${f:t}
     done
 else
     for f in $XDG_CONFIG_HOME/getmail/^oldmail*
     do
         echo "getting $f"
         getmail -g /tmp/getmail -r $f
+    done
+    for f in /tmp/getmail/oldmail*
+    do
+        cp $f $XDG_CONFIG_HOME/getmail/
     done
 fi
