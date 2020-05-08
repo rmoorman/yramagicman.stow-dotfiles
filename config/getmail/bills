@@ -1,3 +1,6 @@
+[options]
+read_all = false
+
 [retriever]
 type = SimpleIMAPSSLRetriever
 server = vps.gilsons.org
