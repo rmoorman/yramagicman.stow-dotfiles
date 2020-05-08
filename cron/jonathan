@@ -12,5 +12,5 @@
 37 16 * * * /usr/bin/pacman -Qeq > /home/jonathan/Documents/dots/bin/setup/packages
 */15 * * * * checkupdates > /home/jonathan/.cache/updates
 */15 * * * * auracle sync > /home/jonathan/.cache/aur
-*/15 * * * * mu index -m /home/jonathan/.config/mail -muhome /home/jonathan/.cache/mu
+*/15 * * * * mu index
 */5 * * * * /home/jonathan/bin/getallmail
