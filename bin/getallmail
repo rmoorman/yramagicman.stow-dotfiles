@@ -1,5 +1,25 @@
 #!/usr/bin/env zsh
-for f in $XDG_CONFIG_HOME/getmail/^oldmail*
-do
-    getmail -g $XDG_CONFIG_HOME/getmail -r $f & disown
-done
+
+if [[ ! -d "/tmp/getmail" ]]; then
+    mkdir /tmp/getmail
+    for f in $XDG_CONFIG_HOME/getmail/^oldmail*
+    do
+        getmail -g $XDG_CONFIG_HOME/getmail -r $f
+        passcmd=$(grep password_command $f | awk -F '"' '{print $2 }')
+        passname=$(grep password_command $f | awk -F '"' '{print $6 }')
+        if [[ ! -z "$passcmd" ]]; then
+            pw="$( $passcmd show $passname )"
+            cat $f | sed "s;password_command.*;password = $pw;" > /tmp/getmail/${f:t}
+        fi
+    done
+    for f in $XDG_CONFIG_HOME/getmail/oldmail*
+    do
+        ln -s $f /tmp/getmail/${f:t}
+    done
+else
+    for f in $XDG_CONFIG_HOME/getmail/^oldmail*
+    do
+        echo "getting $f"
+        getmail -g /tmp/getmail -r $f
+    done
+fi
