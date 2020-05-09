@@ -39,7 +39,7 @@ function gizmos.update(prefix, suffix, mincount)
     if suffix == nil then
         suffix = ''
     end
-    return awful.widget.watch("bash -c 'checkupdates | wc -l'", 1500, function (w, out)
+    return awful.widget.watch("bash -c 'cat ~/.cache/updates ~/.cache/aur | wc -l'", 1, function (w, out)
         if tonumber( out ) > mincount then
             message= prefix..out .. suffix
         else
@@ -56,9 +56,9 @@ function gizmos.aur(prefix, suffix)
     if suffix == nil then
         suffix = ''
     end
-    return awful.widget.watch("bash -c 'auracle sync | wc -l'", 1500, function (w, out)
+    return awful.widget.watch("bash -c 'cat ~/.cache/aur | wc -l'", 1, function (w, out)
         if tonumber(out) > 0 then
-        w:set_text( prefix .. tostring(out) .. suffix)
+            w:set_text( prefix .. tostring(out) .. suffix)
         end
     end)
 end
