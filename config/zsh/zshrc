@@ -32,7 +32,7 @@ pkg update
     jit "$ZDOTDIR/aliases/aliases.zsh"
 }&!
 source "$ZDOTDIR/aliases/aliases.zsh"
-if [[ "$(uname)" == 'Darwin' ]]; then
+if [[ "$OSTYPE" =~ 'darwin' ]]; then
     jit "$ZDOTDIR/aliases/darwin.zsh"
     source "$ZDOTDIR/aliases/darwin.zsh"
 fi
@@ -201,7 +201,7 @@ if [[ -d /usr/share/fzf ]]; then
 fi
 #}}}
 #{{{ lazy load stuff
-if [[ "$TMUX" != '' ]] && [[ -z "$(pgrep tmuxcopy)" ]] && [[ "$(uname)" != 'Darwin' ]]; then
+if [[ "$TMUX" != '' ]] && [[ -z "$(pgrep tmuxcopy)" ]] && [[ "$OSTYPE" =~ 'darwin*' ]]; then
     setopt nonotify nomonitor
     tmuxcopy &
     disown

@@ -33,7 +33,7 @@ alias sudo='sudo '
 #}}}
 #{{{ quick jump to files and directories
 function vimrc() {
-    $EDITOR -c ':e $MYVIMRC'
+    vim -c ':e $MYVIMRC'
 }
 #}}}
 #{{{ always recursive and verbose
@@ -86,19 +86,12 @@ alias ip="ip --color=auto"
 #}}}
 # {{{ utilities
 # Canonical hex dump; some systems have this symlinked
-command -v hd >/dev/null || alias hd="hexdump -C"
 # URL-encode strings
 alias urlencode='python2 -c "import sys, urllib as ul; print ul.quote_plus(sys.argv[1]);"'
 # Ring the terminal bell, and put a badge on Terminal.app’s Dock icon
 # (useful when executing time-consuming commands)
 alias bell="cvlc --play-and-exit $HOME/.config/sounds/beep.mp3 2> /dev/null; tput bel"
 alias less="less -N"
-# One of @janmoesen’s ProTip™s
-for method in GET HEAD POST PUT DELETE TRACE OPTIONS; do
-    alias "$method"="lwp-request -m '$method'"
-done
-alias starwars="telnet towel.blinkenlights.nl"
-alias hangups="$HOME/Sites/hangups/bin/hangups"
 #}}}
 #{{{ tmux
 alias tmux="tmux -f $XDG_CONFIG_HOME/tmux.d/tmux.conf"
@@ -110,6 +103,7 @@ alias tls="tmux ls"
 #{{{ uncategorized aliases
 alias poweroff="systemctl poweroff"
 alias reboot="systemctl reboot"
+alias sleep="systemctl suspend"
 #}}}
 #{{{ utility commands
 alias q="exit"
