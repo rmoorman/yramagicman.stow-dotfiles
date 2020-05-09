@@ -1,3 +1,0 @@
-#!/usr/bin/env zsh
-ipstr="$( cat <( netctl list | awk '/*/ {print $2}' ) <(dig +short myip.opendns.com @resolver1.opendns.com) | tr '\n' ' ' )"
-sort -u <( echo "$ipstr\n" ) $HOME/.config/rip | sed '/^$/ d' > $HOME/.config/rip
