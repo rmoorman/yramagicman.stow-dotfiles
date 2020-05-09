@@ -6,7 +6,7 @@ type = SimpleIMAPSSLRetriever
 server = vps.gilsons.org
 username = ejbills@gilsons.org
 password_command = ("/usr/bin/pass","show","ejbills")
-mailboxes = ALL
+mailboxes = ("INBOX",)
 
 [destination]
 type = Maildir
