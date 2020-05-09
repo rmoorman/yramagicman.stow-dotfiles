@@ -110,8 +110,6 @@ alias tls="tmux ls"
 #{{{ uncategorized aliases
 alias poweroff="systemctl poweroff"
 alias reboot="systemctl reboot"
-alias mute="amixer -c 0 -- set Master playback -1000dB > /dev/null"
-alias unmute="amixer -c 0 -- set Master playback -20dB > /dev/null"
 #}}}
 #{{{ utility commands
 alias q="exit"
