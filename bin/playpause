@@ -1,7 +1,0 @@
-#!/usr/bin/env zsh
-
-if [[ $( mpc | grep pause ) ]]; then
-    mpc play
-else
-    mpc pause
-fi

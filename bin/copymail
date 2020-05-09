@@ -1,3 +1,0 @@
-#!/bin/sh
-
-echo "test_$( getwords.py 2 |  sed 's/ /_/g' | sed "s/'//g" )@example.com" | clipboard

@@ -1,2 +1,0 @@
-#!/bin/sh
-getwords.py 3 | clipboard
