@@ -54,7 +54,7 @@ fi
 export WWW_HOME="$XDG_CONFIG_HOME/www_data"
 #}}}
 #{{{ Editors
-export EDITOR='vim'
+export EDITOR='emacsclient -c'
 export VISUAL='vim'
 export PAGER='less'
 #}}}
