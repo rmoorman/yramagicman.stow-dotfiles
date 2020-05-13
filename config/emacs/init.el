@@ -34,6 +34,11 @@
 (require 'use-package-ensure)
 (setq use-package-always-ensure t)
 
+(use-package projectile
+  :config
+  (setq projectile-completion-system 'ivy)
+  (projectile-mode +1))
+
 ;; Evil config
 
 (use-package evil
@@ -53,16 +58,30 @@
   :config
   (evil-escape-mode 1))
 
-(use-package evil-leader
+(use-package general
   :config
-  (evil-leader/set-leader ",")
-  (evil-leader/set-key
-    "," 'evil-switch-to-windows-last-buffer
-    "s" 'magit-status
-    "c" 'magit-commit-create
-    "f" 'find-file
-    "SPC" 'save-buffer)
-  (global-evil-leader-mode 1))
+
+  (general-create-definer my-space-def
+    ;; :prefix my-space
+    :prefix "SPC")
+
+  (general-create-definer my-leader-def
+    ;; :prefix my-leader
+    :prefix ",")
+
+  (my-space-def
+    :states '( normal visual )
+    " " 'save-buffer)
+
+  (my-leader-def
+    :keymaps '( normal visual )
+    "d" 'dired
+    "," 'evil-switch-windows-last-buffer
+    "f" 'projectile-find-file))
+
+
+
+
 
 (use-package evil-commentary
   :config
@@ -91,8 +110,8 @@
   (ivy-mode 1))
 ;; keybinds
 (global-set-key (kbd "C-c b") 'buffer-menu)
-(global-set-key (kbd "C-c t") 'vterm)
-(global-set-key (kbd "C-c e") 'mu4e)
+;; (global-set-key (kbd "C-c t") 'vterm)
+(global-set-key (kbd "C-c e") 'Mu4e)
 
 ;; Modes
 (use-package markdown-mode
@@ -123,7 +142,7 @@
 
 ;; misc. packages
 (use-package magit)
-(use-package vterm)
+;; (use-package vterm)
 (show-paren-mode 1)
 
 (use-package base16-theme)
@@ -132,9 +151,9 @@
     (add-to-list 'load-path "/usr/share/emacs/site-lisp/mu4e/")
   (message "mu4e not found in /usr/share/emacs/site-lisp/mu4e/"))
 
-(if (file-exists-p "/usr/local/Cellar/mu/1.2.0_1/share/emacs/site-lisp/mu/mu4e" )
-    (add-to-list 'load-path "/usr/local/Cellar/mu/1.2.0_1/share/emacs/site-lisp/mu/mu4e" )
-  (message "mu4e not found in /usr/local/Cellar/mu/1.2.0_1/share/emacs/site-lisp/mu/mu4e"))
+(if (file-exists-p "/usr/local/Cellar/mu/1.4.5/share/emacs/site-lisp/mu/mu4e" )
+    (add-to-list 'load-path "/usr/local/Cellar/mu/1.4.5/share/emacs/site-lisp/mu/mu4e" )
+  (message "mu4e not found in /usr/local/Cellar/mu/1.4.5/share/emacs/site-lisp/mu/mu4e"))
 
 (require 'mu4e)
 (setq mu4e-maildir (expand-file-name "~/.config/mail/"))
@@ -164,15 +183,18 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(custom-enabled-themes '(base16-ocean))
+ '(custom-enabled-themes (quote (base16-gruvbox-dark-pale)))
  '(custom-safe-themes
-   '("78c1c89192e172436dbf892bd90562bc89e2cc3811b5f9506226e735a953a9c6" default))
+   (quote
+    ("50d07ab55e2b5322b2a8b13bc15ddf76d7f5985268833762c500a90e2a09e7aa" "78c1c89192e172436dbf892bd90562bc89e2cc3811b5f9506226e735a953a9c6" default)))
  '(electric-pair-mode t)
  '(exec-path
-   '("/usr/local/bin" "/usr/bin" "/bin" "/usr/sbin" "/sbin" "/Applications/Emacs.app/Contents/MacOS/bin-x86_64-10_14" "/Applications/Emacs.app/Contents/MacOS/libexec-x86_64-10_14" "/Applications/Emacs.app/Contents/MacOS/libexec" "/Applications/Emacs.app/Contents/MacOS/bin"))
+   (quote
+    ("/usr/local/bin" "/usr/bin" "/bin" "/usr/sbin" "/sbin" "/Applications/Emacs.app/Contents/MacOS/bin-x86_64-10_14" "/Applications/Emacs.app/Contents/MacOS/libexec-x86_64-10_14" "/Applications/Emacs.app/Contents/MacOS/libexec" "/Applications/Emacs.app/Contents/MacOS/bin")))
  '(flycheck-typescript-tslint-executable "~/.local/bin/tslint")
  '(package-selected-packages
-   '(tss flycheck ivy typescript-mode evil-surround evil-commentary web-mode evil-vimish-fold vimish-fold magit ac-php vterm linum-relative shell-script-mode use-package markdown-mode evil-leader php-mode auto-complete evil-escape undo-tree evil))
+   (quote
+    (general projectile tss flycheck ivy typescript-mode evil-surround evil-commentary web-mode evil-vimish-fold vimish-fold magit ac-php vterm linum-relative shell-script-mode use-package markdown-mode evil-leader php-mode auto-complete evil-escape undo-tree evil)))
  '(tab-width 4))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
