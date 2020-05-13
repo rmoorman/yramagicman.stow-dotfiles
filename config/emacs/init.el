@@ -79,10 +79,6 @@
     "," 'evil-switch-windows-last-buffer
     "f" 'projectile-find-file))
 
-
-
-
-
 (use-package evil-commentary
   :config
   (evil-commentary-mode 1))
@@ -96,7 +92,6 @@
   :config
   (global-auto-complete-mode 1))
 
-
 (use-package php-mode
   :mode "\\.php\\'"
   :interpreter "php"
@@ -104,6 +99,8 @@
   (ac-php-mode))
 (use-package ac-php)
 
+(use-package lua-mode
+  :mode "\\.lua\\'")
 
 (use-package ivy
   :config
@@ -138,7 +135,6 @@
   (custom-set-variables
    '(flycheck-typescript-tslint-executable "~/.local/bin/tslint"))
   (global-flycheck-mode))
-
 
 ;; misc. packages
 (use-package magit)
