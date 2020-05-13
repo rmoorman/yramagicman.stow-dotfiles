@@ -113,8 +113,10 @@
 ;; Modes
 (use-package markdown-mode
   :mode "\\.md\\'")
+
 (use-package racket-mode
   :mode "\\.rkt\\'")
+
 (use-package linum-relative
   :config
   (linum-relative-global-mode))
@@ -172,6 +174,7 @@
 ;; settings
 (setq vc-follow-symlinks t)
 (setq make-backup-files nil)
+(global-hl-line-mode 1)
 
 ;; Added by Customize menu
 (custom-set-variables

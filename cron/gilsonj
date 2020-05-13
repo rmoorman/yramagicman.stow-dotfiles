@@ -7,6 +7,6 @@
 # |     |     +--------- day of        month (1 - 31)
 # |     +----------- hour (0 - 23)
 # +------------- min (0 - 59)
-*/15 * * * * /usr/local/bin/mu index -m /Users/gilsonj/.config/mail
-*/5 * * * * /usr/local/bin/getmail -n -r miami
+*/5 * * * * /usr/local/bin/mu index
+*/5 * * * * /Users/gilsonj/bin/getallmail
 */30 * * * * /usr/local/bin/brew update
