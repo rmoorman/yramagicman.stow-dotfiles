@@ -111,7 +111,7 @@
 ;; keybinds
 (global-set-key (kbd "C-c b") 'buffer-menu)
 ;; (global-set-key (kbd "C-c t") 'vterm)
-(global-set-key (kbd "C-c e") 'Mu4e)
+(global-set-key (kbd "C-c e") 'mu4e)
 
 ;; Modes
 (use-package markdown-mode
