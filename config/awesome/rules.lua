@@ -3,7 +3,7 @@ local awful = require("awful")
 
 function rules.one()
     local rules = {
-        { rule_any = { class = { "Firefox", "firefox", "Alacritty" } },
+        { rule_any = { class = { "Firefox", "firefox", "Alacritty", "Emacs", "emacs" } },
         properties = { screen = 1, tag = "1" } },
         { rule_any = { class = { "Chromium", "chromium" } },
         properties = { screen = 1, tag = "2" } },
