@@ -155,6 +155,7 @@ awful.screen.connect_for_each_screen(function(s)
     local vol = gizmos.volume('V: ', '', false )
     local ip = gizmos.ip()
     local ssid = gizmos.ssid('wlan0', 'N:')
+    local mail = gizmos.mail('M: ', ' ')
     showtext = gizmos.showtext('')
 
     -- Add widgets to the wibox
@@ -173,6 +174,7 @@ awful.screen.connect_for_each_screen(function(s)
     { -- Right widgets
     layout = wibox.layout.fixed.horizontal,
     showtext,
+    mail,
     gizmos.sep(15),
     vol,
     gizmos.sep(15),
