@@ -51,6 +51,11 @@
                                                   (save-buffer)))
                                             (lambda() nil))))
 
+(use-package evil-collection
+  :config
+  (evil-collection-init))
+
+
 (use-package evil-escape
   :init
   (setq-default evil-escape-key-sequence "  ")
@@ -193,7 +198,7 @@
  '(flycheck-typescript-tslint-executable "~/.local/bin/tslint")
  '(package-selected-packages
    (quote
-    (general projectile tss flycheck ivy typescript-mode evil-surround evil-commentary web-mode evil-vimish-fold vimish-fold magit ac-php vterm linum-relative shell-script-mode use-package markdown-mode evil-leader php-mode auto-complete evil-escape undo-tree evil)))
+    (evil-collection general projectile tss flycheck ivy typescript-mode evil-surround evil-commentary web-mode evil-vimish-fold vimish-fold magit ac-php vterm linum-relative shell-script-mode use-package markdown-mode evil-leader php-mode auto-complete evil-escape undo-tree evil)))
  '(tab-width 4))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
