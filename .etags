@@ -1,1098 +1,0 @@
-
-README.md,83
-# stow-dotfilesstow-dotfiles1,0
-## To use my dotfiles:To use my dotfiles:8,211
-
-bin/arclear,0
-
-bin/auto-rotate-wallpaper,0
-
-bin/backup,0
-
-bin/clipboard,0
-
-bin/colortest,0
-
-bin/diffit,0
-
-bin/dockerStartUp.sh,0
-
-bin/dominion-score,239
-cards = {cards2,22
-def which_cards(cards):which_cards24,479
-def calculate(cards_set):calculate54,1463
-def multi_player():multi_player70,2039
-cards_set = which_cards(cards)cards_set79,2253
-players = multi_player()players84,2371
-
-bin/dwmrestart,0
-
-bin/dwmstatus,350
-def bytes_to_gb(value):bytes_to_gb8,65
-def bytes_to_mb(value):bytes_to_mb12,139
-def humanize(bytes):humanize16,206
-    mem = psutil.virtual_memory()mem24,399
-    used = humanize(mem[3])used25,433
-    free = humanize(mem[1])free26,461
-    t = time.strftime('%I:%M %p # %a %m/%d/%y')t27,489
-    status = '# Ram: free: ' + \status28,537
-
-bin/getallmail,0
-
-bin/gup,467
-class gup:gup8,75
-    def __init__(self):__init__11,139
-    def num_changes(self):num_changes27,848
-    def diff_changes(self, ext=False):diff_changes41,1387
-    def list_changes(self):list_changes51,1719
-    def check_status(self):check_status62,2121
-    def pull_push(self, pull, push):pull_push81,2716
-    def show_message(self):show_message99,3450
-    def do_it(self, repo):do_it125,4613
-    def run(self):run132,4840
-    g = gup()g143,5132
-
-bin/gup.rkt,763
-(define (execute-command proc-name)execute-command7,100
-(define home (path->string (find-system-path 'home-dir)))home13,272
-(define repo-file (string-split (file->string (string-append home ".config/gits")) "\n"))repo-file14,330
-(define git [find-executable-path "git"])git15,420
-(define repos (filterrepos16,462
-(define (makepath p)makepath19,587
-(define paths (map makepath repos))paths22,629
-(define (changes)changes24,666
-(define num-changes (length (changes)))num-changes37,1217
-(define (show-changes repo)show-changes39,1258
-(define (check-status)check-status42,1385
-(define (pull-push pull push repo)pull-push58,1827
-(define (pull)pull69,2171
-(define (push)push77,2501
-(define (run-git-processes repo)run-git-processes85,2820
-
-bin/kbtoggle,0
-
-bin/keygen.sh,0
-
-bin/mailmon,606
-home = expanduser('~')home7,89
-mailfiles = [home + '/.config/mail/Inbox/new/',mailfiles8,112
-junkfile = home + '/.config/mail/junk'junkfile10,208
-froms = []froms12,248
-new = re.compile(new13,259
-seen = re.compile(seen15,365
-e = re.compile('^From:')e17,478
-not_junk = {not_junk25,751
-junk = open(junkfile)junk29,796
-junk_list = junk.readlines()junk_list30,818
-junk_list = [j.strip() for j in junk_list]junk_list31,847
-junk_re = '|'.join(junk_list)junk_re33,903
-r = re.compile(junk_re)r34,933
-    message = ' M: ' + str(len(not_junk['seen']) + len(not_junk['new']))message44,1380
-
-bin/manage.py,69
-needle = 'manage.py'needle6,63
-    proj_root = envproj_root9,125
-
-bin/mkcolor,1428
-home = os.path.expanduser('~')home9,107
-st_dir = home + '/Gits/st/'st_dir11,139
-dwm_dir = home + '/Gits/dwm/'dwm_dir12,167
-config_dir = home + '/Gits/dots/'config_dir13,197
-colors_dir = home + '/.config/colors/'colors_dir14,231
-foreground = 'foreground'foreground16,271
-background = 'background'background17,297
-border = 'color0'border18,323
-sel_foreground = 'color0'sel_foreground19,341
-sel_background = 'color12'sel_background20,367
-sel_border = 'color12'sel_border21,394
-def contains_color(str):contains_color24,419
-def not_contains_color(str):not_contains_color29,489
-def not_contains_foreground(str):not_contains_foreground34,567
-def not_contains_background(str):not_contains_background39,655
-def not_contains_cursorColor(str):not_contains_cursorColor44,743
-def not_contains_bang(str):not_contains_bang49,833
-def not_blank(str):not_blank54,905
-def read_color():read_color60,1007
-def empty_xresources():empty_xresources70,1271
-def rebuild_colors(selection):rebuild_colors91,1945
-def list_colors():list_colors102,2317
-def find_color(selection, color):find_color106,2404
-def dwm_mod_color(line, selection, color):dwm_mod_color113,2607
-def set_bg(selection):set_bg120,2781
-def dwm_update(selection):dwm_update132,3206
-def st_update(selection):st_update163,4460
-def move_into_place():move_into_place182,5001
-def compile():compile205,5760
-def install():install224,6192
-
-bin/mkhosts,0
-
-bin/mkmail,0
-
-bin/passimport.py,185
-lines = []lines2,18
-count = 1count8,124
-    account = l.split(' ')account10,150
-    name = account[0]name11,177
-    pw = account[1]pw12,199
-    count = count + 1count17,327
-
-bin/server-up,0
-
-bin/setmouse,458
-find_mouse = subprocess.check_output('xinput')find_mouse5,39
-find_mouse = find_mouse.decode().split('\n')find_mouse6,86
-mouse_id = ''mouse_id7,131
-        mouse_id = l.split()mouse_id10,190
-        mouse_id = i.split('=')[1]mouse_id14,257
-mouse_props = subprocess.check_output(['xinput', '--list-props', mouse_id])mouse_props16,293
-mouse_props = mouse_props.decode().split('\n')mouse_props18,370
-def setprop(prop, props, value):setprop21,419
-
-bin/setup/archinstall_1.sh,62
-partition() {partition3,11
-mnt_drives() {mnt_drives24,607
-
-bin/setup/archinstall_2.sh,35
-cat << EOF > /etc/hostsEOF13,295
-
-bin/setup/opensuse/packages.py,943
-ar = ['zypper', 'ar', '-f']ar2,18
-lr = ['zypper', 'lr', '-u']lr3,46
-zypper = ['zypper', 'in']zypper4,74
-default = open('./default_repos')default6,101
-default_list = default.readlines()default_list7,135
-default_list = [p.strip() for p in default_list]default_list8,170
-repos = subprocess.check_output(lr).decode().split('|')repos11,236
-repos = [r.strip() for r in repos if 'http' in r]repos12,292
-repos = [r[:-2].strip() for r in repos if 'http' in r]repos13,342
-packman = 'http://ftp.gwdg.de/pub/linux/misc/packman/suse/openSUSE_Tumbleweed/'packman14,397
-dvd = 'http://opensuse-guide.org/repo/openSUSE_Leap_42.3/'dvd15,477
-packman = open('./packman')packman17,537
-packman_list = packman.readlines()packman_list18,565
-packman_list = [p.strip() for p in packman_list]packman_list19,600
-dvd = open('./dvd')dvd25,735
-dvd_list = dvd.readlines()dvd_list26,755
-dvd_list = [p.strip() for p in dvd_list]dvd_list27,782
-
-bin/setup/reset.sh,0
-
-bin/setup/setup.sh,0
-
-bin/statusline,379
-function my_date () {my_date4,35
-function my_bat() {my_bat8,93
-function my_wifi(){my_wifi28,641
-function wifi_strength() {wifi_strength35,872
-function my_load() {my_load39,966
-function my_mail() {my_mail46,1332
-function my_weather() {my_weather54,1532
-function my_update() {my_update74,2164
-function my_volume() {my_volume88,2679
-function dbox() {dbox92,2808
-
-bin/statusline.js,3758
-const EventEmitter = require('events');EventEmitter5,58
-class MyEmitter extends EventEmitter {}MyEmitter16,231
-const ssidEvent = new MyEmitter();ssidEvent17,271
-const dropboxEvent = new MyEmitter();dropboxEvent18,306
-const volumeEvent = new MyEmitter();volumeEvent19,344
-const batteryEvent = new MyEmitter();batteryEvent20,381
-const updateEvent = new MyEmitter();updateEvent21,419
-const mailEvent = new MyEmitter();mailEvent22,456
-const weatherEvent = new MyEmitter();weatherEvent23,491
-const dateEvent = new MyEmitter();dateEvent24,529
-let statusLine = {};statusLine26,565
-        writeFile(home + '/.cache/node_updates', '\n', function(err) {AnonymousFunctionc1be7dc4010034,729
-let updateFile = function() {updateFile28,587
-            id = id.filter(function(profile) {AnonymousFunctionc1be7dc4030049,1182
-        exec('netctl list', {}, function(jsrr, out, err) {AnonymousFunctionc1be7dc4020047,1085
-let getSsid = function() {getSsid43,970
-    exec('dropbox-cli status', {}, function(jsrr, out, err) {AnonymousFunctionc1be7dc4040063,1544
-let dropboxStatus = function() {dropboxStatus62,1511
-        exec('mailmon', {}, function(jsrr, out, err) {AnonymousFunctionc1be7dc4050075,1867
-let mail = function() {mail71,1756
-        exec('weather.py', {}, function(jsrr, out, err) {AnonymousFunctionc1be7dc4060089,2226
-    let doWeather = function() {doWeather88,2193
-let weather = function() {weather84,2080
-    let getAddr = function(iface) {getAddr106,2635
-let network = function() {network104,2573
-    exec('amixer -- get Master', {}, function(jsrr, out, err) {AnonymousFunctionc1be7dc40700122,2957
-let volume = function() {volume121,2931
-    batLevel.on('line', function(line) {AnonymousFunctionc1be7dc40800139,3454
-    batStat.on('line', function(line) {AnonymousFunctionc1be7dc40900147,3674
-let battery = function() {battery132,3228
-            writeFile(homedir() + '/.cache/update_log', output.join(''), function(err) {AnonymousFunctionc1be7dc40b00163,4098
-        refresh.stdout.on('data', function(data) {AnonymousFunctionc1be7dc40a00161,4016
-        refresh.stderr.on('data', function(data) {AnonymousFunctionc1be7dc40c00170,4315
-let updateRefresh = function() {updateRefresh152,3767
-                d.forEach(function(item, index) {AnonymousFunctionc1be7dc40e00195,5096
-            writeFile(home + '/.cache/node_updates', output.join('\n'), function(err) {AnonymousFunctionc1be7dc40f00201,5314
-        refresh.stdout.on('data', function(data) {AnonymousFunctionc1be7dc40d00186,4722
-        refresh.stderr.on('data', function(data) {AnonymousFunctionc1be7dc41000216,5710
-let updateCount = function() {updateCount176,4435
-        exec('date +"%d/%m/%Y %I:%M:%S"', {}, function(jsrr, out, err) {AnonymousFunctionc1be7dc41100225,5892
-        exec('date +"%a %d %b %Y %I:%M:%S"', {}, function(jsrr, out, err) {AnonymousFunctionc1be7dc41200233,6127
-let date = function() {date223,5831
-ssidEvent.on('event', function(ssid) {AnonymousFunctionc1be7dc41300242,6361
-dropboxEvent.on('event', function(stat) {AnonymousFunctionc1be7dc41400246,6454
-mailEvent.on('event', function(mail) {AnonymousFunctionc1be7dc41500250,6532
-volumeEvent.on('event', function(vol) {AnonymousFunctionc1be7dc41600253,6603
-batteryEvent.on('level', function(level) {AnonymousFunctionc1be7dc41700257,6677
-batteryEvent.on('stat', function(stat) {AnonymousFunctionc1be7dc41800261,6762
-updateEvent.on('event', function(count) {AnonymousFunctionc1be7dc41900265,6843
-weatherEvent.on('event', function(weather) {AnonymousFunctionc1be7dc41a00273,7016
-dateEvent.on('event', function(date) {AnonymousFunctionc1be7dc41b00277,7100
-setInterval(function() {AnonymousFunctionc1be7dc41c00281,7172
-
-bin/statusloop,0
-
-bin/switch_or_attach,0
-
-bin/tmuxcopy,0
-
-bin/tmuxpaste,0
-
-bin/tmuxstatus,106
-my_date() {my_date3,11
-battery() {battery7,59
-updates() {updates35,1055
-my_mail() {my_mail52,1547
-
-bin/tree-EN.sh,0
-
-bin/update-bundle,0
-
-bin/volcheck,0
-
-bin/weather.py,1091
-hostname = socket.gethostname()hostname7,63
-j = json.JSONDecoder()j9,96
-m = requests.get('http://api.openweathermap.org/data/2.5/weather?zip=45342,us&units=metric&appidm10,119
-i = requests.get('http://api.openweathermap.org/data/2.5/weather?zip=45342,us&units=imperial&appi11,251
-weather = m.json()weather13,386
-imperial = i.json()imperial14,405
-wkeys = [k for k in weather.keys()]wkeys16,426
-wkeys_weather = list(filter((lambda x: x == 'weather'), wkeys))wkeys_weather17,462
-wkeys_main = list(filter((lambda x: x == 'main'), wkeys))wkeys_main18,526
-ikeys = [k for k in imperial.keys()]ikeys20,585
-ikeys_imperial = list(filter((lambda x: x == 'imperial'), ikeys))ikeys_imperial21,622
-ikeys_main = list(filter((lambda x: x == 'main'), ikeys))ikeys_main22,688
-    display = 'error'display24,772
-display = ''display26,813
-display = display + str(weather[wkeys_weather[0]][0]['main'])display27,826
-display = display + ' ' + str(weather[wkeys_main[0]]['temp']) + 'C'display28,888
-display = display + ' ' + str(imperial[ikeys_main[0]]['temp']) + 'F'display29,956
-
-bin/zsh_profile.py,113
-SLOW_THRESHOLD = 2SLOW_THRESHOLD4,28
-def parse_line(raw_line):parse_line6,48
-def main(filename):main11,186
-
-config/alacritty/alacritty.yml,0
-
-config/alacritty/keys.yml,0
-
-config/awesome/buttons.lua,375
-function buttons.taglist()buttons.taglist5,82
-    awful.button({ }, 1, function(t) t:view_only() end),t7,138
-    awful.button({ }, 4, function(t) awful.tag.viewnext(t.screen) end),t19,512
-    awful.button({ }, 5, function(t) awful.tag.viewprev(t.screen) end)t20,584
-function buttons.tasklist()buttons.tasklist25,667
-function buttons.client()buttons.client49,1265
-
-config/awesome/clientkeys.lua,54
-function clientkeys.keys(modkey)clientkeys.keys4,84
-
-config/awesome/gizmos.lua,998
-function gizmos.blanktext ()gizmos.blanktext7,151
-function gizmos.showtext (t)gizmos.showtext17,348
-function gizmos.sep(width)gizmos.sep27,545
-function gizmos.update(prefix, suffix, mincount)gizmos.update35,698
-function gizmos.aur(prefix, suffix)gizmos.aur52,1166
-function gizmos.batcap(prefix, suffix)gizmos.batcap66,1518
-function gizmos.batstat(prefix, suffix)gizmos.batstat92,2235
-function gizmos.ip(prefix, suffix)gizmos.ip126,3298
-    return awful.widget.watch("ip --color=never addr show", 60, function(w, out)--color133,3441
-function gizmos.ssid(wlan, prefix, suffix)gizmos.ssid139,3656
-function gizmos.changeNotify(cond1, cond2, title, text )gizmos.changeNotify156,4144
-function gizmos.volume(prefix, suffix, showdb)gizmos.volume164,4332
-function gizmos.dbox(prefix, suffix)gizmos.dbox190,5127
-function gizmos.date(format, prefix, suffix)gizmos.date212,5753
-function gizmos.taglist(s)gizmos.taglist226,6104
-function gizmos.tasklist(s)gizmos.tasklist234,6285
-
-config/awesome/globalkeys.lua,138
-function globalkeys.keys(modkey)globalkeys.keys6,120
-function globalkeys.tagkeys(globalkeys, modkey, index)globalkeys.tagkeys132,5835
-
-config/awesome/rc.lua,55
-local function set_wallpaper(s)set_wallpaper110,3588
-
-config/awesome/rules.lua,117
-function rules.one()rules.one4,49
-function rules.two()rules.two22,745
-function rules.three()rules.three42,1528
-
-config/awesome/xresources/assets.lua,0
-
-config/awesome/xresources/theme.lua,115
-local function darker(color_value, darker_n)darker72,2206
-theme.wallpaper = function(s)theme.wallpaper133,4199
-
-config/colors/3024_light.h,347
-const char *colorname[] = {colorname2,57
-unsigned int defaultfg = 257;defaultfg33,852
-unsigned int defaultbg = 256;defaultbg34,882
-unsigned int defaultcs = 257;defaultcs35,912
-unsigned int defaultrcs = 256;defaultrcs36,942
-unsigned int defaultitalic = 7;defaultitalic43,1142
-unsigned int defaultunderline = 7;defaultunderline44,1174
-
-config/colors/ashes_dark.h,347
-const char *colorname[] = {colorname2,57
-unsigned int defaultfg = 257;defaultfg33,852
-unsigned int defaultbg = 256;defaultbg34,882
-unsigned int defaultcs = 257;defaultcs35,912
-unsigned int defaultrcs = 256;defaultrcs36,942
-unsigned int defaultitalic = 7;defaultitalic43,1142
-unsigned int defaultunderline = 7;defaultunderline44,1174
-
-config/colors/atelierdune_light.h,347
-const char *colorname[] = {colorname2,57
-unsigned int defaultfg = 257;defaultfg33,852
-unsigned int defaultbg = 256;defaultbg34,882
-unsigned int defaultcs = 257;defaultcs35,912
-unsigned int defaultrcs = 256;defaultrcs36,942
-unsigned int defaultitalic = 7;defaultitalic43,1142
-unsigned int defaultunderline = 7;defaultunderline44,1174
-
-config/colors/atelierlakeside_dark.h,347
-const char *colorname[] = {colorname2,57
-unsigned int defaultfg = 257;defaultfg33,852
-unsigned int defaultbg = 256;defaultbg34,882
-unsigned int defaultcs = 257;defaultcs35,912
-unsigned int defaultrcs = 256;defaultrcs36,942
-unsigned int defaultitalic = 7;defaultitalic43,1142
-unsigned int defaultunderline = 7;defaultunderline44,1174
-
-config/colors/atelierseaside_dark.h,347
-const char *colorname[] = {colorname2,57
-unsigned int defaultfg = 257;defaultfg33,852
-unsigned int defaultbg = 256;defaultbg34,882
-unsigned int defaultcs = 257;defaultcs35,912
-unsigned int defaultrcs = 256;defaultrcs36,942
-unsigned int defaultitalic = 7;defaultitalic43,1142
-unsigned int defaultunderline = 7;defaultunderline44,1174
-
-config/colors/baskerville_eldorado_dark.h,347
-const char *colorname[] = {colorname2,57
-unsigned int defaultfg = 257;defaultfg33,852
-unsigned int defaultbg = 256;defaultbg34,882
-unsigned int defaultcs = 257;defaultcs35,912
-unsigned int defaultrcs = 256;defaultrcs36,942
-unsigned int defaultitalic = 7;defaultitalic43,1142
-unsigned int defaultunderline = 7;defaultunderline44,1174
-
-config/colors/baskerville_lost_woods.h,347
-const char *colorname[] = {colorname2,57
-unsigned int defaultfg = 257;defaultfg33,852
-unsigned int defaultbg = 256;defaultbg34,882
-unsigned int defaultcs = 257;defaultcs35,912
-unsigned int defaultrcs = 256;defaultrcs36,942
-unsigned int defaultitalic = 7;defaultitalic43,1142
-unsigned int defaultunderline = 7;defaultunderline44,1174
-
-config/colors/black.h,347
-const char *colorname[] = {colorname2,57
-unsigned int defaultfg = 257;defaultfg33,852
-unsigned int defaultbg = 256;defaultbg34,882
-unsigned int defaultcs = 257;defaultcs35,912
-unsigned int defaultrcs = 256;defaultrcs36,942
-unsigned int defaultitalic = 7;defaultitalic43,1142
-unsigned int defaultunderline = 7;defaultunderline44,1174
-
-config/colors/codeschool.h,347
-const char *colorname[] = {colorname3,58
-unsigned int defaultfg = 257;defaultfg34,853
-unsigned int defaultbg = 256;defaultbg35,883
-unsigned int defaultcs = 257;defaultcs36,913
-unsigned int defaultrcs = 256;defaultrcs37,943
-unsigned int defaultitalic = 7;defaultitalic44,1143
-unsigned int defaultunderline = 7;defaultunderline45,1175
-
-config/colors/customblack.h,347
-const char *colorname[] = {colorname2,57
-unsigned int defaultfg = 257;defaultfg33,852
-unsigned int defaultbg = 256;defaultbg34,882
-unsigned int defaultcs = 257;defaultcs35,912
-unsigned int defaultrcs = 256;defaultrcs36,942
-unsigned int defaultitalic = 7;defaultitalic43,1142
-unsigned int defaultunderline = 7;defaultunderline44,1174
-
-config/colors/darkblue.h,340
-static const char *colorname[] = {colorname2,57
-static unsigned int defaultfg = 257;defaultfg33,859
-static unsigned int defaultbg = 256;defaultbg34,896
-static unsigned int defaultcs = 257;defaultcs35,933
-static unsigned int defaultitalic = 7;defaultitalic42,1139
-static unsigned int defaultunderline = 7;defaultunderline43,1178
-
-config/colors/greyscale.h,368
-static const char *colorname[] = {colorname2,57
-unsigned int defaultfg = 257;defaultfg33,859
-unsigned int defaultbg = 256;defaultbg34,889
-unsigned int defaultcs = 257;defaultcs35,919
-unsigned int defaultrcs = 257;defaultrcs36,949
-static unsigned int defaultitalic = 7;defaultitalic43,1149
-static unsigned int defaultunderline = 7;defaultunderline44,1188
-
-config/colors/londontube_dark.h,347
-const char *colorname[] = {colorname2,57
-unsigned int defaultfg = 257;defaultfg33,852
-unsigned int defaultbg = 256;defaultbg34,882
-unsigned int defaultcs = 257;defaultcs35,912
-unsigned int defaultrcs = 256;defaultrcs36,942
-unsigned int defaultitalic = 7;defaultitalic43,1142
-unsigned int defaultunderline = 7;defaultunderline44,1174
-
-config/colors/material.h,347
-const char *colorname[] = {colorname2,57
-unsigned int defaultfg = 257;defaultfg33,852
-unsigned int defaultbg = 256;defaultbg34,882
-unsigned int defaultcs = 257;defaultcs35,912
-unsigned int defaultrcs = 256;defaultrcs36,942
-unsigned int defaultitalic = 7;defaultitalic43,1142
-unsigned int defaultunderline = 7;defaultunderline44,1174
-
-config/colors/ocean_dark.h,347
-const char *colorname[] = {colorname2,57
-unsigned int defaultfg = 257;defaultfg33,852
-unsigned int defaultbg = 256;defaultbg34,882
-unsigned int defaultcs = 257;defaultcs35,912
-unsigned int defaultrcs = 256;defaultrcs36,942
-unsigned int defaultitalic = 7;defaultitalic43,1142
-unsigned int defaultunderline = 7;defaultunderline44,1174
-
-config/colors/paraiso_dark.h,347
-const char *colorname[] = {colorname2,57
-unsigned int defaultfg = 257;defaultfg33,852
-unsigned int defaultbg = 256;defaultbg34,882
-unsigned int defaultcs = 257;defaultcs35,912
-unsigned int defaultrcs = 256;defaultrcs36,942
-unsigned int defaultitalic = 7;defaultitalic43,1142
-unsigned int defaultunderline = 7;defaultunderline44,1174
-
-config/colors/purple.h,347
-const char *colorname[] = {colorname2,57
-unsigned int defaultfg = 257;defaultfg33,852
-unsigned int defaultbg = 256;defaultbg34,882
-unsigned int defaultcs = 257;defaultcs35,912
-unsigned int defaultrcs = 256;defaultrcs36,942
-unsigned int defaultitalic = 7;defaultitalic43,1142
-unsigned int defaultunderline = 7;defaultunderline44,1174
-
-config/colors/slateblue.h,340
-static const char *colorname[] = {colorname2,57
-static unsigned int defaultfg = 257;defaultfg33,859
-static unsigned int defaultbg = 256;defaultbg34,896
-static unsigned int defaultcs = 257;defaultcs35,933
-static unsigned int defaultitalic = 7;defaultitalic42,1139
-static unsigned int defaultunderline = 7;defaultunderline43,1178
-
-config/colors/solarized_dark.h,347
-const char *colorname[] = {colorname2,57
-unsigned int defaultfg = 257;defaultfg33,852
-unsigned int defaultbg = 256;defaultbg34,882
-unsigned int defaultcs = 257;defaultcs35,912
-unsigned int defaultrcs = 256;defaultrcs36,942
-unsigned int defaultitalic = 7;defaultitalic43,1142
-unsigned int defaultunderline = 7;defaultunderline44,1174
-
-config/colors/tartan.h,347
-const char *colorname[] = {colorname2,57
-unsigned int defaultfg = 257;defaultfg33,852
-unsigned int defaultbg = 256;defaultbg34,882
-unsigned int defaultcs = 257;defaultcs35,912
-unsigned int defaultrcs = 256;defaultrcs36,942
-unsigned int defaultitalic = 7;defaultitalic43,1142
-unsigned int defaultunderline = 7;defaultunderline44,1174
-
-config/colors/tartan.sh,0
-
-config/dwm/autostart.sh,85
-check_process(){check_process10,158
-set_screen_layout() {set_screen_layout17,231
-
-config/dwm/scripts/bg.sh,0
-
-config/dwm/scripts/brightdown,0
-
-config/dwm/scripts/brightup,0
-
-config/dwm/scripts/screenshot,0
-
-config/dwm/scripts/termcmd,0
-
-config/emacs/init.el,0
-
-config/fehbg,0
-
-config/git/template/hooks/ctags,0
-
-config/git/template/hooks/post-checkout,0
-
-config/git/template/hooks/post-commit,0
-
-config/git/template/hooks/post-merge,0
-
-config/gtk-2.0/gtkfilechooser.ini,406
-[Filechooser Settings]Filechooser Settings1,0
-LocationMode=path-barLocationMode2,23
-ShowHidden=falseShowHidden3,45
-ShowSizeColumn=trueShowSizeColumn4,62
-GeometryX=1101GeometryX5,82
-GeometryY=590GeometryY6,97
-GeometryWidth=998GeometryWidth7,111
-GeometryHeight=585GeometryHeight8,129
-SortColumn=nameSortColumn9,148
-SortOrder=ascendingSortOrder10,164
-StartupMode=recentStartupMode11,184
-
-config/mpd/mpd.conf,0
-
-config/mutt/view_attachment.sh,0
-
-config/picom/picom.conf,0
-
-config/screenlayout/default.sh,0
-
-config/screenlayout/left.sh,0
-
-config/screenlayout/right.sh,0
-
-config/screenlayout/single.sh,0
-
-config/screenlayout/work.sh,0
-
-config/tmux.d/django,0
-
-config/tmux.d/dots,0
-
-config/tmux.d/lara,0
-
-config/tmux.d/mail,0
-
-config/tmux.d/ns,0
-
-config/tmux.d/tmux,0
-
-config/tmux.d/tmux.conf,722
-bind -r C-h select-window -t :-t32,761
-bind -r C-l select-window -t :+t33,793
-bind S command-prompt -p 'save history to filename:' -I '~/tmux.history' 'capture-pane -S -32768save history to filename44,1148
-set-option -g status-style "fg=colour8 bright"fg83,2262
-set-window-option -g window-status-current-style fg=colour16,bg=colour8style fg88,2370
-set-option -g window-status-activity-style fg=colour1,bg=defaultstyle fg90,2500
-set-option -g pane-border-style fg=colour0style fg93,2580
-set-option -g pane-active-border-style fg=colour2style fg94,2623
-set-option -g message-style fg=colour1,bg=colour16style fg97,2689
-set-window-option -g window-status-bell-style fg=colour9,bg=defaultstyle fg107,2929
-
-config/tmux.d/vue,0
-
-config/tmux.d/wp,0
-
-config/zsh/aliases/aliases.zsh,2968
-alias d="dirs -v"d7,163
-alias mutt="mutt -F $HOME/.config/mutt/muttrc"mutt10,201
-alias m="mutt -F $HOME/.config/mutt/muttrc"m11,248
-alias h="history"h12,292
-alias py="python"py13,310
-alias push="git push -u origin HEAD"push15,361
-alias pull="git pull --rebase"pull16,398
-alias j="jobs"j17,429
-alias vi="$EDITOR"vi18,444
-alias vim="$EDITOR"vim19,463
-alias v="$EDITOR"v20,483
-alias e="$EDITOR"e22,522
-alias v.="$EDITOR ."v23,540
-alias gvim="$EDITOR"gvim24,561
-alias oo="nohup xdg-open . > /dev/null &"oo25,582
-alias t='tmux't26,624
-alias bc='bc -l'bc28,655
-alias getmail="$HOME/bin/getallmail"getmail29,672
-alias sudo='sudo 'sudo32,750
-function vimrc() {vimrc35,815
-alias cp="cp -rv"cp40,900
-alias rm="rm -rv"rm41,918
-alias mv='mv -v'mv42,936
-alias speedtest="wget -O /dev/null \speedtest45,977
-alias wget="wget -c --no-check-certificate"wget47,1074
-alias l="ls -Fl ${colorflag}"l62,1429
-alias ls-a="ls -Fa ${colorflag}"ls-a63,1459
-alias la="ls -Fla ${colorflag}"la65,1555
-alias ll="ls -Fl ${colorflag}"ll66,1587
-alias lsd='ls -Fl ${colorflag} | grep "^d"'lsd68,1642
-alias ls="command ls -F ${colorflag}"ls70,1721
-alias maxvol="amixer -c 0 -- set Master 100%"maxvol74,1789
-alias headphones="amixer -c 0 -- set Master 45%"headphones75,1835
-alias mute="amixer -c 0 -- set Master mute"mute76,1884
-alias unmute="amixer -c 0 -- set Master on"unmute77,1928
-alias curl="curl -L --compressed"curl81,2012
-alias whois="whois -h whois-servers.net"whois83,2071
-alias rip="dig +short myip.opendns.com @resolver1.opendns.com"rip84,2112
-alias ip="ip --color=auto"ip85,2175
-alias urlencode='python2 -c "import sys, urllib as ul; print ul.quote_plus(sys.argv[1]);"'urlencode90,2299
-alias bell="cvlc --play-and-exit $HOME/.config/sounds/beep.mp3 2> /dev/null; tput bel"bell93,2512
-alias less="less -N"less94,2599
-alias tmux="tmux -f $XDG_CONFIG_HOME/tmux.d/tmux.conf"tmux97,2635
-alias tkill="s tmux; tmux kill-session -t"tkill98,2690
-alias tkills="tmux kill-server"tkills99,2733
-alias tns="tmux new-session"tns100,2765
-alias tls="tmux ls"tls101,2794
-alias poweroff="systemctl poweroff"poweroff104,2846
-alias reboot="systemctl reboot"reboot105,2882
-alias sleep="systemctl suspend"sleep106,2914
-alias q="exit"q109,2973
-alias mypw="pwgen -c -n -s -y 16 -1"mypw110,2988
-alias ndate="date \"+%d-%m-%y\""ndate111,3025
-alias rl="exec zsh -l"rl113,3085
-alias zconfig="$EDITOR $ZDOTDIR/zshrc"zconfig114,3108
-alias g="git"g117,3169
-alias gca="git commit --all --verbose"gca118,3183
-alias gco="git checkout"gco119,3222
-alias gs="git status --short"gs120,3247
-alias -g bg="& disown"-g123,3303
-alias dc='docker-compose'dc126,3345
-alias drp='docker-compose exec php-fpm'drp127,3371
-alias drc='docker-compose exec'drc128,3411
-alias dupd='docker-compose up -d'dupd129,3443
-alias dupbd='docker-compose up -d --build'dupbd130,3477
-alias dud='docker-compose down'dud131,3520
-
-config/zsh/aliases/darwin.zsh,2658
-alias flush="dscacheutil -flushcache && killall -HUP mDNSResponder"flush3,90
-alias purge="sudo purge"purge4,158
-alias toimg="hdiutil convert -format UDRW -o "toimg5,183
-alias dnd="launchctl unload -w /System/Library/LaunchAgents/com.apple.notificationcenterui.plistdnd6,230
-alias udnd="launchctl load -w /System/Library/LaunchAgents/com.apple.notificationcenterui.plist udnd7,341
-alias poweroff="emptytrash; sudo shutdown -h now"poweroff8,451
-alias cmdtocb='history | tail -n 1 | awk '"'"'{for(i=2;i<NF;i++)printf "%s",$i OFS; if (NF) princmdtocb9,501
-alias ql="qlmanage -p"ql10,637
-alias lsblk='diskutil list'lsblk11,660
-alias eject="diskutil eject"eject12,688
-alias rmspot="sudo rm -rfv ~/Library/Caches/com.spotify.client/Storage/"rmspot13,717
-alias csleep="sudo shutdown -s now"csleep14,790
-alias stfu="osascript -e 'set volume output muted true'"stfu17,933
-alias shutup="osascript -e 'set volume output muted true'"shutup18,990
-alias louder="osascript -e 'set volume 7'"louder19,1049
-alias headphones="osascript -e 'set volume 2'"headphones20,1092
-alias bell="tput bel"bell21,1139
-alias emptytrash="sudo rm -rfv /Volumes/*/.Trashes; sudo rm -rfv ~/.Trash; sudo rm -rfv /privateemptytrash23,1228
-alias show="defaults write com.apple.finder AppleShowAllFiles -bool true && killall Finder"show26,1402
-alias hide="defaults write com.apple.finder AppleShowAllFiles -bool false && killall Finder"hide27,1494
-alias hidedesktop="defaults write com.apple.finder CreateDesktop -bool false && killall Finder"hidedesktop29,1642
-alias mergepdf='/System/Library/Automator/Combine\ PDF\ Pages.action/Contents/Resources/join.py'mergepdf32,1808
-alias spotoff="sudo mdutil -a -i off"spotoff34,1925
-alias spoton="sudo mdutil -a -i on"spoton36,1982
-alias plistbuddy="/usr/libexec/PlistBuddy"plistbuddy38,2089
-alias lscleanup="/System/Library/Frameworks/CoreServices.framework/Frameworks/LaunchServices.fralscleanup40,2207
-command -v md5sum > /dev/null || alias md5sum="md5"md5sum42,2450
-command -v sha1sum > /dev/null || alias sha1sum="shasum"sha1sum44,2557
-alias sniff="sudo tcpdump -s 0 -A -i en1 port 80"sniff46,2634
-alias httpdump="sudo tcpdump -i en1 -n -s 0 -w - | grep -a -o -E \"Host\: .*|GET \/.*\""httpdump47,2684
-alias localip="ipconfig getifaddr en1"localip48,2773
-alias ips="ifconfig -a | grep -o 'inet6\? \(\([0-9]\+\.[0-9]\+\.[0-9]\+\.[0-9]\+\)\|[a-fA-F0-9:]ips49,2812
-function note() {note55,3069
-    osascript >/dev/null <<EOFEOF63,3235
-function remind() {remind75,3538
-    osascript >/dev/null <<EOFEOF82,3659
-function unquarantine() {unquarantine92,3890
-function tw(){tw98,4086
-
-dwm.config.h,3987
-static const unsigned int borderpx  = 2;        /* border pixel of windows */borderpx4,76
-static const unsigned int snap      = 32;       /* snap pixel */snap5,154
-static const int showbar            = 0;        /* 0 means no bar */showbar6,219
-static const int topbar             = 1;        /* 0 means bottom bar */topbar7,288
-static const char *fonts[]          = { "mono:size=9.5" };fonts8,361
-static const char dmenufont[]       = "mono:size=10";dmenufont9,420
-static const char border[] = "#2b303b";border11,475
-static const char sel_border[] = "#8fa1b3";sel_border12,515
-static const char background[] = "#2b303b";background14,560
-static const char sel_background[] = "#8fa1b3";sel_background15,604
-static const char foreground[] = "#c0c5ce";foreground17,653
-static const char sel_foreground[] = "#2b303b";sel_foreground18,697
-static const char *colors[][3]      = {colors19,745
-static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };tags26,981
-static const Rule rules[] = {rules28,1059
-static const float mfact     = 0.55; /* factor of master area size [0.05..0.95] */mfact59,3051
-static const int nmaster     = 1;    /* number of clients in master area */nmaster60,3134
-static const int resizehints = 0;    /* 1 means respect size hints in tiled resizals */resizehints61,3210
-static const Layout layouts[] = {layouts63,3299
-#define MODKEY MODKEY72,3566
-#define TAGKEYS(TAGKEYS73,3590
-#define SHCMD(SHCMD80,4020
-static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */dmenumon83,4110
-static const char *dmenucmd[] = { "dmenu_run", "-p", ">>", "-fn", dmenufont, "-nb", background, dmenucmd84,4193
-static const char *passmenu[] = { "passmenu", "-p", "*>", "-fn", dmenufont, "-nb", background, "passmenu85,4374
-static const char *termcmd[]  = { "/home/jonathan/.config/dwm/scripts/termcmd", NULL };termcmd86,4554
-static const char *emacs[]  = { "/home/jonathan/bin/emacs", ".", NULL };emacs87,4642
-static const char *browser[]  = { "surf", "start.duckduckgo.com" };browser88,4715
-static const char *chrome[]  = { "chromium", NULL};chrome89,4783
-static const char *chrome_incognito[]  = { "chromium", "--incognito", NULL };chrome_incognito90,4835
-static const char *firefox[]  = { "firefox", "--new-tab", "https://start.duckduckgo.com/lite", Nfirefox91,4913
-static const char *firefox_private[]  = { "firefox", "-private-window", NULL};firefox_private92,5015
-static const char *printscreen[]  = { "/home/jonathan/.config/dwm/scripts/screenshot", NULL};printscreen93,5094
-static const char *poweroff[]  = { "systemctl", "poweroff", NULL};poweroff94,5188
-static const char *reboot[]  = { "systemctl", "reboot", NULL};reboot95,5255
-static const char *volup[]  = { "amixer", "-c", "0",  "--",  "set",  "Master",  "1+", NULL };volup96,5318
-static const char *voldown[]  = { "amixer", "-c", "0",  "--",  "set",  "Master",  "1-", NULL };voldown97,5412
-static const char *volmute[]  = { "amixer", "-c", "0",  "--",  "set",  "Master",  "0", NULL };volmute98,5508
-static const char *brightup[]  = { "/home/jonathan/.config/dwm/scripts/brightup", NULL };brightup99,5603
-static const char *brightdown[]  = { "/home/jonathan/.config/dwm/scripts/brightdown", NULL };brightdown100,5693
-static const char *killscreensaver[]  = {"pkill", "xscreensaver", NULL };killscreensaver101,5787
-static const char *attachmon[]  = {"/home/jonathan/.config/screenlayout/work.sh", NULL};attachmon103,5940
-static const char *help[]  = {"st", "-e","bash", "-c", "cat ~/.config/help & read", NULL};help104,6029
-#define  XF86AudioMute XF86AudioMute106,6121
-#define  XF86AudioLowerVolume XF86AudioLowerVolume107,6164
-#define  XF86AudioRaiseVolume XF86AudioRaiseVolume108,6207
-#define  XF86MonBrightnessUp XF86MonBrightnessUp109,6250
-#define  XF86MonBrightnessDown XF86MonBrightnessDown110,6293
-static Key keys[] = {keys112,6337
-static Button buttons[] = {buttons168,10475
-
-githooks/ctags,0
-
-githooks/post-checkout,0
-
-githooks/post-commit,0
-
-githooks/post-merge,0
-
-githooks/pre-commit,0
-
-init.sh,320
-dotfiles() {dotfiles7,123
-dotdirs() {dotdirs30,833
-configdir() {configdir50,1437
-githooks() {githooks72,2134
-bindir() {bindir78,2253
-mkrepodir() {mkrepodir89,2508
-st() {st96,2599
-dwm() {dwm121,3164
-setshell() {setshell146,3738
-cron() {cron152,3847
-clean() {clean170,4218
-    cat <<EOFEOF178,4360
-
-st.config.h,1942
-static char *font = "mono:size=10.5:antialias=true:autohint=true";font8,160
-static int borderpx = 15;borderpx9,227
-static char *shell = "/bin/sh";shell19,477
-char *utmp = NULL;utmp20,509
-char *stty_args = "stty raw pass8 nl -echo -iexten -cstopb 38400";stty_args21,528
-char *vtiden = "\033[?6c";vtiden24,651
-static float cwscale = 1.0;cwscale27,730
-static float chscale = 1.0;chscale28,758
-wchar_t *worddelimiters = L" ";worddelimiters35,863
-static unsigned int doubleclicktimeout = 300;doubleclicktimeout38,939
-static unsigned int tripleclicktimeout = 600;tripleclicktimeout39,985
-int allowaltscreen = 1;allowaltscreen42,1050
-static unsigned int xfps = 120;xfps45,1139
-static unsigned int actionfps = 30;actionfps46,1171
-static unsigned int blinktimeout = 800;blinktimeout52,1306
-static unsigned int cursorthickness = 2;cursorthickness57,1396
-static int bellvolume = 0;bellvolume63,1528
-char *termname = "st-256color";termname66,1581
-unsigned int tabspaces = 8;tabspaces83,2055
-static unsigned int cursorshape = 2;cursorshape93,2252
-static unsigned int cols = 80;cols99,2334
-static unsigned int rows = 24;rows100,2365
-static unsigned int mouseshape = XC_xterm;mouseshape105,2452
-static unsigned int mousefg = 7;mousefg106,2495
-static unsigned int mousebg = 0;mousebg107,2528
-static unsigned int defaultattr = 11;defaultattr113,2685
-static MouseShortcut mshortcuts[] = {mshortcuts119,2823
-#define MODKEY MODKEY127,3192
-#define TERMMOD TERMMOD128,3216
-static Shortcut shortcuts[] = {shortcuts130,3257
-static KeySym mappedkeys[] = { -1 };mappedkeys175,5096
-static uint ignoremod = Mod2Mask|XK_SWITCH_MOD;ignoremod181,5285
-static uint forceselmod = ShiftMask;forceselmod188,5528
-static uint forcemousemod = ShiftMask;forcemousemod195,5767
-static Key key[] = {key202,5936
-static uint selmasks[] = {selmasks422,20262
-static char ascii_printable[] =ascii_printable430,20433
-
-uninstall.sh,0
-
-vim/after/ftplugin/gitcommit.vim,0
-
-vim/after/ftplugin/javascript.vim,148
-nnoremap <f5> :call functions#CompileJS()<cr><f5>1,0
-let b:path = expand('%:p')b:path3,74
-let b:pathlist = split( b:path, '/')b:pathlist4,101
-
-vim/after/ftplugin/js.vim,147
-nnoremap <f5> :call functions#CompileJS()<cr><f5>1,0
-let b:path = expand('%:p')b:path3,47
-let b:pathlist = split( b:path, '/')b:pathlist4,74
-
-vim/after/ftplugin/lua.vim,0
-
-vim/after/ftplugin/mail.vim,0
-
-vim/after/ftplugin/markdown.vim,0
-
-vim/after/ftplugin/php.vim,262
-let b:ale_linters=['phpcs', 'php']b:ale_linters1,0
-let g:ale_php_phpcs_standard='PSR2'g:ale_php_phpcs_standard2,35
-function! Runtests()Runtests3,71
-nnoremap <F5> :wa<cr>:!( arclear > /dev/null 2>&1) && ./vendor/bin/phpunit $(find ./tests/Unit -<F5>8,169
-
-vim/after/ftplugin/sql.vim,0
-
-vim/after/ftplugin/text.vim,0
-
-vim/after/ftplugin/vim.vim,0
-
-vim/after/ftplugin/vue.vim,148
-nnoremap <f5> :call functions#CompileJS()<cr><f5>1,0
-let b:path = expand('%:p')b:path3,74
-let b:pathlist = split( b:path, '/')b:pathlist4,101
-
-vim/after/ftplugin/zsh.vim,0
-
-vim/after/plugin/fzf_mappings.vim,138
-nnoremap <leader>f :Files<cr><leader>f7,73
-nnoremap <leader>b :Buffers<cr><leader>b8,103
-nnoremap <leader>t :Tags<cr><leader>t9,135
-
-vim/autoload/findtags.vim,155
-function! findtags#Findtags()findtags#Findtags1,0
-    let g:path = split( path, '/' )[:index]g:path5,103
-    function! Recurse(p, index)Recurse6,147
-
-vim/autoload/functions.vim,774
-function! functions#LineEndings()functions#LineEndings2,22
-function! functions#Scratch()functions#Scratch10,152
-function! functions#Maximize()functions#Maximize19,335
-function! functions#WrapToggle()functions#WrapToggle25,473
-function! functions#InsertTabWrapper()functions#InsertTabWrapper35,643
-function! functions#StatusToggle()functions#StatusToggle47,910
-function! functions#Save()functions#Save56,1067
-function! functions#CompileJS()functions#CompileJS63,1247
-function! functions#NumberToggle()functions#NumberToggle71,1526
-function! functions#FoldColumnToggle()functions#FoldColumnToggle95,2064
-        let g:FoldColumn = 1g:FoldColumn97,2134
-        let g:FoldColumn = 0g:FoldColumn101,2230
-        let g:FoldColumn = 1g:FoldColumn104,2300
-
-vim/autoload/git.vim,1150
-    let g:GitCloseWindowLimit = 4g:GitCloseWindowLimit2,37
-function! git#Cd()git#Cd4,77
-function! s:gitCloseWindow()s:gitCloseWindow14,401
-        let g:GitCloseWindowCount = g:GitCloseWindowCount + 1g:GitCloseWindowCount16,469
-        let g:GitCloseWindowCount = 0g:GitCloseWindowCount18,540
-        let g:GitCloseWindowCount = 0g:GitCloseWindowCount22,668
-function! s:closebuf()s:closebuf26,729
-function! git#CloseBuffer(one)git#CloseBuffer32,836
-function! s:termJob(job, rows)s:termJob36,902
-    let g:GitCloseWindowCount = 0g:GitCloseWindowCount38,955
-function! git#AddBuffer()git#AddBuffer47,1252
-function! git#AddAll()git#AddAll51,1350
-function! git#CommitM(msg)git#CommitM55,1437
-function! git#Commit()git#Commit59,1532
-function! git#CommitAll()git#CommitAll63,1607
-function! git#CommitAllM(msg)git#CommitAllM67,1686
-function! git#Log(number)git#Log71,1785
-function! git#Logv(number)git#Logv75,1919
-function! git#Status()git#Status79,2016
-function! git#Push()git#Push83,2095
-function! git#Pull()git#Pull87,2170
-function! git#Checkout(buffer)git#Checkout91,2245
-function! git#Diff()git#Diff95,2343
-
-vim/autoload/pack.vim,1490
-    let s:optpath = $HOME.'/.config/nvim/pack/vendor/opt's:optpath3,65
-    let s:startpath = $HOME.'/.config/nvim/pack/vendor/start's:startpath4,123
-    let s:optpath = $HOME.'/.vim/pack/vendor/opt's:optpath7,232
-    let s:startpath = $HOME.'/.vim/pack/vendor/start's:startpath8,282
-function! s:jobstart(job)s:jobstart10,342
-function! s:sanity_check()s:sanity_check18,500
-function! s:read_start_dir()s:read_start_dir34,830
-function! s:read_opt_dir()s:read_opt_dir39,926
-function! s:mkurl(plug)s:mkurl43,1017
-let s:start_plugs = []s:start_plugs54,1379
-function! s:install_start_plugins(plug)s:install_start_plugins55,1402
-let s:opt_plugs = []s:opt_plugs66,1833
-function! s:install_opt_plugins(plug)s:install_opt_plugins68,1855
-function! s:clean_plugins()s:clean_plugins79,2280
-function! s:update_one(plug)s:update_one125,3354
-function! s:update_all()s:update_all132,3532
-function! s:do_update()s:do_update161,4261
-        let g:VimPack_Update_Frequency = 30g:VimPack_Update_Frequency185,5336
-function! s:install_all()s:install_all190,5430
-function! pack#load()pack#load209,6048
-    command! -nargs=+ PlugOpt call s:install_opt_plugins(<f-args>)PlugOpt212,6159
-    command! -nargs=+ PlugStart call s:install_start_plugins(<f-args>)PlugStart213,6226
-    command! PlugInstall  call s:install_all()PlugInstall214,6297
-    command! PlugClean  call s:clean_plugins()PlugClean215,6344
-    command! PlugUpdate  call s:update_all()PlugUpdate216,6391
-
-vim/autoload/reload.vim,301
-function! reload#Reload(target)reload#Reload1,0
-    function! s:findfile(idx, val)s:findfile3,55
-function! reload#Completion(arglead, cmdline, cursorpos)reload#Completion21,558
-    function! s:completions(idx, value)s:completions23,646
-    function! s:filenames(key, value)s:filenames29,943
-
-vim/autoload/status.vim,447
-function! s:jobfunc(job, opts)s:jobfunc1,0
-function! status#Refresh()status#Refresh8,160
-function! status#Modified(one, two)status#Modified24,651
-function! status#Branch(one, two)status#Branch34,866
-function! status#Active()status#Active41,1035
-function! status#Inactive()status#Inactive59,1731
-function! status#Broken()status#Broken69,1979
-function! s:listbufs()s:listbufs79,2227
-function! status#Autocmd()status#Autocmd87,2382
-
-vim/colors/base16.vim,42
-let colors_name='base16'colors_name4,82
-
-vim/colors/muttclone-light.vim,76
-let     colors_name      =               "muttclone-light"colors_name4,53
-
-vim/colors/muttclone.vim,70
-let     colors_name      =               "muttclone"colors_name4,52
-
-vim/colors/portable.vim,44
-let colors_name='portable'colors_name4,42
-
-vim/init.vim,761
-let g:VimPack_Setup_Folders = ['after', 'autoload', 'backup', 'colors', 'doc', 'spell', 'swaps',g:VimPack_Setup_Folders14,313
-let g:VimPack_Auto_Install = 1g:VimPack_Auto_Install15,437
-let g:VimPack_Auto_Update = 1g:VimPack_Auto_Update16,468
-let g:AutoOmniComplete_tab = 1g:AutoOmniComplete_tab63,1634
-augroup extensionsextensions70,1768
-let g:ale_set_loclist = 0g:ale_set_loclist78,2042
-let g:ale_set_quickfix = 1g:ale_set_quickfix79,2068
-let g:ale_echo_msg_error_str = 'E'g:ale_echo_msg_error_str80,2095
-let g:ale_echo_msg_warning_str = 'W'g:ale_echo_msg_warning_str81,2130
-let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'g:ale_echo_msg_format82,2167
-let mapleader=","mapleader84,2229
-let g:NoAutoPairs = 1g:NoAutoPairs85,2247
-
-vim/plugin/autocmds.vim,30
-augroup defaultsdefaults1,0
-
-vim/plugin/commands.vim,206
-command! -nargs=1 -complete=customlist,reload#Completion Reload call reload#Reload('<args>')Reload1,0
-command! VReload source $MYVIMRCVReload2,93
-command! Scratch call functions#Scratch()Scratch3,126
-
-vim/plugin/findtags.vim,58
-command! FindTags :call findtags#Findtags()FindTags2,58
-
-vim/plugin/git.vim,801
-command! -nargs=1 GCommit call git#CommitM('<args>')GCommit1,0
-command! -nargs=0 GCommitAllV call git#CommitAll()GCommitAllV2,53
-command! -nargs=1 GCommitAll call git#CommitAllM('<args>')GCommitAll3,104
-command! -nargs=0 GCommitV call git#Commit()GCommitV4,163
-command! -nargs=1 GLog call git#Log('<args>')GLog5,208
-command! -nargs=1 GLogVerbose call git#Logv('<args>')GLogVerbose6,254
-command! -nargs=0 GStatus call git#Status()GStatus7,308
-command! -nargs=0 GPush call git#Push()GPush8,352
-command! -nargs=0 GPull call git#Pull()GPull9,392
-command! -nargs=0 GAdd call git#AddBuffer()GAdd10,432
-command! -nargs=0 GAddAll call git#AddAll()GAddAll11,476
-command! -nargs=1 GCheckout call git#Checkout('<args>')GCheckout12,520
-command! -nargs=0 GDiff call git#Diff()GDiff13,576
-
-vim/plugin/mappings.vim,1838
-noremap <left>  <Nop><left>2,21
-noremap <down>  <Nop><down>3,43
-noremap <up>    <Nop><up>4,65
-noremap <right> <Nop><right>5,87
-inoremap <left>  <Nop><left>6,109
-inoremap <down>  <Nop><down>7,132
-inoremap <up>    <Nop><up>8,155
-inoremap <right> <Nop><right>9,178
-inoremap <space><space> <Esc><space><space>12,227
-xnoremap <space><space> <Esc><space><space>13,257
-nnoremap <space><space> :call functions#Save()<cr><space><space>14,287
-nnoremap .<space> i<space><Esc>.<space>15,338
-cnoremap <expr> %% expand('%:h').'/'%%18,400
-nnoremap <C-w>t :vert term<cr><C-w>t28,624
-nnoremap <leader><space> :set hlsearch!<cr><leader><space>32,687
-nnoremap <leader><leader> <C-^><leader><leader>33,731
-nnoremap * :set hlsearch<cr>**34,763
-nnoremap # :set hlsearch<cr>##35,793
-nnoremap / :set hlsearch<cr>//36,823
-nnoremap <F1> :call functions#NumberToggle()<cr><F1>37,853
-nnoremap <F2> :call functions#WrapToggle()<cr><F2>38,902
-nnoremap <F3> :set list!<cr><F3>39,949
-nnoremap <F4> :call functions#StatusToggle()<cr><F4>40,978
-nnoremap <F6> :call functions#FoldColumnToggle()<cr><F6>41,1027
-nnoremap <C-w>m :call functions#Maximize()<cr><C-w>m42,1080
-nnoremap <leader>r :syn sync fromstart<cr><leader>r43,1127
-nnoremap >> V>gv>>44,1170
-nnoremap << V<gv<<45,1187
-nnoremap <leader>e :e **/*<leader>e46,1204
-nnoremap <leader>f :find **/*<leader>f47,1231
-nnoremap <leader>b :ls<cr>:b<leader>b48,1261
-xnoremap > >gv>57,1463
-xnoremap < <gv<58,1478
-cnoremap <C-a>  <Home><C-a>61,1534
-cnoremap <C-b>  <Left><C-b>62,1557
-cnoremap <C-f>  <Right><C-f>63,1580
-cnoremap <C-d>  <Delete><C-d>64,1604
-cnoremap <Esc>b <S-Left><Esc>b65,1629
-cnoremap <Esc>f <S-Right><Esc>f66,1654
-cnoremap <Esc>d <S-right><Delete><Esc>d67,1680
-cnoremap <C-e>  <End><C-e>68,1714
-nnoremap gs <nop>gs71,1768
-
-vim/plugin/matchchars.vim,919
-inoremap (  ()<Left>(5,82
-inoremap [  []<Left>[6,103
-inoremap {  {}<Left>{7,124
-inoremap <  <><Left><8,145
-inoremap [<CR> [<CR>]<C-o>O[<CR>9,166
-inoremap (<CR> (<CR>)<C-o>O(<CR>10,194
-inoremap {<CR> {<CR>}<C-o>O{<CR>11,222
-inoremap <expr> )  strpart(getline('.'), col('.')-1, 1) == ")" ? "\<Right>" : ")")12,250
-inoremap <expr> ]  strpart(getline('.'), col('.')-1, 1) == "]" ? "\<Right>": "]"]13,332
-inoremap <expr> }  strpart(getline('.'), col('.')-1, 1) == "}" ? "\<Right>" : "}"}14,413
-inoremap <expr> >  strpart(getline('.'), col('.')-1, 1) == ">" ? "\<Right>" : ">">15,495
-inoremap <expr> " strpart(getline('.'), col('.')-1, 1) == "\"" ? "\<Right>" : "\"\"\<Left>""16,577
-inoremap <expr> ' strpart(getline('.'), col('.')-1, 1) == "\'" ? "\<Right>" : "\'\'\<Left>"'17,669
-augroup abbrevsabbrevs20,827
-function! Backspace()Backspace27,1058
-inoremap <expr> <BS> Backspace()<BS>49,1873
-
-vim/plugin/settings.vim,103
-    nnoremap <C-q> :qa!<cr><C-q>76,1743
-    augroup diffdiff80,1823
-augroup statusstatus129,2833
-
-vim/plugin/wildignore.vim,0
-
-vim/vimrc,761
-let g:VimPack_Setup_Folders = ['after', 'autoload', 'backup', 'colors', 'doc', 'spell', 'swaps',g:VimPack_Setup_Folders14,313
-let g:VimPack_Auto_Install = 1g:VimPack_Auto_Install15,437
-let g:VimPack_Auto_Update = 1g:VimPack_Auto_Update16,468
-let g:AutoOmniComplete_tab = 1g:AutoOmniComplete_tab63,1634
-augroup extensionsextensions70,1768
-let g:ale_set_loclist = 0g:ale_set_loclist78,2042
-let g:ale_set_quickfix = 1g:ale_set_quickfix79,2068
-let g:ale_echo_msg_error_str = 'E'g:ale_echo_msg_error_str80,2095
-let g:ale_echo_msg_warning_str = 'W'g:ale_echo_msg_warning_str81,2130
-let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'g:ale_echo_msg_format82,2167
-let mapleader=","mapleader84,2229
-let g:NoAutoPairs = 1g:NoAutoPairs85,2247
-
-xsession,0
