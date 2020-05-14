@@ -40,7 +40,8 @@
   (projectile-mode +1))
 
 ;; Evil config
-
+;; evil-collection is picky and doesn't like this being set
+(setq evil-want-keybinding nil)
 (use-package evil
   :config
   (evil-mode 1)
@@ -81,7 +82,8 @@
   (my-leader-def
     :keymaps '( normal visual )
     "d" 'dired
-    "," 'evil-switch-windows-last-buffer
+    "," 'evil-switch-to-windows-last-buffer
+    "e" 'eval-buffer
     "f" 'projectile-find-file))
 
 (use-package evil-commentary
@@ -93,16 +95,25 @@
   (global-evil-surround-mode 1))
 
 ;; Completion settings
-(use-package auto-complete
+(use-package company
   :config
-  (global-auto-complete-mode 1))
+  (global-company-mode 1))
+
+(use-package lsp-mode
+  :hook (
+         (php-mode . lsp)
+         (web-mode . lsp)
+         (javascript-mode . lsp)
+         )
+  :commands ( lsp lsp-deferred )
+  (require 'lsp-clients))
 
 (use-package php-mode
   :mode "\\.php\\'"
   :interpreter "php"
   :config
   (ac-php-mode))
-(use-package ac-php)
+(use-package company-php)
 
 (use-package lua-mode
   :mode "\\.lua\\'")
@@ -158,20 +169,21 @@
     (add-to-list 'load-path "/usr/local/Cellar/mu/1.4.5/share/emacs/site-lisp/mu/mu4e" )
   (message "mu4e not found in /usr/local/Cellar/mu/1.4.5/share/emacs/site-lisp/mu/mu4e"))
 
-(require 'mu4e)
-(setq mu4e-maildir (expand-file-name "~/.config/mail/"))
+(add-hook 'after-init-hook
+          (lambda nil ""
+            (require 'mu4e)
+            (setq mu4e-maildir (expand-file-name "~/.config/mail/"))
 
-(setq mu4e-mu-binary (executable-find "mu"))
-(setq mu4e-drafts-folder "/Drafts")
-(setq mu4e-sent-folder   "/Sent")
-(setq mu4e-trash-folder  "/trash")
-(setq mu4e-sent-messages-behavior 'delete)
-(setq mu4e-get-mail-command (expand-file-name "~/bin/getallmail") )
-(setq user-mail-address "jonathandavis@gilsons.org"
-      user-full-name "Jonathan")
-(setq message-send-mail-function 'message-send-mail-with-sendmail
-      sendmail-program "/bin/msmtp")
-
+            (setq mu4e-mu-binary (executable-find "mu"))
+            (setq mu4e-drafts-folder "/Drafts")
+            (setq mu4e-sent-folder   "/Sent")
+            (setq mu4e-trash-folder  "/trash")
+            (setq mu4e-sent-messages-behavior 'delete)
+            (setq mu4e-get-mail-command (expand-file-name "~/bin/getallmail") )
+            (setq user-mail-address "jonathandavis@gilsons.org"
+                  user-full-name "Jonathan")
+            (setq message-send-mail-function 'message-send-mail-with-sendmail
+                  sendmail-program "/bin/msmtp")))
 ;; hooks
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 (add-hook 'before-save-hook (lambda nil "" (untabify (point-min) (point-max) )))
@@ -191,14 +203,13 @@
  '(custom-safe-themes
    (quote
     ("50d07ab55e2b5322b2a8b13bc15ddf76d7f5985268833762c500a90e2a09e7aa" "78c1c89192e172436dbf892bd90562bc89e2cc3811b5f9506226e735a953a9c6" default)))
- '(electric-pair-mode t)
  '(exec-path
    (quote
     ("/usr/local/bin" "/usr/bin" "/bin" "/usr/sbin" "/sbin" "/Applications/Emacs.app/Contents/MacOS/bin-x86_64-10_14" "/Applications/Emacs.app/Contents/MacOS/libexec-x86_64-10_14" "/Applications/Emacs.app/Contents/MacOS/libexec" "/Applications/Emacs.app/Contents/MacOS/bin")))
  '(flycheck-typescript-tslint-executable "~/.local/bin/tslint")
  '(package-selected-packages
    (quote
-    (evil-collection general projectile tss flycheck ivy typescript-mode evil-surround evil-commentary web-mode evil-vimish-fold vimish-fold magit ac-php vterm linum-relative shell-script-mode use-package markdown-mode evil-leader php-mode auto-complete evil-escape undo-tree evil)))
+    (base16-theme racket-mode lua-mode company-php lsp-mode company evil-collection general projectile tss flycheck ivy typescript-mode evil-surround evil-commentary web-mode evil-vimish-fold vimish-fold magit ac-php vterm linum-relative shell-script-mode use-package markdown-mode evil-leader php-mode auto-complete evil-escape undo-tree evil)))
  '(tab-width 4))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
