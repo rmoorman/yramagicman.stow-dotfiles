@@ -3,6 +3,7 @@
 ;;; a comment
 ;;; Code:
 
+
 ;; Hide mouse interface quickly
 (if (and (fboundp 'menu-bar-mode)
          (not (string= "darwin" system-type)))
@@ -99,14 +100,14 @@
   :config
   (global-company-mode 1))
 
-(use-package lsp-mode
-  :hook (
-         (php-mode . lsp)
-         (web-mode . lsp)
-         (javascript-mode . lsp)
-         )
-  :commands ( lsp lsp-deferred )
-  (require 'lsp-clients))
+;; (use-package lsp-mode
+;;   :hook (
+;;          (php-mode . lsp)
+;;          (web-mode . lsp)
+;;          (javascript-mode . lsp)
+;;          )
+;;   :commands '( lsp lsp-deferred )
+;;   (require 'lsp-clients))
 
 (use-package php-mode
   :mode "\\.php\\'"
@@ -193,6 +194,7 @@
 (setq make-backup-files nil)
 (global-hl-line-mode 1)
 
+(server-mode)
 ;; Added by Customize menu
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -217,3 +219,16 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
+
+(add-hook 'tty-setup-hook
+          (lambda nil
+            (when (not ( display-graphic-p ) )
+              (disable-theme 'base16-gruvbox-dark-pale))))
+
+(add-hook 'focus-in-hook
+          (lambda nil
+            (when ( display-graphic-p )
+              (enable-theme 'base16-gruvbox-dark-pale))))
+
+(provide 'init.el)
+;;; init.el ends here
