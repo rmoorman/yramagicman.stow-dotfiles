@@ -234,6 +234,7 @@ autoload -Uz add-zsh-hook
 autoload -Uz chpwd_recent_dirs cdr
 
 DIRSTACKFILE="${XDG_CACHE_HOME:-$HOME/.cache}/zsh/dirs"
+mkdir -p "${DIRSTACKFILE:h}"
 if [[ -f "$DIRSTACKFILE" ]] && (( ${#dirstack} == 0 )); then
     dirstack=("${(@f)"$(< "$DIRSTACKFILE")"}")
     # [[ -d "${dirstack[1]}" ]] && cd -- "${dirstack[1]}"
