@@ -1,8 +1,7 @@
-;;; package --- .emacs
+;; package --- .emacs
 ;;; Commentary:
 ;;; a comment
 ;;; Code:
-
 
 ;; Hide mouse interface quickly
 (if (and (fboundp 'menu-bar-mode)
@@ -28,6 +27,21 @@
 (unless (package-installed-p 'use-package)
   (package-refresh-contents)
   (package-install 'use-package))
+
+(defun ttymode nil
+  "Set tty things."
+  (interactive)
+  (when (not ( display-graphic-p ) )
+    (disable-theme 'base16-gruvbox-dark-pale)
+    (menu-bar-mode -1)
+    (set-background-color "black")))
+
+(defun ansiterm nil
+  "Set tty things."
+  (interactive)
+  (setq evil-vsplit-window-right 1)
+  (evil-window-vsplit)
+  (ansi-term (executable-find "zsh")))
 
 (eval-when-compile
   (require 'use-package))
@@ -67,7 +81,6 @@
 
 (use-package general
   :config
-
   (general-create-definer my-space-def
     ;; :prefix my-space
     :prefix "SPC")
@@ -85,6 +98,8 @@
     "d" 'dired
     "," 'evil-switch-to-windows-last-buffer
     "e" 'eval-buffer
+    "T" 'ttymode
+    "t" 'ansiterm
     "f" 'projectile-find-file))
 
 (use-package evil-commentary
@@ -96,9 +111,9 @@
   (global-evil-surround-mode 1))
 
 ;; Completion settings
-(use-package company
+(use-package auto-complete
   :config
-  (global-company-mode 1))
+  (global-autocomplete-mode 1))
 
 ;; (use-package lsp-mode
 ;;   :hook (
@@ -109,12 +124,15 @@
 ;;   :commands '( lsp lsp-deferred )
 ;;   (require 'lsp-clients))
 
+(use-package ac-php)
+
 (use-package php-mode
   :mode "\\.php\\'"
   :interpreter "php"
   :config
+  (auto-complete-mode t)
   (ac-php-mode))
-(use-package company-php)
+
 
 (use-package lua-mode
   :mode "\\.lua\\'")
@@ -154,6 +172,9 @@
   (custom-set-variables
    '(flycheck-typescript-tslint-executable "~/.local/bin/tslint"))
   (global-flycheck-mode))
+
+(setq jiralib-url "https://jira.maimioh.edu/")
+(use-package org-jira)
 
 ;; misc. packages
 (use-package magit)
@@ -201,17 +222,14 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(custom-enabled-themes (quote (base16-gruvbox-dark-pale)))
+ '(custom-enabled-themes '(base16-gruvbox-dark-pale))
  '(custom-safe-themes
-   (quote
-    ("50d07ab55e2b5322b2a8b13bc15ddf76d7f5985268833762c500a90e2a09e7aa" "78c1c89192e172436dbf892bd90562bc89e2cc3811b5f9506226e735a953a9c6" default)))
+   '("50d07ab55e2b5322b2a8b13bc15ddf76d7f5985268833762c500a90e2a09e7aa" "78c1c89192e172436dbf892bd90562bc89e2cc3811b5f9506226e735a953a9c6" default))
  '(exec-path
-   (quote
-    ("/usr/local/bin" "/usr/bin" "/bin" "/usr/sbin" "/sbin" "/Applications/Emacs.app/Contents/MacOS/bin-x86_64-10_14" "/Applications/Emacs.app/Contents/MacOS/libexec-x86_64-10_14" "/Applications/Emacs.app/Contents/MacOS/libexec" "/Applications/Emacs.app/Contents/MacOS/bin")))
+   '("/usr/local/bin" "/usr/bin" "/bin" "/usr/sbin" "/sbin" "/Applications/Emacs.app/Contents/MacOS/bin-x86_64-10_14" "/Applications/Emacs.app/Contents/MacOS/libexec-x86_64-10_14" "/Applications/Emacs.app/Contents/MacOS/libexec" "/Applications/Emacs.app/Contents/MacOS/bin"))
  '(flycheck-typescript-tslint-executable "~/.local/bin/tslint")
  '(package-selected-packages
-   (quote
-    (base16-theme racket-mode lua-mode company-php lsp-mode company evil-collection general projectile tss flycheck ivy typescript-mode evil-surround evil-commentary web-mode evil-vimish-fold vimish-fold magit ac-php vterm linum-relative shell-script-mode use-package markdown-mode evil-leader php-mode auto-complete evil-escape undo-tree evil)))
+   '(org-jira base16-theme racket-mode lua-mode company-php lsp-mode company evil-collection general projectile tss flycheck ivy typescript-mode evil-surround evil-commentary web-mode evil-vimish-fold vimish-fold magit ac-php vterm linum-relative shell-script-mode use-package markdown-mode evil-leader php-mode auto-complete evil-escape undo-tree evil))
  '(tab-width 4))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
@@ -220,15 +238,16 @@
  ;; If there is more than one, they won't work right.
  )
 
-(add-hook 'tty-setup-hook
-          (lambda nil
-            (when (not ( display-graphic-p ) )
-              (disable-theme 'base16-gruvbox-dark-pale))))
 
+(add-hook 'tty-setup-hook 'ttymode)
+
+(global-set-key (kbd "C-c t") 'ttymode)
 (add-hook 'focus-in-hook
           (lambda nil
             (when ( display-graphic-p )
               (enable-theme 'base16-gruvbox-dark-pale))))
+
+
 
 (provide 'init.el)
 ;;; init.el ends here
