@@ -92,10 +92,12 @@
 
   (my-space-def
     :states '( normal visual )
+    :keymaps 'override
     " " 'save-buffer)
 
   (my-leader-def
-    :keymaps '( normal visual )
+    :states '( normal visual )
+    :keymaps 'override
     "d" 'dired
     "," 'evil-switch-to-windows-last-buffer
     "e" 'eval-buffer
@@ -174,9 +176,6 @@
    '(flycheck-typescript-tslint-executable "~/.local/bin/tslint"))
   (global-flycheck-mode))
 
-(setq jiralib-url "https://jira.maimioh.edu/")
-(use-package org-jira)
-
 ;; misc. packages
 (use-package magit)
 ;; (use-package vterm)
@@ -229,6 +228,8 @@
  '(custom-safe-themes
    '("50d07ab55e2b5322b2a8b13bc15ddf76d7f5985268833762c500a90e2a09e7aa" default))
  '(flycheck-typescript-tslint-executable "~/.local/bin/tslint")
+ '(package-selected-packages
+   '(base16-theme magit flycheck typescript-mode web-mode linum-relative racket-mode markdown-mode ivy lua-mode ac-php auto-complete evil-surround evil-commentary general evil-escape evil-collection evil projectile use-package))
  '(tab-width 4))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
