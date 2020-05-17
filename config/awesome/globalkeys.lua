@@ -82,10 +82,10 @@ function globalkeys.keys(modkey)
     awful.key({ "Control" }, "space", function() menubar.show() end,
     {description = "show the menubar", group = "launcher"}),
 
-    awful.key({ modkey, }, "Return", function () awful.spawn("emacs ~/") end,
+    awful.key({ modkey, }, "Return", function () awful.spawn(terminal) end,
     {description = "open a terminal", group = "launcher"}),
 
-    awful.key({ modkey, "Shift" }, "Return", function () awful.spawn(terminal) end,
+    awful.key({ modkey, "Shift" }, "Return", function () awful.spawn("emacs ~/") end,
     {description = "open a terminal", group = "launcher"}),
     --}}}
     -- {{{ Program keys

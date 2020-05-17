@@ -10,6 +10,9 @@
 (if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
 (if (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
 
+(setq custom-file "~/Documents/dots/config/emacs/custom.el")
+(load custom-file)
+
 (setq ring-bell-function 'ignore)
 ;; Package initialization
 ;; Added by Package.el.  This must come before configurations of
@@ -40,7 +43,7 @@
   "Set tty things."
   (interactive)
   (evil-window-vsplit)
-  (hl-line-mode nil)
+  ;; (hl-line-mode nil)
   (ansi-term (executable-find "zsh")))
 
 (eval-when-compile
@@ -52,6 +55,7 @@
 (use-package projectile
   :config
   (setq projectile-completion-system 'ivy)
+  (setq projectile-enable-caching t)
   (projectile-mode +1))
 
 ;; Evil config
@@ -118,16 +122,11 @@
   :config
   (global-auto-complete-mode 1))
 
-;; (use-package lsp-mode
-;;   :hook (
-;;          (php-mode . lsp)
-;;          (web-mode . lsp)
-;;          (javascript-mode . lsp)
-;;          )
-;;   :commands '( lsp lsp-deferred )
-;;   (require 'lsp-clients))
+(use-package lsp-mode
+  :commands lsp)
 
-(use-package ac-php)
+(use-package ac-php
+  :defer t)
 
 (use-package php-mode
   :mode "\\.php\\'"
@@ -172,8 +171,7 @@
 
 (use-package flycheck
   :config
-  (custom-set-variables
-   '(flycheck-typescript-tslint-executable "~/.local/bin/tslint"))
+  (setq flycheck-typescript-tslint-executable "~/.local/bin/tslint")
   (global-flycheck-mode))
 
 ;; misc. packages
@@ -213,31 +211,9 @@
 ;; settings
 (setq vc-follow-symlinks t)
 (setq make-backup-files nil)
-(global-hl-line-mode 1)
+(global-hl-line-mode t)
 
 (server-mode)
-;; Added by Customize menu
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(ansi-color-names-vector
-   ["#262626" "#d75f5f" "#afaf00" "#ffaf00" "#83adad" "#d485ad" "#83adad" "#dab997"])
- '(custom-enabled-themes '(base16-gruvbox-dark-pale))
- '(custom-safe-themes
-   '("50d07ab55e2b5322b2a8b13bc15ddf76d7f5985268833762c500a90e2a09e7aa" default))
- '(flycheck-typescript-tslint-executable "~/.local/bin/tslint")
- '(package-selected-packages
-   '(base16-theme magit flycheck typescript-mode web-mode linum-relative racket-mode markdown-mode ivy lua-mode ac-php auto-complete evil-surround evil-commentary general evil-escape evil-collection evil projectile use-package))
- '(tab-width 4))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(hl-line ((t (:inherit highlight :extend t :background "color-16")))))
-
 
 (add-hook 'tty-setup-hook 'ttymode)
 
