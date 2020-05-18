@@ -11,6 +11,8 @@ function rules.one()
         properties = { screen = 1, tag = "3" } },
       { rule_any = { class = { "Signal", "signal" } },
         properties = { screen = 1, tag = "9" } },
+      { rule_any = { class = { "Slack", "slack" } },
+        properties = { screen = 1, tag = "8" } },
       { rule_any = { class = { "Krita", "krita" } },
         properties = { screen = 1, tag = "4" } },
    }
@@ -31,6 +33,8 @@ function rules.two()
         properties = { screen = 1, tag = "3" } },
       { rule_any = { class = { "Signal", "signal" } },
         properties = { screen = 1, tag = "9" } },
+      { rule_any = { class = { "Slack", "slack" } },
+        properties = { screen = 1, tag = "8" } },
       { rule_any = { class = { "Krita", "krita" } },
         properties = { screen = 1, tag = "4" } },
    }
@@ -51,6 +55,8 @@ function rules.three()
         properties = { screen = 2, tag = "3" } },
       { rule_any = { class = { "Signal", "signal" } },
         properties = { screen = 3, tag = "9" } },
+      { rule_any = { class = { "Slack", "slack" } },
+        properties = { screen = 3, tag = "1" } },
       { rule_any = { class = { "Krita", "krita" } },
         properties = { screen = 1, tag = "4" } },
    }
