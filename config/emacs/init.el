@@ -43,7 +43,6 @@
   "Set tty things."
   (interactive)
   (evil-window-vsplit)
-  ;; (hl-line-mode nil)
   (ansi-term (executable-find "zsh")))
 
 (eval-when-compile
@@ -157,6 +156,7 @@
 (use-package linum-relative
   :config
   (linum-relative-global-mode))
+
 (use-package web-mode
   :mode "\\.blade.php|.component.html|.vue|.html\\'")
 
@@ -218,6 +218,7 @@
 (add-hook 'tty-setup-hook 'ttymode)
 
 (global-set-key (kbd "C-c t") 'ttymode)
+
 (add-hook 'focus-in-hook
           (lambda nil
             (when ( display-graphic-p )
