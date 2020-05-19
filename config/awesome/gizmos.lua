@@ -251,7 +251,7 @@ function gizmos.tasklist(s)
    return awful.widget.tasklist {
       screen  = s,
       filter  = awful.widget.tasklist.filter.currenttags,
-      buttons = '', -- tasklist_buttons
+      buttons = buttons.tasklist(),
       widget_template = {
          {
             {

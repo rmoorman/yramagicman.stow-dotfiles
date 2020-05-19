@@ -6,11 +6,8 @@
 # |     |     +--------- day of        month (1 - 31)
 # |     +----------- hour (0 - 23)
 # +------------- min (0 - 59)
-00 09 * * * /usr/bin/find "/home/jonathan/" -type f -name slacker.log -delete > /tmp/slacklogs
-00 10 * * * /usr/bin/find "/home/jonathan/" -type f -name nohup.out -delete > /tmp/nohup
-00 11 * * * /usr/bin/find "/home/jonathan/" -type f -name php_errors.log -delete > /tmp/nohup
 37 16 * * * /usr/bin/pacman -Qeq > /home/jonathan/Documents/dots/bin/setup/packages
 */15 * * * * checkupdates > /home/jonathan/.cache/updates
 */15 * * * * auracle sync > /home/jonathan/.cache/aur
-*/15 * * * * mu index
-*/5 * * * * /home/jonathan/bin/getallmail
+*/16 * * * * mu index
+*/15 * * * * /home/jonathan/bin/getallmail

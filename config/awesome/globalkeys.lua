@@ -38,10 +38,10 @@ function globalkeys.keys(modkey)
     {description = "Tile windows", group = "layout"}),
 
     awful.key({ modkey, }, "e", function () awful.layout.set( awful.layout.suit.tile ) end,
-    {description = "maximize windows", group = "layout"}),
+    {description = "Tile windows", group = "layout"}),
 
     awful.key({ modkey, "Control" }, "f", function () awful.layout.set( awful.layout.suit.floating ) end,
-    {description = "maximize windows", group = "layout"}),
+    {description = "Floating layout", group = "layout"}),
 
     awful.key({ modkey, }, "Tab",
     function ()

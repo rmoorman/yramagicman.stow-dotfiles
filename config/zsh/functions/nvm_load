@@ -1,6 +1,6 @@
 function nvm_load() {
   export NVM_DIR="$XDG_CACHE_HOME/nvm"
   [[ -d "$NVM_DIR" ]] || mkdir -p $NVM_DIR
-  [ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
-  [ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && . "/usr/local/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
+  [ -s "/usr/share/nvm/nvm.sh" ] && . "/usr/share/nvm/nvm.sh"  # This loads nvm
+  [ -s "/usr/share/nvm/bash_completion" ] && . "/usr/share/nvm/bash_completion"  # This loads nvm bash_completion
 }

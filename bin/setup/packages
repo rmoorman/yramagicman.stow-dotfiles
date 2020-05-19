@@ -26,12 +26,14 @@ docbook-xml
 dropbox-cli
 dunst
 editorconfig-core-c
+emacs
 enchant
 eslint
 eslint-plugin-vue
 firefox
 flake8
 fwupd
+fzf
 getmail
 gettext
 glances
@@ -43,6 +45,7 @@ groff
 grub
 grunt-cli
 guvcview
+gvim
 htop
 hwinfo
 iftop
@@ -86,6 +89,7 @@ net-tools
 netctl
 newsboat
 nmap
+nss-mdns
 ntp
 pandoc
 pass
@@ -111,6 +115,7 @@ python2-virtualenv
 racket
 redis
 redshift
+reflector
 rmlint
 rsync
 rxvt-unicode
@@ -134,6 +139,7 @@ ttf-ms-fonts
 ttf-sourcesanspro
 typescript
 unzip
+urlview
 urxvt-perls
 vi
 vicious
