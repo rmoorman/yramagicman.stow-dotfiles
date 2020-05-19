@@ -10,3 +10,4 @@
 15 * * * * updatedb
 30 * * * * ntpd -qg > /home/jonathan/.cache/ntp.log
 30 * * * * hwclock --systohc
+30 10 * * 1 reflector --latest 10 --sort rate --save /etc/pacman.d/mirrorlist
