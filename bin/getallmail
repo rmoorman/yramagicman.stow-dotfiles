@@ -16,6 +16,12 @@ if [[ ! -d "/tmp/getmail" ]]; then
     do
         cp $f /tmp/getmail/${f:t}
     done
+    mkdir -p ~/Documents/getmail/
+    command cp -r /tmp/getmail ~/Documents/getmail/$( date +'%d%m%Y' )
+    lastweek=$(date -d'-7day' +'%d%m%Y')
+    if [[ -d ~/Documents/getmail/$lastweek ]]; then
+        command rm -rf ~/Documents/getmail_backup/$lastweek
+    fi
 else
     for f in $XDG_CONFIG_HOME/getmail/^oldmail*
     do
