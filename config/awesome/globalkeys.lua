@@ -66,10 +66,10 @@ function globalkeys.keys(modkey)
     awful.key({ modkey, "Control" }, "h", function () awful.tag.incmwfact(-0.05) end,
     {description = "decrease master width factor", group = "layout"}),
 
-    awful.key({ modkey, "Mod1" }, "h", function () awful.tag.incnmaster( 1, nil, true) end,
+    awful.key({ modkey, "Mod1" }, "h", function () awful.tag.incnmaster(-1, nil, true) end,
     {description = "increase the number of master clients", group = "layout"}),
 
-    awful.key({ modkey, "Mod1" }, "l", function () awful.tag.incnmaster(-1, nil, true) end,
+    awful.key({ modkey, "Mod1" }, "l", function () awful.tag.incnmaster( 1, nil, true) end,
     {description = "decrease the number of master clients", group = "layout"}),
 
     awful.key({ modkey, "Control", "Shift" }, "h", function () awful.tag.incncol( 1, nil, true) end,
