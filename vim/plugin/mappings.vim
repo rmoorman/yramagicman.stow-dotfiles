@@ -26,6 +26,7 @@ else
     tnoremap :: <C-\><C-N>:
 endif
 nnoremap <C-w>t :vert term<cr>
+nnoremap <leader>t :vert term<cr>
 
 "}}}
 "{{{ normal mode mappings
