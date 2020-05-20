@@ -135,6 +135,7 @@ set sidebar_new_mail_only = yes
 sidebar_whitelist '/home/jonathan/.config/mail/Inbox'
 sidebar_whitelist '/home/jonathan/.config/mail/Gmail'
 sidebar_whitelist '/home/jonathan/.config/mail/Bills'
+sidebar_whitelist '/home/jonathan/.config/mail/Work'
 sidebar_whitelist '/home/jonathan/.config/mail/results'
 sidebar_whitelist '/home/jonathan/.config/mail/Drafts'
 sidebar_whitelist '/home/jonathan/.config/mail/trash'
