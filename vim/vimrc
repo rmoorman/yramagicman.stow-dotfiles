@@ -39,7 +39,6 @@ packadd! ale
 packadd! auto-omnicomplete
 packadd! vim-visual-star-search
 packadd! editorconfig-vim
-packadd! vim-vue
 packadd! vim-commentary
 packadd! vim-repeat
 packadd! vim-surround

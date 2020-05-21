@@ -19,6 +19,7 @@ chromium
 cloc
 cmake
 composer
+create-react-app
 cronie
 ctags
 cups
@@ -151,6 +152,7 @@ vicious
 vidir
 vifm
 vlc
+vue-cli
 wget
 xf86-video-intel
 xf86-video-vesa

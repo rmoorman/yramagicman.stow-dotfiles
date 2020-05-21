@@ -1,4 +1,4 @@
-;; package --- .emacs
+;; package --- init.el
 ;;; Commentary:
 ;;; a comment
 ;;; Code:
