@@ -23,6 +23,8 @@ cronie
 ctags
 cups
 docbook-xml
+docker
+docker-compose
 dropbox-cli
 dunst
 editorconfig-core-c
@@ -44,6 +46,7 @@ gptfdisk
 groff
 grub
 grunt-cli
+gulp
 guvcview
 gvim
 htop
@@ -91,6 +94,7 @@ newsboat
 nmap
 nss-mdns
 ntp
+nvm
 pandoc
 pass
 patch
@@ -122,6 +126,7 @@ rxvt-unicode
 sbcl
 shellcheck
 signal-desktop
+slack-desktop
 speedtest-cli
 stow
 sudo
@@ -145,7 +150,6 @@ vi
 vicious
 vidir
 vifm
-vim
 vlc
 wget
 xf86-video-intel

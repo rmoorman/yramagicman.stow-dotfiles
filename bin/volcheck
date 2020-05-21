@@ -1,6 +1,6 @@
 #!/bin/sh
 while true;
 do
-cvlc --play-and-exit /home/jonathan/.config/sounds/beep.mp3 2> /dev/null; tput bel
+cvlc --play-and-exit "$HOME"/.config/sounds/beep.mp3 2> /dev/null; tput bel
 sleep 3s
 done
