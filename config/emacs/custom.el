@@ -1,162 +1,24 @@
-Type RET or click to enable/disable listed custom themes.
-Type K to describe the theme at point.
-Theme files are named *-theme.el in ‘custom-theme-load-path’.
-
- Note: Your custom settings take precedence over theme settings.
-       To migrate your settings into a theme, click here.
-
- Save Theme Settings 
-[ ] Select more than one theme at a time
-
-Available Custom Themes:
-[ ] base16-3024 -- (no documentation available)
-[ ] base16-apathy -- (no documentation available)
-[ ] base16-ashes -- (no documentation available)
-[ ] base16-atelier-cave-light -- (no documentation available)
-[ ] base16-atelier-cave -- (no documentation available)
-[ ] base16-atelier-dune-light -- (no documentation available)
-[ ] base16-atelier-dune -- (no documentation available)
-[ ] base16-atelier-estuary-light -- (no documentation available)
-[ ] base16-atelier-estuary -- (no documentation available)
-[ ] base16-atelier-forest-light -- (no documentation available)
-[ ] base16-atelier-forest -- (no documentation available)
-[ ] base16-atelier-heath-light -- (no documentation available)
-[ ] base16-atelier-heath -- (no documentation available)
-[ ] base16-atelier-lakeside-light -- (no documentation available)
-[ ] base16-atelier-lakeside -- (no documentation available)
-[ ] base16-atelier-plateau-light -- (no documentation available)
-[ ] base16-atelier-plateau -- (no documentation available)
-[ ] base16-atelier-savanna-light -- (no documentation available)
-[ ] base16-atelier-savanna -- (no documentation available)
-[ ] base16-atelier-seaside-light -- (no documentation available)
-[ ] base16-atelier-seaside -- (no documentation available)
-[ ] base16-atelier-sulphurpool-light -- (no documentation available)
-[ ] base16-atelier-sulphurpool -- (no documentation available)
-[ ] base16-atlas -- (no documentation available)
-[ ] base16-bespin -- (no documentation available)
-[ ] base16-black-metal-bathory -- (no documentation available)
-[ ] base16-black-metal-burzum -- (no documentation available)
-[ ] base16-black-metal-dark-funeral -- (no documentation available)
-[ ] base16-black-metal-gorgoroth -- (no documentation available)
-[ ] base16-black-metal-immortal -- (no documentation available)
-[ ] base16-black-metal-khold -- (no documentation available)
-[ ] base16-black-metal-marduk -- (no documentation available)
-[ ] base16-black-metal-mayhem -- (no documentation available)
-[ ] base16-black-metal-nile -- (no documentation available)
-[ ] base16-black-metal -- (no documentation available)
-[ ] base16-black-metal-venom -- (no documentation available)
-[ ] base16-brewer -- (no documentation available)
-[ ] base16-bright -- (no documentation available)
-[ ] base16-brogrammer -- (no documentation available)
-[ ] base16-brushtrees-dark -- (no documentation available)
-[ ] base16-brushtrees -- (no documentation available)
-[ ] base16-chalk -- (no documentation available)
-[ ] base16-circus -- (no documentation available)
-[ ] base16-classic-dark -- (no documentation available)
-[ ] base16-classic-light -- (no documentation available)
-[ ] base16-codeschool -- (no documentation available)
-[ ] base16-cupcake -- (no documentation available)
-[ ] base16-cupertino -- (no documentation available)
-[ ] base16-darktooth -- (no documentation available)
-[ ] base16-decaf -- (no documentation available)
-[ ] base16-default-dark -- (no documentation available)
-[ ] base16-default-light -- (no documentation available)
-[ ] base16-dracula -- (no documentation available)
-[ ] base16-eighties -- (no documentation available)
-[ ] base16-embers -- (no documentation available)
-[ ] base16-espresso -- (no documentation available)
-[ ] base16-flat -- (no documentation available)
-[ ] base16-framer -- (no documentation available)
-[ ] base16-fruit-soda -- (no documentation available)
-[ ] base16-github -- (no documentation available)
-[ ] base16-google-dark -- (no documentation available)
-[ ] base16-google-light -- (no documentation available)
-[ ] base16-grayscale-dark -- (no documentation available)
-[ ] base16-grayscale-light -- (no documentation available)
-[ ] base16-greenscreen -- (no documentation available)
-[ ] base16-gruvbox-dark-hard -- (no documentation available)
-[ ] base16-gruvbox-dark-medium -- (no documentation available)
-[ ] base16-gruvbox-dark-pale -- (no documentation available)
-[ ] base16-gruvbox-dark-soft -- (no documentation available)
-[ ] base16-gruvbox-light-hard -- (no documentation available)
-[ ] base16-gruvbox-light-medium -- (no documentation available)
-[ ] base16-gruvbox-light-soft -- (no documentation available)
-[ ] base16-harmonic-dark -- (no documentation available)
-[ ] base16-harmonic-light -- (no documentation available)
-[ ] base16-heetch-light -- (no documentation available)
-[ ] base16-heetch -- (no documentation available)
-[ ] base16-helios -- (no documentation available)
-[ ] base16-hopscotch -- (no documentation available)
-[ ] base16-horizon-dark -- (no documentation available)
-[ ] base16-horizon-light -- (no documentation available)
-[ ] base16-horizon-terminal-dark -- (no documentation available)
-[ ] base16-horizon-terminal-light -- (no documentation available)
-[ ] base16-ia-dark -- (no documentation available)
-[ ] base16-ia-light -- (no documentation available)
-[ ] base16-icy -- (no documentation available)
-[ ] base16-irblack -- (no documentation available)
-[ ] base16-isotope -- (no documentation available)
-[ ] base16-macintosh -- (no documentation available)
-[ ] base16-marrakesh -- (no documentation available)
-[ ] base16-materia -- (no documentation available)
-[ ] base16-material-darker -- (no documentation available)
-[ ] base16-material-lighter -- (no documentation available)
-[ ] base16-material-palenight -- (no documentation available)
-[ ] base16-material -- (no documentation available)
-[ ] base16-material-vivid -- (no documentation available)
-[ ] base16-mellow-purple -- (no documentation available)
-[ ] base16-mexico-light -- (no documentation available)
-[ ] base16-mocha -- (no documentation available)
-[ ] base16-monokai -- (no documentation available)
-[ ] base16-nord -- (no documentation available)
-[ ] base16-nova -- (no documentation available)
-[ ] base16-ocean -- (no documentation available)
-[ ] base16-oceanicnext -- (no documentation available)
-[ ] base16-one-light -- (no documentation available)
-[ ] base16-onedark -- (no documentation available)
-[ ] base16-outrun-dark -- (no documentation available)
-[ ] base16-papercolor-dark -- (no documentation available)
-[ ] base16-papercolor-light -- (no documentation available)
-[ ] base16-paraiso -- (no documentation available)
-[ ] base16-phd -- (no documentation available)
-[ ] base16-pico -- (no documentation available)
-[ ] base16-pop -- (no documentation available)
-[ ] base16-porple -- (no documentation available)
-[ ] base16-railscasts -- (no documentation available)
-[ ] base16-rebecca -- (no documentation available)
-[ ] base16-sandcastle -- (no documentation available)
-[ ] base16-seti -- (no documentation available)
-[ ] base16-shapeshifter -- (no documentation available)
-[ ] base16-snazzy -- (no documentation available)
-[ ] base16-solarflare -- (no documentation available)
-[ ] base16-solarized-dark -- (no documentation available)
-[ ] base16-solarized-light -- (no documentation available)
-[ ] base16-spacemacs -- (no documentation available)
-[ ] base16-summerfruit-dark -- (no documentation available)
-[ ] base16-summerfruit-light -- (no documentation available)
-[ ] base16-synth-midnight-dark -- (no documentation available)
-[ ] base16 -- (no documentation available)
-[ ] base16-tomorrow-night-eighties -- (no documentation available)
-[ ] base16-tomorrow-night -- (no documentation available)
-[ ] base16-tomorrow -- (no documentation available)
-[ ] base16-tube -- (no documentation available)
-[ ] base16-twilight -- (no documentation available)
-[ ] base16-unikitty-dark -- (no documentation available)
-[ ] base16-unikitty-light -- (no documentation available)
-[ ] base16-woodland -- (no documentation available)
-[ ] base16-xcode-dusk -- (no documentation available)
-[ ] base16-zenburn -- (no documentation available)
-[ ] adwaita -- Face colors similar to the default theme of Gnome 3 (Adwaita).
-[ ] deeper-blue -- Face colors using a deep blue background.
-[ ] dichromacy -- Face colors suitable for red/green color-blind users.
-[ ] leuven -- Face colors with a light background.
-[ ] light-blue -- Face colors utilizing a light blue background.
-[ ] manoj-dark -- Very high contrast faces with a black background.
-[ ] misterioso -- Predominantly blue/cyan faces on a dark cyan background.
-[ ] tango-dark -- Face colors using the Tango palette (dark background).
-[ ] tango -- Face colors using the Tango palette (light background).
-[ ] tsdh-dark -- A dark theme used and created by Tassilo Horn.
-[ ] tsdh-light -- A light Emacs theme.
-[ ] wheatgrass -- High-contrast green/blue/brown faces on a black background.
-[ ] whiteboard -- Face colors similar to markers on a whiteboard.
-[ ] wombat -- Medium-contrast faces with a dark gray background.
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(ansi-color-names-vector
+   ["#262626" "#d75f5f" "#afaf00" "#ffaf00" "#83adad" "#d485ad" "#83adad" "#dab997"])
+ '(custom-enabled-themes '(base16-gruvbox-dark-pale))
+ '(custom-file "~/.config/emacs/custom.el")
+ '(custom-safe-themes
+   '("50d07ab55e2b5322b2a8b13bc15ddf76d7f5985268833762c500a90e2a09e7aa" default))
+ '(flycheck-typescript-tslint-executable "~/.local/bin/tslint")
+ '(package-selected-packages
+   '(lsp-mode base16-theme magit flycheck typescript-mode web-mode linum-relative racket-mode markdown-mode ivy lua-mode ac-php auto-complete evil-surround evil-commentary general evil-escape evil-collection evil projectile use-package))
+ '(projectile-enable-caching t)
+ '(tab-width 4))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(hl-line ((t (:extend t :background "#3a3a3a")))))
+(provide 'custom.el)
+;;; custom.el ends here
