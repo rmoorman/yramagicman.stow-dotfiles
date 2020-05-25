@@ -56,7 +56,7 @@ fi
 
 ( "$HOME/.config/screenlayout/default.sh" ) &
 
-# exec "$HOME/.config/dwm/autostart.sh" &
-# exec "$HOME/bin/statusline" &
-# exec "$HOME/bin/dwmrestart"
-exec awesome
+exec "$HOME/.config/dwm/autostart.sh" &
+exec "$HOME/bin/statusline" &
+exec "$HOME/bin/dwmrestart"
+# exec xmonad
