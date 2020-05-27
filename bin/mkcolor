@@ -8,10 +8,10 @@ from shutil import copyfile
 
 home = os.path.expanduser('~')
 
-st_dir = home + '/Gits/st/'
-dwm_dir = home + '/Gits/dwm/'
-config_dir = home + '/Gits/dots/'
-colors_dir = home + '/.config/colors/'
+st_dir = home + '/Documents/st/'
+dwm_dir = home + '/Documents/dwm/'
+config_dir = home + '/Documents/dots/'
+colors_dir = config_dir + 'config/colors/'
 
 foreground = 'foreground'
 background = 'background'
@@ -22,12 +22,12 @@ sel_border = 'color12'
 
 
 def contains_color(str):
-    if '.color' in str:
+    if 'colors' in str:
         return str
 
 
 def not_contains_color(str):
-    if '.color' not in str:
+    if 'colors' not in str:
         return str
 
 
@@ -69,7 +69,7 @@ def read_color():
 
 def empty_xresources():
     xresources = ''
-    with open(config_dir + 'Xresources') as f:
+    with open(config_dir + 'config/X11/Xresources') as f:
         x = []
         x = filter(not_contains_color, f.readlines())
         x = filter(not_contains_foreground, x)
