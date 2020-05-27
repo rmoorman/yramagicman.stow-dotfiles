@@ -229,10 +229,11 @@ myStartupHook = return ()
 
 main = do
     xmproc <- spawnPipe "xmobar -x 0 ~/.xmonad/xmobarrc"
-    xmproc <- spawnPipe "xmobar -x 1 ~/.xmonad/xmobarrc"
+    xmproc0 <- spawnPipe "xmobar -x 1 ~/.xmonad/xmobarrc"
+    xmproc1 <- spawnPipe "xmobar -x 2 ~/.xmonad/xmobarrc"
     xmonad $ docks defaults
         { logHook = dynamicLogWithPP xmobarPP
-                        { ppOutput = hPutStrLn xmproc
+            { ppOutput = \x -> hPutStrLn  xmproc x >> hPutStrLn  xmproc0 x >> hPutStrLn  xmproc1 x
                         , ppTitle = xmobarColor "grey" "" . shorten 50
                         }
 
