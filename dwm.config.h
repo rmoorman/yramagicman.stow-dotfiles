@@ -42,8 +42,8 @@ static const Rule rules[] = {
     {   "chromium-browser",    NULL,     NULL,  2,         0,          1     },
     {   "Chromium",            NULL,     NULL,  2,         0,          1     },
     {   "Thunderbird",         NULL,     NULL,  1 << 2,    0,          0     },
-    {   "Slack",               NULL,     NULL,  1,         0,          2     },
-    {   "Signal",              NULL,     NULL,  1 << 8,    0,          2     },
+    {   "Slack",               NULL,     NULL,  1 << 8,         0,          2     },
+    {   "Signal",              NULL,     NULL,  1 << 7,    0,          2     },
 };
 
 /* layout(s) */
