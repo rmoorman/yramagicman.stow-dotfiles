@@ -16,9 +16,9 @@ colors_dir = config_dir + 'config/colors/'
 foreground = 'foreground'
 background = 'background'
 border = 'color0'
-sel_foreground = 'color0'
-sel_background = 'color12'
-sel_border = 'color12'
+sel_foreground = 'background'
+sel_background = 'foreground'
+sel_border = 'foreground'
 
 
 def contains_color(str):

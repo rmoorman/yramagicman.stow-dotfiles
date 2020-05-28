@@ -8,14 +8,14 @@ static const int topbar             = 1;        /* 0 means bottom bar */
 static const char *fonts[]          = { "mono:size=9.5" };
 static const char dmenufont[]       = "mono:size=10";
 
-static const char border[] = "#2b303b";
-static const char sel_border[] = "#8fa1b3";
+static const char border[] = "#282828";
+static const char sel_border[] = "#ebdbb2";
 
-static const char background[] = "#2b303b";
-static const char sel_background[] = "#8fa1b3";
+static const char background[] = "#1d2021";
+static const char sel_background[] = "#ebdbb2";
 
-static const char foreground[] = "#c0c5ce";
-static const char sel_foreground[] = "#2b303b";
+static const char foreground[] = "#ebdbb2";
+static const char sel_foreground[] = "#1d2021";
 static const char *colors[][3]      = {
     /*               fg         bg         border   */
     [SchemeNorm] = { foreground, background, border },
@@ -33,17 +33,26 @@ static const Rule rules[] = {
     /*  class                  instance  title  tags mask  isfloating  monitor */
     {   "Thunar",              NULL,     NULL,  2,         0,          1     },
     {   "st-256color",         NULL,     NULL,  1,         0,          1     },
+    {   "Alacritty",           NULL,     NULL,  1,         0,          1     },
     {   "urxvt-256color",      NULL,     NULL,  1,         0,          1     },
-    {   "Alacritty",           NULL,     NULL,  1,         0,          0     },
-    {   "Emacs",               NULL,     NULL,  1,         0,          0     },
-    {   "firefox",             NULL,     NULL,  1,         0,          1     },
-    {   "surf",                NULL,     NULL,  1,         0,          0     },
+    {   "URxvt",               NULL,     NULL,  1,         0,          1     },
+    {   "Emacs",               NULL,     NULL,  1,         0,          1     },
+    {   "emacs",               NULL,     NULL,  1,         0,          1     },
+    {   "Firefox",             NULL,     NULL,  1,         0,          0     },
+    {   "firefox",             NULL,     NULL,  1,         0,          0     },
+    {   "Surf",                NULL,     NULL,  1,         0,          0     },
     {   "krita",               NULL,     NULL,  1 << 3,    0,          0     },
-    {   "chromium-browser",    NULL,     NULL,  2,         0,          1     },
-    {   "Chromium",            NULL,     NULL,  2,         0,          1     },
+    {   "Krita",               NULL,     NULL,  1 << 3,    0,          0     },
+    {   "Chromium-browser",    NULL,     NULL,  2,         0,          0     },
+    {   "chromium-browser",    NULL,     NULL,  2,         0,          0     },
+    {   "Chromium",            NULL,     NULL,  2,         0,          0     },
+    {   "chromium",            NULL,     NULL,  2,         0,          0     },
     {   "Thunderbird",         NULL,     NULL,  1 << 2,    0,          0     },
-    {   "Slack",               NULL,     NULL,  1,         0,          2     },
-    {   "Signal",              NULL,     NULL,  1 << 8,    0,          2     },
+    {   "thunderbird",         NULL,     NULL,  1 << 2,    0,          0     },
+    {   "Slack",               NULL,     NULL,  1 << 8,    0,          1     },
+    {   "slack",               NULL,     NULL,  1 << 8,    0,          1     },
+    {   "Wire",                NULL,     NULL,  1 << 8,    0,          1     },
+    {   "wire",                NULL,     NULL,  1 << 8,    0,          1     },
 };
 
 /* layout(s) */
