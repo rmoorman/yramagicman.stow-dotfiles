@@ -42,7 +42,7 @@ static const Rule rules[] = {
     {   "chromium-browser",    NULL,     NULL,  2,         0,          1     },
     {   "Chromium",            NULL,     NULL,  2,         0,          1     },
     {   "Thunderbird",         NULL,     NULL,  1 << 2,    0,          0     },
-    {   "Slack",               NULL,     NULL,  1 << 8,         0,          2     },
+    {   "Slack",               NULL,     NULL,  1 << 8,    0,          2     },
     {   "Signal",              NULL,     NULL,  1 << 7,    0,          2     },
 };
 
@@ -83,6 +83,7 @@ static const char *firefox[]  = { "firefox", "--new-tab", "https://start.duckduc
 static const char *firefox_private[]  = { "firefox", "-private-window", NULL};
 static const char *printscreen[]  = { "/home/jonathan/.config/dwm/scripts/screenshot", NULL};
 static const char *poweroff[]  = { "systemctl", "poweroff", NULL};
+static const char *suspend[]  = { "systemctl", "suspend", NULL};
 static const char *reboot[]  = { "systemctl", "reboot", NULL};
 static const char *volup[]  = { "amixer", "-c", "0",  "--",  "set",  "Master",  "1+", NULL };
 static const char *voldown[]  = { "amixer", "-c", "0",  "--",  "set",  "Master",  "1-", NULL };
@@ -90,7 +91,6 @@ static const char *volmute[]  = { "amixer", "-c", "0",  "--",  "set",  "Master",
 static const char *brightup[]  = { "/home/jonathan/.config/dwm/scripts/brightup", NULL };
 static const char *brightdown[]  = { "/home/jonathan/.config/dwm/scripts/brightdown", NULL };
 static const char *killscreensaver[]  = {"pkill", "xscreensaver", NULL };
-/* static const char *killmon[]  = {"mons", "-o", "HDMI1", "--off", NULL }; */
 static const char *attachmon[]  = {"/home/jonathan/.config/screenlayout/work.sh", NULL};
 static const char *help[]  = {"st", "-e","bash", "-c", "cat ~/.config/help & read", NULL};
 
@@ -131,11 +131,11 @@ static Key keys[] = {
     { MODKEY,                       XK_l,      focusmon,       {.i = +1 } },
     { MODKEY|ShiftMask,             XK_h,      tagmon,         {.i = -1 } },
     { MODKEY|ShiftMask,             XK_l,      tagmon,         {.i = +1 } },
+    { 0,                            XK_F12,    spawn,          {.v = suspend } },
     { ShiftMask,                    XK_F12,    spawn,          {.v = poweroff } },
     { ControlMask|ShiftMask,        XK_F12,    spawn,          {.v = reboot } },
     { 0,                            XK_F1,     spawn,          {.v = help } },
     { 0,                            XK_F8,     spawn,          {.v = killscreensaver } },
-    /* { 0,                            XK_F10,    spawn,          {.v = killmon } }, */
     { 0,                            XK_F11,    spawn,          {.v = attachmon } },
     TAGKEYS(                        XK_1,                      0)
     TAGKEYS(                        XK_2,                      1)
