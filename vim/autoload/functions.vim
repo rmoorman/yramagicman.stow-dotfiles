@@ -105,3 +105,8 @@ function! functions#FoldColumnToggle()
     endif
 endfunction
 "}}}
+"{{{build dwm
+function! functions#MakeDWM()
+    call term_start([ '/bin/sh', '-c', 'cp $HOME/Documents/dots/dwm.config.h $HOME/Documents/dwm/config.h; cd $HOME/Documents/dwm/; make; sudo make install'])
+endfunction
+"}}}
