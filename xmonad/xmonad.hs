@@ -9,6 +9,8 @@ import XMonad.Hooks.ManageDocks
 import XMonad.Hooks.SetWMName
 import XMonad.Util.EZConfig(additionalKeys)
 import XMonad.Util.Run(spawnPipe)
+import XMonad.Layout.ResizableTile
+import XMonad.Layout.SimpleFloat
 
 -- The preferred terminal program, which is used in a binding below and by
 -- certain contrib modules.
@@ -177,8 +179,9 @@ myMouseBindings (XConfig {XMonad.modMask = modm}) = M.fromList $
 -- The available layouts.  Note that each layout is separated by |||,
 -- which denotes layout choice.
 --
-myLayout = avoidStruts  $  layoutHook defaultConfig
-
+myLayout = avoidStruts $ tiled ||| Mirror tiled ||| Full ||| simpleFloat
+    where
+        tiled = ResizableTall 1 (2/100) (1/2) []
 ------------------------------------------------------------------------
 -- Window rules:
 
@@ -228,13 +231,13 @@ myStartupHook = return ()
 -- main = xmonad defaults
 
 main = do
-    xmproc <- spawnPipe "xmobar -x 0 ~/.xmonad/xmobarrc"
-    xmproc0 <- spawnPipe "xmobar -x 1 ~/.xmonad/xmobarrc"
-    xmproc1 <- spawnPipe "xmobar -x 2 ~/.xmonad/xmobarrc"
+    xmproc <- spawnPipe "dzen2 -xs 0"
+    xmproc0 <- spawnPipe "dzen2 -xs 1"
+    xmproc1 <- spawnPipe "dzen2 -xs 2"
     xmonad $ docks defaults
-        { logHook = dynamicLogWithPP xmobarPP
+        { logHook = dynamicLogWithPP defaultPP
             { ppOutput = \x -> hPutStrLn  xmproc x >> hPutStrLn  xmproc0 x >> hPutStrLn  xmproc1 x
-                        , ppTitle = xmobarColor "grey" "" . shorten 50
+                        , ppTitle = dzenColor "grey" "" . shorten 50
                         }
 
         } `additionalKeys`
@@ -270,7 +273,7 @@ defaults = def {
 
       -- hooks, layouts
         layoutHook         = myLayout,
-        manageHook         = myManageHook,
+        manageHook         = manageDocks <+> myManageHook,
         -- handleEventHook    = myEventHook,
 
         startupHook        = myStartupHook
