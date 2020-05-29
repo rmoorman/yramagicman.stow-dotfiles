@@ -3,4 +3,4 @@ while;
 do
     $HOME/bin/statusline
     sleep 1s;
-done
+done | dzen2 -l 1 -p -sa r -w 1600 -x 500 -u

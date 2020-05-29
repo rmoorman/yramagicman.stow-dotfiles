@@ -103,7 +103,7 @@ alias tls="tmux ls"
 #{{{ uncategorized aliases
 alias poweroff="systemctl poweroff"
 alias reboot="systemctl reboot"
-alias sleep="systemctl suspend"
+alias hibernate="systemctl suspend"
 #}}}
 #{{{ utility commands
 alias q="exit"
