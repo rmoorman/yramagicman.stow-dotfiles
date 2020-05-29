@@ -224,9 +224,9 @@ myManageHook = composeAll
 -- per-workspace layout choices.
 --
 -- By default, do nothing.
-myStartupHook = do
-    nScreens <- countScreens
-    withScreens nScreens spawnOnce "dzen2 -dock -xs 0 -ta l -w 1500 -fn xft:font=Inconsolata:size=10"
+-- myStartupHook = do
+--     nScreens <- countScreens
+--     withScreens nScreens spawnOnce "dzen2 -dock -xs 0 -ta l -w 1500 -fn xft:font=Inconsolata:size=10"
 ------------------------------------------------------------------------
 -- Now run xmonad with all the defaults we set up.
 
@@ -291,10 +291,10 @@ defaults = def {
 
       -- hooks, layouts
         layoutHook         = myLayout,
-        manageHook         = manageDocks <+> myManageHook,
+        manageHook         = manageDocks <+> myManageHook
         -- handleEventHook    = myEventHook,
 
-        startupHook        = myStartupHook
+        -- startupHook        = myStartupHook
                }
 
 -- | Finally, a copy of the default bindings in simple textual tabular format.
