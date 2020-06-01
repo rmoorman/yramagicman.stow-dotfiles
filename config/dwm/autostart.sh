@@ -23,7 +23,13 @@ set_screen_layout() {
 
 set_screen_layout
 
-test -n  "$( pgrep awesome )" || "$HOME/bin/statusloop" &
+test -n  "$( pgrep awesome )" || xrandr | awk '/Screen/ {print substr($2, 0 1)}' \
+| while read -r screen
+do
+    "$HOME/bin/statusloop" "$screen"
+done &
+
+
 ("$HOME/.config/fehbg") &
 
 xset -dpms; xset s off &
@@ -74,6 +80,12 @@ fi
 
 if  stat "$HOME/.cache/updates" > /dev/null; then
     rm "$HOME/.cache/updates"
+fi
+) &
+
+(
+if test -d /tmp/getmail; then
+    rm -rf /tmp/getmail
 fi
 ) &
 

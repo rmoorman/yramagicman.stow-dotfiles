@@ -106,11 +106,9 @@ function dbox() {
 }
 
 line="$(my_update)$(my_mail)$(my_weather)"
-if [[ -d /sys/class/power_supply/BAT? ]]; then
-    for d in /sys/class/power_supply/BAT?/; do
-        line="$line $(my_bat $d)"
-    done
-fi
+for d in /sys/class/power_supply/BAT?/; do
+    line="$line $(my_bat $d)"
+done
 line="$line $(my_wifi) $(dbox) $(my_volume) $(my_date)"
 
 xsetroot -name $line
