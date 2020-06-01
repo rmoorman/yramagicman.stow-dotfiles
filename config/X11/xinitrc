@@ -55,8 +55,8 @@ else
 fi
 
 ( "$HOME/.config/screenlayout/default.sh" ) &
-wmcmd=$(cat "$HOME"/.config/wmcmd)
+wmcmd=$(cat ~/.config/wmcmd)
 exec "$HOME/.config/dwm/autostart.sh" &
 exec "$HOME/bin/statusline" &
-exec $wmcmd
+exec $( eval $wmcmd)
 # exec xmonad
