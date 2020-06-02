@@ -2,6 +2,7 @@ import Control.Monad
 import qualified Data.Map        as M
 import qualified XMonad.StackSet as W
 import System.IO
+import System.Exit (exitWith, ExitCode(..))
 import XMonad
 import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.ManageDocks
@@ -9,10 +10,10 @@ import XMonad.Layout
 import XMonad.Layout.IndependentScreens
 import XMonad.Layout.ResizableTile
 import XMonad.Layout.SimpleFloat
-import XMonad.Util.EZConfig(additionalKeys)
+import XMonad.Util.EZConfig(additionalKeys, additionalKeysP)
 import XMonad.Util.Run(spawnPipe)
 import XMonad.Util.SpawnOnce
-
+import Graphics.X11.ExtraTypes.XF86
 -- The preferred terminal program, which is used in a binding below and by
 -- certain contrib modules.
 --
@@ -52,7 +53,6 @@ myWorkspaces    = ["1","2","3","4","5","6","7","8","9"]
 --
 myNormalBorderColor  = "#dddddd"
 myFocusedBorderColor = "#ff0000"
-
 
 ------------------------------------------------------------------------
 -- Mouse bindings: default actions bound to mouse events
@@ -105,6 +105,9 @@ myLayout = avoidStruts $ tiled |||  Full ||| Mirror tiled ||| simpleFloat
 myManageHook = composeAll [
       className =? "MPlayer"        --> doFloat
     , className =? "Firefox"        --> doShift "2"
+    , className =? "firefox"        --> doShift "2"
+    , className =? "signal"         --> doShift "8"
+    , className =? "Signal"         --> doShift "8"
     , className =? "Gimp"           --> doFloat
     , resource  =? "desktop_window" --> doIgnore
     , resource  =? "kdesktop"       --> doIgnore ]
@@ -131,6 +134,101 @@ myManageHook = composeAll [
 --     nScreens <- countScreens
 --     withScreens nScreens spawnOnce "dzen2 -dock -xs 0 -ta l -w 1500 -fn xft:font=Inconsolata:size=10"
 -- let
+
+------------------------------------------------------------------------
+-- Key bindings. Add, modify or remove key bindings here.
+--
+myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
+
+   -- launch a terminal
+   [ ((modm .|. shiftMask, xK_Return), spawn $ XMonad.terminal conf)
+
+   -- launch dmenu
+   , ((controlMask,               xK_space     ), spawn "dmenu_run")
+
+   -- launch gmrun
+   , ((modm .|. shiftMask, xK_p     ), spawn "gmrun")
+
+   -- close focused window
+   , ((modm              , xK_q     ), kill)
+
+    -- Rotate through the available layout algorithms
+   , ((mod1Mask,               xK_space ), sendMessage NextLayout)
+
+   --  Reset the layouts on the current workspace to default
+   , ((mod1Mask .|. shiftMask, xK_space ), setLayout $ XMonad.layoutHook conf)
+
+   -- Resize viewed windows to the correct size
+   , ((modm,               xK_n     ), refresh)
+
+   -- Move focus to the next window
+   , ((modm,               xK_Tab   ), windows W.focusDown)
+
+   -- Move focus to the next window
+   , ((modm,               xK_j     ), windows W.focusDown)
+
+   -- Move focus to the previous window
+   , ((modm,               xK_k     ), windows W.focusUp  )
+
+   -- Move focus to the master window
+   , ((modm,               xK_m     ), windows W.focusMaster  )
+
+   -- Swap the focused window and the master window
+   , ((modm,               xK_space), windows W.swapMaster)
+
+   -- Swap the focused window with the next window
+   , ((modm .|. shiftMask, xK_j     ), windows W.swapDown  )
+
+   -- Swap the focused window with the previous window
+   , ((modm .|. shiftMask, xK_k     ), windows W.swapUp    )
+
+   -- Shrink the master area
+   , ((modm,               xK_h     ), sendMessage Shrink)
+
+   -- Expand the master area
+   , ((modm,               xK_l     ), sendMessage Expand)
+
+   -- Push window back into tiling
+   , ((modm,               xK_t     ), withFocused $ windows . W.sink)
+
+   -- Increment the number of windows in the master area
+   , ((modm              , xK_comma ), sendMessage (IncMasterN 1))
+
+   -- Deincrement the number of windows in the master area
+   , ((modm              , xK_period), sendMessage (IncMasterN (-1)))
+
+   -- Toggle the status bar gap
+   -- Use this binding with avoidStruts from Hooks.ManageDocks.
+   -- See also the statusBar function from Hooks.DynamicLog.
+   --
+   , ((modm              , xK_b     ), sendMessage ToggleStruts)
+
+   -- Quit xmonad
+   , ((modm .|. shiftMask, xK_q     ), io (exitWith ExitSuccess))
+
+   -- Restart xmonad
+   , ((modm .|. controlMask, xK_q   ), spawn "xmonad --recompile; xmonad --restart")
+
+   -- Run xmessage with a summary of the default keybindings (useful for beginners)
+   ]
+   ++
+
+   --
+   -- mod-[1..9], Switch to workspace N
+   -- mod-shift-[1..9], Move client to workspace N
+   --
+   [((m .|. modm, k), windows $ f i)
+       | (i, k) <- zip (XMonad.workspaces conf) [xK_1 .. xK_9]
+       , (f, m) <- [(W.view, 0), (W.shift, shiftMask)]]
+   ++
+
+   --
+   -- mod-{a,s,d}, Switch to physical/Xinerama screens 1, 2, or 3
+   -- mod-shift-{a,s,d}, Move client to screen 1, 2, or 3
+   --
+   [((m .|. modm, key), screenWorkspace sc >>= flip whenJust (windows . f))
+       | (key, sc) <- zip [xK_a, xK_s, xK_d] [0..]
+       , (f, m) <- [(W.view, 0), (W.shift, shiftMask)]]
 ------------------------------------------------------------------------
 -- Now run xmonad with all the defaults we set up.
 
@@ -158,22 +256,19 @@ main = do
             , ppLayout = dzenColor "grey" "" . shorten 50
             , ppUrgent = dzenColor "red" "" . wrap "*" "*"
             }
-
+            ,keys               = myKeys
         } `additionalKeys`
         [ ((mod4Mask .|. shiftMask, xK_z), spawn "xscreensaver-command -lock")
-          , ((controlMask, xK_Print), spawn "sleep 0.2; scrot -s")
-          , ((0, xK_Print), spawn "scrot")
+          , ((0, xK_Print), spawn "~/.config/dwm/scripts/screenshot")
           , ((shiftMask, xK_F12), spawn "systemctl poweroff")
           , ((mod4Mask, xK_m), spawn "firefox --new-tab about:blank")
-          , ((mod4Mask, xK_q     ), kill)
-          , ((mod4Mask    .|. controlMask, xK_q     ), spawn "xmonad --recompile; xmonad --restart")
-          , ((mod4Mask              , xK_b     ), sendMessage ToggleStruts)
-          , ((mod4Mask              , xK_space     ), windows W.swapMaster)
-          , ((mod1Mask              , xK_space ), sendMessage NextLayout)
-          , ((controlMask           , xK_space ), spawn "dmenu_run")
           , ((mod4Mask              , xK_Return     ), spawn myTerminal)
-          -- , ((mod1Mask .|. shiftMask, xK_space ), setLayout $ XMonad.layoutHook conf)
+          , (( 0, xF86XK_AudioLowerVolume  ), spawn  "amixer -c 0 -- set Master 1-")
+          , (( 0, xF86XK_AudioRaiseVolume  ), spawn "amixer -c 0 -- set Master 1+")
+          , (( 0, xF86XK_MonBrightnessUp   ), spawn "xbacklight -inc 2")
+          , (( 0, xF86XK_MonBrightnessDown ), spawn "xbacklight -dec 2")
         ]
+
 -- A structure containing your configuration settings, overriding
 -- fields in the default config. Any you don't override, will
 -- use the defaults defined in xmonad/XMonad/Config.hs
@@ -192,7 +287,7 @@ main = do
 --         focusedBorderColor = myFocusedBorderColor,
 
 --       -- key bindings
---         -- keys               = myKeys,
+        -- keys               = myKeys,
 --         mouseBindings      = myMouseBindings,
 
 --       -- hooks, layouts
