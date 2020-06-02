@@ -1,19 +1,21 @@
 import Control.Monad
+import Graphics.X11.ExtraTypes.XF86
 import qualified Data.Map        as M
 import qualified XMonad.StackSet as W
-import System.IO
 import System.Exit (exitWith, ExitCode(..))
+import System.IO
 import XMonad
 import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.ManageDocks
+import XMonad.Hooks.UrgencyHook
 import XMonad.Layout
 import XMonad.Layout.IndependentScreens
 import XMonad.Layout.ResizableTile
 import XMonad.Layout.SimpleFloat
-import XMonad.Util.EZConfig(additionalKeys, additionalKeysP)
+import XMonad.Util.EZConfig(additionalKeys, additionalKeysP, removeKeys)
 import XMonad.Util.Run(spawnPipe)
 import XMonad.Util.SpawnOnce
-import Graphics.X11.ExtraTypes.XF86
+
 -- The preferred terminal program, which is used in a binding below and by
 -- certain contrib modules.
 --
@@ -204,7 +206,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
    , ((modm              , xK_b     ), sendMessage ToggleStruts)
 
    -- Quit xmonad
-   , ((modm .|. shiftMask, xK_q     ), io (exitWith ExitSuccess))
+   , ((odm .|. shiftMask, xK_q     ), io (exitWith ExitSuccess))
 
    -- Restart xmonad
    , ((modm .|. controlMask, xK_q   ), spawn "xmonad --recompile; xmonad --restart")
@@ -235,28 +237,25 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
 -- Run xmonad with the settings you specify. No need to modify this.
 --
 main = do
-    let dzncmd = "dzen2 -dock -ta l -w 1500 -fn mono:size=10 -xs  "
+    let dzncmd = "dzen2 -dock -ta l -fn mono:size=10 -xs  "
     nScreens <- countScreens
-    handles <- forM [0..nScreens -1] (\sc -> spawnPipe (dzncmd ++ show sc))
-    xmonad  $ docks def
-        {
-        terminal           = myTerminal
+    handles <- forM [0..nScreens - 1] (\sc -> spawnPipe (dzncmd ++ show sc))
+    xmonad  $ withUrgencyHook NoUrgencyHook $ docks def
+        { terminal           = myTerminal
         , focusFollowsMouse  = myFocusFollowsMouse
-        -- clickJustFocuses   = myClickJustFocuses
         , borderWidth        = myBorderWidth
         , manageHook         = manageDocks <+> myManageHook
-        , layoutHook = myLayout
-        , modMask    = myModMask
-        , logHook    = dynamicLogWithPP defaultPP
-            { ppOutput = \str -> forM_ handles (flip hPutStrLn str)
-            , ppCurrent = dzenColor "grey" "" . wrap "[" "]"
-            , ppVisible =  dzenColor "grey" ""
-            , ppHidden =  dzenColor "grey" ""
-            , ppTitle = dzenColor "grey" "" . shorten 50
-            , ppLayout = dzenColor "grey" "" . shorten 50
-            , ppUrgent = dzenColor "red" "" . wrap "*" "*"
+        , layoutHook         = myLayout
+        , modMask            = myModMask
+        , logHook            = dynamicLogWithPP defaultPP
+            { ppOutput       = \str -> forM_ handles (flip hPutStrLn str)
+            , ppCurrent      = dzenColor "grey" "" . wrap "[" "]"
+            , ppVisible      =  dzenColor "grey" ""
+            , ppHidden       =  dzenColor "grey" ""
+            , ppTitle        = dzenColor "grey" "" . shorten 50
+            , ppLayout       = dzenColor "grey" "" . shorten 50
             }
-            ,keys               = myKeys
+        , keys               = myKeys
         } `additionalKeys`
         [ ((mod4Mask .|. shiftMask, xK_z), spawn "xscreensaver-command -lock")
           , ((0, xK_Print), spawn "~/.config/dwm/scripts/screenshot")
