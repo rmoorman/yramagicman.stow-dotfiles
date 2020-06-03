@@ -241,7 +241,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
 main = do
     let dzncmd = "dzen2 -dock -ta l -fn mono:size=10 -tw 900 -xs  "
     nScreens <- countScreens
-    handles <- forM [0..nScreens - 1] (\sc -> spawnPipe (dzncmd ++ show sc))
+    handles <- forM [1..nScreens] (\sc -> spawnPipe (dzncmd ++ show sc))
     xmonad  $ withUrgencyHook NoUrgencyHook $ docks def
         { terminal           = myTerminal
         , focusFollowsMouse  = myFocusFollowsMouse
