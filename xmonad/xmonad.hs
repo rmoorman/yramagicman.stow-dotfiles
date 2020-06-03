@@ -206,7 +206,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
    , ((modm              , xK_b     ), sendMessage ToggleStruts)
 
    -- Quit xmonad
-   , ((odm .|. shiftMask, xK_q     ), io (exitWith ExitSuccess))
+   , ((modm .|. shiftMask, xK_q     ), io (exitWith ExitSuccess))
 
    -- Restart xmonad
    , ((modm .|. controlMask, xK_q   ), spawn "xmonad --recompile; xmonad --restart")
