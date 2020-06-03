@@ -23,11 +23,11 @@ set_screen_layout() {
 
 set_screen_layout
 
-test -n  "$( pgrep awesome )" || (  x=1; while [ $x -le $(xrandr | grep connected | wc -l ) ]
-do
-    "$HOME/bin/statusloop" "$x"
-    x=$(( x + 1 ))
-done  ) &
+# test -n  "$( pgrep awesome )" || (  x=1; while [ $x -le $(xrandr | grep ' connected' | wc -l ) ]
+# do
+#     "$HOME/bin/statusloop" "$x"
+#     x=$(( x + 1 ))
+# done  ) &
 
 
 ("$HOME/.config/fehbg") &

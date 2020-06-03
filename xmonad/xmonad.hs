@@ -133,8 +133,12 @@ myManageHook = composeAll [
 --
 -- By default, do nothing.
 myStartupHook = do
+    nScreens <- countScreens
+    forM [1..nScreens ] (\sc -> spawnOnce ("/home/jonathan/bin/statusloop " ++ show sc))
     spawnOnce "xsetroot -cursor_name left_ptr"
-
+    spawnOnce "/home/jonathan/.config/dwm/scripts/bg.sh"
+    spawnOnce "feh --no-fehbg --bg-tile /tmp/bg.png"
+    -- spawnOnce "/home/jonathan/.config/autostart/load.sh"
 ------------------------------------------------------------------------
 -- Key bindings. Add, modify or remove key bindings here.
 --
@@ -261,6 +265,7 @@ main = do
           , ((0, xK_Print), spawn "~/.config/dwm/scripts/screenshot")
           , ((shiftMask, xK_F12), spawn "systemctl poweroff")
           , ((mod4Mask, xK_m), spawn "firefox --new-tab about:blank")
+          , ((mod4Mask .|. shiftMask, xK_m), spawn "firefox --private-window")
           , ((mod4Mask              , xK_Return     ), spawn myTerminal)
           , (( 0, xF86XK_AudioLowerVolume  ), spawn  "amixer -c 0 -- set Master 1-")
           , (( 0, xF86XK_AudioRaiseVolume  ), spawn "amixer -c 0 -- set Master 1+")

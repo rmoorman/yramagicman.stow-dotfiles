@@ -1,5 +1,7 @@
 #!/usr/bin/env zsh
 
+setopt extended_glob
+
 hn=$(hostname)
 function my_date () {
     date +"%a %d/%m/%Y %I:%M:%S"
@@ -47,7 +49,7 @@ function my_mail() {
     # $HOME/bin/mailmon
     mail=$( find ~/.config/mail/Inbox/new/ -type f | wc -l| awk '/[0-9]/ {print $1}' )
     if test "$mail" -gt 0; then
-        echo " M: $mail "
+        echo "M: $mail "
     fi
 }
 
@@ -55,15 +57,15 @@ function my_weather() {
     if [[ -z "$(< "$HOME/.cache/weather")" ]];
     then
         $HOME/bin/weather.py > $HOME/.cache/weather
-        weather=' W:'$(< $HOME/.cache/weather)
+        weather='W:'$(< $HOME/.cache/weather)
     fi
     modified_date=$(stat $HOME/.cache/weather | awk '/Modify/ {split($3, arr, ":"); print arr[1]}')
     if [[ ! "$(date +"%H" )" -eq $modified_date ]]
     then
         $HOME/bin/weather.py > $HOME/.cache/weather
-        weather=' W:'$(< $HOME/.cache/weather)
+        weather='W:'$(< $HOME/.cache/weather)
     else
-        weather=' W:'$(< $HOME/.cache/weather)
+        weather='W:'$(< $HOME/.cache/weather)
     fi
     if [[ "$weather" == " W:error" ]]; then
         $HOME/bin/weather.py > $HOME/.cache/weather
@@ -76,12 +78,14 @@ function my_update() {
     then
         notify-send 'check your user crontab'
     fi
-    if [[ "$(<  $HOME/.cache/updates | wc -l )" -gt 10 ]] && [[ ! "$(< $HOME/.cache/aur)" ]]; then
-        echo " U: $(< $HOME/.cache/updates | wc -l)"
-    elif [[ "$(<  $HOME/.cache/updates | wc -l )" -gt 10 ]] && [[ "$(< $HOME/.cache/aur | wc -l )"  ]]; then
-        echo " U: $(< $HOME/.cache/updates | wc -l) + $(< $HOME/.cache/aur | wc -l )"
-    else
-        # do nothing
+    if [[ -f "$HOME/.cache/updates" ]]; then
+        if [[ "$(<  $HOME/.cache/updates | wc -l )" -gt 10 ]] && [[ ! "$(< $HOME/.cache/aur)" ]]; then
+            echo " U: $(< $HOME/.cache/updates | wc -l)"
+        elif [[ "$(<  $HOME/.cache/updates | wc -l )" -gt 10 ]] && [[ "$(< $HOME/.cache/aur | wc -l )"  ]]; then
+            echo " U: $(< $HOME/.cache/updates | wc -l) + $(< $HOME/.cache/aur | wc -l )"
+        else
+            # do nothing
+        fi
     fi
 }
 
@@ -105,11 +109,13 @@ function dbox() {
     echo "D:$message"
 }
 
-line="$(my_update)$(my_mail)$(my_weather)"
-# for d in /sys/class/power_supply/BAT?/; do
-#     line="$line $(my_bat $d)"
-# done
-line="$line $(my_wifi) $(dbox) $(my_volume) $(my_date)"
+line="$(my_update)\n$(my_mail)\n$(my_weather)"
+if [[ -r "/sys/class/power_supply/BAT0/" ]]; then
+    for d in /sys/class/power_supply/BAT?/; do
+        line="$line\n$(my_bat $d)"
+    done
+fi
+line="$line\n$(my_wifi)\n$(dbox)\n$(my_volume)\n $(my_date)"
 
 xsetroot -name $line
 echo $line

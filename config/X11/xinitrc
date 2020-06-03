@@ -56,7 +56,9 @@ fi
 
 ( "$HOME/.config/screenlayout/default.sh" ) &
 wmcmd=$(cat ~/.config/wmcmd)
-exec "$HOME/.config/autostart/load.sh" &
-exec "$HOME/bin/statusline" &
-exec $( eval $wmcmd)
+if test "$wmcmd" == "$HOME/bin/dmwrestart"; then
+    exec "$HOME/.config/autostart/load.sh" &
+    exec "$HOME/bin/statusline" &
+fi
+exec $(eval $wmcmd)
 # exec xmonad
