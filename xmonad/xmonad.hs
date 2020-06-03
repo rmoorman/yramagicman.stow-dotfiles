@@ -254,6 +254,7 @@ main = do
             , ppHidden       =  dzenColor "grey" ""
             , ppTitle        = dzenColor "grey" "" . shorten 50
             , ppLayout       = dzenColor "grey" "" . shorten 50
+            , ppUrgent       = dzenColor "red" "" . shorten 50 . dzenStrip
             }
         , keys               = myKeys
         } `additionalKeys`
