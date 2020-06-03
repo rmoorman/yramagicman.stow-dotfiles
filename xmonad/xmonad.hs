@@ -135,8 +135,6 @@ myManageHook = composeAll [
 myStartupHook = do
     spawnOnce "xsetroot -cursor_name left_ptr"
 
--- let
-
 ------------------------------------------------------------------------
 -- Key bindings. Add, modify or remove key bindings here.
 --
