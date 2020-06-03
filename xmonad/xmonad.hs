@@ -10,6 +10,7 @@ import XMonad.Hooks.ManageDocks
 import XMonad.Hooks.UrgencyHook
 import XMonad.Layout
 import XMonad.Layout.IndependentScreens
+import XMonad.Layout.NoBorders
 import XMonad.Layout.ResizableTile
 import XMonad.Layout.SimpleFloat
 import XMonad.Util.EZConfig(additionalKeys, additionalKeysP, removeKeys)
@@ -86,7 +87,7 @@ myMouseBindings (XConfig {XMonad.modMask = modm}) = M.fromList $
 -- The available layouts.  Note that each layout is separated by |||,
 -- which denotes layout choice.
 --
-myLayout = avoidStruts $ tiled |||  Full ||| Mirror tiled ||| simpleFloat
+myLayout = smartBorders $ tiled |||  Full ||| Mirror tiled ||| simpleFloat
     where
         tiled = ResizableTall 1 (2/100) (1/2) []
 ------------------------------------------------------------------------
@@ -105,14 +106,13 @@ myLayout = avoidStruts $ tiled |||  Full ||| Mirror tiled ||| simpleFloat
 -- 'className' and 'resource' are used below.
 --
 myManageHook = composeAll [
-      className =? "MPlayer"        --> doFloat
-    , className =? "Firefox"        --> doShift "2"
+      className =? "Firefox"        --> doShift "2"
     , className =? "firefox"        --> doShift "2"
     , className =? "signal"         --> doShift "8"
     , className =? "Signal"         --> doShift "8"
-    , className =? "Gimp"           --> doFloat
-    , resource  =? "desktop_window" --> doIgnore
-    , resource  =? "kdesktop"       --> doIgnore ]
+    , className =? "slack"          --> doShift "9"
+    , className =? "Slack"          --> doShift "9"
+    , resource  =? "desktop_window" --> doIgnore ]
 
 ------------------------------------------------------------------------
 -- Event handling
@@ -132,9 +132,9 @@ myManageHook = composeAll [
 -- per-workspace layout choices.
 --
 -- By default, do nothing.
--- myStartupHook = do
---     nScreens <- countScreens
---     withScreens nScreens spawnOnce "dzen2 -dock -xs 0 -ta l -w 1500 -fn xft:font=Inconsolata:size=10"
+myStartupHook = do
+    spawnOnce "xsetroot -cursor_name left_ptr"
+
 -- let
 
 ------------------------------------------------------------------------
@@ -237,7 +237,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
 -- Run xmonad with the settings you specify. No need to modify this.
 --
 main = do
-    let dzncmd = "dzen2 -dock -ta l -fn mono:size=10 -xs  "
+    let dzncmd = "dzen2 -dock -ta l -fn mono:size=10 -tw 900 -xs  "
     nScreens <- countScreens
     handles <- forM [0..nScreens - 1] (\sc -> spawnPipe (dzncmd ++ show sc))
     xmonad  $ withUrgencyHook NoUrgencyHook $ docks def
@@ -245,7 +245,7 @@ main = do
         , focusFollowsMouse  = myFocusFollowsMouse
         , borderWidth        = myBorderWidth
         , manageHook         = manageDocks <+> myManageHook
-        , layoutHook         = myLayout
+        , layoutHook         = avoidStruts $ myLayout
         , modMask            = myModMask
         , logHook            = dynamicLogWithPP defaultPP
             { ppOutput       = \str -> forM_ handles (flip hPutStrLn str)
@@ -257,6 +257,7 @@ main = do
             , ppUrgent       = dzenColor "red" "" . shorten 50 . dzenStrip
             }
         , keys               = myKeys
+        , startupHook        = myStartupHook
         } `additionalKeys`
         [ ((mod4Mask .|. shiftMask, xK_z), spawn "xscreensaver-command -lock")
           , ((0, xK_Print), spawn "~/.config/dwm/scripts/screenshot")
