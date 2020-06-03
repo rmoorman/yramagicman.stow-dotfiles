@@ -2,10 +2,8 @@
 xbacklight -set 25
 setxkbmap -option compose:menu
 setxkbmap -option caps:none
-if test "$( hostname )" = "artoo" || test "$( hostname )" = "cubano"
-then
-    "$HOME/bin/setmouse" &
-fi
+
+"$HOME/bin/setmouse" &
 
 check_process(){
     if  ! pgrep "$1";
