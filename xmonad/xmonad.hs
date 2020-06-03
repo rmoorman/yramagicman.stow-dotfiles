@@ -137,8 +137,8 @@ myStartupHook = do
     forM [1..nScreens ] (\sc -> spawnOnce ("/home/jonathan/bin/statusloop " ++ show sc))
     spawnOnce "xsetroot -cursor_name left_ptr"
     spawnOnce "/home/jonathan/.config/dwm/scripts/bg.sh"
-    spawnOnce "feh --no-fehbg --bg-tile /tmp/bg.png"
-    -- spawnOnce "/home/jonathan/.config/autostart/load.sh"
+    spawnOnce "feh --no-fehbg --bg-scale /home/jonathan/Pictures/wallpaper.jpg"
+    spawnOnce "/home/jonathan/.config/autostart/load.sh"
 ------------------------------------------------------------------------
 -- Key bindings. Add, modify or remove key bindings here.
 --
