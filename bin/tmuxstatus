@@ -56,4 +56,4 @@ my_mail() {
         echo " M: $mail "
     fi
 }
-echo "$(my_date)$(battery)$(updates)$(my_mail)"
+battery
