@@ -41,7 +41,7 @@ updates() {
         fi
     else
         if test $(($( wc -l < "$HOME/.cache/updates" ) +
-            $( wc -l < "$HOME/.cache/aur" ))) -gt 10 ; then
+            $( wc -l < "$HOME/.cache/aur" ))) -gt 30 ; then
             echo " U: $( wc -l < "$HOME/.cache/updates" ) + $(wc -l < "$HOME/.cache/aur" ) "
             return
         fi
@@ -49,6 +49,7 @@ updates() {
     echo ''
 
 }
+
 my_mail() {
     mail=$( find ~/.config/mail/Inbox/new/ -type f | wc -l| awk '/[0-9]/ {print $1}' )
     if test "$mail" -gt 0; then

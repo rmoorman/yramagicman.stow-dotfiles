@@ -134,7 +134,7 @@ myManageHook = composeAll [
 -- By default, do nothing.
 myStartupHook = do
     nScreens <- countScreens
-    forM [1..nScreens ] (\sc -> spawnOnce ("/home/jonathan/bin/statusloop " ++ show sc))
+    forM [0..nScreens ] (\sc -> spawnOnce ("/home/jonathan/bin/statusloop " ++ show sc))
     spawnOnce "xsetroot -cursor_name left_ptr"
     spawnOnce "/home/jonathan/.config/dwm/scripts/bg.sh"
     spawnOnce "feh --no-fehbg --bg-scale /home/jonathan/Pictures/wallpaper.jpg"
@@ -239,7 +239,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
 -- Run xmonad with the settings you specify. No need to modify this.
 --
 main = do
-    let dzncmd = "dzen2 -dock -ta l -fn mono:size=10 -tw 900 -xs  "
+    let dzncmd = "dzen2 -dock -ta l -fn mono:size=10 -xs  "
     nScreens <- countScreens
     handles <- forM [1..nScreens] (\sc -> spawnPipe (dzncmd ++ show sc))
     xmonad  $ withUrgencyHook NoUrgencyHook $ docks def
@@ -254,7 +254,7 @@ main = do
             , ppCurrent      = dzenColor "grey" "" . wrap "[" "]"
             , ppVisible      =  dzenColor "grey" ""
             , ppHidden       =  dzenColor "grey" ""
-            , ppTitle        = dzenColor "grey" "" . shorten 50
+            , ppTitle        = dzenColor "grey" "" . shorten 550
             , ppLayout       = dzenColor "grey" "" . shorten 50
             , ppUrgent       = dzenColor "red" "" . shorten 50 . dzenStrip
             }

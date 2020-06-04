@@ -1,8 +1,9 @@
 #!/usr/bin/zsh
-left=$(xrandr | awk '/ connected/ {print substr($3, 0, 4)}')
+
+left=$( xrandr | awk '/ connected/ {print substr($3, 0, 4)}' | sed "${1}q;d" )
 width=190
 while;
 do
-    $HOME/bin/statusline | sort -r | xargs
+    $HOME/bin/statusline
     sleep 1s;
-done   | dzen2 -u -l 1 -sa c -ta c -fn mono:size=10 -x $(( $left - $width  )) -fg grey -tw $width  -xs $1
+done   | dzen2 -u -l 1 -sa r -ta c -fn mono:size=10 -x $(( $left - $width  )) -fg grey -tw $width  -xs $1
