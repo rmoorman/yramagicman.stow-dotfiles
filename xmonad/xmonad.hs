@@ -17,6 +17,9 @@ import XMonad.Util.EZConfig(additionalKeys, additionalKeysP, removeKeys)
 import XMonad.Util.Run(spawnPipe)
 import XMonad.Util.SpawnOnce
 
+windowCount :: X (Maybe String)
+windowCount = gets $ Just . show . length . W.integrate' . W.stack . W.workspace . W.current . windowset
+
 -- The preferred terminal program, which is used in a binding below and by
 -- certain contrib modules.
 --
@@ -108,6 +111,10 @@ myLayout = smartBorders $ tiled |||  Full ||| Mirror tiled ||| simpleFloat
 myManageHook = composeAll [
       className =? "Firefox"        --> doShift "2"
     , className =? "firefox"        --> doShift "2"
+    , className =? "chromium"       --> doShift "3"
+    , className =? "Chromium"       --> doShift "3"
+    , className =? "thunderbird"    --> doShift "4"
+    , className =? "Thunderbird"    --> doShift "4"
     , className =? "signal"         --> doShift "8"
     , className =? "Signal"         --> doShift "8"
     , className =? "slack"          --> doShift "9"
@@ -249,8 +256,9 @@ main = do
         , manageHook         = manageDocks <+> myManageHook
         , layoutHook         = avoidStruts $ myLayout
         , modMask            = myModMask
-        , logHook            = dynamicLogWithPP defaultPP
+        , logHook            = dynamicLogWithPP def
             { ppOutput       = \str -> forM_ handles (flip hPutStrLn str)
+            , ppExtras       =  [ windowCount ]
             , ppCurrent      = dzenColor "grey" "" . wrap "[" "]"
             , ppVisible      =  dzenColor "grey" ""
             , ppHidden       =  dzenColor "grey" ""
@@ -266,6 +274,7 @@ main = do
           , ((shiftMask, xK_F12), spawn "systemctl poweroff")
           , ((mod4Mask, xK_m), spawn "firefox --new-tab about:blank")
           , ((mod4Mask .|. shiftMask, xK_m), spawn "firefox --private-window")
+          , ((mod4Mask .|. shiftMask, xK_g), spawn "chromium --incognito")
           , ((mod4Mask              , xK_Return     ), spawn myTerminal)
           , (( 0, xF86XK_AudioLowerVolume  ), spawn  "amixer -c 0 -- set Master 1-")
           , (( 0, xF86XK_AudioRaiseVolume  ), spawn "amixer -c 0 -- set Master 1+")

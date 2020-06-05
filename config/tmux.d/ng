@@ -4,12 +4,11 @@ set -e
 
 export XDG_CONFIG_HOME=$HOME/.config
 mux="tmux -f $XDG_CONFIG_HOME/tmux.d/tmux.conf"
-if $mux has-session -t ngrok 2> /dev/null; then
-    tmux kill-session -t ngrok
+if $mux has-session -t "ngrok$1" 2> /dev/null; then
+    tmux kill-session -t "ngrok$1"
 fi
 
-$mux new-session -d -s ngrok
-$mux send-keys -t ngrok:1 "ngrok http $1" Enter
-xdg-open http://localhost:4040 &
+$mux new-session -d -s "ngrok$1"
+$mux send-keys -t "ngrok$1":1 "ngrok http $1" Enter
 
 exit 0
