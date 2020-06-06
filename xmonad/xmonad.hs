@@ -258,13 +258,14 @@ main = do
         , modMask            = myModMask
         , logHook            = dynamicLogWithPP def
             { ppOutput       = \str -> forM_ handles (flip hPutStrLn str)
-            , ppExtras       =  [ windowCount ]
+            , ppExtras       = [ windowCount ]
             , ppCurrent      = dzenColor "grey" "" . wrap "[" "]"
-            , ppVisible      =  dzenColor "grey" ""
-            , ppHidden       =  dzenColor "grey" ""
+            , ppVisible      = dzenColor "grey" ""
+            , ppHidden       = dzenColor "grey" ""
             , ppTitle        = dzenColor "grey" "" . shorten 550
             , ppLayout       = dzenColor "grey" "" . shorten 50
             , ppUrgent       = dzenColor "red" "" . shorten 50 . dzenStrip
+            , ppOrder = \(a:b:c:d) ->  [ a ] ++ d ++ [ b ] ++  [ c ]
             }
         , keys               = myKeys
         , startupHook        = myStartupHook
