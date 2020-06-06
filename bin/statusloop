@@ -1,7 +1,12 @@
 #!/usr/bin/zsh
 
 left=$( xrandr | awk '/ connected/ {print substr($3, 0, 4)}' | sed "${1}q;d" )
-width=190
+dpi=$(xrdb -query | awk '/dpi/ {print $2}')
+if [[ $dpi -gt 100 ]]; then
+    width=450
+else
+    width=190
+fi
 while;
 do
     $HOME/bin/statusline

@@ -265,7 +265,7 @@ main = do
             , ppTitle        = dzenColor "grey" "" . shorten 550
             , ppLayout       = dzenColor "grey" "" . shorten 50
             , ppUrgent       = dzenColor "red" "" . shorten 50 . dzenStrip
-            , ppOrder = \(a:b:c:d) ->  [ a ] ++ d ++ [ b ] ++  [ c ]
+            , ppOrder = \(a:b:c:d) ->  d ++ [ a ] ++  [ b ] ++  [ c ]
             }
         , keys               = myKeys
         , startupHook        = myStartupHook
