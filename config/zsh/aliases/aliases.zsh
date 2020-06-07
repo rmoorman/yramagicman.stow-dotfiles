@@ -100,10 +100,11 @@ alias tkills="tmux kill-server"
 alias tns="tmux new-session"
 alias tls="tmux ls"
 #}}}
-#{{{ uncategorized aliases
+#{{{ system management aliases
 alias poweroff="systemctl poweroff"
 alias reboot="systemctl reboot"
 alias hibernate="systemctl suspend"
+alias pacman="yay"
 #}}}
 #{{{ utility commands
 alias q="exit"
