@@ -94,7 +94,12 @@ function my_volume() {
 }
 
 function dbox() {
-    box="$(dropbox-cli status)"
+    if [[ $(date +'%S') -eq 10 ]]; then
+        dropbox-cli status > /tmp/box
+    fi
+    if [[ -f /tmp/box ]]; then
+        box="$( cat /tmp/box )"
+    fi
     if [[ $box = "Dropbox isn't running!" ]]
     then
         message="off"
