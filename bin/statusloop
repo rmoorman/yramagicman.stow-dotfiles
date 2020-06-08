@@ -5,10 +5,10 @@ dpi=$(xrdb -query | awk '/dpi/ {print $2}')
 if [[ $dpi -gt 100 ]]; then
     width=450
 else
-    width=190
+    width=205
 fi
 while;
 do
     $HOME/bin/statusline
     sleep 1s;
-done   | dzen2 -u -l 1 -sa r -ta c -fn mono:size=10 -x $(( $left - $width  )) -fg grey -tw $width  -xs $1
+done   | dzen2 -u -l 1 -sa r -ta l -fn mono:size=10 -x $(( $left - $width  )) -fg grey -tw $width  -xs $1
