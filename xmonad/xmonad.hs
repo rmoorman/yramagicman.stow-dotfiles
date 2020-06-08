@@ -109,7 +109,9 @@ myLayout = smartBorders $ tiled |||  Full ||| Mirror tiled ||| simpleFloat
 -- 'className' and 'resource' are used below.
 --
 myManageHook = composeAll [
-      className =? "Firefox"        --> doShift "2"
+      className =? "Alacritty"      --> doShift "1"
+    , className =? "alacritty"      --> doShift "1"
+    , className =? "Firefox"        --> doShift "2"
     , className =? "firefox"        --> doShift "2"
     , className =? "chromium"       --> doShift "3"
     , className =? "Chromium"       --> doShift "3"
