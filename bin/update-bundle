@@ -9,3 +9,6 @@ git submodule foreach ' git checkout master '
 git submodule foreach ' git pull --recurse-submodules || : '
 
 git submodule foreach ' git submodule update --init --recursive || : '
+
+git add -u
+git commit -m "Automated: bundle update"
