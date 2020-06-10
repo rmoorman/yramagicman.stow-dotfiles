@@ -10,4 +10,4 @@
 */15 * * * * checkupdates > /home/jonathan/.cache/updates
 */15 * * * * auracle sync > /home/jonathan/.cache/aur
 */16 * * * * mu index
-# */15 * * * * /home/jonathan/bin/getallmail
+*/15 * * * * /home/jonathan/bin/getallmail
