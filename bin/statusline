@@ -11,7 +11,7 @@ function my_bat() {
     notify_when=$(($(print -P '%D{ %M }') % 1 ))
     bat_level=$( < $1/capacity )
     bat_stat=$( < $1/status )
-    if [[ $(date +'%S') -eq 30 ]]
+    if [[ $(print -P '%D{ %S }') -eq 30 ]]
     then
         if [[ $(($bat_level < 20)) -eq 1 && (  $notify_when -eq 0 ) && $status != 'Charging'  ]]
         then
@@ -60,7 +60,7 @@ function my_weather() {
         weather='W:'$(< $HOME/.cache/weather)
     fi
     modified_date=$(stat $HOME/.cache/weather | awk '/Modify/ {split($3, arr, ":"); print arr[1]}')
-    if [[ ! "$(date +"%H" )" -eq $modified_date ]]
+    if [[ ! "$(print -P "%D{ %H }" )" -eq $modified_date ]]
     then
         $HOME/bin/weather.py > $HOME/.cache/weather
         weather='W:'$(< $HOME/.cache/weather)
@@ -94,7 +94,7 @@ function my_volume() {
 }
 
 function dbox() {
-    if [[ $(date +'%S') -eq 10 ]]; then
+    if [[ $(print -P '%D{ %S }') -eq 10 ]]; then
         dropbox-cli status > /tmp/box
     fi
     if [[ -f /tmp/box ]]; then
@@ -114,13 +114,23 @@ function dbox() {
     echo "D:$message"
 }
 
+function my_harvest() {
+    if [[ $(( $(print -P '%D{ %M }') % 5 )) -eq 0 ]] && [[ -e $HOME/bin/harvest ]];
+    then
+        $HOME/bin/harvest > /tmp/harvest
+    fi
+    [[ -f /tmp/harvest ]] && echo "TIME: $( < /tmp/harvest )"
+
+
+}
+
 line="$(my_date) $(my_update) $(my_mail) $(my_weather)"
 if [[ -r "/sys/class/power_supply/BAT0/" ]]; then
     for d in /sys/class/power_supply/BAT?/; do
         line="$line $(my_bat $d)"
     done
 fi
-line="$line $(my_wifi) $(dbox) $(my_volume)"
+line="$line $(my_wifi) $(dbox) $(my_volume) $(my_harvest)"
 
 xsetroot -name $line
 echo $line

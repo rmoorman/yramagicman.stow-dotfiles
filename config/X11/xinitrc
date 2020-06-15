@@ -55,6 +55,9 @@ else
 fi
 
 ( "$HOME/.config/screenlayout/default.sh" ) &
+if test "$( hostname )" == 'cubano'; then
+    ( "$HOME"/.config/screenlayout/work.sh ) &
+fi
 wmcmd=$(cat ~/.config/wmcmd)
 if test "$wmcmd" == "$HOME/bin/dmwrestart"; then
     exec "$HOME/.config/autostart/load.sh" &
