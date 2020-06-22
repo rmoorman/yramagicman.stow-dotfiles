@@ -32,9 +32,9 @@ function rules.two()
       { rule_any = { class = { "Thunderbird", "thunderbird" } },
         properties = { screen = 1, tag = "3" } },
       { rule_any = { class = { "Signal", "signal" } },
-        properties = { screen = 1, tag = "9" } },
-      { rule_any = { class = { "Slack", "slack" } },
         properties = { screen = 1, tag = "8" } },
+      { rule_any = { class = { "Slack", "slack" } },
+        properties = { screen = 1, tag = "9" } },
       { rule_any = { class = { "Krita", "krita" } },
         properties = { screen = 1, tag = "4" } },
    }
