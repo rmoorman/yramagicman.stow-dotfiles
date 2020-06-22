@@ -6,3 +6,6 @@ trap 'rm -f "$dir/.tags"' EXIT
 trap 'rm -f "$dir/../.tags"' EXIT
 git ls-files | \
   ctags --tag-relative -L - -f"$dir/.tags"
+
+git ls-files | \
+  ctags -e --tag-relative -L - -f"$dir/.etags"
