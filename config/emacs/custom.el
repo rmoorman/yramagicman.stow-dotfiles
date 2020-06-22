@@ -17,7 +17,7 @@
  '(flycheck-typescript-tslint-executable "~/.local/bin/tslint")
  '(package-selected-packages
    (quote
-    (lsp-mode base16-theme magit flycheck typescript-mode web-mode linum-relative racket-mode markdown-mode ivy lua-mode ac-php auto-complete evil-surround evil-commentary general evil-escape evil-collection evil projectile use-package)))
+    (haskell-mode lsp-mode base16-theme magit flycheck typescript-mode web-mode linum-relative racket-mode markdown-mode ivy lua-mode ac-php auto-complete evil-surround evil-commentary general evil-escape evil-collection evil projectile use-package)))
  '(projectile-enable-caching t)
  '(tab-width 4))
 (custom-set-faces

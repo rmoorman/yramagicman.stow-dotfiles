@@ -158,13 +158,14 @@
   (linum-relative-global-mode))
 
 (use-package web-mode
-  :mode "\\.blade.php|.component.html|.vue|.html\\'")
+  :mode "\\.vue|.html\\'")
+
+(use-package haskell-mode
+  :mode "\\.hs\\'")
 
 ;; typescript
 (use-package typescript-mode
   :mode "\\.ts\\'")
-;; (use-package tss
-;;   :mode "\\.ts")
 
 (use-package nroff-mode
   :mode "\\.mom\\'")

@@ -62,7 +62,7 @@ endfunction
 " {{{ compile javascript
 function! functions#CompileJS()
     if !bufexists('compiling-js')
-        call term_start(['/bin/sh', '-c', 'npm run dev'], {'term_rows': 5, 'term_finish': 'close' , 'term_name': 'compiling-js'})
+        call term_start(['/bin/sh', '-c', 'npm run lint'], {'term_rows': 5, 'term_finish': 'close' , 'term_name': 'compiling-js'})
         redraw!
     endif
 endfunction
