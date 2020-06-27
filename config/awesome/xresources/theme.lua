@@ -18,7 +18,7 @@ local theme = {}
 -- end
 -- load vector assets' generators for this theme
 
-theme.font = "Inconsolata 10.5"
+theme.font = "Fira Mono 9"
 
 theme.bg_normal = xrdb.background .. 'cc'
 theme.tasklist_bg_normal = xrdb.background ..'00'

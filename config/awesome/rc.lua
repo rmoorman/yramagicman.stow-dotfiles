@@ -33,8 +33,8 @@ local gk = require("globalkeys")
 -- another config (This code will only ever execute for the fallback config)
 if awesome.startup_errors then
     naughty.notify({ preset = naughty.config.presets.critical,
-    title = "Oops, there were errors during startup!",
-    text = awesome.startup_errors })
+            title = "Oops, there were errors during startup!",
+        text = awesome.startup_errors })
 end
 -- Handle runtime errors after startup
 do
@@ -45,8 +45,8 @@ do
         in_error = true
 
         naughty.notify({ preset = naughty.config.presets.critical,
-        title = "Oops, an error happened!",
-        text = tostring(err) })
+                title = "Oops, an error happened!",
+            text = tostring(err) })
         in_error = false
     end)
 end
@@ -135,169 +135,169 @@ awful.screen.connect_for_each_screen(function(s)
     -- We need one layoutbox per screen.
     s.mylayoutbox = awful.widget.layoutbox(s)
     s.mylayoutbox:buttons(gears.table.join(
-    awful.button({ }, 1, function () awful.layout.inc( 1) end),
-    awful.button({ }, 3, function () awful.layout.inc(-1) end),
-    awful.button({ }, 4, function () awful.layout.inc( 1) end),
-    awful.button({ }, 5, function () awful.layout.inc(-1) end)))
-    -- Create a taglist widget
-    s.mytaglist = gizmos.taglist(s) -- Create a tasklist widget
-    s.mytasklist = gizmos.tasklist(s)
+            awful.button({ }, 1, function () awful.layout.inc( 1) end),
+            awful.button({ }, 3, function () awful.layout.inc(-1) end),
+            awful.button({ }, 4, function () awful.layout.inc( 1) end),
+        awful.button({ }, 5, function () awful.layout.inc(-1) end)))
+        -- Create a taglist widget
+        s.mytaglist = gizmos.taglist(s) -- Create a tasklist widget
+        s.mytasklist = gizmos.tasklist(s)
 
-    -- Create the wibox
-    s.mywibox = awful.wibar({ position = "top", screen = s })
+        -- Create the wibox
+        s.mywibox = awful.wibar({ position = "top", screen = s })
 
 
-    local date = gizmos.date('%a %d/%m/%Y %I:%M');
-    local batstat = gizmos.batstat();
-    local batcap = gizmos.batcap('B:', '%');
-    local update = gizmos.update('U:', nil, 10);
-    local dbox = gizmos.dbox('D:')
-    local vol = gizmos.volume('V: ', '', false )
-    local ip = gizmos.ip()
-    local ssid = gizmos.ssid('wlan0', 'N:')
-    local mail = gizmos.mail('M: ', ' ')
-    showtext = gizmos.showtext('')
+        local date = gizmos.date('%a %d/%m/%Y %I:%M');
+        local batstat = gizmos.batstat();
+        local batcap = gizmos.batcap('B:', '%');
+        local update = gizmos.update('U:', nil, 10);
+        local dbox = gizmos.dbox('D:')
+        local vol = gizmos.volume('V: ', '', false )
+        local ip = gizmos.ip()
+        local ssid = gizmos.ssid('wlan0', 'N:')
+        local mail = gizmos.mail('M: ', ' ')
+        showtext = gizmos.showtext('')
 
-    -- Add widgets to the wibox
-    s.mywibox:setup {
-        layout = wibox.layout.align.horizontal,
-        { -- Left widgets
-        layout = wibox.layout.fixed.horizontal,
-        gizmos.sep(5),
-        s.mytaglist,
-        gizmos.sep(5),
-        s.mylayoutbox,
-        gizmos.sep(5),
-        s.mypromptbox,
-    },
-    s.mytasklist, -- Middle widget
-    { -- Right widgets
-    layout = wibox.layout.fixed.horizontal,
-    showtext,
-    mail,
-    gizmos.sep(15),
-    vol,
-    gizmos.sep(15),
-    ssid,
-    gizmos.sep(5),
-    ip,
-    gizmos.sep(15),
-    update,
-    gizmos.sep(15),
-    dbox,
-    gizmos.sep(15),
-    batcap,
-    gizmos.sep(10),
-    batstat,
-    gizmos.sep(15),
-    date
-},
- }
-end)
--- }}}
+        -- Add widgets to the wibox
+        s.mywibox:setup {
+            layout = wibox.layout.align.horizontal,
+            { -- Left widgets
+                layout = wibox.layout.fixed.horizontal,
+                gizmos.sep(5),
+                s.mytaglist,
+                gizmos.sep(5),
+                s.mylayoutbox,
+                gizmos.sep(5),
+                s.mypromptbox,
+            },
+            s.mytasklist, -- Middle widget
+            { -- Right widgets
+                layout = wibox.layout.fixed.horizontal,
+                showtext,
+                mail,
+                gizmos.sep(15),
+                vol,
+                gizmos.sep(15),
+                ssid,
+                gizmos.sep(5),
+                ip,
+                gizmos.sep(15),
+                update,
+                gizmos.sep(15),
+                dbox,
+                gizmos.sep(15),
+                batcap,
+                gizmos.sep(10),
+                batstat,
+                gizmos.sep(15),
+                date
+            },
+        }
+    end)
+    -- }}}
 
--- {{{ Key bindings
-globalkeys = gk.keys(modkey)
+    -- {{{ Key bindings
+    globalkeys = gk.keys(modkey)
 
-clientkeys = ck.keys(modkey)
+    clientkeys = ck.keys(modkey)
 
--- Bind all key numbers to tags.
--- Be careful: we use keycodes to make it work on any keyboard layout.
--- This should map on the top row of your keyboard, usually 1 to 9.
-for i = 1, 9 do
-    globalkeys =  gk.tagkeys(globalkeys, modkey, i)
-end
-
-clientbuttons = buttons.client()
-
--- Set keys
-root.keys(globalkeys)
--- }}}
-
--- {{{ Rules
--- Rules to apply to new clients (through the "manage" signal).
-awful.rules.rules = {
-    -- All clients will match this rule.
-    { rule = { },
-    properties = { border_width = beautiful.border_width,
-    border_color = beautiful.border_normal,
-    focus = awful.client.focus.filter,
-    raise = true,
-    keys = clientkeys,
-    buttons = clientbuttons,
-    screen = awful.screen.preferred,
-    placement = awful.placement.no_overlap+awful.placement.no_offscreen
-}
- },
-
- -- Floating clients.
- { rule_any = {
-     instance = {
-         "DTA", -- Firefox addon DownThemAll.
-         "copyq", -- Includes session name in class.
-         "pinentry",
-     },
-     class = {
-         "Arandr",
-         "Blueman-manager",
-         "Gpick",
-         "Kruler",
-         "MessageWin", -- kalarm.
-         "Sxiv",
-         "Tor Browser", -- Needs a fixed window size to avoid fingerprinting by screen size.
-         "Wpa_gui",
-         "veromix",
-         "xtightvncviewer"},
-
-         -- Note that the name property shown in xprop might be set slightly after creation of the client
-         -- and the name shown there might not match defined rules here.
-         name = {
-             "Event Tester", -- xev.
-         },
-         role = {
-             "AlarmWindow", -- Thunderbird's calendar.
-             "ConfigManager", -- Thunderbird's about:config.
-             "pop-up", -- e.g. Google Chrome's (detached) Developer Tools.
-         }
-     }, properties = { floating = true }},
-
-     -- Add titlebars to normal clients and dialogs
-     { rule_any = {type = { "normal", "dialog" }
- }, properties = { titlebars_enabled = false }
-},
-}
-
-if screen.count() == 1 then
-    rules.one()
-elseif screen.count() == 2 then
-    rules.two()
-elseif screen.count() == 3 then
-    rules.three()
-end
--- }}}
-
--- {{{ Signals
--- Signal function to execute when a new client appears.
-client.connect_signal("manage", function (c)
-    -- Set the windows at the slave,
-    -- i.e. put it at the end of others instead of setting it master.
-    -- if not awesome.startup then awful.client.setslave(c) end
-
-    if awesome.startup
-        and not c.size_hints.user_position
-        and not c.size_hints.program_position then
-        -- Prevent clients from being unreachable after screen count changes.
-        awful.placement.no_offscreen(c)
+    -- Bind all key numbers to tags.
+    -- Be careful: we use keycodes to make it work on any keyboard layout.
+    -- This should map on the top row of your keyboard, usually 1 to 9.
+    for i = 1, 9 do
+        globalkeys =  gk.tagkeys(globalkeys, modkey, i)
     end
-end)
 
--- Enable sloppy focus, so that focus follows mouse.
-client.connect_signal("mouse::enter", function(c)
-    c:emit_signal("request::activate", "mouse_enter", {raise = false})
-end)
+    clientbuttons = buttons.client()
 
-client.connect_signal("focus", function(c) c.border_color = beautiful.border_focus end)
-client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
--- }}}
+    -- Set keys
+    root.keys(globalkeys)
+    -- }}}
 
-awful.spawn.with_shell("~/.config/autostart/load.sh")
+    -- {{{ Rules
+    -- Rules to apply to new clients (through the "manage" signal).
+    awful.rules.rules = {
+        -- All clients will match this rule.
+        { rule = { },
+            properties = { border_width = beautiful.border_width,
+                border_color = beautiful.border_normal,
+                focus = awful.client.focus.filter,
+                raise = true,
+                keys = clientkeys,
+                buttons = clientbuttons,
+                screen = awful.screen.preferred,
+                placement = awful.placement.no_overlap+awful.placement.no_offscreen
+            }
+        },
+
+        -- Floating clients.
+        { rule_any = {
+                instance = {
+                    "DTA", -- Firefox addon DownThemAll.
+                    "copyq", -- Includes session name in class.
+                    "pinentry",
+                },
+                class = {
+                    "Arandr",
+                    "Blueman-manager",
+                    "Gpick",
+                    "Kruler",
+                    "MessageWin", -- kalarm.
+                    "Sxiv",
+                    "Tor Browser", -- Needs a fixed window size to avoid fingerprinting by screen size.
+                    "Wpa_gui",
+                    "veromix",
+                "xtightvncviewer"},
+
+                -- Note that the name property shown in xprop might be set slightly after creation of the client
+                -- and the name shown there might not match defined rules here.
+                name = {
+                    "Event Tester", -- xev.
+                },
+                role = {
+                    "AlarmWindow", -- Thunderbird's calendar.
+                    "ConfigManager", -- Thunderbird's about:config.
+                    "pop-up", -- e.g. Google Chrome's (detached) Developer Tools.
+                }
+        }, properties = { floating = true }},
+
+        -- Add titlebars to normal clients and dialogs
+        { rule_any = {type = { "normal", "dialog" }
+            }, properties = { titlebars_enabled = false }
+        },
+    }
+
+    if screen.count() == 1 then
+        rules.one()
+    elseif screen.count() == 2 then
+        rules.two()
+    elseif screen.count() == 3 then
+        rules.three()
+    end
+    -- }}}
+
+    -- {{{ Signals
+    -- Signal function to execute when a new client appears.
+    client.connect_signal("manage", function (c)
+        -- Set the windows at the slave,
+        -- i.e. put it at the end of others instead of setting it master.
+        -- if not awesome.startup then awful.client.setslave(c) end
+
+        if awesome.startup
+            and not c.size_hints.user_position
+            and not c.size_hints.program_position then
+            -- Prevent clients from being unreachable after screen count changes.
+            awful.placement.no_offscreen(c)
+        end
+    end)
+
+    -- Enable sloppy focus, so that focus follows mouse.
+    client.connect_signal("mouse::enter", function(c)
+        c:emit_signal("request::activate", "mouse_enter", {raise = false})
+    end)
+
+    client.connect_signal("focus", function(c) c.border_color = beautiful.border_focus end)
+    client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
+    -- }}}
+
+    awful.spawn.with_shell("~/.config/autostart/load.sh")
