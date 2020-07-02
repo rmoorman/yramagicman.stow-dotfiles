@@ -6,7 +6,7 @@ find_mouse = subprocess.check_output('xinput')
 find_mouse = find_mouse.decode().split('\n')
 mouse_id = ''
 for l in find_mouse:
-    if 'TouchPad' in l:
+    if 'TouchPad' in l or 'Touchpad' in l:
         mouse_id = l.split()
 
 for i in mouse_id:
