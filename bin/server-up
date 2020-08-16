@@ -4,8 +4,8 @@ sudo systemctl restart mysqld
 sudo systemctl restart redis
 if [[ -f /usr/lib/systemd/system/dynamodb.service ]]; then
     sudo systemctl restart dynamodb.service
-    node ~/Sites/livtrax_socket/util/createDriverTable.js
-    node ~/Sites/livtrax_socket/util/createHistoryTable.js
+    ts-node ~/Sites/livtrax_socket/util/createDriverTable.ts
+    ts-node ~/Sites/livtrax_socket/util/createHistoryTable.ts
 fi
 if [[ -f ./docker-compose.yml ]]; then
     sudo systemctl restart docker
