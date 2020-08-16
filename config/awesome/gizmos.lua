@@ -239,6 +239,21 @@ function gizmos.ip(prefix, suffix)
                 end
             end)
         end
+
+        function gizmos.time(prefix, suffix)
+            if prefix == nil then
+                prefix = ''
+            end
+            if suffix == nil then
+                suffix = ''
+            end
+            minutes = 60 * 5
+            return awful.widget.watch('bash -c "/home/jonathan/bin/harvest"',minutes , function(w, out)
+                    local message = prefix .. out .. suffix
+                    w:set_text(message)
+            end)
+        end
+
         function gizmos.taglist(s)
             return awful.widget.taglist {
                 screen  = s,
