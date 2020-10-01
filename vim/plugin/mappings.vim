@@ -71,3 +71,5 @@ cnoremap <C-e>  <End>
 "{{{ Kill annoying mapping
 nnoremap gs <nop>
 "}}}
+"
+inoreabbrev debugger; debugger;//eslint-disable-line

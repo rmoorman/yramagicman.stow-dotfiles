@@ -1,18 +1,18 @@
 #!/bin/sh
 
-killall statusloop
-xbacklight -inc 2
-xsetroot -name "$( xbacklight )"
-if hash awesome-client > /dev/null; then
-    echo  "showtext.text = ' Brightness: $( xbacklight | cut -d '.' -f1 ) '" | awesome-client
-fi
+# killall statusloop
+# xbacklight -inc 2
+# xsetroot -name "$( xbacklight )"
+# if hash awesome-client > /dev/null; then
+#     echo  "showtext.text = ' Brightness: $( xbacklight | cut -d '.' -f1 ) '" | awesome-client
+# fi
 
-sleep 5s
+# sleep 5s
 
-if hash awesome-client > /dev/null; then
-    echo  "showtext.text = ''" | awesome-client
-    exit
-fi
-if test -z "$(pgrep statusloop)"; then
-    "$HOME/bin/statusloop"
-fi
+# if hash awesome-client > /dev/null; then
+#     echo  "showtext.text = ''" | awesome-client
+#     exit
+# fi
+# if test -z "$(pgrep statusloop)"; then
+#     "$HOME/bin/statusloop"
+# fi
