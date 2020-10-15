@@ -24,10 +24,12 @@ chromium
 cloc
 cmake
 composer
+cpu-x
 create-react-app
 cronie
 ctags
 cups
+dbeaver
 dhcpcd
 dialog
 dmenu
@@ -41,6 +43,7 @@ editorconfig-core-c
 efibootmgr
 emacs
 enchant
+epiphany
 eslint
 eslint-plugin-vue
 fakeroot
@@ -58,7 +61,6 @@ getmail6
 gettext
 git
 gobject-introspection
-gparted
 gphoto2
 gptfdisk
 grep
@@ -88,6 +90,7 @@ libvdpau-va-gl
 linux
 linux-firmware
 lshw
+luit
 lvm2
 m4
 maim
@@ -96,6 +99,7 @@ man-db
 man-pages
 mariadb
 mdadm
+mlocate
 mpd
 mpv
 msmtp
@@ -189,7 +193,6 @@ xorg-fonts-75dpi
 xorg-fonts-misc
 xorg-fonts-type1
 xorg-iceauth
-xorg-luit
 xorg-server
 xorg-server-devel
 xorg-server-xephyr
