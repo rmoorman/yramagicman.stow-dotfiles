@@ -121,6 +121,8 @@ myManageHook = composeAll [
     , className =? "Signal"         --> doShift "8"
     , className =? "slack"          --> doShift "9"
     , className =? "Slack"          --> doShift "9"
+    , className =? "DBeaver"        --> doShift "4"
+    , className =? "dbeaver"        --> doShift "4"
     , resource  =? "desktop_window" --> doIgnore ]
 
 ------------------------------------------------------------------------
@@ -145,7 +147,7 @@ commands = [
             "feh --no-fehbg --bg-scale /home/jonathan/Pictures/wallpaper.jpg"
            , "xset -dpms"
            , "xset s off"
-           , "check_process compton -b"
+           , "picom -b"
            , "/usr/bin/xscreensaver -no-splash"
            , "emacs --bg-daemon"
            , "xset r rate 250 25"
@@ -153,6 +155,7 @@ commands = [
            , "dropbox-cli start"
            , "redshift"
            , "/home/jonathan/bin/setmouse"
+           , "dunst"
            ]
 myStartupHook = do
     forM commands (\c -> spawnOnce c )

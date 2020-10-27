@@ -63,5 +63,6 @@ if test "$wmcmd" == "$HOME/bin/dmwrestart"; then
     exec "$HOME/.config/autostart/load.sh" &
     exec "$HOME/bin/statusline" &
 fi
+export DESKTOP_SESSION=plasma
 exec $(eval $wmcmd)
 # exec xmonad

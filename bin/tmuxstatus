@@ -47,7 +47,6 @@ updates() {
         fi
     fi
     echo ''
-
 }
 
 my_mail() {
@@ -56,4 +55,16 @@ my_mail() {
         echo " M: $mail "
     fi
 }
-battery
+
+
+my_harvest() {
+    if test $(( $(date +'%M') % 5 )) -eq 0 && test -e "$HOME/bin/harvest" ;
+    then
+        "$HOME/bin/harvest" > /tmp/harvest
+    fi
+    test -f /tmp/harvest && echo "TIME: $( cat /tmp/harvest )"
+
+
+}
+
+echo "$(battery) $(updates) $(my_mail) $( my_harvest )"
