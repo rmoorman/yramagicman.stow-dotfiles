@@ -124,7 +124,17 @@ function my_harvest() {
 
 }
 
-line="$(my_date) $(my_update) $(my_mail) $(my_weather)"
+function dnd() {
+    if [[ $(( $(print -P '%D{ %s }') % 5 )) -eq 0 ]] && [[ "$(dunstctl is-paused)" == 'true' ]]; then
+        echo ' Do not disturb on! ' > /tmp/dnd
+    fi
+    if [[ $(( $(print -P '%D{ %s }') % 5 )) -eq 0 ]] && [[ "$(dunstctl is-paused)" == 'false' ]]; then
+        echo ''  > /tmp/dnd
+    fi
+    echo "$( < /tmp/dnd )"
+}
+
+line="$(my_date)$(dnd)$(my_update) $(my_mail) $(my_weather)"
 if [[ -r "/sys/class/power_supply/BAT0/" ]]; then
     for d in /sys/class/power_supply/BAT?/; do
         line="$line $(my_bat $d)"
