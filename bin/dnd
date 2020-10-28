@@ -1,0 +1,10 @@
+#!/bin/sh
+
+if test "$(dunstctl is-paused)" == 'false'; then
+    notify-send 'Enabling do not disturb'
+    sleep 3s
+    dunstctl set-paused toggle
+else
+    dunstctl set-paused toggle
+    notify-send 'Disabling do not disturb'
+fi

@@ -286,6 +286,7 @@ main = do
         } `additionalKeys`
         [ ((mod4Mask .|. shiftMask, xK_z), spawn "xscreensaver-command -lock")
           , ((0, xK_Print), spawn "~/.config/dwm/scripts/screenshot")
+          , ((0, xK_Pause), spawn "~/bin/dnd")
           , ((shiftMask, xK_F12), spawn "systemctl poweroff")
           , ((0, xK_F12), spawn "systemctl suspend")
           , ((mod4Mask, xK_m), spawn "firefox --new-tab about:blank")
