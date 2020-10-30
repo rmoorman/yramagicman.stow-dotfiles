@@ -3,6 +3,8 @@ alacritty
 alsa-firmware
 alsa-oss
 alsa-utils
+android-file-transfer
+android-udev
 angular-cli
 apache
 arandr
@@ -158,6 +160,8 @@ tcpdump
 terminus-font
 texinfo
 the_silver_searcher
+thunar
+thunar-archive-plugin
 thunderbird
 tlp
 tmux
@@ -224,6 +228,8 @@ xorg-xwud
 xscreensaver
 yay
 youtube-dl
+zathura
+zathura-pdf-mupdf
 zoom
 zsh
 zsh-lovers
