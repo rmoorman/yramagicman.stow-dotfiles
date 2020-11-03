@@ -8,6 +8,7 @@ set startofline
 "Use os clipboard
 set clipboard^=unnamedplus,unnamed
 set path-=/usr/include
+set mouse=
 "{{{ completions
 set omnifunc=syntaxcomplete#Complete
 set completeopt=menu,menuone,noinsert,noselect
