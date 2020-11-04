@@ -62,7 +62,9 @@ my_harvest() {
     then
         "$HOME/bin/harvest" > /tmp/harvest
     fi
-    test -f /tmp/harvest && echo "TIME: $( cat /tmp/harvest )"
+    if test -f /tmp/harvest; then
+        echo "TIME: $( cat /tmp/harvest )"
+    fi
 
 
 }

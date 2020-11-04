@@ -28,9 +28,8 @@ function my_bat() {
 }
 
 function my_wifi(){
+    status=$(iwctl station wlan0 show | awk '/State/ {print $2}')
     ip=$(ip --color=never addr show | awk '/([0-9\.]{1,3}){4}\/[0-9]{1,2} brd/ {print $2}')
-    ssid=$(iwctl station wlan0 show | awk '/Connected/ {print $3}')
-    # strength=$(wifi_strength)
     echo "N: $ip"
 }
 
@@ -134,13 +133,13 @@ function dnd() {
     echo "$( < /tmp/dnd )"
 }
 
-line="$(my_date)$(dnd)$(my_update) $(my_mail) $(my_weather)"
+line="$(dnd)$(my_update) $(my_mail)"
 if [[ -r "/sys/class/power_supply/BAT0/" ]]; then
     for d in /sys/class/power_supply/BAT?/; do
         line="$line $(my_bat $d)"
     done
 fi
-line="$line $(my_wifi) $(dbox) $(my_volume) $(my_harvest)"
+line="$line $(my_date)"
 
 xsetroot -name $line
 echo $line

@@ -127,11 +127,11 @@ endif
 " Show statusline, always
 set laststatus=2
 hi def focused ctermbg=2 ctermfg=0
-augroup status
-    autocmd!
-    autocmd VimEnter * let &statusline = status#Active()
-    autocmd VimEnter * call status#Autocmd()
-augroup end
+" augroup status
+"     autocmd!
+"     autocmd VimEnter * let &statusline = status#Active()
+"     autocmd VimEnter * call status#Autocmd()
+" augroup end
 "}}}
 "{{{ splits and buffers
 set hidden
