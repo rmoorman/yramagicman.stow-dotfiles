@@ -6,7 +6,7 @@
 # |     |     +--------- day of        month (1 - 31)
 # |     +----------- hour (0 - 23)
 # +------------- min (0 - 59)
-37 16 * * * /usr/bin/pacman -Qeq > /home/jonathan/Documents/dots/bin/setup/packages
+37 16 * * * /usr/bin/pacman -Qeq > /home/jonathan/Documents/dots/bin/setup/$( /usr/bin/hostname )
 */15 * * * * checkupdates > /home/jonathan/.cache/updates
 */15 * * * * auracle sync > /home/jonathan/.cache/aur
 */16 * * * * mu index
