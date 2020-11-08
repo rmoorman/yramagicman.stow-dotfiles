@@ -3,7 +3,7 @@
 left=$( xrandr | awk '/ connected/ {print substr($3, 0, 4)}' | sed "${1}q;d" )
 dpi=$(xrdb -query | awk '/dpi/ {print $2}')
 if [[ $dpi -gt 100 ]]; then
-    width=450
+    width=1000
 else
     width=800
 fi
