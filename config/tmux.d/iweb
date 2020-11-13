@@ -1,0 +1,31 @@
+#!/bin/sh
+
+set -e
+
+export XDG_CONFIG_HOME=$HOME/.config
+mux="tmux -f $XDG_CONFIG_HOME/tmux.d/tmux.conf"
+if $mux has-session -t iweb 2> /dev/null; then
+  $HOME/bin/switch_or_attach iweb
+  exit
+fi
+
+server-up
+
+$mux new-session -d -s iweb -n front-end
+
+$mux send-keys -t iweb:front-end "cd ~/Sites/iwebvisit" Enter
+$mux send-keys -t iweb:front-end "vim ." Enter
+$mux new-window -t iweb -n back-end
+$mux send-keys -t iweb:back-end "cd ~/Sites/iweb_api" Enter
+$mux send-keys -t iweb:back-end  "vim ." Enter
+$mux new-window -t iweb -n admin
+$mux send-keys -t iweb:admin "cd ~/Sites/iweb_admin" Enter
+$mux send-keys -t iweb:admin  "vim ." Enter
+$mux new-window -t iweb -n server
+$mux split-window -h -t iweb:server
+$mux send-keys -t iweb:server.left "cd ~/Sites/iweb_api" Enter
+$mux send-keys -t iweb:server.right "cd ~/Sites/iwebvisit" Enter
+$mux send-keys -t iweb:server.left "php artisan serve" Enter
+$mux send-keys -t iweb:server.right "npm start" Enter
+$HOME/bin/switch_or_attach iweb:front-end.left
+exit 0

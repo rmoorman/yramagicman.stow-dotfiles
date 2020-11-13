@@ -35,7 +35,7 @@ PlugOpt 'vim-scripts/vim-indent-object'
 PlugOpt 'morhetz/gruvbox'
 PlugOpt 'sheerun/vim-polyglot'
 packadd! matchit
-packadd! ale
+" packadd! ale
 packadd! auto-omnicomplete
 packadd! vim-visual-star-search
 packadd! editorconfig-vim
@@ -57,7 +57,7 @@ colorscheme gruvbox
 "{{{ autocommands for loading extensions
 augroup extensions
     autocmd!
-    autocmd FileType vim,css,scss,sass,html,javascript,python,php,c,cpp,typescript,zsh,sh silent! packadd ale | redraw
+    " autocmd FileType vim,css,scss,sass,html,javascript,python,php,c,cpp,typescript,zsh,sh silent! packadd ale | redraw
     autocmd BufRead *.org  set filetype=org
     autocmd FileType vue syn sync fromstart
 augroup end

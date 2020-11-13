@@ -1,0 +1,28 @@
+#!/bin/sh
+
+set -e
+
+export XDG_CONFIG_HOME=$HOME/.config
+mux="tmux -f $XDG_CONFIG_HOME/tmux.d/tmux.conf"
+if $mux has-session -t livtrax 2> /dev/null; then
+  $HOME/bin/switch_or_attach livtrax
+  exit
+fi
+
+server-up
+
+$mux new-session -d -s livtrax -n front-end
+
+$mux send-keys -t livtrax:front-end "cd ~/Sites/livtrax_frontend" Enter
+$mux send-keys -t livtrax:front-end "vim ." Enter
+$mux new-window -t livtrax -n back-end
+$mux send-keys -t livtrax:back-end "cd ~/Sites/livtrax_admin" Enter
+$mux send-keys -t livtrax:back-end  "vim ." Enter
+$mux new-window -t livtrax -c "cd ~/Sites/livtrax_admin" -n server
+$mux split-window -h -t livtrax:server
+$mux send-keys -t livtrax:server.left "cd ~/Sites/livtrax_admin" Enter
+$mux send-keys -t livtrax:server.right "cd ~/Sites/livtrax_frontend" Enter
+$mux send-keys -t livtrax:server.left "php artisan serve" Enter
+$mux send-keys -t livtrax:server.right "npm start" Enter
+$HOME/bin/switch_or_attach livtrax:front-end.left
+exit 0

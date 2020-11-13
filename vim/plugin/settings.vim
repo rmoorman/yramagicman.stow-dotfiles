@@ -78,10 +78,10 @@ if &diff
     set foldmethod=diff
     set list
     set nowrap
-    augroup diff
-        autocmd!
-        autocmd VimEnter * ALEDisable
-    augroup end
+    " augroup diff
+    "     autocmd!
+    "     autocmd VimEnter * ALEDisable
+    " augroup end
 endif
 
 if !has('nvim') && &ttimeoutlen == -1
