@@ -16,6 +16,7 @@ config/ranger/colorschemes/__pycache__/
 config/ranger/history
 config/tmux.d/digests
 config/vifm/vifminfo
+config/wmcmd
 config/zsh/.chpwd-recent-dirs
 config/zsh/history/
 config/zsh/plugins/.updatetime
@@ -42,5 +43,9 @@ vim/swaps/
 vim/undo/
 vim/viminfo
 vim/viminfo.tmp
-vim/viminfz.tmp
+vim/viminf*.tmp
+xmonad/xmonad.errors
+xmonad/xmonad.hi
+xmonad/xmonad.o
+xmonad/xmonad-x86_64-linux
 *.zwc

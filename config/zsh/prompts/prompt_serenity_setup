@@ -49,7 +49,7 @@ zstyle ':vcs_info:*:prompt:*' formats "${branch_format}"
 setopt prompt_subst
 PROMPT='
 %B%F{2}%m%f %~${vcs_info_msg_0_}%b
-%(?..!)%B%f${vcs_info_msg_1_}%b%L%B >%b '
+%(?..!)%B%f${vcs_info_msg_1_}>%b '
 if [[ -z $INSIDE_EMACS && -z $VIM  ]]; then
     RPROMPT='%F{7}[ %D{%I:%M %p} ] $( prompt_serenity_nvm )%f'
 else

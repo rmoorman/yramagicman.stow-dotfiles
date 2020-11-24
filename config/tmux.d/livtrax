@@ -24,5 +24,8 @@ $mux send-keys -t livtrax:server.left "cd ~/Sites/livtrax_admin" Enter
 $mux send-keys -t livtrax:server.right "cd ~/Sites/livtrax_frontend" Enter
 $mux send-keys -t livtrax:server.left "php artisan serve" Enter
 $mux send-keys -t livtrax:server.right "npm start" Enter
+$mux new-window -t livtrax -n socket
+$mux send-keys -t livtrax:socket "cd ~/Sites/livtrax_socket" Enter
+$mux send-keys -t livtrax:socket "npm start" Enter
 $HOME/bin/switch_or_attach livtrax:front-end.left
 exit 0
