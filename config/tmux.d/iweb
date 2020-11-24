@@ -16,14 +16,14 @@ $mux new-session -d -s iweb -n front-end
 $mux send-keys -t iweb:front-end "cd ~/Sites/iwebvisit" Enter
 $mux send-keys -t iweb:front-end "vim ." Enter
 $mux new-window -t iweb -n back-end
-$mux send-keys -t iweb:back-end "cd ~/Sites/iweb_api" Enter
+$mux send-keys -t iweb:back-end "cd ~/Sites/iwebvisit-api" Enter
 $mux send-keys -t iweb:back-end  "vim ." Enter
 $mux new-window -t iweb -n admin
 $mux send-keys -t iweb:admin "cd ~/Sites/iweb_admin" Enter
 $mux send-keys -t iweb:admin  "vim ." Enter
 $mux new-window -t iweb -n server
 $mux split-window -h -t iweb:server
-$mux send-keys -t iweb:server.left "cd ~/Sites/iweb_api" Enter
+$mux send-keys -t iweb:server.left "cd ~/Sites/iwebvisit-api" Enter
 $mux send-keys -t iweb:server.right "cd ~/Sites/iwebvisit" Enter
 $mux send-keys -t iweb:server.left "php artisan serve" Enter
 $mux send-keys -t iweb:server.right "npm start" Enter
