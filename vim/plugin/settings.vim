@@ -74,7 +74,7 @@ endif
 "}}}
 "{{{ conditional settings
 if &diff
-    nnoremap <C-q> :qa!<cr>
+    nnoremap <C-q> ZZZZ<cr>
     set foldmethod=diff
     set list
     set nowrap
