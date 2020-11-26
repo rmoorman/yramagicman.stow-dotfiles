@@ -173,9 +173,6 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
    -- launch dmenu
      , ((controlMask,               xK_space     ), spawn "dmenu_run")
 
-   -- launch gmrun
-     , ((modm .|. shiftMask, xK_p     ), spawn "gmrun")
-
    -- close focused window
      , ((modm              , xK_q     ), kill)
 
