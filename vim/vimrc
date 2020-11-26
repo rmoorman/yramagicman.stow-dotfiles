@@ -32,7 +32,7 @@ PlugOpt 'tpope/vim-commentary'
 PlugOpt 'tpope/vim-repeat'
 PlugOpt 'tpope/vim-surround'
 PlugOpt 'vim-scripts/vim-indent-object'
-PlugOpt 'morhetz/gruvbox'
+" PlugOpt 'morhetz/gruvbox'
 PlugOpt 'sheerun/vim-polyglot'
 packadd! matchit
 " packadd! ale
@@ -44,7 +44,7 @@ packadd! vim-repeat
 packadd! vim-surround
 packadd! vim-indent-object
 packadd! vim-polyglot
-packadd! gruvbox
+" packadd! gruvbox
 if ! has('nvim')
     packadd! editexisting
 endif
@@ -52,7 +52,7 @@ let g:AutoOmniComplete_tab = 1
 "}}}
 "{{{ colors
 set background=dark
-colorscheme gruvbox
+colorscheme monochrome
 "}}}
 "{{{ autocommands for loading extensions
 augroup extensions
