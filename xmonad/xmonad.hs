@@ -110,19 +110,15 @@ myLayout = smartBorders $ tiled |||  Full ||| Mirror tiled ||| simpleFloat
 --
 myManageHook = composeAll [
       className =? "Alacritty"      --> doShift "1"
-    , className =? "alacritty"      --> doShift "1"
-    , className =? "Firefox"        --> doShift "2"
+    , className =? "Emacs"          --> doShift "1"
     , className =? "firefox"        --> doShift "2"
-    , className =? "chromium"       --> doShift "3"
     , className =? "Chromium"       --> doShift "3"
-    , className =? "thunderbird"    --> doShift "4"
     , className =? "Thunderbird"    --> doShift "4"
-    , className =? "signal"         --> doShift "8"
     , className =? "Signal"         --> doShift "8"
-    , className =? "slack"          --> doShift "9"
     , className =? "Slack"          --> doShift "9"
+    , title =? "Dbeaver"            --> doShift "4"
     , className =? "DBeaver"        --> doShift "4"
-    , className =? "dbeaver"        --> doShift "4"
+    , title =? "Quit and close tabs?" --> doIgnore
     , resource  =? "desktop_window" --> doIgnore ]
 
 ------------------------------------------------------------------------
