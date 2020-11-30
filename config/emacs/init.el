@@ -158,7 +158,7 @@
   (linum-relative-global-mode))
 
 (use-package web-mode
-  :mode "\\.vue|.html\\'")
+  :mode "\\.\\(vue\\|html\\|blade.php\\)\\'")
 
 (use-package haskell-mode
   :mode "\\.hs\\'")

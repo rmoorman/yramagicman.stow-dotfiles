@@ -12,8 +12,8 @@ hi Conditional ctermfg=15
 hi Constant ctermfg=15
 hi CursorColumn ctermbg=242
 hi Cursor ctermfg=15 ctermbg=238
-hi CursorLine cterm=underline ctermbg=none
-hi CursorLineNr ctermfg=7
+hi CursorLine cterm=none ctermbg=none
+hi CursorLineNr ctermfg=7 cterm=none
 hi DiffAdd ctermfg=15 ctermbg=234
 hi DiffChange ctermbg=234 ctermfg=15
 hi DiffDelete ctermbg=16 ctermfg=15
