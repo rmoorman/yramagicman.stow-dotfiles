@@ -6,8 +6,6 @@
 # |     |     +--------- day of        month (1 - 31)
 # |     +----------- hour (0 - 23)
 # +------------- min (0 - 59)
-30 12 */5 * * yes | pacman -Sc
 15 * * * * updatedb
 30 * * * * ntpd -qg > /home/jonathan/.cache/ntp.log
 30 * * * * hwclock --systohc
-30 10 * * 1 reflector --latest 10 --sort rate --save /etc/pacman.d/mirrorlist

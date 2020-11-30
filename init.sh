@@ -149,8 +149,15 @@ setshell() {
     fi
 }
 
+_linkfiles() {
+    find "$1" -type f | while read -r file
+do
+    echo 'linking into '"$2"
+    sudo ln -fs "$file" /etc/"$2"/"$(basename "$file")"
+done
+}
 cron() {
-    find "$dotdir/cron" -type f | while read -r job
+    find  "$dotdir/cron" -maxdepth 1 -type f | while read -r job
 do
     j="$(basename "$job" )"
     if test "$j" == 'root'
@@ -164,6 +171,19 @@ do
             crontab "$job"
         fi
     fi
+done
+
+find  "$dotdir/cron" -maxdepth 1 -type d | while read -r job
+do
+
+    case "$(basename "$job" )" in
+        'daily' )
+            _linkfiles "$job"  'cron.daily';;
+        'weekly' )
+            _linkfiles "$job" 'cron.weekly';;
+        'monthly' )
+            _linkfiles "$job" 'cron.monthly';;
+    esac
 done
 }
 
