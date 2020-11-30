@@ -11,4 +11,4 @@ while;
 do
     $HOME/bin/statusline
     sleep 1s;
-done | dzen2 -u -ta r -fn mono:size=10 -x $(( $left - $width  )) -fg grey -tw $width  -xs $1
+done | dzen2 -dock -ta r -fn mono:size=10 -y 1920 -fg grey -xs $1
