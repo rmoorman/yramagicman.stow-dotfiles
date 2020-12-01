@@ -29,13 +29,13 @@ hi Ignore ctermfg=0
 hi IncSearch cterm=reverse
 hi Keyword ctermfg=2
 hi LineNr ctermfg=8
-hi MatchParen ctermbg=0 ctermfg=15
+hi MatchParen ctermbg=0 ctermfg=1
 hi ModeMsg cterm=bold
 hi MoreMsg ctermfg=15
 hi NonText ctermfg=8
 hi Normal ctermfg=15 ctermbg=0
 hi Number ctermfg=4
-hi Operator ctermfg=1
+hi Operator ctermfg=4
 hi Pmenu ctermfg=15 ctermbg=0
 hi PmenuSbar ctermbg=0
 hi PmenuSbar ctermbg=15
