@@ -253,7 +253,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     -- Now run xmonad with all the defaults we set up.
 
 main = do
-    let dzncmd = "dzen2 -dock -ta l -fn mono:size=10 -xs  "
+    let dzncmd = "dzen2 -dock -ta l -fn mono:size=10 -y 1920 -xs  "
     nScreens <- countScreens
     handles <- forM [1..nScreens] (\sc -> spawnPipe (dzncmd ++ show sc))
     xmonad  $ withUrgencyHook NoUrgencyHook $ docks def
