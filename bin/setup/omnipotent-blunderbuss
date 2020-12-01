@@ -1,5 +1,4 @@
 ack
-alacritty
 alsa-firmware
 alsa-oss
 alsa-utils
@@ -62,6 +61,7 @@ gettext
 git
 gobject-introspection
 gphoto2
+gpick
 gptfdisk
 grep
 groff

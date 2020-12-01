@@ -6,7 +6,7 @@ let colors_name = "doom"
 hi Boolean ctermfg=2
 hi Character ctermfg=2
 hi ColorColumn ctermbg=233
-hi Comment ctermfg=8
+hi Comment ctermfg=7
 hi Conceal ctermfg=8 ctermbg=0
 hi Conditional ctermfg=4
 hi Constant ctermfg=6
