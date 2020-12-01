@@ -48,7 +48,7 @@ hi SignColumn ctermfg=15 ctermbg=none
 hi Special ctermfg=15
 hi SpecialKey ctermfg=15
 hi SpellBad ctermbg=1 ctermfg=15
-hi SpellCap ctermfg=4 ctermbg=23
+hi SpellCap ctermfg=1 ctermbg=0 cterm=underline
 hi SpellLocal ctermbg=25
 hi SpellRare ctermbg=130
 hi Statement ctermfg=4
