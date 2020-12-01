@@ -91,10 +91,7 @@ def empty_xresources():
 def rebuild_colors(selection):
     with open(colors_dir + selection + '.xresources') as xr:
         colors = [color for color in xr.readlines()]
-        i3 = ['i3wm.' + c[2:]
-              for c in colors if len(c.strip()) and c.strip()[0] != '!']
         f = open('/tmp/xresources', 'a+')
-        f.write(''.join(i3))
         f.write(''.join(colors))
         f.close()
 
@@ -182,7 +179,7 @@ def st_update(selection):
 def move_into_place():
     errors = 0
     try:
-        copyfile('/tmp/xresources', config_dir + 'Xresources')
+        copyfile('/tmp/xresources', config_dir + 'config/X11/Xresources')
     except IOError:
         print("couldn't copy /tmp/xresources into place. Leaving it up to you")
         errors = errors + 1
@@ -218,7 +215,7 @@ def compile():
     if errors > 0:
         exit()
     os.chdir(home)
-    call(['xrdb', '-merge', home + '/.Xresources'])
+    call(['xrdb', '-merge', home + '/.config/X11/Xresources'])
 
 
 def install():

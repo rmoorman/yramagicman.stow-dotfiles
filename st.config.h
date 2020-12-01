@@ -5,13 +5,13 @@
  *
  * font: see http://freedesktop.org/software/fontconfig/fontconfig-user.html
  */
-static char *font = "Inconsolata:size=10.5:antialias=true:autohint=true";
-static int borderpx = 15;
+static char *font = "Fira Mono:size=10.5:antialias=true:autohint=true";
+static int borderpx = 5;
 
 /*
  * What program is execed by st depends of these precedence rules:
  * 1: program passed with -e
- * 2: utmp option
+ * 2: scroll and/or utmp
  * 3: SHELL environment variable
  * 4: value of shell in /etc/passwd
  * 5: value of shell in config.h
@@ -93,7 +93,7 @@ char *termname = "st-256color";
  */
 unsigned int tabspaces = 8;
 
-#include "/home/jonathan/.config/colors/gruvbox-dark.h"
+#include "/home/jonathan/.config/colors/customblack.h"
 /*
  * Default shape of cursor
  * 2: Block ("█")

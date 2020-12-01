@@ -8,14 +8,14 @@ static const int topbar             = 1;        /* 0 means bottom bar */
 static const char *fonts[]          = { "mono:size=9.5" };
 static const char dmenufont[]       = "mono:size=10";
 
-static const char border[] = "#282828";
-static const char sel_border[] = "#ebdbb2";
+static const char border[] = "#000000";
+static const char sel_border[] = "#adadad";
 
-static const char background[] = "#1d2021";
-static const char sel_background[] = "#ebdbb2";
+static const char background[] = "#000000";
+static const char sel_background[] = "#adadad";
 
-static const char foreground[] = "#ebdbb2";
-static const char sel_foreground[] = "#1d2021";
+static const char foreground[] = "#adadad";
+static const char sel_foreground[] = "#000000";
 static const char *colors[][3]      = {
     /*               fg         bg         border   */
     [SchemeNorm] = { foreground, background, border },
