@@ -53,7 +53,7 @@ let g:AutoOmniComplete_tab = 1
 "}}}
 "{{{ colors
 set background=dark
-colorscheme monochrome
+colorscheme doom
 "}}}
 "{{{ autocommands for loading extensions
 augroup extensions
