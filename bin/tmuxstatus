@@ -58,9 +58,9 @@ my_mail() {
 
 
 my_harvest() {
-    if test $(( $(date +'%M') % 5 )) -eq 0 && test -e "$HOME/bin/harvest" ;
+    if test $(( $(date +'%M') % 5 )) -eq 0 && test -e "$HOME/.local/bin/harvest" ;
     then
-        "$HOME/bin/harvest" > /tmp/harvest
+        "$HOME/.local/bin/harvest" > /tmp/harvest
     fi
     if test -f /tmp/harvest; then
         echo "TIME: $( cat /tmp/harvest )"
