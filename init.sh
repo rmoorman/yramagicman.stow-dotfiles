@@ -249,7 +249,7 @@ do
         # dwm
         mkrepodir
         setshell
-        # st
+        st
         shift;;
     --)
         githooks
