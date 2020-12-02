@@ -5,12 +5,12 @@ set -e
 export XDG_CONFIG_HOME=$HOME/.config
 mux="tmux -f $XDG_CONFIG_HOME/tmux.d/tmux.conf"
 if $mux has-session -t mail 2> /dev/null; then
-  $HOME/bin/switch_or_attach mail
+  switch_or_attach mail
   exit
 fi
 
 $mux new-session -d -s mail -n mutt
 
 $mux send-keys -t mail:mutt "mutt" Enter
-$HOME/bin/switch_or_attach mail:mutt.left
+switch_or_attach mail:mutt.left
 exit 0

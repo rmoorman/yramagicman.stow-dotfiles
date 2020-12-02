@@ -5,7 +5,7 @@ set -e
 export XDG_CONFIG_HOME=$HOME/.config
 mux="tmux -f $XDG_CONFIG_HOME/tmux.d/tmux.conf"
 if $mux has-session -t iweb 2> /dev/null; then
-  $HOME/bin/switch_or_attach iweb
+  switch_or_attach iweb
   exit
 fi
 
@@ -27,5 +27,5 @@ $mux send-keys -t iweb:server.left "cd ~/Sites/iwebvisit-api" Enter
 $mux send-keys -t iweb:server.right "cd ~/Sites/iwebvisit" Enter
 $mux send-keys -t iweb:server.left "php artisan serve" Enter
 $mux send-keys -t iweb:server.right "npm start" Enter
-$HOME/bin/switch_or_attach iweb:front-end.left
+switch_or_attach iweb:front-end.left
 exit 0

@@ -10,7 +10,7 @@ if test "$1" = ''; then
 fi
 
 if $mux has-session -t "$1" 2> /dev/null; then
-  "$HOME/bin/switch_or_attach" "$1"
+  "switch_or_attach" "$1"
   exit
 fi
 
@@ -32,5 +32,5 @@ $mux new-window -t "$1" -c "$HOME/Sites/$1" -n shell
 $mux new-window -t "$1" -c "$HOME/Sites/$1" -n server
 $mux send-keys -t "$1":server "php artisan serve" Enter
 
-"$HOME/bin/switch_or_attach" "$1":shell.left
+"switch_or_attach" "$1":shell.left
 exit 0

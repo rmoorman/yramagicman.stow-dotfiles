@@ -85,7 +85,7 @@
 [url "git://gist.github.com/"]
     insteadOf = "gist:"
 [diff]
-    external = $HOME/bin/diffit
+    external = $HOME/.local/bin/diffit
 [pager]
     diff =
 [user]
@@ -104,4 +104,4 @@
     smudge = git hawser smudge %f
     required = true
 [pull]
-	rebase = true
+    rebase = true
