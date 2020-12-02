@@ -76,13 +76,13 @@ githooks() {
 }
 
 bindir() {
-    if test ! -d "$HOME/bin"
+    if test ! -d "$HOME/.local/bin"
     then
         ln -sfv "$dotdir/bin" "$HOME/.local/"
     else
         printf 'skipped %s\r\n' "bin"
         printf '\nMisc files Not Installed: ' >> "$logfile"
-        printf "%s\n" "$dotdir/bin" >> "$logfile"
+        printf "%s\n" "$dotdir/.local/bin" >> "$logfile"
     fi
 }
 
