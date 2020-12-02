@@ -40,3 +40,6 @@
 [submodule "vim-polyglot"]
     path = vim/pack/vendor/opt/vim-polyglot
     url = https://github.com/sheerun/vim-polyglot
+[submodule "config/tmux.d/tmux-urlview"]
+	path = config/tmux.d/tmux-urlview
+	url = https://github.com/tmux-plugins/tmux-urlview
