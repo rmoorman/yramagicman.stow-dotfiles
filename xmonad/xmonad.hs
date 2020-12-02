@@ -145,18 +145,19 @@ commands = [
            , "xset s off"
            , "picom -b"
            , "/usr/bin/xscreensaver -no-splash"
-           , "emacs --bg-daemon"
+           -- , "emacs --bg-daemon"
            , "xset r rate 250 25"
            , "xset b off"
            , "dropbox-cli start"
            , "redshift"
-           , "/home/jonathan/bin/setmouse"
+           , "/home/jonathan/.local/bin/setmouse"
+           , "/home/jonathan/.local/bin/tmuxcopy"
            , "dunst"
            ]
 myStartupHook = do
     forM commands (\c -> spawnOnce c )
     nScreens <- countScreens
-    forM [1..nScreens ] (\sc -> spawnOnce ("/home/jonathan/bin/statusloop " ++ show sc))
+    forM [1..nScreens ] (\sc -> spawnOnce ("/home/jonathan/.local/bin/statusloop " ++ show sc))
     spawnOnce "xsetroot -cursor_name left_ptr"
 ------------------------------------------------------------------------
     -- Key bindings. Add, modify or remove key bindings here.
