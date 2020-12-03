@@ -14,10 +14,10 @@ server-up
 $mux new-session -d -s livtrax -n front-end
 
 $mux send-keys -t livtrax:front-end "cd ~/Sites/livtrax_frontend" Enter
-$mux send-keys -t livtrax:front-end "vim ." Enter
+$mux send-keys -t livtrax:front-end "$EDITOR ." Enter
 $mux new-window -t livtrax -n back-end
 $mux send-keys -t livtrax:back-end "cd ~/Sites/livtrax_admin" Enter
-$mux send-keys -t livtrax:back-end  "vim ." Enter
+$mux send-keys -t livtrax:back-end  "$EDITOR ." Enter
 $mux new-window -t livtrax -c "cd ~/Sites/livtrax_admin" -n server
 $mux split-window -h -t livtrax:server
 $mux send-keys -t livtrax:server.left "cd ~/Sites/livtrax_admin" Enter

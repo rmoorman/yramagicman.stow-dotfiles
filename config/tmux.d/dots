@@ -13,8 +13,8 @@ $mux new-session -d -s dots -n dotfiles
 
 
 $mux send-keys -t dots:dotfiles "cd ~/Gits/dots" Enter
-$mux send-keys -t dots:dotfiles "vim ." Enter
+$mux send-keys -t dots:dotfiles "$EDITOR ." Enter
 $mux new-window -t dots -c "$HOME/.zsh_modules/yramagicman/zsh-aliases/" -n aliases
-$mux send-keys -t dots:aliases "vim ." Enter
+$mux send-keys -t dots:aliases "$EDITOR ." Enter
 switch_or_attach dots:dotfiles.left
 exit 0
