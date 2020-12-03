@@ -14,9 +14,9 @@
    '("50d07ab55e2b5322b2a8b13bc15ddf76d7f5985268833762c500a90e2a09e7aa" default))
  '(flycheck-typescript-tslint-executable "~/.local/bin/tslint")
  '(inhibit-startup-screen t)
- '(lsp-ui-doc-position 'bottom t)
+ '(lsp-ui-doc-position 'bottom)
  '(package-selected-packages
-   '(which-key lsp-ui company-box haskell-mode lsp-mode base16-theme magit flycheck typescript-mode web-mode linum-relative racket-mode markdown-mode ivy lua-mode ac-php auto-complete evil-surround evil-commentary general evil-escape evil-collection evil projectile use-package))
+   '(company which-key lsp-ui company-box haskell-mode lsp-mode base16-theme magit flycheck typescript-mode web-mode linum-relative racket-mode markdown-mode ivy lua-mode ac-php auto-complete evil-surround evil-commentary general evil-escape evil-collection evil projectile use-package))
  '(projectile-enable-caching t)
  '(tab-width 4))
 (custom-set-faces
