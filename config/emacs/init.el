@@ -122,11 +122,6 @@
   :config
   (global-evil-surround-mode 1))
 
-;; ;; Completion settings
-;; (use-package auto-complete
-;;   :config
-;;   (global-auto-complete-mode 1))
-
 (use-package company
   :after lsp-mode
   :hook (lsp-mode . company-mode)
