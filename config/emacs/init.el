@@ -108,6 +108,12 @@
     "t" 'ansiterm
     "f" 'projectile-find-file))
 
+(use-package which-key
+  :init (which-key-mode)
+  :diminish which-key-mode
+  :config
+  (setq which-key-idle-delay 1))
+
 (use-package evil-commentary
   :config
   (evil-commentary-mode 1))
@@ -116,23 +122,44 @@
   :config
   (global-evil-surround-mode 1))
 
-;; Completion settings
-(use-package auto-complete
-  :config
-  (global-auto-complete-mode 1))
+;; ;; Completion settings
+;; (use-package auto-complete
+;;   :config
+;;   (global-auto-complete-mode 1))
+
+(use-package company
+  :after lsp-mode
+  :hook (lsp-mode . company-mode)
+  :bind (:map company-active-map
+              ("<tab>" . company-complete-selection))
+  (:map lsp-mode-map
+        ("<tab>" . company-indent-or-complete-common))
+  :custom
+  (company-minimum-prefix-length 1)
+  (company-idle-delay 0.0))
+
+(use-package company-box
+  :hook (company-mode . company-box-mode))
 
 (use-package lsp-mode
-  :commands lsp)
+  :commands (lsp lsp-deferred)
+  ;; :hook (lsp-mode . efs/lsp-mode-setup)
+  :init
+  (setq lsp-keymap-prefix "C-c l")  ;; Or 'C-l', 's-l'
+  )
 
-(use-package ac-php
-  :defer t)
+(use-package lsp-mode
+  :after (lsp-mode ivy))
+
+(use-package lsp-ui
+  :hook (lsp-mode . lsp-ui-mode)
+  :custom
+  (lsp-ui-doc-position 'bottom))
 
 (use-package php-mode
   :mode "\\.php\\'"
   :interpreter "php"
-  :config
-  (auto-complete-mode t)
-  (ac-php-mode))
+  :hook (php-mode . lsp-deferred))
 
 
 (use-package lua-mode
@@ -141,6 +168,7 @@
 (use-package ivy
   :config
   (ivy-mode 1))
+
 ;; keybinds
 (global-set-key (kbd "C-c b") 'buffer-menu)
 ;; (global-set-key (kbd "C-c t") 'vterm)
@@ -158,6 +186,7 @@
   (linum-relative-global-mode))
 
 (use-package web-mode
+  :hook (typescript-mode . lsp-deferred)
   :mode "\\.\\(vue\\|html\\|blade.php\\)\\'")
 
 (use-package haskell-mode
@@ -165,7 +194,8 @@
 
 ;; typescript
 (use-package typescript-mode
-  :mode "\\.ts\\'")
+  :hook (typescript-mode . lsp-deferred)
+  :mode "\\.\\(ts\\|js\\)\\'")
 
 (use-package nroff-mode
   :mode "\\.mom\\'")
@@ -181,6 +211,7 @@
 (show-paren-mode 1)
 
 (use-package base16-theme)
+
 ;; Mu4e
 (if (file-exists-p "/usr/share/emacs/site-lisp/mu4e/")
     (add-to-list 'load-path "/usr/share/emacs/site-lisp/mu4e/")
