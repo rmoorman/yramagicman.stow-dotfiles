@@ -1,5 +1,4 @@
 ack
-alacritty
 alsa-utils
 angular-cli
 apache
@@ -130,6 +129,7 @@ nano
 ncmpcpp
 ngrok-bin
 nmap
+nodejs-intelephense
 ntp
 openssh
 otf-fira-mono
@@ -173,7 +173,6 @@ rmlint
 rsync
 ruby
 s-nail
-sbcl
 sed
 shadow
 shellcheck
@@ -202,6 +201,7 @@ ttf-monaco
 ttf-ms-fonts
 ttf-sourcesanspro
 typescript
+typescript-language-server-bin
 unzip
 urlview
 usbutils
