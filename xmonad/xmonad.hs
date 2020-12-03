@@ -145,7 +145,7 @@ commands = [
            , "xset s off"
            , "picom -b"
            , "/usr/bin/xscreensaver -no-splash"
-           -- , "emacs --bg-daemon"
+           , "emacs --bg-daemon"
            , "xset r rate 250 25"
            , "xset b off"
            , "dropbox-cli start"
