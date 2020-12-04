@@ -31,20 +31,17 @@
   (package-refresh-contents)
   (package-install 'use-package))
 
-(defun ttymode nil
-  "Set tty things."
-  (interactive)
-  (when (not ( display-graphic-p ) )
-    (disable-theme 'base16-gruvbox-dark-pale)
-    (menu-bar-mode -1)
-    (set-background-color "black")))
 
-(defun ansiterm nil
+(defun ansiterm-vert nil
   "Set tty things."
   (interactive)
   (evil-window-vsplit)
   (ansi-term (executable-find "zsh")))
 
+(defun ansiterm nil
+  "Set tty things."
+  (interactive)
+  (ansi-term (executable-find "zsh")))
 (eval-when-compile
   (require 'use-package))
 
@@ -59,8 +56,11 @@
 
 ;; Evil config
 ;; evil-collection is picky and doesn't like this being set
-(setq evil-want-keybinding nil)
 (use-package evil
+  :init
+  (setq evil-want-integration t)
+  (setq evil-want-keybinding nil)
+  (setq evil-want-C-u-scroll t)
   :config
   (evil-mode 1)
   (setq evil-vsplit-window-right 1)
@@ -103,9 +103,9 @@
     :keymaps 'override
     "d" 'dired
     "," 'evil-switch-to-windows-last-buffer
-    "e" 'eval-buffer
-    "T" 'ttymode
-    "t" 'ansiterm
+    "b" 'ivy-switch-buffer
+    "e" 'eval-defun
+    "t" 'ansiterm-vert
     "f" 'projectile-find-file))
 
 (use-package which-key
@@ -164,7 +164,7 @@
   :config
   (ivy-mode 1))
 
-;; keybinds
+;; keybind
 (global-set-key (kbd "C-c b") 'buffer-menu)
 ;; (global-set-key (kbd "C-c t") 'vterm)
 (global-set-key (kbd "C-c e") 'mu4e)
@@ -178,10 +178,11 @@
 
 (use-package linum-relative
   :config
+  (global-display-line-numbers-mode)
   (linum-relative-global-mode))
 
 (use-package web-mode
-  :hook (typescript-mode . lsp-deferred)
+  :hook (web-mode . lsp-deferred)
   :mode "\\.\\(vue\\|html\\|blade.php\\)\\'")
 
 (use-package haskell-mode
@@ -233,23 +234,44 @@
                   sendmail-program "/bin/msmtp")))
 ;; hooks
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
-(add-hook 'before-save-hook (lambda nil "" (untabify (point-min) (point-max) )))
+(add-hook 'before-save-hook (lambda nil "" (untabify (point-min) (point-max))))
 
-;; settings
+(add-hook 'kill-buffer-hook (lambda nil ""
+                              (if (file-directory-p "~/intelephense")
+                                  (delete-directory "~/intelephense")
+                                nil)))
+;; quit-window-hook add remove file dir command
+(dolist (mode '(org-mode-hook
+                term-mode-hook
+                ansi-term-mode
+                shell-mode-hook
+                eshell-mode-hook))
+  (add-hook mode (lambda ()
+                   (linum-relative-mode 0)
+                   (display-line-numbers-mode 0))))
+
 (setq vc-follow-symlinks t)
-(setq make-backup-files nil)
+
+;; Make ESC quit prompts
+(global-set-key (kbd "<escape>") 'keyboard-escape-quit)
+
 (global-hl-line-mode t)
 
 (server-mode)
 
-(add-hook 'tty-setup-hook 'ttymode)
+;; Save all tempfiles in $TMPDIR/emacs$UID/
+(defconst emacs-tmp-dir (expand-file-name (format "emacs%d" (user-uid)) temporary-file-directory))
+(setq backup-directory-alist
+      `((".*" . ,emacs-tmp-dir)))
+(setq auto-save-file-name-transforms
+      `((".*" ,emacs-tmp-dir t)))
+(setq auto-save-list-file-prefix
+      emacs-tmp-dir)
 
-(global-set-key (kbd "C-c t") 'ttymode)
-
-(add-hook 'focus-in-hook
-          (lambda nil
-            (when ( display-graphic-p )
-              (enable-theme 'base16-gruvbox-dark-pale))))
+;; (add-hook 'focus-in-hook
+;;           (lambda nil
+;;             (when ( display-graphic-p )
+;;               (enable-theme 'base16-gruvbox-dark-pale))))
 
 
 

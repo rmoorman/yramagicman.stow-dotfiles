@@ -110,6 +110,7 @@ myLayout = smartBorders $ tiled |||  Full ||| Mirror tiled ||| simpleFloat
 --
 myManageHook = composeAll [
       className =? "Alacritty"      --> doShift "1"
+    , className =? "st-256color"    --> doShift "1"
     , className =? "Emacs"          --> doShift "1"
     , className =? "firefox"        --> doShift "2"
     , className =? "Chromium"       --> doShift "3"
@@ -165,7 +166,7 @@ myStartupHook = do
 myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
 
    -- launch a terminal
-   [ ((modm .|. shiftMask, xK_Return), spawn $ XMonad.terminal conf)
+   [ ((modm .|. shiftMask, xK_Return), spawn "emacsclient -c ~/")
 
    -- launch dmenu
      , ((controlMask,               xK_space     ), spawn "dmenu_run")
