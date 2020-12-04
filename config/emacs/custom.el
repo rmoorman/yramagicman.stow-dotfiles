@@ -24,8 +24,6 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(hl-line ((t (:extend t :background "#3a3a3a"))))
- '(mode-line ((t (:background "black" :foreground "gainsboro" :box (:line-width -1 :style released-button)))))
- '(mode-line-inactive ((t (:inherit mode-line :background "black" :foreground "dim gray" :box (:line-width -1 :color "grey40") :weight light)))))
+ '(hl-line ((t (:extend t :background "#3a3a3a")))))
 (provide 'custom.el)
 ;;; custom.el ends here

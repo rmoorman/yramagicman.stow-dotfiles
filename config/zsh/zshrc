@@ -1,6 +1,6 @@
 #!usr/bin/env zsh
 emulate zsh
-#{{{ profiling tools
+# profiling tools
 PROFILE_STARTUP=false
 if [[ "$PROFILE_STARTUP" == true ]]; then
     zmodload zsh/zprof
@@ -9,16 +9,16 @@ if [[ "$PROFILE_STARTUP" == true ]]; then
     exec 3>&2 2>$HOME/startlog.$$
     setopt xtrace prompt_subst
 fi
-#}}}
-#{{{ install functions
+
+# install functions
 fpath=("$ZDOTDIR/pkg" $fpath)
 fpath=("$ZDOTDIR/functions" $fpath)
 fpath=("$ZDOTDIR/prompts" $fpath)
 autoload $ZDOTDIR/pkg/*
 autoload $ZDOTDIR/functions/*
 autoload $ZDOTDIR/prompts/*
-#}}}
-#{{{ Load packages
+
+# Load packages
 pkg init
 [[ -z "$INSIDE_EMACS" ]] && pkg colored-man-pages -f omz
 pkg zsh-users/zsh-completions
@@ -41,8 +41,8 @@ if type "dircolors" > /dev/null; then
 elif type "gdircolors" > /dev/null; then
     eval $(gdircolors)
 fi
-#}}}
-#{{{ Set zsh options for general runtime.
+
+# Set zsh options for general runtime.
 #
 # Load the prompt system and completion system and initilize them
 autoload -Uz compinit promptinit
@@ -115,9 +115,9 @@ setopt beep
 bindkey -e
 # Disable some shell keyboard shortcuts
 stty -ixon > /dev/null 2>/dev/null
-#}}}
-#{{{ completion
-#{{{ options
+
+# completion
+# options
 # Complete from both ends of a word.
 setopt complete_in_word
 # Move cursor to the end of a completed word.
@@ -135,8 +135,8 @@ setopt no_complete_aliases
 setopt menu_complete
 # Disable start/stop characters in shell editor.
 unsetopt flow_control
-#}}}
-#{{{ zstyle
+
+# zstyle
 zstyle ':completion:*:*:*:*:*' menu select
 zstyle ':completion:*:matches' group 'yes'
 zstyle ':completion:*:options' description 'yes'
@@ -157,9 +157,9 @@ zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:
 zstyle ':completion:*:functions' ignored-patterns '(_*|pre(cmd|exec))'
 zstyle ':completion:*' rehash true
 zmodload zsh/complist
-#}}}
-#}}}
-#{{{ history
+
+
+# history
 HISTFILE="$XDG_CACHE_HOME/zsh/history"
 HISTSIZE=10000000
 SAVEHIST=10000000
@@ -187,11 +187,11 @@ setopt hist_save_no_dups
 setopt hist_verify
 # Show timestamp in history
 setopt extended_history
-#}}}
-#{{{ prompt
+
+# prompt
 prompt serenity > /dev/null
-#}}}
-#{{{ grab the rest of the packages
+
+# grab the rest of the packages
 
 [[ -f /usr/share/doc/pkgfile/command-not-found.zsh ]] && source /usr/share/doc/pkgfile/command-not-found.zsh
 
@@ -199,8 +199,8 @@ if [[ -d /usr/share/fzf ]]; then
     source /usr/share/fzf/key-bindings.zsh
     source /usr/share/fzf/completion.zsh
 fi
-#}}}
-#{{{ lazy load stuff
+
+# lazy load stuff
 if [[ "$TMUX" != '' ]] && [[ -z "$(pgrep tmuxcopy)" ]] && [[ "$OSTYPE" =~ 'darwin*' ]]; then
     setopt nonotify nomonitor
     tmuxcopy &
@@ -211,9 +211,9 @@ fi
 function artisan() {
     php artisan $*
 }
-#}}}
-#{{{ key bindings,
-# Allow command line editing in an external editor.
+
+# key bindings,
+ Allow command line editing in an external editor.
 autoload -Uz edit-command-line
 zle -N edit-command-line
 bindkey -M emacs "^[[Z" reverse-menu-complete
@@ -228,8 +228,8 @@ for keymap in $(bindkey -l); do
     bindkey -M "${keymap}" "$@"
 done
 }
-#}}}
-#{{{ cdr, persistent cd
+
+# cdr, persistent cd
 autoload -Uz add-zsh-hook
 autoload -Uz chpwd_recent_dirs cdr
 
@@ -256,21 +256,20 @@ setopt PUSHD_MINUS
 
 add-zsh-hook chpwd chpwd_recent_dirs
 zstyle ':chpwd:*' recent-dirs-file "$XDG_CACHE_HOME/zsh/chpwd-recent-dirs"
-#}}}
-# {{{ start tmux,
+
+#  start tmux,
 if [[ -z "$TMUX" && -z "$INSIDE_EMACS" && -z "$VIM" && -z "$SSH_TTY" ]]; then
     if [[ -z $( pgrep tmux$ ) ]] then
         s tmux
     fi
 fi
-#}}}
-#{{{ Temporary Files
+
+# Temporary Files
 TMPPREFIX="$(mktemp -d)/zsh"
-#}}}
-#{{{ end profiling script
+
+# end profiling script
 if [[ "$PROFILE_STARTUP" == true ]]; then
     unsetopt xtrace
     exec 2>&3 3>&-
     zprof > ~/zshprofile$(date +'%s')
 fi
-#}}}
