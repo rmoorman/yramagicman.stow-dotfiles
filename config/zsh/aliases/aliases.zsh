@@ -26,7 +26,7 @@ alias oo="nohup xdg-open . > /dev/null &"
 alias t='tmux'
 alias :q='exit'
 alias bc='bc -l'
-alias getmail="$HOME/bin/getallmail"
+alias getmail="$HOME/.local/bin/getallmail"
 #}}}
 #{{{ Enable aliases to be sudo’ed
 alias sudo='sudo '
