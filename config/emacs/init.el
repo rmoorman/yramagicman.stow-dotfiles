@@ -31,6 +31,15 @@
   (package-refresh-contents)
   (package-install 'use-package))
 
+(defun ttymode nil
+  "Set tty things."
+  (interactive)
+  (when (not ( display-graphic-p ) )
+    (disable-theme 'base16-gruvbox-dark-pale)
+
+    (display-line-numbers-mode 0)
+    (linum-relative-mode 0)
+    (set-background-color "black")))
 
 (defun ansiterm-vert nil
   "Set tty things."
@@ -42,6 +51,7 @@
   "Set tty things."
   (interactive)
   (ansi-term (executable-find "zsh")))
+
 (eval-when-compile
   (require 'use-package))
 
@@ -166,7 +176,7 @@
 
 ;; keybind
 (global-set-key (kbd "C-c b") 'buffer-menu)
-;; (global-set-key (kbd "C-c t") 'vterm)
+(global-set-key (kbd "C-c t") 'ttymode)
 (global-set-key (kbd "C-c e") 'mu4e)
 
 ;; Modes
@@ -178,7 +188,6 @@
 
 (use-package linum-relative
   :config
-  (global-display-line-numbers-mode)
   (linum-relative-global-mode))
 
 (use-package web-mode
@@ -244,6 +253,7 @@
 (dolist (mode '(org-mode-hook
                 term-mode-hook
                 ansi-term-mode
+                apropos-mode-hook
                 shell-mode-hook
                 eshell-mode-hook))
   (add-hook mode (lambda ()
@@ -274,6 +284,9 @@
 ;;               (enable-theme 'base16-gruvbox-dark-pale))))
 
 
+
+(add-hook 'find-file-hook 'ttymode)
+(add-hook 'tty-setup-hook 'ttymode)
 
 (provide 'init.el)
 ;;; init.el ends here
