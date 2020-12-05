@@ -84,8 +84,8 @@
     pushInsteadOf = "git://gist.github.com/"
 [url "git://gist.github.com/"]
     insteadOf = "gist:"
-[diff]
-    external = $HOME/.local/bin/diffit
+# [diff]
+    # external = $HOME/.local/bin/diffit
 [pager]
     diff =
 [user]
