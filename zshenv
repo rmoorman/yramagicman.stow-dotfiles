@@ -1,10 +1,10 @@
 #!usr/bin/env zsh
-#{{{ start xserver when necessary
+# start xserver when necessary
 if [ -z "$DISPLAY" ] && [ -n "$XDG_VTNR" ] && [ "$XDG_VTNR" -eq 1 ]; then
     exec startx "$HOME/.config/X11/xinitrc"
 fi
-#}}}
-#{{{ set config variables and ensure files are linked
+
+# set config variables and ensure files are linked
 setopt extendedglob
 local dotdir="$HOME/.config/zsh"
 zmodload -m -F zsh/files b:zf_ln b:zf_rm
@@ -18,8 +18,8 @@ for file in $dotdir/^.*; do
     fi
 done
 zmodload -u zsh/files
-#}}}
-#{{{ env vars
+
+# env vars
 # export WORKON_HOME=$HOME/.virtualenvs
 # export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
 # export VIRTUALENVWRAPPER_SCRIPT=/usr/bin/virtualenvwrapper.sh
@@ -48,20 +48,20 @@ if ( hash fzf > /dev/null 2>&1 ); then
     export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -g ""'
     export FZF_CTRL_T_COMMAND='ag --hidden --ignore .git -g ""'
 fi
-#}}}
-#{{{ Browser
+
+# Browser
 [[ "$OSTYPE" == darwin* ]] && export BROWSER='open' || export BROWSER=firefox
 export WWW_HOME="$XDG_CONFIG_HOME/www_data"
-#}}}
-#{{{ Editors
+
+# Editors
 export EDITOR='emacsclient -nw'
 export VISUAL='vim'
 export PAGER='less'
-#}}}
-#{{{ Language
+
+# Language
 [[ -z "$LANG" ]] && export LANG='en_US.UTF-8'
-#}}}
-#{{{ Paths
+
+# Paths
 
 # Ensure path arrays do not contain duplicates.
 typeset -gU cdpath fpath mailpath path
@@ -81,8 +81,8 @@ path=(
     $path
 )
 
-#}}}
-#{{{ Less
+
+# Less
 
 # Set the default Less options.
 # Mouse-wheel scrolling has been disabled by -X (disable screen clearing).
@@ -94,5 +94,3 @@ export LESS='-F -g -i -M -R -S -w -X -z-4'
 if (( $#commands[(i)lesspipe(|.sh)] )); then
     export LESSOPEN="| /usr/bin/env $commands[(i)lesspipe(|.sh)] %s 2>&-"
 fi
-
-#}}}
