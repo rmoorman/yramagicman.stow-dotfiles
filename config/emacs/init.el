@@ -74,6 +74,7 @@
   :config
   (evil-mode 1)
   (setq evil-vsplit-window-right 1)
+  (setq evil-split-window-below 1)
   (add-hook 'evil-normal-state-entry-hook (lambda ()
                                             (if buffer-file-name
                                                 (when
