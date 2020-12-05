@@ -183,7 +183,12 @@
 
 ;; Modes
 (use-package markdown-mode
-  :mode "\\.md\\'")
+  :mode "\\.md\\'"
+  :hook (markdown-mode . (lambda nil
+                           ( visual-line-mode )
+                           (linum-relative-mode 0)
+                           ( display-line-numbers-mode 0))))
+
 
 (use-package racket-mode
   :mode "\\.rkt\\'")
