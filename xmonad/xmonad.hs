@@ -154,6 +154,8 @@ commands = [
            , "/home/jonathan/.local/bin/setmouse"
            , "/home/jonathan/.local/bin/tmuxcopy"
            , "dunst"
+           ,"setxkbmap -option compose:menu"
+           ,"setxkbmap -option caps:none"
            ]
 myStartupHook = do
     forM commands (\c -> spawnOnce c )

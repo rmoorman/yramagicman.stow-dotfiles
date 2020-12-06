@@ -233,17 +233,21 @@
     (add-to-list 'load-path "/usr/local/Cellar/mu/1.4.5/share/emacs/site-lisp/mu/mu4e" )
   (message "mu4e not found in /usr/local/Cellar/mu/1.4.5/share/emacs/site-lisp/mu/mu4e"))
 
+(defvar mu4e-drafts-folder "/Drafts")
+(defvar mu4e-sent-folder   "/Sent")
+(defvar mu4e-trash-folder  "/Trash")
+(defvar mu4e-get-mail-command (expand-file-name "~/.local/bin/getallmail") )
+(defvar sendmail-program (expand-file-name "~/.local/bin/getallmail") )
 (add-hook 'after-init-hook
           (lambda nil ""
             (require 'mu4e)
             (defvar mu4e-maildir (expand-file-name "~/.config/mail/"))
 
             (defvar mu4e-mu-binary (executable-find "mu"))
-            (defvar mu4e-drafts-folder "/Drafts")
-            (defvar mu4e-sent-folder   "/Sent")
-            (defvar mu4e-trash-folder  "/trash")
-            (defvar mu4e-sent-messages-behavior 'delete)
-            (defvar mu4e-get-mail-command (expand-file-name "~/.local/bin/getallmail") )
+            (setq mu4e-drafts-folder "/Drafts")
+            (setq mu4e-sent-folder   "/Sent")
+            (setq mu4e-trash-folder  "/Trash")
+            (setq mu4e-get-mail-command (expand-file-name "~/.local/bin/getallmail") )
             (setq user-mail-address "jonathandavis@gilsons.org"
                   user-full-name "Jonathan")
             (setq message-send-mail-function 'message-send-mail-with-sendmail
