@@ -10,10 +10,15 @@
 (if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
 (if (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
 
-(setq custom-file "~/Documents/dots/config/emacs/custom.el")
-(load custom-file)
+(setq inhibit-startup-screen t
+      ring-bell-function 'ignore
+      indent-line-function 'insert-tab)
 
-(setq ring-bell-function 'ignore)
+(setq-default indent-tabs-mode nil
+              c-default-style "k&r"
+              tab-width 4
+              c-basic-offset 4)
+
 ;; Package initialization
 ;; Added by Package.el.  This must come before configurations of
 ;; installed packages.  Don't delete this line.  If you don't want it,
@@ -60,21 +65,21 @@
 
 (use-package projectile
   :config
-  (setq projectile-completion-system 'ivy)
-  (setq projectile-enable-caching t)
+  (setq projectile-completion-system 'ivy
+        projectile-enable-caching t)
   (projectile-mode +1))
 
 ;; Evil config
 ;; evil-collection is picky and doesn't like this being set
 (use-package evil
   :init
-  (setq evil-want-integration t)
-  (setq evil-want-keybinding nil)
-  (setq evil-want-C-u-scroll t)
+  (setq evil-want-integration t
+        evil-want-keybinding nil
+        evil-want-C-u-scroll t)
   :config
   (evil-mode 1)
-  (setq evil-vsplit-window-right 1)
-  (setq evil-split-window-below 1)
+  (setq evil-vsplit-window-right 1
+        evil-split-window-below 1)
   (add-hook 'evil-normal-state-entry-hook (lambda ()
                                             (if buffer-file-name
                                                 (when
@@ -90,8 +95,8 @@
 
 (use-package evil-escape
   :init
-  (setq-default evil-escape-key-sequence "  ")
-  (setq-default evil-escape-delay 0.2)
+  (setq-default evil-escape-key-sequence "  "
+                evil-escape-delay 0.2)
   :config
   (evil-escape-mode 1))
 
@@ -244,13 +249,13 @@
             (defvar mu4e-maildir (expand-file-name "~/.config/mail/"))
 
             (defvar mu4e-mu-binary (executable-find "mu"))
-            (setq mu4e-drafts-folder "/Drafts")
-            (setq mu4e-sent-folder   "/Sent")
-            (setq mu4e-trash-folder  "/Trash")
-            (setq mu4e-get-mail-command (expand-file-name "~/.local/bin/getallmail") )
-            (setq user-mail-address "jonathandavis@gilsons.org"
-                  user-full-name "Jonathan")
-            (setq message-send-mail-function 'message-send-mail-with-sendmail
+            (setq mu4e-drafts-folder "/Drafts"
+                  mu4e-sent-folder   "/Sent"
+                  mu4e-trash-folder  "/Trash"
+                  mu4e-get-mail-command (expand-file-name "~/.local/bin/getallmail")
+                  user-mail-address "jonathandavis@gilsons.org"
+                  user-full-name "Jonathan"
+                  message-send-mail-function 'message-send-mail-with-sendmail
                   sendmail-program "/bin/msmtp")))
 ;; hooks
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
@@ -283,10 +288,10 @@
 ;; Save all tempfiles in $TMPDIR/emacs$UID/
 (defconst emacs-tmp-dir (expand-file-name (format "emacs%d" (user-uid)) temporary-file-directory))
 (setq backup-directory-alist
-      `((".*" . ,emacs-tmp-dir)))
-(setq auto-save-file-name-transforms
-      `((".*" ,emacs-tmp-dir t)))
-(setq auto-save-list-file-prefix
+      `((".*" . ,emacs-tmp-dir))
+      auto-save-file-name-transforms
+      `((".*" ,emacs-tmp-dir t))
+      auto-save-list-file-prefix
       emacs-tmp-dir)
 
 ;; (add-hook 'focus-in-hook
@@ -298,6 +303,14 @@
 
 (add-hook 'find-file-hook 'ttymode)
 (add-hook 'tty-setup-hook 'ttymode)
+
+
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(hl-line ((t (:extend t :background "#3a3a3a")))))
 
 (provide 'init.el)
 ;;; init.el ends here
