@@ -23,6 +23,13 @@ alias e="$EDITOR"
 alias v.="$EDITOR ."
 alias gvim="$EDITOR"
 alias oo="nohup xdg-open . > /dev/null &"
+function open() {
+    for elem in $@
+    do
+
+        nohup xdg-open $elem > /dev/null &
+    done
+}
 alias t='tmux'
 alias :q='exit'
 alias bc='bc -l'

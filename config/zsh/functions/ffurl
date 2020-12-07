@@ -1,0 +1,7 @@
+function ffurl() {
+    echo $1
+    cat $1 | while read -r url
+    do
+        firefox $2 $url
+    done
+}
