@@ -96,7 +96,7 @@
 (use-package evil-escape
   :init
   (setq-default evil-escape-key-sequence "  "
-                evil-escape-delay 0.2)
+                evil-escape-delay 0.4)
   :config
   (evil-escape-mode 1))
 
