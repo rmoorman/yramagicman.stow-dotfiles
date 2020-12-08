@@ -8,14 +8,14 @@
   (define proc (find-executable-path proc-name))
   (lambda (args)
     (with-output-to-string
-     (thunk (apply system* proc args)))))
+      (thunk (apply system* proc args)))))
 
 (define home (path->string (find-system-path 'home-dir)))
 (define repo-file (string-split (file->string (string-append home ".config/gits")) "\n"))
 (define git [find-executable-path "git"])
 (define repos (filter
-                (lambda x
-                  (not (string-prefix? (string-join x) "#" ) ) ) repo-file))
+               (lambda x
+                 (not (string-prefix? (string-join x) "#" ) ) ) repo-file))
 (define (makepath p)
   (string->path p))
 
@@ -85,7 +85,7 @@
 (define (run-git-processes repo)
   (current-directory repo)
   (define cur-dir (path->string (current-directory)))
-  (display (string-append cur-dir "..." (make-string 50 #\space) "\r"))
+  (displayln (string-append cur-dir "..."))
   (pull-push pull push repo))
 
 (map displayln (map run-git-processes paths))
