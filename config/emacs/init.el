@@ -3,6 +3,7 @@
 ;;; a comment
 ;;; Code:
 
+
 ;; Hide mouse interface quickly
 (if (and (fboundp 'menu-bar-mode)
          (not (string= "darwin" system-type)))
@@ -36,6 +37,12 @@
   (package-refresh-contents)
   (package-install 'use-package))
 
+(eval-when-compile
+  (require 'use-package))
+
+(require 'use-package-ensure)
+(setq use-package-always-ensure t)
+
 (defun ttymode nil
   "Set tty things."
   (interactive)
@@ -57,11 +64,13 @@
   (interactive)
   (ansi-term (executable-find "zsh")))
 
-(eval-when-compile
-  (require 'use-package))
+(defun save-writable ()
+  "Save buffer only if writable."
+  (if (and buffer-file-name
+           (file-writable-p buffer-file-name))
+      (save-buffer)
+    nil))
 
-(require 'use-package-ensure)
-(setq use-package-always-ensure t)
 
 (use-package projectile
   :config
@@ -80,12 +89,7 @@
   (evil-mode 1)
   (setq evil-vsplit-window-right 1
         evil-split-window-below 1)
-  (add-hook 'evil-normal-state-entry-hook (lambda ()
-                                            (if buffer-file-name
-                                                (when
-                                                    (file-writable-p buffer-file-name)
-                                                  (save-buffer)))
-                                            (lambda() nil))))
+  (add-hook 'evil-normal-state-entry-hook `save-writable))
 
 (use-package evil-collection
   :after evil
@@ -204,7 +208,10 @@
 
 (use-package web-mode
   :hook (web-mode . lsp-deferred)
-  :mode "\\.\\(vue\\|html\\|blade.php\\)\\'")
+  :mode "\\.\\(vue\\|html\\|blade.php\\)\\'"
+  :init
+  (setq web-mode-style-padding 0)
+  (setq web-mode-script-padding 0))
 
 (use-package haskell-mode
   :mode "\\.hs\\'")
@@ -294,15 +301,11 @@
       auto-save-list-file-prefix
       emacs-tmp-dir)
 
-;; (add-hook 'focus-in-hook
-;;           (lambda nil
-;;             (when ( display-graphic-p )
-;;               (enable-theme 'base16-gruvbox-dark-pale))))
-
-
-
 (add-hook 'find-file-hook 'ttymode)
 (add-hook 'tty-setup-hook 'ttymode)
+(add-hook 'minibuffer-exit-hook (lambda ()
+                                  (ttymode)
+                                  (save-some-buffers 1)))
 
 
 (custom-set-faces
