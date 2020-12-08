@@ -13,7 +13,6 @@ auracle-git
 autoconf
 automake
 autopep8
-awesome
 aws-cli
 babl
 base
@@ -61,7 +60,6 @@ gettext
 git
 gobject-introspection
 gphoto2
-gpick
 gptfdisk
 grep
 groff
@@ -177,9 +175,6 @@ unzip
 urlview
 urxvt-perls
 vi
-vicious
-vidir
-vifm
 vlc
 vue-cli
 w3m
