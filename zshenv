@@ -43,7 +43,6 @@ export PLTUSERHOME="$XDG_DATA_HOME/racket"
 export GNUPGHOME="$XDG_DATA_HOME/gnupg"
 export PASSWORD_STORE_DIR="$XDG_DATA_HOME/pass"
 
-
 if ( hash fzf > /dev/null 2>&1 ); then
     export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -g ""'
     export FZF_CTRL_T_COMMAND='ag --hidden --ignore .git -g ""'
@@ -80,7 +79,6 @@ path=(
     /usr/local/{bin,sbin}
     $path
 )
-
 
 # Less
 
