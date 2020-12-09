@@ -1,0 +1,10 @@
+function npm(){
+    if [[ "$1" == "run" && $2 == "serve" ]] || [[ $1 == 'start' ]]; then
+        while; do
+            command npm $1 $2
+            sleep 1s
+        done
+    else
+        command npm $@
+    fi
+}
