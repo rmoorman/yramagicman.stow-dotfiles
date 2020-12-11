@@ -3,7 +3,6 @@
 ;;; a comment
 ;;; Code:
 
-
 ;; Hide mouse interface quickly
 (if (and (fboundp 'menu-bar-mode)
          (not (string= "darwin" system-type)))
@@ -49,8 +48,8 @@
   (when (not ( display-graphic-p ) )
     (disable-theme 'base16-gruvbox-dark-pale)
 
-    (display-line-numbers-mode 0)
-    (linum-relative-mode 0)
+    ;; (display-line-numbers-mode 0)
+    ;; (linum-relative-mode 0)
     (set-background-color "black")))
 
 (defun ansiterm-vert nil
@@ -177,6 +176,10 @@
   :interpreter "php"
   :hook (php-mode . lsp-deferred))
 
+(use-package org
+  :mode "\\.org\\'"
+  :config
+  (visual-line-mode 1))
 
 (use-package lua-mode
   :mode "\\.lua\\'")
@@ -195,16 +198,11 @@
   :mode "\\.md\\'"
   :hook (markdown-mode . (lambda nil
                            ( visual-line-mode )
-                           (linum-relative-mode 0)
-                           ( display-line-numbers-mode 0))))
-
+                           ;; (linum-relative-mode 0)
+                           )))
 
 (use-package racket-mode
   :mode "\\.rkt\\'")
-
-(use-package linum-relative
-  :config
-  (linum-relative-global-mode))
 
 (use-package web-mode
   :hook (web-mode . lsp-deferred)
@@ -216,7 +214,7 @@
 (use-package haskell-mode
   :mode "\\.hs\\'")
 
-;; typescript
+
 (use-package typescript-mode
   :hook (typescript-mode . lsp-deferred)
   :mode "\\.\\(ts\\|js\\)\\'")
@@ -255,6 +253,7 @@
             (require 'mu4e)
             (defvar mu4e-maildir (expand-file-name "~/.config/mail/"))
 
+            ;; (add-hook mu4e-compose-mode-hook 'visual-line-mode)
             (defvar mu4e-mu-binary (executable-find "mu"))
             (setq mu4e-drafts-folder "/Drafts"
                   mu4e-sent-folder   "/Sent"
@@ -263,7 +262,15 @@
                   user-mail-address "jonathandavis@gilsons.org"
                   user-full-name "Jonathan"
                   message-send-mail-function 'message-send-mail-with-sendmail
-                  sendmail-program "/bin/msmtp")))
+                  sendmail-program "/bin/msmtp")
+
+            (global-set-key (kbd "C-c m r") 'mu4e-compose-reply)
+            (global-set-key (kbd "C-c m c") 'mu4e-compose)
+            (global-set-key (kbd "C-c m e") 'mu4e-compose-edit)
+
+
+            ))
+
 ;; hooks
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 (add-hook 'before-save-hook (lambda nil "" (untabify (point-min) (point-max))))
@@ -272,16 +279,22 @@
                               (if (file-directory-p "~/intelephense")
                                   (delete-directory "~/intelephense")
                                 nil)))
-;; quit-window-hook add remove file dir command
-(dolist (mode '(org-mode-hook
-                term-mode-hook
-                ansi-term-mode
-                apropos-mode-hook
-                shell-mode-hook
-                eshell-mode-hook))
-  (add-hook mode (lambda ()
-                   (linum-relative-mode 0)
-                   (display-line-numbers-mode 0))))
+
+;; (dolist (mode '(
+;;                 ansi-term-mode
+;;                 apropos-mode-hook
+;;                 dired-mode-hook
+;;                 eshell-mode-hook
+;;                 markdown-mode-hook
+;;                 org-mode-hook
+;;                 shell-mode-hook
+;;                 term-mode-hook
+;;                 ))
+;;   (add-hook mode (lambda ()
+;;                    ;; (linum-relative-mode 0)
+;;                    (display-line-numbers-mode 0))))
+
+;; (add-hook message-mode-hook 'visual-line-mode)
 
 (setq vc-follow-symlinks t)
 
@@ -316,4 +329,13 @@
  '(hl-line ((t (:extend t :background "#3a3a3a")))))
 
 (provide 'init.el)
+
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(package-selected-packages
+   '(org-mode which-key web-mode use-package typescript-mode racket-mode projectile magit lua-mode lsp-ui linum-relative ivy haskell-mode general flycheck evil-surround evil-escape evil-commentary evil-collection company-box base16-theme ac-php)))
+
 ;;; init.el ends here
