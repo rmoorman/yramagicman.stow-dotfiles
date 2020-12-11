@@ -177,9 +177,9 @@
   :hook (php-mode . lsp-deferred))
 
 (use-package org
-  :mode "\\.org\\'"
-  :config
-  (visual-line-mode 1))
+  :hook
+  (org-mode . (lambda nil
+                (visual-line-mode))))
 
 (use-package lua-mode
   :mode "\\.lua\\'")
@@ -229,6 +229,7 @@
 
 ;; misc. packages
 (use-package magit)
+(use-package disable-mouse)
 ;; (use-package vterm)
 (show-paren-mode 1)
 
@@ -336,6 +337,6 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(org-mode which-key web-mode use-package typescript-mode racket-mode projectile magit lua-mode lsp-ui linum-relative ivy haskell-mode general flycheck evil-surround evil-escape evil-commentary evil-collection company-box base16-theme ac-php)))
+   '(disable-mouse org-mode which-key web-mode use-package typescript-mode racket-mode projectile magit lua-mode lsp-ui linum-relative ivy haskell-mode general flycheck evil-surround evil-escape evil-commentary evil-collection company-box base16-theme ac-php)))
 
 ;;; init.el ends here
