@@ -120,6 +120,7 @@ myManageHook = composeAll [
     , title =? "Dbeaver"            --> doShift "4"
     , className =? "DBeaver"        --> doShift "4"
     , title =? "Quit and close tabs?" --> doIgnore
+    , title =? "Close tabs?"        --> doIgnore
     , resource  =? "desktop_window" --> doIgnore ]
 
 ------------------------------------------------------------------------
