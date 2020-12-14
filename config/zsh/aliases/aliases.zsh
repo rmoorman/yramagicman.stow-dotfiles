@@ -34,6 +34,7 @@ alias t='tmux'
 alias :q='exit'
 alias bc='bc -l'
 alias getmail="$HOME/.local/bin/getallmail"
+alias remacs="killall emacs && emacs --bg-daemon || emacs --bg-daemon"
 #}}}
 #{{{ Enable aliases to be sudo’ed
 alias sudo='sudo '
