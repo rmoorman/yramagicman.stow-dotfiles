@@ -1,9 +1,14 @@
 config/emacs/ac-comphist.dat
 config/emacs/auto-save-list/
+config/emacs/.cache/
+config/emacs/custom.el
 config/emacs/elpa/
 config/emacs/#ido.last#
 config/emacs/ido.last
+config/emacs/lsp-cache/
+config/emacs/.lsp-session-v1
 config/emacs/projectile-bookmarks.eld
+config/emacs/projectile.cache
 config/emacs/transient/
 config/emacs/undohist/
 config/emacs/vimish-fold/
@@ -15,10 +20,12 @@ config/ranger/colorschemes/__init__.pyo
 config/ranger/colorschemes/__pycache__/
 config/ranger/history
 config/tmux.d/digests
+config/tmux.d/tmux-urlview/
 config/vifm/vifminfo
 config/wmcmd
 config/zsh/.chpwd-recent-dirs
 config/zsh/history/
+config/zsh/plugins/
 config/zsh/plugins/.updatetime
 config/zsh/.zcompdump
 config/zsh/.zcompdump.zwc
@@ -38,6 +45,7 @@ vim/backup/
 vim/.lastupdate
 vim/lastupdate
 vim/.netrwhist
+vim/pack/
 vim/spell/
 vim/swaps/
 vim/undo/
