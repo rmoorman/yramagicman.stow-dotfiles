@@ -50,9 +50,8 @@ function _source_or_install() {
             repopath="$( git rev-parse --show-toplevel )"
             builtin cd $MODULES_DIR
             builtin cd $repopath
-            git submodule foreach 'git submodule update --init --recursive'
             if [[ ! -d $dest ]]; then
-                git submodule add --force --name $location "$cloneurl" "$dest"
+                git clone --depth 3 "$cloneurl" "$dest"
             fi
         )
 

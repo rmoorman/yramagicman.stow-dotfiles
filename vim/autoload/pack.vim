@@ -60,7 +60,7 @@ function! s:install_start_plugins(plug)
     let moduledest = split(destination, '\.')[1]
     let cdpath=join(split(moduledest,'/')[:-2], '/')
 
-    call add(s:start_plugs, [destination, 'git submodule add --force --name '.plug .' '. url . ' ' . moduledest])
+    call add(s:start_plugs, [destination, 'git clone --depth 3 '. url . ' ' . moduledest])
 endfunction
 
 let s:opt_plugs = []
@@ -73,7 +73,7 @@ function! s:install_opt_plugins(plug)
     let moduledest = split(destination, '\.')[1]
     let cdpath=join(split(moduledest,'/')[:-2], '/')
 
-    call add(s:opt_plugs, [destination, 'git submodule add --force --name '.plug .' '. url . ' ' . moduledest])
+    call add(s:opt_plugs, [destination, 'git clone --depth 3 '. url . ' ' . moduledest])
 endfunction
 
 function! s:clean_plugins()
