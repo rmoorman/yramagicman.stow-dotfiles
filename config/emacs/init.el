@@ -240,6 +240,7 @@
 (show-paren-mode 1)
 
 (use-package base16-theme)
+(setq ispell-program-name (executable-find "hunspell"))
 
 ;; Mu4e
 (if (file-exists-p "/usr/share/emacs/site-lisp/mu4e/")
