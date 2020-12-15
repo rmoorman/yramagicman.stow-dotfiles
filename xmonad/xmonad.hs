@@ -291,6 +291,7 @@ main = do
           , ((mod4Mask .|. shiftMask, xK_m), spawn "firefox --private-window")
           , ((mod4Mask .|. shiftMask, xK_g), spawn "chromium --incognito")
           , ((mod4Mask              , xK_Return     ), spawn myTerminal)
+          , ((mod4Mask              , xK_p     ), spawn "passmenu")
           , (( 0, xF86XK_AudioLowerVolume  ), spawn  "amixer -c 0 -- set Master 1-")
           , (( 0, xF86XK_AudioRaiseVolume  ), spawn "amixer -c 0 -- set Master 1+")
           , (( 0, xF86XK_MonBrightnessUp   ), spawn "xbacklight -inc 2")

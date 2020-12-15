@@ -39,6 +39,10 @@ fi
 #  unset f
 # fi
 
+export XDG_CONFIG_HOME="$HOME/.config"
+export XDG_CACHE_HOME="$HOME/.cache"
+export XDG_DATA_HOME="$HOME/.local/share"
+export PASSWORD_STORE_DIR="$XDG_DATA_HOME/pass"
 
 if command -v alacritty  > /dev/null 2>&1 ; then
     export TERMINAL=alacritty
