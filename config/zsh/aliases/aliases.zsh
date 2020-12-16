@@ -45,9 +45,9 @@ function vimrc() {
 }
 #}}}
 #{{{ always recursive and verbose
-alias cp="cp -rv"
+# alias cp="cp -rv"
 alias rm="rm -rv"
-alias mv='mv -v'
+# alias mv='mv -v'
 #}}}
 #{{{ web dev stuff
 alias speedtest="wget -O /dev/null \
