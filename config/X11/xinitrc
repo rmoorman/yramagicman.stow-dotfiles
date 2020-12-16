@@ -44,6 +44,9 @@ export XDG_CACHE_HOME="$HOME/.cache"
 export XDG_DATA_HOME="$HOME/.local/share"
 export PASSWORD_STORE_DIR="$XDG_DATA_HOME/pass"
 
+export PATH="/home/jonathan/.local/bin:$PATH"
+
+
 if command -v alacritty  > /dev/null 2>&1 ; then
     export TERMINAL=alacritty
 elif command -v st > /dev/null; then

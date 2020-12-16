@@ -146,22 +146,22 @@ commands = [
            , "xset -dpms"
            , "xset s off"
            , "picom -b"
-           , "/usr/bin/xscreensaver -no-splash"
+           , "xscreensaver -no-splash"
            , "emacs --bg-daemon"
            , "xset r rate 250 25"
            , "xset b off"
            , "dropbox-cli start"
            , "redshift"
-           , "/home/jonathan/.local/bin/setmouse"
-           , "/home/jonathan/.local/bin/tmuxcopy"
+           , "setmouse"
+           , "tmuxcopy"
            , "dunst"
-           ,"setxkbmap -option compose:menu"
-           ,"setxkbmap -option caps:none"
+           , "setxkbmap -option compose:menu"
+           , "setxkbmap -option caps:none"
            ]
 myStartupHook = do
     forM commands (\c -> spawnOnce c )
     nScreens <- countScreens
-    forM [1..nScreens ] (\sc -> spawnOnce ("/home/jonathan/.local/bin/statusloop " ++ show sc))
+    forM [1..nScreens ] (\sc -> spawnOnce ("statusloop " ++ show sc))
     spawnOnce "xsetroot -cursor_name left_ptr"
 ------------------------------------------------------------------------
     -- Key bindings. Add, modify or remove key bindings here.
@@ -172,7 +172,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
    [ ((modm .|. shiftMask, xK_Return), spawn "emacsclient -c ~/")
 
    -- launch dmenu
-     , ((controlMask,               xK_space     ), spawn "dmenu_run")
+     , ((controlMask,               xK_space     ), spawn "rofi_run")
 
    -- close focused window
      , ((modm              , xK_q     ), kill)
