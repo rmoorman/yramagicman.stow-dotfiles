@@ -16,6 +16,7 @@
 
 (setq custom-file "~/Documents/dots/config/emacs/custom.el")
 (load custom-file)
+(load "~/Documents/dots/config/emacs/modeline.el")
 
 (setq-default indent-tabs-mode nil
               c-default-style "k&r"
@@ -100,11 +101,15 @@
 
 
 (use-package evil-escape
+  :after evil
   :init
   (setq-default evil-escape-key-sequence "  "
                 evil-escape-delay 0.4)
   :config
   (evil-escape-mode 1))
+
+(use-package evil-numbers
+  :config)
 
 (use-package general
   :config
@@ -129,7 +134,17 @@
     "b" 'ivy-switch-buffer
     "e" 'eval-defun
     "t" 'ansiterm-vert
-    "f" 'projectile-find-file))
+    "f" 'projectile-find-file)
+
+  (general-define-key
+   :states '(normal visual)
+   :keymaps 'override
+
+   "C-a" 'evil-numbers/inc-at-pt
+
+   "C-x" 'evil-numbers/dec-at-pt
+
+   ))
 
 (use-package which-key
   :init (which-key-mode)
