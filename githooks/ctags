@@ -4,10 +4,8 @@ PATH="/usr/local/bin:$PATH"
 dir="$(git rev-parse --show-toplevel)"
 trap 'rm -f "$dir/.tags"' EXIT
 trap 'rm -f "$dir/../.tags"' EXIT
-trap 'rm -f "$dir/.etags"' EXIT
-trap 'rm -f "$dir/../.etags"' EXIT
+git ls-files | \
+  ctags --tag-relative -L - -f"$dir/.tags"
 
-ctags -R --tag-relative -L - -f"$dir/.tags" ./
-
-
-ctags -R -e --tag-relative -L - -f"$dir/.etags" ./
+git ls-files | \
+  ctags -e --tag-relative -L - -f"$dir/.etags"

@@ -52,7 +52,7 @@
 
 (setq backup-directory-alist
           `(("." . ,(concat user-emacs-directory "backups"))))
-
+(setq create-lockfiles nil)
 (setq vc-follow-symlinks t)
 
 (load "my_functions.el")
