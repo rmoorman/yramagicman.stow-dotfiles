@@ -18,7 +18,9 @@ password=$(printf '%s\n' "${password_files[@]}" | rofi  -dmenu "$@" )
 [[ -n $password ]] || exit
 
 if [[ $typeit -eq 0 ]]; then
-    pass show -c "$password" 2>/dev/null
+    pass show -c "$password" 2> /tmp/err
+    notify-send "$(cat /tmp/err )"
+    rm /tmp/err
 else
     pass show "$password" | { IFS= read -r pass; printf %s "$pass"; } |
         xdotool type --clearmodifiers --file -
