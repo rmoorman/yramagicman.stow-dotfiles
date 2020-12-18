@@ -38,11 +38,8 @@ fi
 #  done
 #  unset f
 # fi
-
-export XDG_CONFIG_HOME="$HOME/.config"
-export XDG_CACHE_HOME="$HOME/.cache"
-export XDG_DATA_HOME="$HOME/.local/share"
-export PASSWORD_STORE_DIR="$XDG_DATA_HOME/pass"
+# shellcheck source=/home/jonathan/.config/env
+. "$HOME/.config/env"
 
 export PATH="/home/jonathan/.local/bin:$PATH"
 
@@ -71,5 +68,5 @@ if test "$wmcmd" == "$HOME/bin/dmwrestart"; then
     exec "$HOME/bin/statusline" &
 fi
 export DESKTOP_SESSION=plasma
-exec $(eval $wmcmd)
+exec "$(eval "$wmcmd")"
 # exec xmonad
