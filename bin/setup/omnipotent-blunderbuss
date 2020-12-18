@@ -68,6 +68,7 @@ guvcview
 gvim
 gzip
 htop
+hunspell-en_US
 hwinfo
 iftop
 inetutils
@@ -143,6 +144,7 @@ redis
 redshift
 reflector
 rmlint
+rofi
 rsync
 rxvt-unicode
 sed
