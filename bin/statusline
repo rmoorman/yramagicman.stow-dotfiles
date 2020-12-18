@@ -118,7 +118,7 @@ function my_harvest() {
     then
         $HOME/bin/harvest > /tmp/harvest
     fi
-    [[ -f /tmp/harvest ]] && echo "TIME: $( < /tmp/harvest )"
+    [[ -s /tmp/harvest ]] && echo "TIME: $( < /tmp/harvest )"
 
 
 }
