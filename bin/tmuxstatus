@@ -40,9 +40,9 @@ updates() {
             return
         fi
     else
-        if test $(($( wc -l < "$HOME/.cache/updates" ) +
-            $( wc -l < "$HOME/.cache/aur" ))) -gt 30 ; then
-            echo " U: $( wc -l < "$HOME/.cache/updates" ) + $(wc -l < "$HOME/.cache/aur" ) "
+        if test $(($( wc -l < "/tmp/updates" ) +
+            $( wc -l < "/tmp/aur" ))) -gt 30 ; then
+            echo " U: $( wc -l < "/tmp/updates" ) + $(wc -l < "/tmp/aur" ) "
             return
         fi
     fi
