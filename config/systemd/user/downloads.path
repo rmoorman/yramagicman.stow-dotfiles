@@ -1,0 +1,9 @@
+[Unit]
+Description=Notify on download
+PartOf=downloads.service
+
+[Path]
+PathModified=/home/jonathan/Downloads
+
+[Install]
+WantedBy=default.target
