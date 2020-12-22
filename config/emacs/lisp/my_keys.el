@@ -23,6 +23,7 @@
     "d" 'dired
     "," 'evil-switch-to-windows-last-buffer
     "b" 'ivy-switch-buffer
+    "B" 'ibuffer
     "e" 'eval-defun
     "t" 'ansiterm-vert
     "f" 'projectile-find-file
