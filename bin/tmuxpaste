@@ -3,5 +3,5 @@
 if [ "$(uname)" = "Darwin" ] ; then
     pbpaste
 else
-    xsel -o -b
+    xclip -o
 fi
