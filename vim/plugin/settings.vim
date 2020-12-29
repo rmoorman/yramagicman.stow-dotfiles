@@ -66,8 +66,8 @@ set shortmess+=o " overwrite file-written messages
 set shortmess+=t " truncate file messages at start
 "}}}
 "{{{ turn off error bells
-set errorbells
-set visualbell
+" set errorbells
+" set visualbell
 " if exists('&belloff')
 "     set belloff=all
 " endif
