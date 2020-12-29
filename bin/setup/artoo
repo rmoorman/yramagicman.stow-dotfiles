@@ -3,7 +3,6 @@ alsa-utils
 angular-cli
 apache
 arandr
-aspell
 at
 auracle-git
 autoconf
@@ -28,7 +27,6 @@ cups
 device-mapper
 dhcpcd
 diffutils
-dmenu
 docbook-xml
 dosfstools
 dropbox-cli
@@ -44,6 +42,7 @@ eslint-plugin-vue
 exfat-utils
 fakeroot
 feh
+figlet
 file
 filesystem
 findutils
@@ -61,7 +60,6 @@ gettext
 ghostscript
 git
 glibc
-go
 gobject-introspection
 gparted
 gphoto2
@@ -73,11 +71,11 @@ grunt-cli
 gulp
 guvcview
 gvim
-gwaterfall
 gzip
 handbrake
 htop
 hugo
+hunspell-en_US
 hwinfo
 iftop
 inetutils
@@ -170,12 +168,12 @@ redshift
 reflector
 reiserfsprogs
 rmlint
+rofi
 rsync
 ruby
 s-nail
 sed
 shadow
-shellcheck
 signal-desktop
 slack-desktop
 smartmontools
@@ -188,8 +186,6 @@ tcpdump
 terminus-font
 texinfo
 the_silver_searcher
-thunar
-thunar-volman
 thunderbird
 tlp
 tmux
@@ -206,6 +202,7 @@ unzip
 urlview
 usbutils
 util-linux
+valgrind
 vi
 vicious
 vlc
