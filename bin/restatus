@@ -1,0 +1,8 @@
+#!/usr/bin/env zsh
+
+killall statusloop
+
+for (( i = 1; i <= $(xrandr | grep connected | wc -l); i++)); do
+    echo "starting statusloop on monitor $i"
+    statusloop $i & disown
+done

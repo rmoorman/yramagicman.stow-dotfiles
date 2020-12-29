@@ -104,4 +104,4 @@
     smudge = git hawser smudge %f
     required = true
 [pull]
-    rebase = true
+	rebase = true
