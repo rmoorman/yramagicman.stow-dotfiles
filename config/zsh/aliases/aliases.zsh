@@ -96,7 +96,7 @@ alias ip="ip --color=auto"
 alias urlencode='python2 -c "import sys, urllib as ul; print ul.quote_plus(sys.argv[1]);"'
 # Ring the terminal bell, and put a badge on Terminal.app’s Dock icon
 # (useful when executing time-consuming commands)
-alias bell="cvlc --play-and-exit $HOME/.config/sounds/beep.mp3 2> /dev/null; tput bel"
+alias bell="tput bel;cvlc --play-and-exit $HOME/.config/sounds/beep.mp3 2> /dev/null"
 #}}}
 #{{{ tmux
 alias tmux="tmux -f $XDG_CONFIG_HOME/tmux.d/tmux.conf"
