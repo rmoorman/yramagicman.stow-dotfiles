@@ -16,20 +16,19 @@
 (add-hook 'minibuffer-exit-hook (lambda ()
                                   (ttymode)
                                   (save-some-buffers 1)))
-;; (dolist (mode '(
-;;                 ansi-term-mode
-;;                 apropos-mode-hook
-;;                 dired-mode-hook
-;;                 eshell-mode-hook
-;;                 markdown-mode-hook
-;;                 org-mode-hook
-;;                 shell-mode-hook
-;;                 term-mode-hook
-;;                 ))
-;;   (add-hook mode (lambda ()
-;;                    ;; (linum-relative-mode 0)
-;;                    (display-line-numbers-mode 0))))
-
+(dolist (mode '(
+                ansi-term-mode
+                apropos-mode-hook
+                dired-mode-hook
+                eshell-mode-hook
+                markdown-mode-hook
+                org-mode-hook
+                shell-mode-hook
+                term-mode-hook
+                ))
+  (add-hook mode (lambda ()
+                   (display-line-numbers-mode 0))))
+(global-display-line-numbers-mode)
 ;; (add-hook message-mode-hook 'visual-line-mode)
 
 (defvar my/default-font-size 110)
