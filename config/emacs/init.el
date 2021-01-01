@@ -43,6 +43,13 @@
 (setq custom-file(concat user-emacs-directory "custom.el"))
 (load custom-file)
 
+(use-package no-littering)
+
+;; no-littering doesn't set this by default so we must place
+;; auto save files in the same path as it uses for sessions
+(setq auto-save-file-name-transforms
+      `((".*" ,(no-littering-expand-var-file-name "auto-save/") t)))
+
 (setq-default indent-tabs-mode nil
               c-default-style "k&r"
               tab-width 4
@@ -51,8 +58,6 @@
 
 (setq-default ispell-program-name (executable-find "hunspell"))
 
-(setq backup-directory-alist
-          `(("." . ,(concat user-emacs-directory "backups"))))
 (setq create-lockfiles nil)
 (setq vc-follow-symlinks t)
 
