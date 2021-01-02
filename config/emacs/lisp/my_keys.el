@@ -38,6 +38,7 @@
 
    "C-x" 'evil-numbers/dec-at-pt
 
+   "C-w t" 'ansiterm-vert
    ))
 
 ;; keybind

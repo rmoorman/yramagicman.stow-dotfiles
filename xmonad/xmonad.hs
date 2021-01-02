@@ -5,6 +5,7 @@ import qualified XMonad.StackSet as W
 import System.Exit (exitWith, ExitCode(..))
 import System.IO
 import XMonad
+import XMonad.Actions.CycleWS
 import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.ManageDocks
 import XMonad.Hooks.UrgencyHook
@@ -187,9 +188,6 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
      , ((modm,               xK_n     ), refresh)
 
    -- Move focus to the next window
-     , ((modm,               xK_Tab   ), windows W.focusDown)
-
-   -- Move focus to the next window
      , ((modm,               xK_j     ), windows W.focusDown)
 
    -- Move focus to the previous window
@@ -292,11 +290,12 @@ main = do
           , ((mod4Mask .|. shiftMask, xK_g), spawn "chromium --incognito")
           , ((mod4Mask              , xK_Return     ), spawn myTerminal)
           , ((mod4Mask              , xK_p     ), spawn "passmenu")
-          , ((mod4Mask .|. controlMask , xK_r     ), spawn "restatus")
+          , ((mod4Mask .|. controlMask , xK_r  ), spawn "restatus")
           , (( 0, xF86XK_AudioLowerVolume  ), spawn  "amixer -c 0 -- set Master 1-")
           , (( 0, xF86XK_AudioRaiseVolume  ), spawn "amixer -c 0 -- set Master 1+")
           , (( 0, xF86XK_MonBrightnessUp   ), spawn "xbacklight -inc 2")
           , (( 0, xF86XK_MonBrightnessDown ), spawn "xbacklight -dec 2")
+          , (( mod4Mask, xK_Tab ), toggleWS)
         ]
 
 -- A structure containing your configuration settings, overriding
