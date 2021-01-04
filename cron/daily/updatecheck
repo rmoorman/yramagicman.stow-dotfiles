@@ -1,0 +1,3 @@
+#!/bin/sh
+checkupdates > /tmp/updates
+auracle sync > /tmp/aur
