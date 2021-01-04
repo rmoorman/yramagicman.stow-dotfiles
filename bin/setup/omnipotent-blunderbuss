@@ -1,4 +1,5 @@
 ack
+alacritty
 alsa-firmware
 alsa-oss
 alsa-utils
@@ -152,6 +153,7 @@ signal-desktop
 slack-desktop
 sof-firmware
 speedtest-cli
+stack
 sudo
 tcpdump
 terminus-font

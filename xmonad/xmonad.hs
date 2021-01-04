@@ -153,7 +153,7 @@ commands = [
            , "xset b off"
            , "dropbox-cli start"
            , "redshift"
-           , "setmouse"
+           -- , "setmouse"
            , "tmuxcopy"
            , "dunst"
            , "setxkbmap -option compose:menu"
