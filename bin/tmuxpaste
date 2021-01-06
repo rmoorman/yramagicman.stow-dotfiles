@@ -3,5 +3,5 @@
 if [ "$(uname)" = "Darwin" ] ; then
     pbpaste
 else
-    xclip -o
+    xclip -selection clipboard -o
 fi
