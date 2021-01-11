@@ -1,8 +1,0 @@
-function checkupdates() {
-    if [[ -f  "/tmp/updates" ]] && [[ $( cat "/tmp/updates" "/tmp/aur" | wc -l  ) -gt 2 ]]; then
-        cat "/tmp/updates" "/tmp/aur"
-    else
-        command checkupdates
-    fi
-
-}
