@@ -19,7 +19,7 @@ $mux new-window -t iweb -n back-end
 $mux send-keys -t iweb:back-end "cd ~/Sites/iwebvisit-api" Enter
 $mux send-keys -t iweb:back-end  "$EDITOR . " Enter
 $mux new-window -t iweb -n admin
-$mux send-keys -t iweb:admin "cd ~/Sites/iweb_admin" Enter
+$mux send-keys -t iweb:admin "cd ~/Sites/iwebvisit-admin" Enter
 $mux send-keys -t iweb:admin  "$EDITOR . " Enter
 $mux new-window -t iweb -n server
 $mux split-window -h -t iweb:server
