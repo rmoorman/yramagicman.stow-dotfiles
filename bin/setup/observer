@@ -36,6 +36,7 @@ emacs
 enchant
 eslint
 eslint-plugin-vue
+ethtool
 firefox
 flake8
 fwupd
@@ -140,6 +141,7 @@ signal-desktop
 slack-cli
 slack-desktop
 speedtest-cli
+stack
 stow
 sudo
 tcpdump
