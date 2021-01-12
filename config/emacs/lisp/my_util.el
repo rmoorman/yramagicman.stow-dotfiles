@@ -19,13 +19,13 @@
   :config
   (ivy-mode 1))
 
-(use-package flycheck
-  :config
-  (setq flycheck-typescript-tslint-executable "~/.local/bin/tslint")
-  (global-flycheck-mode))
+;; (use-package flycheck
+;;   :config
+;;   (setq flycheck-typescript-tslint-executable "~/.local/bin/tslint")
+;;   (global-flycheck-mode))
 
-(use-package flycheck-pkg-config
-  :after flycheck)
+;; (use-package flycheck-pkg-config
+;;   :after flycheck)
 
 ;; misc. packages
 (use-package magit)
