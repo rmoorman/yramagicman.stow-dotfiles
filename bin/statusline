@@ -39,9 +39,11 @@ function wifi_strength() {
 
 function my_load() {
     load=$( ps -eo cmd,%cpu --sort=-%cpu | awk -F ' ' '{sum += $(NF)} END {split (sum, a, "."); print a[1]}' )
-    cmd=$(ps -eo cmd,%cpu -U jonathan --sort=-%cpu |  awk  '/[\w\/]/ { n=split( $1, a, "/" ); print a[n] }' | sed '1q')
-    temp=$(sensors -f | awk '/Package/ {print $4}')
-    echo "Top CMD:$(basename $cmd ) CPU:$load% TEMP:$temp"
+    mem=$(free -mht | awk '/Total/ {print $4}')
+    swp=$(free -mht | awk '/Swap/ {print $4}')
+    # cmd=$(ps -eo cmd,%cpu -U jonathan --sort=-%cpu |  awk  '/[\w\/]/ { n=split( $1, a, "/" ); print a[n] }' | sed '1q')
+    # temp=$(sensors -f | awk '/Package/ {print $4}')
+    echo "CPU:$load% MEM:$mem SWP:$swp"
 }
 
 function my_mail() {
@@ -133,7 +135,7 @@ function dnd() {
     echo "$( < /tmp/dnd )"
 }
 
-line="$(dnd)$(my_update) $(my_harvest) $(my_mail) $(my_weather)"
+line="$(dnd)$(my_update) $(my_harvest) $(my_mail) $(my_weather) $(my_load)"
 if [[ -r "/sys/class/power_supply/BAT0/" ]]; then
     for d in /sys/class/power_supply/BAT?/; do
         line="$line  $(my_bat $d)"
