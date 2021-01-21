@@ -8,6 +8,7 @@ if [[ -f /usr/lib/systemd/system/dynamodb.service ]]; then
     cd ~/Sites/livtrax_socket
     ts-node ~/Sites/livtrax_socket/util/createDriverTable.ts
     ts-node ~/Sites/livtrax_socket/util/createHistoryTable.ts
+    ts-node ~/Sites/livtrax_socket/util/createLogTable.ts
 )
 fi
 if [[ -f ./docker-compose.yml ]]; then
