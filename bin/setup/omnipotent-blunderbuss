@@ -4,6 +4,7 @@ alsa-firmware
 alsa-oss
 alsa-utils
 android-file-transfer
+android-studio
 android-udev
 angular-cli
 apache
@@ -142,6 +143,7 @@ python-requests
 python-virtualenv
 python2
 racket
+react-native-cli
 redis
 redshift
 reflector
@@ -222,6 +224,7 @@ xorg-xvinfo
 xorg-xwd
 xorg-xwud
 xscreensaver
+yarn
 yay
 youtube-dl
 zathura
