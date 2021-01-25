@@ -266,7 +266,7 @@ fi
 
 # Temporary Files
 TMPPREFIX="$(mktemp -d)/zsh"
-
+[[ -f "$HOME/.bash_history" ]] && command rm "$HOME/.bash_history"
 # end profiling script
 if [[ "$PROFILE_STARTUP" == true ]]; then
     unsetopt xtrace

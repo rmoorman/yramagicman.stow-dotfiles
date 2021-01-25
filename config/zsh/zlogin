@@ -16,27 +16,6 @@
 } &!
 
 {
-    emulate -L zsh
-    local exclude='.git|.txt|.md|.adoc|.svg|.zwc|.gif|.tags'
-    setopt extended_glob
-    for z in $fpath; do
-        if [[ $z =~ 'Users|home' ]]; then
-            for file in $z/**/*; do
-                [[ -f $file ]] && [[ $file.zwc -nt $file || ! -w ${file:h} ]] && break
-                [[ -f $file && ! $file =~ $exclude ]] && zcompile $file
-                unset file
-            done
-        fi
-    done
-
-    zmodload -m -F zsh/files b:zf_mkdir
-    for var in $XDG_CONFIG_HOME $XDG_CACHE_HOME $XDG_DATA_HOME; do
-        zf_mkdir -p $var
-    done
-    zmodload -u zsh/files
-}&!
-
-{
  cat ${ZSHZ_DATA:-$HOME/.z}* | awk -F '|' '{if ($2 > 25) print $2" " $1}' | sort -n | while read -r line
 do
     d=$(echo $line | cut -d ' ' -f 2)
