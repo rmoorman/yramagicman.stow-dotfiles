@@ -25,12 +25,6 @@ pkg zsh-users/zsh-completions
 pkg agkozak/zsh-z
 pkg load
 pkg update
-{
-    jit "$HOME/.zshenv"
-    jit "$ZDOTDIR/.zshrc"
-    jit "$ZDOTDIR/.zlogin"
-    jit "$ZDOTDIR/aliases/aliases.zsh"
-}&!
 source "$ZDOTDIR/aliases/aliases.zsh"
 if [[ "$OSTYPE" =~ 'darwin' ]]; then
     jit "$ZDOTDIR/aliases/darwin.zsh"
