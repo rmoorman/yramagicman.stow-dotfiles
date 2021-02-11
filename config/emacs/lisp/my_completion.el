@@ -37,5 +37,8 @@
   :interpreter "php"
   :hook (php-mode . lsp-deferred))
 
+;; (use-package lsp-java :config (add-hook 'java-mode-hook 'lsp))
+;; (setenv "JAVA_HOME"  "path_to_java_folder/Contents/Home/")
+;; (setq lsp-java-java-path "path_to_java_folder/Contents/Hom
 (provide 'my_completion)
 ;;; modeline.el ends here

@@ -30,16 +30,14 @@ cpu-x
 cronie
 ctags
 cups
-dbeaver
 dhcpcd
 dialog
 dmenu
 dmidecode
 docbook-xml
-dolphin
+docker
 dropbox-cli
 dunst
-dynamodb
 dzen2
 editorconfig-core-c
 efibootmgr
@@ -80,6 +78,8 @@ iotop
 itstool
 iw
 iwd
+jdk8-openjdk
+jre8-openjdk-headless
 js-beautify
 krita
 leafpad
@@ -131,6 +131,12 @@ php-imap
 php-intl
 php-sqlite
 php-tidy
+php7
+php7-apache
+php7-imap
+php7-intl
+php7-sqlite
+php7-tidy
 phpmyadmin
 picom
 pkgconf
@@ -151,6 +157,9 @@ reflector
 rmlint
 rofi
 rsync
+rxvt-unicode
+sbt
+screenkey
 sed
 shellcheck
 signal-desktop
@@ -178,6 +187,8 @@ typescript-language-server-bin
 unzip
 urlview
 vi
+virtualbox
+virtualbox-host-modules-arch
 vlc
 vue-cli
 w3m
@@ -233,4 +244,5 @@ zathura-pdf-mupdf
 zip
 zoom
 zsh
+zsh-completions
 zsh-lovers
