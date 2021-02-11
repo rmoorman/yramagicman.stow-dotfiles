@@ -1,0 +1,13 @@
+[options]
+read_all = false
+
+[retriever]
+type = SimpleIMAPSSLRetriever
+server = vps.gilsons.org
+username = jonathan@gilsons.org
+password_command = ("/usr/bin/pass","show","jonathan@gilsons.org")
+mailboxes = ALL
+
+[destination]
+type = Maildir
+path= ~/.config/mail/Inbox/
