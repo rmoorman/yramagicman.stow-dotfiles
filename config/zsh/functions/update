@@ -2,6 +2,7 @@ function update() {
     sudo -v
     gup
     yay -Syu --noconfirm --sudoloop
+    xmonad --recompile
     bell
     echo '' > /tmp/updates
 
