@@ -36,7 +36,7 @@ static const Rule rules[] = {
     {   "urxvt-256color",      NULL,     NULL,  1,         0,          1     },
     {   "Alacritty",           NULL,     NULL,  1,         0,          0     },
     {   "Emacs",               NULL,     NULL,  1,         0,          0     },
-    {   "firefox",             NULL,     NULL,  1,         0,          1     },
+    {   "firefox",             NULL,     NULL,  2,         0,          1     },
     {   "surf",                NULL,     NULL,  1,         0,          0     },
     {   "krita",               NULL,     NULL,  1 << 3,    0,          0     },
     {   "chromium-browser",    NULL,     NULL,  2,         0,          1     },
@@ -75,7 +75,7 @@ static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() 
 static const char *dmenucmd[] = { "dmenu_run", "-p", ">>", "-fn", dmenufont, "-nb", background, "-nf", foreground, "-sb", sel_background, "-sf", sel_foreground, "-l", "20", NULL };
 static const char *passmenu[] = { "passmenu", "-p", "*>", "-fn", dmenufont, "-nb", background, "-nf", foreground, "-sb", sel_background, "-sf", sel_foreground, "-l", "20", NULL };
 static const char *termcmd[]  = { "/home/jonathan/.config/dwm/scripts/termcmd", NULL };
-static const char *emacs[]  = { "/home/jonathan/bin/emacs", ".", NULL };
+static const char *emacs[]  = { "emacsclient", "-c", "~/",  NULL };
 static const char *browser[]  = { "surf", "start.duckduckgo.com" };
 static const char *chrome[]  = { "chromium", NULL};
 static const char *chrome_incognito[]  = { "chromium", "--incognito", NULL };
