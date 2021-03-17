@@ -45,6 +45,7 @@ emacs
 enchant
 eslint
 eslint-plugin-vue
+exfat-utils
 fakeroot
 feh
 file
@@ -60,6 +61,7 @@ getmail6
 gettext
 git
 gobject-introspection
+gparted
 gphoto2
 gptfdisk
 grep
@@ -146,6 +148,8 @@ poppler-glib
 powertop
 privoxy
 pwgen
+python-dotenv
+python-mysql-connector
 python-requests
 python-virtualenv
 python2

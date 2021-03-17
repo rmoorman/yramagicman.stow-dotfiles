@@ -51,7 +51,9 @@
                   (my/set-font-faces))))
     (my/set-font-faces))
 
-
+(defun focus-test ()
+  (message "ffs: %s" (frame-focus-state)))
+(add-function :after after-focus-change-function #'focus-test)
 
 (provide 'my_hooks)
 ;;; my_hooks.el ends here
