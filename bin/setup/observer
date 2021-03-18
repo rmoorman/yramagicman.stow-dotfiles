@@ -137,7 +137,6 @@ rxvt-unicode
 sbcl
 shellcheck
 signal-desktop
-slack-cli
 slack-desktop
 speedtest-cli
 stack
@@ -171,6 +170,7 @@ vue-cli
 wget
 xdebug
 xf86-video-intel
+xf86-video-nouveau
 xf86-video-vesa
 xfsprogs
 xmonad
