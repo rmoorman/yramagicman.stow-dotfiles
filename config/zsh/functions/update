@@ -3,7 +3,7 @@ function update() {
     gup
     yay -Syu --noconfirm --sudoloop
     xmonad --recompile
-    orphans
     bell
     echo '' > /tmp/updates
+    orphans
 }
