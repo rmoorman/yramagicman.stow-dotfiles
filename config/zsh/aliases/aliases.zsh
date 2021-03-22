@@ -51,6 +51,7 @@ alias rm="rm -rv"
 alias speedtest="wget -O /dev/null \
  http://speedtest.wdc01.softlayer.com/downloads/test10.zip"
 alias wget="wget -c --no-check-certificate"
+alias composer="php7 /usr/bin/composer"
 #}}}
 #{{{ colorize stuff, utility commands
 #{{{ Detect which `ls` flavor is in use

@@ -203,7 +203,7 @@ if [[ "$TMUX" != '' ]] && [[ -z "$(pgrep tmuxcopy)" ]] && [[ "$OSTYPE" =~ 'darwi
 fi
 
 function artisan() {
-    php artisan $*
+    php7 artisan $*
 }
 
 # key bindings,

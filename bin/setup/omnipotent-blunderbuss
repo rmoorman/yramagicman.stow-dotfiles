@@ -135,6 +135,7 @@ php-sqlite
 php-tidy
 php7
 php7-apache
+php7-gd
 php7-imap
 php7-intl
 php7-sqlite
