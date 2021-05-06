@@ -2,8 +2,8 @@
 read_all = false
 
 [retriever]
-type = SimpleIMAPSSLRetriever
-server = vps.gilsons.org
+type = SimpleIMAPRetriever
+server = 209.182.211.113
 username = ejbills@gilsons.org
 password_command = ("/usr/bin/pass","show","ejbills")
 mailboxes = ("INBOX",)

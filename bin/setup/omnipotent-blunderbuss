@@ -6,7 +6,6 @@ alsa-utils
 android-file-transfer
 android-studio
 android-udev
-angular-cli
 apache
 arandr
 aspell
@@ -30,6 +29,7 @@ cpu-x
 cronie
 ctags
 cups
+dbeaver
 dhcpcd
 dialog
 dmenu
@@ -71,7 +71,7 @@ guvcview
 gvim
 gzip
 htop
-hunspell-en_US
+hunspell-en_us
 hwinfo
 iftop
 inetutils
@@ -80,8 +80,6 @@ iotop
 itstool
 iw
 iwd
-jdk8-openjdk
-jre8-openjdk-headless
 js-beautify
 krita
 leafpad
@@ -161,9 +159,9 @@ redshift
 reflector
 rmlint
 rofi
+rsnapshot
 rsync
 rxvt-unicode
-sbt
 screenkey
 sed
 shellcheck
@@ -178,6 +176,7 @@ terminus-font
 texinfo
 the_silver_searcher
 thunderbird
+tigervnc
 tlp
 tmux
 traceroute
@@ -195,7 +194,6 @@ vi
 virtualbox
 virtualbox-host-modules-arch
 vlc
-vue-cli
 w3m
 wget
 which
