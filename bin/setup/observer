@@ -24,6 +24,7 @@ create-react-app
 cronie
 ctags
 cups
+dbus-python
 docbook-xml
 dpkg
 dropbox-cli
@@ -115,6 +116,7 @@ php-sqlite
 php-tidy
 phpmyadmin
 picom
+pipewire
 pkgconf
 pkgfile
 pngcrush
@@ -123,7 +125,6 @@ powertop
 privoxy
 pwgen
 pygtk
-python-dbus
 python-virtualenv
 racket
 react-native-cli
