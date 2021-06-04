@@ -25,7 +25,6 @@ chromium
 cloc
 cmake
 composer
-cpu-x
 cronie
 ctags
 cups
@@ -91,6 +90,7 @@ libtool
 libvdpau-va-gl
 linux
 linux-firmware
+linux-lts
 lshw
 luit
 lvm2
@@ -140,6 +140,9 @@ php7-sqlite
 php7-tidy
 phpmyadmin
 picom
+pipewire
+pipewire-alsa
+pipewire-pulse
 pkgconf
 pkgfile
 pngcrush
@@ -169,7 +172,6 @@ signal-desktop
 slack-desktop
 sof-firmware
 speedtest-cli
-stack
 sudo
 tcpdump
 terminus-font

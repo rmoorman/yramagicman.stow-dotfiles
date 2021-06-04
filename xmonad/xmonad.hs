@@ -10,6 +10,7 @@ import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.ManageDocks
 import XMonad.Hooks.UrgencyHook
 import XMonad.Layout
+import XMonad.Layout.Grid
 import XMonad.Layout.IndependentScreens
 import XMonad.Layout.NoBorders
 import XMonad.Layout.ResizableTile
@@ -91,7 +92,7 @@ myMouseBindings (XConfig {XMonad.modMask = modm}) = M.fromList $
 -- The available layouts.  Note that each layout is separated by |||,
 -- which denotes layout choice.
 --
-myLayout = smartBorders $ tiled |||  Full ||| Mirror tiled ||| simpleFloat
+myLayout = smartBorders $ tiled |||  Full ||| Grid ||| Mirror tiled ||| simpleFloat
     where
         tiled = ResizableTall 1 (2/100) (1/2) []
 ------------------------------------------------------------------------
