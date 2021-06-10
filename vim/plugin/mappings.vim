@@ -11,7 +11,7 @@ inoremap <right> <Nop>
 "{{{ escape and save
 inoremap <space><space> <Esc>
 xnoremap <space><space> <Esc>
-nnoremap <space><space> :call functions#Save()<cr>
+nnoremap <space> :call functions#Save()<cr>
 nnoremap .<space> i<space><Esc>
 "}}}
 "{{{ completion mappings
@@ -72,5 +72,4 @@ cnoremap <C-e>  <End>
 "{{{ Kill annoying mapping
 nnoremap gs <nop>
 "}}}
-"
 inoreabbrev debugger; debugger;//eslint-disable-line
