@@ -6,7 +6,7 @@
 (use-package projectile
   :config
   (setq projectile-completion-system 'ivy
-        projectile-enable-caching t
+        projectile-enable-caching nil
         projectile-file-exists-local-cache-expire (* 5 60)
         projectile-indexing-method 'alien)
   (projectile-mode +1))
