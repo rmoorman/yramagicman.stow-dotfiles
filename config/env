@@ -35,7 +35,7 @@ export WWW_HOME="$XDG_CONFIG_HOME/www_data"
 
 # Editors
 export EDITOR='emacsclient -nw'
-export VISUAL='vim'
+export VISUAL='nvim'
 export PAGER='less'
 
 # Language
