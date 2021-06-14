@@ -95,6 +95,7 @@ mutt
 nano
 ncmpcpp
 neofetch
+neovim
 net-tools
 netctl
 newsboat
@@ -124,7 +125,6 @@ poppler-glib
 powertop
 privoxy
 pwgen
-pygtk
 python-virtualenv
 racket
 react-native-cli
