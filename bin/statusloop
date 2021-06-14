@@ -6,7 +6,7 @@ echo $left
 if [[ $dpi -gt 100 ]]; then
     width=1425
 else
-    width=1000
+    width=920
 fi
 while;
 do

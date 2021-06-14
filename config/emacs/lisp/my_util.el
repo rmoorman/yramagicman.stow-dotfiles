@@ -38,4 +38,4 @@
 (use-package base16-theme)
 
 (provide 'my_util)
-;;; modeline.el ends here
+;;; my_util.el ends here
