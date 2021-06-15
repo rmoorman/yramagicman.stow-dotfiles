@@ -13,7 +13,7 @@
   ;;   :prefix ",")
 
   (my-space-def
-    :states '( normal visual )
+    :states '( normal )
     :keymaps 'override
     "s" 'save-buffer
     "d" 'dired

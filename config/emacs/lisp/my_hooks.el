@@ -52,7 +52,9 @@
     (my/set-font-faces))
 
 (defun focus-test ()
-  (message "ffs: %s" (frame-focus-state)))
+  (if (not (frame-focus-state) )
+      (save-writable)
+    nil))
 (add-function :after after-focus-change-function #'focus-test)
 
 (provide 'my_hooks)
