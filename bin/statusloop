@@ -4,12 +4,12 @@ left=$( xrandr | awk '/ connected/ {print substr($3, 0, 4)}' | sed "${1}q;d" )
 dpi=$(xrdb -query | awk '/dpi/ {print $2}')
 echo $left
 if [[ $dpi -gt 100 ]]; then
-    width=2200
+    width=2000
 else
-    width=920
+    width=720
 fi
 while;
 do
     statusline
     sleep 1s;
-done | dzen2 -dock -ta r -fn mono:size=10 -fg grey -x $(( $left - $width )) -tw $width -xs $1
+done | dzen2 -dock -ta r -fn mono:size=10 -x $(( $left - $width )) -tw $width -xs $2
