@@ -1,10 +1,10 @@
 #!/usr/bin/zsh
-sleep 3s
+sleep 1s
 left=$( xrandr | awk '/ connected/ {print substr($3, 0, 4)}' | sed "${1}q;d" )
 dpi=$(xrdb -query | awk '/dpi/ {print $2}')
 echo $left
 if [[ $dpi -gt 100 ]]; then
-    width=1425
+    width=2200
 else
     width=920
 fi
