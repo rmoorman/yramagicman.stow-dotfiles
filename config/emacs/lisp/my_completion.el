@@ -24,9 +24,6 @@
   (setq lsp-keymap-prefix "C-c l")
   (setq lsp-headerline-breadcrumb-enable nil))
 
-;; (use-package lsp-mode
-;;   :after (lsp-mode ivy))
-
 ;; (use-package lsp-ui
 ;;   :hook (lsp-mode . lsp-ui-mode)
 ;;   :custom
