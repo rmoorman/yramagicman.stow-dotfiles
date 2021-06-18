@@ -36,5 +36,10 @@
 (use-package evil-surround
   :config
   (global-evil-surround-mode 1))
+
+(use-package evil-matchit
+  :config
+  (setq evilmi-shortcut "%")
+  (global-evil-matchit-mode 1))
 (provide 'my_evil)
 ;;; evil.el ends here

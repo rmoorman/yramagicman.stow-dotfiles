@@ -48,9 +48,11 @@ function my_load() {
 
 function my_mail() {
     # $HOME/bin/mailmon
-    mail=$(ls ~/.config/mail/Inbox/new/  | wc -l )
-    if test "$mail" -gt 0; then
-        echo "M: $mail "
+    personal=$(ls ~/.config/mail/gilsons/Inbox.personal/new/  | wc -l )
+    bills=$(ls ~/.config/mail/bills/Inbox.bills/new/  | wc -l )
+    work=$(ls ~/.config/mail/work/Inbox.work/new/  | wc -l )
+    if test "$personal" -gt 0 || test "$work" -gt 0; then
+        echo "M: $personal/$work/$bills "
     fi
 }
 
@@ -69,7 +71,7 @@ function my_weather() {
         weather='W:'$(< /tmp/weather)
     fi
     if [[ "$weather" == " W:error" ]]; then
-        $HOME/bin/weather.py > /tmp/weather
+        weather.py > /tmp/weather
     fi
     echo $weather
 }

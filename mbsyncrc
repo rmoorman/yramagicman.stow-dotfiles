@@ -102,6 +102,8 @@ Inbox ~/.config/mail/work/Inbox.work
 Channel work
 Far :work-remote:
 Near :work-local:
+Expunge Both
+Remove Both
 # Exclude everything under the internal [work] folder, except the interesting folders
 # Patterns * ![work]* "[work]/Sent Mail" "[work]/Starred" "[work]/All Mail"
 # Or include everything
