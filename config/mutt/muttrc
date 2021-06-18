@@ -7,10 +7,12 @@ set editor = "$EDITOR"
 set delete
 set from = "jonathandavis@gilsons.org"
 set mbox_type=Maildir
-set spoolfile = "~/.config/mail/Inbox"
-set folder="~/.config/mail/Inbox"
-set postponed="~/.config/mail/Drafts/"
-set record="~/.config/mail/Sent/"
+set spoolfile = "~/.config/mail/gilsons/Inbox"
+set folder="~/.config/mail/gilsons/Inbox"
+set postponed="~/.config/mail/gilsons/Drafts/"
+set record="~/.config/mail/gilsons/Sent/"
+set trash="~/.config/mail/gilsons/Trash/"
+set maildir_trash=yes
 set mailcap_path="~/.config/mutt/mailcap"
 set move = no
 set date_format = "%d/%m/%y"
@@ -32,7 +34,7 @@ set forward_quote                    # include message in forwards
 auto_view text/html # view html automatically
 alternative_order text/plain text/enriched text/html     # save html for last
 # set my_msmtp_pass=`gpg -d ~/.password-store/email.gpg`
-mailboxes ! + `find ~/.config/mail/* -maxdepth 0 -type d | xargs`
+mailboxes ! + `find ~/.config/mail/* -maxdepth 1 -type d | xargs`
 #}}}
 # {{{ Index Key Bindings
 bind index g        noop
@@ -132,13 +134,13 @@ set sidebar_new_mail_only = yes
 
 # Any mailboxes that are whitelisted will always be visible, even if the
 # sidebar_new_mail_only option is enabled.
-sidebar_whitelist '/home/jonathan/.config/mail/Inbox'
-sidebar_whitelist '/home/jonathan/.config/mail/Gmail'
-sidebar_whitelist '/home/jonathan/.config/mail/Bills'
-sidebar_whitelist '/home/jonathan/.config/mail/Work'
-sidebar_whitelist '/home/jonathan/.config/mail/results'
-sidebar_whitelist '/home/jonathan/.config/mail/Drafts'
-sidebar_whitelist '/home/jonathan/.config/mail/trash'
+sidebar_whitelist '/home/jonathan/.config/mail/gilsons/Inbox'
+sidebar_whitelist '/home/jonathan/.config/mail/bills/Inbox'
+# sidebar_whitelist '/home/jonathan/.config/mail/Bills'
+# sidebar_whitelist '/home/jonathan/.config/mail/Work'
+# sidebar_whitelist '/home/jonathan/.config/mail/results'
+# sidebar_whitelist '/home/jonathan/.config/mail/Drafts'
+# sidebar_whitelist '/home/jonathan/.config/mail/trash'
 
 # When searching for mailboxes containing new mail, should the search wrap
 # around when it reaches the end of the list?

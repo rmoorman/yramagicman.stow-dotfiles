@@ -1,0 +1,75 @@
+IMAPAccount personal
+# Address to connect to
+Host vps.gilsons.org
+User jonathandavis@gilsons.org
+# To store the password in an encrypted file use PassCmd instead of Pass
+PassCmd "gpg2 -q --for-your-eyes-only --no-tty -d ~/.local/share/pass/email.gpg"
+#
+# Use SSL
+SSLType IMAPS
+# The following line should work. If get certificate errors, uncomment the two following lines and read the "Troubleshooting" section.
+CertificateFile ~/.config/certs/gilsons.org.pem
+#CertificateFile ~/.cert/imap.gilsons.com.pem
+#CertificateFile ~/.cert/Equifax_Secure_CA.pem
+
+IMAPStore gilsons-remote
+Account personal
+
+MaildirStore gilsons-local
+SubFolders Verbatim
+# The trailing "/" is important
+Path  ~/.config/mail/gilsons/
+Inbox ~/.config/mail/gilsons/Inbox
+
+Channel gilsons
+Expunge Both
+Remove Both
+Far :gilsons-remote:
+Near :gilsons-local:
+# Exclude everything under the internal [Gilsons] folder, except the interesting folders
+# Patterns * ![Gilsons]* "[Gilsons]/Sent Mail" "[Gilsons]/Starred" "[Gilsons]/All Mail"
+# Or include everything
+Patterns *
+# Automatically create missing mailboxes, both locally and on the server
+Create Both
+# Save the synchronization state files in the relevant directory
+SyncState *
+
+
+
+IMAPAccount bills
+# Address to connect to
+Host vps.gilsons.org
+User ejbills@gilsons.org
+# To store the password in an encrypted file use PassCmd instead of Pass
+PassCmd "gpg2 -q --for-your-eyes-only --no-tty -d ~/.local/share/pass/ejbills.gpg"
+#
+# Use SSL
+SSLType IMAPS
+# The following line should work. If get certificate errors, uncomment the two following lines and read the "Troubleshooting" section.
+CertificateFile ~/.config/certs/gilsons.org.pem
+#CertificateFile ~/.cert/imap.gilsons.com.pem
+#CertificateFile ~/.cert/Equifax_Secure_CA.pem
+
+IMAPStore bills-remote
+Account bills
+
+MaildirStore bills-local
+SubFolders Verbatim
+# The trailing "/" is important
+Path  ~/.config/mail/bills/
+Inbox ~/.config/mail/bills/Inbox
+
+Channel bills
+Expunge Both
+Remove Both
+Far :bills-remote:
+Near :bills-local:
+# Exclude everything under the internal [bills] folder, except the interesting folders
+# Patterns * ![bills]* "[bills]/Sent Mail" "[bills]/Starred" "[bills]/All Mail"
+# Or include everything
+Patterns *
+# Automatically create missing mailboxes, both locally and on the server
+Create Both
+# Save the synchronization state files in the relevant directory
+SyncState *
