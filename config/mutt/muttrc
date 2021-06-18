@@ -7,8 +7,8 @@ set editor = "$EDITOR"
 set delete
 set from = "jonathandavis@gilsons.org"
 set mbox_type=Maildir
-set spoolfile = "~/.config/mail/gilsons/Inbox"
-set folder="~/.config/mail/gilsons/Inbox"
+set spoolfile = "~/.config/mail/gilsons/Inbox.personal"
+set folder="~/.config/mail/gilsons/Inbox.personal"
 set postponed="~/.config/mail/gilsons/Drafts/"
 set record="~/.config/mail/gilsons/Sent/"
 set trash="~/.config/mail/gilsons/Trash/"
@@ -134,10 +134,9 @@ set sidebar_new_mail_only = yes
 
 # Any mailboxes that are whitelisted will always be visible, even if the
 # sidebar_new_mail_only option is enabled.
-sidebar_whitelist '/home/jonathan/.config/mail/gilsons/Inbox'
-sidebar_whitelist '/home/jonathan/.config/mail/bills/Inbox'
-# sidebar_whitelist '/home/jonathan/.config/mail/Bills'
-# sidebar_whitelist '/home/jonathan/.config/mail/Work'
+sidebar_whitelist '/home/jonathan/.config/mail/gilsons/Inbox.personal'
+sidebar_whitelist '/home/jonathan/.config/mail/bills/Inbox.bills'
+sidebar_whitelist '/home/jonathan/.config/mail/work/Inbox.work'
 # sidebar_whitelist '/home/jonathan/.config/mail/results'
 # sidebar_whitelist '/home/jonathan/.config/mail/Drafts'
 # sidebar_whitelist '/home/jonathan/.config/mail/trash'
