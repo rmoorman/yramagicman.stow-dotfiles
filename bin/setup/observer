@@ -63,6 +63,7 @@ intel-ucode
 iotop
 iproute2
 iputils
+isync
 itstool
 iw
 iwd
@@ -115,9 +116,19 @@ php-imap
 php-intl
 php-sqlite
 php-tidy
+php7
+php7-apache
+php7-gd
+php7-imap
+php7-intl
+php7-sqlite
+php7-tidy
 phpmyadmin
 picom
 pipewire
+pipewire-alsa
+pipewire-media-session
+pipewire-pulse
 pkgconf
 pkgfile
 pngcrush

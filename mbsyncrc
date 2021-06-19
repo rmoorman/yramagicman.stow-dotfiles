@@ -3,7 +3,7 @@ IMAPAccount personal
 Host vps.gilsons.org
 User jonathandavis@gilsons.org
 # To store the password in an encrypted file use PassCmd instead of Pass
-PassCmd "gpg2 -q --for-your-eyes-only --no-tty -d ~/.local/share/pass/email.gpg"
+PassCmd "cat /tmp/mail/personal"
 #
 # Use SSL
 SSLType IMAPS
@@ -42,7 +42,7 @@ IMAPAccount bills
 Host vps.gilsons.org
 User ejbills@gilsons.org
 # To store the password in an encrypted file use PassCmd instead of Pass
-PassCmd "gpg2 -q --for-your-eyes-only --no-tty -d ~/.local/share/pass/ejbills.gpg"
+PassCmd "cat /tmp/mail/bills"
 #
 # Use SSL
 SSLType IMAPS
