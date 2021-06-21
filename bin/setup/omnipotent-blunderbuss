@@ -34,7 +34,6 @@ dmenu
 dmidecode
 docbook-xml
 docker
-dropbox-cli
 dunst
 dzen2
 editorconfig-core-c
@@ -57,6 +56,7 @@ gawk
 gcc
 getmail6
 gettext
+ghostscript
 git
 gobject-introspection
 gparted
@@ -75,6 +75,7 @@ iftop
 inetutils
 intel-ucode
 iotop
+isync
 itstool
 iw
 iwd
