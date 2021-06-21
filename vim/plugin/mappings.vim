@@ -9,20 +9,20 @@ inoremap <up>    <Nop>
 inoremap <right> <Nop>
 "}}}
 "{{{ escape and save
-inoremap <space><space> <Esc>
-xnoremap <space><space> <Esc>
-nnoremap <space> :call functions#Save()<cr>
-nnoremap .<space> i<space><Esc>
+inoremap <leader><leader> <Esc>
+xnoremap <leader><leader> <Esc>
+nnoremap <leader>s :call functions#Save()<cr>
+nnoremap .<leader> i<leader><Esc>
 "}}}
 "{{{ completion mappings
 cnoremap <expr> %% expand('%:h').'/'
 "}}}
 "{{{ terminal mode mappings
 if ! has('nvim')
-    tnoremap <space><space> <C-w>N
+    tnoremap <leader><leader> <C-w>N
     tnoremap :: <C-w>N:
 else
-    tnoremap <space><space> <C-\><C-N>
+    tnoremap <leader><leader> <C-\><C-N>
     tnoremap :: <C-\><C-N>:
 endif
 nnoremap <C-w>t :vert term<cr>
@@ -30,8 +30,8 @@ nnoremap <leader>t :vert term<cr>
 
 "}}}
 "{{{ normal mode mappings
-nnoremap <leader><space> :set hlsearch!<cr>
-nnoremap <leader><leader> <C-^>
+nnoremap <leader>; :set hlsearch!<cr>
+nnoremap <leader>, <C-^>
 nnoremap * :set hlsearch<cr>*
 nnoremap # :set hlsearch<cr>#
 nnoremap / :set hlsearch<cr>/
