@@ -41,5 +41,6 @@
   :config
   (setq evilmi-shortcut "%")
   (global-evil-matchit-mode 1))
+
 (provide 'my_evil)
 ;;; evil.el ends here
