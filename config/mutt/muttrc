@@ -34,7 +34,7 @@ set forward_quote                    # include message in forwards
 auto_view text/html # view html automatically
 alternative_order text/plain text/enriched text/html     # save html for last
 # set my_msmtp_pass=`gpg -d ~/.password-store/email.gpg`
-mailboxes ! + `find ~/.config/mail/* -maxdepth 1 -type d | xargs`
+mailboxes ! + `find ~/.config/mail/* -maxdepth 1 -type d | xargs -0`
 #}}}
 # {{{ Index Key Bindings
 bind index g        noop
@@ -130,16 +130,13 @@ set sidebar_indent_string = '  '
 
 # Make the Sidebar only display mailboxes that contain new, or flagged,
 # mail.
-set sidebar_new_mail_only = yes
+# set sidebar_new_mail_only = yes
 
 # Any mailboxes that are whitelisted will always be visible, even if the
 # sidebar_new_mail_only option is enabled.
 sidebar_whitelist '/home/jonathan/.config/mail/gilsons/Inbox.personal'
 sidebar_whitelist '/home/jonathan/.config/mail/bills/Inbox.bills'
 sidebar_whitelist '/home/jonathan/.config/mail/work/Inbox.work'
-# sidebar_whitelist '/home/jonathan/.config/mail/results'
-# sidebar_whitelist '/home/jonathan/.config/mail/Drafts'
-# sidebar_whitelist '/home/jonathan/.config/mail/trash'
 
 # When searching for mailboxes containing new mail, should the search wrap
 # around when it reaches the end of the list?
@@ -152,7 +149,7 @@ set sidebar_divider_char = '|'
 
 # Enable extended buffy mode to calculate total, new, and flagged
 # message counts for each mailbox.
-set mail_check_stats
+# set mail_check_stats
 
 # Display the Sidebar mailboxes using this format string.
 set sidebar_format = '%B%?F? [%F]?%* %?N?%N/?%S'
@@ -163,7 +160,7 @@ set sidebar_format = '%B%?F? [%F]?%* %?N?%N/?%S'
 #       new      - number of new messages
 #       path     - mailbox path
 #       unsorted - do not sort the mailboxes
-set sidebar_sort_method = 'count'
+set sidebar_sort_method = 'unsorted'
 
 # --------------------------------------------------------------------------
 # FUNCTIONS - shown with an example mapping
