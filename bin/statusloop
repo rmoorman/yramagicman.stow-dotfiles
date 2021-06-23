@@ -1,15 +1,32 @@
 #!/usr/bin/zsh
-sleep 1s
-left=$( xrandr | awk '/ connected/ {print substr($3, 0, 4)}' | sed "${1}q;d" )
-dpi=$(xrdb -query | awk '/dpi/ {print $2}')
-echo $left
-if [[ $dpi -gt 100 ]]; then
-    width=2000
-else
-    width=720
+
+wmcmd=$(cat ~/.config/wmcmd)
+if [[ "$wmcmd" == '$HOME/.local/bin/dwmrestart' ]]; then
+    while;
+    do
+        statusline
+        sleep 1s;
+    done
+    exit 0
+
 fi
-while;
-do
-    statusline
-    sleep 1s;
-done | dzen2 -dock -ta r -fn mono:size=10 -x $(( $left - $width )) -tw $width -xs $2
+
+if [[ $wmcmd == 'xmonad' ]]; then
+    sleep 1s
+    left=$( xrandr | awk '/ connected/ {print substr($3, 0, 4)}' | sed "${1}q;d" )
+    dpi=$(xrdb -query | awk '/dpi/ {print $2}')
+    echo $left
+    if [[ $dpi -gt 100 ]]; then
+        width=2000
+    else
+        width=720
+    fi
+    while;
+    do
+        statusline
+        sleep 1s;
+    done | dzen2 -dock -ta r -fn mono:size=10 -x $(( $left - $width )) -tw $width -xs $2
+    exit 0
+fi
+notify-send 'Status line not started env not recognized'
+exit 1
