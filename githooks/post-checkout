@@ -1,10 +1,4 @@
 #!/bin/sh
 .git/hooks/ctags >/dev/null 2>&1 &
 
-base=$(git rev-parse --show-toplevel)
-while read -r f
-do
-    gpg -d --quiet "$base/$f.gpg" > "/tmp/$(basename "$f" )"
-done < "$base/config/crypt"
-
 exit 0
