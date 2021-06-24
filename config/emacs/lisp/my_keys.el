@@ -25,6 +25,7 @@
     "f" 'projectile-find-file
     "p" 'projectile-switch-project
     "n" 'flymake-goto-next-error
+    "gs" 'magit-status
     "F" 'find-file)
 
 
@@ -49,8 +50,8 @@
 
    "C-x" 'evil-numbers/dec-at-pt
 
-   "C-w t" 'ansiterm-vert
-   ))
+   "C-w t" 'ansiterm-vert))
+
 
 ;; keybind
 (global-set-key (kbd "C-c b") 'buffer-menu)
