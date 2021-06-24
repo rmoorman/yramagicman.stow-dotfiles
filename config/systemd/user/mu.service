@@ -1,0 +1,6 @@
+[Unit]
+Description=Mailbox indexer
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/mu index
