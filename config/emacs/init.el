@@ -75,6 +75,9 @@
 
 (electric-indent-mode nil)
 
+(setq-default electric-indent-inhibit t)
+(setq backward-delete-char-untabify-method 'hungry)
+
 (server-mode)
 
 (global-auto-revert-mode t)
