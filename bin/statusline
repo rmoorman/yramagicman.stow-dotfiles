@@ -65,7 +65,7 @@ function my_weather() {
     modified_date=$(stat /tmp/weather | awk '/Modify/ {split($3, arr, ":"); print arr[1]}')
     if [[ ! "$(print -P "%D{ %H }" )" -eq $modified_date ]]
     then
-        $HOME/bin/weather.py > /tmp/weather
+        weather.py > /tmp/weather
         weather='W:'$(< /tmp/weather)
     else
         weather='W:'$(< /tmp/weather)
