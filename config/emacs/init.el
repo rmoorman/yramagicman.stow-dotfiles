@@ -73,6 +73,8 @@
 
 (global-hl-line-mode t)
 
+(electric-indent-mode nil)
+
 (server-mode)
 
 (global-auto-revert-mode t)
