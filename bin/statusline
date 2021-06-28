@@ -137,7 +137,7 @@ function dnd() {
     echo "$( < /tmp/dnd )"
 }
 
-line="$(dnd)$(my_update) $(my_harvest) $(my_mail) $(my_weather) "
+line="$(dnd)$(my_update) $(my_harvest) $(my_mail) "
 if [[ -r "/sys/class/power_supply/BAT0/" ]]; then
     for d in /sys/class/power_supply/BAT?/; do
         line="$line  $(my_bat $d)"
