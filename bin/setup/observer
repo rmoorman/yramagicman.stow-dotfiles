@@ -37,11 +37,11 @@ enchant
 eslint
 eslint-plugin-vue
 ethtool
+exfat-utils
 firefox
 flake8
 fwupd
 fzf
-getmail6
 gettext
 gimp
 glances
@@ -96,7 +96,6 @@ mutt
 nano
 ncmpcpp
 neofetch
-neovim
 net-tools
 netctl
 newsboat
