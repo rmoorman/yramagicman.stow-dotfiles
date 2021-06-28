@@ -168,6 +168,7 @@ myStartupHook = do
     forM commands (\c -> spawnOnce c )
     nScreens <- countScreens
     forM [1..nScreens ] (\sc -> spawnOnce ("statusloop " ++ show sc))
+    spawnOnce "getallmail"
 ------------------------------------------------------------------------
     -- Key bindings. Add, modify or remove key bindings here.
 --
