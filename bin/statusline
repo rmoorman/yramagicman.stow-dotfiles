@@ -52,7 +52,7 @@ function my_mail() {
     bills=$(ls ~/.config/mail/bills/Inbox.bills/new/  | wc -l )
     work=$(ls ~/.config/mail/work/Inbox.work/new/  | wc -l )
     if test "$personal" -gt 0 || test "$work" -gt 0; then
-        echo "M: $personal/$work/$bills "
+        echo " : M: $personal/$work/$bills : "
     fi
 }
 
@@ -85,7 +85,7 @@ function my_update() {
         if [[ "$(<  /tmp/updates | wc -l )" -gt 10 ]] && [[ ! "$(< /tmp/aur)" ]]; then
             echo " U: $(< /tmp/updates | wc -l)"
         elif [[ "$(<  /tmp/updates | wc -l )" -gt 10 ]] && [[ "$(< /tmp/aur | wc -l )"  ]]; then
-            echo " U: $(< /tmp/updates | wc -l) + $(< /tmp/aur | wc -l )"
+            echo " : U: $(< /tmp/updates | wc -l) + $(< /tmp/aur | wc -l ) : "
         else
             # do nothing
         fi
@@ -122,7 +122,7 @@ function my_harvest() {
     then
         $HOME/bin/harvest > /tmp/harvest
     fi
-    [[ -s /tmp/harvest ]] && echo "TIME: $( < /tmp/harvest )"
+    [[ -s /tmp/harvest ]] && echo " : TIME: $( < /tmp/harvest ) : "
 
 
 }
@@ -134,16 +134,16 @@ function dnd() {
     if [[ $(( $(print -P '%D{ %s }') % 5 )) -eq 0 ]] && [[ "$(dunstctl is-paused)" == 'false' ]]; then
         echo ''  > /tmp/dnd
     fi
-    echo "$( < /tmp/dnd )"
+    [[ -n $(< /tmp/dnd ) ]] && echo " : $( < /tmp/dnd ) : "
 }
 
-line="$(dnd)$(my_update) $(my_harvest) $(my_mail) "
+line="$(dnd)$(my_update)$(my_harvest)$(my_mail)"
 if [[ -r "/sys/class/power_supply/BAT0/" ]]; then
     for d in /sys/class/power_supply/BAT?/; do
-        line="$line  $(my_bat $d)"
+        line="$line$(my_bat $d)"
     done
 fi
-line="$line $(my_date)"
+line="$line$(my_date): # "
 
 xsetroot -name $line
 echo $line
