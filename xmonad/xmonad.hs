@@ -55,7 +55,10 @@ myModMask       = mod4Mask
 --
 -- > workspaces = ["web", "irc", "code" ] ++ map show [4..9]
 --
-myWorkspaces    = ["1","2","3","4","5","6","7","8","9"]
+-- myWorkspaces    = ["1:shell","2:browser","3:browser","4","5","6","7","8","9"]
+myWorkspaces    = ["1:shell","2:ff","3:ff/chrome", "4:mail/db"]
+  ++ map show [ 5 .. 7 ]
+  ++ ["8:signal", "9:slack"]
 
 -- Border colors for unfocused and focused windows, respectively.
 --
@@ -92,7 +95,7 @@ myMouseBindings (XConfig {XMonad.modMask = modm}) = M.fromList $
 -- The available layouts.  Note that each layout is separated by |||,
 -- which denotes layout choice.
 --
-myLayout = smartBorders $ tiled |||  Full ||| Grid ||| Mirror tiled ||| simpleFloat
+myLayout = smartBorders $ tiled |||  Full ||| Grid
     where
         tiled = ResizableTall 1 (2/100) (1/2) []
 ------------------------------------------------------------------------
@@ -111,19 +114,20 @@ myLayout = smartBorders $ tiled |||  Full ||| Grid ||| Mirror tiled ||| simpleFl
 -- 'className' and 'resource' are used below.
 --
 myManageHook = composeAll [
-      className =? "Alacritty"      --> doShift "1"
-    , className =? "st-256color"    --> doShift "1"
-    , className =? "Emacs"          --> doShift "1"
-    , className =? "firefox"        --> doShift "2"
-    , className =? "Chromium"       --> doShift "3"
-    , className =? "Thunderbird"    --> doShift "4"
-    , className =? "Signal"         --> doShift "8"
-    , className =? "Slack"          --> doShift "9"
-    , title =? "Dbeaver"            --> doShift "4"
-    , className =? "DBeaver"        --> doShift "4"
+      className =? "Alacritty"        --> doShift "1:shell"
+    , className =? "st-256color"      --> doShift "1:shell"
+    , className =? "Emacs"            --> doShift "1:shell"
+    , className =? "firefox"          --> doShift "2:ff"
+    , className =? "Chromium"         --> doShift "3:ff/chrome"
+    , className =? "Thunderbird"      --> doShift "4:mail/db"
+    , className =? "Signal"           --> doShift "8:signal"
+    , className =? "Slack"            --> doShift "9:slack"
+    , title =? "Dbeaver"              --> doShift "4:mail/db"
+    , className =? "DBeaver"          --> doShift "4:mail/db"
     , title =? "Quit and close tabs?" --> doIgnore
-    , title =? "Close tabs?"        --> doIgnore
-    , resource  =? "desktop_window" --> doIgnore ]
+    , title =? "Close tabs?"          --> doIgnore
+    , resource  =? "desktop_window"   --> doIgnore
+    ]
 
 ------------------------------------------------------------------------
 -- Event handling
@@ -154,17 +158,16 @@ commands = [
            , "xset b off"
            , "dropbox-cli start"
            , "redshift"
-           -- , "setmouse"
            , "tmuxcopy"
            , "dunst"
            , "setxkbmap -option compose:menu"
            , "setxkbmap -option caps:none"
+           , "xsetroot -cursor_name left_ptr"
            ]
 myStartupHook = do
     forM commands (\c -> spawnOnce c )
     nScreens <- countScreens
     forM [1..nScreens ] (\sc -> spawnOnce ("statusloop " ++ show sc))
-    spawnOnce "xsetroot -cursor_name left_ptr"
 ------------------------------------------------------------------------
     -- Key bindings. Add, modify or remove key bindings here.
 --
@@ -267,16 +270,19 @@ main = do
           , manageHook         = manageDocks <+> myManageHook
           , layoutHook         = avoidStruts $ myLayout
           , modMask            = myModMask
+
+          , workspaces         = myWorkspaces
           , logHook            = dynamicLogWithPP def
               { ppOutput       = \str -> forM_ handles (flip hPutStrLn str)
               , ppExtras       = [ windowCount ]
-              , ppCurrent      = dzenColor "grey" "" . wrap "[" "]"
+              , ppCurrent      = dzenColor "white" ""
               , ppVisible      = dzenColor "grey" ""
               , ppHidden       = dzenColor "grey" ""
               , ppTitle        = dzenColor "grey" "" . shorten 550
-              , ppLayout       = dzenColor "grey" "" . shorten 50
+              , ppLayout       = dzenColor "grey" ""
               , ppUrgent       = dzenColor "red" "" . shorten 50 . dzenStrip
-              , ppOrder = \(a:b:c:d) ->  [ " #" ] ++ d  ++ [ a ] ++  [ b ] ++  [ c ]
+              , ppSep          = " - "
+              , ppOrder = \(a:b:c:d) ->  [ "-" ] ++ d  ++ [ a ] ++  [ b ] ++  [ c ]
               }
           , keys               = myKeys
           , startupHook        = myStartupHook
