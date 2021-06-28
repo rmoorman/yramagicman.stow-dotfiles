@@ -1,4 +1,3 @@
-
 if ! executable('fzf')
     finish
 endif

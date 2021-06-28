@@ -26,9 +26,9 @@ set autowrite
 set lazyredraw
 set ttyfast
 "}}}
-"{{{ Show line numbers by default, see mappings below for toggle
-set number
-set relativenumber
+"{{{ Do not show line numbers by default, see mappings below for toggle
+set nonumber
+set norelativenumber
 "}}}
 "{{{ tab settings
 set expandtab
