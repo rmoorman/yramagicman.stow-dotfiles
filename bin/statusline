@@ -11,6 +11,7 @@ function my_bat() {
     notify_when=$(($(print -P '%D{ %M }') % 1 ))
     bat_level=$( < $1/capacity )
     bat_stat=$( < $1/status )
+    message=""
     if [[ $(print -P '%D{ %S }') -eq 30 ]]
     then
         if [[ $(($bat_level < 20)) -eq 1 && (  $notify_when -eq 0 ) && $status != 'Charging'  ]]
@@ -21,10 +22,16 @@ function my_bat() {
     if [[ "$bat_stat" == "Discharging" ]]
     then
         indicator="\xE2\x86\x93"
+        message="B:$bat_level% $indicator - "
     else
         indicator="\xE2\x86\x91"
+        message="B:$bat_level% $indicator - "
     fi
-    echo "B:$bat_level% $indicator - "
+    if [[ $(( $bat_level > 96)) -eq 1 ]] \
+           && [[ "$bat_stat" == "Charging" || "$bat_stat" == "Full" ]]; then
+        message=""
+    fi
+    echo "$message"
 }
 
 function my_wifi(){
