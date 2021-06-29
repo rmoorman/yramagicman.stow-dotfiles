@@ -7,12 +7,14 @@ import System.IO
 import XMonad
 import XMonad.Actions.CycleWS
 import XMonad.Hooks.DynamicLog
+import XMonad.Hooks.EwmhDesktops
 import XMonad.Hooks.ManageDocks
 import XMonad.Hooks.UrgencyHook
 import XMonad.Layout
 import XMonad.Layout.Grid
 import XMonad.Layout.IndependentScreens
 import XMonad.Layout.NoBorders
+import XMonad.Layout.Renamed
 import XMonad.Layout.ResizableTile
 import XMonad.Layout.SimpleFloat
 import XMonad.Util.EZConfig(additionalKeys, additionalKeysP, removeKeys)
@@ -56,7 +58,7 @@ myModMask       = mod4Mask
 -- > workspaces = ["web", "irc", "code" ] ++ map show [4..9]
 --
 -- myWorkspaces    = ["1:shell","2:browser","3:browser","4","5","6","7","8","9"]
-myWorkspaces    = ["1:shell","2:ff","3:ff/chrome", "4:mail/db"]
+myWorkspaces    = ["1:shell","2:br1","3:br2", "4:mail/db"]
   ++ map show [ 5 .. 7 ]
   ++ ["8:signal", "9:slack"]
 
@@ -95,7 +97,7 @@ myMouseBindings (XConfig {XMonad.modMask = modm}) = M.fromList $
 -- The available layouts.  Note that each layout is separated by |||,
 -- which denotes layout choice.
 --
-myLayout = smartBorders $ tiled |||  Full ||| Grid
+myLayout = smartBorders $ renamed [Replace "|=" ] tiled |||  renamed [Replace "[]"] Full ||| renamed [Replace "=="] Grid
     where
         tiled = ResizableTall 1 (2/100) (1/2) []
 ------------------------------------------------------------------------
@@ -117,8 +119,8 @@ myManageHook = composeAll [
       className =? "Alacritty"        --> doShift "1:shell"
     , className =? "st-256color"      --> doShift "1:shell"
     , className =? "Emacs"            --> doShift "1:shell"
-    , className =? "firefox"          --> doShift "2:ff"
-    , className =? "Chromium"         --> doShift "3:ff/chrome"
+    , className =? "firefox"          --> doShift "2:br1"
+    , className =? "Chromium"         --> doShift "3:br2"
     , className =? "Thunderbird"      --> doShift "4:mail/db"
     , className =? "Signal"           --> doShift "8:signal"
     , className =? "Slack"            --> doShift "9:slack"
@@ -126,6 +128,8 @@ myManageHook = composeAll [
     , className =? "DBeaver"          --> doShift "4:mail/db"
     , title =? "Quit and close tabs?" --> doIgnore
     , title =? "Close tabs?"          --> doIgnore
+    , title =? "Open File"            --> doIgnore
+    , title =? "Save As"              --> doIgnore
     , resource  =? "desktop_window"   --> doIgnore
     ]
 
@@ -264,7 +268,7 @@ main = do
     let dzncmd = "dzen2 -dock -ta l -tw 1200 -fn mono:size=10 -xs "
     nScreens <- countScreens
     handles <- forM [1..nScreens] (\sc -> spawnPipe (dzncmd ++ show sc))
-    xmonad  $ withUrgencyHook NoUrgencyHook $ docks def
+    xmonad  $ ewmh $ withUrgencyHook NoUrgencyHook $ docks  def
         { terminal           = myTerminal
           , focusFollowsMouse  = myFocusFollowsMouse
           , borderWidth        = myBorderWidth
@@ -283,7 +287,7 @@ main = do
               , ppLayout       = dzenColor "grey" ""
               , ppUrgent       = dzenColor "red" "" . shorten 50 . dzenStrip
               , ppSep          = " - "
-              , ppOrder = \(a:b:c:d) ->  [ "-" ] ++ d  ++ [ a ] ++  [ b ] ++  [ c ]
+              , ppOrder = \(a:b:c:d) -> [ "-" ] ++ [ b ] ++ d  ++ [ a ] ++ [ c ]
               }
           , keys               = myKeys
           , startupHook        = myStartupHook
