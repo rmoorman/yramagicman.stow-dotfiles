@@ -46,6 +46,9 @@ bind index <tab>    sync-mailbox
 bind index <space>  collapse-thread
 macro index \Cr "!$HOME/bin/getallmail"<enter>
 macro index \Cs "!mu find --format=links --linksdir=$HOME/.config/mail/results "
+macro index \Cw "c ~/.config/mail/work/Inbox.work"
+macro index \Cp "c ~/.config/mail/gilsons/Inbox.personal"
+macro index \Cb "c ~/.config/mail/bills/Inbox.bills"
 #set pager_context = 3      # number of context lines to show
 set pager_stop             # don't go to next message automatically
 set tilde                  # show tildes like in vim
