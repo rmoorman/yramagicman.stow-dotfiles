@@ -12,7 +12,7 @@
   ;;   ;; :prefix my-leader
   ;;   :prefix ",")
 
-  (my-space-def
+   (my-space-def
     :states '( normal )
     :keymaps 'override
     "s" 'save-buffer
@@ -26,6 +26,7 @@
     "p" 'projectile-switch-project
     "n" 'flymake-goto-next-error
     "gs" 'magit-status
+    "gc" 'magit-checkout
     "F" 'find-file)
 
 
