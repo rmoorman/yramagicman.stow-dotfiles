@@ -7,8 +7,8 @@ alias ~="cd ~"
 alias d="dirs -v"
 #}}}
 #{{{ shortcuts
-alias mutt="mutt -F $HOME/.config/mutt/muttrc"
-alias m="mutt -F $HOME/.config/mutt/muttrc"
+alias mutt="mutt -F $HOME/.config/mutt/muttrc && mbsync -a"
+alias m="mutt -F $HOME/.config/mutt/muttrc && mbsync -a"
 alias h="history"
 alias py="python"
 alias .vim="cd $HOME/.vim && ls"
