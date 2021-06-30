@@ -20,6 +20,8 @@ import XMonad.Layout.SimpleFloat
 import XMonad.Util.EZConfig(additionalKeys, additionalKeysP, removeKeys)
 import XMonad.Util.Run(spawnPipe)
 import XMonad.Util.SpawnOnce
+import XMonad.Actions.Warp
+import Data.Ratio
 
 windowCount :: X (Maybe String)
 windowCount = gets $ Just . show . length . W.integrate' . W.stack . W.workspace . W.current . windowset
@@ -308,6 +310,7 @@ main = do
           , (( 0, xF86XK_MonBrightnessUp   ), spawn "xbacklight -inc 2")
           , (( 0, xF86XK_MonBrightnessDown ), spawn "xbacklight -dec 2")
           , (( mod4Mask, xK_Tab ), toggleWS)
+          , (( mod4Mask,  xK_z  ), warpToWindow (1%2) (1%2)) -- @@ Move pointer to currently focused window
         ]
 
 -- A structure containing your configuration settings, overriding
