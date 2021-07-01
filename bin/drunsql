@@ -1,0 +1,8 @@
+sudo docker run \
+--detach \
+--name=sqlcontainer \
+--env="MYSQL_ROOT_PASSWORD=mysqlrootbeer" \
+--publish 6603:3306 \
+--volume=/docker/sqlcontainer/conf.d:/etc/mysql/conf.d \
+--volume=/docker/sqlcontainer/data:/var/lib/mysql mysql:5.7.34 \
+--character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci \
