@@ -300,6 +300,7 @@ main = do
           , ((shiftMask, xK_F12), spawn "systemctl poweroff")
           , ((0, xK_F12), spawn "systemctl suspend")
           , ((mod4Mask, xK_m), spawn "firefox --new-tab about:blank")
+          , ((mod4Mask .|. controlMask, xK_m), spawn "firefox --new-window about:blank")
           , ((mod4Mask .|. shiftMask, xK_m), spawn "firefox --private-window")
           , ((mod4Mask .|. shiftMask, xK_g), spawn "chromium --incognito")
           , ((mod4Mask              , xK_Return     ), spawn myTerminal)
@@ -311,6 +312,7 @@ main = do
           , (( 0, xF86XK_MonBrightnessDown ), spawn "xbacklight -dec 2")
           , (( mod4Mask, xK_Tab ), toggleWS)
           , (( mod4Mask,  xK_z  ), warpToWindow (1%2) (1%2)) -- @@ Move pointer to currently focused window
+          , (( mod4Mask,  xK_F4  ), spawnOnce "xrandr --output HDMI1 --off && xrandr --output HDMI1 --auto")
         ]
 
 -- A structure containing your configuration settings, overriding
