@@ -6,7 +6,7 @@ Xft.hintstyle: hintslight
 Xft.lcdfilter: lcddefault
 xterm*termName: xterm-256color
 xterm*faceName: Inconsolata:size=12:antialias=true
-xterm*fontName:xft:Inconsolata:size=12:antialias=true:autohint=true
+xterm*fontName:xft:FiraMono:size=12:antialias=true:autohint=true
 xterm*locale: true
 xterm*utf8: 1
 XTerm*translations: #override <Btn1Up>: select-end(PRIMARY, CLIPBOARD, CUT_BUFFER0)
@@ -14,8 +14,8 @@ XTerm*scrollBar: false
 XTerm*scrollbar.width: 0
 UXTerm*scrollBar: false
 UXTerm*scrollbar.width: 0
-URxvt.font:xft:Inconsolata:size=12:antialias=true:autohint=true
-URxvt.boldFont:xft:Inconsolata:weight=bold:size=12:antialias=true:autohint=true
+URxvt.font:xft:FiraMono:size=12:antialias=true:autohint=true
+URxvt.boldFont:xft:FiraMono:weight=bold:size=12:antialias=true:autohint=true
 URxvt.scrollBar: false
 URxvt.perl-ext-common: default,clipboard
 URxvt.allow_bold:true
