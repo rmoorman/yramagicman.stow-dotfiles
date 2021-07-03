@@ -26,22 +26,6 @@ URxvt.secondaryScroll: 0
 URxvt.secondaryWheel: 1
 URxvt.internalBorder: 10
 
-*.color0:       #000000
-*.color8:       #555555
-*.color1:       #e6193c
-*.color9:       #ff4060
-*.color2:       #29a329
-*.color10:      #45bf45
-*.color3:       #c3c322
-*.color11:      #dede38
-*.color4:       #3d62f5
-*.color12:      #5273f5
-*.color5:       #ad2bee
-*.color13:      #b544ee
-*.color6:       #1999b3
-*.color14:      #2aa7c1
-*.color7:       #adadad
-*.color15:      #d0d0d0
 ! special
 *.foreground:   #eceff1
 *.background:   #263238
