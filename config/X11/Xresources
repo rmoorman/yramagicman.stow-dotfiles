@@ -24,7 +24,7 @@ URxvt.buffered: true
 URxvt.secondaryScreen: 1
 URxvt.secondaryScroll: 0
 URxvt.secondaryWheel: 1
-URxvt.internalBorder: 3
+URxvt.internalBorder: 10
 
 *.color0:       #000000
 *.color8:       #555555
