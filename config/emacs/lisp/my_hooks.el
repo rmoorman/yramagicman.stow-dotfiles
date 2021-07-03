@@ -8,7 +8,7 @@
 
 (add-hook 'kill-buffer-hook (lambda nil ""
                               (if (file-directory-p "~/intelephense")
-                                  (delete-directory "~/intelephense")
+                                (delete-directory "~/intelephense")
                                 nil)))
 
 (add-hook 'find-file-hook 'ttymode)
@@ -43,19 +43,29 @@
   ;; Set the variable pitch face
   (set-face-attribute 'variable-pitch nil :font "Cantarell" :height my/default-variable-font-size :weight 'regular))
 
+(defun set-faces ()
+  (when (frame-focus-state)
+    (set-face-attribute-from-resource 'fringe :background "background" "background" nil)
+    (set-face-attribute-from-resource 'mode-line-inactive :background "background" "background" nil)
+    (set-face-attribute-from-resource 'mode-line-inactive :foreground "foreground" "foreground" nil)
+    (set-face-attribute-from-resource 'mode-line :background "background" "color8" nil)
+    (set-face-attribute-from-resource 'mode-line :foreground "foreground" "color7" nil)
+    (set-face-attribute `mode-line-inactive nil :box nil )
+    (set-face-attribute `mode-line nil :box nil )
+    (set-face-attribute-from-resource 'hl-line :background "background" "color8" nil)))
+
 (if (daemonp)
-    (add-hook 'after-make-frame-functions
-              (lambda (frame)
-                ;; (setq doom-modeline-icon t)
-                (with-selected-frame frame
-                  (my/set-font-faces))))
-    (my/set-font-faces))
+  (add-hook 'after-make-frame-functions
+            (lambda (frame)
+              (with-selected-frame frame
+                                   (my/set-font-faces)))))
 
-(defun focus-test ()
+(defun save-on-focus-lost ()
   (if (not (frame-focus-state))
-      (save-writable)
+    (save-writable)
     nil))
-(add-function :after after-focus-change-function #'focus-test)
+(add-function :after after-focus-change-function #'save-on-focus-lost)
 
+(add-function :after after-focus-change-function #'set-faces)
 (provide 'my_hooks)
 ;;; my_hooks.el ends here
