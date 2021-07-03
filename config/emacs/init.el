@@ -84,8 +84,9 @@
 (set-face-attribute-from-resource `mode-line-inactive :background "background" "background" nil)
 (set-face-attribute-from-resource `mode-line-inactive :foreground "foreground" "foreground" nil)
 (set-face-attribute-from-resource `mode-line :background "background" "color8" nil)
-(set-face-attribute `mode-line-inactive :box nil nil)
-(set-face-attribute `mode-line :box nil nil)
+(set-face-attribute-from-resource `mode-line :foreground "foreground" "color7" nil)
+(set-face-attribute `mode-line-inactive nil :box nil )
+(set-face-attribute `mode-line nil :box nil nil)
 (server-mode)
 
 (global-auto-revert-mode t)
