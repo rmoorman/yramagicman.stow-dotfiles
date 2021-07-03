@@ -22,8 +22,8 @@ alias :e="emacslient -nw ."
 alias e="emacsclent -nw"
 alias v.="vim ."
 alias gvim="vim"
-alias ecc="emacsclient -nc"
-alias ec="emacsclient -n"
+alias ec="emacsclient -nc"
+alias ech="emacsclient -n"
 alias oo="nohup xdg-open . > /dev/null &"
 function open() {
     for elem in $@
