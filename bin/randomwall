@@ -1,3 +1,4 @@
 #!/bin/sh
-feh --no-fehbg --bg-scale $( find $HOME/Dropbox/Photos/DesktopPictures/ | shuf | sed 1q )
 
+location="$(cat "$HOME/.config/wal_dir")"
+feh --no-fehbg --bg-scale "$( find "$location" | shuf | sed 1q )"
