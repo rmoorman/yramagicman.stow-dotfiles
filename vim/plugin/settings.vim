@@ -37,7 +37,7 @@ set softtabstop=4
 set autoindent
 "}}}
 "{{{ fold settings
-set foldcolumn=0
+set foldcolumn=2
 set foldmethod=indent
 set foldlevel=999
 "}}}
@@ -50,7 +50,7 @@ set listchars=tab:▸\ ,trail:·,eol:¬,extends:❯,precedes:❮"{{{
 set showbreak=…→
 "}}}
 "{{{ search settings
-set nowrapscan
+set wrapscan
 set incsearch
 set ignorecase
 set smartcase

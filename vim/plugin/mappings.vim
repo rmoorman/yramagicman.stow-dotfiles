@@ -32,9 +32,11 @@ nnoremap <leader>t :vert term<cr>
 "{{{ normal mode mappings
 nnoremap <leader>; :set hlsearch!<cr>
 nnoremap <leader>, <C-^>
-nnoremap * :set hlsearch<cr>*
-nnoremap # :set hlsearch<cr>#
-nnoremap / :set hlsearch<cr>/
+nnoremap * :call Hlsearch()<cr>*
+nnoremap # :call Hlsearch()<cr>#
+nnoremap / :call Hlsearch()<cr>/
+nnoremap n :call Hlsearch()<cr>n
+nnoremap N :call Hlsearch()<cr>N
 nnoremap <F1> :call functions#NumberToggle()<cr>
 nnoremap <F2> :call functions#WrapToggle()<cr>
 nnoremap <F3> :set list!<cr>

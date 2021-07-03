@@ -19,9 +19,9 @@ hi DiffChange ctermbg=234 ctermfg=15
 hi DiffDelete ctermbg=16 ctermfg=15
 hi DiffText ctermfg=15 ctermbg=234
 hi Directory ctermfg=15
-hi Error ctermfg=1 ctermbg=234
-hi FoldColumn ctermbg=none ctermfg=15
-hi Folded ctermbg=0 ctermfg=8
+hi Error ctermfg=3 ctermbg=0
+hi FoldColumn ctermbg=0 ctermfg=0
+hi Folded ctermbg=0 ctermfg=7
 hi Function ctermfg=4
 hi Identifier ctermfg=15 cterm=none
 hi Include ctermfg=2 cterm=none
