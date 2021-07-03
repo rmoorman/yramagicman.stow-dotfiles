@@ -1,21 +1,21 @@
 /* See LICENSE file for copyright and license details. */
 
 /* appearance */
-static const unsigned int borderpx  = 1;        /* border pixel of windows */
+static const unsigned int borderpx  = 2;        /* border pixel of windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
-static const char *fonts[]          = { "Fira Mono:size=10.5:antialias=true:autohint=true" };
+static const char *fonts[]          = { "mono:size=9.5" };
 static const char dmenufont[]       = "mono:size=10";
 
-static const char border[] = "#000000";
-static const char sel_border[] = "#adadad";
+static const char border[] = "#263238";
+static const char sel_border[] = "#eceff1";
 
-static const char background[] = "#000000";
-static const char sel_background[] = "#adadad";
+static const char background[] = "#263238";
+static const char sel_background[] = "#eceff1";
 
-static const char foreground[] = "#adadad";
-static const char sel_foreground[] = "#000000";
+static const char foreground[] = "#eceff1";
+static const char sel_foreground[] = "#263238";
 static const char *colors[][3]      = {
     /*               fg         bg         border   */
     [SchemeNorm] = { foreground, background, border },
@@ -36,14 +36,14 @@ static const Rule rules[] = {
     {   "urxvt-256color",      NULL,     NULL,  1,         0,          1     },
     {   "Alacritty",           NULL,     NULL,  1,         0,          0     },
     {   "Emacs",               NULL,     NULL,  1,         0,          0     },
-    {   "firefox",             NULL,     NULL,  2,         0,          1     },
+    {   "firefox",             NULL,     NULL,  1,         0,          1     },
     {   "surf",                NULL,     NULL,  1,         0,          0     },
     {   "krita",               NULL,     NULL,  1 << 3,    0,          0     },
     {   "chromium-browser",    NULL,     NULL,  2,         0,          1     },
     {   "Chromium",            NULL,     NULL,  2,         0,          1     },
     {   "Thunderbird",         NULL,     NULL,  1 << 2,    0,          0     },
-    {   "Slack",               NULL,     NULL,  1 << 8,    0,          2     },
-    {   "Signal",              NULL,     NULL,  1 << 7,    0,          2     },
+    {   "Slack",               NULL,     NULL,  1,         0,          2     },
+    {   "Signal",              NULL,     NULL,  1 << 8,    0,          2     },
 };
 
 /* layout(s) */
@@ -75,7 +75,7 @@ static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() 
 static const char *dmenucmd[] = { "dmenu_run", "-p", ">>", "-fn", dmenufont, "-nb", background, "-nf", foreground, "-sb", sel_background, "-sf", sel_foreground, "-l", "20", NULL };
 static const char *passmenu[] = { "passmenu", "-p", "*>", "-fn", dmenufont, "-nb", background, "-nf", foreground, "-sb", sel_background, "-sf", sel_foreground, "-l", "20", NULL };
 static const char *termcmd[]  = { "/home/jonathan/.config/dwm/scripts/termcmd", NULL };
-static const char *emacs[]  = { "emacsclient", "-c", "~/",  NULL };
+static const char *emacs[]  = { "/home/jonathan/bin/emacs", ".", NULL };
 static const char *browser[]  = { "surf", "start.duckduckgo.com" };
 static const char *chrome[]  = { "chromium", NULL};
 static const char *chrome_incognito[]  = { "chromium", "--incognito", NULL };
@@ -83,7 +83,6 @@ static const char *firefox[]  = { "firefox", "--new-tab", "https://start.duckduc
 static const char *firefox_private[]  = { "firefox", "-private-window", NULL};
 static const char *printscreen[]  = { "/home/jonathan/.config/dwm/scripts/screenshot", NULL};
 static const char *poweroff[]  = { "systemctl", "poweroff", NULL};
-static const char *suspend[]  = { "systemctl", "suspend", NULL};
 static const char *reboot[]  = { "systemctl", "reboot", NULL};
 static const char *volup[]  = { "amixer", "-c", "0",  "--",  "set",  "Master",  "1+", NULL };
 static const char *voldown[]  = { "amixer", "-c", "0",  "--",  "set",  "Master",  "1-", NULL };
@@ -91,6 +90,7 @@ static const char *volmute[]  = { "amixer", "-c", "0",  "--",  "set",  "Master",
 static const char *brightup[]  = { "/home/jonathan/.config/dwm/scripts/brightup", NULL };
 static const char *brightdown[]  = { "/home/jonathan/.config/dwm/scripts/brightdown", NULL };
 static const char *killscreensaver[]  = {"pkill", "xscreensaver", NULL };
+/* static const char *killmon[]  = {"mons", "-o", "HDMI1", "--off", NULL }; */
 static const char *attachmon[]  = {"/home/jonathan/.config/screenlayout/work.sh", NULL};
 static const char *help[]  = {"st", "-e","bash", "-c", "cat ~/.config/help & read", NULL};
 
@@ -103,7 +103,7 @@ static const char *help[]  = {"st", "-e","bash", "-c", "cat ~/.config/help & rea
 static Key keys[] = {
     /* modifier                     key        function        argument */
     { ControlMask,                  XK_space,  spawn,          {.v = dmenucmd } },
-    { MODKEY,                       XK_p,      spawn,          {.v = passmenu } },
+    { Mod1Mask,                     XK_space,  spawn,          {.v = passmenu } },
     { MODKEY,                       XK_Return, spawn,          {.v = termcmd } },
     { MODKEY|ShiftMask,             XK_Return, spawn,          {.v = emacs } },
     { MODKEY,                       XK_w,      spawn,          {.v = browser } },
@@ -131,11 +131,11 @@ static Key keys[] = {
     { MODKEY,                       XK_l,      focusmon,       {.i = +1 } },
     { MODKEY|ShiftMask,             XK_h,      tagmon,         {.i = -1 } },
     { MODKEY|ShiftMask,             XK_l,      tagmon,         {.i = +1 } },
-    { 0,                            XK_F12,    spawn,          {.v = suspend } },
     { ShiftMask,                    XK_F12,    spawn,          {.v = poweroff } },
     { ControlMask|ShiftMask,        XK_F12,    spawn,          {.v = reboot } },
     { 0,                            XK_F1,     spawn,          {.v = help } },
     { 0,                            XK_F8,     spawn,          {.v = killscreensaver } },
+    /* { 0,                            XK_F10,    spawn,          {.v = killmon } }, */
     { 0,                            XK_F11,    spawn,          {.v = attachmon } },
     TAGKEYS(                        XK_1,                      0)
     TAGKEYS(                        XK_2,                      1)

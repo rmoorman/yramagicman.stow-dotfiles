@@ -93,7 +93,7 @@ char *termname = "st-256color";
  */
 unsigned int tabspaces = 8;
 
-#include "/home/jonathan/.config/colors/customblack.h"
+#include "/home/jonathan/.config/colors/material.h"
 /*
  * Default shape of cursor
  * 2: Block ("█")
