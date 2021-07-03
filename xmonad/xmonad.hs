@@ -154,7 +154,7 @@ myManageHook = composeAll [
 --
 -- By default, do nothing.
 commands = [
-            "feh --no-fehbg --bg-scale /home/jonathan/Pictures/wallpaper.jpg"
+            "randomwall"
            , "xset -dpms"
            , "xset s off"
            , "picom -b"
