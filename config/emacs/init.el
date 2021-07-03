@@ -78,16 +78,18 @@
 (setq-default electric-indent-inhibit t)
 (setq backward-delete-char-untabify-method 'hungry)
 
+(set-face-attribute 'fringe nil :background nil :foreground "#ffffff")
+(set-face-attribute-from-resource `hl-line :background "background" "color8" nil)
+(set-face-attribute-from-resource `fringe :background "background" "background" nil)
+(set-face-attribute-from-resource `mode-line-inactive :background "background" "background" nil)
+(set-face-attribute-from-resource `mode-line-inactive :foreground "foreground" "foreground" nil)
+(set-face-attribute-from-resource `mode-line :background "background" "color8" nil)
+(set-face-attribute `mode-line-inactive :box nil nil)
+(set-face-attribute `mode-line :box nil nil)
 (server-mode)
 
 (global-auto-revert-mode t)
 
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(hl-line ((t (:extend t :background "#3a3a3a")))))
 
 (provide 'init.el)
 ;; init.el ends here
