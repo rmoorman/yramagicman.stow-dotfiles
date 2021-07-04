@@ -40,7 +40,7 @@
 
 (setq use-package-always-ensure t)
 (add-to-list 'load-path (concat user-emacs-directory "lisp"))
-(setq custom-file(concat user-emacs-directory "custom.el"))
+(setq custom-file (concat user-emacs-directory "custom.el"))
 (load custom-file)
 
 (use-package no-littering)
@@ -71,7 +71,6 @@
 (load "my_filetypes.el")
 (load "my_hooks.el")
 
-(global-hl-line-mode t)
 
 (electric-indent-mode nil)
 

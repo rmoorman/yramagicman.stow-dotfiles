@@ -35,6 +35,8 @@
 ;; (use-package vterm)
 (show-paren-mode 1)
 
+(global-hl-line-mode t)
+
 (use-package base16-theme)
 
 (provide 'my_util)
