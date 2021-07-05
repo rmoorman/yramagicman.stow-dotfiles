@@ -60,7 +60,7 @@ local xrdb = xresources.get_current_theme()
 beautiful.init("/home/jonathan/.config/awesome/xresources/theme.lua")
 -- beautiful.use_icons = true
 -- This is used later as the default terminal and editor to run.
-terminal = gears.filesystem.get_xdg_config_home() .. 'dwm/scripts/termcmd'
+terminal = 'urxvt'
 editor = os.getenv("EDITOR") or "nano"
 editor_cmd = terminal .. " -e " .. editor
 
