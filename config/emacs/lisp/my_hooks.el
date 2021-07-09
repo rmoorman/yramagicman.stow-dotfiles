@@ -54,6 +54,17 @@
     (set-face-attribute `mode-line nil :box nil )
     (set-face-attribute-from-resource 'hl-line :background "background" "color8" nil)))
 
+(defun set-x-faces ()
+  (interactive)
+    (set-face-attribute-from-resource 'fringe :background "background" "background" nil)
+    (set-face-attribute-from-resource 'mode-line-inactive :background "background" "background" nil)
+    (set-face-attribute-from-resource 'mode-line-inactive :foreground "foreground" "foreground" nil)
+    (set-face-attribute-from-resource 'mode-line :background "background" "color8" nil)
+    (set-face-attribute-from-resource 'mode-line :foreground "foreground" "color7" nil)
+    (set-face-attribute `mode-line-inactive nil :box nil )
+    (set-face-attribute `mode-line nil :box nil )
+    (set-face-attribute-from-resource 'hl-line :background "background" "color8" nil))
+
 (if (daemonp)
     (add-hook 'after-make-frame-functions
               (lambda (frame)
