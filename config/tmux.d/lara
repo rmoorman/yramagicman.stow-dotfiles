@@ -30,7 +30,9 @@ $mux new-window -t "$1" -c "$HOME/Sites/$1" -n shell
 
 
 $mux new-window -t "$1" -c "$HOME/Sites/$1" -n server
-$mux send-keys -t "$1":server "php artisan serve" Enter
+$mux split-window -c "$HOME/Sites/$1" -h -t "$1":server
+$mux send-keys -t "$1":server.left "php artisan serve" Enter
+$mux send-keys -t  "$1":server.right "npm run watch" Enter
 
 "switch_or_attach" "$1":shell.left
 exit 0

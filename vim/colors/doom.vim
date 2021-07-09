@@ -6,12 +6,12 @@ let colors_name = "doom"
 hi Boolean ctermfg=2
 hi Character ctermfg=2
 hi ColorColumn ctermbg=233
-hi Comment ctermfg=7
+hi Comment ctermfg=3
 hi Conceal ctermfg=8 ctermbg=0
 hi Conditional ctermfg=4
 hi Constant ctermfg=6
 hi CursorColumn ctermbg=243
-hi Cursor ctermfg=15 ctermbg=238
+hi Cursor ctermfg=14 ctermbg=12
 hi CursorLine cterm=none ctermbg=none
 hi CursorLineNr ctermfg=7 cterm=none
 hi DiffAdd ctermfg=15 ctermbg=234
@@ -23,11 +23,11 @@ hi Error ctermfg=3 ctermbg=0
 hi FoldColumn ctermbg=0 ctermfg=0
 hi Folded ctermbg=0 ctermfg=7
 hi Function ctermfg=4
-hi Identifier ctermfg=15 cterm=none
+hi Identifier ctermfg=3 cterm=none
 hi Include ctermfg=2 cterm=none
 hi Ignore ctermfg=0
 hi IncSearch cterm=reverse
-hi Keyword ctermfg=2
+hi Keyword ctermfg=4
 hi LineNr ctermfg=8
 hi MatchParen ctermbg=0 ctermfg=1
 hi ModeMsg cterm=bold
@@ -56,7 +56,7 @@ hi StatusLine ctermfg=15 ctermbg=0 cterm=bold
 hi StatusLineNC ctermbg=15 ctermfg=0
 hi StatusLineTerm cterm=bold ctermfg=15 ctermbg=0
 hi StatusLineTermNC ctermfg=15 ctermbg=0 cterm=none
-hi String ctermfg=5
+hi String ctermfg=9
 hi TabLine ctermfg=15 ctermbg=0
 hi TabLineFill ctermfg=15 ctermbg=0
 hi TabLineSel ctermfg=15 ctermbg=0
@@ -64,7 +64,7 @@ hi Title ctermfg=15
 hi Todo ctermfg=15 ctermbg=0 cterm=bold
 hi ToolbarButton ctermfg=0 ctermbg=15
 hi ToolbarLine ctermbg=0
-hi Type ctermfg=5
+hi Type ctermfg=12
 hi Underlined ctermfg=15
 hi VertSplit ctermfg=0 ctermbg=8
 hi Visual ctermfg=0 ctermbg=14

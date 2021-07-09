@@ -41,11 +41,11 @@ docker
 dunst
 dynamodb
 dzen2
+ed
 editorconfig-core-c
 efibootmgr
 emacs
 enchant
-epiphany
 eslint
 eslint-plugin-vue
 fakeroot
@@ -67,6 +67,7 @@ grep
 groff
 grub
 guvcview
+gvim
 gzip
 htop
 hwinfo
@@ -186,7 +187,6 @@ vi
 vicious
 vidir
 vifm
-vim
 vlc
 vue-cli
 w3m
@@ -194,6 +194,7 @@ wget
 which
 wpa_supplicant
 xclip
+xdebug
 xf86-video-intel
 xf86-video-vesa
 xfsprogs
