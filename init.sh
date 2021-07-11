@@ -45,8 +45,15 @@ dotdirs() {
 
             fi
         done
+        set_vim
     }
 
+set_nvim() {
+    if test ! -d "$HOME/.config/nvim"
+    then
+        ln -s "$dotdir/vim" "$HOME/.config/nvim"
+    fi
+}
 configdir() {
     if test ! -d "$HOME/.config"
     then
@@ -192,7 +199,7 @@ clean() {
         rm "$logfile"
     fi
 }
-args="$(getopt fdcbrtwsja "$@")"
+args="$(getopt fdcbrtwsjav "$@")"
 if test -z "$1"
 then
     cat <<EOF
@@ -206,6 +213,7 @@ then
 -s) Set shell
 -j) Install cron jobs
 -a) Installs everything
+-v) install nvim directory
 EOF
 fi
 set -- $args
@@ -240,13 +248,16 @@ do
     -j)
         cron
         shift;;
+    -v)
+        set_nvim
+        shift;;
     -a)
         bindir
         configdir
         cron
         dotdirs
         dotfiles
-        # dwm
+        dwm
         mkrepodir
         setshell
         st
