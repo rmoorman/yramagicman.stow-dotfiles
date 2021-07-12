@@ -45,7 +45,7 @@ dotdirs() {
 
             fi
         done
-        set_vim
+        set_nvim
     }
 
 set_nvim() {
