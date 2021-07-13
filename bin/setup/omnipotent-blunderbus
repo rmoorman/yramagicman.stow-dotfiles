@@ -67,7 +67,6 @@ grep
 groff
 grub
 guvcview
-gvim
 gzip
 htop
 hwinfo
@@ -109,6 +108,7 @@ mu
 mutt
 nano
 ncmpcpp
+neovim
 net-tools
 netctl
 ngrok
@@ -147,7 +147,6 @@ privoxy
 pwgen
 python-requests
 python-virtualenv
-python2
 racket
 redis
 redshift
@@ -187,6 +186,7 @@ vi
 vicious
 vidir
 vifm
+vim
 vlc
 vue-cli
 w3m

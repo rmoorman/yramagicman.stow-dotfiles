@@ -43,7 +43,7 @@ hi PmenuSel ctermbg=15 ctermfg=0
 hi PmenuThumb ctermbg=15
 hi PreProc ctermfg=6
 hi Question ctermfg=15
-hi Search ctermbg=15 ctermfg=0
+hi Search ctermbg=4 ctermfg=0
 hi SignColumn ctermfg=15 ctermbg=none
 hi Special ctermfg=15
 hi SpecialKey ctermfg=15

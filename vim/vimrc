@@ -19,7 +19,7 @@ let g:javascript_sql_dialect = 'javascript'
 call pack#load()
 
 PlugOpt 'w0rp/ale'
-PlugOpt 'git@gitlab.com:yramagicman/auto-omnicomplete'
+" PlugOpt 'git@gitlab.com:yramagicman/auto-omnicomplete'
 if executable('fzf')
     if isdirectory('/usr/local/opt/fzf')
         set runtimepath+=/usr/local/opt/fzf
@@ -37,7 +37,7 @@ PlugOpt 'vim-scripts/vim-indent-object'
 PlugOpt 'sheerun/vim-polyglot'
 packadd! matchit
 " packadd! ale
-packadd! auto-omnicomplete
+" packadd! auto-omnicomplete
 packadd! vim-visual-star-search
 packadd! editorconfig-vim
 packadd! vim-commentary
@@ -49,7 +49,7 @@ packadd! vim-polyglot
 if ! has('nvim')
     packadd! editexisting
 endif
-let g:AutoOmniComplete_tab = 1
+" let g:AutoOmniComplete_tab = 1
 "}}}
 "{{{ colors
 set background=dark
@@ -69,6 +69,7 @@ let g:ale_set_quickfix = 1
 let g:ale_echo_msg_error_str = 'E'
 let g:ale_echo_msg_warning_str = 'W'
 let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
+let g:ale_lint_on_text_changed = 0
 "}}}
 let mapleader=" "
 let g:NoAutoPairs = 1
