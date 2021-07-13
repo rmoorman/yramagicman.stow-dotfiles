@@ -37,7 +37,7 @@ set softtabstop=4
 set autoindent
 "}}}
 "{{{ fold settings
-set foldcolumn=2
+set foldcolumn=0
 set foldmethod=indent
 set foldlevel=999
 "}}}
