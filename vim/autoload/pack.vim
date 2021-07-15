@@ -9,9 +9,10 @@ else
 endif
 function! s:jobstart(job)
     if has('nvim')
-        return jobstart(a:job)
+        " echom a:job
+        :split
+        return termopen(a:job)
     else
-        echom a:job
         call term_start(a:job)
     endif
 endfunction
@@ -70,9 +71,13 @@ function! s:install_opt_plugins(plug)
     let plug = split( a:plug, '/' )[1]
     let plug = plug[:-2]
     let destination = split( &packpath, ',')[-1] . '/opt/'. plug
-    let moduledest = split(destination, '\.')[1]
+    if has('nvim')
+        let moduledest = split(destination, '\.')
+        let moduledest = '.'. moduledest[1]
+    else
+        let moduledest = split(destination, '\.')[1]
+    endif
     let cdpath=join(split(moduledest,'/')[:-2], '/')
-
     call add(s:opt_plugs, [destination, 'git clone --depth 3 '. url . ' ' . moduledest])
 endfunction
 
@@ -138,7 +143,6 @@ function! s:update_all()
 
     while len(opt_jobs)
         for job in opt_jobs
-            echom job
             if job_status(job) != 'run'
                 call remove(opt_jobs, index(opt_jobs, job))
             endif
@@ -151,7 +155,6 @@ function! s:update_all()
     while len(start_jobs)
         for work in start_jobs
             if job_status(work) != 'run'
-                echom job
                 call remove(start_jobs, index(start_jobs, work))
             endif
         endfor
@@ -191,16 +194,19 @@ function! s:install_all()
     call s:read_start_dir()
     call s:sanity_check()
     let plugs = s:start_plugs + s:opt_plugs
-    echom s:start_plugs + s:opt_plugs
     let s:start_job = 'bash -c "cd '. split(&packpath, ',')[-1]
     let s:start_job = s:start_job . ' && cd $(git rev-parse --show-toplevel) && '
     for package in l:plugs
         if !isdirectory(package[0])
-             let s:start_job = s:start_job . ' ' . package[1] .' &&'
+            echom 'cloning ' . package[0]
+            let s:start_job = s:start_job . ' ' . package[1] .' ;'
+        else
+            echom 'found ' . package[0]
         endif
     endfor
     let s:start_job = s:start_job . ' pwd"'
     let @s = s:start_job
+    echom s:start_job
     call s:jobstart(s:start_job)
     silent! helptags ALL
     echom ''

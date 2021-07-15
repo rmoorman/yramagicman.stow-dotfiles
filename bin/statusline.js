@@ -278,6 +278,8 @@ dateEvent.on('event', function(date) {
     statusLine.date = date;
 });
 
+
+
 setInterval(function() {
     updateCount();
     updateRefresh();

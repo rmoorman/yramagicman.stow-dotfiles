@@ -19,13 +19,19 @@ let g:javascript_sql_dialect = 'javascript'
 call pack#load()
 
 PlugOpt 'w0rp/ale'
-" PlugOpt 'git@gitlab.com:yramagicman/auto-omnicomplete'
+PlugOpt 'git@gitlab.com:yramagicman/auto-omnicomplete'
 if executable('fzf')
     if isdirectory('/usr/local/opt/fzf')
         set runtimepath+=/usr/local/opt/fzf
     endif
     PlugOpt 'junegunn/fzf.vim'
     packadd! fzf
+endif
+
+
+if has('nvim')
+PlugOpt 'neovim/nvim-lspconfig'
+packadd! nvim-lspconfig
 endif
 PlugOpt 'bronson/vim-visual-star-search'
 PlugOpt 'editorconfig/editorconfig-vim'
@@ -37,7 +43,7 @@ PlugOpt 'vim-scripts/vim-indent-object'
 PlugOpt 'sheerun/vim-polyglot'
 packadd! matchit
 " packadd! ale
-" packadd! auto-omnicomplete
+packadd! auto-omnicomplete
 packadd! vim-visual-star-search
 packadd! editorconfig-vim
 packadd! vim-commentary
@@ -49,7 +55,7 @@ packadd! vim-polyglot
 if ! has('nvim')
     packadd! editexisting
 endif
-" let g:AutoOmniComplete_tab = 1
+let g:AutoOmniComplete_tab = 1
 "}}}
 "{{{ colors
 set background=dark
