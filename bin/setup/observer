@@ -15,7 +15,9 @@ babl
 bc
 bind
 bison
+calibre
 chromium
+clang
 cloc
 cmake
 composer
@@ -96,6 +98,7 @@ mutt
 nano
 ncmpcpp
 neofetch
+neovim
 net-tools
 netctl
 newsboat
@@ -222,5 +225,8 @@ xorg-xwd
 xorg-xwud
 xscreensaver
 yay
+zathura
+zathura-pdf-mupdf
+zathura-ps
 zsh
 zsh-lovers

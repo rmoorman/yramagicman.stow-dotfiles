@@ -119,6 +119,7 @@ myLayout = smartBorders $ renamed [Replace "|=" ] tiled |||  renamed [Replace "[
 --
 myManageHook = composeAll [
       className =? "Alacritty"        --> doShift "1:shell"
+    , className =? "URxvt"            --> doShift "1:shell"
     , className =? "st-256color"      --> doShift "1:shell"
     , className =? "Emacs"            --> doShift "1:shell"
     , className =? "firefox"          --> doShift "2:br1"
