@@ -50,6 +50,7 @@
    "C-a" 'evil-numbers/inc-at-pt
 
    "C-x" 'evil-numbers/dec-at-pt
+   "C-x" 'evil-numbers/dec-at-pt
 
    "C-w t" 'ansiterm-vert))
 
@@ -57,6 +58,7 @@
 ;; keybind
 (global-set-key (kbd "C-c b") 'buffer-menu)
 (global-set-key (kbd "C-c t") 'ttymode)
+(global-set-key (kbd "C-c f") 'set-x-faces)
 
 ;; Make ESC quit prompts
 (global-set-key (kbd "<escape>") 'keyboard-escape-quit)
