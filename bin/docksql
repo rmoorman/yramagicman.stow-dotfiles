@@ -1,4 +1,4 @@
 #!/bin/sh
 
 sudo systemctl start docker.service
-sudo docker restart sqlcontainer
+sudo docker restart -t 1 sqlcontainer

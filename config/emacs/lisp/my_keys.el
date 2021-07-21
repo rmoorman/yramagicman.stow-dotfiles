@@ -51,7 +51,7 @@
 
    "C-x" 'evil-numbers/dec-at-pt
    "C-x" 'evil-numbers/dec-at-pt
-
+   "C-c w" 'toggle-truncate-lines
    "C-w t" 'ansiterm-vert))
 
 

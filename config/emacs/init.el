@@ -55,6 +55,7 @@
               tab-width 4
               c-basic-offset 4)
 
+(set-default 'truncate-lines t)
 
 (setq-default ispell-program-name (executable-find "hunspell"))
 

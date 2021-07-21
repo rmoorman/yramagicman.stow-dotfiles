@@ -16,6 +16,7 @@ let g:VimPack_Auto_Install = 1
 let g:VimPack_Auto_Update = 1
 let g:polyglot_is_disabled = {}
 let g:javascript_sql_dialect = 'javascript'
+
 call pack#load()
 
 " PlugOpt 'w0rp/ale'
@@ -30,8 +31,8 @@ endif
 
 
 if has('nvim')
-PlugOpt 'neovim/nvim-lspconfig'
-packadd! nvim-lspconfig
+    PlugOpt 'neovim/nvim-lspconfig'
+    packadd! nvim-lspconfig
 endif
 PlugOpt 'bronson/vim-visual-star-search'
 PlugOpt 'editorconfig/editorconfig-vim'
