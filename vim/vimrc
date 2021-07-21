@@ -18,7 +18,7 @@ let g:polyglot_is_disabled = {}
 let g:javascript_sql_dialect = 'javascript'
 call pack#load()
 
-PlugOpt 'w0rp/ale'
+" PlugOpt 'w0rp/ale'
 PlugOpt 'git@gitlab.com:yramagicman/auto-omnicomplete'
 if executable('fzf')
     if isdirectory('/usr/local/opt/fzf')
@@ -64,7 +64,7 @@ colorscheme doom
 "{{{ autocommands for loading extensions
 augroup extensions
     autocmd!
-    autocmd FileType python,php,c,cpp,zsh,sh silent! packadd ale | redraw
+    " autocmd FileType python,php,c,cpp,zsh,sh silent! packadd ale | redraw
     autocmd BufRead *.org  set filetype=org
     autocmd FileType vue syn sync fromstart
 augroup end
