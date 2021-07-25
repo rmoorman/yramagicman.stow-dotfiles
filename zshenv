@@ -1,8 +1,8 @@
 #!usr/bin/env zsh
 # start xserver when necessary
-if [ -z "$DISPLAY" ] && [ -n "$XDG_VTNR" ] && [ "$XDG_VTNR" -eq 1 ]; then
-    exec startx "$HOME/.config/X11/xinitrc"
-fi
+# if [ -z "$DISPLAY" ] && [ -n "$XDG_VTNR" ] && [ "$XDG_VTNR" -eq 1 ]; then
+#     exec startx "$HOME/.config/X11/xinitrc"
+# fi
 
 # set config variables and ensure files are linked
 setopt extendedglob
