@@ -15,6 +15,7 @@
                 rofi
                 rxvt-unicode
                 signal-desktop
+                xscreensaver
                 ag
             ];
         };
