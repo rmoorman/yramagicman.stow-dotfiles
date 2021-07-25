@@ -1,7 +1,8 @@
 {
-    packageOverrides = pkgs : with pkgs; {
-        myPackages = pkgs.buildEnv {
-            name = "my-packages";
+    allowUnfree = true;
+    packageOverrides = pkgs: with pkgs; {
+        User = pkgs.buildEnv {
+            name = "user";
             paths = [
                 cantarell-fonts
                 dropbox-cli
@@ -14,8 +15,9 @@
                 rofi
                 rxvt-unicode
                 signal-desktop
-                server-searcher
+                ag
             ];
         };
     };
 }
+#server-searcher
