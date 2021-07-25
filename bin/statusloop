@@ -1,4 +1,4 @@
-#!/usr/bin/zsh
+#!/usr/bin/env zsh
 
 wmcmd=$(cat ~/.config/wmcmd)
 if [[ "$wmcmd" == '$HOME/.local/bin/dwmrestart' ]]; then

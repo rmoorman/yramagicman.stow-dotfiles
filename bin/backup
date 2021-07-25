@@ -1,4 +1,4 @@
-#!/usr/bin/zsh
+#!/usr/bin/env zsh
 
 backup_config_dir=$XDG_CONFIG_HOME/backups
 

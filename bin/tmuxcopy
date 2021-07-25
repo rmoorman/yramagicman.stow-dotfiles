@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/usr/bin/env zsh
 
 while true; do
     if test -n "`tmux showb 2> /dev/null`"; then

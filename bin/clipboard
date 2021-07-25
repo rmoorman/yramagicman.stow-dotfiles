@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 if command -v xclip 1>/dev/null; then
     if [[ -p /dev/stdin ]] ; then
         # stdin is a pipe
