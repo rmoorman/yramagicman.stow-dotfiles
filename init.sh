@@ -13,6 +13,7 @@ dotfiles() {
         -not -name 'cron' -and \
         -not -name 'README.md' -and \
         -not -name 'uninstall.sh' -and \
+        -not -name '*.ignore' -and \
         -not -name 'init.sh' | while read -r f
         do
             if test ! -f "$HOME/.$(basename "$f" )"
