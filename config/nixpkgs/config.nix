@@ -4,6 +4,8 @@
         User = pkgs.buildEnv {
             name = "user";
             paths = [
+                alacritty
+                isync
                 cantarell-fonts
                 dropbox-cli
                 feh
