@@ -23,7 +23,7 @@
 
             ;; (add-hook mu4e-compose-mode-hook 'visual-line-mode)
             (defvar mu4e-mu-binary (executable-find "mu"))
-            (setq mu4e-get-mail-command (expand-file-name "~/.local/bin/getallmail")
+            (setq mu4e-get-mail-command "/usr/bin/mbsync -a"
                   user-mail-address "jonathandavis@gilsons.org"
                   user-full-name "Jonathan"
                   message-send-mail-function 'message-send-mail-with-sendmail

@@ -53,12 +53,14 @@ feh
 file
 findutils
 firefox
+firejail
 flake8
 flex
 fwupd
 fzf
 gawk
 gcc
+gedit
 gettext
 gobject-introspection
 gphoto2
@@ -135,6 +137,7 @@ php7-gd
 php7-sqlite
 phpmyadmin
 picom
+pidgin
 pipewire
 pipewire-alsa
 pipewire-pulse
@@ -160,9 +163,11 @@ sed
 shellcheck
 signal-desktop
 slack-desktop
+slack-libpurple-git
 sof-firmware
 speedtest-cli
 stow
+strace
 sudo
 tcpdump
 terminus-font
