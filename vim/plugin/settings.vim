@@ -108,14 +108,18 @@ if exists("&directory")
 endif
 if exists("&undodir")
     set undolevels=5000
-    set undodir=~/.vim/undo//
+    if has('nvim')
+        set undodir=~/.vim/nvim_undo//
+    else
+        set undodir=~/.vim/undo//
+    endif
     set undofile
     if ! isdirectory('&undodir')
         call mkdir(&undodir, 'p')
     endif
 endif
 if has('viminfo')
-    set viminfofile=$HOME/.vim/viminfo
+    set viminfofile=$HOME/.cache/viminfo
 endif
 if has('gui_running')
     colorscheme darkblue
