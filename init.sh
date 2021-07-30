@@ -219,6 +219,7 @@ my_nix() {
     less /tmp/configuration.nix
     sudo cp -v "/tmp/configuration.nix" "/etc/nixos/"
     rm /tmp/configuration.nix
+    sudo nixos-rebuild boot
 
 }
 
