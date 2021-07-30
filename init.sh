@@ -203,17 +203,25 @@ clean() {
 }
 
 my_nix() {
-    find "$dotdir/nixos/" -mindepth 1 | while read -r nix; do
-    echo "COPYING $nix to /etc/nixos/"
-
+    echo "building configuration.nix"
+    sudo cp /etc/nixos/configuration.nix /etc/nixos/configuration.nix.bak
     # Replace host name with system host name. May be incorrect for current
     # system in git.
-    sed "s/networking.hostName = \"[a-zA-Z]*\";/networking.hostName = \"$(hostname)\";/" nixos/configuration.nix > /tmp/tmpconfig.nix
-    sudo cp -v "/tmp/tmpconfig.nix" "/etc/nixos/"
-    rm /tmp/tmpconfig.nix
+    (cd "$dotdir/nixos"
+    cat "header.nix" \
+        "network.$(hostname).nix" \
+        "packages.nix" \
+        "services.nix" \
+        "users.nix" \
+        "extras.$(hostname).nix" \
+        "footer.nix" > /tmp/configuration.nix
+    )
+    less /tmp/configuration.nix
+    sudo cp -v "/tmp/configuration.nix" "/etc/nixos/"
+    rm /tmp/configuration.nix
 
-done
 }
+
 args="$(getopt fndcbrtwsjav "$@")"
 if test -z "$1"
 then

@@ -1,0 +1,2 @@
+  # Mount secondary drive
+  fileSystems."/home/jonathan/Storage".device = "/dev/disk/by-partuuid/22f96431-a0a9-4524-97fa-3672b86bef5d";
