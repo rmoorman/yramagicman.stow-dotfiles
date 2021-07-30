@@ -139,7 +139,7 @@ configuration {
 /*  ssh-client: "ssh";*/
 /*  ssh-command: "{terminal} -e {ssh-client} {host} [-p {port}]";*/
 /*  terminal: "rofi-sensible-terminal";*/
-    theme: "/usr/share/rofi/themes/Arc-Dark.rasi";
+    /* theme: "/usr/share/rofi/themes/Arc-Dark.rasi"; */
 /*  threads: 0;*/
 /*  tokenize: true;*/
 /*  width: 50;*/
