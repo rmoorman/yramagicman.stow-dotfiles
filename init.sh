@@ -204,9 +204,12 @@ clean() {
 
 my_nix() {
     echo "building configuration.nix"
+    echo "backing up configuration.nix in place"
     sudo cp /etc/nixos/configuration.nix /etc/nixos/configuration.nix.bak
     # Replace host name with system host name. May be incorrect for current
     # system in git.
+
+    echo "generating configuration.nix as /tmp/configuration.nix"
     (cd "$dotdir/nixos"
     cat "header.nix" \
         "network.$(hostname).nix" \
@@ -217,11 +220,32 @@ my_nix() {
         "extras.$(hostname).nix" \
         "footer.nix" > /tmp/configuration.nix
     )
+    echo "generating configuration.nix as /tmp/configuration.nix"
+    echo "prompting for confirmation"
     less /tmp/configuration.nix
+
+    echo 'Confirm replace config? y/Y to confirm, anything else to ignore.'
+    read confirm
+    if [[ ! $confirm =~ '^(y|Y)' ]]; then
+        rm /tmp/configuration.nix
+        return
+    fi
     sudo cp -v "/tmp/configuration.nix" "/etc/nixos/"
     rm /tmp/configuration.nix
-    sudo nixos-rebuild boot
 
+    echo 'regen how? (b)oot, (v)m, (t)est (i)n place, anything else to skip'
+    read inplace
+    if [[ $inplace =~ '^(b|B)' ]]; then
+        sudo nixos-rebuild boot
+    elif [[ $inplace =~ '^(v|V)' ]]; then
+        sudo nixos-rebuild build-vm
+    elif [[ $inplace =~ '^(t|T)' ]]; then
+        sudo nixos-rebuild test
+    elif [[ $inplace =~ '^(i|I)' ]]; then
+        sudo nixos-rebuild switch
+    else
+        return
+    fi
 }
 
 args="$(getopt fndcbrtwsjav "$@")"
