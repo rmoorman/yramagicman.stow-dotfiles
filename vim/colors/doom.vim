@@ -52,8 +52,8 @@ hi SpellCap ctermfg=1 ctermbg=0 cterm=underline
 hi SpellLocal ctermbg=25
 hi SpellRare ctermbg=130
 hi Statement ctermfg=4
-hi StatusLine ctermfg=15 ctermbg=0 cterm=bold
-hi StatusLineNC ctermbg=15 ctermfg=0
+hi StatusLine ctermfg=0 ctermbg=14 cterm=bold
+hi StatusLineNC ctermbg=7 ctermfg=8
 hi StatusLineTerm cterm=bold ctermfg=15 ctermbg=0
 hi StatusLineTermNC ctermfg=15 ctermbg=0 cterm=none
 hi String ctermfg=9
