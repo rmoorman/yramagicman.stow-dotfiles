@@ -211,6 +211,7 @@ my_nix() {
     cat "header.nix" \
         "network.$(hostname).nix" \
         "packages.nix" \
+        "fonts.nix" \
         "services.nix" \
         "users.nix" \
         "extras.$(hostname).nix" \

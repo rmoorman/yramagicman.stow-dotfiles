@@ -1,5 +1,5 @@
 
-    nixpkgs.config.allowUnfree = true;
+  nixpkgs.config.allowUnfree = true;
   programs.zsh.enable = true;
   # List packages installed in system profile. To search, run:
   # programs.mtr.enable = true;
@@ -8,12 +8,10 @@
       ag
       alacritty
       apacheHttpd
-      cantarell-fonts
       dropbox-cli
       dzen2
       emacs
       feh
-      fira-mono
       firefox
       git
       htop
