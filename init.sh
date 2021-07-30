@@ -34,6 +34,7 @@ dotdirs() {
         -not -name 'config' -and \
         -not -name 'cron' -and \
         -not -name 'githooks' -and \
+        -not -name 'ignore' -and \
         -not -name 'bin' | while read -r d
         do
             if test ! -d "$HOME/.$(basename "$d" )"
@@ -196,11 +197,24 @@ done
 }
 
 clean() {
-    if test $( wc -l < "$logfile" ) == 0; then
+    if test "$( wc -l < "$logfile" )" == 0; then
         rm "$logfile"
     fi
 }
-args="$(getopt fdcbrtwsjav "$@")"
+
+my_nix() {
+    find "$dotdir/nixos/" -mindepth 1 | while read -r nix; do
+    echo "COPYING $nix to /etc/nixos/"
+
+    # Replace host name with system host name. May be incorrect for current
+    # system in git.
+    sed "s/networking.hostName = \"[a-zA-Z]*\";/networking.hostName = \"$(hostname)\";/" nixos/configuration.nix > /tmp/tmpconfig.nix
+    sudo cp -v "/tmp/tmpconfig.nix" "/etc/nixos/"
+    rm /tmp/tmpconfig.nix
+
+done
+}
+args="$(getopt fndcbrtwsjav "$@")"
 if test -z "$1"
 then
     cat <<EOF
@@ -214,6 +228,7 @@ then
 -s) Set shell
 -j) Install cron jobs
 -a) Installs everything
+-n) COPY files to /etc/nixos
 -v) install nvim directory
 EOF
 fi
@@ -252,9 +267,13 @@ do
     -v)
         set_nvim
         shift;;
+    -n)
+        my_nix
+        shift;;
     -a)
         bindir
         configdir
+        my_nix
         cron
         dotdirs
         dotfiles
