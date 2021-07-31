@@ -29,3 +29,10 @@
     font = "Lat2-Terminus16";
     keyMap = "us";
   };
+
+  swapDevices = [
+      {
+          device = "/swapfile";
+          size = 4096;
+      }
+  ];
