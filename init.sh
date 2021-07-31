@@ -1,6 +1,6 @@
 #!/bin/sh
 logfile=$HOME/initlog
-dotdir="$(dirname "$(realpath "$0")" )"
+dotdir="$(dirname "$(realpath "$0")")"
 reposdir="$HOME/Documents"
 printf '' > "$logfile"
 
@@ -165,6 +165,7 @@ do
     sudo ln -fs "$file" /etc/"$2"/"$(basename "$file")"
 done
 }
+
 cron() {
     find  "$dotdir/cron" -maxdepth 1 -type f | while read -r job
 do
@@ -205,12 +206,9 @@ clean() {
 my_nix() {
     echo "building configuration.nix"
     echo "backing up configuration.nix in place"
-    sudo cp /etc/nixos/configuration.nix /etc/nixos/configuration.nix.bak
-    # Replace host name with system host name. May be incorrect for current
-    # system in git.
-
+    sudo cp -v /etc/nixos/configuration.nix /etc/nixos/configuration.nix.bak
     echo "generating configuration.nix as /tmp/configuration.nix"
-    (cd "$dotdir/nixos"
+    (cd "$dotdir/nixos" || return
     cat "header.nix" \
         "network.$(hostname).nix" \
         "packages.nix" \
@@ -226,22 +224,22 @@ my_nix() {
 
     echo 'Confirm replace config? y/Y to confirm, anything else to ignore.'
     read confirm
-    if [[ ! $confirm =~ '^(y|Y)' ]]; then
-        rm /tmp/configuration.nix
+    if test "$confirm" != 'y'; then
+        rm -v /tmp/configuration.nix
         return
     fi
     sudo cp -v "/tmp/configuration.nix" "/etc/nixos/"
-    rm /tmp/configuration.nix
+    rm -v /tmp/configuration.nix
 
     echo 'regen how? (b)oot, (v)m, (t)est (i)n place, anything else to skip'
     read inplace
-    if [[ $inplace =~ '^(b|B)' ]]; then
+    if test "$inplace" == 'b'; then
         sudo nixos-rebuild boot
-    elif [[ $inplace =~ '^(v|V)' ]]; then
+    elif test "$inplace" == 'v'; then
         sudo nixos-rebuild build-vm
-    elif [[ $inplace =~ '^(t|T)' ]]; then
+    elif test "$inplace" == 't'; then
         sudo nixos-rebuild test
-    elif [[ $inplace =~ '^(i|I)' ]]; then
+    elif test "$inplace" == 'i'; then
         sudo nixos-rebuild switch
     else
         return
@@ -262,7 +260,7 @@ then
 -s) Set shell
 -j) Install cron jobs
 -a) Installs everything
--n) COPY files to /etc/nixos
+-n) Build nix config from files
 -v) install nvim directory
 EOF
 fi
