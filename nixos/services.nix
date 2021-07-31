@@ -12,6 +12,13 @@
   services.xserver.layout = "us";
   services.xserver.xkbOptions = "caps:none";
 
+  # Enable touchpad support (enabled default in most desktopManager).
+  services.xserver.libinput.enable = true;
+  services.xserver.libinput.touchpad.naturalScrolling = true;
+  services.xserver.libinput.touchpad.disableWhileTyping = true;
+  services.xserver.libinput.touchpad.accelSpeed = "0.25";
+  services.xserver.libinput.mouse.naturalScrolling = true;
+
   # Enable CUPS to print documents.
   services.printing.enable = true;
 
@@ -23,9 +30,6 @@
   services.pipewire.alsa.enable = true;
   services.fwupd.enable = true;
   services.locate.enable = true;
-
-  # Enable touchpad support (enabled default in most desktopManager).
-  services.xserver.libinput.enable = true;
 
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
