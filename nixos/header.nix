@@ -14,6 +14,7 @@
   nix.gc.automatic = true;
   nix.gc.dates = "daily";
   nix.gc.options = "--delete-older-than 14d";
+  nix.autoOptimiseStore = true;
 
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.configurationLimit = 15;
