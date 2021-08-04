@@ -40,6 +40,11 @@
       xclip
       xscreensaver
       zsh
+      gcc
+      gnumake
+      redshift
+      vlc
+      mpv
   ];
 
   # Some programs need SUID wrappers, can be configured further or are

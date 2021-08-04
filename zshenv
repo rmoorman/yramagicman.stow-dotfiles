@@ -34,8 +34,6 @@ cdpath=(
 # Set the list of directories that Zsh searches for programs.
 path=(
     $HOME/.local/bin
-    $HOME/.gem/ruby/2.6.0/bin
     $HOME/.config/composer/vendor/bin
-    /usr/local/{bin,sbin}
     $path
 )
