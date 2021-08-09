@@ -121,6 +121,7 @@ alias ndate="date \"+%d-%m-%y\""
 # easy reload of zsh stuff
 alias rl="exec zsh -l"
 alias zconfig="$EDITOR $ZDOTDIR/zshrc"
+alias x="startx ~/.config/X11/xinitrc"
 #}}}
 #{{{ git configs
 alias g="git"
