@@ -16,22 +16,6 @@
 } &!
 
 {
- cat ${ZSHZ_DATA:-$HOME/.z}* | awk -F '|' '{if ($2 > 25) print $2" " $1}' | sort -n | while read -r line
-do
-    d=$(echo $line | cut -d ' ' -f 2)
-    echo "${d:h}";
-    if [[ -d  "${d:h}" ]]; then
-        dirname "${d:h}"
-    else
-        echo "failed to find $(dirname "$d")" >> $HOME/dirnamefails
-    fi
-done | sort -u | while read -r dir
-do
-    cdpath+=($dir)
-done
-}
-
-{
     if [[ $OSTYPE =~ 'darwin*' ]]; then
         dots="$HOME/Documents/dots";
         builtin cd $dots || exit
