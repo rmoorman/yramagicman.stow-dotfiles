@@ -231,7 +231,7 @@ my_nix() {
     sudo cp -v "/tmp/configuration.nix" "/etc/nixos/"
     rm -v /tmp/configuration.nix
 
-    echo 'regen how? (b)oot, (v)m, (t)est (i)n place, anything else to skip'
+    echo 'regen how? (b)oot, (v)m, (t)est, (i)n place, (u)pgrade, anything else to skip'
     read inplace
     if test "$inplace" == 'b'; then
         sudo nixos-rebuild boot
@@ -241,83 +241,82 @@ my_nix() {
         sudo nixos-rebuild test
     elif test "$inplace" == 'i'; then
         sudo nixos-rebuild switch
+    elif test "$inplace" == 'u'; then
+        sudo nixos-rebuild boot --upgrade
     else
         return
     fi
 }
 
-args="$(getopt fndcbrtwsjav "$@")"
-if test -z "$1"
-then
-    cat <<EOF
--f) Dot files
--d) Dot directoriess
--c) Config directories
--b) Bin directory
--r) Make repos directory
--t) Build st
--w) Build dwm
--s) Set shell
--j) Install cron jobs
--a) Installs everything
--n) Build nix config from files
--v) install nvim directory
+if test -z "$1"; then
+    while read line; do
+        printf "%s\n" "$line"
+    done <<-EOF
+    -f) Dot files
+    -d) Dot directoriess
+    -c) Config directories
+    -b) Bin directory
+    -r) Make repos directory
+    -t) Build st
+    -w) Build dwm
+    -s) Set shell
+    -j) Install cron jobs
+    -a) Installs everything
+    -n) Build nix config from files
+    -v) install nvim directory
 EOF
 fi
-set -- $args
-for i
-do
-    case "$i"
-        in
+while test "$1"; do
+    case $1 in
         -f)
-        dotfiles
-        shift;;
-    -d)
-        dotdirs
-        shift;;
-    -c)
-        configdir
-        shift;;
-    -b)
-        bindir
-        shift;;
-    -r)
-        mkrepodir
-        shift;;
-    -t)
-        st
-        shift;;
-    -w)
-        dwm
-        shift;;
-    -s)
-        setshell
-        shift;;
-    -j)
-        cron
-        shift;;
-    -v)
-        set_nvim
-        shift;;
-    -n)
-        my_nix
-        shift;;
-    -a)
-        bindir
-        configdir
-        my_nix
-        cron
-        dotdirs
-        dotfiles
-        dwm
-        mkrepodir
-        setshell
-        st
-        shift;;
-    --)
-        githooks
-        clean
-        shift;
-        break;;
-esac
+            dotfiles
+            shift;;
+        -d)
+            dotdirs
+            shift;;
+        -c)
+            configdir
+            shift;;
+        -b)
+            bindir
+            shift;;
+        -r)
+            mkrepodir
+            shift;;
+        -t)
+            st
+            shift;;
+        -w)
+            dwm
+            shift;;
+        -s)
+            setshell
+            shift;;
+        -j)
+            cron
+            shift;;
+        -v)
+            set_nvim
+            shift;;
+        -n)
+            my_nix
+            shift;;
+        -a)
+            bindir
+            configdir
+            my_nix
+            cron
+            dotdirs
+            dotfiles
+            dwm
+            mkrepodir
+            setshell
+            st
+            shift;;
+        --)
+            githooks
+            clean
+            shift;
+            break;;
+    esac
 done
