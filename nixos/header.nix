@@ -10,9 +10,10 @@
     ];
 
   system.autoUpgrade.enable = true;
+  system.autoUpgrade.dates = "18:00";
   system.autoUpgrade.allowReboot = true;
   nix.gc.automatic = true;
-  nix.gc.dates = "daily";
+  nix.gc.dates = "18:30";
   nix.gc.options = "--delete-older-than 14d";
   nix.autoOptimiseStore = true;
 
