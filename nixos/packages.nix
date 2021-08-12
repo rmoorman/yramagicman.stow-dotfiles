@@ -8,16 +8,23 @@
       ag
       alacritty
       apacheHttpd
+      dunst
+      chromium
       dropbox-cli
       dzen2
       emacs
       feh
       firefox
+      gcc
       git
+      gnumake
       htop
       isync
       killall
+      libnotify
+      maim
       mariadb
+      mpv
       mu
       mutt
       neovim
@@ -30,21 +37,18 @@
       picom
       pinentry-qt
       python3Full
+      redshift
       rofi
       rsync
       rxvt-unicode
       signal-desktop
       tmux
       vim
+      vlc
       wget
       xclip
       xscreensaver
       zsh
-      gcc
-      gnumake
-      redshift
-      vlc
-      mpv
   ];
 
   # Some programs need SUID wrappers, can be configured further or are

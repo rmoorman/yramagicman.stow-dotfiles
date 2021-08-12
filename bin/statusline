@@ -89,7 +89,7 @@ function my_weather() {
 function my_update() {
     if [[ ! -f /var/spool/cron/jonathan ]]
     then
-        notify-send 'check your user crontab'
+        # notify-send 'check your user crontab'
     fi
     if [[ -f "/tmp/updates" ]]; then
         if [[ "$(<  /tmp/updates | wc -l )" -gt 10 ]] && [[ ! "$(< /tmp/aur)" ]]; then
