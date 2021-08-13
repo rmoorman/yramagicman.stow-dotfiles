@@ -243,6 +243,8 @@ my_nix() {
         sudo nixos-rebuild switch
     elif test "$inplace" == 'u'; then
         sudo nixos-rebuild boot --upgrade
+        nix-collect-garbage
+        nix optimise-store
     else
         return
     fi
