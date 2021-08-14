@@ -36,7 +36,7 @@ export WWW_HOME="$XDG_CONFIG_HOME/www_data"
 export EDITOR='emacsclient -nw'
 export VISUAL='vim'
 export PAGER='less'
-export DIFFPROG='nvim -d'
+export DIFFPROG='vimdiff'
 
 # Language
 [[ -z "$LANG" ]] && export LANG='en_US.UTF-8'
