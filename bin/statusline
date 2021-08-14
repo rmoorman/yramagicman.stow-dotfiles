@@ -34,7 +34,7 @@ function my_bat() {
 }
 
 function my_wifi(){
-    [[ $( ip link | grep -q 'wlan0' ) -eq 0 ]] && return
+    [[ $( ip link | grep -c 'wlan0' ) -eq 0 ]] && return
     [[ "$( ip link | awk '/wlan0/ {print $9}' )" == "DOWN" ]] && return
 
     wifi_status=$(iwctl station wlan0 show | awk '/State/ {print $2}')
