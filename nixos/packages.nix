@@ -27,7 +27,6 @@
       mpv
       mu
       mutt
-      neovim
       openssl
       pass
       pavucontrol
