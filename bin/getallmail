@@ -1,6 +1,5 @@
 #!/usr/bin/env zsh
 
-
 mkdir -p /tmp/mail
 pass show email > /tmp/mail/personal
 pass show ejbills > /tmp/mail/bills

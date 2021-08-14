@@ -2,7 +2,6 @@
 
 setopt extended_glob
 
-hn=$(hostname)
 function my_date () {
     print -P "%D{ %a %d/%m/%Y %I:%M:%S %p }"
 }
@@ -35,9 +34,9 @@ function my_bat() {
 }
 
 function my_wifi(){
-    if [[ "$(ip link | awk '/wlan0/ {print $9}')" == "DOWN" ]]; then
-        return
-    fi
+    [[ $( ip link | grep -q 'wlan0' ) -eq 0 ]] && return
+    [[ "$( ip link | awk '/wlan0/ {print $9}' )" == "DOWN" ]] && return
+
     wifi_status=$(iwctl station wlan0 show | awk '/State/ {print $2}')
     ip=$(ip --color=never addr show | awk '/([0-9\.]{1,3}){4}\/[0-9]{1,2} brd/ {print $2}')
     echo "N: $wifi_status"
