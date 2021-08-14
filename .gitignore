@@ -60,3 +60,4 @@ xmonad/xmonad-x86_64-linux
 /config/emacs/backups/
 /config/emacs/var/
 /config/mutt/aliases
+/vim/nvim_undo/
