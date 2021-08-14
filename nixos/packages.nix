@@ -8,13 +8,14 @@
       ag
       alacritty
       apacheHttpd
-      dunst
       chromium
       dropbox-cli
+      dunst
       dzen2
       emacs
       feh
       firefox
+      fzf
       gcc
       git
       gnumake
@@ -36,6 +37,7 @@
       picom
       pinentry-qt
       python3Full
+      racket-minimal
       redshift
       rofi
       rsync
