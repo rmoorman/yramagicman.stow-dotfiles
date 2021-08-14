@@ -1,7 +1,7 @@
 if ! executable('fzf')
     finish
 endif
-
+let g:fzf_layout = { 'down': '40%' }
 unmap <leader>f
 unmap <leader>b
 nnoremap <leader>f :Files<cr>
