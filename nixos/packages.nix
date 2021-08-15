@@ -44,7 +44,7 @@
       rxvt-unicode
       signal-desktop
       tmux
-      vim
+      vimHugeX
       vlc
       wget
       xclip
