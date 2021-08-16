@@ -1,4 +1,5 @@
 import Control.Monad
+import Data.Ratio
 import Graphics.X11.ExtraTypes.XF86
 import qualified Data.Map        as M
 import qualified XMonad.StackSet as W
@@ -6,6 +7,7 @@ import System.Exit (exitWith, ExitCode(..))
 import System.IO
 import XMonad
 import XMonad.Actions.CycleWS
+import XMonad.Actions.Warp
 import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.EwmhDesktops
 import XMonad.Hooks.ManageDocks
@@ -14,14 +16,13 @@ import XMonad.Layout
 import XMonad.Layout.Grid
 import XMonad.Layout.IndependentScreens
 import XMonad.Layout.NoBorders
+import XMonad.Layout.PerWorkspace
 import XMonad.Layout.Renamed
 import XMonad.Layout.ResizableTile
 import XMonad.Layout.SimpleFloat
 import XMonad.Util.EZConfig(additionalKeys, additionalKeysP, removeKeys)
 import XMonad.Util.Run(spawnPipe)
 import XMonad.Util.SpawnOnce
-import XMonad.Actions.Warp
-import Data.Ratio
 
 windowCount :: X (Maybe String)
 windowCount = gets $ Just . show . length . W.integrate' . W.stack . W.workspace . W.current . windowset
@@ -70,7 +71,7 @@ myNormalBorderColor  = "#dddddd"
 myFocusedBorderColor = "#ff0000"
 
 ------------------------------------------------------------------------
--- Mouse bindings: default actions bound to mouse events
+    -- Mouse bindings: default actions bound to mouse events
 --
 myMouseBindings (XConfig {XMonad.modMask = modm}) = M.fromList $
 
@@ -89,7 +90,7 @@ myMouseBindings (XConfig {XMonad.modMask = modm}) = M.fromList $
     ]
 
 ------------------------------------------------------------------------
--- Layouts:
+    -- Layouts:
 
 -- You can specify and transform your layouts by modifying these values.
 -- If you change layout bindings be sure to use 'mod-shift-space' after
@@ -99,11 +100,14 @@ myMouseBindings (XConfig {XMonad.modMask = modm}) = M.fromList $
 -- The available layouts.  Note that each layout is separated by |||,
 -- which denotes layout choice.
 --
-myLayout = smartBorders $ renamed [Replace "|=" ] tiled |||  renamed [Replace "[]"] Full ||| renamed [Replace "=="] Grid
-    where
-        tiled = ResizableTall 1 (2/100) (1/2) []
+myLayout = do
+    avoidStruts $ smartBorders $ renamed [Replace "|=" ] tiled |||  renamed [Replace "[]"] Full ||| renamed [Replace "=="] Grid
+        where
+            tiled = ResizableTall 1 (2/100) (1/2) []
+
+
 ------------------------------------------------------------------------
--- Window rules:
+    -- Window rules:
 
 -- Execute arbitrary actions and WindowSet manipulations when managing
 -- a new window. You can use this to, for example, always float a
@@ -119,25 +123,25 @@ myLayout = smartBorders $ renamed [Replace "|=" ] tiled |||  renamed [Replace "[
 --
 myManageHook = composeAll [
       className =? "Alacritty"        --> doShift "1:shell"
-    , className =? "URxvt"            --> doShift "1:shell"
-    , className =? "st-256color"      --> doShift "1:shell"
-    , className =? "Emacs"            --> doShift "1:shell"
-    , className =? "firefox"          --> doShift "2:br1"
-    , className =? "Chromium"         --> doShift "3:br2"
-    , className =? "Thunderbird"      --> doShift "4:mail/db"
-    , className =? "Signal"           --> doShift "8:signal"
-    , className =? "Slack"            --> doShift "9:slack"
-    , title =? "Dbeaver"              --> doShift "4:mail/db"
-    , className =? "DBeaver"          --> doShift "4:mail/db"
-    , title =? "Quit and close tabs?" --> doIgnore
-    , title =? "Close tabs?"          --> doIgnore
-    , title =? "Open File"            --> doIgnore
-    , title =? "Save As"              --> doIgnore
-    , resource  =? "desktop_window"   --> doIgnore
-    ]
+        , className =? "URxvt"            --> doShift "1:shell"
+        , className =? "st-256color"      --> doShift "1:shell"
+        , className =? "Emacs"            --> doShift "1:shell"
+        , className =? "firefox"          --> doShift "2:br1"
+        , className =? "Chromium"         --> doShift "3:br2"
+        , className =? "Thunderbird"      --> doShift "4:mail/db"
+        , className =? "Signal"           --> doShift "8:signal"
+        , className =? "Slack"            --> doShift "9:slack"
+        , title =? "Dbeaver"              --> doShift "4:mail/db"
+        , className =? "DBeaver"          --> doShift "4:mail/db"
+        , title =? "Quit and close tabs?" --> doIgnore
+        , title =? "Close tabs?"          --> doIgnore
+        , title =? "Open File"            --> doIgnore
+        , title =? "Save As"              --> doIgnore
+        , resource  =? "desktop_window"   --> doIgnore
+                          ]
 
 ------------------------------------------------------------------------
--- Event handling
+    -- Event handling
 
 -- * EwmhDesktops users should change this to ewmhDesktopsEventHook
 --
@@ -156,20 +160,20 @@ myManageHook = composeAll [
 -- By default, do nothing.
 commands = [
             "randomwall"
-           , "xset -dpms"
-           , "xset s off"
-           , "picom -b"
-           , "xscreensaver -no-splash"
-           , "emacs --bg-daemon"
-           , "xset r rate 250 25"
-           , "xset b off"
-           , "dropbox start"
-           , "redshift"
-           , "tmuxcopy"
-           , "dunst"
-           , "setxkbmap -option compose:menu"
-           , "setxkbmap -option caps:none"
-           , "xsetroot -cursor_name left_ptr"
+  , "xset -dpms"
+  , "xset s off"
+  , "picom -b"
+  , "xscreensaver -no-splash"
+  , "emacs --bg-daemon"
+  , "xset r rate 250 25"
+  , "xset b off"
+  , "dropbox start"
+  , "redshift"
+  , "tmuxcopy"
+  , "dunst"
+  , "setxkbmap -option compose:menu"
+  , "setxkbmap -option caps:none"
+  , "xsetroot -cursor_name left_ptr"
            ]
 myStartupHook = do
     forM commands (\c -> spawnOnce c )
@@ -191,7 +195,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
      , ((modm              , xK_q     ), kill)
 
     -- Rotate through the available layout algorithms
-     , ((mod1Mask,               xK_space ), sendMessage NextLayout)
+      , ((mod1Mask,               xK_space ), sendMessage NextLayout)
 
    --  Reset the layouts on the current workspace to default
      , ((mod1Mask .|. shiftMask, xK_space ), setLayout $ XMonad.layoutHook conf)
@@ -276,24 +280,24 @@ main = do
           , focusFollowsMouse  = myFocusFollowsMouse
           , borderWidth        = myBorderWidth
           , manageHook         = manageDocks <+> myManageHook
-          , layoutHook         = avoidStruts $ myLayout
+          , layoutHook         =  myLayout
           , modMask            = myModMask
 
           , workspaces         = myWorkspaces
           , logHook            = dynamicLogWithPP def
               { ppOutput       = \str -> forM_ handles (flip hPutStrLn str)
-              , ppExtras       = [ windowCount ]
-              , ppCurrent      = dzenColor "white" ""
-              , ppVisible      = dzenColor "grey" ""
-              , ppHidden       = dzenColor "grey" ""
-              , ppTitle        = dzenColor "white" "" . shorten 550
-              , ppLayout       = dzenColor "white" ""
-              , ppUrgent       = dzenColor "red" "" . shorten 50 . dzenStrip
-              , ppSep          = " - "
-              , ppOrder = \(a:b:c:d) -> [ "-" ] ++ [ b ] ++ d  ++ [ a ] ++ [ c ]
+                , ppExtras       = [ windowCount ]
+                , ppCurrent      = dzenColor "white" ""
+                , ppVisible      = dzenColor "grey" ""
+                , ppHidden       = dzenColor "grey" ""
+                , ppTitle        = dzenColor "white" "" . shorten 550
+                , ppLayout       = dzenColor "white" ""
+                , ppUrgent       = dzenColor "red" "" . shorten 50 . dzenStrip
+                , ppSep          = " - "
+                , ppOrder = \(a:b:c:d) -> [ "-" ] ++ [ b ] ++ d  ++ [ a ] ++ [ c ]
               }
-          , keys               = myKeys
-          , startupHook        = myStartupHook
+                , keys               = myKeys
+                , startupHook        = myStartupHook
         } `additionalKeys`
         [ ((mod4Mask .|. shiftMask, xK_z), spawn "xscreensaver-command -lock")
           , ((0, xK_Print), spawn "~/.config/dwm/scripts/screenshot")
