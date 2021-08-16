@@ -202,10 +202,6 @@ if [[ "$TMUX" != '' ]] && [[ -z "$(pgrep tmuxcopy)" ]] && [[ "$OSTYPE" =~ 'darwi
     unsetopt nonotify nomonitor
 fi
 
-function artisan() {
-    php7 artisan $*
-}
-
 # key bindings,
 # Allow command line editing in an external editor.
 autoload -Uz edit-command-line
