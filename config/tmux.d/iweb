@@ -9,8 +9,6 @@ if $mux has-session -t iweb 2> /dev/null; then
   exit
 fi
 
-server-up
-
 $mux new-session -d -s iweb -n front-end
 
 $mux send-keys -t iweb:front-end "cd ~/Sites/iwebvisit" Enter

@@ -14,9 +14,6 @@ if $mux has-session -t $1 2> /dev/null; then
   exit
 fi
 
-if [[ -z $(pgrep httpd) && -z $(pgrep mysqld) ]] ; then
-    server-up
-fi
 $mux new-session -c "$HOME/Sites/" -d -s $1 -n dev
 $mux send-keys -t $1:dev "cd $HOME/Sites/$1/wp-content/themes" Enter
 $mux send-keys -t $1:dev "$EDITOR $HOME/Sites/$1/wp-content/themes " Enter

@@ -14,20 +14,11 @@ if $mux has-session -t "$1" 2> /dev/null; then
   exit
 fi
 
-if [ -z "$(pgrep httpd)" ] && [ -z "$(pgrep mysqld)" ] ; then
-    server-up
-fi
-
-if [ -z "$(pgrep redis)" ]; then
-    sudo systemctl start redis
-fi
-
 $mux new-session -c "$HOME/Sites/$1" -d -s "$1" -n dev
 $mux send-keys -t "$1":dev "cd $HOME/Sites/$1" Enter
 $mux send-keys -t "$1":dev "$EDITOR $HOME/Sites/$1 " Enter
 
 $mux new-window -t "$1" -c "$HOME/Sites/$1" -n shell
-
 
 $mux new-window -t "$1" -c "$HOME/Sites/$1" -n server
 $mux split-window -c "$HOME/Sites/$1" -h -t "$1":server

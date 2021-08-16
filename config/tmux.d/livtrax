@@ -9,8 +9,6 @@ if $mux has-session -t livtrax 2> /dev/null; then
   exit
 fi
 
-server-up
-
 $mux new-session -d -s livtrax -n front-end
 
 $mux send-keys -t livtrax:front-end "cd ~/Sites/livtrax_frontend" Enter
