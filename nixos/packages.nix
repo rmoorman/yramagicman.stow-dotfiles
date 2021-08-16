@@ -18,6 +18,7 @@
       fzf
       gcc
       git
+      gnome.adwaita-icon-theme
       gnumake
       htop
       isync
