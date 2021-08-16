@@ -49,6 +49,7 @@
       vlc
       wget
       xclip
+      xorg.xcursorthemes
       xscreensaver
       zsh
   ];
