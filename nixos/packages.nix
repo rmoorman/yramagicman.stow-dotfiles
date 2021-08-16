@@ -44,6 +44,7 @@
       rxvt-unicode
       signal-desktop
       tmux
+      universal-ctags
       vimHugeX
       vlc
       wget
