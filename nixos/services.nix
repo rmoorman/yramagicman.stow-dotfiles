@@ -31,6 +31,7 @@
   services.pipewire.alsa.enable = true;
   services.fwupd.enable = true;
   services.locate.enable = true;
+  services.tlp.enable = true;
 
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
