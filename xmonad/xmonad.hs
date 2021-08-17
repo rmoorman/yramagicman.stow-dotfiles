@@ -127,6 +127,7 @@ myManageHook = composeAll [
         , className =? "st-256color"      --> doShift "1:shell"
         , className =? "Emacs"            --> doShift "1:shell"
         , className =? "firefox"          --> doShift "2:br1"
+        , className =? "Firefox"          --> doShift "2:br1"
         , className =? "Chromium"         --> doShift "3:br2"
         , className =? "Thunderbird"      --> doShift "4:mail/db"
         , className =? "Signal"           --> doShift "8:signal"
