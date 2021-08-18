@@ -1,25 +1,24 @@
 function update() {
     sudo -v
     gup
-    if [[ $( type nixos-rebuild ) ]] ; then
+    if [[ $(command -v nixos-rebuild) ]] ; then
         sudo nixos-rebuild boot --upgrade
         nix-collect-garbage
         nix optimise-store
-    elif [[ $(type yay ) ]]; then
+    elif [[ $(command -v yay) ]]; then
         yay -Syu --noconfirm --sudoloop
         xmonad --recompile
         orphans
         echo '' > /tmp/updates
-    elif [[ $(type pacman ) ]]; then
-        echo "fail"
+    elif [[ $(command -v pacman) ]]; then
         pacman -Syu --noconfirm
         xmonad --recompile
         orphans
         echo '' > /tmp/updates
-    elif [[ $(type apt) ]]; then
+    elif [[ $(command -v apt) ]]; then
         sudo apt update
         sudo apt upgrade
-    elif [[ $(type zypper) ]]; then
+    elif [[ $(command -v zypper) ]]; then
         sudo zypper refresh
         sudo zypper dup
     fi

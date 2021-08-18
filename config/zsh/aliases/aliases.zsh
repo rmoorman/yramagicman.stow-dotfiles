@@ -25,28 +25,24 @@ alias gvim="vim"
 alias ec="emacsclient -nc"
 alias ech="emacsclient -n"
 alias oo="nohup xdg-open . > /dev/null &"
+
 function open() {
     for elem in $@
     do
-
         nohup xdg-open $elem > /dev/null &
     done
 }
+
+function vimrc() {
+    vim -c ':e $MYVIMRC'
+}
+
 alias t='tmux'
 alias :q='exit'
 alias bc='bc -l'
 alias getmail="$HOME/.local/bin/getallmail"
 alias remacs="emacsclient --eval '(kill-emacs)' && emacs --bg-daemon"
-#}}}
-#{{{ Enable aliases to be sudo’ed
 alias sudo='sudo '
-#}}}
-#{{{ quick jump to files and directories
-function vimrc() {
-    vim -c ':e $MYVIMRC'
-}
-#}}}
-#{{{ always recursive and verbose
 alias rm="rm -rv"
 #}}}
 #{{{ web dev stuff
@@ -100,6 +96,7 @@ alias urlencode='python2 -c "import sys, urllib as ul; print ul.quote_plus(sys.a
 # Ring the terminal bell, and put a badge on Terminal.app’s Dock icon
 # (useful when executing time-consuming commands)
 alias bell="tput bel;cvlc --play-and-exit $HOME/.config/sounds/beep.mp3 2> /dev/null"
+alias wttr="curl wttr.in"
 #}}}
 #{{{ tmux
 alias tmux="tmux -f $XDG_CONFIG_HOME/tmux.d/tmux.conf"
@@ -112,7 +109,9 @@ alias tls="tmux ls"
 alias poweroff="systemctl poweroff"
 alias reboot="systemctl reboot"
 alias hibernate="systemctl suspend"
-alias pacman="yay"
+if [[ $(command -v yay) ]]; then
+    alias pacman="yay"
+fi
 #}}}
 #{{{ utility commands
 alias q="exit"
