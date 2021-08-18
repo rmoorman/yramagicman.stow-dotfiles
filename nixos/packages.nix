@@ -27,14 +27,18 @@
       maim
       mariadb
       mpv
+      msmtp
       mu
       mutt
+      nodejs
       openssl
       pass
       pavucontrol
       php
       php74Packages.composer
+      php74Packages.phpcbf
       php74Packages.phpcs
+      php74Extensions.xdebug
       picom
       pinentry-qt
       python3Full
@@ -46,8 +50,10 @@
       signal-desktop
       tmux
       universal-ctags
+      urlview
       vimHugeX
       vlc
+      w3m
       wget
       xclip
       xorg.xcursorthemes
