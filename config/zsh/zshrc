@@ -22,7 +22,10 @@ autoload $ZDOTDIR/prompts/*
 pkg init
 [[ -z "$INSIDE_EMACS" ]] && pkg colored-man-pages -f omz
 pkg zsh-users/zsh-completions
-#pkg agkozak/zsh-z
+pkg agkozak/zsh-z
+if [[ $( type nixos-rebuild ) ]] ; then
+    pkg spwhitt/nix-zsh-completions
+fi
 pkg load
 pkg update
 source "$ZDOTDIR/aliases/aliases.zsh"
