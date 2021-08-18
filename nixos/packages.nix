@@ -24,6 +24,7 @@
       isync
       killall
       libnotify
+      lxappearance
       maim
       mariadb
       mpv
