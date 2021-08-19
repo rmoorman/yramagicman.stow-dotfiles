@@ -80,10 +80,10 @@ myMouseBindings (XConfig {XMonad.modMask = modm}) = M.fromList $
                                        >> windows W.shiftMaster))
 
     -- mod-button2, Raise the window to the top of the stack
-    , ((modm, button2), (\w -> focus w >> windows W.shiftMaster))
+      , ((modm, button2), (\w -> focus w >> windows W.shiftMaster))
 
     -- mod-button3, Set the window to floating mode and resize by dragging
-    , ((modm, button3), (\w -> focus w >> mouseResizeWindow w
+      , ((modm, button3), (\w -> focus w >> mouseResizeWindow w
                                        >> windows W.shiftMaster))
 
     -- you may also bind events to the mouse scroll wheel (button4 and button5)
@@ -161,20 +161,21 @@ myManageHook = composeAll [
 -- By default, do nothing.
 commands = [
             "randomwall"
-  , "xset -dpms"
-  , "xset s off"
-  , "picom -b"
-  , "xscreensaver -no-splash"
-  , "emacs --bg-daemon"
-  , "xset r rate 250 25"
-  , "xset b off"
-  , "dropbox start"
-  , "redshift"
-  , "tmuxcopy"
-  , "dunst"
-  , "setxkbmap -option compose:menu"
-  , "setxkbmap -option caps:none"
-  , "xsetroot -cursor_name left_ptr"
+           , "gpgconf --reload gpg-agent"
+           , "xset -dpms"
+           , "xset s off"
+           , "picom -b"
+           , "xscreensaver -no-splash"
+           , "emacs --bg-daemon"
+           , "xset r rate 250 25"
+           , "xset b off"
+           , "dropbox start"
+           , "redshift"
+           , "tmuxcopy"
+           , "dunst"
+           , "setxkbmap -option compose:menu"
+           , "setxkbmap -option caps:none"
+           , "xsetroot -cursor_name left_ptr"
            ]
 myStartupHook = do
     forM commands (\c -> spawnOnce c )
