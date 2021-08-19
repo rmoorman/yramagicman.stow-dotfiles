@@ -41,7 +41,7 @@
       php74Packages.phpcs
       php74Extensions.xdebug
       picom
-      pinentry-qt
+      pinentry-gtk2
       python3Full
       racket-minimal
       redshift
