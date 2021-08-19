@@ -4,10 +4,6 @@
 
 { config, pkgs, ... }:
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-    ];
 
   system.autoUpgrade.enable = true;
   system.autoUpgrade.dates = "18:00";
@@ -38,3 +34,4 @@
           size = 4096;
       }
   ];
+}

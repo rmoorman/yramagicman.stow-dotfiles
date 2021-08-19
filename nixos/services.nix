@@ -1,10 +1,10 @@
-
+{ config, pkgs, ... }:
+{
   # Enable the X11 windowing system.
   services.xserver.enable = true;
 
   # Enable the GNOME Desktop Environment.
-  services.xserver.displayManager.lightdm.enable = true;
-  services.xserver.displayManager.lightdm.greeters.enso.enable = true;
+  services.xserver.displayManager.gdm.enable = true;
   services.xserver.windowManager.awesome.enable = true;
   services.xserver.windowManager.xmonad.enable = true;
   services.xserver.windowManager.xmonad.enableContribAndExtras = true;
@@ -41,3 +41,4 @@
   services.httpd.enablePHP = true;
   services.mysql.package = pkgs.mariadb;
   services.mysql.enable = true;
+}

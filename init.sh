@@ -207,29 +207,17 @@ my_nix() {
     echo "building configuration.nix"
     echo "backing up configuration.nix in place"
     sudo cp -v /etc/nixos/configuration.nix /etc/nixos/configuration.nix.bak
+    sudo cp -v "$dotdir"/nixos/configuration.nix /etc/nixos/configuration.nix
     echo "generating configuration.nix as /tmp/configuration.nix"
-    (cd "$dotdir/nixos" || return
-    cat "header.nix" \
-        "network.$(hostname).nix" \
-        "packages.nix" \
-        "fonts.nix" \
-        "services.nix" \
-        "users.nix" \
-        "extras.$(hostname).nix" \
-        "footer.nix" > /tmp/configuration.nix
-    )
-    echo "generating configuration.nix as /tmp/configuration.nix"
-    echo "prompting for confirmation"
-    less /tmp/configuration.nix
 
-    echo 'Confirm replace config? y/Y to confirm, anything else to ignore.'
-    read confirm
-    if test "$confirm" != 'y'; then
-        rm -v /tmp/configuration.nix
-        return
-    fi
-    sudo cp -v "/tmp/configuration.nix" "/etc/nixos/"
-    rm -v /tmp/configuration.nix
+    sudo ln -s "$dotdir"/nixos/header.nix /etc/nixos/header.nix
+    sudo ln -s "$dotdir"/nixos/network."$(hostname)".nix /etc/nixos/network.nix
+    sudo ln -s "$dotdir"/nixos/packages.nix /etc/nixos/packages.nix
+    sudo ln -s "$dotdir"/nixos/fonts.nix /etc/nixos/fonts.nix
+    sudo ln -s "$dotdir"/nixos/services.nix /etc/nixos/services.nix
+    sudo ln -s "$dotdir"/nixos/users.nix /etc/nixos/users.nix
+    sudo ln -s "$dotdir"/nixos/extras."$(hostname)".nix /etc/nixos/extras.nix
+    sudo ln -s "$dotdir"/nixos/footer.nix /etc/nixos/footer.nix
 
     echo 'regen how? (b)oot, (v)m, (t)est, (i)n place, (u)pgrade, anything else to skip'
     read inplace

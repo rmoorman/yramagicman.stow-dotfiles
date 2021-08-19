@@ -1,4 +1,7 @@
-fonts.fonts = with pkgs; [
-      fira-mono
-      cantarell-fonts
-];
+{ config, pkgs, ... }:
+{
+    fonts.fonts = with pkgs; [
+        fira-mono
+        cantarell-fonts
+    ];
+}
