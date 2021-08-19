@@ -47,9 +47,7 @@ function _source_or_install() {
             dest="$zshpath[2]/$location"
 
             (
-            repopath="$( git rev-parse --show-toplevel )"
             builtin cd $MODULES_DIR
-            builtin cd $repopath
             if [[ ! -d $dest ]]; then
                 git clone --depth 3 "$cloneurl" "$dest"
             fi
