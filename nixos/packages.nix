@@ -9,6 +9,7 @@ environment.systemPackages = with pkgs; [
     ag
     alacritty
     apacheHttpd
+    breeze-icons
     chromium
     dropbox-cli
     dunst
@@ -51,6 +52,7 @@ environment.systemPackages = with pkgs; [
     rsync
     rxvt-unicode
     signal-desktop
+    theme-obsidian2
     tmux
     universal-ctags
     urlview
