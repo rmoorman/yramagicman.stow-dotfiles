@@ -4,15 +4,15 @@
 
 { config, pkgs, ... }:
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-      ./header.nix
-      ./network.nix
-      ./fonts.nix
-      ./services.nix
-      ./packages.nix
-      ./users.nix
+    imports =
+        [ # Include the results of the hardware scan.
+        ./hardware-configuration.nix
+        ./header.nix
+        ./network.nix
+        ./fonts.nix
+        ./services.nix
+        ./packages.nix
+        ./users.nix
     ];
 
 
