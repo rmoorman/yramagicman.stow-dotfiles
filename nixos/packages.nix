@@ -46,7 +46,7 @@ environment.systemPackages = with pkgs; [
     picom
     pinentry-gtk2
     python3Full
-    racket-minimal
+    racket
     redshift
     rofi
     rsync
