@@ -13,6 +13,7 @@
         ./services.nix
         ./packages.nix
         ./users.nix
+        ./extras.nix
     ];
 
 
