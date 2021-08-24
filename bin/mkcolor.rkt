@@ -97,7 +97,7 @@
                     [else #t])) dwmconf-split))
 
 (define (write-config.h-tmp selection)
-  (define out-file (open-output-file "/tmp/config.h"))
+  (define out-file (open-output-file "/tmp/dwm.config.h"))
 
   (for-each (lambda line
               (display (first line) out-file)
@@ -106,7 +106,6 @@
 
 (cond
  [(= 1 (length (vector->list (current-command-line-arguments))))
-
   (write-tmp-xresources (first (vector->list (current-command-line-arguments))))
   (write-config.h-tmp (first (vector->list (current-command-line-arguments))))]
  [else (println "argument required") ])
