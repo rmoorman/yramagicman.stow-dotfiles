@@ -26,6 +26,7 @@ pkg agkozak/zsh-z
 if [[ $( type nixos-rebuild ) ]] ; then
     pkg spwhitt/nix-zsh-completions
 fi
+pkg chisui/zsh-nix-shell -a nix-shell
 pkg load
 pkg update
 source "$ZDOTDIR/aliases/aliases.zsh"
@@ -255,6 +256,10 @@ if [[ -z "$TMUX" && -z "$INSIDE_EMACS" && -z "$VIM" && -z "$SSH_TTY" ]]; then
     if [[ -z $( pgrep tmux$ ) ]] then
         s tmux
     fi
+fi
+
+if [[ -n $IN_NIX_SHELL ]]; then
+    RPROMPT=$NIX_SHELL_PACKAGES
 fi
 
 # Temporary Files

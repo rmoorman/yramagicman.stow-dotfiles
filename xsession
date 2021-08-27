@@ -57,9 +57,6 @@ if test "$( hostname )" == 'tightpants'; then
 fi
 
 . "$HOME/.config/env"
-if xrandr --listactivemonitors | grep -c 'HDMI-1'; then
-    xrandr --output eDP-1 --off
-fi
 export GTK2_RC_FILES="$HOME/.config/gtk-2.0/gtkrc-2.0"
 export PATH="/home/jonathan/.local/bin:$PATH"
 bash --login -i $HOME/.config/X11/xinitrc
