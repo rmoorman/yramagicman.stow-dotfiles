@@ -38,6 +38,7 @@ environment.systemPackages = with pkgs; [
     openssl
     pass
     pavucontrol
+    pcmanfm
     php
     php74Extensions.xdebug
     php74Packages.composer
