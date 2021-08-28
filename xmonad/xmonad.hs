@@ -20,6 +20,7 @@ import XMonad.Layout.PerWorkspace
 import XMonad.Layout.Renamed
 import XMonad.Layout.ResizableTile
 import XMonad.Layout.SimpleFloat
+import XMonad.Layout.Spacing
 import XMonad.Util.EZConfig(additionalKeys, additionalKeysP, removeKeys)
 import XMonad.Util.Run(spawnPipe)
 import XMonad.Util.SpawnOnce
@@ -67,8 +68,8 @@ myWorkspaces    = ["1:shell","2:br1","3:br2", "4:mail/db"]
 
 -- Border colors for unfocused and focused windows, respectively.
 --
-myNormalBorderColor  = "#dddddd"
-myFocusedBorderColor = "#ff0000"
+myNormalBorderColor  = "#000000"
+myFocusedBorderColor = "#ffffff"
 
 ------------------------------------------------------------------------
     -- Mouse bindings: default actions bound to mouse events
@@ -101,7 +102,7 @@ myMouseBindings (XConfig {XMonad.modMask = modm}) = M.fromList $
 -- which denotes layout choice.
 --
 myLayout = do
-    avoidStruts $ smartBorders $ renamed [Replace "|=" ] tiled |||  renamed [Replace "[]"] Full ||| renamed [Replace "=="] Grid
+    avoidStruts $ smartBorders $ smartSpacing 3 $ renamed [Replace "|=" ] tiled |||  renamed [Replace "[]"] Full ||| renamed [Replace "=="] Grid
         where
             tiled = ResizableTall 1 (2/100) (1/2) []
 
@@ -164,7 +165,7 @@ commands = [
            , "gpgconf --reload gpg-agent"
            , "xset -dpms"
            , "xset s off"
-           , "picom -b"
+           , "picom -bc"
            , "xscreensaver -no-splash"
            , "emacs --bg-daemon"
            , "xset r rate 250 25"
@@ -284,7 +285,8 @@ main = do
           , manageHook         = manageDocks <+> myManageHook
           , layoutHook         =  myLayout
           , modMask            = myModMask
-
+          , normalBorderColor  = myNormalBorderColor
+          , focusedBorderColor = myFocusedBorderColor
           , workspaces         = myWorkspaces
           , logHook            = dynamicLogWithPP def
               { ppOutput       = \str -> forM_ handles (flip hPutStrLn str)
@@ -320,6 +322,7 @@ main = do
           , (( mod4Mask, xK_Tab ), toggleWS)
           , (( mod4Mask,  xK_z  ), warpToWindow (1%2) (1%2)) -- @@ Move pointer to currently focused window
           , (( mod4Mask,  xK_F4  ), spawn "xrandr --output HDMI1 --off;  xrandr --output HDMI1 --auto")
+          , (( mod4Mask .|. shiftMask, xK_s   ), setSpacing 0)
         ]
 
 -- A structure containing your configuration settings, overriding
