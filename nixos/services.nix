@@ -42,4 +42,9 @@
   services.httpd.enablePHP = true;
   services.mysql.package = pkgs.mariadb;
   services.mysql.enable = true;
+
+
+  services.phpfpm.phpOptions = ''
+      memory_limit = 2048M
+      '';
 }
