@@ -1,3 +1,5 @@
+#!/usr/bin/env zsh
+#
 # vim: ft=zsh
 function _get_clone_dest() {
     if [[ $1 =~ '^(git@|https)' ]]; then

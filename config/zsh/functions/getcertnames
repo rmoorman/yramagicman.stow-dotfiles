@@ -1,3 +1,4 @@
+#!/usr/bin/env zsh
 function getcertnames() {
     if [ -z "${1}" ]; then
         echo "ERROR: No domain specified."

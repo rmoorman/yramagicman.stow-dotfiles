@@ -1,3 +1,5 @@
+#!/usr/bin/env zsh
+#
 # vim: ft=zsh
 function _net_test() {
     # zmodload -m -F zsh/files b:zf_rm

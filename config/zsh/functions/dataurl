@@ -1,3 +1,4 @@
+#!/usr/bin/env zsh
 function dataurl() {
     local mimeType=$(file -b --mime-type "$1")
     if [[ $mimeType == text/* ]]; then

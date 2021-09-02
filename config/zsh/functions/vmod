@@ -1,3 +1,4 @@
+#!/usr/bin/env zsh
 function vmod() {
     vim $(g s | egrep -v '\?\?|D' | awk -F ' ' '{print $2}')
 }

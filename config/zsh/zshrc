@@ -1,4 +1,5 @@
-#!usr/bin/env zsh
+#!/usr/bin/env zsh
+
 emulate zsh
 # profiling tools
 PROFILE_STARTUP=false

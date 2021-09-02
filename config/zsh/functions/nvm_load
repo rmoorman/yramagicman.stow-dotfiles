@@ -1,3 +1,4 @@
+#!/usr/bin/env zsh
 function nvm_load() {
   export NVM_DIR="$XDG_CACHE_HOME/nvm"
   [[ -d "$NVM_DIR" ]] || mkdir -p $NVM_DIR

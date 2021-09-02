@@ -1,3 +1,4 @@
+#!/usr/bin/env zsh
 function o() {
     nohup xdg-open "$@" >/dev/null & disown
 }

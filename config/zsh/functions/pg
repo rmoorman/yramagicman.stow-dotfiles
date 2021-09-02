@@ -1,3 +1,4 @@
+#!/usr/bin/env zsh
 function pg() {
     ps aux | grep -i $@ | grep -v grep
 }

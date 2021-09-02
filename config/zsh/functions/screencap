@@ -1,3 +1,4 @@
+#!/usr/bin/env zsh
 function screencap() {
     echo "which monitor"
     echo "input resolution, then x and y coordinates"

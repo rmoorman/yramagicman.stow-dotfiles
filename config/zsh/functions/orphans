@@ -1,3 +1,5 @@
+#!/usr/bin/env zsh
+
 function orphans() {
     if [[ ! -n $(pacman -Qdtq) ]]; then
         echo "No orphans to remove."

@@ -1,3 +1,4 @@
+#!/usr/bin/env zsh
 function lg() {
     ls -alh | grep -i $@
 }

@@ -1,3 +1,5 @@
+#!/usr/bin/env zsh
+
 # Empty the Trash on all mounted volumes and the main HDD
 # Flush Directory Service cache
 alias flush="dscacheutil -flushcache && killall -HUP mDNSResponder"

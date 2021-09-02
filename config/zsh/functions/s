@@ -1,3 +1,5 @@
+#!/usr/bin/env zsh
+
 function s() {
     # Check for .tmux file (poor man's Tmuxinator).
     if [[ -x "$HOME/.config/tmux.d/$1" ]]; then

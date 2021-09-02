@@ -1,3 +1,4 @@
+#!/usr/bin/env zsh
 function server() {
     local port="${1:-8000}"
     sleep 1 && xdg-open "http://localhost:${port}/" &

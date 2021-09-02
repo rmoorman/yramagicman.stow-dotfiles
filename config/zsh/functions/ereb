@@ -1,3 +1,4 @@
+#!/usr/bin/env zsh
 function ereb() {
     if [[ -n $( grep -l '<<< HEAD' $(git ls-files) | sort | uniq ) ]]; then
         emacsclient -c $( grep -l '<<< HEAD' $(git ls-files) | sort -u )

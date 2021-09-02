@@ -1,3 +1,4 @@
+#!/usr/bin/env zsh
 function fuzzy-remove() {
     yay -Rns $(pacman -Qqs $1)
 }

@@ -1,3 +1,5 @@
+#!/usr/bin/env zsh
+
 function phpserver() {
     local port="8090"
     local ip=127.0.0.1

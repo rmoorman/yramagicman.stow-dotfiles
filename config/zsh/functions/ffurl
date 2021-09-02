@@ -1,3 +1,5 @@
+#!/usr/bin/env zsh
+
 function ffurl() {
     echo $1
     cat $1 | while read -r url

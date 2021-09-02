@@ -1,3 +1,5 @@
+#!/usr/bin/env zsh
+#
 # vim: ft=zsh
 function _source_or_install() {
     # zmodload -m -F zsh/files b:zf_mkdir

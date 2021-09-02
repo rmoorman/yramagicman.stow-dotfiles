@@ -1,3 +1,5 @@
+#!/usr/bin/env zsh
+
 function escape() {
     printf "\\\x%s" $(printf "$@" | xxd -p -c1 -u)
     echo # newline

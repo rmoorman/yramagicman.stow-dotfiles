@@ -1,3 +1,5 @@
+#!/usr/bin/env zsh
+
 function vreb() {
     if [[ -n $( grep -l '<<< HEAD' $(git ls-files) | sort | uniq ) ]]; then
         command vim $( grep -l '<<< HEAD' $(git ls-files) | sort | uniq )

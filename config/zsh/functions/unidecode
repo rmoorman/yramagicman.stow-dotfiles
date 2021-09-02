@@ -1,3 +1,4 @@
+#!/usr/bin/env zsh
 function unidecode() {
     perl -e "binmode(STDOUT, ':utf8'); print \"$@\""
     echo # newline
