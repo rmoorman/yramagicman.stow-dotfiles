@@ -1,10 +1,13 @@
 { config, pkgs, ... }:
-{
+let
+    myPhp = pkgs.php.withExtensions ({ enabled, all }: enabled ++ [ all.xdebug
+]); in {
     nixpkgs.config.allowUnfree = true;
     programs.zsh.enable = true;
 # List packages installed in system profile. To search, run:
 # programs.mtr.enable = true;
 # $ nix search wget
+
 environment.systemPackages = with pkgs; [
     ag
     alacritty
@@ -39,8 +42,7 @@ environment.systemPackages = with pkgs; [
     pass
     pavucontrol
     pcmanfm
-    php
-    php74Extensions.xdebug
+    myPhp
     php74Packages.composer
     php74Packages.phpcbf
     php74Packages.phpcs
