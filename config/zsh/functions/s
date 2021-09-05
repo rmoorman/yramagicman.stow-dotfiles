@@ -1,24 +1,41 @@
 #!/usr/bin/env zsh
 
-function s() {
-    # Check for .tmux file (poor man's Tmuxinator).
-    if [[ -x "$HOME/.config/tmux.d/$1" ]]; then
-        # Prompt the first time we see a given .tmux file before running it.
-        local DIGEST="$(openssl sha512 $HOME/.config/tmux.d/$1)"
+function us() {
+    fileFind=$PWD:gs,/,_,
+    if [[ -x "$HOME/.config/tmux.d/$fileFind" ]]; then
+        local DIGEST="$(openssl sha512 $HOME/.config/tmux.d/$fileFind)"
+        echo $DIGEST;
         if ! grep -q "$DIGEST" $HOME/.config/tmux.d/digests 2>/dev/null; then
-            < $HOME/.config/tmux.d/$1
+            < $HOME/.config/tmux.d/$fileFind
             read -k 1 -r \
                 'REPLY?Trust (and run) this .tmux file? (t = trust, otherwise = skip) '
             echo
             if [[ $REPLY =~ ^[Tt]$ ]]; then
                 echo "$DIGEST" >>$HOME/.config/tmux.d/digests
-                $HOME/.config/tmux.d/$1 $2
+                $HOME/.config/tmux.d/$fileFind
                 return
             fi
         else
-            echo "$@"
-            $HOME/.config/tmux.d/$1 $2
+            $HOME/.config/tmux.d/$fileFind
             return
         fi
+    else
+        echo "no file found create from template?"
+        templates=$HOME/.config/tmux.d/templates
+        for file in $templates/* ; do
+            echo -n "${file:t} "
+        done
+        echo
+        read reply
+        echo "\n$reply\n"
+        set -x
+        for temp in $templates/*; do
+            if [[ $reply == ${temp:t} ]]; then
+                result=$HOME/.config/tmux.d/$fileFind
+                cat  $temp > $result
+                chmod u+x $result
+                git --work-tree $HOME/Documents/dots add $result
+            fi
+        done
     fi
 }
