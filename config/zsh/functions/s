@@ -1,6 +1,6 @@
 #!/usr/bin/env zsh
 
-function us() {
+function s() {
     fileFind=$PWD:gs,/,_,
     if [[ -x "$HOME/.config/tmux.d/$fileFind" ]]; then
         local DIGEST="$(openssl sha512 $HOME/.config/tmux.d/$fileFind)"
