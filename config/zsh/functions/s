@@ -4,7 +4,6 @@ function s() {
     fileFind=$PWD:gs,/,_,
     if [[ -x "$HOME/.config/tmux.d/$fileFind" ]]; then
         local DIGEST="$(openssl sha512 $HOME/.config/tmux.d/$fileFind)"
-        echo $DIGEST;
         if ! grep -q "$DIGEST" $HOME/.config/tmux.d/digests 2>/dev/null; then
             < $HOME/.config/tmux.d/$fileFind
             read -k 1 -r \
@@ -28,7 +27,6 @@ function s() {
         echo
         read reply
         echo "\n$reply\n"
-        set -x
         for temp in $templates/*; do
             if [[ $reply == ${temp:t} ]]; then
                 result=$HOME/.config/tmux.d/$fileFind
