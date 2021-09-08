@@ -8,6 +8,7 @@ let
         ag
         alacritty
         apacheHttpd
+        bind
         breeze-icons
         chromium
         dropbox-cli
@@ -33,12 +34,12 @@ let
         msmtp
         mu
         mutt
+        myPhp
         nodejs
         openssl
         pass
         pavucontrol
         pcmanfm
-        myPhp
         php74Packages.composer
         php74Packages.phpcbf
         php74Packages.phpcs

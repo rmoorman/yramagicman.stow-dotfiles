@@ -88,7 +88,7 @@ alias speedtest="wget -O /dev/null \
     alias curl="curl -L --compressed"
     # Enhanced WHOIS lookups
     alias whois="whois -h whois-servers.net"
-    alias rip="dig +short myip.opendns.com @resolver1.opendns.com"
+    alias rip="mdig +short myip.opendns.com @resolver1.opendns.com"
     alias ip="ip --color=auto"
     #}}}
     # {{{ utilities
