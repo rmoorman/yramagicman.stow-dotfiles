@@ -150,4 +150,4 @@ configuration {
 /*  xoffset: 0;*/
 /*  yoffset: 0;*/
 }
-@import "/nix/store/6n460wzidgp8pvfbc5lrsxqiviqfhs5f-rofi-1.6.1/share/rofi/themes/Arc-Dark.rasi"
+@import "/nix/store/28p1dan4qx7ygk22as15ix2j02w15pak-rofi-1.6.1/share/rofi/themes/Pop-Dark.rasi"
