@@ -10,7 +10,7 @@ configuration {
 /*  color-window: ;*/
 /*  columns: 1;*/
 /*  combi-hide-mode-prefix: false;*/
-    combi-modi: "drun,run,file-browser";
+    combi-modi: "drun,run,filebrowser";
 /*  cycle: true;*/
 /*  disable-history: false;*/
 /*  display-combi: ;*/
@@ -119,7 +119,7 @@ configuration {
 /*  ml-row-left: "ScrollLeft";*/
 /*  ml-row-right: "ScrollRight";*/
 /*  ml-row-up: "ScrollUp";*/
-    modi: "combi,run,drun,file-browser";
+    modi: "combi,run,drun,filebrowser";
 /*  normalize-match: false;*/
 /*  padding: 5;*/
 /*  parse-hosts: false;*/
@@ -151,3 +151,4 @@ configuration {
 /*  yoffset: 0;*/
 }
 @import "/nix/store/28p1dan4qx7ygk22as15ix2j02w15pak-rofi-1.6.1/share/rofi/themes/Pop-Dark.rasi"
+@theme "/nix/store/jyjslmxrlc3xmzwqqm82cmp6ng2vlgjm-rofi-1.7.0/share/rofi/themes/Arc-Dark.rasi"
