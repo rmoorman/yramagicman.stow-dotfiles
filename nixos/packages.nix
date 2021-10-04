@@ -10,7 +10,7 @@ let
         apacheHttpd
         bind
         breeze-icons
-        chromium
+        ungoogled-chromium
         dropbox-cli
         dunst
         dzen2
