@@ -8,9 +8,9 @@ let
         ag
         alacritty
         apacheHttpd
+        arandr
         bind
         breeze-icons
-        ungoogled-chromium
         dropbox-cli
         dunst
         dzen2
@@ -54,6 +54,7 @@ let
         signal-desktop
         theme-obsidian2
         tmux
+        ungoogled-chromium
         universal-ctags
         urlview
         vimHugeX
@@ -63,6 +64,7 @@ let
         xclip
         xorg.xcursorthemes
         xscreensaver
+        zathura
         zsh
     ];
 
