@@ -36,7 +36,7 @@ hi NonText ctermfg=8
 hi Normal ctermfg=15 ctermbg=0
 hi Number ctermfg=4
 hi Operator ctermfg=4
-hi Pmenu ctermfg=15 ctermbg=0
+hi Pmenu ctermfg=15 ctermbg=8
 hi PmenuSbar ctermbg=0
 hi PmenuSbar ctermbg=15
 hi PmenuSel ctermbg=15 ctermfg=0
