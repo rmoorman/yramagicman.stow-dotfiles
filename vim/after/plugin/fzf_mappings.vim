@@ -5,7 +5,6 @@ let g:fzf_layout = { 'down': '40%' }
 unmap <leader>f
 unmap <leader>b
 nnoremap <leader>f :Files<cr>
-nnoremap <leader>F :Locate ''<cr>
 nnoremap <leader>b :Buffers<cr>
 nnoremap <leader>t :Tags<cr>
 cnoreabbrev ,f :Files<cr>

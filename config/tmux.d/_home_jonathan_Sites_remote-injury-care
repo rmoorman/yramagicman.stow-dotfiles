@@ -20,5 +20,5 @@ $mux split-window -c "$PWD" -h -t "$sessionName":server
 $mux send-keys -t "$sessionName":server.left "php artisan serve" Enter
 $mux send-keys -t  "$sessionName":server.right "npm run watch" Enter
 
-switch_or_attach "$sessionName":shell.left
+switch_or_attach "$sessionName":dev.left
 exit 0
