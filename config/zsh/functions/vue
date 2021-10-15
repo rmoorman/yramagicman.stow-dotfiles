@@ -1,0 +1,17 @@
+#!/usr/bin/env zsh
+function vue() {
+    if [[ -f ~/.local/share/node_modules/@vue/cli/bin/vue.js ]]; then
+        node ~/.local/share/node_modules/@vue/cli/bin/vue.js $@
+    else
+        echo 'vue cli not installed to ~/.local/share'
+        echo 'Do you want to install it now? [Y,n] '
+        read
+        [[ $REPLY == 'n' ]] && echo 'fail' && return
+        if [[ $REPLY == '' ]] || [[ $REPLY == 'Y' ]] || $REPLY -eq 'y' ]]; then
+            (
+            builtin cd ~/.local/share/
+            npm install @vue/cli
+        )
+        fi
+    fi
+}

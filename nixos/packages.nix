@@ -56,6 +56,7 @@ let
         tmux
         ungoogled-chromium
         universal-ctags
+        unzip
         urlview
         vimHugeX
         vlc
