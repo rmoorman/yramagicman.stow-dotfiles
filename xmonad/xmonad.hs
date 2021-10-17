@@ -322,6 +322,7 @@ main = do
           , (( mod4Mask,  xK_z  ), warpToWindow (1%2) (1%2)) -- @@ Move pointer to currently focused window
           , (( mod4Mask,  xK_F4  ), spawn "xrandr --output HDMI1 --off;  xrandr --output HDMI1 --auto")
           , (( mod4Mask .|. shiftMask, xK_s   ), setSpacing 0)
+          , (( mod4Mask .|. shiftMask, xK_f   ), spawn "pcmanfm")
         ]
 
 -- A structure containing your configuration settings, overriding
