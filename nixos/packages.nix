@@ -59,6 +59,7 @@ let
         unzip
         urlview
         vimHugeX
+        neovim
         vlc
         w3m
         wget
