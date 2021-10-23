@@ -180,8 +180,8 @@ commands = [
            ]
 myStartupHook = do
     forM commands (\c -> spawnOnce c )
-    nScreens <- countScreens
-    forM [1..nScreens ] (\sc -> spawnOnce ("statusloop " ++ show sc))
+    -- nScreens <- countScreens
+    -- forM [1..nScreens ] (\sc -> spawnOnce ("statusloop " ++ show sc))
     spawnOnce "getallmail"
 ------------------------------------------------------------------------
     -- Key bindings. Add, modify or remove key bindings here.
@@ -275,10 +275,10 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     -- Now run xmonad with all the defaults we set up.
 
 main = do
-    let dzncmd = "dzen2 -dock -ta l -tw 1200 -fn mono:size=10 -xs "
-    nScreens <- countScreens
-    handles <- forM [1..nScreens] (\sc -> spawnPipe (dzncmd ++ show sc))
-    xmonad  $ ewmh $ withUrgencyHook NoUrgencyHook $ docks  def
+    -- let dzncmd = "dzen2 -dock -ta l -tw 1200 -fn mono:size=10 -xs "
+    -- nScreens <- countScreens
+    -- handles <- forM [1..nScreens] (\sc -> spawnPipe (dzncmd ++ show sc))
+    xmonad  $ ewmh $ withUrgencyHook NoUrgencyHook $ def
         { terminal           = myTerminal
           , focusFollowsMouse  = myFocusFollowsMouse
           , borderWidth        = myBorderWidth
@@ -288,18 +288,18 @@ main = do
           , normalBorderColor  = myNormalBorderColor
           , focusedBorderColor = myFocusedBorderColor
           , workspaces         = myWorkspaces
-          , logHook            = dynamicLogWithPP def
-              { ppOutput       = \str -> forM_ handles (flip hPutStrLn str)
-                , ppExtras       = [ windowCount ]
-                , ppCurrent      = dzenColor "white" ""
-                , ppVisible      = dzenColor "grey" ""
-                , ppHidden       = dzenColor "grey" ""
-                , ppTitle        = dzenColor "white" "" . shorten 550
-                , ppLayout       = dzenColor "white" ""
-                , ppUrgent       = dzenColor "red" "" . shorten 50 . dzenStrip
-                , ppSep          = " - "
-                , ppOrder = \(a:b:c:d) -> [ "-" ] ++ [ b ] ++ d  ++ [ a ] ++ [ c ]
-              }
+          -- , logHook            = dynamicLogWithPP def
+          --     { ppOutput       = \str -> forM_ handles (flip hPutStrLn str)
+          --       , ppExtras       = [ windowCount ]
+          --       , ppCurrent      = dzenColor "white" ""
+          --       , ppVisible      = dzenColor "grey" ""
+          --       , ppHidden       = dzenColor "grey" ""
+          --       , ppTitle        = dzenColor "white" "" . shorten 550
+          --       , ppLayout       = dzenColor "white" ""
+          --       , ppUrgent       = dzenColor "red" "" . shorten 50 . dzenStrip
+          --       , ppSep          = " - "
+          --       , ppOrder = \(a:b:c:d) -> [ "-" ] ++ [ b ] ++ d  ++ [ a ] ++ [ c ]
+          --     }
                 , keys               = myKeys
                 , startupHook        = myStartupHook
         } `additionalKeys`

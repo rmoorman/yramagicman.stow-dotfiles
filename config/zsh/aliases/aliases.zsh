@@ -17,13 +17,13 @@ alias .vim="cd $HOME/.vim && ls"
 alias push="git push -u origin HEAD"
 alias pull="git pull --rebase"
 alias j="jobs"
-alias vi="vim"
-alias vim="vim"
-alias v="vim"
+alias vi="nvim"
+alias vim="nvim"
+alias v="nvim"
 alias :e="emacslient -nw ."
 alias e="emacsclent -nw"
-alias v.="vim ."
-alias gvim="vim"
+alias v.="nvim ."
+alias gvim="nvim"
 alias ec="emacsclient -nc"
 alias ech="emacsclient -n"
 alias oo="nohup xdg-open . > /dev/null &"
@@ -36,7 +36,7 @@ function open() {
 }
 
 function vimrc() {
-    vim -c ':e $MYVIMRC'
+    nvim -c ':e $MYVIMRC'
 }
 
 alias t='tmux'
