@@ -3,8 +3,6 @@ import Data.Ratio
 import Graphics.X11.ExtraTypes.XF86
 import qualified Data.Map        as M
 import qualified XMonad.StackSet as W
-import System.Exit (exitWith, ExitCode(..))
-import System.IO
 import XMonad
 import XMonad.Actions.CycleWS
 import XMonad.Actions.Warp
@@ -14,19 +12,12 @@ import XMonad.Hooks.ManageDocks
 import XMonad.Hooks.UrgencyHook
 import XMonad.Layout
 import XMonad.Layout.Grid
-import XMonad.Layout.IndependentScreens
 import XMonad.Layout.NoBorders
-import XMonad.Layout.PerWorkspace
 import XMonad.Layout.Renamed
 import XMonad.Layout.ResizableTile
-import XMonad.Layout.SimpleFloat
 import XMonad.Layout.Spacing
-import XMonad.Util.EZConfig(additionalKeys, additionalKeysP, removeKeys)
-import XMonad.Util.Run(spawnPipe)
+import XMonad.Util.EZConfig(additionalKeys)
 import XMonad.Util.SpawnOnce
-
-windowCount :: X (Maybe String)
-windowCount = gets $ Just . show . length . W.integrate' . W.stack . W.workspace . W.current . windowset
 
 -- The preferred terminal program, which is used in a binding below and by
 -- certain contrib modules.
@@ -192,7 +183,7 @@ main = do
         { terminal           = myTerminal
           , focusFollowsMouse  = myFocusFollowsMouse
           , borderWidth        = myBorderWidth
-          , manageHook         = manageDocks <+> myManageHook
+          , manageHook         =  myManageHook
           , layoutHook         =  myLayout
           , modMask            = myModMask
           , normalBorderColor  = myNormalBorderColor
@@ -210,7 +201,6 @@ main = do
           --       , ppSep          = " - "
           --       , ppOrder = \(a:b:c:d) -> [ "-" ] ++ [ b ] ++ d  ++ [ a ] ++ [ c ]
           --     }
-                -- , keys               = myKeys
                 , startupHook        = myStartupHook
         } `additionalKeys`
         [ ((mod4Mask .|. shiftMask, xK_z), spawn "xscreensaver-command -lock")
