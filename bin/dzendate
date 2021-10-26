@@ -1,0 +1,5 @@
+#!/bin/sh
+for x in {1..5}; do
+    date
+    sleep 1s
+done | dzen2

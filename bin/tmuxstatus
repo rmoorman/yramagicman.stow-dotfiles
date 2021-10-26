@@ -1,7 +1,7 @@
 #!/bin/sh
 
 my_date() {
-    date +"%a %d/%m/%Y %I:%M %p"
+    date +" %a %d/%m/%Y %I:%M %p "
 }
 
 battery() {
@@ -16,13 +16,13 @@ battery() {
             bat_level=$( cat /sys/class/power_supply/BAT1/capacity )
             bat_stat=$( cat /sys/class/power_supply/BAT1/status )
             if test "$bat_stat" == "Discharging"; then
-                echo " B: $bat_level%"
+                echo " B: $bat_level% "
             fi
         elif test -d /sys/class/power_supply/BAT0; then
             bat_level=$( cat /sys/class/power_supply/BAT0/capacity )
             bat_stat=$( cat /sys/class/power_supply/BAT0/status )
             if test "$bat_stat" == "Discharging"; then
-                echo " B:$bat_level%"
+                echo " B:$bat_level% "
             fi
         else
             return
@@ -69,4 +69,9 @@ my_harvest() {
 
 }
 
-echo "$(battery) $(updates) $(my_mail) $( my_harvest )"
+{
+    battery
+    my_date
+    my_mail
+} | tr '\n' '|'
+# echo "$(battery) $(updates) $(my_mail) $( my_harvest )"

@@ -3,7 +3,8 @@
 setopt extended_glob
 
 function my_date () {
-    print -P "%D{ %a %d/%m/%Y %I:%M:%S %p }"
+    # print -P "%D{ %a %d/%m/%Y %I:%M:%S %p }"
+    print -P "%D{ %a %d/%m/%Y %I:%M %p }"
 }
 
 function my_bat() {
@@ -39,7 +40,7 @@ function my_wifi(){
 
     wifi_status=$(iwctl station wlan0 show | awk '/State/ {print $2}')
     ip=$(ip --color=never addr show | awk '/([0-9\.]{1,3}){4}\/[0-9]{1,2} brd/ {print $2}')
-    echo "N: $wifi_status"
+    echo "N: $wifi_status -"
 }
 
 function wifi_strength() {
@@ -152,7 +153,8 @@ if [[ -r "/sys/class/power_supply/BAT0/" ]]; then
         line="$line$(my_bat $d)"
     done
 fi
-line="$line$(my_wifi)$(my_date) - - "
+# line="$line$(my_wifi)$(my_date) - - "
+line="$line$(my_wifi)$(my_date)"
 
 xsetroot -name $line
 echo $line
