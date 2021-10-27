@@ -67,6 +67,7 @@ let
         wget
         xclip
         xorg.xcursorthemes
+        xorg.xmessage
         xscreensaver
         zathura
         zsh
