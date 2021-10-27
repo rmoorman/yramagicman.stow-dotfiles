@@ -1,3 +1,24 @@
+"{{{ nvim patch for nixos
+if has('nvim')
+    function! NixosPluginPath()
+        let seen = {}
+        for p in reverse(split($NIX_PROFILES))
+            for d in split(glob(p . '/share/vim-plugins/*'))
+                let pluginname = substitute(d, ".*/", "", "")
+                if !has_key(seen, pluginname)
+                    exec 'set runtimepath^='.d
+                    let after = d."/after"
+                    if isdirectory(after)
+                        exec 'set runtimepath^='.after
+                    endif
+                    let seen[pluginname] = 1
+                endif
+            endfor
+        endfor
+    endfunction
+    execute NixosPluginPath()
+endif
+"}}}
 "{{{ defaults
 if filereadable(expand('$VIMRUNTIME/defaults.vim'))
     unlet! g:skip_defaults_vim
@@ -67,7 +88,7 @@ if ! has('nvim')
     packadd! editexisting
 endif
 let g:AutoOmniComplete_tab = 1
-let g:AutoOmniComplete_complete_map = "\<c-x>\<c-n>"
+let g:AutoOmniComplete_complete_map = "\<c-x>\<c-o>"
 "}}}
 "{{{ colors
 set background=dark
