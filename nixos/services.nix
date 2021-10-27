@@ -46,5 +46,7 @@
 
   services.phpfpm.phpOptions = ''
       memory_limit = 2048M
-      '';
+  '';
+
+  virtualisation.libvirtd.enable = true;
 }

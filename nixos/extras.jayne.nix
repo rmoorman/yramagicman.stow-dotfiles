@@ -17,7 +17,4 @@
         }
     ];
 
-    users.extraGroups.vboxusers.members = [ "jonathan" ];
-    virtualisation.virtualbox.host.enableExtensionPack = true;
-    virtualisation.virtualbox.host.enable = true;
 }

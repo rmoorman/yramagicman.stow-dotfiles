@@ -35,6 +35,7 @@ let
         mu
         mutt
         myPhp
+        neovim
         nodejs
         openssl
         pass
@@ -45,6 +46,7 @@ let
         php74Packages.phpcs
         picom
         pinentry-gtk2
+        pwgen
         python3Full
         racket
         redshift
@@ -59,7 +61,7 @@ let
         unzip
         urlview
         vimHugeX
-        neovim
+        virt-manager
         vlc
         w3m
         wget
