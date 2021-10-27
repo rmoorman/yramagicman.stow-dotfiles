@@ -61,10 +61,12 @@ if executable('fzf')
 endif
 
 
-if has('nvim')
-    PlugOpt 'neovim/nvim-lspconfig'
-    packadd! nvim-lspconfig
-endif
+" if has('nvim')
+"     PlugOpt 'williamboman/nvim-lsp-installer'
+"     PlugOpt 'neovim/nvim-lspconfig'
+"     packadd! nvim-lsp-installer
+"     packadd! nvim-lspconfig
+" endif
 PlugOpt 'bronson/vim-visual-star-search'
 PlugOpt 'editorconfig/editorconfig-vim'
 PlugOpt 'tpope/vim-commentary'
