@@ -2,7 +2,7 @@
 Description=Trying things
 
 [Service]
-ExecStart=/usr/bin/notify-send 'Download completed'
+ExecStart=/run/current-system/sw/bin/notify-send 'Download completed'
 
 [Install]
 WantedBy=default.target
