@@ -1,6 +1,6 @@
 { config, pkgs, ... }:
 let
-    myPhp = pkgs.php.withExtensions ({ enabled, all }: enabled ++ [ all.xdebug
+    myPhp = pkgs.php74.withExtensions ({ enabled, all }: enabled ++ [ all.xdebug
 ]); in {
     nixpkgs.config.allowUnfree = true;
     programs.zsh.enable = true;
