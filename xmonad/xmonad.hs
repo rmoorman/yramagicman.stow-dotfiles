@@ -3,6 +3,8 @@ import Data.Ratio
 import Graphics.X11.ExtraTypes.XF86
 import qualified Data.Map        as M
 import qualified XMonad.StackSet as W
+import System.Exit (exitWith, ExitCode(..))
+import System.IO
 import XMonad
 import XMonad.Actions.CycleWS
 import XMonad.Actions.Warp
@@ -12,13 +14,19 @@ import XMonad.Hooks.ManageDocks
 import XMonad.Hooks.UrgencyHook
 import XMonad.Layout
 import XMonad.Layout.Grid
+import XMonad.Layout.IndependentScreens
 import XMonad.Layout.NoBorders
+import XMonad.Layout.PerWorkspace
 import XMonad.Layout.Renamed
 import XMonad.Layout.ResizableTile
+import XMonad.Layout.SimpleFloat
 import XMonad.Layout.Spacing
-import XMonad.Util.EZConfig(additionalKeys)
+import XMonad.Util.EZConfig(additionalKeys, additionalKeysP, removeKeys)
+import XMonad.Util.Run(spawnPipe)
 import XMonad.Util.SpawnOnce
 
+windowCount :: X (Maybe String)
+windowCount = gets $ Just . show . length . W.integrate' . W.stack . W.workspace . W.current . windowset
 -- The preferred terminal program, which is used in a binding below and by
 -- certain contrib modules.
 --
@@ -93,7 +101,7 @@ myMouseBindings (XConfig {XMonad.modMask = modm}) = M.fromList $
 -- which denotes layout choice.
 --
 myLayout = do
-    avoidStruts $ smartBorders $ spacing 3 $ renamed [Replace "|=" ] tiled |||  renamed [Replace "[]"] Full ||| renamed [Replace "=="] Grid
+    avoidStruts $ smartBorders $ smartSpacing 3 $ renamed [Replace "|=" ] tiled |||  renamed [Replace "[]"] Full ||| renamed [Replace "=="] Grid
         where
             tiled = ResizableTall 1 (2/100) (1/2) []
 
@@ -171,36 +179,36 @@ commands = [
            ]
 myStartupHook = do
     forM commands (\c -> spawnOnce c )
-    -- nScreens <- countScreens
-    -- forM [1..nScreens ] (\sc -> spawnOnce ("statusloop " ++ show sc))
+    nScreens <- countScreens
+    forM [1..nScreens ] (\sc -> spawnOnce ("statusloop " ++ show sc))
     spawnOnce "getallmail"
 
 main = do
-    -- let dzncmd = "dzen2 -dock -ta l -tw 1200 -fn mono:size=10 -xs "
-    -- nScreens <- countScreens
-    -- handles <- forM [1..nScreens] (\sc -> spawnPipe (dzncmd ++ show sc))
-    xmonad  $ ewmh $ withUrgencyHook NoUrgencyHook $ def
+    let dzncmd = "dzen2 -dock -ta l -tw 1200 -fn mono:size=10 -xs "
+    nScreens <- countScreens
+    handles <- forM [1..nScreens] (\sc -> spawnPipe (dzncmd ++ show sc))
+    xmonad  $ ewmh $ withUrgencyHook NoUrgencyHook $ docks  def
         { terminal           = myTerminal
           , focusFollowsMouse  = myFocusFollowsMouse
           , borderWidth        = myBorderWidth
-          , manageHook         =  myManageHook
-          , layoutHook         =  myLayout
+          , manageHook         = manageDocks <+> myManageHook
+          , layoutHook         = myLayout
           , modMask            = myModMask
           , normalBorderColor  = myNormalBorderColor
           , focusedBorderColor = myFocusedBorderColor
           , workspaces         = myWorkspaces
-          -- , logHook            = dynamicLogWithPP def
-          --     { ppOutput       = \str -> forM_ handles (flip hPutStrLn str)
-          --       , ppExtras       = [ windowCount ]
-          --       , ppCurrent      = dzenColor "white" ""
-          --       , ppVisible      = dzenColor "grey" ""
-          --       , ppHidden       = dzenColor "grey" ""
-          --       , ppTitle        = dzenColor "white" "" . shorten 550
-          --       , ppLayout       = dzenColor "white" ""
-          --       , ppUrgent       = dzenColor "red" "" . shorten 50 . dzenStrip
-          --       , ppSep          = " - "
-          --       , ppOrder = \(a:b:c:d) -> [ "-" ] ++ [ b ] ++ d  ++ [ a ] ++ [ c ]
-          --     }
+          , logHook            = dynamicLogWithPP def
+              { ppOutput       = \str -> forM_ handles (flip hPutStrLn str)
+                , ppExtras       = [ windowCount ]
+                , ppCurrent      = dzenColor "white" ""
+                , ppVisible      = dzenColor "grey" ""
+                , ppHidden       = dzenColor "grey" ""
+                , ppTitle        = dzenColor "white" "" . shorten 550
+                , ppLayout       = dzenColor "white" ""
+                , ppUrgent       = dzenColor "red" "" . shorten 50 . dzenStrip
+                , ppSep          = " - "
+                , ppOrder = \(a:b:c:d) -> [ "-" ] ++ [ b ] ++ d  ++ [ a ] ++ [ c ]
+              }
                 , startupHook        = myStartupHook
         } `additionalKeys`
         [ ((mod4Mask .|. shiftMask, xK_z), spawn "xscreensaver-command -lock")

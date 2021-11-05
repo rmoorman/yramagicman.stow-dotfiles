@@ -153,8 +153,8 @@ if [[ -r "/sys/class/power_supply/BAT0/" ]]; then
         line="$line$(my_bat $d)"
     done
 fi
-# line="$line$(my_wifi)$(my_date) - - "
-line="$line$(my_wifi)$(my_date)"
+line="$line$(my_wifi)$(my_date) - - "
+# line="$line$(my_wifi)$(my_date)"
 
 xsetroot -name $line
 echo $line

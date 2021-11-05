@@ -22,7 +22,7 @@ battery() {
             bat_level=$( cat /sys/class/power_supply/BAT0/capacity )
             bat_stat=$( cat /sys/class/power_supply/BAT0/status )
             if test "$bat_stat" == "Discharging"; then
-                echo " B:$bat_level% "
+                echo " B: $bat_level% "
             fi
         else
             return
@@ -73,5 +73,4 @@ my_harvest() {
     battery
     my_date
     my_mail
-} | tr '\n' '|'
-# echo "$(battery) $(updates) $(my_mail) $( my_harvest )"
+} | tr '\n' '-'
