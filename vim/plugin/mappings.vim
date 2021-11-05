@@ -21,12 +21,14 @@ cnoremap <expr> %% expand('%:h').'/'
 if ! has('nvim')
     tnoremap <leader><leader> <C-w>N
     tnoremap :: <C-w>N:
+    nnoremap <C-w>t :vert term<cr>
+    nnoremap <leader>t :vert term<cr>
 else
     tnoremap <leader><leader> <C-\><C-N>
     tnoremap :: <C-\><C-N>:
+    nnoremap <C-w>t :vsplit<cr> :term<cr>
+    nnoremap <leader>t :vsplit<cr> :term<cr>
 endif
-nnoremap <C-w>t :vert term<cr>
-nnoremap <leader>t :vert term<cr>
 
 "}}}
 "{{{ normal mode mappings
