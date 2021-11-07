@@ -1,4 +1,5 @@
 #lang racket
+(require yaml)
 
 (define home (string-join (take (string-split
                                   (path->string (find-system-path 'home-dir)) "/" ) 2) "/"
@@ -46,11 +47,11 @@
             (rebuild-colors selection)))
 
 (define (list-options)
-  (let ( [options (list->set
+  (let ([options (list->set
                     (flatten (map
                                (lambda item
                                  (first  (string-split (first item ) "." )))
-                               (map path->string (directory-list colors-dir))))) ] )
+                               (map path->string (directory-list colors-dir)))))])
     (display "Must provide one of the following options:")
     (newline)
     (set-for-each options (lambda item
@@ -81,7 +82,6 @@
 
 (define (mod-dwm selection)
   (filter (lambda str
-
               (cond [(string-contains? (first str) " foreground[]")
                      (replace-from-xresources  (first str) selection foreground)]
                     [(string-contains? (first str) " sel_foreground[]")
