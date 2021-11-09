@@ -11,7 +11,6 @@ let
         arandr
         bind
         breeze-icons
-        dropbox-cli
         dunst
         dzen2
         emacs
