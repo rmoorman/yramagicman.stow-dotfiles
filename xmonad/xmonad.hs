@@ -150,7 +150,7 @@ myManageHook = composeAll [
 -- return (All True) if the default handler is to be run afterwards. To
 -- combine event hooks use mappend or mconcat from Data.Monoid.
 --
--- myEventHook = mempty
+myEventHook = ewmhDesktopsEventHook
 
 -- Startup hook
 
@@ -197,6 +197,7 @@ main = do
           , normalBorderColor  = myNormalBorderColor
           , focusedBorderColor = myFocusedBorderColor
           , workspaces         = myWorkspaces
+          , handleEventHook    = myEventHook
           , logHook            = dynamicLogWithPP def
               { ppOutput       = \str -> forM_ handles (flip hPutStrLn str)
                 , ppExtras       = [ windowCount ]
