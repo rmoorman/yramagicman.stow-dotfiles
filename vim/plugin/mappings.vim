@@ -51,7 +51,7 @@ nnoremap << V<gv
 nnoremap <leader>e :e **/*
 nnoremap <leader>f :find **/*
 nnoremap <leader>b :ls<cr>:b
-nnoremap <leader>u :!cat % \| urlview<cr>
+nnoremap <leader>U :!cat % \| urlview<cr>
 cnoreabbrev ,e e **/*
 cnoreabbrev ,f find **/*
 cnoreabbrev ,b ls<cr>:b
