@@ -29,6 +29,10 @@
 
 (use-package evil-numbers)
 
+(use-package evil-visualstar
+  :config
+  (global-evil-visualstar-mode t))
+
 (use-package evil-commentary
   :config
   (evil-commentary-mode 1))
