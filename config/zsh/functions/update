@@ -6,7 +6,7 @@ function update() {
     if [[ $(command -v nixos-rebuild) ]] ; then
         sudo nixos-rebuild boot --upgrade
         nix-collect-garbage -d --delete-older-than 14d
-        nix optimise-store
+        # nix store optimise
     elif [[ $(command -v yay) ]]; then
         yay -Syu --noconfirm --sudoloop
         xmonad --recompile
