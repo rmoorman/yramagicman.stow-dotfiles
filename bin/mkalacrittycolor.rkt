@@ -68,7 +68,7 @@
                  (lambda (key _)
                    (hash-set! color-destination key (second (get-single-color color-map selection key))))))
 
-(define ( write-alacritty  selection)
+(define (write-alacritty  selection)
   (set-color-values normal-map normal-colors selection)
   (set-color-values bright-map bright-colors selection)
   (set-color-values primary-map primary-colors selection)
