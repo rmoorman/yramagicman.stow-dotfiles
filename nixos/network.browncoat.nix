@@ -7,6 +7,6 @@
       # replicates the default behaviour.
       networking.useDHCP = false;
       networking.interfaces.enp0s31f6.useDHCP = true;
-      networking.interfaces.enp5s0.useDHCP = true;
-      networking.interfaces.wlp6s0.useDHCP = true;
+      networking.interfaces.enp5s0.useDHCP = false;
+      networking.interfaces.wlp6s0.useDHCP = false;
   }
