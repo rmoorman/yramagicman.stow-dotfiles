@@ -7,6 +7,16 @@
     # replicates the default behaviour.
     networking.useDHCP = false;
     networking.interfaces.enp0s31f6.useDHCP = true;
-    networking.interfaces.enp5s0.ipAddress = "127.0.0.10";
-    networking.interfaces.wlp6s0.useDHCP = "127.0.0.11";
+    # networking.interfaces.enp5s0.ipv4.addresses = [
+    #     {
+    #         address = "127.0.0.10";
+    #         prefixLength = 24;
+    #     }
+    # ];
+    # networking.interfaces.wlp6s0.ipv4.addresses = [
+    #     {
+    #         address = "127.0.0.11";
+    #         prefixLength = 24;
+    #     }
+    # ];
 }
