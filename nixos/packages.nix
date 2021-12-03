@@ -1,6 +1,7 @@
 { config, pkgs, ... }:
 let
-    myPhp = pkgs.php74.withExtensions ({ enabled, all }: enabled ++ [ all.xdebug
+    myPhp = pkgs.php74.withExtensions ({ enabled, all }: enabled ++ [
+        all.xdebug
 ]); in {
     nixpkgs.config.allowUnfree = true;
     programs.zsh.enable = true;
@@ -15,6 +16,7 @@ let
         dzen2
         emacs
         feh
+        ffmpeg
         firefox
         fzf
         gcc

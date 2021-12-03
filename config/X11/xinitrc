@@ -60,9 +60,6 @@ fi
 
 ( "$HOME/.config/screenlayout/default.sh" ) &
 
-if xrandr --listactivemonitors | grep -c 'HDMI-1'; then
-   (sleep 3s &&  xrandr --output eDP-1 --off ) &
-fi
 
 wmcmd=$(cat ~/.config/wmcmd)
 if test "$wmcmd" == '$HOME/.local/bin/dwmrestart'; then
