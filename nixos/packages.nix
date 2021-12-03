@@ -69,6 +69,7 @@ let
         xclip
         xorg.xcursorthemes
         xorg.xmessage
+        xorg.xkill
         xscreensaver
         zathura
         zsh
