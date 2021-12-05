@@ -22,6 +22,7 @@ let
         gcc
         git
         gnome.adwaita-icon-theme
+        gnome.aisleriot
         gnumake
         home-manager
         htop
@@ -67,8 +68,8 @@ let
         wget
         xclip
         xorg.xcursorthemes
-        xorg.xmessage
         xorg.xkill
+        xorg.xmessage
         xscreensaver
         zathura
         zsh
