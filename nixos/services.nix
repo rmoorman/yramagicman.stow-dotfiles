@@ -49,4 +49,8 @@
   '';
 
   virtualisation.libvirtd.enable = true;
+
+  location.provider = "geoclue2";
+  services.redshift.enable = true;
+  services.geoclue2.enable = true;
 }

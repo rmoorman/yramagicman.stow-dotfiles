@@ -170,7 +170,7 @@ commands = [
            , "xset r rate 250 25"
            , "xset b off"
            , "dropbox start"
-           , "redshift"
+           -- , "redshift"
            , "tmuxcopy"
            , "dunst"
            , "setxkbmap -option compose:menu"

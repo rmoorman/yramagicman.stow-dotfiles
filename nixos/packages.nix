@@ -50,7 +50,6 @@ let
         pwgen
         python3Full
         racket
-        redshift
         rofi
         rsync
         rxvt-unicode
