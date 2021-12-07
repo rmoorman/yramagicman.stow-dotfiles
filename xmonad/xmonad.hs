@@ -155,7 +155,7 @@ myEventHook = ewmhDesktopsEventHook
 myXmobarPP = def { ppCurrent = xmobarColor "#ffffff" ""
                  , ppTitle   = xmobarColor "#cccccc" "" . shorten 550
                  , ppVisible = wrap "(" ")"
-                 , ppUrgent  = xmobarColor "red" "yellow"
+                 , ppUrgent  = xmobarColor "red" ""
                  , ppSep     = " - "
                  , ppExtras  = [ windowCount ]
                  , ppOrder   = \(a:b:c:d) -> [ "-" ] ++ [ b ] ++ d  ++ [ a ] ++ [ c ]

@@ -14,6 +14,7 @@ let
         breeze-icons
         dunst
         dzen2
+        ed
         emacs
         feh
         ffmpeg
