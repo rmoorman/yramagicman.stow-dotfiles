@@ -24,6 +24,7 @@ let
         gnome.adwaita-icon-theme
         gnome.aisleriot
         gnumake
+        haskellPackages.xmobar
         home-manager
         htop
         isync

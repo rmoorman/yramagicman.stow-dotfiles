@@ -152,6 +152,26 @@ myManageHook = composeAll [
 --
 myEventHook = ewmhDesktopsEventHook
 
+myXmobarPP = def { ppCurrent = xmobarColor "#ffffff" ""
+                 , ppTitle   = xmobarColor "#cccccc" "" . shorten 550
+                 , ppVisible = wrap "(" ")"
+                 , ppUrgent  = xmobarColor "red" "yellow"
+                 , ppSep     = " - "
+                 , ppExtras  = [ windowCount ]
+                 , ppOrder   = \(a:b:c:d) -> [ "-" ] ++ [ b ] ++ d  ++ [ a ] ++ [ c ]
+                 }
+
+
+myDzenPP = def { ppExtras  = [ windowCount ]
+               , ppCurrent = dzenColor "white" ""
+               , ppVisible = dzenColor "grey" ""
+               , ppHidden  = dzenColor "grey" ""
+               , ppTitle   = dzenColor "white" "" . shorten 550
+               , ppLayout  = dzenColor "white" ""
+               , ppUrgent  = dzenColor "red" "" . shorten 50 . dzenStrip
+               , ppSep     = " - "
+               , ppOrder   = \(a:b:c:d) -> [ "-" ] ++ [ b ] ++ d  ++ [ a ] ++ [ c ]
+               }
 -- Startup hook
 
 -- Perform an arbitrary action each time xmonad starts or is restarted
@@ -170,23 +190,26 @@ commands = [
            , "xset r rate 250 25"
            , "xset b off"
            , "dropbox start"
-           -- , "redshift"
            , "tmuxcopy"
            , "dunst"
            , "setxkbmap -option compose:menu"
            , "setxkbmap -option caps:none"
            , "xsetroot -cursor_name left_ptr"
            ]
+
 myStartupHook = do
     forM commands (\c -> spawnOnce c )
-    nScreens <- countScreens
-    forM [1..nScreens ] (\sc -> spawnOnce ("statusloop " ++ show sc))
+    -- nScreens <- countScreens
+    -- forM [1..nScreens ] (\sc -> spawnOnce ("statusloop " ++ show sc))
     spawnOnce "getallmail"
 
 main = do
-    let dzncmd = "dzen2 -dock -ta l -tw 1200 -fn mono:size=10 -xs "
-    nScreens <- countScreens
-    handles <- forM [1..nScreens] (\sc -> spawnPipe (dzncmd ++ show sc))
+    -- let dzncmd = "dzen2 -dock -ta l -tw 1200 -fn mono:size=10 -xs "
+
+    xmproc0 <- spawnPipe "xmobar -x 0 $HOME/.xmonad/xmobarrc"
+    xmproc1 <- spawnPipe "xmobar -x 1 $HOME/.xmonad/xmobarrc"
+    -- nScreens <- countScreens
+    -- handles <- forM [1..nScreens] (\sc -> spawnPipe (dzncmd ++ show sc))
     xmonad  $ ewmh $ withUrgencyHook NoUrgencyHook $ docks  def
         { terminal           = myTerminal
           , focusFollowsMouse  = myFocusFollowsMouse
@@ -198,19 +221,10 @@ main = do
           , focusedBorderColor = myFocusedBorderColor
           , workspaces         = myWorkspaces
           , handleEventHook    = myEventHook
-          , logHook            = dynamicLogWithPP def
-              { ppOutput       = \str -> forM_ handles (flip hPutStrLn str)
-                , ppExtras       = [ windowCount ]
-                , ppCurrent      = dzenColor "white" ""
-                , ppVisible      = dzenColor "grey" ""
-                , ppHidden       = dzenColor "grey" ""
-                , ppTitle        = dzenColor "white" "" . shorten 550
-                , ppLayout       = dzenColor "white" ""
-                , ppUrgent       = dzenColor "red" "" . shorten 50 . dzenStrip
-                , ppSep          = " - "
-                , ppOrder = \(a:b:c:d) -> [ "-" ] ++ [ b ] ++ d  ++ [ a ] ++ [ c ]
-              }
-                , startupHook        = myStartupHook
+          , logHook            = dynamicLogWithPP myXmobarPP {
+                ppOutput       = \x -> hPutStrLn xmproc0 x  >> hPutStrLn xmproc1 x
+          }
+          , startupHook        = myStartupHook
         } `additionalKeys`
         [ ((mod4Mask .|. shiftMask, xK_z), spawn "xscreensaver-command -lock")
           , ((0, xK_Print), spawn "~/.config/dwm/scripts/screenshot")
@@ -221,17 +235,17 @@ main = do
           , ((mod4Mask .|. shiftMask, xK_m), spawn "firefox --private-window")
           , ((mod4Mask .|. shiftMask, xK_g), spawn "chromium --incognito")
           -- , ((mod4Mask              , xK_Return     ), spawn myTerminal)
-          , ((mod4Mask              , xK_p     ), spawn "passmenu")
-          , ((controlMask,               xK_space     ), spawn "rofi_run")
-          , ((mod4Mask .|. controlMask , xK_r  ), spawn "restatus")
-          , (( 0, xF86XK_AudioLowerVolume  ), spawn  "amixer -c 0 -- set Master 1-")
-          , (( 0, xF86XK_AudioRaiseVolume  ), spawn "amixer -c 0 -- set Master 1+")
-          , (( 0, xF86XK_MonBrightnessUp   ), spawn "xbacklight -inc 2")
-          , (( 0, xF86XK_MonBrightnessDown ), spawn "xbacklight -dec 2")
-          , (( mod4Mask, xK_Tab ), toggleWS)
-          , (( mod4Mask,  xK_z  ), warpToWindow (1%2) (1%2)) -- @@ Move pointer to currently focused window
-          , (( mod4Mask,  xK_F4  ), spawn "xrandr --output HDMI1 --off;  xrandr --output HDMI1 --auto")
-          , (( mod4Mask .|. shiftMask, xK_s   ), setSpacing 0)
-          , (( mod4Mask .|. shiftMask, xK_f   ), spawn "pcmanfm")
-          , (( mod4Mask .|. controlMask, xK_s   ), spawn "pcmanfm ~/Pictures/screenshots")
+            , ((mod4Mask              , xK_p     ), spawn "passmenu")
+            , ((controlMask,               xK_space     ), spawn "rofi_run")
+            , ((mod4Mask .|. controlMask , xK_r  ), spawn "restatus")
+            , (( 0, xF86XK_AudioLowerVolume  ), spawn  "amixer -c 0 -- set Master 1-")
+            , (( 0, xF86XK_AudioRaiseVolume  ), spawn "amixer -c 0 -- set Master 1+")
+            , (( 0, xF86XK_MonBrightnessUp   ), spawn "xbacklight -inc 2")
+            , (( 0, xF86XK_MonBrightnessDown ), spawn "xbacklight -dec 2")
+            , (( mod4Mask, xK_Tab ), toggleWS)
+            , (( mod4Mask,  xK_z  ), warpToWindow (1%2) (1%2)) -- @@ Move pointer to currently focused window
+            , (( mod4Mask,  xK_F4  ), spawn "xrandr --output HDMI1 --off;  xrandr --output HDMI1 --auto")
+            , (( mod4Mask .|. shiftMask, xK_s   ), setSpacing 0)
+            , (( mod4Mask .|. shiftMask, xK_f   ), spawn "pcmanfm")
+            , (( mod4Mask .|. controlMask, xK_s   ), spawn "pcmanfm ~/Pictures/screenshots")
         ]
