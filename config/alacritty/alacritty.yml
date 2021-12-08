@@ -10,11 +10,11 @@ key_bindings:
 - {key: Minus, action: DecreaseFontSize, mods: Control}
 bell: {duration: 50, color: '#ffffff', animation: EaseOutExpo}
 colors:
-  bright: {yellow: '#ffa000', cyan: '#26a69a', green: '#9ccc65', magenta: '#ad1457',
-    blue: '#81d4fa', white: '#eceff1', black: '#37474f', red: '#ffa74d'}
-  normal: {yellow: '#ffc107', cyan: '#009688', green: '#8bc34a', magenta: '#e91e63',
-    blue: '#03a9f4', white: '#cfd8dc', black: '#263238', red: '#ff9800'}
-  primary: {foreground: '#eceff1', background: '#263238'}
+  bright: {yellow: '#dede38', green: '#45bf45', cyan: '#2aa7c1', magenta: '#b544ee',
+    blue: '#5273f5', black: '#555555', white: '#d0d0d0', red: '#ff4060'}
+  normal: {yellow: '#c3c322', green: '#29a329', cyan: '#1999b3', magenta: '#ad2bee',
+    blue: '#3d62f5', black: '#000000', white: '#adadad', red: '#e6193c'}
+  primary: {foreground: '#adadad', background: '#000000'}
 window:
   history: 0
   scrolling: null
@@ -22,6 +22,6 @@ window:
 alt_send_esc: true
 font:
   normal: {style: Regular, family: Fira Mono}
-  offset: {y: 0, x: 0}
   size: 10.5
+  offset: {y: 0, x: 0}
 live_config_reload: true
