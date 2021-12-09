@@ -101,10 +101,11 @@ myMouseBindings (XConfig {XMonad.modMask = modm}) = M.fromList $
 -- which denotes layout choice.
 --
 myLayout = do
-    avoidStruts $ smartBorders $ smartSpacing 3 $ renamed [Replace "|=" ] tiled |||  renamed [Replace "[]"] Full ||| renamed [Replace "=="] Grid
+    avoidStruts $ smartBorders $ spacing 3 $ tiled ||| full ||| grid
         where
-            tiled = ResizableTall 1 (2/100) (1/2) []
-
+            tiled = renamed [Replace "|="] $ ResizableTall 1 (2/100) (1/2) []
+            full = renamed [Replace "[]"] Full
+            grid = renamed [Replace "=="] Grid
 
 ------------------------------------------------------------------------
     -- Window rules:
@@ -153,7 +154,7 @@ myManageHook = composeAll [
 myEventHook = ewmhDesktopsEventHook
 
 myXmobarPP = def { ppCurrent = xmobarColor "#ffffff" ""
-                 , ppTitle   = xmobarColor "#cccccc" "" . shorten 550
+                 , ppTitle   = xmobarColor "#cccccc" "" . shorten 150
                  , ppVisible = wrap "(" ")"
                  , ppUrgent  = xmobarColor "red" ""
                  , ppSep     = " - "
@@ -234,18 +235,18 @@ main = do
           , ((mod4Mask .|. controlMask, xK_m), spawn "firefox --new-window about:blank")
           , ((mod4Mask .|. shiftMask, xK_m), spawn "firefox --private-window")
           , ((mod4Mask .|. shiftMask, xK_g), spawn "chromium --incognito")
-          -- , ((mod4Mask              , xK_Return     ), spawn myTerminal)
-            , ((mod4Mask              , xK_p     ), spawn "passmenu")
-            , ((controlMask,               xK_space     ), spawn "rofi_run")
-            , ((mod4Mask .|. controlMask , xK_r  ), spawn "restatus")
-            , (( 0, xF86XK_AudioLowerVolume  ), spawn  "amixer -c 0 -- set Master 1-")
-            , (( 0, xF86XK_AudioRaiseVolume  ), spawn "amixer -c 0 -- set Master 1+")
-            , (( 0, xF86XK_MonBrightnessUp   ), spawn "xbacklight -inc 2")
-            , (( 0, xF86XK_MonBrightnessDown ), spawn "xbacklight -dec 2")
-            , (( mod4Mask, xK_Tab ), toggleWS)
-            , (( mod4Mask,  xK_z  ), warpToWindow (1%2) (1%2)) -- @@ Move pointer to currently focused window
-            , (( mod4Mask,  xK_F4  ), spawn "xrandr --output HDMI1 --off;  xrandr --output HDMI1 --auto")
-            , (( mod4Mask .|. shiftMask, xK_s   ), setSpacing 0)
-            , (( mod4Mask .|. shiftMask, xK_f   ), spawn "pcmanfm")
-            , (( mod4Mask .|. controlMask, xK_s   ), spawn "pcmanfm ~/Pictures/screenshots")
+          , ((mod4Mask .|. shiftMask, xK_e), spawn "emacsclient -nc ~/")
+          , ((mod4Mask              , xK_p     ), spawn "passmenu")
+          , ((controlMask,               xK_space     ), spawn "rofi_run")
+          , ((mod4Mask .|. controlMask , xK_r  ), spawn "restatus")
+          , (( 0, xF86XK_AudioLowerVolume  ), spawn  "amixer -c 0 -- set Master 1-")
+          , (( 0, xF86XK_AudioRaiseVolume  ), spawn "amixer -c 0 -- set Master 1+")
+          , (( 0, xF86XK_MonBrightnessUp   ), spawn "xbacklight -inc 2")
+          , (( 0, xF86XK_MonBrightnessDown ), spawn "xbacklight -dec 2")
+          , (( mod4Mask, xK_Tab ), toggleWS)
+          , (( mod4Mask,  xK_z  ), warpToWindow (1%2) (1%2)) -- @@ Move pointer to currently focused window
+          , (( mod4Mask,  xK_F4  ), spawn "xrandr --output HDMI1 --off;  xrandr --output HDMI1 --auto")
+          , (( mod4Mask .|. shiftMask, xK_s   ), setSpacing 0)
+          , (( mod4Mask .|. shiftMask, xK_f   ), spawn "pcmanfm")
+          , (( mod4Mask .|. controlMask, xK_s   ), spawn "pcmanfm ~/Pictures/screenshots")
         ]
