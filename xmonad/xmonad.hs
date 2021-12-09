@@ -11,6 +11,7 @@ import XMonad.Actions.Warp
 import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.EwmhDesktops
 import XMonad.Hooks.ManageDocks
+import XMonad.Hooks.ManageHelpers
 import XMonad.Hooks.UrgencyHook
 import XMonad.Layout
 import XMonad.Layout.Grid
@@ -124,23 +125,20 @@ myLayout = do
 --
 myManageHook = composeAll [
       className =? "Alacritty"        --> doShift "1:shell"
-        , className =? "URxvt"            --> doShift "1:shell"
-        , className =? "st-256color"      --> doShift "1:shell"
-        , className =? "Emacs"            --> doShift "1:shell"
-        , className =? "firefox"          --> doShift "2:br1"
-        , className =? "Firefox"          --> doShift "2:br1"
-        , className =? "Chromium"         --> doShift "3:br2"
-        , className =? "Thunderbird"      --> doShift "4:mail/db"
-        , className =? "Signal"           --> doShift "8:signal"
-        , className =? "Slack"            --> doShift "9:slack"
-        , title =? "Dbeaver"              --> doShift "4:mail/db"
-        , className =? "DBeaver"          --> doShift "4:mail/db"
-        , title =? "Quit and close tabs?" --> doIgnore
-        , title =? "Close tabs?"          --> doIgnore
-        , title =? "Open File"            --> doIgnore
-        , title =? "Save As"              --> doIgnore
-        , resource  =? "desktop_window"   --> doIgnore
-                          ]
+    , className =? "URxvt"            --> doShift "1:shell"
+    , className =? "st-256color"      --> doShift "1:shell"
+    , className =? "Emacs"            --> doShift "1:shell"
+    , className =? "firefox"          --> doShift "2:br1"
+    , className =? "Firefox"          --> doShift "2:br1"
+    , className =? "Chromium"         --> doShift "3:br2"
+    , className =? "Thunderbird"      --> doShift "4:mail/db"
+    , className =? "Signal"           --> doShift "8:signal"
+    , className =? "Slack"            --> doShift "9:slack"
+    , title =? "Dbeaver"              --> doShift "4:mail/db"
+    , className =? "DBeaver"          --> doShift "4:mail/db"
+    , isDialog                        --> doIgnore
+  ]
+
 
 ------------------------------------------------------------------------
     -- Event handling
