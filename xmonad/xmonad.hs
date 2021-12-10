@@ -102,7 +102,7 @@ myMouseBindings (XConfig {XMonad.modMask = modm}) = M.fromList $
 -- which denotes layout choice.
 --
 myLayout = do
-    avoidStruts $ smartBorders $ spacing 3 $ tiled ||| full ||| grid
+    avoidStruts $ smartBorders $ smartSpacing 3 $ tiled ||| full ||| grid
         where
             tiled = renamed [Replace "|="] $ ResizableTall 1 (2/100) (1/2) []
             full = renamed [Replace "[]"] Full
