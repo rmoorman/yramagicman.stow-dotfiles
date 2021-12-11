@@ -1,14 +1,7 @@
 #lang racket
 (require yaml)
-(define home (string-join (take (string-split
-                                 (path->string (find-system-path 'home-dir)) "/" ) 2) "/"
-                          #:before-first "/"))
+(require "mkcolor_globals.rkt")
 
-;; (define st-dir (string-join (list home "/Documents/st" ) ""))
-(define config-dir (string-join (list home "/Documents/dots" ) ""))
-(define colors-dir (string-join (list config-dir "/config/colors" ) ""))
-(define alacritty-dir (string-join (list config-dir "/config/alacritty" ) ""))
-(define alacritty-yml (string-join (list alacritty-dir "/alacritty.yml") ""))
 (define alacritty (file->yaml alacritty-yml))
 
 (define bright-colors
@@ -25,11 +18,6 @@
    (hash-ref alacritty "colors")
    "primary"))
 
-(define (get-new-colors selection)
-  (string-split
-   (file->string
-    (string-join
-     (list colors-dir "/" selection ".xresources") "" )) "\n" #:repeat? #t))
 
 (define primary-map (make-hash))
 (hash-set! primary-map "background"   "background")
@@ -74,4 +62,4 @@
   (set-color-values primary-map primary-colors selection)
   (write-yaml alacritty (open-output-file "/tmp/alacritty.yml")))
 
-(provide write-alacritty)
+ (provide write-alacritty)
