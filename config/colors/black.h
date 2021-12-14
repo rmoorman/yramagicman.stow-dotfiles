@@ -1,44 +1,43 @@
 /* Terminal colors (16 first used in escape sequence) */
-const char *colorname[] = {
+static const char *colorname[] = {
 
   /* 8 normal colors */
-  [0] = "#101110", /* black   */
-  [1] = "#1a1b19", /* red     */
-  [2] = "#2b2d2a", /* green   */
-  [3] = "#424541", /* yellow  */
-  [4] = "#60645e", /* blue    */
-  [5] = "#848981", /* magenta */
-  [6] = "#adb4aa", /* cyan    */
-  [7] = "#dde5d9", /* white   */
+  [0] = "#686868", /* black   */
+  [1] = "#787878", /* red     */
+  [2] = "#9c9c9c", /* green   */
+  [3] = "#a7a7a7", /* yellow  */
+  [4] = "#c0c0c0", /* blue    */
+  [5] = "#c6c6c6", /* magenta */
+  [6] = "#dfdfdf", /* cyan    */
+  [7] = "#ededed", /* white   */
 
   /* 8 bright colors */
-  [8]  = "#d09d3f", /* black   */
-  [9]  = "#8adf27", /* red     */
-  [10] = "#f88eac", /* green   */
-  [11] = "#95cdf5", /* yellow  */
-  [12] = "#fbbfce", /* blue    */
-  [13] = "#cf87e9", /* magenta */
-  [14] = "#53c3ff", /* cyan    */
-  [15] = "#81d317", /* white   */
+  [8]  = "#aaaaaa", /* black   */
+  [9]  = "#9d9d9d", /* red     */
+  [10] = "#c6c6c6", /* green   */
+  [11] = "#c1c1c1", /* yellow  */
+  [12] = "#d7d7d7", /* blue    */
+  [13] = "#e2e2e2", /* magenta */
+  [14] = "#eaeaea", /* cyan    */
+  [15] = "#ffffff", /* white   */
 
   /* special colors */
-  [256] = "#090908", /* background */
-  [257] = "#cfd7cb", /* foreground */
+  [256] = "#000000", /* background */
+  [257] = "#d8d8d8", /* foreground */
 };
 
 /*
  * Default colors (colorname index)
  * foreground, background, cursor
  */
-unsigned int defaultfg = 257;
-unsigned int defaultbg = 256;
-unsigned int defaultcs = 257;
-unsigned int defaultrcs = 256;
+static unsigned int defaultfg = 257;
+static unsigned int defaultbg = 256;
+static unsigned int defaultcs = 257;
 
 /*
  * Colors used, when the specific fg == defaultfg. So in reverse mode this
  * will reverse too. Another logic would only make the simple feature too
  * complex.
  */
-unsigned int defaultitalic = 7;
-unsigned int defaultunderline = 7;
+static unsigned int defaultitalic = 7;
+static unsigned int defaultunderline = 7;
