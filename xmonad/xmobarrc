@@ -1,12 +1,12 @@
 Config {
 
    -- appearance
-     font =         "xft:Bitstream Vera Sans Mono:size=9:antialias=true"
-   , bgColor =      "black"
+     font =         "xft:Fira Mono:size=9:antialias=true"
+   , bgColor =      "#000000"
    , fgColor =      "#ababab"
    , position =     Top
-   -- , border =       TopB
-   , borderColor =  "#646464"
+   , border =       BottomB
+   , borderColor =  "#444444"
 
    -- layout
    , sepChar =  "%"   -- delineator between plugin names and straight text
@@ -37,69 +37,12 @@ Config {
    --   see http://projects.haskell.org/xmobar/#system-monitor-plugins.
    , commands =
 
-
         -- weather monitor
-        [ Run Weather "KDAY" [ "--template", "<tempF>°F"
-                             ] 9000
+        [
 
-        , Run Com "statusline" [] "status" 10
-        -- network activity monitor (dynamic interface resolution)
-        , Run DynNetwork     [ "--template" , "<dev>: <tx>kB/s/<rx>kB/s"
-                             , "--Low"      , "1000"       -- units: B/s
-                             , "--High"     , "250000"       -- units: B/s
-                             , "--low"      , "#ababab"
-                             , "--normal"   , "#ababab"
-                             , "--high"     , "#ababab"
-                             ] 300
-
-        -- memory usage monitor
-        , Run Memory         [ "--template" ,"Mem: <usedratio>%"
-                             , "--Low"      , "20"        -- units: %
-                             , "--High"     , "90"        -- units: %
-                             , "--low"      , "#ababab"
-                             , "--normal"   , "#ababab"
-                             , "--high"     , "darkorange"
-                             ] 100
-
-        -- battery monitor
-        , Run Battery        [ "--template" , "Batt: <acstatus>"
-                             , "--Low"      , "10"        -- units: %
-                             , "--High"     , "80"        -- units: %
-                             , "--low"      , "darkorange,"
-                             , "--normal"   , "#ababab"
-                             , "--high"     , "#ababab"
-
-                             , "--" -- battery specific options
-                                       -- discharging status
-                                       , "-o"   , "<left>%"
-                                       -- AC "on" status
-                                       , "-O"   , "<fc=#dAA520>Charging</fc>"
-                                       -- charged status
-                                       , "-i"   , "<fc=#ababab>Charged</fc>"
-                             ] 100
-
-
-             -- time and date indicator
-        --   (%F = y-m-d date, %a = day of week, %T = h:m:s time)
-        , Run Date           "%d/%m/%Y %l:%M:%S %P" "date" 10
-
-
+        Run Com "statusline" [] "status" 10
         -- Xmonad output
        , Run StdinReader
-
-           -- Dropbox Status
-
-        , Run PipeReader "/tmp/.piper" "Maestral"
-
-                        -- cpu activity monitor
-        , Run MultiCpu       [ "--template" , "Cpu: <total0>%|<total1>%"
-                             , "--Low"      , "50"         -- units: %
-                             , "--High"     , "85"         -- units: %
-                             , "--low"      , "#ababab"
-                             , "--normal"   , "#ababab"
-                             , "--high"     , "darkorange"
-                             ] 100
-
 
         ]
    }
