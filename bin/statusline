@@ -14,7 +14,7 @@ function my_bat() {
     message=""
     if [[ $(print -P '%D{ %S }') -eq 30 ]]
     then
-        if [[ $(($bat_level < 20)) -eq 1 && (  $notify_when -eq 0 ) && $status != 'Charging'  ]]
+        if [[ $(($bat_level < 20)) -eq 1 && (  $notify_when -eq 0 ) && $bat_stat != 'Charging'  ]]
         then
             notify-send "Battery low " "$bat_level remaining"
         fi
