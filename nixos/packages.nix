@@ -57,6 +57,7 @@ let
         rsync
         rxvt-unicode
         signal-desktop
+        solaar
         theme-obsidian2
         tmux
         ungoogled-chromium
