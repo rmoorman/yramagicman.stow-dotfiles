@@ -28,6 +28,7 @@ let
         haskellPackages.xmobar
         home-manager
         htop
+        iconpack-obsidian
         isync
         killall
         libnotify
