@@ -136,7 +136,7 @@ myManageHook = composeAll [
     , className =? "Slack"            --> doShift "9:slack"
     , title =? "Dbeaver"              --> doShift "4:mail/db"
     , className =? "DBeaver"          --> doShift "4:mail/db"
-    , isDialog                        --> doIgnore
+    , isDialog                        --> doFloat
   ]
 
 

@@ -5,7 +5,7 @@
           isNormalUser = true;
           home  = "/home/jonathan";
           createHome  = true;
-          extraGroups = [ "wheel" "audio" "video" ]; # Enable ‘sudo’ for the user.
+          extraGroups = [ "wheel" "audio" "video" "kvm" ]; # Enable ‘sudo’ for the user.
           shell = pkgs.zsh;
           initialPassword = "letmein";
       };
