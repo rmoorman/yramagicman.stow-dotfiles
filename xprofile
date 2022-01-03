@@ -57,6 +57,8 @@ fi
 
 . "$HOME/.config/env"
 
+~/.config/screenlayout/mirror.sh
+
 export PATH="/home/jonathan/.local/bin:$PATH"
 # Ensure that obmenu-generator (a pipe menu) is set to the user.
 #sed 's/_user_/'$(whoami)'/' ~/.config/obmenu-generator/schema.pl -i
