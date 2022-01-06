@@ -10,7 +10,7 @@
     nix.gc.dates = "18:30";
     nix.gc.options = "--delete-older-than 14d";
     nix.autoOptimiseStore = true;
-
+    zramSwap.enable = true;
 
     # Use the systemd-boot EFI boot loader.
     boot.loader.systemd-boot.configurationLimit = 15;
