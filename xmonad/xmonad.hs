@@ -235,7 +235,7 @@ main = do
           , ((mod4Mask .|. shiftMask, xK_g), spawn "chromium --incognito")
           , ((mod4Mask .|. shiftMask, xK_e), spawn "emacsclient -nc ~/")
           , ((mod4Mask              , xK_p     ), spawn "passmenu")
-          , ((controlMask,               xK_space     ), spawn "rofi_run")
+          , ((controlMask,               xK_space     ), spawn "dmenu_run")
           , ((mod4Mask .|. controlMask , xK_r  ), spawn "restatus")
           , (( 0, xF86XK_AudioLowerVolume  ), spawn  "amixer -c 0 -- set Master 1-")
           , (( 0, xF86XK_AudioRaiseVolume  ), spawn "amixer -c 0 -- set Master 1+")

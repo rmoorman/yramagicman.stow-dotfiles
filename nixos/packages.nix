@@ -12,6 +12,7 @@ let
         arandr
         bind
         breeze-icons
+        dmenu
         dunst
         dzen2
         ed
@@ -54,7 +55,6 @@ let
         pwgen
         python3Full
         racket
-        rofi
         rsync
         rxvt-unicode
         signal-desktop
