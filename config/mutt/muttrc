@@ -1,19 +1,39 @@
 # {{{ basic settings
+
 #
-set sendmail="msmtp"
-set alias_file = ~/.config/mutt/aliases
-source $alias_file
-set editor = "$EDITOR"
-set delete
-set from = "jonathandavis@gilsons.org"
+#
+# See `man muttrc` for all of these settings, and more.
+#
+#
+
+set sendmail="msmtp" # Use external program msmtp to send mail
+set alias_file = ~/.config/mutt/aliases # the mutt way of doing contacts
+source $alias_file # load said contacts
+set editor = "$EDITOR" # set the default editor to be whatever $EDITOR is
+set delete # always delete
+set from = "jonathandavis@gilsons.org" # default sender address
+
+# see `man muttrc`, but there are at least two standard mail storage types.
+# Maildir is the easiest to manage locally, and it allows you to `grep` your
+# mail if that is something you find useful
 set mbox_type=Maildir
+
+# All of these are specific to how mutt sees your inbox.
+# Each is a directory containing 3 directories cur, new, and tmp.
+# Any one of those directories being missing results in an invalid mailbox.
 set spoolfile = "~/.config/mail/gilsons/Inbox.personal"
 set folder="~/.config/mail/gilsons/Inbox.personal"
 set postponed="~/.config/mail/gilsons/Drafts/"
 set record="~/.config/mail/gilsons/Sent/"
 set trash="~/.config/mail/gilsons/Trash/"
+
+# Again, see the manpage, but i believe this uses the maildir format for trash
 set maildir_trash=yes
+
+# MIME handling for attachments
 set mailcap_path="~/.config/mutt/mailcap"
+
+# I think this expunges messages instead of moving them to trash
 set move = no
 set date_format = "%d/%m/%y"
 set index_format = "%3C [%Z]  %D  %-20.20F  %s"
@@ -31,12 +51,16 @@ set reply_to                         # reply to Reply to: field
 set reverse_name                     # reply as whomever it was to
 set include                          # include message in replies
 set forward_quote                    # include message in forwards
-auto_view text/html # view html automatically
+auto_view text/html # view html automatically, based on mailcap. use w3m
 alternative_order text/plain text/enriched text/html     # save html for last
-# set my_msmtp_pass=`gpg -d ~/.password-store/email.gpg`
-mailboxes ! + `find ~/.config/mail/* -maxdepth 1 -type d | xargs -0`
+
+# directories that are shown as mailboxes in the sidebar.
+# mailboxes + ~/.config/mail/gilsons/Inbox.personal
+mailboxes + ~/.config/mail/bills/Inbox.bills
+mailboxes + ~/.config/mail/work/Inbox.work
+
 #}}}
-# {{{ Index Key Bindings
+# {{{ Index Key Bindings, apply when viewing the message list
 bind index g        noop
 bind index gg       first-entry
 bind index G        last-entry
@@ -45,29 +69,41 @@ bind index R        group-reply
 bind index <tab>    sync-mailbox
 bind index x        sync-mailbox
 bind index <space>  collapse-thread
+
+# Load new mail
 macro index \Cr "!mbsync -a"<enter>
+
+# use mu program to find specific mail
 macro index \Cs "!mu find --format=links --linksdir=$HOME/.config/mail/results "
+
+# ctrl + <key> to jump to mailbox
 macro index \Cw "c ~/.config/mail/work/Inbox.work"<enter>
 macro index \Ci "c ~/.config/mail/gilsons/Inbox.personal"<enter>
 macro index \Cb "c ~/.config/mail/bills/Inbox.bills"<enter>
+
 #set pager_context = 3      # number of context lines to show
 set pager_stop             # don't go to next message automatically
 set tilde                  # show tildes like in vim
 unset markers              # no ugly plus signs
-# pager key bindings
+# pager key bindings, apply when viewing a single message
 bind pager k  previous-line
 bind pager j  next-line
 bind pager g  noop
 bind pager gg top
 bind pager G  bottom
 bind pager R  group-reply
+
 # View attachments properly.
 bind attach <return> view-mailcap
-set mail_check=30           # check for new mail every 60 seconds
+
+# These aren't terribly important given my use of mbsync, but if you use mutt's
+# built in IMAP capability they determine how often mutt looks for new mail.
+set mail_check=30
 set timeout=15
+
+# use exteral url parser to open links. It's a bit finicky.
 macro pager \Cu "|urlview<enter>" "call urlview to open links"
-auto_view text/html
-alternative_order text/plain text/enriched text/html
+# short cut with format hint to tag messages between date range
 macro index \Cd "T  ~d dd/mm/yy-dd/mm/yy"
 #}}}
 # {{{colorscheme
@@ -116,7 +152,7 @@ set sidebar_visible = yes
 
 # How wide should the Sidebar be in screen columns?
 # Note: Some characters, e.g. Chinese, take up two columns each.
-set sidebar_width = 20
+set sidebar_width = 50
 
 # Should the mailbox paths be abbreviated?
 set sidebar_short_path = yes
@@ -134,24 +170,24 @@ set sidebar_indent_string = '  '
 
 # Make the Sidebar only display mailboxes that contain new, or flagged,
 # mail.
-# set sidebar_new_mail_only = yes
+set sidebar_new_mail_only = no
 
 # Any mailboxes that are whitelisted will always be visible, even if the
 # sidebar_new_mail_only option is enabled.
-sidebar_whitelist '/home/jonathan/.config/mail/gilsons/Inbox.personal'
-sidebar_whitelist '/home/jonathan/.config/mail/bills/Inbox.bills'
-sidebar_whitelist '/home/jonathan/.config/mail/work/Inbox.work'
+sidebar_whitelist  ~/.config/mail/gilsons/Inbox.personal
+sidebar_whitelist  ~/.config/mail/bills/Inbox.bills
+sidebar_whitelist  ~/.config/mail/work/Inbox.work
 
 # When searching for mailboxes containing new mail, should the search wrap
 # around when it reaches the end of the list?
-set sidebar_next_new_wrap = no
+set sidebar_next_new_wrap = yes
 
 # The character to use as the divider between the Sidebar and the other Mutt
 # panels.
 # Note: Only the first character of this string is used.
 set sidebar_divider_char = '|'
 
-# Enable extended buffy mode to calculate total, new, and flagged
+# Enable extended buffer mode to calculate total, new, and flagged
 # message counts for each mailbox.
 # set mail_check_stats
 
@@ -164,7 +200,7 @@ set sidebar_format = '%B%?F? [%F]?%* %?N?%N/?%S'
 #       new      - number of new messages
 #       path     - mailbox path
 #       unsorted - do not sort the mailboxes
-set sidebar_sort_method = 'unsorted'
+set sidebar_sort_method = 'count'
 
 # --------------------------------------------------------------------------
 # FUNCTIONS - shown with an example mapping
@@ -206,16 +242,16 @@ bind index,pager B sidebar-toggle-visible
 # # Color of the current, open, mailbox
 # # Note: This is a general Mutt option which colors all selected items.
 # color indicator cyan black
-
+#
 # # Color of the highlighted, but not open, mailbox.
 # color sidebar_highlight black color8
-
+#
 # # Color of the divider separating the Sidebar from Mutt panels
 # color sidebar_divider color8 black
-
+#
 # # Color to give mailboxes containing flagged mail
 # color sidebar_flagged red black
-
+#
 # # Color to give mailboxes containing new mail
 # color sidebar_new green black
 
