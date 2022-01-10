@@ -9,5 +9,4 @@
       ];
       services.flatpak.enable = true;
       xdg.portal.enable = true;
-      services.xserver.desktopManager.mate.enable = true;
   }
