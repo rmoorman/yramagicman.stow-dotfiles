@@ -47,9 +47,9 @@ let
         pass
         pavucontrol
         pcmanfm
-        php74Packages.composer
-        php74Packages.phpcbf
-        php74Packages.phpcs
+        php81Packages.composer
+        php81Packages.phpcbf
+        php81Packages.phpcs
         picom
         pinentry-gtk2
         pwgen
