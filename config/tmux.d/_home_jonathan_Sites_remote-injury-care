@@ -17,6 +17,7 @@ $mux new-window -t "$sessionName" -c "$PWD" -n shell
 
 $mux new-window -t "$sessionName" -c "$PWD" -n server
 $mux split-window -c "$PWD" -h -t "$sessionName":server
+$mux send-keys -t "$sessionName":server.left "nix-shell" Enter
 $mux send-keys -t "$sessionName":server.left "php artisan serve" Enter
 $mux send-keys -t  "$sessionName":server.right "npm run watch" Enter
 
