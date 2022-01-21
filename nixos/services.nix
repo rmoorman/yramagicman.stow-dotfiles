@@ -54,4 +54,5 @@
   services.redshift.enable = true;
   services.geoclue2.enable = true;
   services.fstrim.enable = true;
+  services.atd.enable = true;
 }
