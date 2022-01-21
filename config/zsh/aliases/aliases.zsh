@@ -65,15 +65,15 @@ fi
 #}}}
 #{{{ pretty ls
 # List all files colorized in long format
-alias l="ls -Fl ${colorflag}"
-alias ls-a="ls -Fa ${colorflag}"
+alias l="ls -Flh ${colorflag}"
+alias ls-a="ls -Fah ${colorflag}"
 # List all files colorized in long format, including dot files
-alias la="ls -Fla ${colorflag}"
-alias ll="ls -Fl ${colorflag}"
+alias la="ls -Flah ${colorflag}"
+alias ll="ls -Flh ${colorflag}"
 # List only directories
-alias lsd='ls -Fl ${colorflag} | grep "^d"'
+alias lsd='ls -Flh ${colorflag} | grep "^d"'
 # Always use color output for `ls`
-alias ls="command ls -F ${colorflag}"
+alias ls="command ls -Fh ${colorflag}"
 #}}}
 #}}}
 #{{{ volume control
