@@ -8,17 +8,9 @@ function my_date () {
 }
 
 function my_bat() {
-    notify_when=$(($(print -P '%D{ %M }') % 1 ))
     bat_level=$( < $1/capacity )
     bat_stat=$( < $1/status )
     message=""
-    if [[ $(print -P '%D{ %S }') -eq 30 ]]
-    then
-        if [[ $(($bat_level < 20)) -eq 1 && (  $notify_when -eq 0 ) && $bat_stat != 'Charging'  ]]
-        then
-            notify-send "Battery low " "$bat_level remaining"
-        fi
-    fi
     if [[ "$bat_stat" == "Discharging" ]]
     then
         indicator="\xE2\x86\x93"
