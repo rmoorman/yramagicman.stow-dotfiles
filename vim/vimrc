@@ -94,7 +94,7 @@ let g:AutoOmniComplete_complete_map = "\<c-x>\<c-o>"
 "}}}
 "{{{ colors
 set background=dark
-colorscheme doom
+colorscheme monochrome
 "}}}
 "{{{ autocommands for loading extensions
 augroup extensions

@@ -3,10 +3,11 @@ syntax reset
 set background=dark
 let colors_name = "monochrome"
 
+"" comment
 hi Boolean ctermfg=15
 hi Character ctermfg=15
 hi ColorColumn ctermbg=233
-hi Comment ctermfg=8
+hi Comment ctermfg=7
 hi Conceal ctermfg=8 ctermbg=0
 hi Conditional ctermfg=15
 hi Constant ctermfg=15
