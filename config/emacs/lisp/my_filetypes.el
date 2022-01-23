@@ -39,5 +39,8 @@
 (use-package nroff-mode
   :mode "\\.mom\\'")
 
+(use-package rust-mode
+  :mode "\\.rs\\'")
+
 (provide 'my_filetypes.el)
 ;; my_filetypes.el ends here
