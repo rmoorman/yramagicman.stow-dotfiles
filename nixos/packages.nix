@@ -35,6 +35,7 @@ let
             libnotify
             lxappearance
             maim
+            man-pages
             mariadb
             mpv
             msmtp
