@@ -52,10 +52,10 @@ hi SpellCap ctermfg=7 ctermbg=23
 hi SpellLocal ctermbg=25
 hi SpellRare ctermbg=130
 hi Statement ctermfg=7
-hi StatusLine ctermfg=7 ctermbg=0 cterm=bold
-hi StatusLineNC ctermbg=7 ctermfg=0
-hi StatusLineTerm cterm=bold ctermfg=7 ctermbg=0
-hi StatusLineTermNC ctermfg=7 ctermbg=0 cterm=none
+hi StatusLine ctermfg=7 ctermbg=8 cterm=bold
+hi StatusLineNC ctermbg=0 ctermfg=8
+hi link StatusLineTerm StatusLine
+hi link StatusLineTermNC  StatusLineNC
 hi String ctermfg=7
 hi TabLine ctermfg=7 ctermbg=0
 hi TabLineFill ctermfg=7 ctermbg=0
