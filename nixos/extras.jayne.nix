@@ -4,7 +4,7 @@
 
     services.mysql.ensureDatabases = [
         "ric"
-        "testing_ric"
+        "testing"
     ];
 
     services.mysql.ensureUsers = [
@@ -12,7 +12,7 @@
             name = "ric";
             ensurePermissions = {
                 "ric.*" = "ALL PRIVILEGES";
-                "testing_ric.*" = "ALL PRIVILEGES";
+                "testing.*" = "ALL PRIVILEGES";
             };
         }
     ];
