@@ -40,6 +40,7 @@
 
 (setq use-package-always-ensure t)
 (add-to-list 'load-path (concat user-emacs-directory "lisp"))
+(add-to-list 'custom-theme-load-path (concat user-emacs-directory "lisp"))
 (setq custom-file (concat user-emacs-directory "custom.el"))
 (load custom-file)
 
