@@ -1,9 +1,0 @@
-[Unit]
-Description=Notify on at job low
-
-[Service]
-ExecStart=/home/jonathan/.local/bin/at_notify.sh
-
-
-[Install]
-WantedBy=default.target

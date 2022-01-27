@@ -1,0 +1,10 @@
+[Unit]
+Description=Reminder job, triggers every minute
+
+[Timer]
+OnBootSec=2m
+OnUnitActiveSec=30s
+Unit=remind.service
+
+[Install]
+WantedBy=timers.target

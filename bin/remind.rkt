@@ -118,6 +118,14 @@
                 [else #f]))
             parsed-reminders))
 
+(define (m-notify-me-on-time-stdout)
+  (for-each (lambda (n)
+              (cond
+                [(check-time (parse-date (reminder-time n ) ))
+                 (displayln (reminder-content n))]
+                [else #f]))
+            parsed-reminders))
+
 (define (m-notify-me-ahead-of-time)
   (for-each (lambda (r)
               (for-each (lambda (n)
@@ -129,24 +137,50 @@
                         (interval-times r)))
             parsed-reminders))
 
+(define (m-notify-me-ahead-of-time-stdout)
+  (for-each (lambda (r)
+              (for-each (lambda (n)
+                          (cond
+                            [(check-time n)
+                             ((lambda ()
+                                (displayln (reminder-content r))))]
+                            [else #f]))
+                        (interval-times r)))
+            parsed-reminders))
+
 (define (m-remind)
   (m-notify-me-on-time)
   (m-notify-me-ahead-of-time))
 
+(define (m-remind-stdout)
+  (m-notify-me-on-time-stdout)
+  (m-notify-me-ahead-of-time-stdout))
+
 (define (m-get-args)
   (vector->list (current-command-line-arguments)))
+
+(define (m-send-reminder reminder-list)
+  ;; TODO Parse out reminder times to figure out which one is
+  ;; actually next, instead of just displaying the last reminder
+  ;; in the file
+  (reminder-content (parse-reminder (first (reverse reminder-list)))))
+
 
 (define help-strings
   (list
     "Basic usage: remind dd/mm/yyyy int,int... some text"
     ""
     "Flags:"
-    "remind: Shows reminder for current minute, intended to be used as cron job"
+    "remind: Shows reminder for current minute on stdout, intended to be used as cron job"
     "or systemd timer"
+    "remind --notify: use notify-send to display reminders"
+    "remind -n, --next use notify-send to display reminders"
     "remind -h, --help: Show this message."
     "remind -l, --list: List reminders."
     "remind -n, --next: Display notifcation with next reminder, regardless of schedule."
     "remind -e, --edit: Open reminder list in $EDITOR."
+    "remind -t, --test: Test notifications. Sends notification on every call to remind"
+    "remind -s, --stdout Test notifications on stdout. Sends notification on every call to remind"
     ""
     "Further Instruction:"
     "Add a reminder with `remind dd/mm/yyyy int,int some text`."
@@ -155,27 +189,37 @@
     ""
     (string-append "Reminders are stored in " remind-file)))
 
+(define (call-and-exit proc)
+  (proc) (exit))
+
 (define (dispatch-args args)
   (for-each (lambda (arg)
-              (cond
-                [(or (equal? arg "-h") (equal? arg "--help"))
-                 (map displayln help-strings)]
-                [(or (equal? arg "-l") (equal? arg "--list"))
-                 (map displayln remind-list)]
-                [(or (equal? arg "-n") (equal? arg "--next"))
-                 ;; TODO Parse out reminder times to figure out which one is
-                 ;; actually next, instead of just displaying the last reminder
-                 ;; in the file
-                 (system (string-append "notify-send '"
-                                        (reminder-content (parse-reminder
-                                                            (first (reverse remind-list)))) "'"))]
-
-                [(or (equal? arg "-e") (equal? arg "--edit"))
-                 (system  (string-append "$EDITOR " remind-file))]
-                [(not (equal? 0 (length (m-get-args))))
-                  ((lambda ()
-                     (write-reminders
-                       (flatten (list remind-list (list (string-join (m-get-args))))))))]
-                [else (m-remind)])) args ))
+         (cond
+           [(or (equal? arg "-h") (equal? arg "--help"))
+            (call-and-exit (lambda ()
+                             (map displayln help-strings)))]
+           [(or (equal? arg "-l") (equal? arg "--list"))
+            (call-and-exit (lambda ()
+                             (map displayln remind-list)))]
+           [(or (equal? arg "-n") (equal? arg "--next"))
+            (call-and-exit (lambda ()
+                             (system (string-append "notify-send '" (m-send-reminder remind-list) "'"))))]
+           [(or (equal? arg "-e") (equal? arg "--edit"))
+            (call-and-exit (lambda ()
+                             (system (string-append "$EDITOR " remind-file))))]
+           [(or (equal? arg "-t") (equal? arg "--test"))
+            (call-and-exit (lambda () (system  "notify-send 'test notification'")))]
+           [(or (equal? arg "-s") (equal? arg "--stdout"))
+            (call-and-exit (lambda () (displayln "test notification")))]
+           [(or (equal? arg "--notify"))
+            (call-and-exit (lambda ()
+                             (m-remind)))]
+           [(not (equal? 0 (length (m-get-args))))
+            (call-and-exit (lambda ()
+                             (write-reminders
+                               (flatten (list remind-list (list (string-join (m-get-args))))))))]
+           [else  (call-and-exit (displayln "arg parsing failed") )]
+           )) args )
+         (call-and-exit (lambda () (m-remind))))
 
 (dispatch-args (m-get-args))
