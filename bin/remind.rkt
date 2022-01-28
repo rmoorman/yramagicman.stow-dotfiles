@@ -7,6 +7,8 @@
                                   (path->string (find-system-path 'home-dir)) "/" ) 2) "/"
                           #:before-first "/"))
 
+(define exec-notify "/run/current-system/sw/bin/notify-send")
+
 (define remind-file (string-join (list home "/.local/share/remind/reminders.txt" ) ""))
 
 
@@ -114,7 +116,7 @@
   (for-each (lambda (n)
               (cond
                 [(check-time (parse-date (reminder-time n ) ))
-                 (system (string-append "notify-send '" (reminder-content n) "'"))]
+                 (system (string-append exec-notify " '" (reminder-content n) "'"))]
                 [else #f]))
             parsed-reminders))
 
@@ -132,7 +134,7 @@
                           (cond
                             [(check-time n)
                              ((lambda ()
-                                (system (string-append "notify-send '" (reminder-content r) "'"))))]
+                                (system (string-append exec-notify " '" (reminder-content r) "'"))))]
                             [else #f]))
                         (interval-times r)))
             parsed-reminders))
@@ -203,12 +205,12 @@
                              (map displayln remind-list)))]
            [(or (equal? arg "-n") (equal? arg "--next"))
             (call-and-exit (lambda ()
-                             (system (string-append "notify-send '" (m-send-reminder remind-list) "'"))))]
+                             (system (string-append exec-notify " '" (m-send-reminder remind-list) "'"))))]
            [(or (equal? arg "-e") (equal? arg "--edit"))
             (call-and-exit (lambda ()
                              (system (string-append "$EDITOR " remind-file))))]
            [(or (equal? arg "-t") (equal? arg "--test"))
-            (call-and-exit (lambda () (system  "notify-send 'test notification'")))]
+            (call-and-exit (lambda () (system  exec-notify " 'test notification'")))]
            [(or (equal? arg "-s") (equal? arg "--stdout"))
             (call-and-exit (lambda () (displayln "test notification")))]
            [(or (equal? arg "--notify"))

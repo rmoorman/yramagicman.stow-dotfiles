@@ -60,7 +60,6 @@ if executable('fzf')
     packadd! fzf
 endif
 
-
 " if has('nvim')
 "     PlugOpt 'williamboman/nvim-lsp-installer'
 "     PlugOpt 'neovim/nvim-lspconfig'
@@ -89,6 +88,8 @@ packadd! vim-polyglot
 if ! has('nvim')
     packadd! editexisting
 endif
+
+let g:completion_delay = 250
 let g:AutoOmniComplete_tab = 1
 let g:AutoOmniComplete_complete_map = "\<c-x>\<c-o>"
 "}}}

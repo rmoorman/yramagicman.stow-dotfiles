@@ -3,4 +3,4 @@ Description=Reminder notifications
 
 [Service]
 Type=oneshot
-ExecStart=/home/jonathan/.local/bin/remind.sh
+ExecStart=/home/jonathan/.local/bin/remind
