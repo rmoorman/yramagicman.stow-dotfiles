@@ -95,6 +95,17 @@ bindir() {
     fi
 }
 
+systemd() {
+    if test ! -d "$HOME/.local/systemd"
+    then
+        ln -sfv "$dotdir/systemd" "$HOME/.local/"
+    else
+        printf 'skipped %s\r\n' "systemd"
+        printf '\nMisc files Not Installed: ' >> "$logfile"
+        printf "%s\n" "$dotdir/.local/systemd" >> "$logfile"
+    fi
+}
+
 mkrepodir() {
     if test ! -d "$reposdir"
     then
@@ -269,6 +280,7 @@ while test "$1"; do
             shift;;
         -b)
             bindir
+            systemd
             shift;;
         -r)
             mkrepodir

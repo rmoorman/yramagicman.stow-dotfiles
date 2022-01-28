@@ -2,7 +2,7 @@
 Description=Notify on battery low
 
 [Service]
-ExecStart=/home/jonathan/.local/bin/bat_notify.sh
+ExecStart=/home/jonathan/.local/systemd/bat_notify.sh
 
 
 [Install]
