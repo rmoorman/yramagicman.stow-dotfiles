@@ -94,7 +94,7 @@ are included.")
    `(message-header-to ((,class (:foreground "#adadad"))))
    `(message-cited-text ((,class (:foreground "#adadad"))))
    `(message-separator ((,class (:foreground "#adadad" :weight bold))))
-
+   '(sh-heredoc ((t (:foreground "#adadad" :weight normal))))
    '(racket-keyword-argument-face ((t (:foreground "#adadad"))))
    '(racket-selfeval-face ((t (:foreground "#adadad"))))))
 
