@@ -1,4 +1,3 @@
-part="z"
 reposdir="$HOME/Documents"
 if test -z "$1"; then
     while read line; do
@@ -20,12 +19,12 @@ EOF
 fi
 
 if [ $TEST ]; then
-    sudo(){ echo sudo $@; }
+    sudo() { echo sudo $@; }
     ln() { echo ln $@; }
-    cp(){ echo ln $@; }
-    cd(){ echo cd $@; }
-    git(){ echo git $@; }
-    make(){ echo make $@; }
+    cp() { echo ln $@; }
+    cd() { echo cd $@; }
+    git() { echo git $@; }
+    make() { echo make $@; }
     chsh() { echo chsh $@; }
     crontab() { echo crontab $@; }
 fi
@@ -47,8 +46,8 @@ while test "$1"; do
                 ln -sfv "$PWD/$d" "$HOME/$d"
             done
         } ;;
-        -b)  ln -sfv "$PWD/bin" "$HOME/.local/bin" ;;
-        -s)  ln -sfv "$PWD/systemd" "$HOME/.local/systemd" ;;
+        -b) ln -sfv "$PWD/bin" "$HOME/.local/bin" ;;
+        -s) ln -sfv "$PWD/systemd" "$HOME/.local/systemd" ;;
         -t) {
             if [ "$(uname)" != "Darwin" ]
             then
