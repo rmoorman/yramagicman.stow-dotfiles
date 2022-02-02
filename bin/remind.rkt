@@ -103,14 +103,19 @@
 (define (get-hour d)
   (date-hour d))
 
+(define (get-day d)
+  (date-day d))
+
 (define (check-time t)
   (if (equal? 0 t)
     #f
     (let ([current-minute (get-minute ( m-now ))]
           [current-hour (get-hour ( m-now ))]
+          [current-day (get-day ( m-now ))]
           [date-struct t])
       (and (equal? current-minute (get-minute date-struct))
-           (= current-hour (get-hour date-struct))))))
+           (equal? current-hour (get-hour date-struct))
+           (equal? current-day (get-day date-struct))))))
 
 (define (m-notify-me-on-time)
   (for-each (lambda (n)
