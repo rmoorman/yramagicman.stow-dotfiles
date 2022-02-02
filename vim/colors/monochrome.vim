@@ -13,7 +13,7 @@ hi Conditional ctermfg=7
 hi Constant ctermfg=7
 hi CursorColumn ctermbg=242
 hi Cursor ctermfg=9 ctermbg=1
-hi CursorLine cterm=none ctermbg=none
+hi CursorLine ctermbg=234 ctermfg=7 cterm=none
 hi CursorLineNr ctermfg=7 cterm=none
 hi DiffAdd ctermfg=7 ctermbg=234
 hi DiffChange ctermbg=234 ctermfg=7
