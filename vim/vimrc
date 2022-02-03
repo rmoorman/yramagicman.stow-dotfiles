@@ -89,7 +89,7 @@ if ! has('nvim')
     packadd! editexisting
 endif
 
-let g:completion_delay = 250
+let g:completion_delay = 150
 let g:AutoOmniComplete_tab = 1
 let g:AutoOmniComplete_complete_map = "\<c-x>\<c-o>"
 "}}}

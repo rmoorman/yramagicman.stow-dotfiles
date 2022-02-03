@@ -96,7 +96,10 @@ are included.")
    `(message-separator ((,class (:foreground "#adadad" :weight bold))))
    '(sh-heredoc ((t (:foreground "#adadad" :weight normal))))
    '(racket-keyword-argument-face ((t (:foreground "#adadad"))))
-   '(racket-selfeval-face ((t (:foreground "#adadad"))))))
+   '(racket-selfeval-face ((t (:foreground "#adadad"))))
+   '(hl-line ((t (:inherit default :extend nil :background "#1c1c1c" :foreground "  #adadad" :underline nil))))
+   '(line-number ((t (:foreground "#555555"))))
+   ))
 
 (custom-theme-set-variables
  'monochrome

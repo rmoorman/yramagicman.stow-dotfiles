@@ -14,7 +14,7 @@ hi Constant ctermfg=7
 hi CursorColumn ctermbg=242
 hi Cursor ctermfg=9 ctermbg=1
 hi CursorLine ctermbg=234 ctermfg=7 cterm=none
-hi CursorLineNr ctermfg=7 cterm=none
+hi CursorLineNr ctermfg=8 cterm=none
 hi DiffAdd ctermfg=7 ctermbg=234
 hi DiffChange ctermbg=234 ctermfg=7
 hi DiffDelete ctermbg=16 ctermfg=7

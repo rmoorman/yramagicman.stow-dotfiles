@@ -34,8 +34,9 @@
 (use-package disable-mouse)
 ;; (use-package vterm)
 (show-paren-mode 1)
-
-; (global-hl-line-mode t)
+(setq display-line-numbers-type 'relative)
+(global-display-line-numbers-mode)
+(global-hl-line-mode t)
 
 (use-package base16-theme)
 

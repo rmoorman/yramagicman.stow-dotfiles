@@ -8,12 +8,14 @@
   :hook (lsp-mode . company-mode)
   :bind (:map company-active-map
               ("C-n" . company-select-next)
+              ("C-p" . company-select-previous)
               ("<tab>" . company-complete-selection))
   (:map lsp-mode-map
               ("C-n" . company-select-next)
+              ("C-p" . company-select-previous)
               ("<tab>" . company-complete-selection))
   :custom
-  (company-minimum-prefix-length 1)
+  (company-minimum-prefix-length 3)
   (company-idle-delay 0.0))
 
 ;; (use-package company-box
