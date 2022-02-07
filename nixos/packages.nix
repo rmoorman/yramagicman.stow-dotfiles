@@ -56,7 +56,7 @@
         solaar
         theme-obsidian2
         tmux
-        ungoogled-chromium
+        # ungoogled-chromium
         universal-ctags
         unzip
         urlview

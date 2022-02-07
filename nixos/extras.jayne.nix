@@ -18,5 +18,14 @@
         }
     ];
 
-    virtualisation.virtualbox.host.enable = true;
+    environment.systemPackages = with pkgs; [
+        dbeaver
+        du-dust
+        powertop
+        slack
+        sqlite
+        thunderbird
+        zoom
+    ];
+
 }
