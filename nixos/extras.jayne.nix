@@ -19,13 +19,17 @@
     ];
 
     environment.systemPackages = with pkgs; [
-        dbeaver
         du-dust
         powertop
         slack
         sqlite
         thunderbird
-        zoom
     ];
 
+
+    services.flatpak.enable = true;
+    xdg.portal.enable = true;
+    xdg.portal.extraPortals = [
+        pkgs.xdg-desktop-portal-gnome
+    ];
 }
