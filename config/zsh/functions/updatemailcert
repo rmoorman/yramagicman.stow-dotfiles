@@ -1,0 +1,5 @@
+#!/usr/bin/env zsh
+function updatemailcert() {
+openssl s_client -connect vps.gilsons.org:995 -showcerts 2>&1 < /dev/null | sed -ne '/-BEGIN CERTIFICATE-/,/-END CERTIFICATE-/p' | sed -ne '1,/-END CERTIFICATE-/p' > ~/.config/certs/gilsons.org.pem
+
+}
