@@ -23,7 +23,7 @@
         powertop
         slack
         sqlite
-        thunderbird
+        # thunderbird
     ];
 
 
