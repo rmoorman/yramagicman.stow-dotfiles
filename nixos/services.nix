@@ -26,7 +26,16 @@
 
       # Enable CUPS to print documents.
       printing.enable = true;
-      avahi.enable = true;
+      avahi = {
+          enable = true;
+          publish = {
+              enable = true;
+              workstation = true;
+              userServices = true;
+          };
+          openFirewall = true;
+          nssmdns = true;
+      };
 
       # hardware.pulseaudio.enable = true;
       pipewire.enable = true;

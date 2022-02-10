@@ -260,7 +260,7 @@ if [[ -z "$TMUX" && -z "$INSIDE_EMACS" && -z "$VIM" && -z "$SSH_TTY" ]]; then
 fi
 
 if [[ -n $IN_NIX_SHELL ]]; then
-    RPROMPT=$NIX_SHELL_PACKAGES
+    RPROMPT='nix-shell '$NIX_SHELL_PACKAGES
 fi
 
 # Temporary Files
