@@ -41,6 +41,7 @@
         mu
         mutt
         neovim
+        nodejs
         openssl
         pass
         pavucontrol
@@ -61,7 +62,7 @@
         unzip
         urlview
         vimHugeX
-        virt-manager
+        # virt-manager
         vlc
         w3m
         wget
