@@ -9,6 +9,7 @@
         arandr
         bind
         breeze-icons
+        btop
         dmenu
         dunst
         dzen2
