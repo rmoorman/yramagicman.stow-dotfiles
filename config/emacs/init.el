@@ -65,7 +65,7 @@
 
 (load "my_functions.el")
 (load "my_modeline.el")
-(load "my_mu4e.el")
+;; (load "my_mu4e.el")
 (load "my_evil.el")
 (load "my_keys.el")
 (load "my_completion.el")

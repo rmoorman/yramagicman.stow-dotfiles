@@ -76,7 +76,7 @@ PlugOpt 'vim-scripts/vim-indent-object'
 PlugOpt 'sheerun/vim-polyglot'
 packadd! matchit
 " packadd! ale
-packadd! auto-omnicomplete
+" packadd! auto-omnicomplete
 packadd! vim-visual-star-search
 packadd! editorconfig-vim
 packadd! vim-commentary
@@ -89,9 +89,9 @@ if ! has('nvim')
     packadd! editexisting
 endif
 
-let g:completion_delay = 150
-let g:AutoOmniComplete_tab = 1
-let g:AutoOmniComplete_complete_map = "\<c-x>\<c-o>"
+" let g:completion_delay = 150
+" let g:AutoOmniComplete_tab = 1
+" let g:AutoOmniComplete_complete_map = "\<c-x>\<c-o>"
 "}}}
 "{{{ colors
 set background=dark
