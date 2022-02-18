@@ -215,7 +215,7 @@
             (call-and-exit (lambda ()
                              (system (string-append "$EDITOR " remind-file))))]
            [(or (equal? arg "-t") (equal? arg "--test"))
-            (call-and-exit (lambda () (system  exec-notify " 'test notification'")))]
+            (call-and-exit (lambda () (system  (string-append exec-notify " 'test notification'" ))))]
            [(or (equal? arg "-s") (equal? arg "--stdout"))
             (call-and-exit (lambda () (displayln "test notification")))]
            [(or (equal? arg "--notify"))
