@@ -58,12 +58,12 @@
         solaar
         theme-obsidian2
         tmux
-        ungoogled-chromium
+        # ungoogled-chromium
         universal-ctags
         unzip
         urlview
         vimHugeX
-        # virt-manager
+        virt-manager
         vlc
         w3m
         wget
