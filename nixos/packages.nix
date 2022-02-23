@@ -10,6 +10,7 @@
         bind
         breeze-icons
         btop
+        cmus
         dmenu
         dunst
         dzen2
@@ -42,6 +43,7 @@
         mu
         mutt
         neovim
+        nfs-utils
         nodejs
         openssl
         pass
@@ -57,7 +59,6 @@
         signal-desktop
         solaar
         theme-obsidian2
-        nfs-utils
         tmux
         ungoogled-chromium
         universal-ctags
