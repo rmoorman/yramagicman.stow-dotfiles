@@ -36,7 +36,7 @@ while test "$1"; do
             do
                 case $f in
                     *.conf|*.txt|*.sh|*.md|*.h) ;;
-                    *) [ -f $f ] &&  ln -sfv "$PWD/$f" "$HOME/$f" ;;
+                    *) [ -f $f ] &&  ln -sfv "$PWD/$f" "$HOME/.$f" ;;
                 esac
             done
         } ;;
