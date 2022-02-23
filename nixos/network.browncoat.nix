@@ -1,3 +1,4 @@
+{ config, pkgs, ... }:
 {
     networking.hostName = "browncoat"; # Define your hostname.
     networking.wireless.enable = false;  # Enables wireless support via wpa_supplicant.
@@ -19,4 +20,16 @@
     #         prefixLength = 24;
     #     }
     # ];
+
+    fileSystems."/srv/music" = {
+        device = "/home/jonathan/Music";
+        options = ["bind"];
+    };
+
+    services.nfs.server.enable=true;
+    services.nfs.server.exports = ''
+        /srv 192.168.1.0/24(rw,sync,crossmnt,fsid=0)
+        /srv/music 192.168.1.0/24(rw,sync)
+    '';
+    networking.firewall.allowedTCPPorts = [2049];
 }
