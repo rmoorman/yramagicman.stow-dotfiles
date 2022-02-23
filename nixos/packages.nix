@@ -57,6 +57,7 @@
         signal-desktop
         solaar
         theme-obsidian2
+        nfs-utils
         tmux
         ungoogled-chromium
         universal-ctags
