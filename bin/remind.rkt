@@ -175,7 +175,7 @@
 
 (define help-strings
   (list
-    "Basic usage: remind dd/mm/yyyy int,int... some text"
+    "Basic usage: remind dd/mm/yyy HH:mm int,int... some text"
     ""
     "Flags:"
     "remind: Shows reminder for current minute on stdout, intended to be used as cron job"
@@ -190,8 +190,10 @@
     "remind -s, --stdout Test notifications on stdout. Sends notification on every call to remind"
     ""
     "Further Instruction:"
-    "Add a reminder with `remind dd/mm/yyyy int,int some text`."
-    "Where `int,int` is a comma separated list of any length of minutes prior to"
+    "Add a reminder with `remind dd/mm/yyyy HH:mm int,int some text`."
+    "Where dd/mm/yyyy is the current date in day/month/year format, zero padded,"
+    "HH:mm is the time of the event in 24 hour time,"
+    "and `int,int` is a comma separated list of any length of minutes prior to"
     "an event at which you want to be notified"
     ""
     (string-append "Reminders are stored in " remind-file)))
