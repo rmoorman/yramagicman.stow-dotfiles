@@ -141,3 +141,4 @@ alias dupbd='docker-compose up -d --build'
 alias dud='docker-compose down'
 #}}}
 alias musicmount="sudo mount -t nfs  browncoat:/music /home/jonathan/Music"
+alias vidmount="sudo mount -t nfs  browncoat:/video /home/jonathan/Videos"
