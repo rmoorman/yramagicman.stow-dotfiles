@@ -142,3 +142,4 @@ alias dud='docker-compose down'
 #}}}
 alias musicmount="sudo mount -t nfs  browncoat:/music /home/jonathan/Music"
 alias vidmount="sudo mount -t nfs  browncoat:/video /home/jonathan/Videos"
+alias storemount="sudo mount -t nfs  browncoat:/storage /home/jonathan/Storage"
