@@ -17,10 +17,10 @@ if test -z "$1"; then
 -z) ZSH
 EOF
 fi
-
 if [ $TEST ]; then
     sudo() { echo sudo $@; }
     ln() { echo ln $@; }
+    rm() { echo rm $@; }
     cp() { echo ln $@; }
     cd() { echo cd $@; }
     git() { echo git $@; }
@@ -43,7 +43,8 @@ while test "$1"; do
         -c) {
             for d in config/*;
             do
-                ln -sfv "$PWD/$d" "$HOME/$d"
+                rm -v "$HOME/.$d"
+                ln -sfv "$PWD/$d" "$HOME/.$d"
             done
         } ;;
         -b) ln -sfv "$PWD/bin" "$HOME/.local/bin" ;;
