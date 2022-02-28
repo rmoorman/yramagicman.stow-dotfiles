@@ -30,7 +30,7 @@ fi
 
 # Browser
 [[ "$OSTYPE" == darwin* ]] && export BROWSER='open' || export BROWSER=firefox
-export WWW_HOME="$XDG_CONFIG_HOME/www_data"
+export WWW_HOME="$XDG_DATA_HOME/www_data"
 
 # Editors
 export EDITOR='vim'
