@@ -43,8 +43,7 @@ while test "$1"; do
         -c) {
             for d in config/*;
             do
-                rm -v "$HOME/.$d"
-                ln -sfv "$PWD/$d" "$HOME/.$d"
+                ln -sfv "$PWD/$d" "$HOME/.config/"
             done
         } ;;
         -b) ln -sfv "$PWD/bin" "$HOME/.local/bin" ;;
