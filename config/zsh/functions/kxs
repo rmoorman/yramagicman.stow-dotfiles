@@ -1,0 +1,8 @@
+#!/usr/bin/env zsh
+
+function kxs() {
+    pgrep xscreensaver | while read pid; do
+        echo $pid
+        kill $pid
+    done
+}
