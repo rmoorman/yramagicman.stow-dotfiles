@@ -5,7 +5,7 @@
 { config, pkgs, ... }:
 {
     system.autoUpgrade.enable = true;
-    system.autoUpgrade.dates = "18:00";
+    system.autoUpgrade.dates = "04:00";
     zramSwap.enable = true;
 
     # Use the systemd-boot EFI boot loader.
@@ -37,7 +37,7 @@
         '';
 
         gc.automatic = true;
-        gc.dates = "18:30";
+        gc.dates = "04:30";
         gc.options = "--delete-older-than 14d";
         settings.auto-optimise-store = true;
     };

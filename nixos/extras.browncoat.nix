@@ -1,5 +1,8 @@
 { config, pkgs, ... }:
 {
+
+    system.autoUpgrade.allowReboot = true;
+
     services.xserver.displayManager.gdm.enable = true;
     services.xserver.displayManager.gdm.autoSuspend = false;
     # Mount secondary drive
