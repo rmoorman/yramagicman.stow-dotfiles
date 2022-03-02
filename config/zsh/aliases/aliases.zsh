@@ -115,6 +115,7 @@ if [[ $(command -v yay) ]]; then
 fi
 #}}}
 #{{{ utility commands
+alias sl="nix-shell -p sl --run sl"
 alias q="exit"
 alias mypw="pwgen -c -n -s -y 16 -1"
 alias ndate="date \"+%d-%m-%y\""
@@ -129,9 +130,6 @@ alias gca="git commit --all --verbose"
 alias gco="git checkout"
 alias gs="git status --short"
 #}}}
-# {{{ Global aliases
-alias -g bg="& disown"
-# }}}
 # {{{ docker
 alias dc='docker-compose'
 alias drp='docker-compose exec php-fpm'
@@ -149,4 +147,3 @@ alias dud='docker-compose down'
 alias bdu="btrfs filesystem du"
 alias bdf="btrfs filesystem df"
 #}}}
-alias sl="nix-shell -p sl --run sl"
