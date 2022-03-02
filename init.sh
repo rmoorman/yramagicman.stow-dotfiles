@@ -119,7 +119,6 @@ while test "$1"; do
             sudo ln -s "$PWD"/nixos/services.nix /etc/nixos/services.nix
             sudo ln -s "$PWD"/nixos/users.nix /etc/nixos/users.nix
             sudo ln -s "$PWD"/nixos/extras."$(hostname)".nix /etc/nixos/extras.nix
-            sudo ln -s "$PWD"/nixos/footer.nix /etc/nixos/footer.nix
             sudo nixos-rebuild boot
         } ;;
         -j) {
