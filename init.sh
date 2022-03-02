@@ -103,7 +103,7 @@ while test "$1"; do
         } ;;
         -x) ln -sfv "$PWD/xmonad" "$HOME/.xmonad" ;;
         -v) {
-            ln -sfv "$PWD/vim" "$HOME/.local/vim"
+            ln -sfv "$PWD/vim" "$HOME/.vim"
             ln -sfv "$PWD/vim" "$HOME/.config/nvim"
         } ;;
         -n) {
