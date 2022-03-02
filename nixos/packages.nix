@@ -3,7 +3,7 @@
     nixpkgs.config.allowUnfree = true;
     programs.zsh.enable = true;
     environment.systemPackages = with pkgs; [
-        ag
+        silver-searcher
         alacritty
         apacheHttpd
         arandr
