@@ -24,12 +24,6 @@
         keyMap = "us";
     };
 
-    swapDevices = [
-        {
-            device = "/swapfile";
-            size = 4096;
-        }
-    ];
     nix = {
         package = pkgs.nixUnstable;
         extraOptions = ''

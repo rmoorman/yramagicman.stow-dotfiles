@@ -112,13 +112,13 @@ while test "$1"; do
             sudo cp -v /etc/nixos/configuration.nix /etc/nixos/configuration.nix.bak
             sudo cp -v "$PWD"/nixos/configuration.nix /etc/nixos/configuration.nix
             echo "generating configuration.nix as /tmp/configuration.nix"
-            sudo ln -s "$PWD"/nixos/header.nix /etc/nixos/header.nix
-            sudo ln -s "$PWD"/nixos/network."$(hostname)".nix /etc/nixos/network.nix
-            sudo ln -s "$PWD"/nixos/packages.nix /etc/nixos/packages.nix
-            sudo ln -s "$PWD"/nixos/fonts.nix /etc/nixos/fonts.nix
-            sudo ln -s "$PWD"/nixos/services.nix /etc/nixos/services.nix
-            sudo ln -s "$PWD"/nixos/users.nix /etc/nixos/users.nix
-            sudo ln -s "$PWD"/nixos/extras."$(hostname)".nix /etc/nixos/extras.nix
+            sudo ln -fs "$PWD"/nixos/header.nix /etc/nixos/header.nix
+            sudo ln -fs "$PWD"/nixos/network."$(hostname)".nix /etc/nixos/network.nix
+            sudo ln -fs "$PWD"/nixos/packages.nix /etc/nixos/packages.nix
+            sudo ln -fs "$PWD"/nixos/fonts.nix /etc/nixos/fonts.nix
+            sudo ln -fs "$PWD"/nixos/services.nix /etc/nixos/services.nix
+            sudo ln -fs "$PWD"/nixos/users.nix /etc/nixos/users.nix
+            sudo ln -fs "$PWD"/nixos/extras."$(hostname)".nix /etc/nixos/extras.nix
             sudo nixos-rebuild boot
         } ;;
         -j) {

@@ -26,6 +26,12 @@
         # thunderbird
     ];
 
+    swapDevices = [
+        {
+            device = "/swapfile";
+            size = 4096;
+        }
+    ];
 
     services.flatpak.enable = true;
     xdg.portal.enable = true;

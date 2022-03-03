@@ -17,4 +17,11 @@
     xdg.portal.extraPortals = [
         pkgs.xdg-desktop-portal-gnome
     ];
+
+    swapDevices = [
+        {
+            device = "/swapfile";
+            size = 4096;
+        }
+    ];
 }
