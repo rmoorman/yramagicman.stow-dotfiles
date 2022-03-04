@@ -10,7 +10,7 @@
     boot.kernelPackages = pkgs.linuxPackages_zen;
 
     environment.systemPackages = with pkgs; [
-        dropbox-cli
+        dropbox
     ];
     services.flatpak.enable = true;
     xdg.portal.enable = true;

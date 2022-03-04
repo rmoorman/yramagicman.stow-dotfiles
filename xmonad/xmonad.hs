@@ -188,7 +188,7 @@ commands = [
            , "emacs --bg-daemon"
            , "xset r rate 250 25"
            , "xset b off"
-           , "dropbox start"
+           , "dropbox"
            , "tmuxcopy"
            , "dunst"
            , "setxkbmap -option compose:menu"
