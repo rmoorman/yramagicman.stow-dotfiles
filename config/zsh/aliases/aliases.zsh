@@ -140,6 +140,12 @@ alias dupd='docker-compose up -d'
 alias dupbd='docker-compose up -d --build'
 alias dud='docker-compose down'
 #}}}
-alias musicmount="sudo mount -t nfs  browncoat:/music /home/jonathan/Music"
-alias vidmount="sudo mount -t nfs  browncoat:/video /home/jonathan/Videos"
-alias storemount="sudo mount -t nfs  browncoat:/storage /home/jonathan/Storage"
+#{{{ NFS store mounts
+    alias musicmount="sudo mount -t nfs  browncoat:/music /home/jonathan/Music"
+    alias vidmount="sudo mount -t nfs  browncoat:/video /home/jonathan/Videos"
+    alias storemount="sudo mount -t nfs  browncoat:/storage /home/jonathan/Storage"
+#}}}
+#{{{ BTRFS du/df things
+alias bdu="btrfs filesystem du"
+alias bdf="btrfs filesystem df"
+#}}}
