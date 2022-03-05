@@ -8,6 +8,7 @@
 
 (define lines (let ([out (string-split iw-output "\n")])
                 (take (reverse out) (- (length out) 4))))
+
 (define split-lines
   (filter (lambda (line)
             (not ( empty? line)))
@@ -45,15 +46,17 @@
       (asknet)
       (first matches?)))
 
+
 (define (askpass)
   (display "Pass Phrase? ")
   (read-line))
 
 (define (do-connect net pass)
- (string-join (list "iwctl --passphrase" pass "station wlan0 connect"  net)))
+  (string-join (list "iwctl --passphrase" pass "station wlan0 connect"  net)))
 
-(define desired-net (first (asknet) ))
+(define desired-net  (asknet))
+
 
 (if (string=? (second desired-net) "psk" )
-    (do-connect desired-net (askpass) )
-    (do-connect desired-net ""))
+    (system (do-connect (first desired-net ) (askpass)))
+    (do-connect (first desired-net ) ""))
