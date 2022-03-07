@@ -48,24 +48,24 @@
 
       # Enable the OpenSSH daemon.
       openssh.enable = true;
-      httpd.enable = true;
-      httpd.adminAddr = "yramagicman@gmail.com";
-      httpd.enablePHP = true;
-      mysql.package = pkgs.mariadb;
-      mysql.enable = true;
 
+    # httpd.enable = true;
+    # httpd.adminAddr = "yramagicman@gmail.com";
+    # httpd.enablePHP = true;
+    # mysql.package = pkgs.mariadb;
+    # mysql.enable = true;
 
-      phpfpm.phpOptions = ''
+    phpfpm.phpOptions = ''
           memory_limit = 2048M
-      '';
+    '';
 
-      redshift.enable = true;
-      geoclue2.enable = true;
-      fstrim.enable = true;
-      atd.enable = true;
-  };
+    redshift.enable = true;
+    geoclue2.enable = true;
+    fstrim.enable = true;
+    atd.enable = true;
+};
 
-  virtualisation.libvirtd.enable = true;
+virtualisation.libvirtd.enable = true;
 
-  location.provider = "geoclue2";
+location.provider = "geoclue2";
 }

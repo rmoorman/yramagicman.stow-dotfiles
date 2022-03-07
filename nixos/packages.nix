@@ -3,7 +3,6 @@
     nixpkgs.config.allowUnfree = true;
     programs.zsh.enable = true;
     environment.systemPackages = with pkgs; [
-        silver-searcher
         alacritty
         apacheHttpd
         arandr
@@ -57,6 +56,7 @@
         rsync
         rxvt-unicode
         signal-desktop
+        silver-searcher
         solaar
         theme-obsidian2
         tmux
