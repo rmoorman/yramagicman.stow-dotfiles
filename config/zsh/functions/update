@@ -4,7 +4,7 @@ function update() {
     sudo -v
     gup
     if [[ $(command -v nixos-rebuild) ]] ; then
-        sudo nixos-rebuild boot --upgrade
+        (builtin cd ~/Documents/dots/nixos && sudo nixos-rebuild boot --flake '#' --upgrade)
         nix-collect-garbage -d --delete-older-than 14d
         # nix store optimise
     elif [[ $(command -v yay) ]]; then
