@@ -149,3 +149,4 @@ alias dud='docker-compose down'
 alias bdu="btrfs filesystem du"
 alias bdf="btrfs filesystem df"
 #}}}
+alias sl="nix-shell -p sl --run sl"
