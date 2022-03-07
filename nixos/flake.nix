@@ -23,10 +23,10 @@
                 ./jayne/hardware-configuration.nix
                 ./fonts.nix
                 ./header.nix
-                ./packages.nix
-                ./services.nix
                 ./jayne/extras.nix
                 ./jayne/network.nix
+                ./packages.nix
+                ./services.nix
                 ./users.nix
             ];
         };
