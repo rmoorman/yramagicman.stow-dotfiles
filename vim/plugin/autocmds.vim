@@ -22,6 +22,7 @@ augroup defaults
     autocmd FileType clojure setlocal omnifunc=clojurecomplete#Complete
     autocmd FileType sql setlocal omnifunc=sqlcomplete#Complete
     autocmd FileType php set omnifunc=phpcomplete#CompletePHP
+
     if exists(':ALEDisableBuffer')
         autocmd BufRead,BufEnter .env :ALEDisableBuffer
     endif

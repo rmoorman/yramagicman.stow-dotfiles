@@ -12,6 +12,7 @@ inoremap <right> <Nop>
 inoremap <leader><leader> <Esc>
 xnoremap <leader><leader> <Esc>
 nnoremap <leader>s :call functions#Save()<cr>
+nnoremap <leader><leader> :call functions#Save()<cr>
 nnoremap .<leader> i<leader><Esc>
 "}}}
 "{{{ completion mappings
