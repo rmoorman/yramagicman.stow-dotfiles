@@ -107,19 +107,15 @@ while test "$1"; do
             ln -sfv "$PWD/vim" "$HOME/.config/nvim"
         } ;;
         -n) {
-            echo "building configuration.nix"
-            echo "backing up configuration.nix in place"
-            sudo cp -v /etc/nixos/configuration.nix /etc/nixos/configuration.nix.bak
-            sudo cp -v "$PWD"/nixos/configuration.nix /etc/nixos/configuration.nix
-            echo "generating configuration.nix as /tmp/configuration.nix"
-            sudo ln -fs "$PWD"/nixos/header.nix /etc/nixos/header.nix
-            sudo ln -fs "$PWD"/nixos/network."$(hostname)".nix /etc/nixos/network.nix
-            sudo ln -fs "$PWD"/nixos/packages.nix /etc/nixos/packages.nix
-            sudo ln -fs "$PWD"/nixos/fonts.nix /etc/nixos/fonts.nix
-            sudo ln -fs "$PWD"/nixos/services.nix /etc/nixos/services.nix
-            sudo ln -fs "$PWD"/nixos/users.nix /etc/nixos/users.nix
-            sudo ln -fs "$PWD"/nixos/extras."$(hostname)".nix /etc/nixos/extras.nix
-            sudo nixos-rebuild boot
+            if [ -f '/etc/nixos/configuration.nix' ];
+            then
+                echo "building configuration.nix"
+                echo "backing up configuration.nix in place"
+                sudo cp -v /etc/nixos/configuration.nix /etc/nixos/configuration.nix.$(date +"%s").bak
+            fi
+            echo build nix flake from repo
+            (cd $(git rev-parse --show-toplevel) && \
+                sudo nixos-rebuild boot --flake './nixos#' --upgrade)
         } ;;
         -j) {
             for f in cron/*

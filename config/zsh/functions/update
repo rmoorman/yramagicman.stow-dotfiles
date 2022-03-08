@@ -4,9 +4,9 @@ function update() {
     sudo -v
     gup
     if [[ $(command -v nixos-rebuild) ]] ; then
-        (builtin cd ~/Documents/dots/nixos && sudo nixos-rebuild boot --flake '#' --upgrade)
+        (builtin cd ~/Documents/dots/nixos && sudo nixos-rebuild boot --flake '.#' --upgrade)
         nix-collect-garbage -d --delete-older-than 14d
-        # nix store optimise
+        nix store optimise
     elif [[ $(command -v yay) ]]; then
         yay -Syu --noconfirm --sudoloop
         xmonad --recompile
