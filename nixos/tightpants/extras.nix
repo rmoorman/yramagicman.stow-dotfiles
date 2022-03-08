@@ -8,6 +8,7 @@
         dropbox
         system76-firmware
         linuxKernel.packages.linux_zen.system76
+        intel-gpu-tools
     ];
 
     hardware.system76.enableAll = true;
