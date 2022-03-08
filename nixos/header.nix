@@ -4,8 +4,6 @@
 
 { config, pkgs, ... }:
 {
-    system.autoUpgrade.enable = true;
-    system.autoUpgrade.dates = "04:00";
     zramSwap.enable = true;
 
     # Use the systemd-boot EFI boot loader.
