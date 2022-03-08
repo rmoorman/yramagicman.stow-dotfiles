@@ -3,11 +3,11 @@
     services.xserver.displayManager.gdm.enable = true;
     hardware.acpilight.enable = true;
 
-    httpd.enable = true;
-    httpd.adminAddr = "yramagicman@gmail.com";
-    httpd.enablePHP = true;
-    mysql.package = pkgs.mariadb;
-    mysql.enable = true;
+    services.httpd.enable = true;
+    services.httpd.adminAddr = "yramagicman@gmail.com";
+    services.httpd.enablePHP = true;
+    services.mysql.package = pkgs.mariadb;
+    services.mysql.enable = true;
 
     services.mysql.ensureDatabases = [
         "ric"
