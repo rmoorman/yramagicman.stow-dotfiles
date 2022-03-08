@@ -1,6 +1,5 @@
 { config, pkgs, ... }:
 {
-    services.xserver.displayManager.gdm.enable = true;
     hardware.acpilight.enable = true;
 
     services.httpd.enable = true;
