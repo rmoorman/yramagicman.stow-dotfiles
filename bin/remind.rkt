@@ -10,9 +10,40 @@
 
 (define exec-notify "/run/current-system/sw/bin/notify-send")
 
-(define remind-file (string-join (list home "/.local/share/remind/reminders.txt" ) ""))
+(define days (hash
+               "sun" 7
+               "mon" 1
+               "tue" 2
+               "wed" 3
+               "thu" 4
+               "fri" 5
+               "sat" 6 ))
 
-(define (inc a) (+ 1 a))
+(test-case "maps week days to integers"
+           (check-equal? (hash-ref days "sun") 7)
+           (check-equal? (hash-ref days "mon") 1)
+           (check-equal? (hash-ref days "tue") 2)
+           (check-equal? (hash-ref days "wed") 3)
+           (check-equal? (hash-ref days "thu") 4)
+           (check-equal? (hash-ref days "fri") 5)
+           (check-equal? (hash-ref days "sat") 6))
+
+(define (get-minute d)
+  (date-minute d))
+
+(define (get-hour d)
+  (date-hour d))
+
+(define (get-day d)
+  (date-day d))
+
+(define (get-month d)
+  (date-month d))
+
+(define (get-year d)
+  (date-year d))
+
+(define remind-file (string-join (list home "/.local/share/remind/reminders.txt" ) ""))
 
 (define (m-now) (seconds->date (current-seconds)))
 
@@ -27,7 +58,7 @@
   (let ([split-path (string-split path "/")])
     (cond [(equal? (- (length split-path) 0 ) offset) #t]
           [(directory-exists? (make-partial-path path offset))
-           (check-path path (inc offset))]
+           (check-path path (+ 1 offset))]
           [else (make-directory (make-partial-path path offset))])))
 
 (define (m-ensure-file)
@@ -53,6 +84,41 @@
   (define out-file (open-output-file remind-file #:exists 'truncate ))
   (for-each (lambda line
               (displayln (first line) out-file)) remind-list))
+
+(define (diff-days word)
+  (define day-seconds (* 60 60 24))
+  (+ (current-seconds)
+     (* day-seconds
+        (- (hash-ref days word)
+           (date-week-day (seconds->date (current-seconds)))))))
+
+
+(test-case "maps word to date"
+           (check-equal? (date-week-day (seconds->date (diff-days "mon")))
+                         (hash-ref days "mon"))
+           (check-equal? (date-week-day (seconds->date (diff-days "tue")))
+                         (hash-ref days "tue"))
+           (check-equal? (date-week-day (seconds->date (diff-days "wed")))
+                         (hash-ref days "wed"))
+           (check-equal? (date-week-day (seconds->date (diff-days "thu")))
+                         (hash-ref days "thu"))
+           (check-equal? (date-week-day (seconds->date (diff-days "fri")))
+                         (hash-ref days "fri"))
+           (check-equal? (date-week-day (seconds->date (diff-days "sat")))
+                         (hash-ref days "sat"))
+           (check-equal? (date-week-day (seconds->date (diff-days "sun"))) 0))
+
+
+(define (map-word-to-date word)
+  (cond
+    [(string=? word "daily") (m-now)]
+    [(string=? word "mon") (m-now)]
+    [ else  #f])
+  )
+
+#| (test-case "maps word to date" |#
+              #|            (check-equal? (map-word-to-date "daily") (m-now)) |#
+              #|            (check-equal? (map-word-to-date "mon") (current-seconds))) |#
 
 (define (parse-date date-string)
   """ return date struct for date time string in dd/mm/yyy HH:mm format"
@@ -137,14 +203,6 @@
 ;; Parse all reminders in the files
 (define parsed-reminders (map parse-reminder remind-list))
 
-(define (get-minute d)
-  (date-minute d))
-
-(define (get-hour d)
-  (date-hour d))
-
-(define (get-day d)
-  (date-day d))
 
 (define (check-time t)
   (if (equal? 0 t)
@@ -156,6 +214,10 @@
       (and (equal? current-minute (get-minute date-struct))
            (equal? current-hour (get-hour date-struct))
            (equal? current-day (get-day date-struct))))))
+
+(test-case "parses time reminders"
+           (check-equal? (check-time 0) #f)
+           (check-equal? (check-time (m-now)) #t))
 
 (test-case "parses time reminders"
            (check-equal? (check-time 0) #f)

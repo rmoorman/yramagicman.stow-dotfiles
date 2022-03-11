@@ -8,6 +8,7 @@ function update() {
         builtin cd ~/Documents/dots/nixos || exit
         [[ -f flake.lock ]] && sudo rm flake.lock
         sudo nixos-rebuild boot --flake '.#' --upgrade-all
+        git rm --cached flake.lock
         )
         nix-collect-garbage -d --delete-older-than 14d
         nix store optimise
