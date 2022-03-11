@@ -1,5 +1,8 @@
+bin/mkcolor
+bin/remind
 config/emacs/ac-comphist.dat
 config/emacs/auto-save-list/
+/config/emacs/backups/
 config/emacs/.cache/
 config/emacs/custom.el
 config/emacs/elpa/
@@ -11,9 +14,11 @@ config/emacs/projectile-bookmarks.eld
 config/emacs/projectile.cache
 config/emacs/transient/
 config/emacs/undohist/
+/config/emacs/var/
 config/emacs/vimish-fold/
 config/getmail/gmail
 config/getmail/oldmail*
+/config/mutt/aliases
 config/ranger/bookmarks
 config/ranger/colorschemes/default.pyo
 config/ranger/colorschemes/__init__.pyo
@@ -39,12 +44,14 @@ mpd/mpdstate
 newsboat/cache.db
 newsboat/history.cmdline
 newsboat/history.search
+nixos/flake.lock
 screenlayout/i3.sh
 .tags
 vim/backup/
 vim/.lastupdate
 vim/lastupdate
 vim/.netrwhist
+/vim/nvim_undo/
 vim/pack/
 vim/spell/
 vim/swaps/
@@ -57,7 +64,3 @@ xmonad/xmonad.hi
 xmonad/xmonad.o
 xmonad/xmonad-x86_64-linux
 *.zwc
-/config/emacs/backups/
-/config/emacs/var/
-/config/mutt/aliases
-/vim/nvim_undo/
