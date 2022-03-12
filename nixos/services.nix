@@ -9,7 +9,6 @@
             enable = true;
 
             # Enable the GNOME Desktop Environment.
-            displayManager.gdm.enable = true;
             windowManager.awesome.enable = true;
             windowManager.xmonad.enable = true;
             windowManager.xmonad.enableContribAndExtras = true;

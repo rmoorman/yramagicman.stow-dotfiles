@@ -1,6 +1,7 @@
 { config, pkgs, ... }:
 {
     services.xserver.dpi = 192;
+    services.xserver.displayManager.gdm.enable = true;
     hardware.acpilight.enable = true;
     boot.kernelPackages = pkgs.linuxPackages_zen;
     environment.systemPackages = with pkgs; [
