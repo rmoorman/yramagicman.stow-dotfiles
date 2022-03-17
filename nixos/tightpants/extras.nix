@@ -13,14 +13,6 @@
 
     hardware.system76.enableAll = true;
     services.snapper.configs = {
-        root = {
-            subvolume = "/";
-            extraConfig = ''
-                ALLOW_USERS="jonathan"
-                TIMELINE_CREATE=yes
-                TIMELINE_CLEANUP=yes
-            '';
-        };
         home = {
             subvolume = "/home";
             extraConfig = ''
