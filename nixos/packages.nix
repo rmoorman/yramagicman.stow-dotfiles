@@ -50,6 +50,7 @@
         pcmanfm
         picom
         pinentry-gtk2
+        pulsemixer
         pwgen
         python3Full
         racket
