@@ -149,7 +149,7 @@ myManageHook = composeAll [
 -- return (All True) if the default handler is to be run afterwards. To
 -- combine event hooks use mappend or mconcat from Data.Monoid.
 --
-myEventHook = ewmhDesktopsEventHook
+-- myEventHook = ewmhDesktopsEventHook
 
 myXmobarPP = def { ppCurrent = xmobarColor "#ffffff" ""
                  , ppTitle   = xmobarColor "#cccccc" "" . shorten 150
@@ -219,7 +219,7 @@ main = do
           , normalBorderColor  = myNormalBorderColor
           , focusedBorderColor = myFocusedBorderColor
           , workspaces         = myWorkspaces
-          , handleEventHook    = myEventHook
+          -- , handleEventHook    = myEventHook
           , logHook            = dynamicLogWithPP myXmobarPP {
                 ppOutput       = \x -> hPutStrLn xmproc0 x  >> hPutStrLn xmproc1 x
           }
@@ -244,7 +244,7 @@ main = do
           , (( mod4Mask, xK_Tab ), toggleWS)
           , (( mod4Mask,  xK_z  ), warpToWindow (1%2) (1%2)) -- @@ Move pointer to currently focused window
           , (( mod4Mask,  xK_F4  ), spawn "xrandr --output HDMI1 --off;  xrandr --output HDMI1 --auto")
-          , (( mod4Mask .|. shiftMask, xK_s   ), setSpacing 0)
+          , (( mod4Mask .|. shiftMask, xK_s   ), setScreenWindowSpacing 0)
           , (( mod4Mask .|. shiftMask, xK_f   ), spawn "pcmanfm")
           , (( mod4Mask .|. controlMask, xK_s   ), spawn "pcmanfm ~/Pictures/screenshots")
           , (( mod4Mask .|. shiftMask, xK_q   ), spawn "pkill -u $USER")
