@@ -2,7 +2,6 @@
 {
     hardware.acpilight.enable = true;
 
-    services.xserver.displayManager.startx.enable = true;
     services.httpd.enable = true;
     services.httpd.adminAddr = "yramagicman@gmail.com";
     services.httpd.enablePHP = true;

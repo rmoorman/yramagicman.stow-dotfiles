@@ -1,9 +1,7 @@
 { config, pkgs, ... }:
 {
-
     system.autoUpgrade.allowReboot = true;
 
-    services.xserver.displayManager.startx.enable = true;
     # Mount secondary drive
     fileSystems."/home/jonathan/Storage".device = "/dev/disk/by-label/storage";
     boot.kernelPackages = pkgs.linuxPackages_zen;
