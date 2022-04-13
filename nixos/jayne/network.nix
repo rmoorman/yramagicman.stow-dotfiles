@@ -18,8 +18,8 @@
     # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
     networking.hosts = {
-      "192.168.1.196" = ["browncoat"];
-
+        "192.168.1.196" = ["browncoat"];
+        "127.0.0.1" = ["api.dev.local" "dev.local" ];
     };
 
     # fileSystems."/home/jonathan/Music" = {

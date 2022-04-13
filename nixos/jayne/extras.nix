@@ -9,6 +9,25 @@
     services.mysql.package = pkgs.mariadb;
     services.mysql.enable = true;
 
+    services.httpd.virtualHosts = {
+        "api.dev.local" = {
+
+            extraConfig = ''
+                ProxyPass /  http://localhost:8000/
+                ProxyPassReverse /  http://localhost:8000/
+            '';
+        };
+        "dev.local" = {
+            extraConfig = ''
+                ProxyPass /  http://localhost:8080/
+                ProxyPassReverse /  http://localhost:8080/
+            '';
+        };
+
+    };
+
+
+
     services.mysql.ensureDatabases = [
         "ric"
         "testing"
