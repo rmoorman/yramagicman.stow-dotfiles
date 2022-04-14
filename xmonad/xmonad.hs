@@ -31,7 +31,7 @@ windowCount = gets $ Just . show . length . W.integrate' . W.stack . W.workspace
 -- The preferred terminal program, which is used in a binding below and by
 -- certain contrib modules.
 --
-myTerminal      = "alacritty"
+myTerminal      = "emacsclient -c -e '(ansiterm)'"
 
 -- Whether focus follows the mouse pointer.
 myFocusFollowsMouse :: Bool
@@ -233,7 +233,7 @@ main = do
           , ((mod4Mask .|. controlMask, xK_m), spawn "firefox --new-window about:blank")
           , ((mod4Mask .|. shiftMask, xK_m), spawn "firefox --private-window")
           , ((mod4Mask .|. shiftMask, xK_g), spawn "chromium --incognito")
-          , ((mod4Mask .|. shiftMask, xK_e), spawn "emacsclient -nc ~/")
+          , ((mod4Mask .|. controlMask, xK_Return), spawn "alacritty")
           , ((mod4Mask              , xK_p     ), spawn "passmenu")
           , ((controlMask,               xK_space     ), spawn "dmenu_run")
           , ((mod4Mask .|. controlMask , xK_r  ), spawn "restatus")
