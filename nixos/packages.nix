@@ -71,6 +71,7 @@
         w3m
         wget
         xclip
+        xonotic
         xorg.xcursorthemes
         xorg.xkill
         xorg.xmessage
