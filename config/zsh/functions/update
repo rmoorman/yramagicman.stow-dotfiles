@@ -29,5 +29,10 @@ function update() {
         sudo zypper refresh
         sudo zypper dup
     fi
+
+    if [[ $(command -v flatpak) ]] ; then
+        echo "\n flatpak \n"
+        flatpak update -y
+    fi
     bell
 }
