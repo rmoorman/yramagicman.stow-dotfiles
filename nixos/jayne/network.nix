@@ -32,13 +32,11 @@
         enable = true;
         networks = {
             "25-wireless" = {
-                dns = ["1.1.1.1" "1.0.0.1"];
                 matchConfig = { Name = "wlan0"; };
                 DHCP= "yes";
             };
 
-            "26-wireless" = {
-                dns = ["1.1.1.1" "1.0.0.1"];
+            "26-wired" = {
                 matchConfig = { Name = "enp1s0"; };
                 DHCP= "yes";
             };
