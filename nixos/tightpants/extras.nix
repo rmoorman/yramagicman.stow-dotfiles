@@ -11,16 +11,6 @@
     ];
 
     hardware.system76.enableAll = true;
-    services.snapper.configs = {
-        home = {
-            subvolume = "/home";
-            extraConfig = ''
-                ALLOW_USERS="jonathan"
-                TIMELINE_CREATE=yes
-                TIMELINE_CLEANUP=yes
-            '';
-        };
-    };
 
     nixpkgs.config.packageOverrides = pkgs: {
         vaapiIntel = pkgs.vaapiIntel.override { enableHybridCodec = true; };
@@ -34,5 +24,40 @@
             vaapiVdpau
             libvdpau-va-gl
         ];
+    };
+
+    systemd.timers = {
+        "snap" = {
+            wantedBy = [ "timers.target" ];
+            enable = true;
+            timerConfig = {
+                OnBootSec= "1m";
+                Unit = "home-snapshot.service";
+                OnUnitAcitvateSec = "1h";
+            };
+        };
+
+        "backup" = {
+            wantedBy = [ "timers.target" "network.target" ];
+            enable = true;
+            timerConfig = {
+                Unit = "backup.service";
+                OnBootSec= "5m";
+            };
+        };
+    };
+
+    systemd.services = {
+        "home-snapshot" = {
+            description = "take snapshot of home directory";
+            script = "/opt/home-snapshot";
+            wantedBy = [ "snap.timer" ];
+        };
+
+        "backup" = {
+            description = "Backup home directory to local server";
+            script = "/opt/home-backup";
+            wantedBy = [ "backup.timer" ];
+        };
     };
 }
