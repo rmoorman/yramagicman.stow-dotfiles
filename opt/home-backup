@@ -12,6 +12,6 @@ last="$(cat $stateFile)"
 ping -c 3 -q browncoat
 
 if [[ "$day" != "$last" ]] && [[ $? ]]; then
-    btrfs send $day | ssh jonathan@browncoat "sudo /opt/receive-backup" && \
+    btrfs send -c $parent $day | ssh jonathan@browncoat "sudo /opt/receive-backup" && \
         echo $day > $stateFile
 fi
