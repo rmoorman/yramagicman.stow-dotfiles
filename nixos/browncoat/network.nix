@@ -7,7 +7,8 @@
     # Per-interface useDHCP will be mandatory in the future, so this generated config
     # replicates the default behaviour.
     networking.useDHCP = false;
-    networking.interfaces.enp0s31f6.useDHCP = true;
+    # networking.interfaces.enp0s31f6.useDHCP = true;
+    networking.interfaces.enp4s0.useDHCP = true;
     # networking.interfaces.enp5s0.ipv4.addresses = [
     #     {
     #         address = "127.0.0.10";
@@ -44,10 +45,10 @@
         /srv/video 192.168.1.0/24(rw,sync)
         /srv/storage 192.168.1.0/24(rw,sync)
     '';
-    networking.firewall.allowedTCPPorts = [2049];
     services.samba-wsdd.enable = true; # make shares visible for windows 10 clients
     networking.firewall.allowedTCPPorts = [
         5357 # wsdd
+        2049 # nfs
     ];
     networking.firewall.allowedUDPPorts = [
         3702 # wsdd
@@ -76,21 +77,25 @@
                 "guest ok" = "yes";
                 "create mask" = "0644";
                 "directory mask" = "0755";
-                "force user" = "username";
-                "force group" = "groupname";
+                # "force user" = "username";
+                # "force group" = "groupname";
             };
-            private = {
-                path = "/mnt/Shares/Private";
+
+            Emily = {
+                path = "/srv/storage/Emily";
                 browseable = "yes";
                 "read only" = "no";
-                "guest ok" = "no";
+                "guest ok" = "yes";
                 "create mask" = "0644";
                 "directory mask" = "0755";
-                "force user" = "username";
-                "force group" = "groupname";
+                # "force user" = "username";
+                # "force group" = "groupname";
             };
         };
     };
 
+
+    networking.firewall.allowPing = true;
+    services.samba.openFirewall = true;
 
 }

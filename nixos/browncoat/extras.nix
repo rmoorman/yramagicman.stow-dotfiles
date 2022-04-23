@@ -34,4 +34,11 @@
             libvdpau-va-gl
         ];
     };
+
+    security.sudo.extraRules = [
+        {
+            users = [ "jonathan" ];
+            commands = [ { command = "/opt/receive-backup"; options = [ "NOPASSWD" ]; } ];
+        }
+    ];
 }
