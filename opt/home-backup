@@ -3,15 +3,14 @@ set -eo pipefail
 export PATH="/run/current-system/sw/bin/:/run/wrappers/bin/"
 [[ -d /var/cache/backup ]] || mkdir -p /var/cache/backup
 day="/home/.snapshots/$(date -I)"
-parent="/home/.snapshots/$(date -I -d '-1 day')"
 stateFile="/var/cache/backup/state"
 last="$(cat $stateFile)"
 
 [[ -f $stateFile ]] || echo 0 > $stateFile
-[[ "$day" != "$last" ]] && echo 'hi'
+[[ "$day" != "$last" ]] && echo "Backing up /home from snapshot $last"
 ping -c 3 -q browncoat
 
 if [[ "$day" != "$last" ]] && [[ $? ]]; then
-    btrfs send -c $parent $day | ssh jonathan@browncoat "sudo /opt/receive-backup" && \
+    btrfs send -c $last $day | ssh jonathan@browncoat "sudo /opt/receive-backup" && \
         echo $day > $stateFile
 fi
