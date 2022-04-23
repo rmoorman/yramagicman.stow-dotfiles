@@ -1,4 +1,5 @@
 reposdir="$HOME/Documents"
+# TEST=1
 if test -z "$1"; then
     while read line; do
         printf "%s\n" "$line"
@@ -9,6 +10,7 @@ if test -z "$1"; then
 -g) Git hooks
 -j) Cron Jobs
 -n) Nixos
+-o) Opt
 -s) Systemd
 -t) Simple terminal
 -v) Vim
@@ -17,6 +19,7 @@ if test -z "$1"; then
 -z) ZSH
 EOF
 fi
+
 if [ $TEST ]; then
     sudo() { echo sudo $@; }
     ln() { echo ln $@; }
@@ -133,6 +136,13 @@ while test "$1"; do
                 ln -sfv "$PWD/$f" "$PWD/.git/hooks/${f#githooks/}"
             done
         } ;;
+        -o) {
+            [[ -d "/opt" ]] || sudo mkdir /opt
+
+            for f in opt/*; do
+                sudo ln -sfv "$PWD/$f" "/opt/${f#opt/}"
+            done
+        }
     esac
     shift
 done
