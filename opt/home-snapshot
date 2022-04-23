@@ -1,10 +1,11 @@
 #!/bin/sh
+export PATH="/run/current-system/sw/bin/:/run/wrappers/bin/"
 hour="/home/.snapshots/$(date -Ihour)"
 day="/home/.snapshots/$(date -I)"
-bfs="/run/current-system/sw/bin/btrfs"
-[[ -d $hour ]] || $bfs subvolume snapshot -r -- "/home" $hour
-[[ -d $day ]] || $bfs subvolume snapshot -r -- "/home" $day
 
-for hourly in /home/.snapshots/"$(date -I -d 'yesterday')T"*; do
-    [[ -d $hourly ]] && $bfs subvolume delete $hourly >> /home/jonathan/remove
+[[ -d $hour ]] || btrfs subvolume snapshot -r -- "/home" $hour
+[[ -d $day ]] || btrfs subvolume snapshot -r -- "/home" $day
+
+for hourly in "/home/.snapshots/*T*"; do
+    [[ -d $hourly ]] && btrfs subvolume delete $hourly
 done
