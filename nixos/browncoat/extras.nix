@@ -78,6 +78,4 @@
             script = "/run/current-system/sw/bin/btrfs scrub status /dev/disk/by-label/storage > /home/jonathan/disk-check";
             wantedBy = [ "status.timer" ];
         };
-
-
-}
+};
