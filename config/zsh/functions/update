@@ -33,7 +33,7 @@ function update() {
         sudo zypper dup
     fi
 
-    if [[ $(command -v flatpak) ]] ; then
+    if [[ $(command -v flatpak) ]] && [[ -z $SSH_CLIENT ]] ; then
         echo "\n flatpak \n"
         flatpak update -y
     fi
