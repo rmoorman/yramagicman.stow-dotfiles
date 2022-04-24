@@ -47,7 +47,6 @@
             wantedBy = [ "timers.target" ];
             enable = true;
             timerConfig = {
-                OnBootSec= "1m";
                 Unit = "btrfs-scrub.service";
                 OnCalendar = "monthly";
             };
@@ -57,7 +56,6 @@
             wantedBy = [ "timers.target" ];
             enable = true;
             timerConfig = {
-                OnBootSec= "1m";
                 Unit = "disk-check.service";
                 OnCalendar = "*-*-02 00:00:00";
             };
@@ -75,7 +73,7 @@
 
         "disk-check" = {
             description = "Check status of btrfs scrub";
-            script = "/run/current-system/sw/bin/btrfs scrub status /dev/disk/by-label/storage > /home/jonathan/disk-check";
+            script = "/run/current-system/sw/bin/btrfs scrub status /dev/disk/by-label/storage > /home/disk-check";
             wantedBy = [ "status.timer" ];
         };
     };
