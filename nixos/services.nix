@@ -9,7 +9,8 @@
             enable = true;
 
             # Enable the GNOME Desktop Environment.
-            displayManager.gdm.enable = true;
+            displayManager.sddm.enable = true;
+            displayManager.sddm.theme = "elarun";
             windowManager.awesome.enable = true;
             windowManager.xmonad.enable = true;
             windowManager.xmonad.enableContribAndExtras = true;
