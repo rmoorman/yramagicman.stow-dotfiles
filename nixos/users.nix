@@ -14,6 +14,6 @@
           createHome  = true;
           extraGroups = [ "wheel" "audio" "video" "kvm" ]; # Enable ‘sudo’ for the user.
           shell = pkgs.zsh;
-          hashedPassword = "$6$qA3jRpKZbDE2iBi9$wspJReoIAJhHl5nQcU4sVfQwIavFbG5NddkmsObCvXx1mhoEy6y/GlVpLlV4y69LFCOtV5BBfQQ/YCQlIbjva1";
+          hashedPassword = "$6$j2ch4akYV/gV5RyG$JktfUeYmQXPf8IOCCXWP9u0Hg6XctInpNQbtB844agEBS7cfrhFNdbuYWYsKJOmF9dD4tVlXjl3MGor34U6Lv.";
       };
   }
