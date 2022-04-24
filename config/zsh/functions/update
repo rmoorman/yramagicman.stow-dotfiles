@@ -4,11 +4,14 @@ function update() {
     sudo -v
     gup
     if [[ $(command -v nixos-rebuild) ]] ; then
+        # git 2.35.3 has a bug that prevents flakes from updating, something
+        # with diff --no-index. To avoid this, copy nix config to temp directory
+        # and build from outside git repo
         (
-        builtin cd ~/Documents/dots/nixos || exit
-        [[ -f flake.lock ]] && sudo rm flake.lock
-        sudo nixos-rebuild boot --flake '.#' --upgrade-all
-        git rm --cached flake.lock
+        tmp=$(mktemp -d)
+        conf="$HOME/Documents/dots/nixos"
+        command cp -r $conf $tmp
+        sudo nixos-rebuild boot --flake "$tmp/nixos/#"  --upgrade-all
         )
         nix-collect-garbage -d --delete-older-than 14d
         nix store optimise
