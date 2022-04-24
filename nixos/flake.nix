@@ -14,6 +14,7 @@
                 ./tightpants/extras.nix
                 ./tightpants/network.nix
                 ./users.nix
+                ./btrfs.nix
             ];
         };
 
@@ -42,6 +43,7 @@
                 ./browncoat/extras.nix
                 ./browncoat/network.nix
                 ./users.nix
+                ./btrfs.nix
             ];
         };
 
