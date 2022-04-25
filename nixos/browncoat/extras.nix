@@ -4,6 +4,7 @@
 
     # Mount secondary drive
     fileSystems."/home/jonathan/Storage".device = "/dev/disk/by-label/storage";
+    fileSystems."/home/jonathan/Storage".options = ["compress=zstd"];
     boot.kernelPackages = pkgs.linuxPackages_zen;
 
     environment.systemPackages = with pkgs; [
@@ -65,7 +66,7 @@
     };
 
     systemd.services = {
-        "btrfs-scrub.service" = {
+        "btrfs-scrub" = {
             description = "Run btrfs scrub monthly";
             script = "/run/current-system/sw/bin/btrfs scrub start /dev/disk/by-label/storage";
             wantedBy = [ "scrub.timer" ];
