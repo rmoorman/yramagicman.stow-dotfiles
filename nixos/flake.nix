@@ -45,6 +45,20 @@
             ];
         };
 
+        nixosConfigurations."kaylee" = nixpkgs.lib.nixosSystem {
+            system = "x86_64-linux";
+            modules = [
+                ./kaylee/hardware-configuration.nix
+                ./fonts.nix
+                ./header.nix
+                ./packages.nix
+                ./services.nix
+                ./kaylee/extras.nix
+                ./kaylee/network.nix
+                ./users.nix
+            ];
+        };
+
     };
 
 }
