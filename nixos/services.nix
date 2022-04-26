@@ -11,6 +11,7 @@
             # Enable the GNOME Desktop Environment.
             displayManager.sddm.enable = true;
             displayManager.sddm.theme = "elarun";
+            displayManager.defaultSession = "none+xmonad";
             displayManager.hiddenUsers =[ "jonathan_backup" ];
             windowManager.awesome.enable = true;
             windowManager.xmonad.enable = true;

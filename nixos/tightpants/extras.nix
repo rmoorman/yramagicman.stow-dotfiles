@@ -3,6 +3,8 @@
     services.xserver.dpi = 192;
     hardware.acpilight.enable = true;
     boot.kernelPackages = pkgs.linuxPackages_zen;
+
+    fileSystems."/".options = ["compress=zstd"];
     environment.systemPackages = with pkgs; [
         dropbox
         system76-firmware
@@ -80,7 +82,7 @@
             wantedBy = [ "backup.timer" ];
         };
 
-        "btrfs-scrub.service" = {
+        "btrfs-scrub" = {
             description = "Run btrfs scrub monthly";
             script = "/run/current-system/sw/bin/btrfs scrub start /dev/disk/by-label/nixos";
             wantedBy = [ "scrub.timer" ];

@@ -1,13 +1,13 @@
 { config, pkgs, ... }:
 {
     boot.kernelPackages = pkgs.linuxPackages_zen;
+    fileSystems."/".options = ["compress=zstd"];
     environment.systemPackages = with pkgs; [
         dropbox
         microcodeAmd
         xorg.xf86videoamdgpu
         openrgb
     ];
-
 
     #nixpkgs.config.packageOverrides = pkgs: {
     #    vaapiIntel = pkgs.vaapiIntel.override { enableHybridCodec = true; };
@@ -60,8 +60,6 @@
     #             OnCalendar = "*-*-02 00:00:00";
     #         };
     #     };
-
-
     # };
 
     # systemd.services = {
@@ -77,7 +75,7 @@
     #         wantedBy = [ "backup.timer" ];
     #     };
 
-    #     "btrfs-scrub.service" = {
+    #     "btrfs-scrub" = {
     #         description = "Run btrfs scrub monthly";
     #         script = "/run/current-system/sw/bin/btrfs scrub start /dev/disk/by-label/nixos";
     #         wantedBy = [ "scrub.timer" ];

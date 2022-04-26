@@ -8,9 +8,16 @@ last="$(cat $stateFile)"
 
 [[ -f $stateFile ]] || echo 0 > $stateFile
 [[ "$day" != "$last" ]] && echo "Backing up /home from snapshot $last"
-ping -c 3 -q browncoat
 
+ping -c 3 -q browncoat
 if [[ "$day" != "$last" ]] && [[ $? ]]; then
-    btrfs send -c $last $day | ssh jonathan@browncoat "sudo /opt/receive-backup" && \
+    if [[ -d $last ]]; then
+    btrfs send -c $last $day | \
+        ssh jonathan@browncoat "sudo /opt/receive-backup $(hostname)" && \
         echo $day > $stateFile
+    else
+    btrfs send $day | \
+        ssh jonathan@browncoat "sudo /opt/receive-backup $(hostname)" && \
+        echo $day > $stateFile
+    fi
 fi
