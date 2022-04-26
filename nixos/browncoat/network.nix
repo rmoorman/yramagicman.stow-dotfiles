@@ -97,5 +97,7 @@
 
     networking.firewall.allowPing = true;
     services.samba.openFirewall = true;
+    services.unifi.enable = true;
+    services.unifi.openFirewall=true;
 
 }
