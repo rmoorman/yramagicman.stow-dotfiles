@@ -4,9 +4,9 @@ export PATH="/run/current-system/sw/bin/:/run/wrappers/bin/"
 [[ -d /var/cache/backup ]] || mkdir -p /var/cache/backup
 day="/home/.snapshots/$(date -I)"
 stateFile="/var/cache/backup/state"
-last="$(cat $stateFile)"
 
 [[ -f $stateFile ]] || echo 0 > $stateFile
+last="$(cat $stateFile)"
 [[ "$day" != "$last" ]] && echo "Backing up /home from snapshot $last"
 
 ping -c 3 -q browncoat

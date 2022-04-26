@@ -23,69 +23,69 @@
     #    ];
     #};
 
-    # systemd.timers = {
-    #     "snap" = {
-    #         wantedBy = [ "timers.target" ];
-    #         enable = true;
-    #         timerConfig = {
-    #             OnBootSec= "1m";
-    #             Unit = "home-snapshot.service";
-    #             OnUnitAcitvateSec = "1h";
-    #         };
-    #     };
+     systemd.timers = {
+         "snap" = {
+             wantedBy = [ "timers.target" ];
+             enable = true;
+             timerConfig = {
+                 OnBootSec= "1m";
+                 Unit = "home-snapshot.service";
+                 OnUnitAcitvateSec = "1h";
+             };
+         };
 
-    #     "backup" = {
-    #         wantedBy = [ "timers.target" "network.target" ];
-    #         enable = true;
-    #         timerConfig = {
-    #             Unit = "backup.service";
-    #             OnBootSec= "5m";
-    #         };
-    #     };
+         "backup" = {
+             wantedBy = [ "timers.target" "network.target" ];
+             enable = true;
+             timerConfig = {
+                 Unit = "backup.service";
+                 OnBootSec= "5m";
+             };
+         };
 
-    #     "scrub" = {
-    #         wantedBy = [ "timers.target" ];
-    #         enable = true;
-    #         timerConfig = {
-    #             Unit = "btrfs-scrub.service";
-    #             OnCalendar = "monthly";
-    #         };
-    #     };
+         "scrub" = {
+             wantedBy = [ "timers.target" ];
+             enable = true;
+             timerConfig = {
+                 Unit = "btrfs-scrub.service";
+                 OnCalendar = "monthly";
+             };
+         };
 
-    #     "status" = {
-    #         wantedBy = [ "timers.target" ];
-    #         enable = true;
-    #         timerConfig = {
-    #             Unit = "disk-check.service";
-    #             OnCalendar = "*-*-02 00:00:00";
-    #         };
-    #     };
-    # };
+         "status" = {
+             wantedBy = [ "timers.target" ];
+             enable = true;
+             timerConfig = {
+                 Unit = "disk-check.service";
+                 OnCalendar = "*-*-02 00:00:00";
+             };
+         };
+     };
 
-    # systemd.services = {
-    #     "home-snapshot" = {
-    #         description = "take snapshot of home directory";
-    #         script = "/opt/home-snapshot";
-    #         wantedBy = [ "snap.timer" ];
-    #     };
+     systemd.services = {
+         "home-snapshot" = {
+             description = "take snapshot of home directory";
+             script = "/opt/home-snapshot";
+             wantedBy = [ "snap.timer" ];
+         };
 
-    #     "backup" = {
-    #         description = "Backup home directory to local server";
-    #         script = "/opt/home-backup";
-    #         wantedBy = [ "backup.timer" ];
-    #     };
+         "backup" = {
+             description = "Backup home directory to local server";
+             script = "/opt/home-backup";
+             wantedBy = [ "backup.timer" ];
+         };
 
-    #     "btrfs-scrub" = {
-    #         description = "Run btrfs scrub monthly";
-    #         script = "/run/current-system/sw/bin/btrfs scrub start /dev/disk/by-label/nixos";
-    #         wantedBy = [ "scrub.timer" ];
-    #     };
+         "btrfs-scrub" = {
+             description = "Run btrfs scrub monthly";
+             script = "/run/current-system/sw/bin/btrfs scrub start /dev/disk/by-label/nixos";
+             wantedBy = [ "scrub.timer" ];
+         };
 
-    #     "disk-check" = {
-    #         description = "Check status of btrfs scrub";
-    #         script = "/run/current-system/sw/bin/btrfs scrub status /dev/disk/by-label/nixos > /home/disk-check";
-    #         wantedBy = [ "status.timer" ];
-    #     };
+         "disk-check" = {
+             description = "Check status of btrfs scrub";
+             script = "/run/current-system/sw/bin/btrfs scrub status /dev/disk/by-label/nixos > /home/disk-check";
+             wantedBy = [ "status.timer" ];
+         };
 
-    # };
+     };
 }
