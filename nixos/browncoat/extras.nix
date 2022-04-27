@@ -46,7 +46,8 @@
     systemd.timers = {
         "scrub" = {
             wantedBy = [ "timers.target" ];
-            enable = false;
+            enable = true;
+            after = [ "getty.target" ];
             timerConfig = {
                 Unit = "btrfs-scrub.service";
                 OnCalendar = "monthly";
@@ -56,6 +57,7 @@
         "status" = {
             wantedBy = [ "timers.target" ];
             enable = true;
+            after = [ "getty.target" ];
             timerConfig = {
                 Unit = "disk-check.service";
                 OnCalendar = "*-*-02 00:00:00";
