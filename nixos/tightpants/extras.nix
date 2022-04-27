@@ -51,7 +51,7 @@
         "scrub" = {
             wantedBy = [ "timers.target" ];
             enable = true;
-            after = [ "getty.target" ];
+            after = [ "time-set.target" "time-sync.target" ];
             timerConfig = {
                 Unit = "btrfs-scrub.service";
                 OnCalendar = "monthly";
@@ -60,7 +60,7 @@
 
         "status" = {
             wantedBy = [ "timers.target" ];
-            after = [ "getty.target" ];
+            after = [ "time-set.target" "time-sync.target" ];
             enable = true;
             timerConfig = {
                 Unit = "disk-check.service";
