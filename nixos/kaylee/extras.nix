@@ -30,7 +30,7 @@
              timerConfig = {
                  OnBootSec= "1m";
                  Unit = "home-snapshot.service";
-                 OnUnitAcitvateSec = "1h";
+                 OnUnitAcitveSec = "1h";
              };
          };
 
