@@ -50,7 +50,7 @@
 
         "scrub" = {
             wantedBy = [ "timers.target" ];
-            enable = true;
+            enable = false;
             timerConfig = {
                 Unit = "btrfs-scrub.service";
                 OnCalendar = "monthly";
