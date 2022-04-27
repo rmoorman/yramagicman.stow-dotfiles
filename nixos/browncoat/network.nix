@@ -49,6 +49,7 @@
     networking.firewall.allowedTCPPorts = [
         5357 # wsdd
         2049 # nfs
+        8443
     ];
     networking.firewall.allowedUDPPorts = [
         3702 # wsdd
