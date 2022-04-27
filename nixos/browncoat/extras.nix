@@ -46,7 +46,7 @@
     systemd.timers = {
         "scrub" = {
             wantedBy = [ "timers.target" ];
-            enable = true;
+            enable = false;
             after = [ "time-set.target" "time-sync.target" ];
             timerConfig = {
                 Unit = "btrfs-scrub.service";
@@ -56,7 +56,7 @@
 
         "status" = {
             wantedBy = [ "timers.target" ];
-            enable = true;
+            enable = false;
             after = [ "time-set.target" "time-sync.target" ];
             timerConfig = {
                 Unit = "disk-check.service";
