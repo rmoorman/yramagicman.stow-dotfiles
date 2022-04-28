@@ -107,9 +107,15 @@ alias tns="tmux new-session"
 alias tls="tmux ls"
 #}}}
 #{{{ system management aliases
-alias poweroff="systemctl poweroff"
-alias reboot="systemctl reboot"
-alias hibernate="systemctl suspend"
+if  [[ -z $SSH_CLIENT ]] ; then
+    alias poweroff="systemctl poweroff"
+    alias reboot="systemctl reboot"
+    alias hibernate="systemctl suspend"
+else
+    alias poweroff="sudo systemctl poweroff"
+    alias reboot="sudo systemctl reboot"
+    alias hibernate="sudo systemctl suspend"
+fi
 if [[ $(command -v yay) ]]; then
     alias pacman="yay"
 fi
@@ -139,9 +145,9 @@ alias dupbd='docker-compose up -d --build'
 alias dud='docker-compose down'
 #}}}
 #{{{ NFS store mounts
-    alias musicmount="sudo mount -t nfs  browncoat:/music /home/jonathan/Music"
-    alias vidmount="sudo mount -t nfs  browncoat:/video /home/jonathan/Videos"
-    alias storemount="sudo mount -t nfs  browncoat:/storage /home/jonathan/Storage"
+alias musicmount="sudo mount -t nfs  browncoat:/music /home/jonathan/Music"
+alias vidmount="sudo mount -t nfs  browncoat:/video /home/jonathan/Videos"
+alias storemount="sudo mount -t nfs  browncoat:/storage /home/jonathan/Storage"
 #}}}
 #{{{ BTRFS du/df things
 alias bdu="btrfs filesystem du"
