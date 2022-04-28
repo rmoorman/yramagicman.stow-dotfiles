@@ -23,7 +23,7 @@
         gcc
         git
         gnome.adwaita-icon-theme
-        # gnome.aisleriot
+        gnome.aisleriot
         gnome.gedit
         gnumake
         haskellPackages.xmobar
