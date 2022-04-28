@@ -21,6 +21,7 @@
         firefox
         fzf
         gcc
+        ghostscript
         git
         gnome.adwaita-icon-theme
         gnome.aisleriot
