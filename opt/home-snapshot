@@ -6,6 +6,6 @@ day="/home/.snapshots/$(date -I)"
 [[ -d $hour ]] || btrfs subvolume snapshot -r -- "/home" $hour
 [[ -d $day ]] || btrfs subvolume snapshot -r -- "/home" $day
 
-for hourly in "/home/.snapshots/*T*"; do
+for hourly in /home/.snapshots/*T*; do
     [[ -d $hourly ]] && btrfs subvolume delete $hourly
 done
