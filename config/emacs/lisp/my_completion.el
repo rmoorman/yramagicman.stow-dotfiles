@@ -26,6 +26,7 @@
   ;; :hook (lsp-mode . efs/lsp-mode-setup)
   :init
   (setq lsp-keymap-prefix "C-c l")
+  (setq lsp-file-watch-threshold nil)
   (setq lsp-headerline-breadcrumb-enable nil))
 
 ;; (use-package lsp-ui
