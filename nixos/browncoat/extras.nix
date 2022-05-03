@@ -80,4 +80,7 @@
             wantedBy = [ "status.timer" ];
         };
     };
+
+    services.netdata.enable = true;
+
 }
