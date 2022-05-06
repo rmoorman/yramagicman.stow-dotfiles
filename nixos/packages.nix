@@ -59,7 +59,6 @@
         rxvt-unicode
         signal-desktop
         silver-searcher
-        solaar
         theme-obsidian2
         tmux
         ungoogled-chromium

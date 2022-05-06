@@ -73,4 +73,6 @@
     virtualisation.libvirtd.enable = true;
 
     location.provider = "geoclue2";
+    hardware.logitech.wireless.enable = true;
+    hardware.logitech.wireless.enableGraphical = true;
 }
