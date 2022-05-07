@@ -68,6 +68,7 @@
         geoclue2.enable = true;
         fstrim.enable = true;
         atd.enable = true;
+        netdata.enable = true;
     };
 
     virtualisation.libvirtd.enable = true;
