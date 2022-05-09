@@ -3,9 +3,12 @@ export PATH="/run/current-system/sw/bin/:/run/wrappers/bin/"
 hour="/home/.snapshots/$(date -Ihour)"
 day="/home/.snapshots/$(date -I)"
 
-[[ -d $day ]] || for hourly in /home/.snapshots/*T*; do
-    [[ -d $hourly ]] && btrfs subvolume delete $hourly
-done
+[[ -d $day ]] || {
+    btrfs subvolume snapshot -r -- "/home" $day
+    for hourly in /home/.snapshots/*T*; do
+        [[ -d $hourly ]] && btrfs subvolume delete $hourly
+    done
+}
 
 [[ -d $hour ]] || btrfs subvolume snapshot -r -- "/home" $hour
 [[ -d $day ]] || btrfs subvolume snapshot -r -- "/home" $day
