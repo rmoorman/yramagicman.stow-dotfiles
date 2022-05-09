@@ -69,7 +69,11 @@
         fstrim.enable = true;
         atd.enable = true;
         netdata.enable = true;
+
     };
+    networking.firewall.allowedTCPPorts = [
+        19999
+    ];
 
     virtualisation.libvirtd.enable = true;
 
