@@ -93,7 +93,7 @@
 
          "home-snapshot" = {
              description = "take snapshot of home directory";
-             script = "/run/current-system/sw/bin/btrfs subvolume snapshot -r /srv/storage /srv/storage/.snapshots/$(run/current-system/sw/bin/date -Ihour) ";
+             script = "/run/current-system/sw/bin/btrfs subvolume snapshot -r /home/jonathan/Storage /home/jonathan/Storage/.snapshots/$(run/current-system/sw/bin/date -Ihour) ";
              wantedBy = [ "snap.timer" ];
          };
 

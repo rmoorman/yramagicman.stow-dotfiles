@@ -33,5 +33,6 @@
         gc.options = "--delete-older-than 14d";
         settings.auto-optimise-store = true;
     };
+    system.stateVersion = "22.05"; # Did you read the comment?
 
 }
