@@ -62,6 +62,18 @@
                 Unit = "disk-check.service";
                 OnCalendar = "*-*-02 00:00:00";
             };
+
+         "snap" = {
+             wantedBy = [ "timers.target" ];
+             enable = true;
+             timerConfig = {
+                 OnBootSec= "1m";
+                 Unit = "home-snapshot.service";
+                 OnUnitAcitveSec = "1h";
+             };
+         };
+
+
         };
 
     };
@@ -78,5 +90,13 @@
             script = "/run/current-system/sw/bin/btrfs scrub status /dev/disk/by-label/storage > /home/disk-check";
             wantedBy = [ "status.timer" ];
         };
+
+         "home-snapshot" = {
+             description = "take snapshot of home directory";
+             script = "/run/current-system/sw/bin/btrfs subvolume snapshot -r /srv/storage /srv/storage/.snapshots/$(run/current-system/sw/bin/date -Ihour) ";
+             wantedBy = [ "snap.timer" ];
+         };
+
+
     };
 }
