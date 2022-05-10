@@ -63,16 +63,16 @@
                 OnCalendar = "*-*-02 00:00:00";
             };
 
+         };
+
          "snap" = {
              wantedBy = [ "timers.target" ];
              enable = true;
              timerConfig = {
                  OnBootSec= "1m";
                  Unit = "home-snapshot.service";
-                 OnUnitAcitveSec = "1h";
+                 OnUnitAcitveSec = "daily";
              };
-         };
-
 
         };
 
