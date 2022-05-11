@@ -49,6 +49,7 @@
             enable = false;
             after = [ "time-set.target" "time-sync.target" ];
             timerConfig = {
+                OnBootSec= "5m";
                 Unit = "btrfs-scrub.service";
                 OnCalendar = "monthly";
             };
@@ -63,16 +64,17 @@
                 OnCalendar = "*-*-02 00:00:00";
             };
 
-         };
+        };
 
-         "snap" = {
-             wantedBy = [ "timers.target" ];
-             enable = true;
-             timerConfig = {
-                 OnBootSec= "1m";
-                 Unit = "home-snapshot.service";
-                 OnUnitAcitveSec = "daily";
-             };
+        "snap" = {
+            wantedBy = [ "timers.target" ];
+            enable = true;
+            timerConfig = {
+                OnActiveSec= "daily";
+                OnBootSec= "5m";
+
+                Unit = "home-snapshot.service";
+            };
 
         };
 
@@ -91,12 +93,10 @@
             wantedBy = [ "status.timer" ];
         };
 
-         "home-snapshot" = {
-             description = "take snapshot of home directory";
-             script = "/run/current-system/sw/bin/btrfs subvolume snapshot -r /home/jonathan/Storage /home/jonathan/Storage/.snapshots/$(run/current-system/sw/bin/date -Ihour) ";
-             wantedBy = [ "snap.timer" ];
-         };
-
-
+        "home-snapshot" = {
+            description = "take snapshot of home directory";
+            script = "/run/current-system/sw/bin/btrfs subvolume snapshot -r /home/jonathan/Storage /home/jonathan/Storage/.snapshots/$(run/current-system/sw/bin/date -Ihour) ";
+            wantedBy = [ "snap.timer" ];
+        };
     };
 }
