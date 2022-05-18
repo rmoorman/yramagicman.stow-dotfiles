@@ -7,7 +7,7 @@
     services.httpd.enablePHP = true;
     services.mysql.package = pkgs.mariadb;
     services.mysql.enable = true;
-    services.xserver.desktopManager.mate.enable = true; # keep for zoom calls
+    # services.xserver.desktopManager.mate.enable = true; # keep for zoom calls
     services.httpd.virtualHosts = {
         "api.dev.local" = {
 

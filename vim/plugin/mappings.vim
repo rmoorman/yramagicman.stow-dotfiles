@@ -78,3 +78,4 @@ cnoremap <C-e>  <End>
 nnoremap gs <nop>
 "}}}
 inoreabbrev debugger; debugger;//eslint-disable-line
+inoreabbrev  conosle console
