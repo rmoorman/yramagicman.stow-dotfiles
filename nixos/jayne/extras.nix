@@ -48,7 +48,7 @@
         powertop
         slack
         sqlite
-        # thunderbird
+        dbeaver
     ];
 
     nixpkgs.config.packageOverrides = pkgs: {
@@ -70,11 +70,5 @@
             device = "/swapfile";
             size = 4096;
         }
-    ];
-
-    services.flatpak.enable = true;
-    xdg.portal.enable = true;
-    xdg.portal.extraPortals = [
-        pkgs.xdg-desktop-portal-gnome
     ];
 }
