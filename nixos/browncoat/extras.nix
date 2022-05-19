@@ -1,6 +1,6 @@
 { config, pkgs, ... }:
 {
-    system.autoUpgrade.allowReboot = true;
+    # system.autoUpgrade.allowReboot = true;
 
     # Mount secondary drive
     fileSystems."/home/jonathan/Storage".device = "/dev/disk/by-label/storage";
@@ -8,16 +8,15 @@
     boot.kernelPackages = pkgs.linuxPackages_zen;
 
     environment.systemPackages = with pkgs; [
-        dropbox
         btrfs-progs
         intel-gpu-tools
     ];
-    services.flatpak.enable = true;
-    services.xserver.displayManager.gdm.autoSuspend= false;
-    xdg.portal.enable = true;
-    xdg.portal.extraPortals = [
-        pkgs.xdg-desktop-portal-gnome
-    ];
+    # services.flatpak.enable = true;
+    # services.xserver.displayManager.gdm.autoSuspend= false;
+    # xdg.portal.enable = true;
+    # xdg.portal.extraPortals = [
+    #     pkgs.xdg-desktop-portal-gnome
+    # ];
 
     swapDevices = [
         {
