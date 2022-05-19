@@ -9,6 +9,15 @@
         openrgb
     ];
 
+
+    services.flatpak.enable = true;
+    services.xserver.displayManager.gdm.autoSuspend= false;
+    xdg.portal.enable = true;
+    xdg.portal.extraPortals = [
+        pkgs.xdg-desktop-portal-gnome
+    ];
+
+
     #nixpkgs.config.packageOverrides = pkgs: {
     #    vaapiIntel = pkgs.vaapiIntel.override { enableHybridCodec = true; };
     #};
