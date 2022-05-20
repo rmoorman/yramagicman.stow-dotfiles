@@ -99,4 +99,7 @@
             wantedBy = [ "snap.timer" ];
         };
     };
+
+    services.apcupsd.enable = true;
+
 }
