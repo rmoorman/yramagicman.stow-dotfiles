@@ -32,7 +32,6 @@
         options = ["bind"];
     };
 
-
     fileSystems."/srv/storage" = {
         device = "/home/jonathan/Storage";
         options = ["bind"];
@@ -95,7 +94,6 @@
             };
         };
     };
-
 
     networking.firewall.allowPing = true;
     services.samba.openFirewall = true;

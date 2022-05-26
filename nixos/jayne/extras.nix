@@ -25,8 +25,6 @@
 
     };
 
-
-
     services.mysql.ensureDatabases = [
         "ric"
         "testing"
