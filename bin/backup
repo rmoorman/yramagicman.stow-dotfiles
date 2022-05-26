@@ -4,7 +4,6 @@ backup_config_dir=$XDG_CONFIG_HOME/backups
 
 conf_file=$backup_config_dir/config
 
-
 remote_user=$(awk '/remote_user/ {split($0, a, "="); print a[2]}' $conf_file )
 if [[ $(grep 'local_user' $conf_file  ) ]]; then
     local_user=$(awk '/local_user/ {split($0, a, "="); print a[2]}' $conf_file )
@@ -13,7 +12,6 @@ else
 fi
 
 host=$(awk '/host/ {split($0, a, "="); print a[2]}' $conf_file )
-
 
 mkdir='mkdir -p'
 if [[ $( grep 'name' $conf_file ) ]]; then
@@ -62,7 +60,6 @@ fi
 if [[ $num_daily -eq 7 ]]; then
     date +'%Y%m%d' > $backup_config_dir/d_last
 fi
-
 
 if [[ $num_daily -eq 7 ]]; then
     echo 'weekly backup'

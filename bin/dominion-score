@@ -20,7 +20,6 @@ cards = {
     'Curse': [-1]
 }
 
-
 def which_cards(cards):
     default_cards_set = {
         'Duchy': cards['Duchy'],
@@ -50,7 +49,6 @@ def which_cards(cards):
             cards_set[display[c]] = cards[display[c]]
         return cards_set
 
-
 def calculate(cards_set):
     total = 0
     cards = cards_set
@@ -66,7 +64,6 @@ def calculate(cards_set):
             total = total + (count * cards[card][0])
     return total
 
-
 def multi_player():
     players = {}
     num_players = int(input('How many players:'))
@@ -74,7 +71,6 @@ def multi_player():
         name = input('Name: ')
         players[name] = {'score': 0}
     return players
-
 
 cards_set = which_cards(cards)
 print('You have chosen the following cards.')

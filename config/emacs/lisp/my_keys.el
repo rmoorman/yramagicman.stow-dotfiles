@@ -29,7 +29,6 @@
     "gc" 'magit-checkout
     "F" 'find-file)
 
-
   ;; (my-leader-def
   ;;   :states '( normal visual )
   ;;   :keymaps 'override
@@ -53,7 +52,6 @@
    "C-x" 'evil-numbers/dec-at-pt
    "C-c w" 'toggle-truncate-lines
    "C-w t" 'ansiterm-vert))
-
 
 ;; keybind
 (global-set-key (kbd "C-c b") 'buffer-menu)

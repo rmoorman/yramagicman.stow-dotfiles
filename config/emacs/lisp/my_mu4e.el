@@ -66,7 +66,6 @@
             (global-set-key (kbd "C-c m c") 'mu4e-compose)
             (global-set-key (kbd "C-c m e") 'mu4e-compose-edit)
 
-
             ))
 
 (provide 'my_mu4e)

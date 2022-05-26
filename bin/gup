@@ -4,7 +4,6 @@ import subprocess
 import sys
 import time
 
-
 class gup:
     """ updates git stuff, hopefully in parallel"""
 
@@ -137,7 +136,6 @@ class gup:
             # p = multiprocessing.Process(target=gup().do_it, args=(repo,))
             # p.start()
             # p.join()
-
 
 if __name__ == '__main__':
     g = gup()

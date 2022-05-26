@@ -17,5 +17,3 @@ if [ $# -eq 1 ]; then
 else
     docker exec -it "${path}_php-fpm_1" bash
 fi
-
-

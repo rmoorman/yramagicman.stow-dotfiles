@@ -2,7 +2,6 @@
 ;;; Commentary:
 ;;; Code:
 
-
 ;; (setq-default mode-line-format (list
 ;;                                 " "
 ;;                                 mode-line-client
@@ -22,8 +21,6 @@
 ;;                                    (if (buffer-file-name)
 ;;                                        (mapconcat 'identity (nthcdr 4 (split-string (buffer-file-name) "/")) "/")
 ;;                                      " ")))
-
-
 
 ;;                                 " "
 ;;                                 mode-line-percent-position

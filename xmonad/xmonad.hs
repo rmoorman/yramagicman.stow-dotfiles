@@ -139,7 +139,6 @@ myManageHook = composeAll [
     , isDialog                        --> doFloat
   ]
 
-
 ------------------------------------------------------------------------
     -- Event handling
 
@@ -159,7 +158,6 @@ myXmobarPP = def { ppCurrent = xmobarColor "#ffffff" ""
                  , ppExtras  = [ windowCount ]
                  , ppOrder   = \(a:b:c:d) -> [ "-" ] ++ [ b ] ++ d  ++ [ a ] ++ [ c ]
                  }
-
 
 myDzenPP = def { ppExtras  = [ windowCount ]
                , ppCurrent = dzenColor "white" ""

@@ -18,7 +18,6 @@
   :config
   (evil-collection-init))
 
-
 (use-package evil-escape
   :after evil
   :init

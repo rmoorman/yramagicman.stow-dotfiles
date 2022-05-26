@@ -10,7 +10,6 @@
 (use-package lua-mode
   :mode "\\.lua\\'")
 
-
 ;; Modes
 (use-package markdown-mode
   :mode "\\.md\\'"

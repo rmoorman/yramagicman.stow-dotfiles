@@ -3,7 +3,6 @@
 import xml.etree.cElementTree as ET
 import sys
 
-
 def parseXML(file_name):
     # Parse XML with ElementTree
     tree = ET.ElementTree(file=file_name)
@@ -20,7 +19,6 @@ def parseXML(file_name):
                       method_child.find('methodName').text)
             except Exception:
                 pass
-
 
 if __name__ == "__main__":
     parseXML(sys.argv[1])
