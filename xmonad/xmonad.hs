@@ -246,4 +246,5 @@ main = do
           , (( mod4Mask .|. shiftMask, xK_f   ), spawn "pcmanfm")
           , (( mod4Mask .|. controlMask, xK_s   ), spawn "pcmanfm ~/Pictures/screenshots")
           , (( mod4Mask .|. shiftMask, xK_q   ), spawn "pkill -u $USER")
+          , (( mod4Mask, xK_b   ), spawn "pkill xmobar")
         ]
