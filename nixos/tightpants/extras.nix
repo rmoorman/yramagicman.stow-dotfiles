@@ -7,9 +7,10 @@
     fileSystems."/".options = ["compress=zstd"];
     environment.systemPackages = with pkgs; [
         dropbox
-        system76-firmware
-        linuxKernel.packages.linux_zen.system76
         intel-gpu-tools
+        linuxKernel.packages.linux_5_15.system76
+        # linuxKernel.packages.linux_zen.system76
+        system76-firmware
     ];
 
     hardware.system76.enableAll = true;

@@ -3,7 +3,9 @@
 
     # Enable sound.
     sound.enable = true;
+
     services = {
+        yubikey-agent.enable = true;
         # Enable the X11 windowing system.
         xserver = {
             enable = true;
@@ -84,5 +86,11 @@
             "208.67.222.123"
             "208.67.220.123"
         ];
+
+    security.pam.yubico.enable = true;
+    security.pam.services."jonathan".yubicoAuth = true;
+    # one of "required", "requisite", "sufficient", "optional"
+    security.pam.yubico.control= "sufficient";
+    security.pam.yubico.id = "32250";
 
 }
