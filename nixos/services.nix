@@ -87,10 +87,5 @@
             "208.67.220.123"
         ];
 
-    security.pam.yubico.enable = true;
-    security.pam.services."jonathan".yubicoAuth = true;
-    # one of "required", "requisite", "sufficient", "optional"
-    security.pam.yubico.control= "sufficient";
-    security.pam.yubico.id = "32250";
 
 }

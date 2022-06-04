@@ -76,10 +76,6 @@
         xorg.xkill
         xorg.xmessage
         xscreensaver
-        yubikey-manager-qt
-        yubikey-manager
-        yubikey-personalization
-        yubioath-desktop
         zathura
         zsh
     ];

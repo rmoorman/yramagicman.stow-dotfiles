@@ -11,6 +11,7 @@
                 ./header.nix
                 ./packages.nix
                 ./services.nix
+                ./yubikey.nix
                 ./tightpants/extras.nix
                 ./tightpants/network.nix
                 ./users.nix
@@ -53,6 +54,7 @@
                 ./header.nix
                 ./packages.nix
                 ./services.nix
+                ./yubikey.nix
                 ./kaylee/extras.nix
                 ./kaylee/network.nix
                 ./users.nix
