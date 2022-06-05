@@ -1,5 +1,6 @@
 { config, pkgs, ... }:
 {
+    programs.gnupg.agent.pinentryFlavor = "curses";
     services = {
         udev.packages = [ pkgs.yubikey-personalization ];
         yubikey-agent.enable = true;
@@ -12,7 +13,7 @@
 
     security.pam.yubico = {
         enable = true;
-        # debug = true;
+        debug = false;
         mode = "challenge-response";
         control= "sufficient";
     };
