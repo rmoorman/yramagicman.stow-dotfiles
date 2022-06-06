@@ -2,6 +2,10 @@
 {
     hardware.acpilight.enable = true;
 
+    virtualisation.docker.enable = true;
+    users.users.jonathan = {
+      extraGroups = [ "docker" ]; # Enable ‘sudo’ for the user.
+    };
     services.httpd.enable = true;
     services.httpd.adminAddr = "yramagicman@gmail.com";
     services.httpd.enablePHP = true;
@@ -41,12 +45,13 @@
     ];
 
     environment.systemPackages = with pkgs; [
+        dbeaver
+        docker-compose
         du-dust
         intel-gpu-tools
         powertop
         slack
         sqlite
-        dbeaver
     ];
 
     nixpkgs.config.packageOverrides = pkgs: {
