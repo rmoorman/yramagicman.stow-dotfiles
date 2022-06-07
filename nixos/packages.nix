@@ -25,7 +25,7 @@
         git
         gnome.adwaita-icon-theme
         gnome.aisleriot
-        gnome.gedit
+        gnome-text-editor
         gnumake
         haskellPackages.xmobar
         home-manager
