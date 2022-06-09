@@ -36,7 +36,7 @@
             timerConfig = {
                 OnBootSec= "1m";
                 Unit = "home-snapshot.service";
-                OnUnitActiveSec = "1h";
+                OnCalendar = "hourly";
             };
         };
 
@@ -55,7 +55,8 @@
             after = [ "time-set.target" "time-sync.target" ];
             timerConfig = {
                 Unit = "btrfs-scrub.service";
-                OnCalendar = "monthly";
+                 OnCalendar = "monthly";
+                 Persistent=true;
             };
         };
 
@@ -65,7 +66,8 @@
             enable = false;
             timerConfig = {
                 Unit = "disk-check.service";
-                OnCalendar = "*-*-02 00:00:00";
+                 OnCalendar = "monthly";
+                 Persistent=true;
             };
         };
 
