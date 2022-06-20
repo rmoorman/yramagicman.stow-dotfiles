@@ -2,14 +2,14 @@
 {
     services.xserver.dpi = 192;
     hardware.acpilight.enable = true;
-    # boot.kernelPackages = pkgs.linuxPackages_zen;
+    boot.kernelPackages = pkgs.linuxPackages_zen;
 
     fileSystems."/".options = ["compress=zstd"];
     environment.systemPackages = with pkgs; [
         dropbox
         intel-gpu-tools
-        linuxKernel.packages.linux_5_15.system76
-        # linuxKernel.packages.linux_zen.system76
+        # linuxKernel.packages.linux_5_15.system76
+        linuxKernel.packages.linux_zen.system76
         system76-firmware
     ];
 

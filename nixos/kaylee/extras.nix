@@ -1,6 +1,6 @@
 { config, pkgs, ... }:
 {
-    # boot.kernelPackages = pkgs.linuxPackages_zen;
+    boot.kernelPackages = pkgs.linuxPackages_zen;
     fileSystems."/".options = ["compress=zstd"];
     environment.systemPackages = with pkgs; [
         dropbox

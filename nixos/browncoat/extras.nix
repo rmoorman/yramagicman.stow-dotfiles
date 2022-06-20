@@ -5,7 +5,7 @@
     # Mount secondary drive
     fileSystems."/home/jonathan/Storage".device = "/dev/disk/by-label/storage";
     fileSystems."/home/jonathan/Storage".options = ["compress=zstd"];
-    # boot.kernelPackages = pkgs.linuxPackages_zen;
+    boot.kernelPackages = pkgs.linuxPackages_zen;
 
     environment.systemPackages = with pkgs; [
         btrfs-progs
