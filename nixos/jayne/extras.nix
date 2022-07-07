@@ -45,6 +45,7 @@
     ];
 
     environment.systemPackages = with pkgs; [
+        cobang
         dbeaver
         docker-compose
         du-dust
