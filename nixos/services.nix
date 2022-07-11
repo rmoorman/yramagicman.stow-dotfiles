@@ -82,10 +82,5 @@
     location.provider = "geoclue2";
     hardware.logitech.wireless.enable = true;
     hardware.logitech.wireless.enableGraphical = true;
-    networking.nameservers = [
-            "208.67.222.123"
-            "208.67.220.123"
-        ];
-
 
 }
