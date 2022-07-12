@@ -78,6 +78,7 @@
         lshd.tcpForwarding="true";
 
     };
+    networking.firewall.checkReversePath = "loose";
     networking.firewall.allowedTCPPorts = [
         19999
     ];
