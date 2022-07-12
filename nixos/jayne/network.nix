@@ -44,4 +44,5 @@
         };
     };
 
+    services.tailscale.port=48613;
 }

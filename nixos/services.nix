@@ -74,7 +74,6 @@
 
         # enable tailscale
         tailscale.enable=true;
-        tailscale.port=48611;
         tailscale.interfaceName="tailscale0";
         lshd.tcpForwarding="true";
 

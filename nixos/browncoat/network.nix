@@ -101,5 +101,6 @@
     services.unifi.enable = true;
     system.autoUpgrade.allowReboot = true;
     services.unifi.openFirewall=true;
+    services.tailscale.port=48612;
 
 }

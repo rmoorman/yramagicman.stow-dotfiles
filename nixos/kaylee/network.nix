@@ -36,4 +36,5 @@
             };
         };
     };
+    services.tailscale.port=48615;
 }
