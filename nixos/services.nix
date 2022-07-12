@@ -72,6 +72,12 @@
         atd.enable = true;
         netdata.enable = true;
 
+        # enable tailscale
+        tailscale.enable=true;
+        tailscale.port=48611;
+        tailscale.interfaceName="tailscale0";
+        lshd.tcpForwarding="true";
+
     };
     networking.firewall.allowedTCPPorts = [
         19999
