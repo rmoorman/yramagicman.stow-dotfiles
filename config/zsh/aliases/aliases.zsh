@@ -25,6 +25,7 @@ alias e="emacsclent -nw"
 alias v.="vim ."
 alias gvim="vim"
 alias ec="emacsclient -nc"
+alias ec.="emacsclient -nc ."
 alias ech="emacsclient -n"
 alias oo="nohup xdg-open . > /dev/null &"
 
