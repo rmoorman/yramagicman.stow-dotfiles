@@ -43,6 +43,5 @@
 
         };
     };
-    networking.firewall.checkReversePath = 'loose';
     services.tailscale.port=48613;
 }
