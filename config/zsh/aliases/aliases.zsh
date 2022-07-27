@@ -154,16 +154,21 @@ alias storemount="sudo mount -t nfs  browncoat:/storage /home/jonathan/Storage"
 alias bdu="btrfs filesystem du"
 alias bdf="btrfs filesystem df"
 #}}}
+#{{{ tailscale
+function tsup() {
+    sudo tailscale up \
+        --operator=jonathan \
+        --reset \
+        --exit-node '100.94.223.34' \
+        --exit-node-allow-lan-access=true \
+}
 
-#{{{  tailscale
-alias tsup="sudo tailscale up --operator=jonathan --reset --exit-node '100.94.223.34'"
 alias tsdown="sudo tailscale down"
 function tsup-exit() {
     sudo tailscale up \
         --operator=jonathan \
         --advertise-exit-node \
         --accept-routes \
-        --exit-node-allow-lan-access=true \
         --advertise-routes=192.168.0.0/24,192.168.1.0/24
 }
 #}}}
