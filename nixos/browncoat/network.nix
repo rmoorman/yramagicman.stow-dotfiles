@@ -97,10 +97,9 @@
 
     networking.firewall.allowPing = true;
     services.samba.openFirewall = true;
-    services.unifi.unifiPackage = pkgs.unifi;
-    services.unifi.enable = true;
-    system.autoUpgrade.allowReboot = true;
-    services.unifi.openFirewall=true;
     services.tailscale.port=48612;
+    services.unifi.enable = true;
+    services.unifi.openFirewall=true;
+    services.unifi.unifiPackage = pkgs.unifi;
 
 }
