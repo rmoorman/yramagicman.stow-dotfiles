@@ -124,7 +124,7 @@ fi
 #{{{ utility commands
 alias sl="nix-shell -p sl --run sl"
 alias q="exit"
-alias mypw="pwgen -c -n -s -y 16 -1"
+alias mypw="pwgen -c -n -s -y 26 -1"
 alias ndate="date \"+%d-%m-%y\""
 # easy reload of zsh stuff
 alias rl="exec zsh -l"

@@ -37,7 +37,7 @@
 
     security.sudo.extraRules = [
         {
-            users = [ "jonathan" ];
+            users = [ "jonathan", "tomg" ];
             commands = [ { command = "/opt/receive-backup"; options = [ "NOPASSWD" ]; } ];
         }
     ];
@@ -101,4 +101,13 @@
 
     services.apcupsd.enable = true;
 
+
+      users.users.tomg = {
+          isNormalUser = true;
+          home  = "/home/tomg";
+          createHome  = true;
+          # extraGroups = [ "audio" "video" "kvm" ];
+          shell = pkgs.zsh;
+          initialPassword = "v/d7xBMgrZnLO[H[W`6z:3Ru@}";
+      };
 }
