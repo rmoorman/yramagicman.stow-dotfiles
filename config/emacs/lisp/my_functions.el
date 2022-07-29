@@ -32,3 +32,4 @@
     nil))
 (provide 'my_functions)
 ;;; functions.el ends here
+;;; functions.el ends here

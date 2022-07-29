@@ -52,7 +52,7 @@
     (set-face-attribute-from-resource 'mode-line :foreground "foreground" "color7" nil)
     (set-face-attribute `mode-line-inactive nil :box nil )
     (set-face-attribute `mode-line nil :box nil )))
-    ; (set-face-attribute-from-resource 'hl-line :background "background" "color8" nil)))
+                                        ; (set-face-attribute-from-resource 'hl-line :background "background" "color8" nil)))
 
 (defun set-x-faces ()
   (interactive)
@@ -67,7 +67,7 @@
 
 (defun save-on-focus-lost ()
   (if (not (frame-focus-state))
-      (save-writable)
+      (save-some-buffers 1)
     nil))
 (add-function :after after-focus-change-function #'save-on-focus-lost)
 
