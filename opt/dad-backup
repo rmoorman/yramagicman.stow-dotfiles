@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+if [[ -z $1 ]]; then
+    printf "%s" "Need an argument for destination path" >&2
+    exit 1
+fi
+
+path="/srv/storage/backup/$1/$(date -I)"
+mkdir -p $path
+echo $path
+btrfs receive $path
+chown -R tomg:users $path
