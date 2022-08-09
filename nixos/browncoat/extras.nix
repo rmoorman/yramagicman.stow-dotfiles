@@ -38,7 +38,10 @@
     security.sudo.extraRules = [
         {
             users = [ "jonathan" "tomg" ];
-            commands = [ { command = "/opt/receive-backup"; options = [ "NOPASSWD" ]; } ];
+            commands = [
+                { command = "/opt/receive-backup"; options = [ "NOPASSWD" ]; }
+                { command = "/opt/dad-backup"; options = [ "NOPASSWD" ]; }
+            ];
         }
     ];
 
