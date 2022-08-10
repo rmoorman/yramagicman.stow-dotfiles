@@ -1,0 +1,32 @@
+#!/bin/sh
+
+set -e
+export XDG_CONFIG_HOME=$HOME/.config
+sessionName=$( basename $PWD )
+mux="tmux -f $XDG_CONFIG_HOME/tmux.d/tmux.conf"
+if $mux has-session -t "$sessionName" 2> /dev/null; then
+  switch_or_attach "$sessionName"
+  exit
+fi
+
+$mux new-session -c "$PWD" -d -s "$sessionName" -n dev
+$mux send-keys -t "$sessionName":dev "cd $PWD" Enter
+$mux send-keys -t "$sessionName":dev "$EDITOR $PWD " Enter
+
+$mux new-window -t "$sessionName" -c "$PWD/frontend" -n frontend-shell
+$mux send-keys -t "$sessionName:frontend-shell" "nix-shell" Enter
+
+$mux new-window -t "$sessionName" -c "$PWD/backend" -n backend-shell
+$mux send-keys -t "$sessionName:backend-shell" "nix-shell" Enter
+
+$mux new-window -t "$sessionName" -c "$PWD" -n server
+$mux split-window -c "$PWD" -h -t "$sessionName":server
+$mux send-keys -t "$sessionName":server.left "cd $PWD/backend" Enter
+$mux send-keys -t "$sessionName":server.left "nix-shell" Enter
+$mux send-keys -t "$sessionName":server.left "php artisan serve" Enter
+$mux send-keys -t  "$sessionName":server.right "cd $PWD/frontend" Enter
+$mux send-keys -t  "$sessionName":server.right "nix-shell" Enter
+$mux send-keys -t  "$sessionName":server.right "npm run serve" Enter
+
+switch_or_attach "$sessionName":frontend-shell.left
+exit 0
