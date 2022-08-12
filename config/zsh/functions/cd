@@ -10,12 +10,16 @@ function cd() {
         colorflag=""
     fi
     if [[ -f $VIRTUAL_ENV/.project && -n "$(< $VIRTUAL_ENV/.project 2>/dev/null)" && -z "$@" ]]; then
+        # With no args and in a python virtualenv, cd to venv root and ls
         builtin cd $(< $VIRTUAL_ENV/.project) && ls -F ${colorflag}
     elif [[ -n "$(git rev-parse --show-toplevel 2>/dev/null)" && "$(pwd)" == "$(git rev-parse --show-toplevel 2>/dev/null)" && -z "$@" ]]; then
-        builtin cd ~/ && ls -F ${colorflag}
+        # With no args and in the root of a git repo, cd to $HOME and ls
+        builtin cd $HOME && ls -F ${colorflag}
     elif [[ -n "$(git rev-parse --show-toplevel 2>/dev/null)" && -z "$@" ]]; then
+        # With no args and in a git repo, but not at root directory, cd to root of git repo
         builtin cd $(git rev-parse --show-toplevel) && ls -F ${colorflag}
     else
+        # In all other cases cd to target directory and ls
         builtin cd $@ && ls -F ${colorflag}
     fi
 }
