@@ -84,6 +84,7 @@
     ];
 
     virtualisation.libvirtd.enable = true;
+    security.polkit.enable = true;
 
     location.provider = "geoclue2";
     hardware.logitech.wireless.enable = true;
