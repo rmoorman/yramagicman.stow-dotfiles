@@ -37,12 +37,18 @@
         options = ["bind"];
     };
 
+    fileSystems."/srv/home" = {
+        device = "/home/jonathan/";
+        options = ["bind"];
+    };
+
     services.nfs.server.enable=true;
     services.nfs.server.exports = ''
         /srv 192.168.1.0/24(rw,sync,crossmnt,fsid=0)
         /srv/music 192.168.1.0/24(rw,sync)
         /srv/video 192.168.1.0/24(rw,sync)
         /srv/storage 192.168.1.0/24(rw,sync)
+        /srv/home 192.168.1.0/24(rw,sync)
     '';
     services.samba-wsdd.enable = true; # make shares visible for windows 10 clients
     networking.firewall.allowedTCPPorts = [
