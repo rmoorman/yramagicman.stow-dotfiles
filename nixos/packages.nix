@@ -41,6 +41,7 @@
         mpv
         msmtp
         mu
+        udisks
         mutt
         neovim
         nfs-utils
