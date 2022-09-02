@@ -9,6 +9,7 @@
         bind
         breeze-icons
         btop
+        calibre
         cmus
         dmenu
         dunst
@@ -27,6 +28,7 @@
         gnome.aisleriot
         gnome-text-editor
         gnumake
+        guvcview
         haskellPackages.xmobar
         home-manager
         htop
@@ -41,7 +43,6 @@
         mpv
         msmtp
         mu
-        udisks
         mutt
         neovim
         nfs-utils
@@ -62,6 +63,7 @@
         silver-searcher
         theme-obsidian2
         tmux
+        udisks
         ungoogled-chromium
         universal-ctags
         unzip

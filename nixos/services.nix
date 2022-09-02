@@ -31,6 +31,7 @@
             libinput.mouse.naturalScrolling = true;
         };
 
+        udisks2.enable = true;
         # Enable CUPS to print documents.
         printing.enable = true;
         avahi = {
