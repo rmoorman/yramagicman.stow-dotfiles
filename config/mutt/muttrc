@@ -77,8 +77,8 @@ macro index \Cr "!mbsync -a"<enter>
 macro index \Cs "!mu find --format=links --linksdir=$HOME/.config/mail/results "
 
 # ctrl + <key> to jump to mailbox
-macro index \Cw "c ~/.config/mail/work/Inbox.work"<enter>
-macro index \Ci "c ~/.config/mail/gilsons/Inbox.personal"<enter>
+macro index \Cw ":set from='jgilson@omnispear.com'<enter>c ~/.config/mail/work/Inbox.work"<enter>
+macro index \Ci ":set from='jonathandavis@gilsons.org'<enter>c ~/.config/mail/gilsons/Inbox.personal"<enter>
 macro index \Cb "c ~/.config/mail/bills/Inbox.bills"<enter>
 
 #set pager_context = 3      # number of context lines to show
