@@ -9,15 +9,15 @@ stateFile="/var/cache/backup/state"
 last="$(cat $stateFile)"
 [[ "$day" != "$last" ]] && echo "Backing up /home from snapshot $last"
 
-ping -c 3 -q browncoat
+ping -c 3 -q 100.94.223.34
 if [[ "$day" != "$last" ]] && [[ $? ]]; then
     if [[ -d $last ]]; then
     btrfs send -c $last $day | \
-        ssh jonathan@browncoat "sudo /opt/receive-backup $(hostname)" && \
+        ssh jonathan@100.94.223.34 "sudo /opt/receive-backup $(hostname)" && \
         echo $day > $stateFile
     else
     btrfs send $day | \
-        ssh jonathan@browncoat "sudo /opt/receive-backup $(hostname)" && \
+        ssh jonathan@100.94.223.34 "sudo /opt/receive-backup $(hostname)" && \
         echo $day > $stateFile
     fi
 fi
