@@ -79,6 +79,7 @@
         xorg.xkill
         xorg.xmessage
         xscreensaver
+        yt-dlp
         zathura
         zsh
     ];

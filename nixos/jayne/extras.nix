@@ -46,10 +46,10 @@
 
     environment.systemPackages = with pkgs; [
         cobang
-        gphoto2
         dbeaver
         docker-compose
         du-dust
+        gphoto2
         intel-gpu-tools
         powertop
         slack
