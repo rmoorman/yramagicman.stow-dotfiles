@@ -63,8 +63,8 @@ myModMask       = mod4Mask
 --
 -- myWorkspaces    = ["1:shell","2:browser","3:browser","4","5","6","7","8","9"]
 myWorkspaces    = ["1:shell","2:br1","3:br2", "4:mail/db"]
-  ++ map show [ 5 .. 7 ]
-  ++ ["8:signal", "9:slack"]
+  ++ map show [ 5 .. 6 ]
+  ++ ["7:mpv", "8:signal", "9:slack"]
 
 -- Border colors for unfocused and focused windows, respectively.
 --
@@ -129,13 +129,13 @@ myManageHook = composeAll [
     , className =? "st-256color"      --> doShift "1:shell"
     , className =? "Emacs"            --> doShift "1:shell"
     , className =? "firefox"          --> doShift "2:br1"
-    -- , className =? "Firefox"          --> doShift "2:br1"
     , className =? "Chromium-browser"         --> doShift "3:br2"
     , className =? "Thunderbird"      --> doShift "4:mail/db"
     , className =? "Signal"           --> doShift "8:signal"
     , className =? "Slack"            --> doShift "9:slack"
     , title =? "Dbeaver"              --> doShift "4:mail/db"
     , className =? "DBeaver"          --> doShift "4:mail/db"
+    , className =? "mpv"              --> doShift "7:mpv"
     , isDialog                        --> doFloat
   ]
 
