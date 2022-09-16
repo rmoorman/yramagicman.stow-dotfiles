@@ -51,6 +51,7 @@
         du-dust
         gphoto2
         intel-gpu-tools
+        ngrok
         powertop
         slack
         sqlite
