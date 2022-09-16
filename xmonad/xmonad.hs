@@ -125,7 +125,7 @@ myLayout = do
 --
 myManageHook = composeAll [
       className =? "Alacritty"        --> doShift "1:shell"
-    , className =? "URxvt"            --> doShift "1:shell"
+    -- , className =? "URxvt"            --> doShift "1:shell"
     , className =? "st-256color"      --> doShift "1:shell"
     , className =? "Emacs"            --> doShift "1:shell"
     , className =? "firefox"          --> doShift "2:br1"
@@ -248,4 +248,5 @@ main = do
           , (( mod4Mask .|. shiftMask, xK_q   ), spawn "pkill -u $USER")
           , (( mod1Mask .|. shiftMask, xK_q   ), spawn "cobang")
           , (( mod4Mask, xK_b   ), spawn "pkill xmobar")
+          , (( mod4Mask .|. mod1Mask, xK_Return   ), spawn "urxvt")
         ]
