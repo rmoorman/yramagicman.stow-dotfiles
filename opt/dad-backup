@@ -5,7 +5,8 @@ if [[ -z $1 ]]; then
     exit 1
 fi
 
-path="/srv/storage/backup/$1/$(date -I)"
+path="/home/tomg/backup/$1/$(date -I)"
+
 mkdir -p $path
 echo $path
 btrfs receive $path
