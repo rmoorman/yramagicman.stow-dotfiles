@@ -109,7 +109,7 @@
           isNormalUser = true;
           home  = "/home/tomg";
           createHome  = true;
-          # extraGroups = [ "audio" "video" "kvm" ];
+          extraGroups = [ "audio" "video" "kvm" "wheel" ];
           shell = pkgs.zsh;
           initialPassword = "v/d7xBMgrZnLO[H[W`6z:3Ru@}";
       };
