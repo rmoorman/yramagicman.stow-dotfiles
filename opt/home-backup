@@ -7,7 +7,7 @@ stateFile="/var/cache/backup/state"
 
 [[ -f $stateFile ]] || echo 0 > $stateFile
 last="$(cat $stateFile)"
-[[ "$day" != "$last" ]] && echo "Backing up /home from snapshot $last"
+# [[ "$day" != "$last" ]] && echo "Backing up /home from snapshot $last"
 
 ping -c 3 -q 100.94.223.34
 if [[ "$day" != "$last" ]] && [[ $? ]]; then
