@@ -31,6 +31,12 @@ function update() {
     elif [[ $(command -v zypper) ]]; then
         sudo zypper refresh
         sudo zypper dup
+
+    elif [[ $(command -v freebsd-update) ]]; then
+        sudo freebsd-update fetch
+        sudo freebsd-update install
+        sudo pkg update
+        sudo pkg upgrade
     fi
 
     if [[ $(command -v flatpak) ]] && [[ -z $SSH_CLIENT ]] ; then
