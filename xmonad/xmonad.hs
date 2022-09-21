@@ -186,7 +186,7 @@ commands = [
            , "emacs --bg-daemon"
            , "xset r rate 250 25"
            , "xset b off"
-           , "dropbox"
+           -- , "dropbox"
            , "tmuxcopy"
            , "nextcloud --background"
            , "dunst"
