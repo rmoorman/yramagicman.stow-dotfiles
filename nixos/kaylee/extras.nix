@@ -62,10 +62,6 @@
              timerConfig = {
                 OnBootSec= "1m";
 
-                path=[
-                    "/run/current-system/sw/"
-                    "/run/wrappers/"
-                ];
                 Unit = "home-snapshot.service";
                 OnCalendar = "hourly";
             };
@@ -106,6 +102,10 @@
      systemd.services = {
          "home-snapshot" = {
              description = "take snapshot of home directory";
+             path=[
+                 "/run/current-system/sw/"
+                 "/run/wrappers/"
+             ];
              script = "/opt/home-snapshot";
              wantedBy = [ "snap.timer" ];
          };
