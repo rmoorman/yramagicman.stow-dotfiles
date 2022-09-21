@@ -60,11 +60,16 @@
              wantedBy = [ "timers.target" ];
              enable = true;
              timerConfig = {
-                 OnBootSec= "1m";
-                 Unit = "home-snapshot.service";
-                 OnCalendar = "hourly";
-             };
-         };
+                OnBootSec= "1m";
+
+                path=[
+                    "/run/current-system/sw/"
+                    "/run/wrappers/"
+                ];
+                Unit = "home-snapshot.service";
+                OnCalendar = "hourly";
+            };
+        };
 
          "backup" = {
              wantedBy = [ "timers.target" "network.target" ];

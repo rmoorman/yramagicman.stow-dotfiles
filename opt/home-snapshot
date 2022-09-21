@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env zsh
 export PATH="/run/current-system/sw/bin/:/run/wrappers/bin/"
 hour="/home/.snapshots/$(date -Ihour)"
 day="/home/.snapshots/$(date -I)"
@@ -12,3 +12,10 @@ day="/home/.snapshots/$(date -I)"
 
 [[ -d $hour ]] || btrfs subvolume snapshot -r -- "/home" $hour
 [[ -d $day ]] || btrfs subvolume snapshot -r -- "/home" $day
+
+
+for f in {30..365}; do
+    ago=$(date --date="$f days ago" -I)
+    old="/home/.snapshots/$ago"
+    [[ -d $old ]] && btrfs subvolume delete $old
+done

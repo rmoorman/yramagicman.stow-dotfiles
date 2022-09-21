@@ -55,8 +55,8 @@
             after = [ "time-set.target" "time-sync.target" ];
             timerConfig = {
                 Unit = "btrfs-scrub.service";
-                 OnCalendar = "monthly";
-                 Persistent=true;
+                OnCalendar = "monthly";
+                Persistent=true;
             };
         };
 
@@ -66,8 +66,8 @@
             enable = false;
             timerConfig = {
                 Unit = "disk-check.service";
-                 OnCalendar = "monthly";
-                 Persistent=true;
+                OnCalendar = "monthly";
+                Persistent=true;
             };
         };
 
@@ -76,6 +76,10 @@
     systemd.services = {
         "home-snapshot" = {
             description = "take snapshot of home directory";
+            path=[
+                "/run/current-system/sw/"
+                "/run/wrappers/"
+            ];
             script = "/opt/home-snapshot";
             wantedBy = [ "snap.timer" ];
         };
