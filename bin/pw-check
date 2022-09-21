@@ -1,0 +1,15 @@
+#!/bin/sh
+
+zdir="$HOME/.local/share/zxcvbn"
+if [[ -d "$zdir" ]]; then
+    $zdir/bin/python -c "import zxcvbn; print(zxcvbn.zxcvbn('$1')['score'],
+    '\n',
+    zxcvbn.zxcvbn('$1')['feedback']['warning'],
+    '\n',
+    '\n'.join(zxcvbn.zxcvbn('$1')['feedback']['suggestions']))"
+else
+    echo "Installing zxcvbn"
+    python -m venv $zdir
+    $zdir/bin/pip install zxcvbn
+    echo 'Try again now, it should work'
+fi
