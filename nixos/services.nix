@@ -77,6 +77,7 @@
         tailscale.enable=true;
         tailscale.interfaceName="tailscale0";
         lshd.tcpForwarding="true";
+        gnome.gnome-keyring.enable = true;
 
     };
     networking.firewall.checkReversePath = "loose";

@@ -45,6 +45,7 @@
         mu
         mutt
         neovim
+        nextcloud-client
         nfs-utils
         nodejs
         openssl

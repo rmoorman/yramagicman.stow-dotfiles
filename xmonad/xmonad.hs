@@ -188,6 +188,7 @@ commands = [
            , "xset b off"
            , "dropbox"
            , "tmuxcopy"
+           , "nextcloud --background"
            , "dunst"
            , "setxkbmap -option compose:menu"
            , "setxkbmap -option caps:none"
