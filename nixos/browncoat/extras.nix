@@ -113,4 +113,26 @@
           shell = pkgs.zsh;
           initialPassword = "v/d7xBMgrZnLO[H[W`6z:3Ru@}";
       };
+
+    services.nextcloud = {
+        enable = true;
+        hostName = "browncoat.local";
+        home = "/srv/storage/nextcloud/home/";
+        datadir = "/srv/storage/nextcloud/data/";
+        config.adminpassFile = "${pkgs.writeText "adminpass" "test123"}";
+
+        config.extraTrustedDomains = [
+            "100.94.223.34"
+            "100.109.94.104"
+            "100.124.185.19"
+            "100.75.20.127"
+            "100.87.66.73"
+            "100.125.24.87"
+        ];
+
+
+    };
+
+
+
 }

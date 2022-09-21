@@ -56,6 +56,8 @@
         2049 # nfs
         8443
         19999
+        80
+        443
     ];
     networking.firewall.allowedUDPPorts = [
         3702 # wsdd
