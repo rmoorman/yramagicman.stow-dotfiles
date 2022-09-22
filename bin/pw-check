@@ -1,7 +1,7 @@
 #!/bin/sh
 
 zdir="$HOME/.local/share/zxcvbn"
-if [[ -d "$zdir" ]]; then
+if test -d "$zdir"; then
     $zdir/bin/python -c "import zxcvbn; print(zxcvbn.zxcvbn('$1')['score'],
     '\n',
     zxcvbn.zxcvbn('$1')['feedback']['warning'],
