@@ -24,10 +24,10 @@ zpkg init
 [[ -z "$INSIDE_EMACS" ]] && zpkg colored-man-pages -f omz
 zpkg zsh-users/zsh-completions
 zpkg agkozak/zsh-z
-if [[ $( type nixos-rebuild ) ]] ; then
+if [[ $( command -v nixos-rebuild ) ]] ; then
     zpkg spwhitt/nix-zsh-completions
+    zpkg chisui/zsh-nix-shell -a nix-shell
 fi
-zpkg chisui/zsh-nix-shell -a nix-shell
 zpkg load
 zpkg update
 source "$ZDOTDIR/aliases/aliases.zsh"
