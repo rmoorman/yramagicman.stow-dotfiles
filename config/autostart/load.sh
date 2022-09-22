@@ -17,9 +17,6 @@ set_screen_layout() {
     if test "$( hostname )" == 'artoo'; then
         echo 'Xft.dpi: 192' | xrdb -override
     fi
-    if test "$( hostname )" == 'cubano'; then
-        ( "$HOME"/.config/screenlayout/work.sh ) &
-    fi
 }
 
 set_screen_layout
