@@ -44,6 +44,7 @@ while test "$1"; do
             done
         } ;;
         -c) {
+            mkdir -p "$HOME/.config"
             for d in config/*;
             do
                 ln -sfv "$PWD/$d" "$HOME/.config/"
