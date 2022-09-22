@@ -1,13 +1,15 @@
 #!/usr/bin/env bash
 
 if [[ -z $1 ]]; then
-    printf "%s" "Need an argument for destination path" >&2
+    printf "%s" "browncoat: dad-backup script needs an argument for destination path" >&2
     exit 1
 fi
 
-path="/srv/storage/backup/$1/$(date -I)"
-
+path="/srv/storage/bakerst/$1/$(date -I)/"
 mkdir -p $path
 echo $path
 btrfs receive $path
-chown -R tomg:users $path
+for d in /srv/storage/bakerst/*; do
+    rmdir $d 2>/dev/null
+    echo "$d was empty. Removed" >&2
+done
