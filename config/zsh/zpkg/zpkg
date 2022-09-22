@@ -1,7 +1,7 @@
 #!/usr/bin/env zsh
 #
 # vim: ft=zsh
-function pkg() {
+function zpkg() {
     zmodload zsh/datetime
     zmodload -m -F zsh/files b:zf_rm b:zf_mkdir b:zf_mv
     zparseopts -E -D -A opts a:=alt -alt:=alt f:=from -from:=from -theme=theme t=theme d:=depends
