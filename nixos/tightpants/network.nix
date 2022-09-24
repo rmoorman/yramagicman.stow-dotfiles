@@ -30,7 +30,6 @@
         enable = true;
         networks = {
             "25-wireless" = {
-                dns = ["1.1.1.1" "1.0.0.1"];
                 matchConfig = { Name = "wlan0"; };
                 DHCP= "yes";
             };
