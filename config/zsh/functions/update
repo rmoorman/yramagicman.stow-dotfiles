@@ -8,11 +8,13 @@ function update() {
         # with diff --no-index. To avoid this, copy nix config to temp directory
         # and build from outside git repo
         (
+        print -v thing -P %x
         tmp=$(mktemp -d)
-        conf="$HOME/Documents/dots/nixos"
-        command cp -r $conf $tmp
+        conf="$(builtin cd  ${thing/update/} && git --work-tree=${thing/update/} rev-parse --show-toplevel )"
+        command cp -r "$conf/nixos/" $tmp
         sudo nixos-rebuild boot --flake "$tmp/nixos/#"  --upgrade-all
         )
+        return
         nix-collect-garbage -d --delete-older-than 14d
         nix store optimise
     elif [[ $(command -v yay) ]]; then
@@ -31,7 +33,6 @@ function update() {
     elif [[ $(command -v zypper) ]]; then
         sudo zypper refresh
         sudo zypper dup
-
     elif [[ $(command -v freebsd-update) ]]; then
         sudo freebsd-update fetch
         sudo freebsd-update install
