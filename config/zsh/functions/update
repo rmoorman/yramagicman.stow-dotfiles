@@ -10,7 +10,8 @@ function update() {
         (
         print -v thing -P %x
         tmp=$(mktemp -d)
-        conf="$(builtin cd ${thing/update/} && git --work-tree=${thing/update/} rev-parse --show-toplevel )"
+        conf="$(builtin cd ${thing/update/} && git rev-parse --show-toplevel )"
+        echo "\n\n$conf\n\n"
         command cp -r "$conf/nixos/" $tmp
         sudo nixos-rebuild boot --flake "$tmp/nixos/#"  --upgrade-all
         )
