@@ -84,7 +84,6 @@ function _source_deps() {
 }
 
 function _handle_errors {
-
     echo 'There were errors cloning your plugins, showing them now'
     echo "Errors are listed by PID in $MODULES_DIR/logs"
     (
@@ -103,7 +102,6 @@ function _handle_errors {
 }
 
 function _clear_errors() {
-
     local clear
     echo 'Clear errors? [ y or yes to confirm, all else cancels ]'
     read clear
@@ -114,7 +112,6 @@ function _clear_errors() {
 }
 
 function _clear_logs() {
-
     local clear
     echo 'Clear logs? {y or yes to confirm, all else cancels}'
     read clear

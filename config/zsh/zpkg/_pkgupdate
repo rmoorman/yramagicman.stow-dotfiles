@@ -6,9 +6,10 @@ function _pkgupdate() {
 
 
     local update_time="$(< $MODULES_DIR/.updatetime)"
-    [[ ! -f $MODULES_DIR/.updatetime || ${#update_time} == 0 ]] && echo 0 > $MODULES_DIR/.updatetime \
+    [[ ! -f $MODULES_DIR/.updatetime || ${#update_time} == 0 ]] && {
+        echo 0 > $MODULES_DIR/.updatetime \
         && update_time="$(< $MODULES_DIR/.updatetime)"
-
+    }
 
     day=$((24 * 60 * 60 ))
     gap=$(( $UPDATE_INTERVAL * $day ))
@@ -39,7 +40,7 @@ function _pkgupdate() {
             pwd
             find ./ -type d -name '.git' | while read -r git
             do
-                ( cd $(dirname $git) &&
+                (builtin cd $(dirname $git) &&
                       git stash &&
                       git pull --rebase &&
                       git stash pop)

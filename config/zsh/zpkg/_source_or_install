@@ -44,8 +44,6 @@ function _source_or_install() {
         if [[ ! -d "$MODULES_DIR/$location" ]]; then
             zf_mkdir -p "$MODULES_DIR/logs"
             zshpath=("${(@s/./)MODULES_DIR}")
-
-
             (
             builtin cd $MODULES_DIR
             if [[ ! -d $dest ]]; then
