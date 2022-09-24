@@ -23,7 +23,7 @@ function zpkg() {
                  zf_mv $MODULES_DIR/logs/ $MODULES_DIR/log_backups/logs_$( date +'%j%H%M%S' )
             fi
             if [[ -d  "$MODULES_DIR/log_backups" ]]; then
-                echo "You have $( du -hs "$MODULES_DIR/log_backups" | awk '/[:space:]/ {print $1}' ) of log backups, clear them with pkg clear-logs"
+                echo "You have $( du -hs "$MODULES_DIR/log_backups" | awk '/[:space:]/ {print $1}' ) of log backups, clear them with zpkg clear-logs"
             fi
             echo 'reloading...'
             if [[ ! -f /tmp/zreload ]]; then
