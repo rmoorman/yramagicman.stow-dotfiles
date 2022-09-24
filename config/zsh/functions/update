@@ -4,9 +4,8 @@ function update() {
     sudo -v
     gup
     if [[ $(command -v nixos-rebuild) ]] ; then
-        # git 2.35.3 has a bug that prevents flakes from updating, something
-        # with diff --no-index. To avoid this, copy nix config to temp directory
-        # and build from outside git repo
+        # Git/nix are fixed, but committing the flake.lock is not
+        # something I'm interested in.
         (
         print -v thing -P %x
         tmp=$(mktemp -d)
@@ -15,7 +14,6 @@ function update() {
         command cp -r "$conf/nixos/" $tmp
         sudo nixos-rebuild boot --flake "$tmp/nixos/#"  --upgrade-all
         )
-        return
         nix-collect-garbage -d --delete-older-than 14d
         nix store optimise
     elif [[ $(command -v yay) ]]; then
