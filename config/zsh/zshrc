@@ -160,6 +160,10 @@ zmodload zsh/complist
 
 # history
 HISTFILE="$XDG_CACHE_HOME/zsh/history"
+[[ -d ${HISTFILE/history/} ]] || {
+    zmodload -m -F zsh/files  b:zf_mkdir
+    mkdir -p ${HISTFILE/history/}
+}
 HISTSIZE=10000000
 SAVEHIST=10000000
 setopt appendhistory notify
