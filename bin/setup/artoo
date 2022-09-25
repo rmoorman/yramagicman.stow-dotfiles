@@ -29,7 +29,6 @@ dhcpcd
 diffutils
 docbook-xml
 dosfstools
-dropbox-cli
 dunst
 dzen2
 e2fsprogs

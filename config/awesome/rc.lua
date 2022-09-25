@@ -151,7 +151,6 @@ awful.screen.connect_for_each_screen(function(s)
         local batstat = gizmos.batstat();
         local batcap = gizmos.batcap('B:', '%');
         local update = gizmos.update('U:', nil, 10);
-        local dbox = gizmos.dbox('D:')
         local vol = gizmos.volume('V: ', '', false )
         local ip = gizmos.ip()
         local ssid = gizmos.ssid('wlan0', 'N:')
@@ -186,8 +185,6 @@ awful.screen.connect_for_each_screen(function(s)
                 ip,
                 gizmos.sep(15),
                 update,
-                gizmos.sep(15),
-                dbox,
                 gizmos.sep(15),
                 batcap,
                 gizmos.sep(10),

@@ -15,7 +15,6 @@ const {
 
 class MyEmitter extends EventEmitter {}
 const ssidEvent = new MyEmitter();
-const dropboxEvent = new MyEmitter();
 const volumeEvent = new MyEmitter();
 const batteryEvent = new MyEmitter();
 const updateEvent = new MyEmitter();
@@ -59,14 +58,6 @@ let getSsid = function() {
     }
 };
 
-let dropboxStatus = function() {
-    exec('dropbox-cli status', {}, function(jsrr, out, err) {
-        dropboxEvent.emit('event', out.split('\n')[0].trim());
-        if (err) {
-            console.error(`error: ${ err }`);
-        }
-    });
-};
 
 let mail = function() {
     let d = new Date();
@@ -243,10 +234,6 @@ ssidEvent.on('event', function(ssid) {
     statusLine.network = ssid + ' ' + network();
 });
 
-dropboxEvent.on('event', function(stat) {
-    statusLine.dropbox = stat;
-});
-
 mailEvent.on('event', function(mail) {
     statusLine.mail = mail;
 });
@@ -284,7 +271,6 @@ setInterval(function() {
     updateCount();
     updateRefresh();
     getSsid();
-    dropboxStatus();
     mail();
     weather();
     volume();
@@ -302,7 +288,7 @@ setInterval(function() {
     if (statusLine.network) {
         line += `N:${statusLine.network || ''} `;
     }
-    line += `D:${statusLine.dropbox || ''} V:${statusLine.volume || ''} ${statusLine.date || ''}`;
+    line += `V:${statusLine.volume || ''} ${statusLine.date || ''}`;
 
     let display = spawn('xsetroot', ['-name', line]);
     display.stdout.on('data', () => {});

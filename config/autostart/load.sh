@@ -50,8 +50,6 @@ test -n  "$( pgrep awesome )" || dunst &
 # Turn on/off system beep
 xset b off &
 
-# Autostart the Dropbox deamon
-(sleep 100s && dropbox-cli start) &
 (sleep 45s && check_process redshift) &
 
 #limit the size of dirs history

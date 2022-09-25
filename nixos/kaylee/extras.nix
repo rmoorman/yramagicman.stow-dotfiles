@@ -23,7 +23,6 @@
     fileSystems."/".options = ["compress=zstd"];
 
     environment.systemPackages = with pkgs; [
-        dropbox
         asunder
         handbrake
         microcodeAmd

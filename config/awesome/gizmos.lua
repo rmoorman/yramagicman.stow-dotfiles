@@ -187,27 +187,6 @@ function gizmos.ip(prefix, suffix)
             end)
         end
 
-        function gizmos.dbox(prefix, suffix)
-            if prefix == nil then
-                prefix = ''
-            end
-            if suffix == nil then
-                suffix = ''
-            end
-            return awful.widget.watch(" bash -c 'dropbox-cli status' ", 1, function (w, out)
-                local message = out:gsub("%s+$", "")
-                if message == "Dropbox isn't running!" then
-                    message = "off"
-                elseif message == "Up to date" then
-                    message="\xe2\x9c\x93"
-                elseif message:find('Syncing') then
-                    message = message
-                else
-                    message = message
-                end
-                w:set_text( prefix .. message .. suffix)
-            end)
-        end
 
         function gizmos.date(format, prefix, suffix)
             if prefix == nil then

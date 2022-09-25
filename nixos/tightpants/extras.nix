@@ -6,7 +6,6 @@
 
     fileSystems."/".options = ["compress=zstd"];
     environment.systemPackages = with pkgs; [
-        dropbox
         intel-gpu-tools
         # linuxKernel.packages.linux_5_15.system76
         linuxKernel.packages.linux_zen.system76

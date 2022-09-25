@@ -98,27 +98,6 @@ function my_volume() {
     echo "V:$( amixer -c 0  -- get Master| awk '/Playback [0-9]{0,5} \[[0-9]{0,3}%]/ {print $4 $6}' )"
 }
 
-function dbox() {
-    if [[ $(print -P '%D{ %S }') -eq 10 ]]; then
-        dropbox-cli status > /tmp/box
-    fi
-    if [[ -f /tmp/box ]]; then
-        box="$( cat /tmp/box )"
-    fi
-    if [[ $box = "Dropbox isn't running!" ]]
-    then
-        message="off"
-
-    else
-        message="$(echo "$box" | head -n1 )"
-    fi
-    if [[ $message == "Up to date" ]]
-    then
-        message="\xe2\x9c\x93"
-    fi
-    echo "D:$message"
-}
-
 function my_harvest() {
     if [[ $(( $(print -P '%D{ %M }') % 5 )) -eq 0 ]] && [[ -e $HOME/bin/harvest ]];
     then
