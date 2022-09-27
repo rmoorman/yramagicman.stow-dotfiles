@@ -1,6 +1,6 @@
 #!/usr/bin/env zsh
 function git_clean_local() {
-    remotes=$(g branches | grep remotes )
+    remotes=$(git branch -a | grep remotes )
     git branch | while read; do
         grep -q $(echo $REPLY | sed 's/\*//') <(echo $remotes)
         if [[ $? == 1 ]]; then
