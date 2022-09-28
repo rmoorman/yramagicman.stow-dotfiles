@@ -19,7 +19,7 @@
         "btrfs-scrub-store" = {
             partOf=[ "btrfs-scrub-store.service" ];
             description = "Run btrfs scrub monthly";
-            script = "/run/current-system/sw/bin/btrfs scrub start /dev/disk/by-label/storage";
+            script = "/run/current-system/sw/bin/btrfs scrub start /srv/storage/";
             wantedBy = [ "scrub.timer" ];
         };
     };

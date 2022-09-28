@@ -19,7 +19,7 @@
         "btrfs-scrub" = {
             partOf=[ "btrfs-scrub.service" ];
             description = "Run btrfs scrub monthly";
-            script = "/run/current-system/sw/bin/btrfs scrub start /dev/disk/by-label/nixos";
+            script = "/run/current-system/sw/bin/btrfs scrub start /";
             wantedBy = [ "scrub.timer" ];
         };
     };

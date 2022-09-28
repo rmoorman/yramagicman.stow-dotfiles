@@ -19,7 +19,7 @@
         "btrfs-store-balance" = {
             partOf=[ "btrfs-store-balance.service" ];
             description = "Run btrfs balance monthly";
-            script = "/run/current-system/sw/bin/btrfs balance start --full-balance /dev/disk/by-label/storage";
+            script = "/run/current-system/sw/bin/btrfs balance start --full-balance /srv/storage/";
             wantedBy = [ "store-balance.timer" ];
         };
     };
