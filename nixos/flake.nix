@@ -47,6 +47,8 @@
                 ./browncoat/extras.nix
                 ./browncoat/network.nix
                 ./users.nix
+                ./systemd/store-scrub.nix
+                ./systemd/store-status.nix
             ];
         };
 
