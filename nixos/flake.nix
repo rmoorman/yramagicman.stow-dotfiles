@@ -65,7 +65,7 @@
                 ./kaylee/network.nix
                 ./users.nix
                 ./systemd/backup.nix
-                ./systemd/scrub.nix
+                ./systemd/store-scrub.nix
                 ./systemd/scrub-status.nix
                 ./systemd/snapshot.nix
             ];
