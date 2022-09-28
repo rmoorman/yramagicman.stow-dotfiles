@@ -45,65 +45,7 @@
         }
     ];
 
-    systemd.timers = {
-        "scrub" = {
-            wantedBy = [ "timers.target" ];
-            enable = false;
-            after = [ "time-set.target" "time-sync.target" ];
-            timerConfig = {
-                OnBootSec= "5m";
-                Unit = "btrfs-scrub.service";
-                OnCalendar = "monthly";
-            };
-        };
-
-        "status" = {
-            wantedBy = [ "timers.target" ];
-            enable = false;
-            after = [ "time-set.target" "time-sync.target" ];
-            timerConfig = {
-                Unit = "disk-check.service";
-                OnCalendar = "*-*-02 00:00:00";
-            };
-
-        };
-
-        "snap" = {
-            wantedBy = [ "timers.target" ];
-            enable = true;
-            timerConfig = {
-                OnActiveSec= "daily";
-                OnBootSec= "5m";
-
-                Unit = "home-snapshot.service";
-            };
-
-        };
-
-    };
-
-    systemd.services = {
-        "btrfs-scrub" = {
-            description = "Run btrfs scrub monthly";
-            script = "/run/current-system/sw/bin/btrfs scrub start /dev/disk/by-label/storage";
-            wantedBy = [ "scrub.timer" ];
-        };
-
-        "disk-check" = {
-            description = "Check status of btrfs scrub";
-            script = "/run/current-system/sw/bin/btrfs scrub status /dev/disk/by-label/storage > /home/disk-check";
-            wantedBy = [ "status.timer" ];
-        };
-
-        "home-snapshot" = {
-            description = "take snapshot of home directory";
-            script = "/run/current-system/sw/bin/btrfs subvolume snapshot -r /home/jonathan/Storage /home/jonathan/Storage/.snapshots/$(run/current-system/sw/bin/date -Ihour) ";
-            wantedBy = [ "snap.timer" ];
-        };
-    };
-
     services.apcupsd.enable = true;
-
 
       users.users.tomg = {
           isNormalUser = true;
@@ -129,10 +71,5 @@
             "100.87.66.73"
             "100.94.223.34"
         ];
-
-
     };
-
-
-
 }

@@ -15,6 +15,10 @@
                 ./tightpants/extras.nix
                 ./tightpants/network.nix
                 ./users.nix
+                ./systemd/backup.nix
+                ./systemd/scrub.nix
+                ./systemd/scrub-status.nix
+                ./systemd/snapshot.nix
             ];
         };
 
@@ -43,6 +47,9 @@
                 ./browncoat/extras.nix
                 ./browncoat/network.nix
                 ./users.nix
+                ./systemd/scrub.nix
+                ./systemd/scrub-status.nix
+                ./systemd/snapshot.nix
             ];
         };
 
@@ -58,6 +65,10 @@
                 ./kaylee/extras.nix
                 ./kaylee/network.nix
                 ./users.nix
+                ./systemd/backup.nix
+                ./systemd/scrub.nix
+                ./systemd/scrub-status.nix
+                ./systemd/snapshot.nix
             ];
         };
 

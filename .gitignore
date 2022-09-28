@@ -44,7 +44,6 @@ mpd/mpdstate
 newsboat/cache.db
 newsboat/history.cmdline
 newsboat/history.search
-nixos/flake.lock
 screenlayout/i3.sh
 .tags
 vim/backup/
