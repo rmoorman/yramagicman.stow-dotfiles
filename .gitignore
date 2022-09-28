@@ -1,10 +1,12 @@
 bin/mkcolor
 bin/remind
+config/autostart/
 config/emacs/ac-comphist.dat
 config/emacs/auto-save-list/
 /config/emacs/backups/
 config/emacs/.cache/
 config/emacs/custom.el
+config/emacs/eln-cache/
 config/emacs/elpa/
 config/emacs/#ido.last#
 config/emacs/ido.last
@@ -24,6 +26,8 @@ config/ranger/colorschemes/default.pyo
 config/ranger/colorschemes/__init__.pyo
 config/ranger/colorschemes/__pycache__/
 config/ranger/history
+config/systemd/user/default.target.wants/
+config/systemd/user/timers.target.wants/
 config/tmux.d/digests
 config/tmux.d/tmux-urlview/
 config/vifm/vifminfo
@@ -59,6 +63,7 @@ vim/undo/
 vim/viminfo
 vim/viminfo.tmp
 vim/viminf*.tmp
+xmonad/build-x86_64-linux/
 xmonad/xmonad.errors
 xmonad/xmonad.hi
 xmonad/xmonad.o
