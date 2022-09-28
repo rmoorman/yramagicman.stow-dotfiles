@@ -1,6 +1,0 @@
-[Unit]
-Description=Reminder notifications
-
-[Service]
-Type=oneshot
-ExecStart=/home/jonathan/.local/bin/remind

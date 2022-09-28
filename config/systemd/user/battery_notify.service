@@ -1,9 +1,0 @@
-[Unit]
-Description=Notify on battery low
-
-[Service]
-ExecStart=/home/jonathan/.local/systemd/bat_notify.sh
-
-
-[Install]
-WantedBy=default.target

@@ -1,8 +1,0 @@
-[Unit]
-Description=Trying things
-
-[Service]
-ExecStart=/run/current-system/sw/bin/notify-send 'Download completed'
-
-[Install]
-WantedBy=default.target
