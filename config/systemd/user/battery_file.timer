@@ -1,0 +1,10 @@
+[Unit]
+Description=Dump battery info to real file
+
+[Timer]
+OnBootSec=2m
+OnUnitActiveSec=1m
+Unit=battery_file.service
+
+[Install]
+WantedBy=timers.target

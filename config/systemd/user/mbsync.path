@@ -1,0 +1,9 @@
+[Unit]
+Description=Notify on download
+PartOf=mbsync.service
+
+[Path]
+PathModified=/home/jonathan/.config/mail
+
+[Install]
+WantedBy=default.target

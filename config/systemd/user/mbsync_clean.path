@@ -1,0 +1,9 @@
+[Unit]
+Description=Clean up weird artifacts
+PartOf=mbsync_clean.service
+
+[Path]
+PathModified=/home/jonathan/.config/mail
+
+[Install]
+WantedBy=default.target
