@@ -47,9 +47,6 @@
                 ./browncoat/extras.nix
                 ./browncoat/network.nix
                 ./users.nix
-                ./systemd/scrub.nix
-                ./systemd/scrub-status.nix
-                ./systemd/snapshot.nix
             ];
         };
 
