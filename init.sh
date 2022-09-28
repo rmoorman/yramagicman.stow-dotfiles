@@ -50,9 +50,9 @@ while test "$1"; do
                 ln -sfv "$PWD/$d" "$HOME/.config/"
             done
         } ;;
-        -b) ln -sfv "$PWD/bin" "$HOME/.local/bin" ;;
+        -b) ln -sfv "$PWD/bin" "$HOME/.local/" ;;
         -s) {
-            ln -sfv "$PWD/systemd" "$HOME/.local/systemd"
+            ln -sfv "$PWD/systemd" "$HOME/.local/"
             systemctl --user enable --now battery_notify.path
             systemctl --user enable --now battery_notify.service
             systemctl --user enable --now downloads.path
@@ -117,10 +117,18 @@ while test "$1"; do
                 chsh -s "$(command -v zsh)"
             fi
         } ;;
-        -x) ln -sfv "$PWD/xmonad" "$HOME/.xmonad" ;;
+        -x) {
+            xmonad="$HOME/.xmonad"
+            [[ -L "$xmonad" ]] && rm -v $xmonad
+            ln -sfv "$PWD/xmonad" $xmonad
+        } ;;
         -v) {
-            ln -sfv "$PWD/vim" "$HOME/.vim"
-            ln -sfv "$PWD/vim" "$HOME/.config/nvim"
+            vim="$HOME/.vim"
+            nvim="$HOME/.config/nvim"
+            [[  -L $vim ]] && rm -v $vim
+            ln -sfv "$PWD/vim" $vim
+            [[  -L "$nvim" ]] && rm -v $nvim
+            ln -sfv "$PWD/vim" $nvim
         } ;;
         -n) {
             if [ -f '/etc/nixos/configuration.nix' ];
