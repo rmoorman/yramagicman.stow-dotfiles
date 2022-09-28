@@ -51,7 +51,19 @@ while test "$1"; do
             done
         } ;;
         -b) ln -sfv "$PWD/bin" "$HOME/.local/bin" ;;
-        -s) ln -sfv "$PWD/systemd" "$HOME/.local/systemd" ;;
+        -s) {
+            ln -sfv "$PWD/systemd" "$HOME/.local/systemd"
+            systemctl --user enable --now battery_notify.path
+            systemctl --user enable --now battery_notify.service
+            systemctl --user enable --now downloads.path
+            systemctl --user enable --now downloads.service
+            systemctl --user enable --now mbsync.path
+            systemctl --user enable --now mbsync_clean.path
+            systemctl --user enable --now battery_file.timer
+            systemctl --user enable --now mbsync.timer
+            systemctl --user enable --now mu.timer
+            systemctl --user enable --now remind.timer
+        } ;;
         -t) {
             if [ "$(uname)" != "Darwin" ]
             then
