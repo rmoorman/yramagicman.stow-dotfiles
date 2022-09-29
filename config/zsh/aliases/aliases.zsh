@@ -20,8 +20,8 @@ alias j="jobs"
 alias vi="vim"
 alias vim="vim"
 alias v="vim"
-alias :e="emacslient -nw ."
-alias e="emacsclent -nw"
+alias :e="emacsclient -nw ."
+alias e="emacsclient -nw"
 alias v.="vim ."
 alias gvim="vim"
 alias ec="emacsclient -nc"
@@ -92,11 +92,7 @@ alias rip="mdig +short myip.opendns.com @resolver1.opendns.com"
 alias ip="ip --color=auto"
 #}}}
 # {{{ utilities
-# Canonical hex dump; some systems have this symlinked
-# URL-encode strings
-alias urlencode='python2 -c "import sys, urllib as ul; print ul.quote_plus(sys.argv[1]);"'
-# Ring the terminal bell, and put a badge on Terminal.app’s Dock icon
-# (useful when executing time-consuming commands)
+# Ring the terminal bell
 alias bell="tput bel;cvlc --play-and-exit $HOME/.config/sounds/beep.mp3 2> /dev/null"
 alias wttr="curl wttr.in"
 #}}}
@@ -108,21 +104,26 @@ alias tns="tmux new-session"
 alias tls="tmux ls"
 #}}}
 #{{{ system management aliases
-if  [[ -z $SSH_CLIENT ]] ; then
+if  [[ -z $SSH_CLIENT && $(command -v systemctl) ]]; then
     alias poweroff="systemctl poweroff"
     alias reboot="systemctl reboot"
     alias hibernate="systemctl suspend"
-else
+    elseif [[ $(command -v systemctl) ]]
     alias poweroff="sudo systemctl poweroff"
     alias reboot="sudo systemctl reboot"
     alias hibernate="sudo systemctl suspend"
+else
+    alias poweroff="sudo poweroff"
+    alias reboot="sudo reboot"
 fi
 if [[ $(command -v yay) ]]; then
     alias pacman="yay"
 fi
 #}}}
 #{{{ utility commands
-alias sl="nix-shell -p sl --run sl"
+if [[ $(command -v nix-shell) ]]; then
+   alias sl="nix-shell -p sl --run sl"
+fi
 alias q="exit"
 alias mypw="pwgen -c -n -s -y 26 -1"
 alias ndate="date \"+%d-%m-%y\""
@@ -161,7 +162,7 @@ function tsup() {
         --reset \
         --exit-node '100.94.223.34' \
         --exit-node-allow-lan-access=true \
-}
+        }
 
 alias tsdown="sudo tailscale down"
 function tsup-exit() {

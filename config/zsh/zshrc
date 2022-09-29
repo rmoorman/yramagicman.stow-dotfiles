@@ -245,13 +245,13 @@ add-zsh-hook -Uz chpwd chpwd_dirstack
 
 DIRSTACKSIZE='20'
 
-setopt AUTO_PUSHD PUSHD_SILENT PUSHD_TO_HOME
+setopt auto_pushd pushd_silent pushd_to_home
 
 # Remove duplicate entries
-setopt PUSHD_IGNORE_DUPS
+setopt pushd_ignore_dups
 
 # This reverts the +/- operators.
-setopt PUSHD_MINUS
+setopt pushd_minus
 
 add-zsh-hook chpwd chpwd_recent_dirs
 zstyle ':chpwd:*' recent-dirs-file "$XDG_CACHE_HOME/zsh/chpwd-recent-dirs"
