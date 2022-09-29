@@ -4,7 +4,7 @@
 
         "scrub" = {
             wantedBy = [ "timers.target" ];
-            enable = true;
+            enable = false;
             after = [ "time-set.target" "time-sync.target" ];
             partOf=[ "btrfs-scrub.service" ];
             timerConfig = {
@@ -17,6 +17,7 @@
 
     systemd.services = {
         "btrfs-scrub" = {
+            enable = false;
             serviceConfig.Type = "oneshot";
             partOf=[ "btrfs-scrub.service" ];
             description = "Run btrfs scrub monthly";
