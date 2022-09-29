@@ -16,6 +16,7 @@
 
     systemd.services = {
         "btrfs-balance" = {
+            serviceConfig.Type = "oneshot";
             partOf=[ "btrfs-balance.service" ];
             description = "Run btrfs balance monthly";
             script = "/run/current-system/sw/bin/btrfs balance start --full-balance /";

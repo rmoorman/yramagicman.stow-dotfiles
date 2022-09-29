@@ -16,6 +16,7 @@
 
     systemd.services = {
         "disk-check" = {
+            serviceConfig.Type = "oneshot";
             description = "Check status of btrfs scrub";
             partOf=[ "disk-check.service" ];
             script = "/run/current-system/sw/bin/btrfs scrub status /dev/disk/by-label/nixos > /home/disk-check";

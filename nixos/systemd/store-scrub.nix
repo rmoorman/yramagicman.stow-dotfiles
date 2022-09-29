@@ -17,6 +17,7 @@
 
     systemd.services = {
         "btrfs-scrub-store" = {
+            serviceConfig.Type = "oneshot";
             partOf=[ "btrfs-scrub-store.service" ];
             description = "Run btrfs scrub monthly";
             script = "/run/current-system/sw/bin/btrfs scrub start /srv/storage/";

@@ -18,6 +18,7 @@
     systemd.services = {
         "store-status" = {
             description = "Check status of btrfs scrub";
+            serviceConfig.Type = "oneshot";
             partOf=[ "store-status.service" ];
             script = "/run/current-system/sw/bin/btrfs scrub status /dev/disk/by-label/storage > /home/disk-check";
             wantedBy = [ "store-status.timer" ];

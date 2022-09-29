@@ -15,6 +15,7 @@
 
     systemd.services = {
         "backup" = {
+            serviceConfig.Type = "oneshot";
             description = "Backup home directory to local server";
             script = "/opt/home-backup";
             wantedBy = [ "backup.timer" ];

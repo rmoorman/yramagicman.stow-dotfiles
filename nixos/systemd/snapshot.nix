@@ -15,6 +15,7 @@
     systemd.services = {
         "home-snapshot" = {
             description = "take snapshot of home directory";
+            serviceConfig.Type = "oneshot";
             path=[
                 "/run/current-system/sw/"
                 "/run/wrappers/"
