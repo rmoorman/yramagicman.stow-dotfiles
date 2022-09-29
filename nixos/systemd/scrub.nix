@@ -4,7 +4,7 @@
 
         "scrub" = {
             wantedBy = [ "timers.target" ];
-            enable = false;
+            enable = true;
             after = [ "time-set.target" "time-sync.target" ];
             partOf=[ "btrfs-scrub.service" ];
             timerConfig = {

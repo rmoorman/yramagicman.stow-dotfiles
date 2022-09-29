@@ -3,7 +3,7 @@
     systemd.timers = {
         "balance" = {
             wantedBy = [ "timers.target" ];
-            enable = false;
+            enable = true;
             after = [ "time-set.target" "time-sync.target" ];
             partOf=[ "btrfs-balance.service" ];
             timerConfig = {
