@@ -113,21 +113,21 @@ while test "$1"; do
             fi
         } ;;
         -z) {
-            if test "$SHELL" != "$(command -v zsh)"; then
+            if [ "$SHELL" != "$(command -v zsh)" ]; then
                 chsh -s "$(command -v zsh)"
             fi
         } ;;
         -x) {
             xmonad="$HOME/.xmonad"
-            [[ -L "$xmonad" ]] && rm -v $xmonad
+            [ -L "$xmonad" ] || [ -d "$xmonad" ] && rm -rv $xmonad
             ln -sfv "$PWD/xmonad" $xmonad
         } ;;
         -v) {
             vim="$HOME/.vim"
             nvim="$HOME/.config/nvim"
-            [[  -L $vim ]] && rm -v $vim
+            [ -L $vim ] || [ -d $vim ] && rm -rv $vim
             ln -sfv "$PWD/vim" $vim
-            [[  -L "$nvim" ]] && rm -v $nvim
+            [ -L "$nvim" ] || [ -d $nvim ] && rm -rv $nvim
             ln -sfv "$PWD/vim" $nvim
         } ;;
         -n) {
@@ -158,12 +158,12 @@ while test "$1"; do
             done
         } ;;
         -o) {
-            [[ -d "/opt" ]] || sudo mkdir /opt
+            [ -d "/opt" ] || sudo mkdir /opt
 
             for f in opt/*; do
                 sudo ln -sfv "$PWD/$f" "/opt/${f#opt/}"
             done
-        }
+        } ;;
     esac
     shift
 done
