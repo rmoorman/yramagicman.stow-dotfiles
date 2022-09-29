@@ -108,7 +108,7 @@ if  [[ -z $SSH_CLIENT && $(command -v systemctl) ]]; then
     alias poweroff="systemctl poweroff"
     alias reboot="systemctl reboot"
     alias hibernate="systemctl suspend"
-    elseif [[ $(command -v systemctl) ]]
+elif [[ $(command -v systemctl) ]]; then
     alias poweroff="sudo systemctl poweroff"
     alias reboot="sudo systemctl reboot"
     alias hibernate="sudo systemctl suspend"

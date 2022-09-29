@@ -8,11 +8,11 @@ function update() {
         # something I'm interested in.
         (
         print -v thing -P %x
-        tmp=$(mktemp -d)
         conf="$(builtin cd ${thing/update/} && git rev-parse --show-toplevel )"
         echo "\n\n$conf\n\n"
-        command cp -r "$conf/nixos/" $tmp
-        sudo nixos-rebuild boot --flake "$tmp/nixos/#"  --upgrade-all
+        return
+        sudo nixos-rebuild boot --flake "$conf/nixos/#"  --upgrade-all
+        cd $conf && git commit -v
         )
         nix-collect-garbage -d --delete-older-than 14d
         nix store optimise

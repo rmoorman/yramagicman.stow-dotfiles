@@ -7,6 +7,6 @@ function nix-boot() {
     tmp=$(mktemp -d)
     print -v thing -P %x
     conf="$(builtin cd ${thing/nix-boot/} && git rev-parse --show-toplevel )"
-    command cp -r $conf/nixos $tmp
-    sudo nixos-rebuild boot --flake "$tmp/nixos/#"
+    sudo nixos-rebuild boot --flake "$conf/nixos/#"
+    cd $conf && git commit -v
 }
