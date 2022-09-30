@@ -8,5 +8,4 @@ function nix-switch() {
     print -v thing -P %x
     conf="$(builtin cd ${thing/nix-switch/} && git rev-parse --show-toplevel )"
     sudo nixos-rebuild switch --flake "$conf/nixos/#"
-    cd $conf && git commit -v
 }
