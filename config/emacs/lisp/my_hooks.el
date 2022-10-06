@@ -36,10 +36,10 @@
 (defun my/set-font-faces ()
   (interactive)
   (message "Setting faces!")
-  (set-face-attribute 'default nil :font "Fira Mono" :height my/default-font-size)
+  (set-face-attribute 'default nil :font "Fira Code" :height my/default-font-size)
 
   ;; Set the fixed pitch face
-  (set-face-attribute 'fixed-pitch nil :font "Fira Mono" :height my/default-font-size)
+  (set-face-attribute 'fixed-pitch nil :font "Fira Code" :height my/default-font-size)
 
   ;; Set the variable pitch face
   (set-face-attribute 'variable-pitch nil :font "Cantarell" :height my/default-variable-font-size :weight 'regular))
