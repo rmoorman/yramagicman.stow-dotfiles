@@ -31,7 +31,7 @@ windowCount = gets $ Just . show . length . W.integrate' . W.stack . W.workspace
 -- The preferred terminal program, which is used in a binding below and by
 -- certain contrib modules.
 --
-myTerminal      = "alacritty"
+myTerminal      = "urxvt"
 
 -- Whether focus follows the mouse pointer.
 myFocusFollowsMouse :: Bool
@@ -124,10 +124,11 @@ myLayout = do
 -- 'className' and 'resource' are used below.
 --
 myManageHook = composeAll [
-      className =? "Alacritty"        --> doShift "1:shell"
-    -- , className =? "URxvt"            --> doShift "1:shell"
+      -- className =? "Alacritty"        --> doShift "1:shell"
+      className =? "URxvt"            --> doShift "1:shell"
     , className =? "st-256color"      --> doShift "1:shell"
     , className =? "Emacs"            --> doShift "1:shell"
+    , className =? "Navigator"        --> doShift "2:br1"
     , className =? "firefox"          --> doShift "2:br1"
     , className =? "Chromium-browser"         --> doShift "3:br2"
     , className =? "Thunderbird"      --> doShift "4:mail/db"
@@ -248,5 +249,5 @@ main = do
           , (( mod4Mask .|. shiftMask, xK_q   ), spawn "pkill -u $USER")
           , (( mod1Mask .|. shiftMask, xK_q   ), spawn "cobang")
           , (( mod4Mask, xK_b   ), spawn "pkill xmobar")
-          , (( mod4Mask .|. mod1Mask, xK_Return   ), spawn "urxvt")
+          , (( mod4Mask .|. mod1Mask, xK_Return   ), spawn "alacritty")
         ]
