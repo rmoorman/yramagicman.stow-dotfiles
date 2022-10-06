@@ -106,7 +106,7 @@
              (check-equal? (date-week-day (seconds->date (diff-days "thu" #:day 1647208240))) (hash-ref days "thu"))
              (check-equal? (date-week-day (seconds->date (diff-days "fri" #:day 1647208240))) (hash-ref days "fri"))
              (check-equal? (date-week-day (seconds->date (diff-days "sat" #:day 1647208240))) (hash-ref days "sat"))
-             (check-equal? (date-week-day (seconds->date (diff-days "sun" #:day 1647208240))) 0))
+             (check-equal? (date-week-day (seconds->date (diff-days "sun" #:day 1647208240))) (hash-ref days "sun")))
 
   (test-case "maps word to date monday"
              (check-equal? (date-week-day (seconds->date (diff-days "mon" #:day 1647294956))) (hash-ref days "mon"))
@@ -115,7 +115,7 @@
              (check-equal? (date-week-day (seconds->date (diff-days "thu" #:day 1647294956))) (hash-ref days "thu"))
              (check-equal? (date-week-day (seconds->date (diff-days "fri" #:day 1647294956))) (hash-ref days "fri"))
              (check-equal? (date-week-day (seconds->date (diff-days "sat" #:day 1647294956))) (hash-ref days "sat"))
-             (check-equal? (date-week-day (seconds->date (diff-days "sun" #:day 1647294956))) 0)
+             (check-equal? (date-week-day (seconds->date (diff-days "sun" #:day 1647294956))) (hash-ref days "sun"))
              )
 
   (define (parse-date date-string)
