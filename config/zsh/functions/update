@@ -12,6 +12,9 @@ function update() {
         echo "\n\n$conf\n\n"
         rm -f "$conf/nixos/flake.lock"
         sudo nixos-rebuild boot --flake "$conf/nixos/#"  --upgrade-all
+        builtin cd $conf
+        git add "$conf/nixos/flake.lock"
+        git commit -m "flake.lock update $(date -I)"
         )
         nix-collect-garbage -d --delete-older-than 14d
         nix store optimise
