@@ -14,8 +14,8 @@ XTerm*scrollBar: false
 XTerm*scrollbar.width: 0
 UXTerm*scrollBar: false
 UXTerm*scrollbar.width: 0
-URxvt.font:xft:FiraMono:size=10.5:antialias=true:autohint=true
-URxvt.boldFont:xft:FiraMono:weight=bold:size=10.5:antialias=true:autohint=true
+URxvt.font:xft:FiraCode:size=10.5:antialias=true:autohint=true
+URxvt.boldFont:xft:FiraCode:weight=bold:size=10.5:antialias=true:autohint=true
 URxvt.scrollBar: false
 URxvt.perl-ext-common: default,clipboard
 URxvt.allow_bold:true
