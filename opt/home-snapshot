@@ -19,3 +19,4 @@ for f in {30..365}; do
     old="/home/.snapshots/$ago"
     [[ -d $old ]] && btrfs subvolume delete $old
 done
+exit 0

@@ -21,3 +21,4 @@ if [[ "$day" != "$last" ]] && [[ $? ]]; then
         echo $day > $stateFile
     fi
 fi
+exit 0
