@@ -4,7 +4,7 @@ function git_clean_local() {
     git branch | while read; do
         grep -q $(echo $REPLY | sed 's/\*//') <(echo $remotes)
         if [[ $? == 1 ]]; then
-            git branch -D $REPLY
+            git branch -d $REPLY
         fi
     done
 }
