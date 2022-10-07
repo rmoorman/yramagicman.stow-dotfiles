@@ -28,3 +28,10 @@
             && mv "$dots/config/alacritty/alacritty.yml.mac"  "$dots/config/alacritty/alacritty.yml"
     fi
 }&!
+
+
+{
+    for f in $HOME/*; do
+        rmdir $f 2>/dev/null
+    done
+}&!
