@@ -7,10 +7,13 @@
   home.homeDirectory = "/home/jonathan";
 
   home.packages = with pkgs; [
-      alacritty
       slack
   ];
 
+
+  programs.alacritty = {
+      enable=true;
+  };
 
 
   # This value determines the Home Manager release that your
