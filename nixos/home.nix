@@ -16,7 +16,6 @@
       dmenu
       dunst
       dzen2
-      ed
       emacs
       feh
       ffmpeg
@@ -27,7 +26,9 @@
       gnome.adwaita-icon-theme
       gnome.aisleriot
       gnome-text-editor
+      guvcview
       haskellPackages.xmobar
+      home-manager
       htop
       iconpack-obsidian
       isync
@@ -48,13 +49,13 @@
       pwgen
       rxvt-unicode
       signal-desktop
-      signal-desktop
       silver-searcher
       slack
       theme-obsidian2
       tmux
       ungoogled-chromium
       universal-ctags
+      urlview
       vimHugeX
       vlc
       xclip
@@ -64,7 +65,6 @@
       xorg.xmessage
       yt-dlp
       zathura
-      home-manager
   ];
 
   # This value determines the Home Manager release that your

@@ -8,7 +8,6 @@
         gcc
         git
         gnumake
-        guvcview
         man-pages
         killall
         mariadb
@@ -20,8 +19,7 @@
         racket
         rsync
         unzip
-        urlview
-        vimHugeX
+        vim
         w3m
         wget
         xscreensaver
