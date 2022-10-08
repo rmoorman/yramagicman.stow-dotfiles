@@ -8,6 +8,7 @@ if test -z "$1"; then
 -c) Config files
 -f) Files
 -g) Git hooks
+-i) Libinput
 -j) Cron Jobs
 -n) Nixos
 -o) Opt
@@ -164,6 +165,13 @@ while test "$1"; do
                 sudo ln -sfv "$PWD/$f" "/opt/${f#opt/}"
             done
         } ;;
+        -i) {
+            confDir="/etc/X11/xorg.conf.d/"
+            [ -d $confDir ] || sudo mkdir $confDir
+            sudo ln -sfv "$PWD/30-pointers.conf" "$confDir/"
+        } ;;
+
+
     esac
     shift
 done
