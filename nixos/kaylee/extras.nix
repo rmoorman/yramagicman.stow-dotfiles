@@ -1,6 +1,6 @@
 { config, pkgs, ... }:
 {
-  boot.kernelPackages = pkgs.linuxPackages_zen;
+  boot.kernelPackages = pkgs.linuxPackages_6_0;
   boot.extraModulePackages = with config.boot.kernelPackages; [ v4l2loopback.out ];
 
   boot.kernelModules = [

@@ -2,6 +2,7 @@
 {
     hardware.acpilight.enable = true;
 
+    boot.kernelPackages = pkgs.linuxPackages_6_0;
     virtualisation.docker.enable = true;
     users.users.jonathan = {
       extraGroups = [ "docker" ]; # Enable ‘sudo’ for the user.
