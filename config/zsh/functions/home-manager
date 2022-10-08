@@ -6,20 +6,17 @@ function home-manager () {
     print -v thing -P %x
     conf="$(builtin cd ${thing/home-manager/} && git rev-parse --show-toplevel )"
     echo $conf
-    # command cp -r $conf/* $tmp/
-    # case "$1" in
-    #     "switch" )
-    #         command home-manager switch --impure --flake "$tmp/#jonathan"
-
-
-    #        home-manager expire-generations "-14 days"
-    #        nix-collect-garbage -d --delete-older-than 14d
-    #        nix store optimise
-    #        return
-    #        ;;
-    #    * )
-    #        command home-manager $@
-    #        return
-    #        ;;
-   # esac
+    case "$1" in
+        "switch" )
+            command home-manager switch --impure --flake "$conf/#jonathan"
+           home-manager expire-generations "-14 days"
+           nix-collect-garbage -d --delete-older-than 14d
+           nix store optimise
+           return
+           ;;
+       * )
+           command home-manager $@
+           return
+           ;;
+   esac
 }
