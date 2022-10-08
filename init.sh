@@ -36,11 +36,11 @@ fi
 while test "$1"; do
     case $1 in
         -f) {
-            for f in *;
+            for f in root/*;
             do
                 case $f in
                     *.conf|*.txt|*.sh|*.md|*.h) ;;
-                    *) [ -f $f ] &&  ln -sfv "$PWD/$f" "$HOME/.$f" ;;
+                    *) [ -f $f ] && ln -sfv "$PWD/$f" "$HOME/.${f#root/}" ;;
                 esac
             done
         } ;;
