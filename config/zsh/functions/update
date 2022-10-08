@@ -3,6 +3,10 @@
 function update() {
     sudo -v
     gup
+
+    if [[ $(command -v home-manager) ]]  ; then
+        home-manager expire-generations "-14 days"
+    fi
     if [[ $(command -v nixos-rebuild) ]] ; then
         # Git/nix are fixed, but committing the flake.lock is not
         # something I'm interested in.

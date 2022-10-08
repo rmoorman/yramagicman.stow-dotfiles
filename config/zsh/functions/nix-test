@@ -7,5 +7,6 @@ function nix-test() {
     tmp=$(mktemp -d)
     print -v thing -P %x
     conf="$(builtin cd ${thing/nix-test/} && git rev-parse --show-toplevel )"
-    sudo nixos-rebuild test --flake "$conf/nixos/#"
+    command cp -r "$conf/nixos" "$tmp"
+    sudo nixos-rebuild test --flake "$tmp/nixos#"
 }
