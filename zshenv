@@ -22,7 +22,6 @@ zmodload -u zsh/files
 source $HOME/.config/env
 # Paths
 
-export NODE_OPTIONS=--openssl-legacy-provider
 # Ensure path arrays do not contain duplicates.
 typeset -gU cdpath fpath mailpath path
 

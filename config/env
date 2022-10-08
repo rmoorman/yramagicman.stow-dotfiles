@@ -57,3 +57,7 @@ export LESS='-F -g -i -M -R -S -w -X -z-4'
 #     export LESSOPEN="| /usr/bin/env $commands[(i)lesspipe(|.sh)] %s 2>&-"
 # fi
 [[ "$(uname -n)" == 'debian' ]] && export NIX_PATH=$HOME/.nix-defexpr/channels:/nix/var/nix/profiles/per-user/root/channels${NIX_PATH:+:$NIX_PATH}
+
+[[ "$(uname -n)" == 'debian' ]] && export NODE_OPTIONS=--openssl-legacy-provider
+
+
