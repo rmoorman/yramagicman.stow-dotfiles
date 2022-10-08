@@ -45,16 +45,8 @@
     ];
 
     environment.systemPackages = with pkgs; [
-        cobang
-        dbeaver
         docker-compose
-        du-dust
-        gphoto2
         intel-gpu-tools
-        ngrok
-        powertop
-        slack
-        sqlite
     ];
 
     nixpkgs.config.packageOverrides = pkgs: {
