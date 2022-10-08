@@ -16,7 +16,6 @@
         ./nixos/services.nix
         ./nixos/users.nix
       ];
-
     in {
 
       homeConfigurations.jonathan = home-manager.lib.homeManagerConfiguration {
@@ -45,7 +44,12 @@
           home-manager.nixosModules.home-manager  {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
-            home-manager.users.jonathan = import ./home.nix;
+            home-manager.users.jonathan = {
+              imports = [
+                ./home.nix
+                ./nixos/tightpants/packages.nix
+              ];
+            };
           }
         ];
       };
@@ -57,7 +61,12 @@
           home-manager.nixosModules.home-manager  {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
-            home-manager.users.jonathan = import ./home.nix;
+            home-manager.users.jonathan = {
+              imports= [
+                ./home.nix
+                ./nixos/jayne/packages.nix
+              ];
+            };
           }
         ];
       };

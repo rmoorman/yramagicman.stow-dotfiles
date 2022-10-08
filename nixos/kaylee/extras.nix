@@ -1,7 +1,7 @@
 { config, pkgs, ... }:
 {
-    boot.kernelPackages = pkgs.linuxPackages_zen;
-    boot.extraModulePackages = with config.boot.kernelPackages; [ v4l2loopback.out ];
+  boot.kernelPackages = pkgs.linuxPackages_zen;
+  boot.extraModulePackages = with config.boot.kernelPackages; [ v4l2loopback.out ];
 
   boot.kernelModules = [
     # Virtual Camera
@@ -18,38 +18,30 @@
     options v4l2loopback exclusive_caps=1 card_label="Virtual Camera"
   '';
 
+  fileSystems."/".options = ["compress=zstd"];
 
+  environment.systemPackages = with pkgs; [
+    microcodeAmd
+    xorg.xf86videoamdgpu
+  ];
 
-    fileSystems."/".options = ["compress=zstd"];
+  services.flatpak.enable = true;
+  xdg.portal.enable = true;
+  xdg.portal.extraPortals = [
+    pkgs.xdg-desktop-portal-gnome
+  ];
 
-    environment.systemPackages = with pkgs; [
-        asunder
-        handbrake
-        microcodeAmd
-        xorg.xf86videoamdgpu
-        openrgb
-        gphoto2
-    ];
+  #nixpkgs.config.packageOverrides = pkgs: {
+  #    vaapiIntel = pkgs.vaapiIntel.override { enableHybridCodec = true; };
+  #};
 
-
-
-    services.flatpak.enable = true;
-    xdg.portal.enable = true;
-    xdg.portal.extraPortals = [
-        pkgs.xdg-desktop-portal-gnome
-    ];
-
-    #nixpkgs.config.packageOverrides = pkgs: {
-    #    vaapiIntel = pkgs.vaapiIntel.override { enableHybridCodec = true; };
-    #};
-
-    #hardware.opengl = {
-    #    enable = true;
-    #    extraPackages = with pkgs; [
-    #        intel-media-driver # LIBVA_DRIVER_NAME=iHD
-    #        # vaapiIntel       # LIBVA_DRIVER_NAME=i965 (older but works better for Firefox/Chromium)
-    #        vaapiVdpau
-    #        libvdpau-va-gl
-    #    ];
-    #};
+  #hardware.opengl = {
+  #    enable = true;
+  #    extraPackages = with pkgs; [
+  #        intel-media-driver # LIBVA_DRIVER_NAME=iHD
+  #        # vaapiIntel       # LIBVA_DRIVER_NAME=i965 (older but works better for Firefox/Chromium)
+  #        vaapiVdpau
+  #        libvdpau-va-gl
+  #    ];
+  #};
 }
