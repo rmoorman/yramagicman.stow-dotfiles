@@ -14,7 +14,7 @@ function update() {
         print -v thing -P %x
         conf="$(builtin cd ${thing/update/} && git rev-parse --show-toplevel )"
         echo "\n\n$conf\n\n"
-        rm -f "$conf/nixos/flake.lock"
+        rm -f "$conf/flake.lock"
         sudo nixos-rebuild boot --flake "$conf/#"  --upgrade-all
         builtin cd $conf
         git add "$conf/flake.lock"
