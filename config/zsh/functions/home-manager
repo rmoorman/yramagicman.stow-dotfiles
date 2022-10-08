@@ -5,21 +5,21 @@ function home-manager () {
     tmp="$(mktemp -d)"
     print -v thing -P %x
     conf="$(builtin cd ${thing/home-manager/} && git rev-parse --show-toplevel )"
-    command cp -r $conf/nixos/* $tmp/
-    case "$1" in
-        "switch" )
-           [[ "$(uname -n)" == 'debian' ]] && command home-manager switch --impure --flake "$tmp/#jonathan"
+    echo $conf
+    # command cp -r $conf/* $tmp/
+    # case "$1" in
+    #     "switch" )
+    #         command home-manager switch --impure --flake "$tmp/#jonathan"
 
-           [[ "$(uname -n)" == 'debian' ]] || command home-manager switch --flake "$tmp/#jonathan"
 
-           home-manager expire-generations "-14 days"
-           nix-collect-garbage -d --delete-older-than 14d
-           nix store optimise
-           return
-           ;;
-       * )
-           command home-manager $@
-           return
-           ;;
-   esac
+    #        home-manager expire-generations "-14 days"
+    #        nix-collect-garbage -d --delete-older-than 14d
+    #        nix store optimise
+    #        return
+    #        ;;
+    #    * )
+    #        command home-manager $@
+    #        return
+    #        ;;
+   # esac
 }

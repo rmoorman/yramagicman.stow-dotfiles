@@ -3,4 +3,4 @@ Description=Mailbox synchronization service
 
 [Service]
 Type=oneshot
-ExecStart=/run/current-system/sw/bin/mbsync -Va
+ExecStart=/home/jonathan/.nix-profile/bin/mbsync -Va
