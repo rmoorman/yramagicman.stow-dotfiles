@@ -10,11 +10,11 @@
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
       base = [
-        ./fonts.nix
-        ./header.nix
-        ./packages.nix
-        ./services.nix
-        ./users.nix
+        ./nixos/fonts.nix
+        ./nixos/header.nix
+        ./nixos/packages.nix
+        ./nixos/services.nix
+        ./nixos/users.nix
       ];
 
     in {
@@ -24,7 +24,9 @@
 
         # Specify your home configuration modules here, for example,
         # the path to your home.nix.
-        modules = [ ./home.nix ];
+        modules = [
+          ./home.nix
+        ];
 
         # Optionally use extraSpecialArgs
         # to pass through arguments to home.nix
@@ -33,13 +35,13 @@
       nixosConfigurations."tightpants" =with base; nixpkgs.lib.nixosSystem {
         inherit system;
         modules = base ++ [
-          ./tightpants
-          ./yubikey.nix
-          ./systemd/backup.nix
-          ./systemd/scrub.nix
-          ./systemd/balance.nix
-          ./systemd/scrub-status.nix
-          ./systemd/snapshot.nix
+          ./nixos/tightpants
+          ./nixos/yubikey.nix
+          ./nixos/systemd/backup.nix
+          ./nixos/systemd/scrub.nix
+          ./nixos/systemd/balance.nix
+          ./nixos/systemd/scrub-status.nix
+          ./nixos/systemd/snapshot.nix
           home-manager.nixosModules.home-manager  {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
@@ -51,7 +53,7 @@
       nixosConfigurations."jayne" = with base; nixpkgs.lib.nixosSystem {
         inherit system;
         modules = base ++ [
-          ./jayne
+          ./nixos/jayne
           home-manager.nixosModules.home-manager  {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
@@ -63,27 +65,29 @@
       nixosConfigurations."browncoat" = with base; nixpkgs.lib.nixosSystem {
         inherit system;
         modules = base ++ [
-          ./browncoat
-          ./systemd/store-scrub.nix
-          ./systemd/store-status.nix
-          ./systemd/store-balance.nix
+          ./nixos/browncoat
+          ./nixos/systemd/store-scrub.nix
+          ./nixos/systemd/store-status.nix
+          ./nixos/systemd/store-balance.nix
         ];
       };
 
       nixosConfigurations."kaylee" = with base; nixpkgs.lib.nixosSystem {
         inherit system;
         modules = base ++ [
-          ./kaylee
-          ./yubikey.nix
-          ./systemd/backup.nix
-          ./systemd/scrub.nix
-          ./systemd/scrub-status.nix
-          ./systemd/snapshot.nix
-          ./systemd/balance.nix
+          ./nixos/kaylee
+          ./nixos/yubikey.nix
+          ./nixos/systemd/backup.nix
+          ./nixos/systemd/scrub.nix
+          ./nixos/systemd/scrub-status.nix
+          ./nixos/systemd/snapshot.nix
+          ./nixos/systemd/balance.nix
           home-manager.nixosModules.home-manager  {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
-            home-manager.users.jonathan = import ./home.nix;
+            home-manager.users.jonathan = {
+              imports = [ ./home.nix ];
+            };
           }
         ];
       };
