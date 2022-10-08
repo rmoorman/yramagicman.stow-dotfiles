@@ -6,7 +6,6 @@ function home-manager () {
     print -v thing -P %x
     conf="$(builtin cd ${thing/home-manager/} && git rev-parse --show-toplevel )"
     command cp $conf/config/nixpkgs/* $tmp/
-    ls $tmp
     case "$1" in
         "switch" )
            [[ "$(uname -n)" == 'debian' ]] && command home-manager switch --impure --flake "$tmp/#jonathan"
