@@ -8,8 +8,10 @@
         gcc
         git
         gnumake
-        man-pages
+        haskellPackages.xmobar
+        home-manager
         killall
+        man-pages
         mariadb
         nfs-utils
         nodejs

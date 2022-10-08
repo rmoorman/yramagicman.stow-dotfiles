@@ -27,8 +27,6 @@
       gnome.aisleriot
       gnome-text-editor
       guvcview
-      haskellPackages.xmobar
-      home-manager
       htop
       iconpack-obsidian
       isync
