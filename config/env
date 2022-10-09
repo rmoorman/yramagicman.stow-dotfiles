@@ -59,6 +59,6 @@ export LESS='-F -g -i -M -R -S -w -X -z-4'
 # fi
 if [[ $( command -v apt ) ]]; then
  export NIX_PATH=$HOME/.nix-defexpr/channels:/nix/var/nix/profiles/per-user/root/channels${NIX_PATH:+:$NIX_PATH}
-
+ export XDG_DATA_DIRS="$HOME/nix-profile/share:$XDG_DATA_DIRS"
  export NODE_OPTIONS=--openssl-legacy-provider
 fi
