@@ -25,6 +25,7 @@
         # the path to your home.nix.
         modules = [
           ./home.nix
+          ./nixos/wash
         ];
 
         # Optionally use extraSpecialArgs
