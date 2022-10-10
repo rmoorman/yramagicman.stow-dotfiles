@@ -45,11 +45,6 @@ function update() {
         sudo pkg upgrade
     fi
 
-    if [[ $(command -v home-manager) ]] && [[ !$(command -v nixos-rebuild) ]] ; then
-        sudo nix-channel --update nixpkgs
-        nix-channel --update nixpkgs
-        home-manager switch
-    fi
     if [[ $(command -v flatpak) ]] && [[ -z $SSH_CLIENT ]] ; then
         echo "\n flatpak \n"
         flatpak update -y
