@@ -11,15 +11,16 @@ function update() {
         # Git/nix are fixed, but committing the flake.lock is not
         # something I'm interested in.
         (
-        print -v thing -P %x
-        conf="$(builtin cd ${thing/update/} && git rev-parse --show-toplevel )"
-        echo "\n\n$conf\n\n"
-        rm -f "$conf/flake.lock"
-        sudo nixos-rebuild boot --flake "$conf/#"  --upgrade-all
-        builtin cd $conf
-        git add "$conf/flake.lock"
-        git commit -m "flake.lock update $(date -I)"
+            print -v thing -P %x
+            conf="$(builtin cd ${thing/update/} && git rev-parse --show-toplevel )"
+            echo "\n\n$conf\n\n"
+            rm -f "$conf/flake.lock"
+            sudo nixos-rebuild boot --flake "$conf/#"  --upgrade-all
+            builtin cd $conf
+            git add "$conf/flake.lock"
+            git commit -m "flake.lock update $(date -I)"
         )
+        sudo nix-channel --update
         nix-collect-garbage -d --delete-older-than 14d
         nix store optimise
     elif [[ $(command -v yay) ]]; then
@@ -45,6 +46,9 @@ function update() {
         sudo pkg upgrade
     fi
 
+    if [[ $(command -v home-manager) ]] &&  [[ ! $(command -v nixos-rebuild) ]] ; then
+        home-manager switch
+    fi
     if [[ $(command -v flatpak) ]] && [[ -z $SSH_CLIENT ]] ; then
         echo "\n flatpak \n"
         flatpak update -y
