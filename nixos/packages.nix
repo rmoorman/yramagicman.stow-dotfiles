@@ -13,6 +13,7 @@
         killall
         man-pages
         mariadb
+        nextcloud-client
         nfs-utils
         nodejs
         openssl

@@ -37,7 +37,6 @@
     mu
     mutt
     neovim
-    nextcloud-client
     pass
     pavucontrol
     pcmanfm
