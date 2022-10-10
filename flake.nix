@@ -25,7 +25,7 @@
         # the path to your home.nix.
         modules = [
           ./home.nix
-          ./nixos/wash
+          ./nixos/not-nixos
         ];
 
         # Optionally use extraSpecialArgs
@@ -96,7 +96,10 @@
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
             home-manager.users.jonathan = {
-              imports = [ ./home.nix ];
+              imports = [
+                ./home.nix
+                ./nixos/kaylee/packages.nix
+              ];
             };
           }
         ];
