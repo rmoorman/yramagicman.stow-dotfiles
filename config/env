@@ -24,7 +24,6 @@ export PLTUSERHOME="$XDG_DATA_HOME/racket"
 export PASSWORD_STORE_DIR="$XDG_DATA_HOME/pass"
 export LIBVA_DRIVER_NAME="iHD"
 export VDPAU_DRIVER="va_gl"
-export DISTRO_NAME="$(awk -F '=' '/ID/ {print $2}' /etc/os-release)"
 
 
 if ( hash fzf > /dev/null 2>&1 ); then
