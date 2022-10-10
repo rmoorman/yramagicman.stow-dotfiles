@@ -36,14 +36,14 @@ fi
 while test "$1"; do
     case $1 in
         -f) {
-            for f in root/*;
-            do
-                case $f in
-                    *.conf|*.txt|*.sh|*.md|*.h) ;;
-                    *) [ -f $f ] && ln -sfv "$PWD/$f" "$HOME/.${f#root/}" ;;
-                esac
-            done
-        } ;;
+        for f in root/*;
+        do
+            case $f in
+                *.conf|*.txt|*.sh|*.md|*.h) ;;
+                *) [ -f $f ] && ln -sfv "$PWD/$f" "$HOME/.${f#root/}" ;;
+            esac
+        done
+    } ;;
         -c) {
             mkdir -p "$HOME/.config"
             for d in config/*;
@@ -66,11 +66,13 @@ while test "$1"; do
             systemctl --user enable --now remind.timer
         } ;;
         -t) {
-            if [ "$(uname)" != "Darwin" ]
+            if [ "$(uname)" == "Darwin" ]
             then
-                if [ ! -d "$reposdir/st/" ]
-                then
-                    (
+                return
+            fi
+            if [ ! -d "$reposdir/st/" ]
+            then
+                (
                     cd "$reposdir" || return
                     git clone --depth 3 git://git.suckless.org/st
                     cp "$PWD/st.config.h" "$reposdir/st/config.h"
@@ -80,21 +82,22 @@ while test "$1"; do
                 )
             else
                 (
-                cp "$PWD/st.config.h" "$reposdir/st/config.h"
-                cd "$reposdir/st" || return
-                make clean
-                make
-                sudo make install
-            )
-                fi
+                    cp "$PWD/st.config.h" "$reposdir/st/config.h"
+                    cd "$reposdir/st" || return
+                    make clean
+                    make
+                    sudo make install
+                )
             fi
         } ;;
         -w) {
-            if [ "$(uname)" != "Darwin" ]
+            if [ "$(uname)" == "Darwin" ]
             then
-                if [ ! -d "$reposdir/dwm/" ]
-                then
-                    (
+                return
+            fi
+            if [ ! -d "$reposdir/dwm/" ]
+            then
+                (
                     cd "$reposdir" || return
                     git clone --depth 3 git://git.suckless.org/dwm
                     cp "$PWD/dwm.config.h" "$reposdir/dwm/config.h"
@@ -104,13 +107,12 @@ while test "$1"; do
                 )
             else
                 (
-                cp "$PWD/dwm.config.h" "$reposdir/dwm/config.h"
-                cd "$reposdir/dwm" || return
-                make clean
-                make
-                sudo make install
-            )
-                fi
+                    cp "$PWD/dwm.config.h" "$reposdir/dwm/config.h"
+                    cd "$reposdir/dwm" || return
+                    make clean
+                    make
+                    sudo make install
+                )
             fi
         } ;;
         -z) {
@@ -140,7 +142,7 @@ while test "$1"; do
             fi
             echo build nix flake from repo
             (cd $(git rev-parse --show-toplevel) && \
-                sudo nixos-rebuild boot --flake './nixos#' --upgrade)
+                 sudo nixos-rebuild boot --flake './#' --upgrade-all)
         } ;;
         -j) {
             for f in cron/*
@@ -160,7 +162,6 @@ while test "$1"; do
         } ;;
         -o) {
             [ -d "/opt" ] || sudo mkdir /opt
-
             for f in opt/*; do
                 sudo ln -sfv "$PWD/$f" "/opt/${f#opt/}"
             done
@@ -170,7 +171,6 @@ while test "$1"; do
             [ -d $confDir ] || sudo mkdir $confDir
             sudo ln -sfv "$PWD/30-pointers.conf" "$confDir/"
         } ;;
-
 
     esac
     shift
