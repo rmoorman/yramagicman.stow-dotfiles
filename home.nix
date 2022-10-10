@@ -56,7 +56,6 @@
     vlc
     xclip
     xonotic
-    xorg.xbacklight
     xorg.xcursorthemes
     xorg.xkill
     xorg.xmessage
