@@ -48,6 +48,8 @@ function update() {
 
     if [[ $(command -v home-manager) ]] &&  [[ ! $(command -v nixos-rebuild) ]] ; then
         home-manager switch
+        nix-collect-garbage -d --delete-older-than 14d
+        nix store optimise
     fi
     if [[ $(command -v flatpak) ]] && [[ -z $SSH_CLIENT ]] ; then
         echo "\n flatpak \n"
