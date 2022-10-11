@@ -2,5 +2,6 @@
 Description=Mailbox synchronization service
 
 [Service]
+Environment="PATH=/run/current-system/sw/bin/:/usr/bin/find"
 Type=oneshot
-ExecStart=/run/current-system/sw/bin/find /home/jonathan -name '-F' -delete
+ExecStart=find /home/jonathan -name '-F' -delete
