@@ -1,10 +1,14 @@
 { config, pkgs, lib, ... }:
-{
+let
+  home = builtins.getEnv "HOME";
+  dotfiles = "${home}/Documents/dots";
+  vim = builtins.mapAttrs (f: z: builtins.readFile (builtins.toPath "${dotfiles}/vim/plugin/${f}") )
+    ( builtins.readDir (builtins.toPath "${dotfiles}/vim/plugin" ) );
+in {
   # Home Manager needs a bit of information about you and the
   # paths it should manage.
   home.username = "jonathan";
-  home.homeDirectory = "/home/jonathan";
-
+  home.homeDirectory = home;
   home.packages = with pkgs; [
     alacritty
     arandr
@@ -36,7 +40,7 @@
     msmtp
     mu
     mutt
-    neovim
+    # neovim
     pass
     pavucontrol
     pcmanfm
@@ -61,6 +65,13 @@
     yt-dlp
     zathura
   ];
+
+programs.neovim = {
+  enable = true;
+  # extraConfig = builtins.foldl' (a: b: a + b) ( builtins.attrValues vim );
+  extraConfig = lib.concatStrings ([ ( builtins.readFile (builtins.toPath "${dotfiles}/vim/vimrc")  )] ++  builtins.attrValues vim );
+};
+
 
   xdg.userDirs.desktop = "$HOME/";
 
