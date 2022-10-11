@@ -66,12 +66,17 @@ in {
     zathura
   ];
 
-programs.neovim = {
-  enable = true;
-  # extraConfig = builtins.foldl' (a: b: a + b) ( builtins.attrValues vim );
-  extraConfig = lib.concatStrings ([ ( builtins.readFile (builtins.toPath "${dotfiles}/vim/vimrc")  )] ++  builtins.attrValues vim );
-};
+  programs.neovim = {
+    enable = true;
+    # extraConfig = builtins.foldl' (a: b: a + b) ( builtins.attrValues vim );
+    extraConfig = lib.concatStrings ([ ( builtins.readFile (builtins.toPath "${dotfiles}/vim/vimrc")  )] ++  builtins.attrValues vim );
+  };
 
+  home.file."vim/after" = {
+    source="${dotfiles}/vim/after";
+    target=".config/nvim/after";
+    recursive = true;
+  };
 
   xdg.userDirs.desktop = "$HOME/";
 
