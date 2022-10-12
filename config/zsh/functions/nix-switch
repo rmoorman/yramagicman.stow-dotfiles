@@ -7,5 +7,5 @@ function nix-switch() {
     tmp=$(mktemp -d)
     print -v thing -P %x
     conf="$(builtin cd ${thing/nix-switch/} && git rev-parse --show-toplevel )"
-    sudo nixos-rebuild switch --flake "$conf/nixos/#"
+    sudo nixos-rebuild switch --impure --flake "$conf/nixos/#"
 }

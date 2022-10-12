@@ -8,5 +8,5 @@ function nix-test () {
         unsetopt globdots
         command cp -r $conf/* "$tmp"
     )
-    sudo nixos-rebuild test --flake "$tmp/#" $@
+    sudo nixos-rebuild test --impure --flake "$tmp/#" $@
 }

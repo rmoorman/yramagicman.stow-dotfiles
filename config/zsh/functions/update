@@ -15,7 +15,7 @@ function update() {
             conf="$(builtin cd ${thing/update/} && git rev-parse --show-toplevel )"
             echo "\n\n$conf\n\n"
             rm -f "$conf/flake.lock"
-            sudo nixos-rebuild boot --flake "$conf/#"  --upgrade-all
+            sudo nixos-rebuild boot --impure --flake "$conf/#"  --upgrade-all
             builtin cd $conf
             git add "$conf/flake.lock"
             git commit -m "flake.lock update $(date -I)"

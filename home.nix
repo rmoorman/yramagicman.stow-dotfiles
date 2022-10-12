@@ -1,6 +1,6 @@
 { config, pkgs, lib, ... }:
 let
-  home = builtins.getEnv "HOME";
+  home = "/home/jonathan";
   dotfiles = "${home}/Documents/dots";
   vim = builtins.mapAttrs (f: z: builtins.readFile (builtins.toPath "${dotfiles}/vim/plugin/${f}") )
     ( builtins.readDir (builtins.toPath "${dotfiles}/vim/plugin" ) );
