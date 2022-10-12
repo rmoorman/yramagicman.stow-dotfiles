@@ -77,14 +77,13 @@
         tailscale.interfaceName="tailscale0";
         lshd.tcpForwarding="true";
         gnome.gnome-keyring.enable = true;
-        services.smartd = {
+        smartd = {
             enable = true;
             extraOptions = [
                 "-A /var/log/smartd/"
                 "--interval=3600"
             ];
-        }
-
+        };
     };
     networking.firewall.checkReversePath = "loose";
     networking.firewall.allowedTCPPorts = [
