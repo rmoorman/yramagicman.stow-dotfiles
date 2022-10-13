@@ -126,19 +126,19 @@ myLayout = do
 myManageHook = composeAll [
       -- className =? "Alacritty"        --> doShift "1:shell"
       className =? "URxvt"            --> doShift "1:shell"
-    , className =? "st-256color"      --> doShift "1:shell"
-    , className =? "Emacs"            --> doShift "1:shell"
-    , className =? "Navigator"        --> doShift "2:br1"
-    , className =? "firefox"          --> doShift "2:br1"
-    , className =? "Chromium-browser"         --> doShift "3:br2"
-    , className =? "Thunderbird"      --> doShift "4:mail/db"
-    , className =? "Signal"           --> doShift "8:signal"
-    , className =? "Slack"            --> doShift "9:slack"
-    , title =? "Dbeaver"              --> doShift "4:mail/db"
-    , className =? "DBeaver"          --> doShift "4:mail/db"
-    , className =? "mpv"              --> doShift "7:mpv"
-    , isDialog                        --> doFloat
-  ]
+  , className =? "st-256color"      --> doShift "1:shell"
+  , className =? "Emacs"            --> doShift "1:shell"
+  , className =? "Navigator"        --> doShift "2:br1"
+  , className =? "firefox"          --> doShift "2:br1"
+  , className =? "Chromium-browser"         --> doShift "3:br2"
+  , className =? "Thunderbird"      --> doShift "4:mail/db"
+  , className =? "Signal"           --> doShift "8:signal"
+  , className =? "Slack"            --> doShift "9:slack"
+  , title =? "Dbeaver"              --> doShift "4:mail/db"
+  , className =? "DBeaver"          --> doShift "4:mail/db"
+  , className =? "mpv"              --> doShift "7:mpv"
+  , isDialog                        --> doFloat
+                          ]
 
 ------------------------------------------------------------------------
     -- Event handling
@@ -208,46 +208,46 @@ main = do
     xmproc1 <- spawnPipe "xmobar -x 1 $HOME/.xmonad/xmobarrc"
     -- nScreens <- countScreens
     -- handles <- forM [1..nScreens] (\sc -> spawnPipe (dzncmd ++ show sc))
-    xmonad  $ ewmh $ withUrgencyHook NoUrgencyHook $ docks  def
+    xmonad  $ ewmh $ withUrgencyHook NoUrgencyHook $ docks def
         { terminal           = myTerminal
-          , focusFollowsMouse  = myFocusFollowsMouse
-          , borderWidth        = myBorderWidth
-          , manageHook         = manageDocks <+> myManageHook
-          , layoutHook         = myLayout
-          , modMask            = myModMask
-          , normalBorderColor  = myNormalBorderColor
-          , focusedBorderColor = myFocusedBorderColor
-          , workspaces         = myWorkspaces
+        , focusFollowsMouse  = myFocusFollowsMouse
+        , borderWidth        = myBorderWidth
+        , manageHook         = manageDocks <+> myManageHook
+        , layoutHook         = myLayout
+        , modMask            = myModMask
+        , normalBorderColor  = myNormalBorderColor
+        , focusedBorderColor = myFocusedBorderColor
+        , workspaces         = myWorkspaces
           -- , handleEventHook    = myEventHook
-          , logHook            = dynamicLogWithPP myXmobarPP {
-                ppOutput       = \x -> hPutStrLn xmproc0 x  >> hPutStrLn xmproc1 x
-          }
-          , startupHook        = myStartupHook
+        , logHook            = dynamicLogWithPP myXmobarPP {
+                ppOutput     = \x -> hPutStrLn xmproc0 x  >> hPutStrLn xmproc1 x
+                                                           }
+        , startupHook        = myStartupHook
         } `additionalKeys`
         [ ((mod4Mask .|. shiftMask, xK_z), spawn "xscreensaver-command -lock")
-          , ((0, xK_Print), spawn "~/.config/dwm/scripts/screenshot")
-          , ((0, xK_Pause), spawn "dnd")
-          , ((shiftMask, xK_F12), spawn "systemctl poweroff")
-          , ((mod4Mask, xK_m), spawn "firefox --new-tab about:blank")
-          , ((mod4Mask .|. controlMask, xK_m), spawn "firefox --new-window about:blank")
-          , ((mod4Mask .|. shiftMask, xK_m), spawn "firefox --private-window")
-          , ((mod4Mask .|. shiftMask, xK_g), spawn "chromium --incognito")
-          , ((mod4Mask .|. controlMask, xK_Return), spawn "emacsclient -nc ~/")
-          , ((mod4Mask              , xK_p     ), spawn "passmenu")
-          , ((controlMask,               xK_space     ), spawn "dmenu_run")
-          , ((mod4Mask .|. controlMask , xK_r  ), spawn "restatus")
-          , (( 0, xF86XK_AudioLowerVolume  ), spawn  "amixer -c 0 -- set Master 1-")
-          , (( 0, xF86XK_AudioRaiseVolume  ), spawn "amixer -c 0 -- set Master 1+")
-          , (( 0, xF86XK_MonBrightnessUp   ), spawn "xbacklight -inc 2")
-          , (( 0, xF86XK_MonBrightnessDown ), spawn "xbacklight -dec 2")
-          , (( mod4Mask, xK_Tab ), toggleWS)
-          , (( mod4Mask,  xK_z  ), warpToWindow (1%2) (1%2)) -- @@ Move pointer to currently focused window
-          , (( mod4Mask,  xK_F4  ), spawn "xrandr --output HDMI1 --off;  xrandr --output HDMI1 --auto")
-          , (( mod4Mask .|. shiftMask, xK_s   ), setScreenWindowSpacing 0)
-          , (( mod4Mask .|. shiftMask, xK_f   ), spawn "pcmanfm")
-          , (( mod4Mask .|. controlMask, xK_s   ), spawn "pcmanfm ~/Pictures/screenshots")
-          , (( mod4Mask .|. shiftMask, xK_q   ), spawn "pkill -u $USER")
-          , (( mod1Mask .|. shiftMask, xK_q   ), spawn "cobang")
-          , (( mod4Mask, xK_b   ), spawn "pkill xmobar")
-          , (( mod4Mask .|. mod1Mask, xK_Return   ), spawn "alacritty")
+        , ((0, xK_Print), spawn "~/.config/dwm/scripts/screenshot")
+        , ((0, xK_Pause), spawn "dnd")
+        , ((shiftMask, xK_F12), spawn "systemctl poweroff")
+        , ((mod4Mask, xK_m), spawn "firefox --new-tab about:blank")
+        , ((mod4Mask .|. controlMask, xK_m), spawn "firefox --new-window about:blank")
+        , ((mod4Mask .|. shiftMask, xK_m), spawn "firefox --private-window")
+        , ((mod4Mask .|. shiftMask, xK_g), spawn "chromium --incognito")
+        , ((mod4Mask .|. controlMask, xK_Return), spawn "emacsclient -nc ~/")
+        , ((mod4Mask, xK_p ), spawn "passmenu")
+        , ((controlMask, xK_space ), spawn "dmenu_run")
+        , ((mod4Mask .|. controlMask , xK_r ), spawn "restatus")
+        , (( 0, xF86XK_AudioLowerVolume ), spawn "amixer -c 0 -- set Master 1-")
+        , (( 0, xF86XK_AudioRaiseVolume ), spawn "amixer -c 0 -- set Master 1+")
+        , (( 0, xF86XK_MonBrightnessUp ), spawn "xbacklight -inc 2")
+        , (( 0, xF86XK_MonBrightnessDown ), spawn "xbacklight -dec 2")
+        , (( mod4Mask, xK_Tab ), toggleWS)
+        , (( mod4Mask, xK_z ), warpToWindow (1%2) (1%2)) -- @@ Move pointer to currently focused window
+        , (( mod4Mask, xK_F4 ), spawn "xrandr --output HDMI1 --off; xrandr --output HDMI1 --auto")
+        , (( mod4Mask .|. shiftMask, xK_s ), setScreenWindowSpacing 0)
+        , (( mod4Mask .|. shiftMask, xK_f ), spawn "pcmanfm")
+        , (( mod4Mask .|. controlMask, xK_s ), spawn "pcmanfm ~/Pictures/screenshots")
+        , (( mod4Mask .|. shiftMask, xK_q ), spawn "pkill -u $USER")
+        , (( mod1Mask .|. shiftMask, xK_q ), spawn "cobang")
+        , (( mod4Mask, xK_b ), spawn "pkill xmobar")
+        , (( mod4Mask .|. mod1Mask, xK_Return ), spawn "alacritty")
         ]
