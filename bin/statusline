@@ -104,16 +104,6 @@ function my_volume() {
     echo "V:$( amixer -c 0  -- get Master| awk '/Playback [0-9]{0,5} \[[0-9]{0,3}%]/ {print $4 $6}' )"
 }
 
-function my_harvest() {
-    if [[ $(( $(print -P '%D{ %M }') % 5 )) -eq 0 ]] && [[ -e $HOME/bin/harvest ]];
-    then
-        $HOME/bin/harvest > /tmp/harvest
-    fi
-    [[ -s /tmp/harvest ]] && echo "TIME: $( < /tmp/harvest ) - "
-
-
-}
-
 function dnd() {
     if [[ $(( $(print -P '%D{ %s }') % 5 )) -eq 0 ]] && [[ "$(dunstctl is-paused)" == 'true' ]]; then
         echo ' Do not disturb on! ' > /tmp/dnd
@@ -124,7 +114,7 @@ function dnd() {
     [[ -n $(< /tmp/dnd ) ]] && echo "$( < /tmp/dnd ) - "
 }
 
-line="$(dnd)$(my_update)$(my_harvest)$(my_mail)"
+line="$(dnd)$(my_update)$(my_mail)"
 if [[ -r "/sys/class/power_supply/BAT0/" ]]; then
     for d in /sys/class/power_supply/BAT?/; do
         line="$line$(my_bat $d)"
