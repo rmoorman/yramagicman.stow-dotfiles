@@ -23,7 +23,6 @@
         rsync
         unzip
         vim
-        w3m
         wget
         xscreensaver
         zsh

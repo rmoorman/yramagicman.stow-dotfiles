@@ -57,6 +57,7 @@ in {
     urlview
     vimHugeX
     vlc
+    w3m
     xclip
     xonotic
     xorg.xcursorthemes
