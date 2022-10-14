@@ -15,12 +15,12 @@ function update() {
             conf="$(builtin cd ${thing/update/} && git rev-parse --show-toplevel )"
             echo "\n\n$conf\n\n"
             rm -f "$conf/flake.lock"
+            sudo nix-channel --update
             sudo nixos-rebuild boot --impure --flake "$conf/#"  --upgrade-all
             builtin cd $conf
             git add "$conf/flake.lock"
             git commit -m "flake.lock update $(date -I)"
         )
-        sudo nix-channel --update
         nix-collect-garbage -d --delete-older-than 14d
         nix store optimise
     elif [[ $(command -v yay) ]]; then
