@@ -3,28 +3,6 @@ let
   home = "/home/jonathan";
   dotfiles = "${home}/Documents/dots";
 
-  vimFiles = [ "colors" "after" "plugin" "autoload" ];
-
-  nvim = map (f:
-    {
-      name="nvim/${f}";
-      value = (builtins.listToAttrs [
-        {name="source"; value="${dotfiles}/vim/${f}";}
-        {name="target"; value="${home}/.config/nvim/${f}";}
-        {name="recursive"; value=true;}
-      ]);
-    }) vimFiles;
-
-  vim = map (f:
-    {
-      name="vim/${f}";
-      value = (builtins.listToAttrs [
-        {name="source"; value="${dotfiles}/vim/${f}";}
-        {name="target"; value="${home}/.vim/${f}";}
-        {name="recursive"; value=true;}
-      ]);
-    }) vimFiles;
-
   packages = with pkgs; [
     alacritty
     arandr
@@ -80,6 +58,30 @@ let
     yt-dlp
     zathura
   ];
+
+  vimFiles = [ "colors" "after" "plugin" "autoload" ];
+
+  nvim = map (f:
+    {
+      name="nvim/${f}";
+      value = (builtins.listToAttrs [
+        {name="source"; value="${dotfiles}/vim/${f}";}
+        {name="target"; value="${home}/.config/nvim/${f}";}
+        {name="recursive"; value=true;}
+      ]);
+    }) vimFiles;
+
+  vim = map (f:
+    {
+      name="vim/${f}";
+      value = (builtins.listToAttrs [
+        {name="source"; value="${dotfiles}/vim/${f}";}
+        {name="target"; value="${home}/.vim/${f}";}
+        {name="recursive"; value=true;}
+      ]);
+    }) vimFiles;
+
+
 in {
   home.username = "jonathan";
   home.homeDirectory = home;
