@@ -71,12 +71,9 @@ function! s:install_opt_plugins(plug)
     let plug = split( a:plug, '/' )[1]
     let plug = plug[:-2]
     let destination = split( &packpath, ',')[-1] . '/opt/'. plug
-    if has('nvim')
-        let moduledest = split(destination, '\.')
-        let moduledest = '.'. moduledest[1]
-    else
-        let moduledest = split(destination, '\.')[1]
-    endif
+    let moduledest = split(destination, '\.')
+    let moduledest = '.'. moduledest[1]
+
     let cdpath=join(split(moduledest,'/')[:-2], '/')
     call add(s:opt_plugs, [destination, 'git clone --depth 3 '. url . ' ' . moduledest])
 endfunction

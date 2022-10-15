@@ -1,25 +1,26 @@
 #!/usr/bin/env zsh
 
 function home-manager () {
-    [[ $(command -v nixos-rebuild) ]] || export NIXPKGS_ALLOW_UNFREE=1
     tmp="$(mktemp -d)"
     print -v thing -P %x
     conf="$(builtin cd ${thing/home-manager/} && git rev-parse --show-toplevel )"
+    [[ $(command -v nixos-rebuild) ]] || export NIXPKGS_ALLOW_UNFREE=1 && export _HOME_FLAKE="$conf/#jonathan"
+    [[ $(command -v nixos-rebuild) ]] && export _HOME_FLAKE="$conf/#"
     case "$1" in
         "switch" )
             if [[ ! $(command -v nixos-rebuild) ]]; then
-                command home-manager switch --impure --flake "$conf/#jonathan"
+                command home-manager switch --impure --flake $_HOME_FLAKE
                 home-manager expire-generations "-14 days"
                 nix-collect-garbage -d --delete-older-than 14d
                 nix store optimise
                 return
             else
-                command home-manager switch --flake "$conf/#"
+                command home-manager switch --flake $_HOME_FLAKE
                 return
             fi
             ;;
         * )
-            command home-manager $@
+            command home-manager $@ --flake $_HOME_FLAKE
             return
             ;;
     esac

@@ -2,14 +2,30 @@
 let
   home = "/home/jonathan";
   dotfiles = "${home}/Documents/dots";
-  vim = builtins.mapAttrs (f: z: builtins.readFile (builtins.toPath "${dotfiles}/vim/plugin/${f}") )
-    ( builtins.readDir (builtins.toPath "${dotfiles}/vim/plugin" ) );
-in {
-  # Home Manager needs a bit of information about you and the
-  # paths it should manage.
-  home.username = "jonathan";
-  home.homeDirectory = home;
-  home.packages = with pkgs; [
+
+  vimFiles = [ "colors" "after" "plugin" "autoload" ];
+
+  nvim = map (f:
+    {
+      name="nvim/${f}";
+      value = (builtins.listToAttrs [
+        {name="source"; value="${dotfiles}/vim/${f}";}
+        {name="target"; value="${home}/.config/nvim/${f}";}
+        {name="recursive"; value=true;}
+      ]);
+    }) vimFiles;
+
+  vim = map (f:
+    {
+      name="vim/${f}";
+      value = (builtins.listToAttrs [
+        {name="source"; value="${dotfiles}/vim/${f}";}
+        {name="target"; value="${home}/.vim/${f}";}
+        {name="recursive"; value=true;}
+      ]);
+    }) vimFiles;
+
+  packages = with pkgs; [
     alacritty
     arandr
     breeze-icons
@@ -40,7 +56,6 @@ in {
     msmtp
     mu
     mutt
-    # neovim
     pass
     pavucontrol
     pcmanfm
@@ -55,7 +70,6 @@ in {
     ungoogled-chromium
     universal-ctags
     urlview
-    vimHugeX
     vlc
     w3m
     xclip
@@ -66,18 +80,28 @@ in {
     yt-dlp
     zathura
   ];
+in {
+  home.username = "jonathan";
+  home.homeDirectory = home;
+  home.packages = packages;
 
   programs.neovim = {
     enable = true;
-    # extraConfig = builtins.foldl' (a: b: a + b) ( builtins.attrValues vim );
-    extraConfig = lib.concatStrings ([ ( builtins.readFile (builtins.toPath "${dotfiles}/vim/vimrc")  )] ++  builtins.attrValues vim );
+    extraConfig =  ( builtins.readFile (builtins.toPath "${dotfiles}/vim/vimrc")  );
   };
 
-  home.file."vim/after" = {
-    source="${dotfiles}/vim/after";
-    target=".config/nvim/after";
-    recursive = true;
+  programs.vim = {
+    enable = true;
+    extraConfig =  builtins.readFile (builtins.toPath "${dotfiles}/vim/vimrc");
+    packageConfigurable = pkgs.vimHugeX;
   };
+
+  home.file = builtins.listToAttrs (
+      builtins.concatLists [
+          nvim
+          vim
+      ]
+  );
 
   xdg.userDirs.desktop = "$HOME/";
 
