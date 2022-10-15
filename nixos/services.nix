@@ -11,6 +11,7 @@
 
             # Enable the GNOME Desktop Environment.
             displayManager.gdm.enable = true;
+            desktopManager.gnome.enable = true;
             # displayManager.sddm.theme = "elarun";
             displayManager.defaultSession = "none+xmonad";
             displayManager.hiddenUsers =[ "jonathan_backup" ];
@@ -44,14 +45,13 @@
             nssmdns = true;
         };
 
-        # hardware.pulseaudio.enable = true;
         pipewire.enable = true;
         pipewire.pulse.enable = true;
         pipewire.alsa.enable = true;
         fwupd.enable = true;
         # services.locate.enable = true;
         # services.locate.interval = "*:0/15";
-        tlp.enable = true;
+        # tlp.enable = true;
 
         # Enable the OpenSSH daemon.
         openssh.enable = true;
@@ -96,5 +96,6 @@
     location.provider = "geoclue2";
     hardware.logitech.wireless.enable = true;
     hardware.logitech.wireless.enableGraphical = true;
+    hardware.pulseaudio.enable = false;
 
 }
