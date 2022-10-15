@@ -60,6 +60,17 @@ let
   ];
 
   vimFiles = [ "colors" "after" "plugin" "autoload" ];
+  zshFiles = [ "aliases" "functions" "prompts" "zpkg" ];
+
+  zsh = map (f:
+    {
+      name="zsh/${f}";
+      value = (builtins.listToAttrs [
+        {name="source"; value="${dotfiles}/config/zsh/${f}";}
+        {name="target"; value="${home}/.config/zsh/${f}";}
+        {name="recursive"; value=true;}
+      ]);
+    }) zshFiles;
 
   nvim = map (f:
     {
@@ -81,6 +92,14 @@ let
       ]);
     }) vimFiles;
 
+  bin = [ {
+    name="bin";
+    value = (builtins.listToAttrs [
+      {name="source"; value="${dotfiles}/bin";}
+      {name="target"; value="${home}/.local/bin";}
+      {name="recursive"; value=true;}
+    ]);
+  } ];
 
 in {
   home.username = "jonathan";
@@ -98,11 +117,30 @@ in {
     packageConfigurable = pkgs.vimHugeX;
   };
 
+  programs.zsh = {
+    enable = true;
+    initExtra =  builtins.readFile (
+      builtins.toPath "${dotfiles}/config/zsh/zshrc"
+    );
+    logoutExtra =  builtins.readFile (
+      builtins.toPath "${dotfiles}/config/zsh/zlogout"
+    );
+    loginExtra =  builtins.readFile (
+      builtins.toPath "${dotfiles}/config/zsh/zlogin"
+    );
+    dotDir=".config/zsh";
+    envExtra =  builtins.readFile (
+      builtins.toPath "${dotfiles}/root/zshenv"
+    );
+  };
+
   home.file = builtins.listToAttrs (
-      builtins.concatLists [
-          nvim
-          vim
-      ]
+    builtins.concatLists [
+      bin
+      nvim
+      vim
+      zsh
+    ]
   );
 
   xdg.userDirs.desktop = "$HOME/";
