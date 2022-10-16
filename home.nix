@@ -119,6 +119,7 @@ in {
 
   programs.zsh = {
     enable = true;
+    completionInit = "";
     initExtra =  builtins.readFile (
       builtins.toPath "${dotfiles}/config/zsh/zshrc"
     );
