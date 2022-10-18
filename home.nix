@@ -8,7 +8,7 @@ let
     arandr
     breeze-icons
     btop
-    # calibre
+    calibre
     cmus
     dmenu
     dunst
