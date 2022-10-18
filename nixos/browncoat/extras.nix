@@ -12,7 +12,6 @@
         intel-gpu-tools
     ];
     # services.flatpak.enable = true;
-    services.xserver.displayManager.gdm.autoSuspend= false;
     # xdg.portal.enable = true;
     # xdg.portal.extraPortals = [
     #     pkgs.xdg-desktop-portal-gnome
