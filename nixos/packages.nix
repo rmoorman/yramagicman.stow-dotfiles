@@ -23,6 +23,9 @@
         rsync
         unzip
         vim
+        neovim
+        rxvt-unicode
+        w3m
         wget
         xscreensaver
         zsh
