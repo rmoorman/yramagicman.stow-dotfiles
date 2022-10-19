@@ -23,7 +23,7 @@
         racket
         rsync
         rxvt-unicode
-	tmux
+        tmux
         unzip
         vim
         w3m
