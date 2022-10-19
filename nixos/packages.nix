@@ -13,6 +13,7 @@
         killall
         man-pages
         mariadb
+        neovim
         nextcloud-client
         nfs-utils
         nodejs
@@ -21,10 +22,10 @@
         python3Full
         racket
         rsync
+        rxvt-unicode
+	tmux
         unzip
         vim
-        neovim
-        rxvt-unicode
         w3m
         wget
         xscreensaver
