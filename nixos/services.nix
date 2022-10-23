@@ -99,4 +99,9 @@
     hardware.logitech.wireless.enableGraphical = true;
     hardware.pulseaudio.enable = false;
 
+    xdg.portal.enable = true;
+    xdg.portal.extraPortals = [
+        pkgs.xdg-desktop-portal-gnome
+    ];
+
 }
