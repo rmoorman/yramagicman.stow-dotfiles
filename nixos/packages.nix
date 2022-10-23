@@ -19,6 +19,7 @@
         nodejs
         openssl
         pinentry-gtk2
+        powertop
         python3Full
         racket
         rsync
