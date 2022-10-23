@@ -52,7 +52,7 @@
         fwupd.enable = true;
         # services.locate.enable = true;
         # services.locate.interval = "*:0/15";
-        tlp.enable = true;
+        # tlp.enable = true;
 
         # Enable the OpenSSH daemon.
         openssh.enable = true;
