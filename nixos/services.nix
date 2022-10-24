@@ -53,8 +53,6 @@
         # services.locate.enable = true;
         # services.locate.interval = "*:0/15";
 
-        power-profiles-daemon.enable = false;
-        tlp.enable = true;
 
         # Enable the OpenSSH daemon.
         openssh.enable = true;
@@ -105,6 +103,5 @@
     xdg.portal.extraPortals = [
         pkgs.xdg-desktop-portal-gnome
     ];
-    powerManagement.powertop.enable = true;
 
 }
