@@ -193,6 +193,7 @@ commands = [
            , "setxkbmap -option compose:menu"
            , "setxkbmap -option caps:none"
            , "xsetroot -cursor_name left_ptr"
+           , "nextcloudcmd --silent --user jonathan --password $(pass show nextcloud) $HOME/Nextcloud http://100.94.223.34 "
            ]
 
 myStartupHook = do
