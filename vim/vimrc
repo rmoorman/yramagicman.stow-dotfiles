@@ -33,33 +33,18 @@ filetype plugin indent on
 " Switch syntax highlighting on
 syntax on
 "}}}
-"{{{ Plugin loading and settings
-let g:VimPack_Setup_Folders = ['after',
-            \ 'autoload',
-            \ 'backup',
-            \ 'colors',
-            \ 'doc',
-            \ 'spell',
-            \ 'swaps',
-            \ 'syntax',
-            \ 'plugin',
-            \ 'undo',
-            \ 'nvim_undo' ]
-let g:VimPack_Auto_Install = 1
-let g:VimPack_Auto_Update = 1
 let g:polyglot_is_disabled = {}
 let g:javascript_sql_dialect = 'javascript'
 
-call pack#load()
+call plug#begin()
 
 " PlugOpt 'w0rp/ale'
-PlugOpt 'git@gitlab.com:yramagicman/auto-omnicomplete'
+Plug 'git@gitlab.com:yramagicman/auto-omnicomplete'
 if executable('fzf')
     if isdirectory('/usr/local/opt/fzf')
         set runtimepath+=/usr/local/opt/fzf
     endif
-    PlugOpt 'junegunn/fzf.vim'
-    packadd! fzf
+    Plug 'junegunn/fzf.vim'
 endif
 
 " if has('nvim')
@@ -68,32 +53,17 @@ endif
 "     packadd! nvim-lsp-installer
 "     packadd! nvim-lspconfig
 " endif
-PlugOpt 'bronson/vim-visual-star-search'
-PlugOpt 'editorconfig/editorconfig-vim'
-PlugOpt 'tpope/vim-commentary'
-PlugOpt 'tpope/vim-repeat'
-PlugOpt 'tpope/vim-surround'
-PlugOpt 'vim-scripts/vim-indent-object'
+Plug 'bronson/vim-visual-star-search'
+Plug 'editorconfig/editorconfig-vim'
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-surround'
+Plug 'vim-scripts/vim-indent-object'
 " PlugOpt 'morhetz/gruvbox'
-PlugOpt 'wuelnerdotexe/vim-enfocado'
-PlugOpt 'sheerun/vim-polyglot'
+Plug 'wuelnerdotexe/vim-enfocado'
+Plug 'sheerun/vim-polyglot'
+call plug#end()
 packadd! matchit
-" packadd! ale
-packadd! auto-omnicomplete
-packadd! vim-visual-star-search
-packadd! editorconfig-vim
-packadd! vim-commentary
-packadd! vim-repeat
-packadd! vim-surround
-packadd! vim-indent-object
-packadd! vim-polyglot
-if has('nvim')
-    " I don't know what happened here, but the plugin got cloned into the wrong
-    " directory. Easy fix is to set the name to the destination directory
-    packadd! vim-enfocad
-else
-    packadd! vim-enfocado
-endif
 " packadd! gruvbox
 if ! has('nvim')
     packadd! editexisting
