@@ -75,6 +75,7 @@ PlugOpt 'tpope/vim-repeat'
 PlugOpt 'tpope/vim-surround'
 PlugOpt 'vim-scripts/vim-indent-object'
 " PlugOpt 'morhetz/gruvbox'
+PlugOpt 'wuelnerdotexe/vim-enfocado'
 PlugOpt 'sheerun/vim-polyglot'
 packadd! matchit
 " packadd! ale
@@ -86,6 +87,13 @@ packadd! vim-repeat
 packadd! vim-surround
 packadd! vim-indent-object
 packadd! vim-polyglot
+if has('nvim')
+    " I don't know what happened here, but the plugin got cloned into the wrong
+    " directory. Easy fix is to set the name to the destination directory
+    packadd! vim-enfocad
+else
+    packadd! vim-enfocado
+endif
 " packadd! gruvbox
 if ! has('nvim')
     packadd! editexisting
@@ -97,7 +105,8 @@ let g:AutoOmniComplete_complete_map = "\<c-n>"
 "}}}
 "{{{ colors
 set background=dark
-colorscheme monochrome
+let g:enfocado_style = 'nature' " Available: `nature` or `neon`.
+colorscheme enfocado
 "}}}
 "{{{ autocommands for loading extensions
 augroup extensions

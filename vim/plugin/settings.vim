@@ -1,5 +1,6 @@
 set shell=zsh
 set updatetime=2000
+set termguicolors
 " Make backspace behave in a sane manner.
 set backspace=indent,eol,start
 set showcmd
