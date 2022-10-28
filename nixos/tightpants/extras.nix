@@ -2,14 +2,14 @@
 {
     services.xserver.dpi = 192;
     hardware.acpilight.enable = true;
-    boot.kernelPackages = pkgs.linuxPackages_6_0;
+    boot.kernelPackages = pkgs.linuxPackages_zen;
+
 
     fileSystems."/".options = ["compress=zstd"];
     environment.systemPackages = with pkgs; [
         intel-gpu-tools
         # linuxKernel.packages.linux_5_15.system76
-        # linuxKernel.packages.linux_zen.system76
-        linuxKernel.packages.linux_6_0.system76
+        linuxKernel.packages.linux_zen.system76
         system76-firmware
     ];
 
