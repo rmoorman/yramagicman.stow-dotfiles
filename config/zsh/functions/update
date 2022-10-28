@@ -21,8 +21,9 @@ function update() {
             git add "$conf/flake.lock"
             git commit -m "flake.lock update $(date -I)"
         )
-        nix-collect-garbage -d --delete-older-than 14d
-        nix store optimise
+        # nix-collect-garbage -d --delete-older-than 14d
+        sudo nix-collect-garbage -d --delete-older-than 14d
+        sudo nix store optimise
     elif [[ $(command -v yay) ]]; then
         yay -Syu --noconfirm --sudoloop
         xmonad --recompile
