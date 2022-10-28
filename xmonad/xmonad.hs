@@ -205,8 +205,8 @@ myStartupHook = do
 main = do
     -- let dzncmd = "dzen2 -dock -ta l -tw 1200 -fn mono:size=10 -xs "
 
-    xmproc0 <- spawnPipe "xmobar -x 0 $HOME/.xmonad/xmobarrc"
-    xmproc1 <- spawnPipe "xmobar -x 1 $HOME/.xmonad/xmobarrc"
+    xmproc0 <- spawnPipe "xmobar -x 0 $HOME/.config/xmonad/xmobarrc"
+    xmproc1 <- spawnPipe "xmobar -x 1 $HOME/.config/xmonad/xmobarrc"
     -- nScreens <- countScreens
     -- handles <- forM [1..nScreens] (\sc -> spawnPipe (dzncmd ++ show sc))
     xmonad  $ ewmh $ withUrgencyHook NoUrgencyHook $ docks def

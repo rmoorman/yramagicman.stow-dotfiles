@@ -34,6 +34,7 @@ let
     msmtp
     mu
     mutt
+    newsflash
     pass
     pavucontrol
     pcmanfm

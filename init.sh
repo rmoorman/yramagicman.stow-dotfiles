@@ -121,7 +121,7 @@ while test "$1"; do
             fi
         } ;;
         -x) {
-            xmonad="$HOME/.xmonad"
+            xmonad="$HOME/.config/xmonad"
             [ -L "$xmonad" ] || [ -d "$xmonad" ] && rm -rv $xmonad
             ln -sfv "$PWD/xmonad" $xmonad
         } ;;
