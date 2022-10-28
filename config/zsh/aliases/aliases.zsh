@@ -76,6 +76,7 @@ alias lsd='ls -Flh ${colorflag} | grep "^d"'
 # Always use color output for `ls`
 alias ls="command ls -Fh ${colorflag}"
 #}}}
+alias grep="command grep --color=auto"
 #}}}
 #{{{ volume control
 alias maxvol="amixer -c 0 -- set Master 100%"
