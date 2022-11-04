@@ -51,6 +51,7 @@ let
     urlview
     vlc
     w3m
+    wl-clipboard
     xclip
     xonotic
     xorg.xcursorthemes
