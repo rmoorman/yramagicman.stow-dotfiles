@@ -6,7 +6,7 @@ Config {
    , fgColor =      "#ababab"
    , position =     TopH 32
    , border =       BottomB
-   , borderColor =  "#ffffff"
+   , borderColor =  "#444444"
 
    -- layout
    , sepChar =  "%"   -- delineator between plugin names and straight text

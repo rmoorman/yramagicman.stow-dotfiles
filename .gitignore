@@ -27,6 +27,7 @@ config/ranger/colorschemes/__init__.pyo
 config/ranger/colorschemes/__pycache__/
 config/ranger/history
 config/systemd/user/default.target.wants/
+config/systemd/user/sockets.target.wants/*
 config/systemd/user/timers.target.wants/
 config/tmux.d/digests
 config/tmux.d/tmux-urlview/
@@ -51,6 +52,7 @@ newsboat/history.search
 # nixos/flake.lock
 screenlayout/i3.sh
 .tags
+vim/autoload/plug.vim
 vim/backup/
 vim/.lastupdate
 vim/lastupdate
@@ -64,10 +66,9 @@ vim/viminfo
 vim/viminfo.tmp
 vim/viminf*.tmp
 xmonad/build-x86_64-linux/
+xmonad/xmobarrc
 xmonad/xmonad.errors
 xmonad/xmonad.hi
 xmonad/xmonad.o
 xmonad/xmonad-x86_64-linux
 *.zwc
-config/systemd/user/sockets.target.wants/*
-vim/autoload/plug.vim

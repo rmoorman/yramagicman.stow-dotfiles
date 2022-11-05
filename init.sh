@@ -122,8 +122,11 @@ while test "$1"; do
         } ;;
         -x) {
             xmonad="$HOME/.config/xmonad"
+            xmonad="$HOME/.config/xmonad"
             [ -L "$xmonad" ] || [ -d "$xmonad" ] && rm -rv $xmonad
             ln -sfv "$PWD/xmonad" $xmonad
+            ln -sfv "$xmonad/xmobarrc-default" "$xmonad/xmobarrc"
+            [[ -f "$xmonad/xmobarrc-$(xrdb -get Xft.dpi)" ]] && ln -sfv "$xmonad/xmobarrc-$(xrdb -get Xft.dpi)" "$xmonad/xmobarrc"
         } ;;
         -v) {
             vim="$HOME/.vim"
