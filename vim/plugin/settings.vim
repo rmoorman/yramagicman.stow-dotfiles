@@ -79,6 +79,7 @@ if &diff
     set foldmethod=diff
     set list
     set nowrap
+    set notermguicolors
     " augroup diff
     "     autocmd!
     "     autocmd VimEnter * ALEDisable
