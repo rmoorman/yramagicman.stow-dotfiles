@@ -1,7 +1,7 @@
 set shell=zsh
 set updatetime=2000
 if has('nvim')
-set termguicolors
+    set termguicolors
 endif
 " Make backspace behave in a sane manner.
 set backspace=indent,eol,start
@@ -50,7 +50,7 @@ set sidescrolloff=15
 set scrolloff=2
 "}}}
 set listchars=tab:▸\ ,trail:·,eol:¬,extends:❯,precedes:❮"{{{
-set showbreak=…→
+    set showbreak=…→
 "}}}
 "{{{ search settings
 set wrapscan
