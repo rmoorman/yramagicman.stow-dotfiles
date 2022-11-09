@@ -42,12 +42,6 @@ call plug#begin($HOME.'/.local/share/vim')
 
 " PlugOpt 'w0rp/ale'
 Plug 'git@gitlab.com:yramagicman/auto-omnicomplete'
-if executable('fzf')
-    if isdirectory('/usr/local/opt/fzf')
-        set runtimepath+=/usr/local/opt/fzf
-    endif
-    Plug 'junegunn/fzf.vim'
-endif
 
 " if has('nvim')
 "     PlugOpt 'williamboman/nvim-lsp-installer'
@@ -64,6 +58,8 @@ Plug 'vim-scripts/vim-indent-object'
 " PlugOpt 'morhetz/gruvbox'
 Plug 'wuelnerdotexe/vim-enfocado'
 Plug 'sheerun/vim-polyglot'
+    Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+    Plug 'junegunn/fzf.vim'
 call plug#end()
 packadd! matchit
 " packadd! gruvbox

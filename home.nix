@@ -17,7 +17,7 @@ let
     feh
     ffmpeg
     firefox
-    fzf
+    # fzf
     ghostscript
     git
     gnome.adwaita-icon-theme
