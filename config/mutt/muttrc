@@ -71,7 +71,7 @@ bind index x        sync-mailbox
 bind index <space>  collapse-thread
 
 # Load new mail
-macro index \Cr "!mbsync -a && find $HOME/ -type f -name '-F' -delete &"<enter>
+macro index \Cr "!mbsync -a"<enter>
 
 # use mu program to find specific mail
 macro index \Cs "!mu find --format=links --linksdir=$HOME/.config/mail/results "
