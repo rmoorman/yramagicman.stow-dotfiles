@@ -156,14 +156,22 @@ alias bdu="btrfs filesystem du"
 alias bdf="btrfs filesystem df"
 #}}}
 #{{{ tailscale
-function tsup() {
+function tsup-browncoat() {
     sudo tailscale up \
         --operator=jonathan \
         --reset \
         --exit-node '100.94.223.34' \
         --exit-node-allow-lan-access=true \
-        }
+}
 
+
+function tsup-fast() {
+    sudo tailscale up \
+        --operator=jonathan \
+        --reset \
+        --exit-node '100.87.149.57' \
+
+}
 alias tsdown="sudo tailscale down"
 function tsup-exit() {
     sudo tailscale up \
