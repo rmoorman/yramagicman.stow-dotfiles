@@ -1,25 +1,9 @@
 #!/bin/sh
 
-wget "http://pgl.yoyo.org/as/serverlist.php?hostformat=hosts;showintro=0" -O "$HOME/.local/bin/hosts.d/hosts.html"
 
-wget "http://someonewhocares.org/hosts/zero/hosts" -O "$HOME/.local/bin/hosts.d/hosts.2"
+wget "https://raw.githubusercontent.com/blocklistproject/Lists/master/everything.txt" -O "/tmp/hosts.1"
 
-grep '127.0.0.1' "$HOME/.local/bin/hosts.d/hosts.html" > "$HOME/.local/bin/hosts.d/hosts.1"
-grep '0.0.0.0' "$HOME/.local/bin/hosts.d/hosts.2" | grep -Ev '^#' > "$HOME/.local/bin/hosts.d/hosts.3"
-mv "$HOME/.local/bin/hosts.d/hosts.3" "$HOME/.local/bin/hosts.d/hosts.2"
-sed -i 's/127.0.0.1/0.0.0.0/g' "$HOME/.local/bin/hosts.d/hosts.1"
-sed -i 's/127.0.0.1/0.0.0.0/g' "$HOME/.local/bin/hosts.d/hosts.2"
+cat "/etc/hosts" "/tmp/hosts.1" | grep -Ev '^#' | sort -u > "/tmp/hosts"
+less  "/tmp/hosts"
 
-cat  "$HOME/.local/bin/hosts.d/hosts.1" "$HOME/.local/bin/hosts.d/hosts.2"  | sort -u > "$HOME/.local/bin/hosts.d/hosts.sorted"
-
-cat "$HOME/.local/bin/hosts.d/hosts.$(hostname)" "$HOME/.local/bin/hosts.d/hosts.sorted" > "$HOME/.local/bin/hosts.d/hosts.compiled"
-
-less  "$HOME/.local/bin/hosts.d/hosts.compiled"
-
-sudo mv -i "$HOME/.local/bin/hosts.d/hosts.compiled" /etc/hosts
-
-
-rm "$HOME/.local/bin/hosts.d/hosts.1"
-rm "$HOME/.local/bin/hosts.d/hosts.2"
-rm "$HOME/.local/bin/hosts.d/hosts.html"
-rm "$HOME/.local/bin/hosts.d/hosts.sorted"
+sudo mv -i "/tmp/hosts" /etc/hosts
