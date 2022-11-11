@@ -16,7 +16,7 @@
             # displayManager.sddm.theme = "elarun";
             displayManager.defaultSession = "none+xmonad";
             displayManager.hiddenUsers =[ "jonathan_backup" ];
-            windowManager.awesome.enable = true;
+            # windowManager.awesome.enable = true;
             windowManager.xmonad.enable = true;
             windowManager.xmonad.enableContribAndExtras = true;
 
