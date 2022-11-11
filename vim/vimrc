@@ -56,7 +56,6 @@ Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'vim-scripts/vim-indent-object'
 " PlugOpt 'morhetz/gruvbox'
-Plug 'wuelnerdotexe/vim-enfocado'
 Plug 'sheerun/vim-polyglot'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
@@ -73,11 +72,8 @@ let g:AutoOmniComplete_complete_map = "\<c-n>"
 "}}}
 "{{{ colors
 set background=dark
-let g:enfocado_style = 'nature' " Available: `nature` or `neon`.
-colorscheme enfocado
+colorscheme muttclone
 hi normal ctermbg=0 guibg=#000000
-hi comment ctermbg=0 guibg=#000000 cterm=none
-hi function cterm=none
 
 "}}}
 "{{{ autocommands for loading extensions
