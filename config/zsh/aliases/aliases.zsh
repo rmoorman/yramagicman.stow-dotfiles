@@ -95,6 +95,7 @@ alias ip="ip --color=auto"
 # Ring the terminal bell
 alias bell="tput bel;cvlc --play-and-exit $HOME/.config/sounds/beep.mp3 2> /dev/null"
 alias wttr="curl wttr.in"
+alias mpv="mpv --hwdec=auto"
 #}}}
 #{{{ tmux
 alias tmux="tmux -f $XDG_CONFIG_HOME/tmux.d/tmux.conf"
