@@ -1,10 +1,10 @@
 Config {
 
    -- appearance
-     font =         "xft:Fira Mono:size=9:antialias=true"
+     font =         "Fira Code 9"
    , bgColor =      "#000000"
    , fgColor =      "#ababab"
-   , position =     Top
+   , position =     TopH 18
    , border =       BottomB
    , borderColor =  "#444444"
 
