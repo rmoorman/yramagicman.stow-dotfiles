@@ -1,0 +1,8 @@
+#!/usr/bin/env zsh
+
+function docker-delete() {
+    docker image list | awk '{print $3}' | grep -v IMAGE | while read
+    do
+        docker image rm --force $REPLY
+    done
+}
