@@ -62,6 +62,7 @@
         datadir = "/srv/storage/nextcloud/data/";
         config.adminpassFile = "${pkgs.writeText "adminpass" "test123"}";
         package= pkgs.nextcloud25;
+        enableBrokenCiphersForSSE = false;
 
         config.extraTrustedDomains = [
             "100.109.94.104"
