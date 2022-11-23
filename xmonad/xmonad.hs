@@ -244,7 +244,7 @@ main = do
         , (( mod4Mask, xK_Tab ), toggleWS)
         , (( mod4Mask, xK_z ), warpToWindow (1%2) (1%2)) -- @@ Move pointer to currently focused window
         , (( mod4Mask, xK_F4 ), spawn "xrandr --output HDMI1 --off; xrandr --output HDMI1 --auto")
-        , (( mod4Mask, xK_F3 ), spawn "sh -c '~/.config/screenlayout/stack.sh'")
+        , (( mod4Mask, xK_F3 ), spawn "sh -c '~/.config/screenlayout/stack.sh && randomwall'")
         , (( mod4Mask .|. shiftMask, xK_s ), setScreenWindowSpacing 0)
         , (( mod4Mask .|. shiftMask, xK_f ), spawn "pcmanfm")
         , (( mod4Mask .|. controlMask, xK_s ), spawn "pcmanfm ~/Pictures/screenshots")
