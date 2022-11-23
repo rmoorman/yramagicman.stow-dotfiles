@@ -6,9 +6,7 @@
     # The global useDHCP flag is deprecated, therefore explicitly set to false here.
     # Per-interface useDHCP will be mandatory in the future, so this generated config
     # replicates the default behaviour.
-    networking.useDHCP = false;
-    # networking.interfaces.enp0s31f6.useDHCP = true;
-    networking.interfaces.enp4s0.useDHCP = true;
+    networking.useDHCP = true;
     # networking.interfaces.enp5s0.ipv4.addresses = [
     #     {
     #         address = "127.0.0.10";
@@ -86,8 +84,8 @@
                 "guest ok" = "yes";
                 "create mask" = "0644";
                 "directory mask" = "0755";
-                # "force user" = "username";
-                # "force group" = "groupname";
+                "force user" = "jonathan";
+                "force group" = "users";
             };
 
             Emily = {
@@ -97,8 +95,8 @@
                 "guest ok" = "yes";
                 "create mask" = "0644";
                 "directory mask" = "0755";
-                # "force user" = "username";
-                # "force group" = "groupname";
+                "force user" = "jonathan";
+                "force group" = "users";
             };
         };
     };

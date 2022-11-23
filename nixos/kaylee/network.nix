@@ -1,16 +1,10 @@
 {
     networking.hostName = "kaylee"; # Define your hostname.
     # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-    networking.wireless.iwd.enable = true;  # Enables wireless support via iwd.
-    networking.networkmanager.wifi.backend = "iwd";
-
-    # The global useDHCP flag is deprecated, therefore explicitly set to false here.
-    # Per-interface useDHCP will be mandatory in the future, so this generated config
-    # replicates the default behaviour.
-    networking.useDHCP = false;
-    # networking.interfaces.enp4s0.useDHCP = true;
-    # networking.interfaces.wlp59s0.useDHCP = true;
-    # networking.interfaces.wlan0.useDHCP = true;
+    # networking.wireless.iwd.enable = true;  # Enables wireless support via iwd.
+    # networking.networkmanager.wifi.backend = "iwd";
+    networking.networkmanager.enable = true;
+    # networking.useDHCP = true;
 
     # Configure network proxy if necessary
     # networking.proxy.default = "http://user:password@proxy:port/";
@@ -20,20 +14,11 @@
         "192.168.1.203" = ["browncoat"];
     };
 
-    # fileSystems."/home/jonathan/Music" = {
-    #     device ="browncoat:/music";
-    #     fsType="nfs";
-    #     options = ["x-systemd.automount" "noauto"];
-    # };
+    #fileSystems."/home/jonathan/Music" = {
+    #    device ="browncoat:/music";
+    #    fsType="nfs";
+    #    # options = ["x-systemd.automount" "TimeoutSec=10" "nofail" "noauto"];
+    #};
 
-    systemd.network = {
-        enable = true;
-        networks = {
-            "25-wireless" = {
-                matchConfig = { Name = "wlan0"; };
-                DHCP= "yes";
-            };
-        };
-    };
     services.tailscale.port=48615;
 }
