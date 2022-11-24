@@ -55,10 +55,9 @@ function my_load() {
 }
 
 function my_mail() {
-    # $HOME/bin/mailmon
-    personal=$(ls ~/.config/mail/gilsons/Inbox.personal/new/  | wc -l )
-    bills=$(ls ~/.config/mail/bills/Inbox.bills/new/  | wc -l )
-    work=$(ls ~/.config/mail/work/Inbox.work/new/  | wc -l )
+    personal=$(ls ~/.config/mail/gilsons/Inbox.personal/new/ | grep -Evc '*,T$' )
+    bills=$(ls ~/.config/mail/bills/Inbox.bills/new/  | grep -Evc '*,T$')
+    work=$(ls ~/.config/mail/work/Inbox.work/new/  | grep -Evc '*,T$' )
     if test "$personal" -gt 0 || test "$work" -gt 0; then
         echo "M: $personal/$work/$bills - "
     fi
