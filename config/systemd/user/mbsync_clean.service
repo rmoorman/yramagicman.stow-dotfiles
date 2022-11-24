@@ -1,7 +1,0 @@
-[Unit]
-Description=Mailbox synchronization service
-
-[Service]
-Environment=PATH="/run/current-system/sw/bin/"
-Type=oneshot
-ExecStart=find /home/jonathan -name '-F' -delete
