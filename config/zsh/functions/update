@@ -14,12 +14,8 @@ function update() {
             print -v thing -P %x
             conf="$(builtin cd $HOME/Documents/dots && git rev-parse --show-toplevel )"
             echo "\n\n$conf\n\n"
-            rm -f "$conf/flake.lock"
-            sudo nix-channel --update
+            nix flake update --commit-lock-file
             sudo nixos-rebuild boot --impure --flake "$conf/#"  --upgrade-all
-            builtin cd $conf
-            git add "$conf/flake.lock"
-            git commit -m "$(hostname) flake.lock update $(date -I)"
         )
         # nix-collect-garbage -d --delete-older-than 14d
         sudo nix-collect-garbage -d --delete-older-than 14d
