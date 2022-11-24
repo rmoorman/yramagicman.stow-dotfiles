@@ -1,7 +1,10 @@
 #!/usr/bin/env zsh
 
-mkdir -p /tmp/mail
-pass show email > /tmp/mail/personal
-pass show ejbills > /tmp/mail/bills
+
+if [[ -z $1 ]] ;then
+    mkdir -p /tmp/mail
+    pass show email > /tmp/mail/personal
+    pass show ejbills > /tmp/mail/bills
+fi
 mbsync -a
 exit 0
