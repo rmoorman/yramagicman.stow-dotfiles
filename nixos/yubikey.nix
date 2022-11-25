@@ -24,6 +24,6 @@
         yubikey-manager-qt
         yubikey-manager
         yubikey-personalization
-        yubioath-desktop
+        # yubioath-desktop
     ];
 }
