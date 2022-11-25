@@ -1,8 +1,8 @@
 {
     networking.hostName = "kaylee"; # Define your hostname.
     # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-    # networking.wireless.iwd.enable = true;  # Enables wireless support via iwd.
-    # networking.networkmanager.wifi.backend = "iwd";
+    networking.wireless.iwd.enable = true;  # Enables wireless support via iwd.
+    networking.networkmanager.wifi.backend = "iwd";
     networking.networkmanager.enable = true;
     # networking.useDHCP = true;
 
