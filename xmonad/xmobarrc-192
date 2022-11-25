@@ -37,7 +37,6 @@ Config {
    --   see http://projects.haskell.org/xmobar/#system-monitor-plugins.
    , commands =
 
-        -- weather monitor
         [
 
         Run Com "statusline" [] "status" 10

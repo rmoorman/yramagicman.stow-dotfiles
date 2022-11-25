@@ -152,7 +152,7 @@ myManageHook = composeAll [
 -- myEventHook = ewmhDesktopsEventHook
 
 myXmobarPP = def { ppCurrent = xmobarColor "#ffffff" ""
-                 , ppTitle   = xmobarColor "#cccccc" "" . shorten 150
+                 , ppTitle   = xmobarColor "#cccccc" "" . shorten 100
                  , ppVisible = wrap "(" ")"
                  , ppUrgent  = xmobarColor "red" ""
                  , ppSep     = " - "
