@@ -90,7 +90,9 @@ alias curl="curl -L --compressed"
 alias whois="whois -h whois-servers.net"
 alias rip="mdig +short myip.opendns.com @resolver1.opendns.com"
 alias ip="ip --color=auto"
+alias nsync="nextcloudcmd --silent --user jonathan --password $(pass show nextcloud) $HOME/Nextcloud http://100.94.223.34"
 #}}}
+#
 # {{{ utilities
 # Ring the terminal bell
 alias bell="tput bel;cvlc --play-and-exit $HOME/.config/sounds/beep.mp3 2> /dev/null"
