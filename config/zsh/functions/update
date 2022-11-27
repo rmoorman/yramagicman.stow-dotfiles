@@ -13,7 +13,9 @@ function update() {
         (
             print -v thing -P %x
             conf="$(builtin cd $HOME/Documents/dots && git rev-parse --show-toplevel )"
+            cd $conf || return
             echo "\n\n$conf\n\n"
+            pwd
             nix flake update --commit-lock-file
             sudo nixos-rebuild boot --impure --flake "$conf/#"  --upgrade-all
         )
