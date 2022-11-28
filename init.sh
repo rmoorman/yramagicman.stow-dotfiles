@@ -58,7 +58,6 @@ while test "$1"; do
             systemctl --user enable --now battery_notify.service
             systemctl --user enable --now downloads.path
             systemctl --user enable --now downloads.service
-            systemctl --user enable --now mbsync.path
             systemctl --user enable --now mbsync_clean.path
             systemctl --user enable --now battery_file.timer
             systemctl --user enable --now mbsync.timer

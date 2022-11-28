@@ -1,7 +1,0 @@
-#!/usr/bin/env zsh
-
-function mutt() {
-
-    command mutt -F $HOME/.config/mutt/muttrc \
-        && touch -- $HOME/.config/mail/.modified
-}

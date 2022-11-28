@@ -9,6 +9,7 @@ alias ~="cd ~"
 alias d="dirs -v"
 #}}}
 #{{{ shortcuts
+alias mutt=" mutt -F $HOME/.config/mutt/muttrc"
 alias m="mutt"
 alias h="history"
 alias py="python"
