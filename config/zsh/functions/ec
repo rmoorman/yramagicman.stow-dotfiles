@@ -1,0 +1,12 @@
+#!/usr/bin/env zsh
+
+function ec() {
+
+if [[ $INSIDE_EMACS ]];
+then
+    emacsclient $@
+    return
+fi
+
+emacsclient -nc $@
+}

@@ -233,7 +233,7 @@ main = do
         , ((mod4Mask .|. controlMask, xK_m), spawn "firefox --new-window about:blank")
         , ((mod4Mask .|. shiftMask, xK_m), spawn "firefox --private-window")
         , ((mod4Mask .|. shiftMask, xK_g), spawn "chromium --incognito")
-        , ((mod4Mask .|. controlMask, xK_Return), spawn "emacsclient -nc ~/")
+        , ((mod4Mask .|. controlMask, xK_Return), spawn "urxvt")
         , ((mod4Mask, xK_p ), spawn "passmenu")
         , ((controlMask, xK_space ), spawn "dmenu_run")
         , ((mod4Mask .|. controlMask , xK_r ), spawn "restatus")
