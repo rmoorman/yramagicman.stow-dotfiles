@@ -90,8 +90,6 @@
   networking.firewall.allowedTCPPorts = [
     19999
   ];
-
-  virtualisation.libvirtd.enable = true;
   security.polkit.enable = true;
 
   location.provider = "geoclue2";
