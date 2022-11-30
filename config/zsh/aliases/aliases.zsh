@@ -45,7 +45,11 @@ alias :q='exit'
 alias bc='bc -l'
 alias getmail="$HOME/.local/bin/getallmail"
 alias remacs="emacsclient --eval '(kill-emacs)' && emacs --bg-daemon"
-alias sudo='sudo '
+if [[ $( command -v doas ) ]]; then
+    alias sudo='doas '
+else
+    alias sudo='sudo '
+fi
 alias rm="rm -rv"
 #}}}
 #{{{ web dev stuff
@@ -126,7 +130,7 @@ fi
 #}}}
 #{{{ utility commands
 if [[ $(command -v nix-shell) ]]; then
-   alias sl="nix-shell -p sl --run sl"
+    alias sl="nix-shell -p sl --run sl"
 fi
 alias q="exit"
 alias mypw="pwgen -c -n -s -y 26 -1"
@@ -144,7 +148,6 @@ alias gs="git status --short"
 #}}}
 # {{{ docker
 alias dc='docker-compose'
-alias drp='docker-compose exec php-fpm'
 alias drc='docker-compose exec'
 alias dupd='docker-compose up -d'
 alias dupbd='docker-compose up -d --build'
@@ -162,26 +165,26 @@ alias bdf="btrfs filesystem df"
 #{{{ tailscale
 function tsup-browncoat() {
     sudo tailscale up \
-        --operator=jonathan \
-        --reset \
-        --exit-node '100.94.223.34' \
-        --exit-node-allow-lan-access=true \
+         --operator=jonathan \
+         --reset \
+         --exit-node '100.94.223.34' \
+         --exit-node-allow-lan-access=true \
 }
 
 
 function tsup-fast() {
     sudo tailscale up \
-        --operator=jonathan \
-        --reset \
-        --exit-node '100.87.149.57' \
+         --operator=jonathan \
+         --reset \
+         --exit-node '100.87.149.57' \
 
 }
 alias tsdown="sudo tailscale down"
 function tsup-exit() {
     sudo tailscale up \
-        --operator=jonathan \
-        --advertise-exit-node \
-        --accept-routes \
-        --advertise-routes=192.168.0.0/24,192.168.1.0/24
+         --operator=jonathan \
+         --advertise-exit-node \
+         --accept-routes \
+         --advertise-routes=192.168.0.0/24,192.168.1.0/24
 }
 #}}}

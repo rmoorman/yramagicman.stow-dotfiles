@@ -1,10 +1,8 @@
 #!/usr/bin/env zsh
 
 function update() {
-    sudo -v
-    gup
 
-    if [[ $(command -v home-manager) ]]  ; then
+    if [[ $(command -v home-manager) ]]; then
         home-manager expire-generations "-14 days"
     fi
     if [[ $(command -v nixos-rebuild) ]] ; then
@@ -17,11 +15,11 @@ function update() {
             echo "\n\n$conf\n\n"
             pwd
             nix flake update --commit-lock-file
-            sudo nixos-rebuild boot --impure --flake "$conf/#"  --upgrade-all
+            sudo nixos-rebuild boot --impure --flake "$conf/#"  --upgrade-all && \
+                sudo nix-collect-garbage -d --delete-older-than 14d && \
+                sudo nix store optimise
         )
         # nix-collect-garbage -d --delete-older-than 14d
-        sudo nix-collect-garbage -d --delete-older-than 14d
-        sudo nix store optimise
     elif [[ $(command -v yay) ]]; then
         yay -Syu --noconfirm --sudoloop
         xmonad --recompile
@@ -33,8 +31,7 @@ function update() {
         orphans
         echo '' > /tmp/updates
     elif [[ $(command -v apt) ]]; then
-        sudo apt update
-        sudo apt full-upgrade -y
+        sudo apt update && apt full-upgrade -y
     elif [[ $(command -v zypper) ]]; then
         sudo zypper refresh
         sudo zypper dup
@@ -54,5 +51,6 @@ function update() {
         echo "\n flatpak \n"
         flatpak update -y
     fi
+    gup
     bell
 }
