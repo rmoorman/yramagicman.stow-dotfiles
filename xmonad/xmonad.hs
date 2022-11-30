@@ -252,4 +252,5 @@ main = do
         , (( mod1Mask .|. shiftMask, xK_q ), spawn "cobang")
         , (( mod4Mask, xK_b ), spawn "pkill xmobar")
         , (( mod4Mask .|. mod1Mask, xK_Return ), spawn "alacritty")
+        , (( mod4Mask,  xK_e ), spawn "urxvt -e mutt")
         ]
