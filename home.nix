@@ -22,6 +22,7 @@ let
     git
     gnome.adwaita-icon-theme
     gnome.aisleriot
+    gnome.nautilus
     gnome-text-editor
     guvcview
     htop
