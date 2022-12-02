@@ -1,11 +1,6 @@
 #!/usr/bin/env zsh
 
 function nix-switch() {
-    # git 2.35.3 has a bug that prevents flakes from updating, something
-    # with diff --no-index. To avoid this, copy nix config to temp directory
-    # and build from outside git repo
-    tmp=$(mktemp -d)
-    print -v thing -P %x
-    conf="$(builtin cd ${thing/nix-switch/} && git rev-parse --show-toplevel )"
-    sudo nixos-rebuild switch --impure --flake "$conf/nixos/#"
+    conf="$(builtin cd $HOME/Documents/dots && git rev-parse --show-toplevel )"
+    sudo nixos-rebuild switch --impure --flake "$conf/#"
 }

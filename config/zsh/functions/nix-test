@@ -1,12 +1,6 @@
 #!/usr/bin/env zsh
 
 function nix-test () {
-    tmp=$(mktemp -d)
-    print -v thing -P %x
-    conf="$(builtin cd ${thing/nix-test/} && git rev-parse --show-toplevel )"
-    (
-        unsetopt globdots
-        command cp -r $conf/* "$tmp"
-    )
-    sudo nixos-rebuild test --impure --flake "$tmp/#" $@
+    conf="$(builtin cd $HOME/Documents/dots && git rev-parse --show-toplevel )"
+    sudo nixos-rebuild test --impure --flake "$conf/#"
 }
