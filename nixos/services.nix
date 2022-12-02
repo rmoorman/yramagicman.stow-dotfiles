@@ -5,7 +5,6 @@
 
   services = {
     yubikey-agent.enable = true;
-    # Enable the X11 windowing system.
 
     udisks2.enable = true;
     # Enable CUPS to print documents.
