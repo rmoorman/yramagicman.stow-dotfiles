@@ -2,6 +2,8 @@
 
 if [ "$(uname)" = "Darwin" ] ; then
     pbpaste
+elif [ $XDG_CURRENT_DESKTOP = "GNOME" ]; then
+    wl-paste
 else
     xclip -selection clipboard -o
 fi

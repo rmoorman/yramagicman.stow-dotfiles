@@ -1,5 +1,16 @@
 #!/usr/bin/env bash
-if command -v xclip 1>/dev/null; then
+if [ $XDG_CURRENT_DESKTOP = "GNOME" ]; then
+
+    if [[ -p /dev/stdin ]] ; then
+        # stdin is a pipe
+        # stdin -> clipboard
+        wl-copy
+    else
+        # stdin is not a pipe
+        # clipboard -> stdout
+        wl-paste
+    fi
+elif [ $XDG_CURRENT_DESKTOP != "GNOME" ]; then
     if [[ -p /dev/stdin ]] ; then
         # stdin is a pipe
         # stdin -> clipboard
