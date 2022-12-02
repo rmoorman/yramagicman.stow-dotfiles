@@ -13,12 +13,12 @@
     #         prefixLength = 24;
     #     }
     # ];
-    # networking.interfaces.wlp6s0.ipv4.addresses = [
-    #     {
-    #         address = "127.0.0.11";
-    #         prefixLength = 24;
-    #     }
-    # ];
+    networking.interfaces.wlp6s0.ipv4.addresses = [
+        {
+            address = "192.168.1.203";
+            prefixLength = 24;
+        }
+    ];
 
     fileSystems."/srv/music" = {
         device = "/home/jonathan/Music";
