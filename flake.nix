@@ -37,6 +37,7 @@
         modules = base ++ [
           ./nixos/tightpants
           ./nixos/yubikey.nix
+          ./nixos/xserver.nix
           ./nixos/doas.nix
           ./nixos/systemd/backup.nix
           ./nixos/systemd/scrub.nix
@@ -88,6 +89,7 @@
         modules = base ++ [
           ./nixos/kaylee
           ./nixos/yubikey.nix
+          ./nixos/xserver.nix
           ./nixos/doas.nix
           ./nixos/systemd/backup.nix
           ./nixos/systemd/scrub.nix
