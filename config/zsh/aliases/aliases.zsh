@@ -17,16 +17,19 @@ alias .vim="cd $HOME/.vim && ls"
 alias push="git push -u origin HEAD"
 alias pull="git pull --rebase"
 alias j="jobs"
+if [[ $INSIDE_EMACS ]]; then
+alias vim="ec"
+alias vi="ec"
+alias v="ec"
+alias v.="ec ."
+alias gvim="ec"
+else
 alias vim="vim"
 alias vi="vim"
 alias v="vim"
-# alias :e="emacsclient -nw ."
-# alias e="emacsclient -nw"
 alias v.="vim ."
 alias gvim="vim"
-# alias ec="emacsclient -nc"
-# alias ec.="emacsclient -nc ."
-# alias ech="emacsclient -n"
+fi
 alias oo="nohup xdg-open . > /dev/null &"
 
 function open() {
