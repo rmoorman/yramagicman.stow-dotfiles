@@ -17,7 +17,6 @@ let
     feh
     ffmpeg
     firefox
-    # fzf
     ghostscript
     git
     gnome.adwaita-icon-theme
@@ -44,6 +43,7 @@ let
     rxvt-unicode
     signal-desktop
     silver-searcher
+    termonad
     theme-obsidian2
     tmux
     ungoogled-chromium
