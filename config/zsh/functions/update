@@ -31,7 +31,7 @@ function update() {
         orphans
         echo '' > /tmp/updates
     elif [[ $(command -v apt) ]]; then
-        sudo apt update && apt full-upgrade -y
+        sudo apt update && sudo apt full-upgrade -y
     elif [[ $(command -v zypper) ]]; then
         sudo zypper refresh
         sudo zypper dup

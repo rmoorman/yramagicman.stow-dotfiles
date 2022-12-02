@@ -110,6 +110,11 @@ alias tkill="tmux kill-session -t"
 alias tkills="tmux kill-server"
 alias tns="tmux new-session"
 alias tls="tmux ls"
+function trun() {
+    wind_name="cmd_$RANDOM"
+    tmux new-window -t "$HOSTNAME" -c "$PWD" -n "$wind_name"
+    tmux send-keys -t "$HOSTNAME:$win_name" "cd $PWD && $@ && bell && read && exit" Enter
+}
 #}}}
 #{{{ system management aliases
 if  [[ -z $SSH_CLIENT && $(command -v systemctl) ]]; then
@@ -171,7 +176,6 @@ function tsup-browncoat() {
          --exit-node-allow-lan-access=true \
 }
 
-
 function tsup-fast() {
     sudo tailscale up \
          --operator=jonathan \
@@ -187,4 +191,6 @@ function tsup-exit() {
          --accept-routes \
          --advertise-routes=192.168.0.0/24,192.168.1.0/24
 }
+alias debspeed="wget https://cdimage.debian.org/cdimage/unofficial/non-free/cd-including-firmware/11.5.0-live+nonfree/amd64/iso-hybrid/debian-live-11.5.0-amd64-cinnamon+nonfree.iso -O /dev/null"
+
 #}}}

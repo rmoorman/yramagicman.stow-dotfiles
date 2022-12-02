@@ -44,5 +44,9 @@
 (use-package nix-mode
   :mode "\\.nix\\'")
 
+(use-package dockerfile-mode
+  :mode "\\Dockerfile|dockerfile\\'")
+
+
 (provide 'my_filetypes.el)
 ;; my_filetypes.el ends here
