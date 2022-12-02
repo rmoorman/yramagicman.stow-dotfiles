@@ -72,7 +72,7 @@
     fstrim.enable = true;
     atd.enable = true;
     netdata.enable = true;
-
+    nscd.enableNsncd = true;
     # enable tailscale
     tailscale.enable=true;
     tailscale.interfaceName="tailscale0";
