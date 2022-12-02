@@ -7,13 +7,13 @@
     # Per-interface useDHCP will be mandatory in the future, so this generated config
     # replicates the default behaviour.
     # networking.useDHCP = true;
-    # networking.interfaces.enp5s0.ipv4.addresses = [
+    # networking.interfaces.enp4s0.ipv4.addresses = [
     #     {
-    #         address = "127.0.0.10";
+    #         address = "192.168.1.213";
     #         prefixLength = 24;
     #     }
     # ];
-    networking.interfaces.wlp6s0.ipv4.addresses = [
+    networking.interfaces.enp0s31f6.ipv4.addresses = [
         {
             address = "192.168.1.203";
             prefixLength = 24;
