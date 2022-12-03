@@ -30,8 +30,7 @@
 
 (setq inhibit-startup-screen t
       ;; ring-bell-function 'ignore
-      visible-bell 1
-      indent-line-function 'insert-tab)
+      visible-bell 1)
 
 (eval-when-compile
   (require 'use-package))
