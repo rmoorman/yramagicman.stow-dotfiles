@@ -74,16 +74,6 @@
         ];
       };
 
-      nixosConfigurations."browncoat" = with base; nixpkgs.lib.nixosSystem {
-        inherit system;
-        modules = base ++ [
-          ./nixos/browncoat
-          ./nixos/systemd/store-scrub.nix
-          ./nixos/systemd/store-status.nix
-          ./nixos/systemd/store-balance.nix
-        ];
-      };
-
       nixosConfigurations."kaylee" = with base; nixpkgs.lib.nixosSystem {
         inherit system;
         modules = base ++ [
