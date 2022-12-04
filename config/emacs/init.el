@@ -42,6 +42,7 @@
 (add-to-list 'custom-theme-load-path (concat user-emacs-directory "lisp"))
 (setq custom-file (concat user-emacs-directory "custom.el"))
 (load custom-file)
+(load-theme 'base16-atelier-cave)
 
 (use-package no-littering)
 
