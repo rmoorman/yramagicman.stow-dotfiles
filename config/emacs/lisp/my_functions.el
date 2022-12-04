@@ -7,8 +7,6 @@
   "Set tty things."
   (interactive)
   (when (not ( display-graphic-p ) )
-    (disable-theme 'base16-gruvbox-dark-pale)
-
     ;; (display-line-numbers-mode 0)
     ;; (linum-relative-mode 0)
     (set-background-color "black")))
@@ -24,12 +22,6 @@
   (interactive)
   (ansi-term (executable-find "zsh")))
 
-(defun save-writable ()
-  "Save buffer only if writable."
-  (if (and buffer-file-name
-           (file-writable-p buffer-file-name))
-      (save-buffer)
-    nil))
 (provide 'my_functions)
 ;;; functions.el ends here
 ;;; functions.el ends here

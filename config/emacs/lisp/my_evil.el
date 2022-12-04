@@ -11,7 +11,7 @@
   (evil-mode 1)
   (setq evil-vsplit-window-right 1
         evil-split-window-below 1)
-  (add-hook 'evil-normal-state-entry-hook `save-writable))
+  (add-hook 'evil-normal-state-entry-hook (lambda () (save-some-buffers 1))))
 
 (use-package evil-collection
   :after evil
