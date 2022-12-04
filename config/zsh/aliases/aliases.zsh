@@ -18,17 +18,17 @@ alias push="git push -u origin HEAD"
 alias pull="git pull --rebase"
 alias j="jobs"
 if [[ $INSIDE_EMACS ]]; then
-alias vim="ec"
-alias vi="ec"
-alias v="ec"
-alias v.="ec ."
-alias gvim="ec"
+    alias vim="ec"
+    alias vi="ec"
+    alias v="ec"
+    alias v.="ec ."
+    alias gvim="ec"
 else
-alias vim="vim"
-alias vi="vim"
-alias v="vim"
-alias v.="vim ."
-alias gvim="vim"
+    alias vim="vim"
+    alias vi="vim"
+    alias v="vim"
+    alias v.="vim ."
+    alias gvim="vim"
 fi
 alias oo="nohup xdg-open . > /dev/null &"
 
@@ -178,14 +178,14 @@ function tsup-browncoat() {
          --operator=jonathan \
          --reset \
          --exit-node '100.94.223.34' \
-         --exit-node-allow-lan-access=true \
+         --exit-node-allow-lan-access=true
 }
 
 function tsup-fast() {
     sudo tailscale up \
          --operator=jonathan \
          --reset \
-         --exit-node '100.87.149.57' \
+         --exit-node '100.87.149.57'
 
 }
 alias tsdown="sudo tailscale down"
