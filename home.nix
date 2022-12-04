@@ -32,8 +32,8 @@ let
     maim
     mpv
     msmtp
-    mu
     mutt
+    neovim
     newsflash
     pass
     pavucontrol
@@ -48,6 +48,7 @@ let
     ungoogled-chromium
     universal-ctags
     urlview
+    vimHugeX
     vlc
     w3m
     wl-clipboard

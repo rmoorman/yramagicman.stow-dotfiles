@@ -10,7 +10,6 @@
 (if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
 (if (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
 
-
 ;; Package initialization
 ;; Added by Package.el.  This must come before configurations of
 ;; installed packages.  Don't delete this line.  If you don't want it,
@@ -63,16 +62,24 @@
 (setq create-lockfiles nil)
 (setq vc-follow-symlinks t)
 
-(load "my_functions.el")
-(load "my_modeline.el")
-;; (load "my_mu4e.el")
-(load "my_evil.el")
-(load "my_keys.el")
-(load "my_completion.el")
-(load "my_util.el")
-(load "my_filetypes.el")
-(load "my_hooks.el")
+(use-package projectile
+  :config
+  (setq projectile-completion-system 'ivy
+        projectile-enable-caching nil
+        projectile-file-exists-local-cache-expire (* 5 60)
+        projectile-indexing-method 'alien)
+  (projectile-mode +1))
 
+;; misc. packages
+(use-package magit)
+(use-package disable-mouse)
+;; (use-package vterm)
+(show-paren-mode 1)
+(global-hl-line-mode t)
+
+(setq display-line-numbers-type 'relative)
+;; (global-display-line-numbers-mode)
+(use-package base16-theme)
 
 (electric-indent-mode nil)
 
@@ -83,6 +90,14 @@
 
 (global-auto-revert-mode t)
 
+(load "my_functions.el")
+(load "my_modeline.el")
+;; (load "my_mu4e.el")
+(load "my_evil.el")
+(load "my_keys.el")
+(load "my_completion.el")
+(load "my_filetypes.el")
+(load "my_hooks.el")
 
 (provide 'init.el)
 ;; init.el ends here
