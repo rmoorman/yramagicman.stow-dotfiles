@@ -108,33 +108,33 @@ in {
   home.homeDirectory = home;
   home.packages = packages;
 
-  programs.neovim = {
-    enable = true;
-    extraConfig =  ( builtins.readFile (builtins.toPath "${dotfiles}/vim/vimrc")  );
-  };
+  # programs.neovim = {
+  #   enable = true;
+  #   extraConfig =  ( builtins.readFile (builtins.toPath "${dotfiles}/vim/vimrc")  );
+  # };
 
-  programs.vim = {
-    enable = true;
-    extraConfig =  builtins.readFile (builtins.toPath "${dotfiles}/vim/vimrc");
-    packageConfigurable = pkgs.vimHugeX;
-  };
+  # programs.vim = {
+  #   enable = true;
+  #   extraConfig =  builtins.readFile (builtins.toPath "${dotfiles}/vim/vimrc");
+  #   packageConfigurable = pkgs.vimHugeX;
+  # };
 
-  programs.zsh = {
-    enable = true;
-    completionInit = "";
-    initExtra =  builtins.readFile (
-      builtins.toPath "${dotfiles}/config/zsh/zshrc"
-    );
-    logoutExtra =  builtins.readFile (
-      builtins.toPath "${dotfiles}/config/zsh/zlogout"
-    );
-    loginExtra =  builtins.readFile (
-      builtins.toPath "${dotfiles}/config/zsh/zlogin"
-    );
-    dotDir=".config/zsh";
-    envExtra =  builtins.readFile (
-      builtins.toPath "${dotfiles}/root/zshenv"
-    );
+  # programs.zsh = {
+  #   enable = true;
+  #   completionInit = "";
+  #   initExtra =  builtins.readFile (
+  #     builtins.toPath "${dotfiles}/config/zsh/zshrc"
+  #   );
+  #   logoutExtra =  builtins.readFile (
+  #     builtins.toPath "${dotfiles}/config/zsh/zlogout"
+  #   );
+  #   loginExtra =  builtins.readFile (
+  #     builtins.toPath "${dotfiles}/config/zsh/zlogin"
+  #   );
+  #   dotDir=".config/zsh";
+  #   envExtra =  builtins.readFile (
+  #     builtins.toPath "${dotfiles}/root/zshenv"
+  #   );
   };
 
   home.file = builtins.listToAttrs (
