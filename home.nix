@@ -43,7 +43,6 @@ let
     rxvt-unicode
     signal-desktop
     silver-searcher
-    termonad
     theme-obsidian2
     tmux
     ungoogled-chromium
