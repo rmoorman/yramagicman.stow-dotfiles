@@ -2,11 +2,11 @@
 
 function ec() {
 
-if [[ $INSIDE_EMACS ]];
-then
-    emacsclient -n $@
-    return
-fi
+    if [[ $INSIDE_EMACS ]];
+    then
+        emacsclient -n $@
+        return
+    fi
 
-emacsclient -nc $@
+    emacsclient -nc $@
 }
