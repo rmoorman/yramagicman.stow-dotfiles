@@ -135,16 +135,16 @@ in {
   #   envExtra =  builtins.readFile (
   #     builtins.toPath "${dotfiles}/root/zshenv"
   #   );
-  };
+  # };
 
-  home.file = builtins.listToAttrs (
-    builtins.concatLists [
-      bin
-      nvim
-      vim
-      zsh
-    ]
-  );
+  # home.file = builtins.listToAttrs (
+  #   builtins.concatLists [
+  #     bin
+  #     nvim
+  #     vim
+  #     zsh
+  #   ]
+  # );
 
   xdg.userDirs.desktop = "$HOME/";
 
