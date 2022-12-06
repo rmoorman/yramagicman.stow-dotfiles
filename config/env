@@ -22,8 +22,6 @@ export INPUTRC="$XDG_CONFIG_HOME/inputrc"
 export MU_HOME="$XDG_CACHE_HOME/mu"
 export PLTUSERHOME="$XDG_DATA_HOME/racket"
 export PASSWORD_STORE_DIR="$XDG_DATA_HOME/pass"
-export LIBVA_DRIVER_NAME="iHD"
-export VDPAU_DRIVER="va_gl"
 
 
 if ( hash fzf > /dev/null 2>&1 ); then
