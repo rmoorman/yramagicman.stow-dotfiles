@@ -14,7 +14,7 @@ hi NonText ctermbg=none ctermfg=8
 hi SpecialKey ctermfg=9
 hi Boolean ctermfg=10
 hi Search ctermbg=2 ctermfg=0
-hi CursorLine ctermfg=15 ctermbg=0 cterm=none
+hi CursorLine ctermbg=0 cterm=none
 hi FoldColumn ctermbg=none ctermfg=7
 hi Folded ctermbg=0 ctermfg=7
 hi VisualNOS cterm=reverse
