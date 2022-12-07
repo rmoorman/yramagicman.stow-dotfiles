@@ -43,12 +43,10 @@ call plug#begin($HOME.'/.local/share/vim')
 " PlugOpt 'w0rp/ale'
 Plug 'git@gitlab.com:yramagicman/auto-omnicomplete'
 
-" if has('nvim')
-"     PlugOpt 'williamboman/nvim-lsp-installer'
-"     PlugOpt 'neovim/nvim-lspconfig'
-"     packadd! nvim-lsp-installer
-"     packadd! nvim-lspconfig
-" endif
+if has('nvim')
+    Plug 'williamboman/nvim-lsp-installer'
+    Plug 'neovim/nvim-lspconfig'
+endif
 Plug 'bronson/vim-visual-star-search'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'tpope/vim-commentary'

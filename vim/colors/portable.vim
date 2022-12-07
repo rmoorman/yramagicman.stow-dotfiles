@@ -7,7 +7,7 @@ hi Type ctermfg=12
 hi VertSplit ctermbg=0 ctermfg=0
 hi String ctermfg=14
 hi Comment ctermfg=7
-hi Error ctermfg=9
+hi Error ctermfg=0
 hi LineNr ctermfg=7
 hi CursorLineNr ctermfg=3
 hi NonText ctermbg=none ctermfg=8
