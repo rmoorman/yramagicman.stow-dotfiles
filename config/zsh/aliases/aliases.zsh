@@ -24,11 +24,11 @@ if [[ $INSIDE_EMACS ]]; then
     alias v.="ec ."
     alias gvim="ec"
 else
-    alias vim="vim"
-    alias vi="vim"
-    alias v="vim"
-    alias v.="vim ."
-    alias gvim="vim"
+    alias vim="nvim"
+    alias vi="nvim"
+    alias v="nvim"
+    alias v.="nvim ."
+    alias gnvim="vim"
 fi
 alias oo="nohup xdg-open . > /dev/null &"
 

@@ -32,24 +32,24 @@ return {
         split = '#444444',
 
         ansi = {
-            'black',
-            'maroon',
-            'green',
-            'olive',
-            'navy',
-            'purple',
-            'teal',
-            'silver',
+            "#282a2e", -- black
+            "#a54242", -- red
+            "#8c9440", -- green
+            "#de935f", -- yellow
+            "#5f819d", -- blue
+            "#85678f", -- magenta
+            "#5e8d87", -- cyan
+            "#707880", -- white
         },
         brights = {
-            'grey',
-            'red',
-            'lime',
-            'yellow',
-            'blue',
-            'fuchsia',
-            'aqua',
-            'white',
+            "#373b41", -- black   */
+            "#cc6666", -- red     */
+            "#b5bd68", -- green   */
+            "#f0c674", -- yellow  */
+            "#81a2be", -- blue    */
+            "#b294bb", -- magenta */
+            "#8abeb7", -- cyan    */
+            "#c5c8c6", -- white   */
         },
 
         -- Arbitrary colors of the palette in the range from 16 to 255

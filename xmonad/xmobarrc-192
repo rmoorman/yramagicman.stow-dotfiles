@@ -2,11 +2,11 @@ Config {
 
    -- appearance
      font =         "Fira Code 18"
-   , bgColor =      "#000000"
+   , bgColor =      "#202020"
    , fgColor =      "#ababab"
    , position =     TopH 32
    , border =       BottomB
-   , borderColor =  "#444444"
+   , borderColor =  "#202020"
 
    -- layout
    , sepChar =  "%"   -- delineator between plugin names and straight text

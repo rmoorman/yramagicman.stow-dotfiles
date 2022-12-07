@@ -55,7 +55,6 @@ Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'vim-scripts/vim-indent-object'
-" PlugOpt 'morhetz/gruvbox'
 Plug 'sheerun/vim-polyglot'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
@@ -72,9 +71,7 @@ let g:AutoOmniComplete_complete_map = "\<c-n>"
 "}}}
 "{{{ colors
 set background=dark
-colorscheme muttclone
-hi normal ctermbg=0 guibg=#000000
-
+colorscheme portable
 "}}}
 "{{{ autocommands for loading extensions
 augroup extensions
