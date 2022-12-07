@@ -124,9 +124,9 @@ myLayout = do
 -- 'className' and 'resource' are used below.
 --
 myManageHook = composeAll [
-      -- className =? "Alacritty"        --> doShift "1:shell"
       className =? "URxvt"            --> doShift "1:shell"
-    , className =? "st-256color"      --> doShift "1:shell"
+    , className =? "wezterm"          --> doShift "1:shell"
+    , className =? "org.wezfurlong.wezterm" --> doShift "1:shell"
     , className =? "Emacs"            --> doShift "1:shell"
     , className =? "Navigator"        --> doShift "2:br1"
     , className =? "firefox"          --> doShift "2:br1"
