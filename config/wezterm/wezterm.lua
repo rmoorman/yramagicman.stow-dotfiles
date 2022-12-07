@@ -1,8 +1,11 @@
 local wezterm = require 'wezterm'
+-- local xresources = require( "files" )
+
 return {
     enable_tab_bar = false,
     enable_scroll_bar = false,
     font = wezterm.font 'Fira Code',
+    font_size = 11.5,
 
     colors = {
         -- The default text color
