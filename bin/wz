@@ -1,0 +1,7 @@
+#!/bin/sh
+
+if type wezterm 1> /dev/null; then
+    wezterm
+else
+    flatpak run org.wezfurlong.wezterm
+fi
