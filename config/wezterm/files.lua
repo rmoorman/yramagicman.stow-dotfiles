@@ -39,7 +39,6 @@ function  readXresourcesColors(colorTable, location)
 end
 
 normal = readXresourcesColors(normalTable,"/home/jonathan/.config/X11/Xresources")
-
 bright = readXresourcesColors(brightTable,"/home/jonathan/.config/X11/Xresources")
 foreground = readXresourcesColors(foregroundTable,"/home/jonathan/.config/X11/Xresources")
 background = readXresourcesColors(backgroundTable,"/home/jonathan/.config/X11/Xresources")
