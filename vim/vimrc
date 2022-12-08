@@ -41,7 +41,7 @@ let g:javascript_sql_dialect = 'javascript'
 call plug#begin($HOME.'/.local/share/vim')
 
 " PlugOpt 'w0rp/ale'
-Plug 'git@gitlab.com:yramagicman/auto-omnicomplete'
+" Plug 'git@gitlab.com:yramagicman/auto-omnicomplete'
 
 if has('nvim')
     Plug 'williamboman/nvim-lsp-installer'

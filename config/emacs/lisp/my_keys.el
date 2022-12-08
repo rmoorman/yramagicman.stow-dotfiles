@@ -45,10 +45,7 @@
   (general-define-key
    :states '(normal visual)
    :keymaps 'override
-
    "C-a" 'evil-numbers/inc-at-pt
-
-   "C-x" 'evil-numbers/dec-at-pt
    "C-x" 'evil-numbers/dec-at-pt
    "C-c w" 'toggle-truncate-lines
    "C-w t" 'ansiterm-vert))

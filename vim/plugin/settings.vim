@@ -26,6 +26,7 @@ set autoread
 set autowrite
 "}}}
 "{{{ terminal speed optimizations
+set redrawtime=5000
 set lazyredraw
 set ttyfast
 "}}}
