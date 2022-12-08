@@ -35,6 +35,7 @@ hi Character ctermfg=14 cterm=underline
 hi Number ctermfg=15
 hi Conditional ctermfg=4 cterm=bold
 hi Constant ctermfg=3
+hi SignColumn ctermbg=none
 " hi Directory
 " hi TabLine
 " hi TabLineSel
