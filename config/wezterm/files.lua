@@ -1,4 +1,4 @@
-local normalTable = {
+normalTable = {
     "color0:",
     "color1:",
     "color2:",
@@ -20,12 +20,15 @@ brightTable = {
     "color15:",
 }
 
+foregroundTable = { "foreground:" }
+backgroundTable = { "background:" }
+cursorColorTable = { "cursorColor:" }
 
 function  readXresourcesColors(colorTable, location)
     result = {}
     for l in io.lines(location)
     do
-        for i = 1, table.maxn(colorTable), 1
+        for i = 1, #colorTable, 1
         do
             if l.find(l, colorTable[i]) then
                 result[i] = string.gsub(l,"*."..colorTable[i] .."%s+", "")
@@ -35,8 +38,9 @@ function  readXresourcesColors(colorTable, location)
     return result
 end
 
-local normal = readXresourcesColors(normalTable,"/home/jonathan/.config/X11/Xresources")
+normal = readXresourcesColors(normalTable,"/home/jonathan/.config/X11/Xresources")
 
-
-
-local bright = readXresourcesColors(brightTable,"/home/jonathan/.config/X11/Xresources")
+bright = readXresourcesColors(brightTable,"/home/jonathan/.config/X11/Xresources")
+foreground = readXresourcesColors(foregroundTable,"/home/jonathan/.config/X11/Xresources")
+background = readXresourcesColors(backgroundTable,"/home/jonathan/.config/X11/Xresources")
+cursorColor = readXresourcesColors(cursorColorTable,"/home/jonathan/.config/X11/Xresources")

@@ -1,27 +1,27 @@
 local wezterm = require 'wezterm'
--- local xresources = require( "files" )
+local xresources = require( 'files' )
 
 return {
     enable_tab_bar = false,
     enable_scroll_bar = false,
     font = wezterm.font 'Fira Code',
-    font_size = 11.5,
+    font_size = 11,
 
     colors = {
         -- The default text color
-        foreground = 'silver',
+        foreground = foreground[1],
         -- The default background color
-        background = '#202020',
+        background = background[1],
 
         -- Overrides the cell background color when the current cell is occupied by the
         -- cursor and the cursor style is set to Block
-        cursor_bg = '#aaaaaa',
+        cursor_bg = cursorColor[1],
         -- Overrides the text color when the current cell is occupied by the cursor
         cursor_fg = 'black',
         -- Specifies the border color of the cursor when the cursor style is set to Block,
         -- or the color of the vertical or horizontal bar when the cursor style is set to
         -- Bar or Underline.
-        cursor_border = '#52ad70',
+        cursor_border = cursorColor[1],
 
         -- the foreground color of selected text
         selection_fg = 'black',
@@ -34,27 +34,8 @@ return {
         -- The color of the split lines between panes
         split = '#444444',
 
-        ansi = {
-            "#282a2e", -- black
-            "#a54242", -- red
-            "#8c9440", -- green
-            "#de935f", -- yellow
-            "#5f819d", -- blue
-            "#85678f", -- magenta
-            "#5e8d87", -- cyan
-            "#707880", -- white
-        },
-        brights = {
-            "#373b41", -- black   */
-            "#cc6666", -- red     */
-            "#b5bd68", -- green   */
-            "#f0c674", -- yellow  */
-            "#81a2be", -- blue    */
-            "#b294bb", -- magenta */
-            "#8abeb7", -- cyan    */
-            "#c5c8c6", -- white   */
-        },
-
+        ansi = normal,
+        brights = bright,
         -- Arbitrary colors of the palette in the range from 16 to 255
         indexed = { [136] = '#af8700' },
 
