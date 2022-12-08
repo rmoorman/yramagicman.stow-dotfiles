@@ -6,7 +6,13 @@ return {
     enable_scroll_bar = false,
     font = wezterm.font 'Fira Code',
     font_size = 11,
-
+    harfbuzz_features = { 'calt=0', 'clig=0', 'liga=0' },
+    visual_bell = {
+        fade_in_function = 'EaseIn',
+        fade_in_duration_ms = 15,
+        fade_out_function = 'EaseOut',
+        fade_out_duration_ms = 150,
+    },
     colors = {
         -- The default text color
         foreground = foreground[1],
@@ -22,12 +28,14 @@ return {
         -- or the color of the vertical or horizontal bar when the cursor style is set to
         -- Bar or Underline.
         cursor_border = cursorColor[1],
+        force_reverse_video_cursor = true,
 
         -- the foreground color of selected text
         selection_fg = 'black',
         -- the background color of selected text
         selection_bg = '#fffacd',
 
+        visual_bell = bright[2],
         -- The color of the scrollbar "thumb"; the portion that represents the current viewport
         scrollbar_thumb = '#222222',
 
@@ -37,7 +45,7 @@ return {
         ansi = normal,
         brights = bright,
         -- Arbitrary colors of the palette in the range from 16 to 255
-        indexed = { [136] = '#af8700' },
+        -- indexed = { [136] = '#af8700' },
 
         -- Since: 20220319-142410-0fcdea07
         -- When the IME, a dead key or a leader key are being processed and are effectively

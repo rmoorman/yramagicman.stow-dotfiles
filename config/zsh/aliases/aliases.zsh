@@ -102,7 +102,6 @@ function nsync() {
     nextcloudcmd --user jonathan --password $(pass show nextcloud) $HOME/Nextcloud http://100.94.223.34
 }
 #}}}
-#
 # {{{ utilities
 # Ring the terminal bell
 alias bell="tput bel;cvlc --play-and-exit $HOME/.config/sounds/beep.mp3 2> /dev/null"
