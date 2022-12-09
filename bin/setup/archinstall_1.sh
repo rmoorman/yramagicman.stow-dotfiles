@@ -44,7 +44,7 @@ printf "Please input the size of your root partition, accepts MiB and GiB\n"
 read -r size
 partition "$device" "$size"
 mnt_drives "$device"
-pacstrap /mnt base base-devel
+pacstrap /mnt base base-devel linux linux-firmware
 genfstab -U /mnt >> /mnt/etc/fstab
 git clone https://gitlab.com/yramagicman/stow-dotfiles /mnt/root/stow-dotfiles
 arch-chroot /mnt
