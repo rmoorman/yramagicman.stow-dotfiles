@@ -1,7 +1,7 @@
 Config {
 
    -- appearance
-     font =         "Fira Code 18"
+     font =         "Fira Code 10"
    , bgColor =      "#202020"
    , fgColor =      "#ababab"
    , position =     TopH 18
