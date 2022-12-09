@@ -1,2 +1,0 @@
-#!/bin/sh
-$HOME/Documents/harvest/bin/python $HOME/Documents/harvest/harvest.py
