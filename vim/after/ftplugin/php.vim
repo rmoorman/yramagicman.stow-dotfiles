@@ -12,10 +12,10 @@ setlocal list
 if has('nvim')
     lua << EOF
 
+    require("nvim-lsp-installer").setup {}
     require'lspconfig'.phpactor.setup{
     cmd = { "/home/jonathan/.local/share/nvim/lsp_servers/phpactor-source/bin/phpactor", "language-server" }
     }
-    --local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
-    --buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
+    vim.api.nvim_buf_set_option(0, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
 EOF
 endif

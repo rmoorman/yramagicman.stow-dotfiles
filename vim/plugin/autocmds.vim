@@ -26,7 +26,7 @@ augroup defaults
         autocmd BufRead,BufEnter .env :ALEDisableBuffer
     endif
     autocmd BufEnter,CursorHold * checktime
-    autocmd CursorHoldI * call feedkeys("\<c-x>\<c-n>")
+    " autocmd CursorHoldI * call feedkeys("\<c-x>\<c-n>")
     autocmd WinLeave,InsertLeave * call functions#Save()
     " autocmd BufEnter *.vue source $HOME/.vim/after/ftplugin/js.vim
 augroup end

@@ -1,5 +1,5 @@
 set shell=zsh
-set updatetime=500
+set updatetime=2000
 " if has('nvim')
 "     set termguicolors
 " endif
