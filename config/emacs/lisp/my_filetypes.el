@@ -19,7 +19,9 @@
                            )))
 
 (use-package racket-mode
-  :mode "\\.rkt\\'")
+  :mode "\\.rkt\\'"
+  :interpreter "racket"
+  :hook (racket-mode . lsp-deferred))
 
 (use-package web-mode
   :hook (web-mode . lsp-deferred)
