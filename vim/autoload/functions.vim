@@ -32,16 +32,16 @@ function! functions#WrapToggle()
 endfunction
 "}}}
 "{{{ tab completion
-function! functions#InsertTabWrapper()
-    let col = col('.') - 1
-    if !col || getline('.')[col - 1] !~ '\k'
-        return "\<tab>"
-    elseif pumvisible()
-        return "\<C-n>"
-    else
-        return "\<C-n>"
-    endif
-endfunction
+" function! functions#InsertTabWrapper()
+"     let col = col('.') - 1
+"     if !col || getline('.')[col - 1] !~ '\k'
+"         return "\<tab>"
+"     elseif pumvisible()
+"         return "\<C-n>"
+"     else
+"         return "\<C-n>"
+"     endif
+" endfunction
 "}}}
 "{{{ toggle status line
 function! functions#StatusToggle()

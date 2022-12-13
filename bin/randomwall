@@ -1,4 +1,4 @@
 #!/bin/sh
 
 location="$(cat "$HOME/.config/wal_dir")"
-feh --no-fehbg --bg-scale "$( find "$location" | shuf | sed 1q )"
+feh --no-fehbg --bg-scale "$( find "$location" | shuf -n1 )"
