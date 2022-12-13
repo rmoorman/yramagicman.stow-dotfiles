@@ -79,3 +79,12 @@ nnoremap gs <nop>
 "}}}
 inoreabbrev debugger; debugger;//eslint-disable-line
 inoreabbrev  conosle console
+inoreabbrev  conosole console
+
+" I don't like this check, I'd rather check for the functions directly, but I
+" think autoloading is breaking things. This will still tell me if Coc is
+" installed and the relevant functions are available.
+if exists(":CocInstall")
+    inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
+                \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+endif

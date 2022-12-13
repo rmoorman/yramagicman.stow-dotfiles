@@ -31,6 +31,7 @@ hi Operator ctermfg=7 cterm=bold
 hi Pmenu ctermbg=0 ctermfg=15
 hi PmenuSbar ctermfg=4
 hi PmenuSel ctermbg=0 ctermfg=15 cterm=underline
+hi CocMenuSel ctermbg=0 ctermfg=15 cterm=underline
 hi Search ctermbg=2 ctermfg=0
 hi SignColumn ctermbg=none
 hi SpecialKey ctermfg=9
