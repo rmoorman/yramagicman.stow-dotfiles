@@ -194,6 +194,7 @@ commands = [
            , "setxkbmap -option caps:none"
            , "xsetroot -cursor_name left_ptr"
            , "nextcloudcmd --silent --user jonathan --password $(pass show nextcloud) $HOME/Nextcloud http://100.94.223.34 "
+           , "sleep 2s && systemctl --user restart pipewire.service"
            ]
 
 myStartupHook = do
