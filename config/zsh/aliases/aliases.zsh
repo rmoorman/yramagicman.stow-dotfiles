@@ -24,6 +24,7 @@ if [[ $INSIDE_EMACS ]]; then
     alias v.="ec ."
     alias gvim="ec"
 else
+    alias nvim="firejail nvim"
     alias vim="nvim"
     alias vi="nvim"
     alias v="nvim"
