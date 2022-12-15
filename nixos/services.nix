@@ -10,22 +10,24 @@
     # Enable CUPS to print documents.
     printing.enable = true;
     avahi = {
-      enable = true;
-      publish = {
         enable = true;
-        workstation = true;
-        userServices = true;
-      };
-      openFirewall = true;
-      nssmdns = true;
+        publish = {
+            enable = true;
+            workstation = true;
+            userServices = true;
+        };
+        openFirewall = true;
+        nssmdns = true;
     };
 
     pipewire.enable = true;
     pipewire.pulse.enable = true;
     pipewire.alsa.enable = true;
     fwupd.enable = true;
-    # services.locate.enable = true;
-    # services.locate.interval = "*:0/15";
+    locate.enable = true;
+    locate.locate = pkgs.mlocate;
+    locate.interval = "*:0/15";
+    locate.localuser = null;
 
 
     # Enable the OpenSSH daemon.
@@ -39,7 +41,7 @@
 
     phpfpm.phpOptions = ''
             memory_limit = 2048M
-        '';
+    '';
 
     redshift.enable = true;
     geoclue2.enable = true;
@@ -53,29 +55,30 @@
     lshd.tcpForwarding="true";
     gnome.gnome-keyring.enable = true;
     smartd = {
-      enable = true;
-      extraOptions = [
-        "-A /var/log/smartd/"
-        "--interval=3600"
-      ];
+        enable = true;
+        extraOptions = [
+            "-A /var/log/smartd/"
+            "--interval=3600"
+        ];
     };
-  };
-  networking.firewall.checkReversePath = "loose";
-  networking.firewall.allowedTCPPorts = [
+};
+networking.firewall.checkReversePath = "loose";
+networking.firewall.allowedTCPPorts = [
     19999
-  ];
-  security.polkit.enable = true;
+];
+security.polkit.enable = true;
 
-  location.provider = "geoclue2";
-  hardware.logitech.wireless.enable = true;
-  hardware.logitech.wireless.enableGraphical = true;
-  hardware.pulseaudio.enable = false;
-  programs.firejail.enable = true;
-  programs.wireshark.enable = true;
-  security.rtkit.enable = true;
+location.provider = "geoclue2";
+hardware.logitech.wireless.enable = true;
+hardware.logitech.wireless.enableGraphical = true;
+hardware.pulseaudio.enable = false;
+programs.firejail.enable = true;
+programs.wireshark.enable = true;
+programs.wireshark.package = pkgs.wireshark-qt;
+security.rtkit.enable = true;
 
-  xdg.portal.enable = true;
-  xdg.portal.extraPortals = [
+xdg.portal.enable = true;
+xdg.portal.extraPortals = [
     pkgs.xdg-desktop-portal-gnome
-  ];
+];
 }
