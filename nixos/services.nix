@@ -70,7 +70,8 @@
   hardware.logitech.wireless.enable = true;
   hardware.logitech.wireless.enableGraphical = true;
   hardware.pulseaudio.enable = false;
-  programs.firejail.enable;
+  programs.firejail.enable = true;
+  programs.wireshark.enable = true;
   security.rtkit.enable = true;
 
   xdg.portal.enable = true;
