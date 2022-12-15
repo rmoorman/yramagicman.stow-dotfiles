@@ -15,9 +15,11 @@ $mux send-keys -t "$sessionName":dev "$EDITOR $PWD " Enter
 
 $mux new-window -t "$sessionName" -c "$PWD/frontend" -n frontend-shell
 $mux send-keys -t "$sessionName:frontend-shell" "nix develop" Enter
+$mux send-keys -t "$sessionName:frontend-shell" "exec zsh" Enter
 
 $mux new-window -t "$sessionName" -c "$PWD/backend" -n backend-shell
 $mux send-keys -t "$sessionName:backend-shell" "nix develop" Enter
+$mux send-keys -t "$sessionName:backend-shell" "exec zsh" Enter
 
 $mux new-window -t "$sessionName" -c "$PWD" -n server
 $mux split-window -c "$PWD" -h -t "$sessionName":server
