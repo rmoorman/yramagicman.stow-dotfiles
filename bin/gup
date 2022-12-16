@@ -13,7 +13,6 @@ class gup:
         home = self.home
         configfile = open(home + '/.config/gits')
         self.repos = [l.strip() for l in configfile.readlines() if l[0] != '#']
-        self.repos.append(os.getcwd())
         # arrays used in subprocess.call and such
         self.pull = ['git', 'pull', '--rebase']
         self.fetch = ['git', 'fetch']
@@ -132,7 +131,8 @@ class gup:
         """ simplify calling stuff"""
         repos = self.repos
         for repo in repos:
-            self.do_it(repo)
+            if os.path.exists(repo):
+                self.do_it(repo)
             # p = multiprocessing.Process(target=gup().do_it, args=(repo,))
             # p.start()
             # p.join()
