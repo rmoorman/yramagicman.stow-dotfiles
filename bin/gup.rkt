@@ -57,7 +57,7 @@
      (cond
        ((= stat -1) (pull))
        ((= stat 1) (push))
-       (else ((execute-command "git" )  (list "diff" "--stat" ) ))
+       (else ((execute-command "git" )  (list "log" "-n" "5" ) ))
        ))
     (else (show-changes repo))))
 
@@ -70,10 +70,14 @@
     ((execute-command (first git)) (rest git))))
 
 (define (run-git-processes repo)
-  (current-directory repo)
-  (define cur-dir (path->string (current-directory)))
-  (displayln (string-append cur-dir "..."))
-   (pull-push pull push repo)
-  )
+  (if (directory-exists? repo)
+      ((lambda ()
+         (current-directory repo)
+         (define cur-dir (path->string (current-directory)))
+         (displayln (string-append cur-dir "..."))
+         (pull-push pull push repo)
+       ))
+      #f
+      ))
 
- (for-each run-git-processes paths)
+(for-each run-git-processes paths)
