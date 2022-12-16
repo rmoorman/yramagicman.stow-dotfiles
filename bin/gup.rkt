@@ -1,8 +1,6 @@
 #lang racket
 ;(provide main)
 (require racket/system)
-(require racket/trace)
-(require racket/place)
 
 (define (execute-command proc-name)
   (define proc (find-executable-path proc-name))
@@ -10,16 +8,13 @@
     (with-output-to-string
       (thunk (apply system* proc args)))))
 
-(define home (path->string (find-system-path 'home-dir)))
+(define home (string-append (getenv "HOME") "/" ))
 (define repo-file (string-split (file->string (string-append home ".config/gits")) "\n"))
-(define git [find-executable-path "git"])
 (define repos (filter
                (lambda x
                  (not (string-prefix? (string-join x) "#" ) ) ) repo-file))
-(define (makepath p)
-  (string->path p))
 
-(define paths (map makepath repos))
+(define paths (map string->path repos))
 
 (define (changes)
   (define ch (string-split ((execute-command "git") (list "status")) "\n" #:trim? #t))
@@ -34,7 +29,6 @@
   (map (lambda (z)
          (substring z 1)) return-value))
 
-(define num-changes (length (changes)))
 
 (define (show-changes repo)
   (string-append (path->string repo) "\n" (string-join (changes) "\n") (make-string 50 #\space)))
@@ -63,29 +57,23 @@
      (cond
        ((= stat -1) (pull))
        ((= stat 1) (push))
-       (else ((execute-command "git" )  "diff" "HEAD" "master" "origin/HEAD" "origin/master"))))
+       (else ((execute-command "git" )  (list "diff" "--stat" ) ))
+       ))
     (else (show-changes repo))))
 
 (define (pull)
-  (let ([pass (list "pass" "git" "pull")]
-        [git (list "git" "pull" "--rebase")]
-        [pwd (path->string (current-directory))])
-    (cond
-      ((string=? (string-append home "/.password-store") pwd) ((execute-command (first pass)) (rest pass)))
-      (else ((execute-command (first git)) (rest git))))))
+  (let ([git (list "git" "pull" "--rebase")])
+  ((execute-command (first git)) (rest git))))
 
 (define (push)
-  (let ([pass (list "pass" "git" "push")]
-        [git (list "git" "push")]
-        [pwd (path->string (current-directory))])
-    (cond
-      ((string=? (string-append home "/.password-store") pwd) ((execute-command (first pass)) (rest pass)))
-      (else ((execute-command (first git)) (rest git))))))
+  (let ([git (list "git" "push")])
+    ((execute-command (first git)) (rest git))))
 
 (define (run-git-processes repo)
   (current-directory repo)
   (define cur-dir (path->string (current-directory)))
   (displayln (string-append cur-dir "..."))
-  (pull-push pull push repo))
+   (pull-push pull push repo)
+  )
 
-(map displayln (map run-git-processes paths))
+ (for-each run-git-processes paths)
