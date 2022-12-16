@@ -86,7 +86,8 @@
 (setq-default electric-indent-inhibit t)
 (setq backward-delete-char-untabify-method 'hungry)
 
-(server-mode)
+(load "server")
+(unless (server-running-p) (server-start))
 
 (global-auto-revert-mode t)
 
