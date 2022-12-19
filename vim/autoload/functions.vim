@@ -8,11 +8,8 @@ endfunction
 "}}}
 "{{{ open scratch buffer
 function! functions#Scratch()
-    botright new
-    setlocal buftype=nofile
-    setlocal bufhidden=hide
-    setlocal noswapfile
-    setlocal nobuflisted
+    let tmp=system('mktemp')
+    call execute( ":botright edit " . tmp[0:-1] )
 endfunction
 "}}}
 "{{{ Maximize
