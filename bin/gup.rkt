@@ -59,7 +59,7 @@
        ((= stat 1) (push))
        (else ((execute-command "git" )  (list "log" "-n" "5" ) ))
        ))
-    (else (show-changes repo))))
+    (else (displayln (show-changes repo) ))))
 
 (define (pull)
   (let ([git (list "git" "pull" "--rebase")])
