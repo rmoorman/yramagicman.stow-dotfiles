@@ -36,6 +36,7 @@ let
     newsflash
     pass
     pavucontrol
+    pcmanfm
     picom
     pulsemixer
     pwgen
