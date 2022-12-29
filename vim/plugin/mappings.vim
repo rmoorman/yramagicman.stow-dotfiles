@@ -80,6 +80,7 @@ nnoremap gs <nop>
 inoreabbrev debugger; debugger;//eslint-disable-line
 inoreabbrev  conosle console
 inoreabbrev  conosole console
+inoreabbrev  setp step
 
 " I don't like this check, I'd rather check for the functions directly, but I
 " think autoloading is breaking things. This will still tell me if Coc is
