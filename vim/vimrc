@@ -39,7 +39,6 @@ let g:javascript_sql_dialect = 'javascript'
      echom system([ 'curl', 'https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim', '-o', $HOME. '/Documents/dots/vim/autoload/plug.vim' ])
  endif
 call plug#begin($HOME.'/.local/share/vim')
-" PlugOpt 'w0rp/ale'
 " Plug 'git@gitlab.com:yramagicman/auto-omnicomplete'
 if has('nvim')
     Plug 'williamboman/nvim-lsp-installer'
@@ -72,18 +71,9 @@ colorscheme portable
 "{{{ autocommands for loading extensions
 augroup extensions
     autocmd!
-    " autocmd FileType python,php,c,cpp,zsh,sh silent! packadd ale | redraw
     autocmd BufRead *.org  set filetype=org
     autocmd FileType vue syn sync fromstart
 augroup end
-"}}}
-"{{{ ale settings
-let g:ale_set_loclist = 0
-let g:ale_set_quickfix = 1
-let g:ale_echo_msg_error_str = 'E'
-let g:ale_echo_msg_warning_str = 'W'
-let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
-let g:ale_lint_on_text_changed = 0
 "}}}
 let mapleader=" "
 " let g:NoAutoPairs = 1

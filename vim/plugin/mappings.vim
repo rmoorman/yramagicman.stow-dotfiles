@@ -88,4 +88,6 @@ inoreabbrev  setp step
 if exists(":CocInstall")
     inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
                 \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+
+    nnoremap <leader>n :CocDiagnostics<CR>
 endif

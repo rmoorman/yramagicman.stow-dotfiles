@@ -13,17 +13,15 @@ augroup defaults
     autocmd FileType * set textwidth=80
     autocmd FileType vim set foldmethod=marker
     autocmd FileType mail set textwidth=0
-    " autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-    " autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-    " autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-    " autocmd FileType python setlocal omnifunc=python3complete#Complete
-    " autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
-    " autocmd FileType clojure setlocal omnifunc=clojurecomplete#Complete
-    " autocmd FileType sql setlocal omnifunc=sqlcomplete#Complete
-    " autocmd FileType php set omnifunc=phpcomplete#CompletePHP
-
-    if exists(':ALEDisableBuffer')
-        autocmd BufRead,BufEnter .env :ALEDisableBuffer
+    if !has('nvim')
+        autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+        autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+        autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+        autocmd FileType python setlocal omnifunc=python3complete#Complete
+        autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+        autocmd FileType clojure setlocal omnifunc=clojurecomplete#Complete
+        autocmd FileType sql setlocal omnifunc=sqlcomplete#Complete
+        autocmd FileType php set omnifunc=phpcomplete#CompletePHP
     endif
     autocmd BufEnter,CursorHold * checktime
     " autocmd CursorHoldI * call feedkeys("\<c-x>\<c-n>")

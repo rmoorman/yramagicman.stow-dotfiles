@@ -82,10 +82,6 @@ if &diff
     set list
     set nowrap
     set notermguicolors
-    " augroup diff
-    "     autocmd!
-    "     autocmd VimEnter * ALEDisable
-    " augroup end
 endif
 
 if !has('nvim') && &ttimeoutlen == -1
