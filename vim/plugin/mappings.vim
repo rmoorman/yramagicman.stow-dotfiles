@@ -53,7 +53,7 @@ nnoremap <leader>e :e **/*
 nnoremap <leader>f :find **/*
 nnoremap <leader>b :ls<cr>:b
 nnoremap <leader>U :!cat % \| urlview<cr>
-nnoremap <leader>z :%!cat -s<cr>
+nnoremap <leader>z mz:%!cat -s<cr>'z
 cnoreabbrev ,e e **/*
 cnoreabbrev ,f find **/*
 cnoreabbrev ,b ls<cr>:b
