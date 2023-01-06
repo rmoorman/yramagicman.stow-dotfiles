@@ -15,9 +15,10 @@ function update() {
             echo "\n\n$conf\n\n"
             pwd
             nix flake update --commit-lock-file
-            sudo nixos-rebuild boot --impure --flake "$conf/#"  --upgrade-all && \
-                sudo nix-collect-garbage -d --delete-older-than 14d && \
-                sudo nix store optimise
+            sudo nixos-rebuild boot --impure --flake "$conf/#"  --upgrade-all
+            # && \
+            # sudo nix-collect-garbage -d --delete-older-than 14d && \
+            # sudo nix store optimise
         )
         # nix-collect-garbage -d --delete-older-than 14d
     elif [[ $(command -v yay) ]]; then

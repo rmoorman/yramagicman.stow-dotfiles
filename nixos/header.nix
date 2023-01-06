@@ -38,6 +38,8 @@
         gc.dates = "04:30";
         gc.options = "--delete-older-than 14d";
         settings.auto-optimise-store = true;
+        optimise.automatic = true;
+        optimise.dates = "04:50";
     };
     system.stateVersion = "22.05"; # Did you read the comment?
 
