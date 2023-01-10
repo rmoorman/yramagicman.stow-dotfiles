@@ -78,7 +78,7 @@
 (global-hl-line-mode t)
 
 (setq display-line-numbers-type 'relative)
-;; (global-display-line-numbers-mode)
+(global-display-line-numbers-mode)
 (use-package base16-theme)
 
 (electric-indent-mode nil)
