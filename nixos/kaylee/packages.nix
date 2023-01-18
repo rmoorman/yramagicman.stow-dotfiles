@@ -5,6 +5,6 @@
     gphoto2
     asunder
     wezterm
-    handbrake
+    # handbrake
   ];
 }
