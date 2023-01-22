@@ -2,8 +2,8 @@
     networking.hostName = "tightpants"; # Define your hostname.
     # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
     networking.wireless.iwd.enable = true;  # Enables wireless support via iwd.
-    networking.networkmanager.wifi.backend = "iwd";
-    networking.networkmanager.enable = false;
+    # networking.networkmanager.wifi.backend = "iwd";
+    # networking.networkmanager.enable = false;
 
     # networking.useDHCP = true;
 

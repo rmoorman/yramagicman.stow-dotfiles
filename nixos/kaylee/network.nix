@@ -1,10 +1,10 @@
 {
     networking.hostName = "kaylee"; # Define your hostname.
     # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-    # networking.wireless.iwd.enable = true;  # Enables wireless support via iwd.
+    networking.wireless.iwd.enable = true;  # Enables wireless support via iwd.
     # networking.networkmanager.wifi.backend = "iwd";
     # networking.networkmanager.enable = true;
-    # networking.useDHCP = true;
+    networking.useDHCP = true;
 
     # Configure network proxy if necessary
     # networking.proxy.default = "http://user:password@proxy:port/";
