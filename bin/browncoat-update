@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+(
+cd ~/Documents/dots/nixos/browncoat/
+git pull
+nix flake update --commit-lock-file
+sudo nixos-rebuild boot --flake './#'
+sudo shutdown -r 01:01
+)
