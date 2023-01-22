@@ -6,4 +6,5 @@ git pull
 nix flake update --commit-lock-file
 sudo nixos-rebuild boot --flake './#'
 sudo shutdown -r 01:01
+git push
 )
