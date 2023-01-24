@@ -3,7 +3,6 @@
     nixpkgs.config.allowUnfree = true;
     programs.zsh.enable = true;
     environment.systemPackages = with pkgs; [
-        hyprland
         apacheHttpd
         file
         gcc
