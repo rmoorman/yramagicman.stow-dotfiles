@@ -10,8 +10,13 @@
     systemd.network = {
         enable = true;
         networks = {
-            "90-all" = {
-                matchConfig = { Name = "*"; };
+            "90-wireless" = {
+                matchConfig = { Name = "wlan*"; };
+                DHCP= "yes";
+            };
+
+            "80-wired" = {
+                matchConfig = { Name = "enp*s*"; };
                 DHCP= "yes";
             };
         };
