@@ -1,7 +1,7 @@
 {
     networking.hostName = "kaylee"; # Define your hostname.
     networking.wireless.iwd.enable = true;  # Enables wireless support via iwd.
-    networking.useDHCP = true;
+    # networking.useDHCP = true;
 
     # Configure network proxy if necessary
     # networking.proxy.default = "http://user:password@proxy:port/";
