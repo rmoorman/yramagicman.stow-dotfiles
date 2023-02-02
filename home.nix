@@ -44,6 +44,7 @@ let
     signal-desktop
     silver-searcher
     theme-obsidian2
+    thunderbird
     tmux
     ungoogled-chromium
     universal-ctags
