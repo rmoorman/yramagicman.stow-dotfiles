@@ -1,6 +1,6 @@
 IMAPAccount personal
 # Address to connect to
-Host vps68417.inmotionhosting.com
+Host server.gilsons.org
 User jonathandavis@gilsons.org
 # To store the password in an encrypted file use PassCmd instead of Pass
 PassCmd "cat /tmp/mail/personal"
@@ -39,7 +39,7 @@ SyncState *
 
 IMAPAccount bills
 # Address to connect to
-Host vps68417.inmotionhosting.com
+Host server.gilsons.org
 User ejbills@gilsons.org
 # To store the password in an encrypted file use PassCmd instead of Pass
 PassCmd "cat /tmp/mail/bills"

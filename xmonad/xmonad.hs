@@ -131,6 +131,7 @@ myManageHook = composeAll [
     , className =? "Navigator"        --> doShift "2:br1"
     , className =? "firefox"          --> doShift "2:br1"
     , className =? "Chromium-browser" --> doShift "3:br2"
+    , className =? "thunderbird"      --> doShift "4:mail/db"
     , className =? "Thunderbird"      --> doShift "4:mail/db"
     , className =? "Signal"           --> doShift "8:signal"
     , className =? "Slack"            --> doShift "9:slack"
