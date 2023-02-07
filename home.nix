@@ -32,6 +32,7 @@ let
     mpv
     msmtp
     mutt
+    mypaint
     neovim
     newsflash
     pass
