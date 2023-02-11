@@ -8,6 +8,7 @@ let
     breeze-icons
     btop
     calibre
+    chessx
     cmus
     dmenu
     dunst
@@ -44,6 +45,7 @@ let
     rxvt-unicode
     signal-desktop
     silver-searcher
+    stockfish
     theme-obsidian2
     thunderbird
     tmux
