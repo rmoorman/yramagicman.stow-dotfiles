@@ -23,6 +23,7 @@ let
     gnome.aisleriot
     gnome.nautilus
     gnome-text-editor
+    gnubg
     guvcview
     htop
     iconpack-obsidian
