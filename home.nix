@@ -37,6 +37,7 @@ let
     mypaint
     neovim
     newsflash
+    pandoc
     pass
     pavucontrol
     pcmanfm
