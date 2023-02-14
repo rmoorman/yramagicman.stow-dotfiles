@@ -4,6 +4,7 @@ let
   dotfiles = "${home}/Documents/dots";
 
   packages = with pkgs; [
+    alacritty
     arandr
     breeze-icons
     btop
@@ -30,7 +31,7 @@ let
     isync
     libnotify
     lxappearance
-    maim
+    # maim
     mpv
     msmtp
     mutt
