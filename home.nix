@@ -31,7 +31,7 @@ let
     isync
     libnotify
     lxappearance
-    # maim
+    maim
     mpv
     msmtp
     mutt
