@@ -58,6 +58,7 @@ let
     vimHugeX
     vlc
     w3m
+    wezterm
     wl-clipboard
     xclip
     xonotic
