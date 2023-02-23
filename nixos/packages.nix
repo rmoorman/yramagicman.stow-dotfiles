@@ -4,6 +4,7 @@
     programs.zsh.enable = true;
     environment.systemPackages = with pkgs; [
         apacheHttpd
+        cryptsetup
         file
         gcc
         git
