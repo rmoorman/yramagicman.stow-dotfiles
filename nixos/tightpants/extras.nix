@@ -30,4 +30,12 @@
   };
 
   powerManagement.powertop.enable = true;
+
+
+  fonts.fontconfig = {
+      enable = true;
+      hinting.enable = true;
+      hinting.style = "hintmedium";
+  };
+
 }
