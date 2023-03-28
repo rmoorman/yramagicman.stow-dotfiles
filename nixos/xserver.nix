@@ -5,7 +5,7 @@
     enable = true;
 
     # Enable the GNOME Desktop Environment.
-    displayManager.gdm.enable = true;
+    displayManager.lightdm.enable = true;
     # desktopManager.gnome.enable = true;
     displayManager.gdm.autoSuspend= false;
     # displayManager.sddm.theme = "elarun";
