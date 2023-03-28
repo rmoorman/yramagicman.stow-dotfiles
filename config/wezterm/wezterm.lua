@@ -28,7 +28,7 @@ return {
         -- or the color of the vertical or horizontal bar when the cursor style is set to
         -- Bar or Underline.
         cursor_border = cursorColor[1],
-        force_reverse_video_cursor = true,
+        -- force_reverse_video_cursor = true,
 
         -- the foreground color of selected text
         selection_fg = 'black',

@@ -9,7 +9,6 @@ function update() {
         # Git/nix are fixed, but committing the flake.lock is not
         # something I'm interested in.
         (
-            print -v thing -P %x
             conf="$(builtin cd $HOME/Documents/dots && git rev-parse --show-toplevel )"
             cd $conf || return
             git pull
