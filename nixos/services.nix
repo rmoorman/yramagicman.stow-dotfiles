@@ -47,7 +47,7 @@
     geoclue2.enable = true;
     fstrim.enable = true;
     atd.enable = true;
-    netdata.enable = true;
+    # netdata.enable = true;
     nscd.enableNsncd = true;
     # enable tailscale
     tailscale.enable=true;
