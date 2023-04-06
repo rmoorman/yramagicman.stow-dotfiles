@@ -27,6 +27,8 @@
     "n" 'flymake-goto-next-error
     "gs" 'magit-status
     "gc" 'magit-checkout
+    "fr" 'lsp-find-references
+    "fd" 'lsp-find-definition
     "F" 'find-file)
 
   ;; (my-leader-def
