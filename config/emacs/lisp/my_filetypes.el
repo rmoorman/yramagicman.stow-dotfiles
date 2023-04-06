@@ -25,7 +25,7 @@
 
 (use-package web-mode
   :hook (web-mode . lsp-deferred)
-  :mode "\\.\\(vue\\|html\\|blade.php\\)\\'"
+  :mode "\\.\\(vue\\|tpl|html\\|blade.php\\)\\'"
   :init
   (setq web-mode-style-padding 0)
   (setq web-mode-script-padding 0))
