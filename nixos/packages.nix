@@ -11,6 +11,7 @@
         gnumake
         haskellPackages.xmobar
         home-manager
+        htop
         killall
         man-pages
         mariadb
