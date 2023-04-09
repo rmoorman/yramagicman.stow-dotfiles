@@ -21,12 +21,10 @@ function update() {
         # nix-collect-garbage -d --delete-older-than 14d
     elif [[ $(command -v yay) ]]; then
         yay -Syu --noconfirm --sudoloop
-        xmonad --recompile
         orphans
         echo '' > /tmp/updates
     elif [[ $(command -v pacman) ]]; then
         pacman -Syu --noconfirm
-        xmonad --recompile
         orphans
         echo '' > /tmp/updates
     elif [[ $(command -v apt) ]]; then
@@ -50,6 +48,7 @@ function update() {
         echo "\n flatpak \n"
         flatpak update -y
     fi
+    xmonad --recompile
     gup
     bell
 }
