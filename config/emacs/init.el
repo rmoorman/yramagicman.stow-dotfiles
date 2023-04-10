@@ -99,6 +99,6 @@
 (load "my_completion.el")
 (load "my_filetypes.el")
 (load "my_hooks.el")
-
+(setq initial-buffer-choice "~/.config/emacs/start.org")
 (provide 'init.el)
 ;; init.el ends here
