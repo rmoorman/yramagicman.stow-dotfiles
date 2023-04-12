@@ -34,7 +34,7 @@
 ;;   (lsp-ui-doc-position 'bottom))
 
 (use-package php-mode
-  :mode "\\.\\(php\\|inc\\)\\'"
+  :mode "\\.\\(php\\|inc\\|tpl\\)\\'"
   :interpreter "php"
   :hook (php-mode . lsp-deferred))
 
