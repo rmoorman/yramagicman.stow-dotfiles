@@ -50,6 +50,10 @@
    "C-a" 'evil-numbers/inc-at-pt
    "C-x" 'evil-numbers/dec-at-pt
    "C-c w" 'toggle-truncate-lines
+   "C-+" 'text-scale-increase
+   "C--" 'text-scale-decrease
+   "C-0" 'text-scale-adjust
+   "C-w C-f" 'toggle-frame-fullscreen
    "C-w t" 'ansiterm-vert))
 
 ;; keybind

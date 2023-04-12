@@ -33,12 +33,6 @@
 ;;   :custom
 ;;   (lsp-ui-doc-position 'bottom))
 
-(use-package php-mode
-  :mode "\\.\\(php\\|inc\\|tpl\\)\\'"
-  :interpreter "php"
-  :hook (php-mode . lsp-deferred))
-
-
 (use-package which-key
   :init (which-key-mode)
   :diminish which-key-mode
@@ -48,7 +42,6 @@
 (use-package ivy
   :config
   (ivy-mode 1))
-
 
 ;; (use-package lsp-java :config (add-hook 'java-mode-hook 'lsp))
 ;; (setenv "JAVA_HOME"  "path_to_java_folder/Contents/Home/")

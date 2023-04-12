@@ -18,6 +18,11 @@
                            ;; (linum-relative-mode 0)
                            )))
 
+(use-package php-mode
+  :mode "\\.\\(php\\|inc\\|tpl\\)\\'"
+  :interpreter "php"
+  :hook (php-mode . lsp-deferred))
+
 (use-package racket-mode
   :mode "\\.rkt\\'"
   :interpreter "racket"
