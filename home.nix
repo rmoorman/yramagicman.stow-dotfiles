@@ -37,7 +37,7 @@ let
     mutt
     mypaint
     neovim
-    newsflash
+    # newsflash
     pandoc
     pass
     pavucontrol
