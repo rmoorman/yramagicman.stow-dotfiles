@@ -31,7 +31,7 @@ windowCount = gets $ Just . show . length . W.integrate' . W.stack . W.workspace
 -- The preferred terminal program, which is used in a binding below and by
 -- certain contrib modules.
 --
-myTerminal      = "wz"
+myTerminal      = "urxvt"
 
 -- Whether focus follows the mouse pointer.
 myFocusFollowsMouse :: Bool
