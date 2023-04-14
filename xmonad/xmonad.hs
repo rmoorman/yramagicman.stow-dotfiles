@@ -31,7 +31,7 @@ windowCount = gets $ Just . show . length . W.integrate' . W.stack . W.workspace
 -- The preferred terminal program, which is used in a binding below and by
 -- certain contrib modules.
 --
-myTerminal      = "urxvt"
+myTerminal      = "wz"
 
 -- Whether focus follows the mouse pointer.
 myFocusFollowsMouse :: Bool
@@ -195,6 +195,7 @@ commands = [
            , "setxkbmap -option caps:none"
            , "xsetroot -cursor_name left_ptr"
            , "nextcloudcmd --silent --user jonathan --password $(pass show nextcloud) $HOME/Nextcloud http://100.94.223.34 "
+           , "sleep 1s && systemctl --user restart xdg-desktop-portal.service"
            , "sleep 2s && systemctl --user restart pipewire.service"
            ]
 
