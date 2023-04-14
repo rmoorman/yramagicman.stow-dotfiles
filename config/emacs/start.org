@@ -1,1 +1,19 @@
-Start.org :)
+#+STARTUP: align
+
+* Keys
+| Function    | Bind    |
+| Edit Link   | C-c C-l |
+| Follow Link | C-c C-o |
+
+
+* Local file shortcuts
+| File/Directory | Org Link  |
+| stow-dotfiles  | [[~/Documents/dots][Dotfiles]]  |
+
+* Local Machines
+
+- browncoat: 192.168.1.224
+- kaylee: 192.168.1.220
+- tightpants: 192.168.1.198
+
+* Notes
