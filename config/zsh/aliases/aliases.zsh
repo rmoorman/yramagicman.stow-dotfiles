@@ -171,9 +171,9 @@ alias dupbd='docker-compose up -d --build'
 alias dud='docker-compose down'
 #}}}
 #{{{ NFS store mounts
-alias musicmount="sudo mount -t nfs  192.168.1.195:/music /home/jonathan/Music"
-alias vidmount="sudo mount -t nfs  192.168.1.195:/video /home/jonathan/Videos"
-alias storemount="sudo mount -t nfs  192.168.1.195:/storage /home/jonathan/Storage"
+alias musicmount="sudo mount -t nfs  browncoat.local:/music /home/jonathan/Music"
+alias vidmount="sudo mount -t nfs  browncoat.local:/video /home/jonathan/Videos"
+alias storemount="sudo mount -t nfs  browncoat.local:/storage /home/jonathan/Storage"
 #}}}
 #{{{ BTRFS du/df things
 alias bdu="btrfs filesystem du"
