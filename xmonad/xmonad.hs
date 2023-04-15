@@ -257,4 +257,5 @@ main = do
         , (( mod4Mask, xK_b ), spawn "pkill xmobar")
         , (( mod4Mask .|. mod1Mask, xK_Return ), spawn "alacritty")
         , (( mod1Mask,  xK_e ), spawn "urxvt -e mutt")
+        , (( mod1Mask .|. controlMask,  xK_e ), spawn "emacsclient -nc ~/")
         ]
