@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-if [[ $XDG_CURRENT_DESKTOP = "GNOME" ]]; then
+if [[ $XDG_CURRENT_DESKTOP = "Hyprland" ]]; then
 
     if [[ -p /dev/stdin ]] ; then
         # stdin is a pipe

@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 
+. ~/.config/env
 shopt -s nullglob globstar
 
 typeit=0
@@ -13,8 +14,11 @@ password_files=( "$prefix"/**/*.gpg )
 password_files=( "${password_files[@]#"$prefix"/}" )
 password_files=( "${password_files[@]%.gpg}" )
 
-password=$(printf '%s\n' "${password_files[@]}" | dmenu )
-
+if [[ $XDG_CURRENT_DESKTOP = "Hyprland" ]]; then
+    password=$(printf '%s\n' "${password_files[@]}" | wofi --show dmenu )
+else
+    password=$(printf '%s\n' "${password_files[@]}" | dmenu )
+fi
 [[ -n $password ]] || exit
 
 if [[ $typeit -eq 0 ]]; then
