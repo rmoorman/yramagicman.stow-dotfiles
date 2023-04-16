@@ -30,6 +30,7 @@ let
     iconpack-obsidian
     isync
     libnotify
+    libsForQt5.polkit-kde-agent
     lxappearance
     maim
     mpv
@@ -48,7 +49,9 @@ let
     rxvt-unicode
     signal-desktop
     silver-searcher
+    socat
     stockfish
+    swaybg
     theme-obsidian2
     thunderbird
     tmux
@@ -58,8 +61,10 @@ let
     vimHugeX
     vlc
     w3m
+    waybar
     wezterm
     wl-clipboard
+    wofi
     xclip
     xonotic
     xorg.xcursorthemes
