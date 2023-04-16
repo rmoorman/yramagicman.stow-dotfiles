@@ -9,7 +9,7 @@
     # desktopManager.gnome.enable = true;
     displayManager.gdm.autoSuspend= false;
     # displayManager.sddm.theme = "elarun";
-    displayManager.defaultSession = "none+xmonad";
+    displayManager.defaultSession = "Hyprland";
     displayManager.hiddenUsers =[ "jonathan_backup" ];
     # windowManager.awesome.enable = true;
     windowManager.xmonad.enable = true;
