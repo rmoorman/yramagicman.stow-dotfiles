@@ -26,4 +26,7 @@
     libinput.touchpad.accelSpeed = "0.25";
     libinput.mouse.naturalScrolling = true;
   };
+  programs.hyprland.enable = true;
+  programs.hyprland.xwayland.enable = true;
+  programs.hyprland.xwayland.hidpi = true;
 }
