@@ -25,6 +25,7 @@ let
     gnome.nautilus
     gnome-text-editor
     gnubg
+    grim
     guvcview
     htop
     iconpack-obsidian
@@ -49,6 +50,7 @@ let
     rxvt-unicode
     signal-desktop
     silver-searcher
+    slurp
     socat
     stockfish
     swaybg
