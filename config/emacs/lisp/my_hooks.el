@@ -35,7 +35,6 @@
 (defvar my/default-variable-font-size 110)
 (defun my/set-font-faces ()
   (interactive)
-  (message "Setting faces!")
   (set-face-attribute 'default nil :font "Fira Code" :height my/default-font-size)
 
   ;; Set the fixed pitch face
@@ -72,6 +71,7 @@
     nil))
 (add-function :after after-focus-change-function #'save-on-focus-lost)
 
-(add-function :after after-focus-change-function #'fix-colors)
+(add-function :after after-focus-change-function #'set-x-faces)
+(set-x-faces)
 (provide 'my_hooks)
 ;;; my_hooks.el ends here
