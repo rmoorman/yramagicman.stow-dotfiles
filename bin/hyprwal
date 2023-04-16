@@ -1,4 +1,4 @@
 #!/bin/sh
 
 location="$(cat "$HOME/.config/wal_dir")"
-swaybg -m fit -i "$( find "$location" | shuf -n1 )"
+swaybg -m fill -i "$( find "$location" | shuf -n1 )"

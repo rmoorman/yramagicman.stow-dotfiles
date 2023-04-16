@@ -5,7 +5,7 @@ spaces (){
     ACTIVE_SPACE=$( hyprctl monitors | awk '/active/ { print $3 }')
     WINDOW_COUNT=$(hyprctl workspaces | grep -A 2 "workspace ID $ACTIVE_SPACE" | awk '/windows/ {print $2}')
     # echo $ACTIVE_SPACE
-    echo " -- $WINDOW_COUNT $( echo $WORKSPACE_WINDOWS | sed "s/$ACTIVE_SPACE/[&]/" )"
+    echo " - - $WINDOW_COUNT - $( echo $WORKSPACE_WINDOWS | sed "s/$ACTIVE_SPACE/[&]/" )"
 }
 
 spaces
