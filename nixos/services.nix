@@ -23,6 +23,7 @@
     pipewire.enable = true;
     pipewire.pulse.enable = true;
     pipewire.alsa.enable = true;
+    pipewire.wireplumber.enable = true;
     fwupd.enable = true;
     locate.enable = true;
     locate.locate = pkgs.mlocate;
@@ -78,7 +79,8 @@ programs.wireshark.package = pkgs.wireshark-qt;
 security.rtkit.enable = true;
 
 xdg.portal.enable = true;
-xdg.portal.extraPortals = [
-    pkgs.xdg-desktop-portal-gnome
-];
+# xdg.portal.extraPortals = [
+#     # pkgs.xdg-desktop-portal-gnome
+#     pkgs.xdg-desktop-portal-wlr
+# ];
 }
