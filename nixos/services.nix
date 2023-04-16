@@ -77,10 +77,6 @@ programs.firejail.enable = true;
 programs.wireshark.enable = true;
 programs.wireshark.package = pkgs.wireshark-qt;
 security.rtkit.enable = true;
-
 xdg.portal.enable = true;
-# xdg.portal.extraPortals = [
-#     # pkgs.xdg-desktop-portal-gnome
-#     pkgs.xdg-desktop-portal-wlr
-# ];
+
 }
