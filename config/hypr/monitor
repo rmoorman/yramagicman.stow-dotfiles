@@ -1,0 +1,16 @@
+#!/bin/sh
+
+set -e
+if [ "$HOSTNAME" = "tightpants" ]; then
+    hyprctl keyword monitor eDP-1,highres,auto,1.75
+    # sets xwayland scale
+    # xprop -root -f _XWAYLAND_GLOBAL_OUTPUT_SCALE 32c -set _XWAYLAND_GLOBAL_OUTPUT_SCALE 2
+
+    # toolkit-specific scale
+    hyprctl keyword env  GDK_SCALE,1.75
+    hyprctl keyword env  XCURSOR_SIZE,32
+
+else
+
+    echo "oops"
+fi

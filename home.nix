@@ -32,6 +32,7 @@ let
     isync
     libnotify
     libsForQt5.polkit-kde-agent
+    light
     lxappearance
     maim
     mpv
