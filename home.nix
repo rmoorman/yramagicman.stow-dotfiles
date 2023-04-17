@@ -1,5 +1,6 @@
-{ config, pkgs, lib, ... }:
+{ config, emacs, pkgs, lib, ... }:
 let
+
   home = "/home/jonathan";
   dotfiles = "${home}/Documents/dots";
 
@@ -14,7 +15,7 @@ let
     dmenu
     dunst
     dzen2
-    emacs
+    emacsPgtk
     feh
     ffmpeg
     firefox
@@ -120,6 +121,8 @@ let
   } ];
 
 in {
+
+
   home.username = "jonathan";
   home.homeDirectory = home;
   home.packages = packages;

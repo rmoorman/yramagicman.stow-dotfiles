@@ -3,13 +3,19 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     home-manager.url = "github:nix-community/home-manager";
+
+    emacs-overlay.url = "github:nix-community/emacs-overlay";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
   };
-  outputs = inputs@{ nixpkgs, home-manager, ... }:
+  outputs = { nixpkgs, emacs-overlay, home-manager, ... }@inputs:
     let
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
       base = [
+
+        {
+          nixpkgs.overlays = [ emacs-overlay.overlay];
+        }
         ./nixos/fonts.nix
         ./nixos/header.nix
         ./nixos/packages.nix
@@ -19,11 +25,13 @@
     in {
 
       homeConfigurations.jonathan = home-manager.lib.homeManagerConfiguration {
-        inherit pkgs;
+        inherit emacs-overlay pkgs;
+
 
         # Specify your home configuration modules here, for example,
         # the path to your home.nix.
         modules = [
+
           ./home.nix
           ./nixos/not-nixos
         ];
