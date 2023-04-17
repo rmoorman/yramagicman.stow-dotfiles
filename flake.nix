@@ -21,6 +21,7 @@
         ./nixos/packages.nix
         ./nixos/services.nix
         ./nixos/users.nix
+        ./nixos/cachix.nix
       ];
     in {
 
