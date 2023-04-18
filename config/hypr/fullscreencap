@@ -1,0 +1,3 @@
+#!/bin/sh
+
+grim  ~/Pictures/screenshots/screenshot_$(date +'%F_%H%M%S').png
