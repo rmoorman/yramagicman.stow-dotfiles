@@ -2,10 +2,10 @@
 ;;; Commentary:
 ;;; a comment
 ;;; Code:
-(use-package org
-  :hook
-  (org-mode . (lambda nil
-                (visual-line-mode))))
+(use-package org)
+  ; :hook
+  ; (org-mode . (lambda nil
+  ;               (visual-line-mode))))
 
 (use-package lua-mode
   :mode "\\.lua\\'")
