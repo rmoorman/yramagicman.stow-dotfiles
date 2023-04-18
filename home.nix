@@ -23,6 +23,7 @@ let
     git
     gnome.adwaita-icon-theme
     gnome.aisleriot
+    gnome.gnome-tweaks
     gnome.nautilus
     gnome-text-editor
     gnubg
