@@ -2,6 +2,7 @@
 {
   # Enable sound.
   sound.enable = true;
+  powerManagement.powertop.enable = true;
 
   services = {
     yubikey-agent.enable = true;
@@ -76,6 +77,7 @@ hardware.pulseaudio.enable = false;
 programs.firejail.enable = true;
 programs.wireshark.enable = true;
 programs.wireshark.package = pkgs.wireshark-qt;
+
 security.rtkit.enable = true;
 xdg.portal.enable = true;
 

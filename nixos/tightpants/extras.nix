@@ -4,7 +4,6 @@
   hardware.acpilight.enable = true;
   boot.kernelPackages = pkgs.linuxPackages_zen;
 
-
   fileSystems."/".options = ["compress=zstd"];
   environment.systemPackages = with pkgs; [
     intel-gpu-tools
@@ -28,9 +27,6 @@
       libvdpau-va-gl
     ];
   };
-
-  powerManagement.powertop.enable = true;
-
 
   fonts.fontconfig = {
       enable = true;
