@@ -21,6 +21,7 @@
   fileSystems."/".options = ["compress=zstd"];
 
   environment.systemPackages = with pkgs; [
+    amdvlk
     microcodeAmd
     xorg.xf86videoamdgpu
   ];

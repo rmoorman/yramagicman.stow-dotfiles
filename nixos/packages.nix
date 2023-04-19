@@ -14,6 +14,7 @@
         home-manager
         htop
         killall
+        libva
         man-pages
         mariadb
         mu

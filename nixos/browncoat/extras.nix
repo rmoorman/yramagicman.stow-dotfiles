@@ -9,6 +9,7 @@
     btrfs-progs
     intel-gpu-tools
     podman-compose
+    microcodeIntel
   ];
   # services.flatpak.enable = true;
   # xdg.portal.enable = true;

@@ -8,9 +8,9 @@
   fileSystems."/".options = ["compress=zstd"];
   environment.systemPackages = with pkgs; [
     intel-gpu-tools
-    # linuxKernel.packages.linux_5_15.system76
     linuxKernel.packages.linux_zen.system76
     system76-firmware
+    microcodeIntel
   ];
 
   hardware.system76.enableAll = true;
