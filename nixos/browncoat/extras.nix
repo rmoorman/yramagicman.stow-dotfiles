@@ -24,7 +24,7 @@
     dockerCompat = true;
 
     # Required for containers under podman-compose to be able to talk to each other.
-    defaultNetwork.dnsname.enable = true;
+    defaultNetwork.settings.dns_enabled = true;
   };
 
   swapDevices = [
@@ -71,7 +71,7 @@
     home = "/srv/storage/nextcloud/home/";
     datadir = "/srv/storage/nextcloud/data/";
     config.adminpassFile = "${pkgs.writeText "adminpass" "test123"}";
-    package= pkgs.nextcloud25;
+    package= pkgs.nextcloud26;
     enableBrokenCiphersForSSE = false;
 
     config.extraTrustedDomains = [
