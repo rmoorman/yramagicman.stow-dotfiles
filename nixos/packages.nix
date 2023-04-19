@@ -22,6 +22,7 @@
         nextcloud-client
         nfs-utils
         nodejs
+        nvtop
         openssl
         pinentry-gtk2
         powertop
