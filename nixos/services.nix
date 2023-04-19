@@ -6,6 +6,7 @@
   services = {
     yubikey-agent.enable = true;
 
+    tlp.enable = true;
     udisks2.enable = true;
     # Enable CUPS to print documents.
     printing.enable = true;
