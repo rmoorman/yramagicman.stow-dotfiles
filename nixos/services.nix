@@ -2,7 +2,6 @@
 {
   # Enable sound.
   sound.enable = true;
-  powerManagement.powertop.enable = true;
 
   services = {
     yubikey-agent.enable = true;
