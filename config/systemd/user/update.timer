@@ -1,0 +1,10 @@
+[Unit]
+Description=Check for updates every 3 hours
+
+[Timer]
+OnBootSec=2m
+OnUnitActiveSec=3h
+Unit=update.service
+
+[Install]
+WantedBy=timers.target
