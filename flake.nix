@@ -4,24 +4,24 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     home-manager.url = "github:nix-community/home-manager";
 
-    emacs-overlay.url = "github:nix-community/emacs-overlay";
+    # emacs-overlay.url = "github:nix-community/emacs-overlay";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
   };
-  outputs = { nixpkgs, emacs-overlay, home-manager, ... }@inputs:
+  outputs = { nixpkgs,  home-manager, ... }@inputs:
     let
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
       base = [
 
-        {
-          nixpkgs.overlays = [ emacs-overlay.overlay];
-        }
+        # {
+        #   nixpkgs.overlays = [ emacs-overlay.overlay];
+        # }
         ./nixos/fonts.nix
         ./nixos/header.nix
         ./nixos/packages.nix
         ./nixos/services.nix
         ./nixos/users.nix
-        ./nixos/cachix.nix
+        # ./nixos/cachix.nix
       ];
     in {
 

@@ -1,4 +1,4 @@
-{ config, emacs, pkgs, lib, ... }:
+{ config, pkgs, lib, ... }:
 let
 
   home = "/home/jonathan";
@@ -15,7 +15,7 @@ let
     dmenu
     dunst
     dzen2
-    emacsPgtk
+    emacs
     feh
     ffmpeg
     firefox
