@@ -41,7 +41,6 @@
 (add-to-list 'custom-theme-load-path (concat user-emacs-directory "lisp"))
 (setq custom-file (concat user-emacs-directory "custom.el"))
 (load custom-file)
-(load-theme 'base16-atelier-cave)
 
 (use-package no-littering)
 
@@ -99,6 +98,8 @@
 (load "my_completion.el")
 (load "my_filetypes.el")
 (load "my_hooks.el")
+
+(load-theme 'base16-atelier-cave)
 (setq initial-buffer-choice "~/.config/emacs/start.org")
 (provide 'init.el)
 ;; init.el ends here
