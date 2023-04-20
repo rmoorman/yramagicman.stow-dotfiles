@@ -3,5 +3,5 @@
 export PATH="/etc/profiles/per-user/jonathan/bin/:/run/current-system/sw/bin/:$PATH"
 notify-send "$(cat /dev/shm/pc-flake)"
 rm /dev/shm/pc-flake
-notify-send "$(cat /dev/shm/server-flake)"
-rm /dev/shm/server-flake
+# notify-send "$(cat /dev/shm/server-flake)"
+# rm /dev/shm/server-flake
