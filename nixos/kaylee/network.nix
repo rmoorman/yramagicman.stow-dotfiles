@@ -15,10 +15,10 @@
                 DHCP= "yes";
             };
 
-            "80-wired" = {
-                matchConfig = { Name = "enp*s*"; };
-                DHCP= "yes";
-            };
+            # "80-wired" = {
+            #     matchConfig = { Name = "enp*s*"; };
+            #     DHCP= "yes";
+            # };
         };
     };
 
