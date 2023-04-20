@@ -2,7 +2,6 @@
 Description=Trying things
 
 [Service]
-ExecStart=/home/jonathan/.nix-profile/bin/notify-send 'Download completed'
-
+ExecStart=/etc/profiles/per-user/jonathan/bin/notify-send 'Download completed'
 [Install]
 WantedBy=default.target
