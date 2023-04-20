@@ -26,7 +26,7 @@
     in {
 
       homeConfigurations.jonathan = home-manager.lib.homeManagerConfiguration {
-        inherit emacs-overlay pkgs;
+        inherit pkgs;
 
 
         # Specify your home configuration modules here, for example,
