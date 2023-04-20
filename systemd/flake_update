@@ -1,11 +1,11 @@
 #!/bin/sh
 
 export PATH="/run/current-system/sw/bin/:$PATH"
-if [ -d "/home/jonathan/Documents/dots/#" ]; then
+if [ -d "/home/jonathan/Documents/dots" ]; then
     nix flake update "/home/jonathan/Documents/dots/#" > /dev/shm/pc-flake 2>&1
 fi
 
-if [ -d "/home/jonathan/Repos/dots/#" ]; then
+if [ -d "/home/jonathan/Repos/dots" ]; then
     nix flake update "/home/jonathan/Repos/dots/#" > /dev/shm/pc-flake 2>&1
 fi
 
