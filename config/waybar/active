@@ -2,6 +2,7 @@
 
 hyprctl activewindow | awk '/^\s*title:/ {$1=""; print $0 }'
 socat -u UNIX-CONNECT:/tmp/hypr/$HYPRLAND_INSTANCE_SIGNATURE/.socket2.sock - | while read -r line; do
+    ACTIVE_SPACE=$( hyprctl monitors | awk '/active/ { print $3 }')
     WINDOW_COUNT=$(hyprctl workspaces | grep -A 2 "workspace ID $ACTIVE_SPACE" | awk '/windows/ {print $2}')
     if [[ $WINDOW_COUNT -gt 0 ]]; then
         hyprctl activewindow | awk '/^\s*title:/ {$1=""; print $0 }'
