@@ -11,6 +11,7 @@ function update() {
         (
             conf="$(builtin cd $HOME/Documents/dots && git rev-parse --show-toplevel )"
             cd $conf || return
+            git checkout flake.lock
             git pull
             nix flake update --commit-lock-file
             sudo nixos-rebuild boot --impure --flake "$conf/#"  --upgrade-all
