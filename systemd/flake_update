@@ -9,4 +9,4 @@ if [ -d "/home/jonathan/Repos/dots" ]; then
     nix flake update "/home/jonathan/Repos/dots/#" > /dev/shm/pc-flake 2>&1
 fi
 
-nix flake update "/home/jonathan/Documents/dots/nixos/browncoat/#" > /dev/shm/server-flake 2>&1
+# nix flake update "/home/jonathan/Documents/dots/nixos/browncoat/#" > /dev/shm/server-flake 2>&1
