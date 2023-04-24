@@ -85,8 +85,10 @@
 (setq-default electric-indent-inhibit t)
 (setq backward-delete-char-untabify-method 'hungry)
 
-(load "server")
-(unless (server-running-p) (server-start))
+(add-hook 'after-init-hook
+          (lambda nil
+            (load "server")
+            (unless (server-running-p) (server-start))))
 
 (global-auto-revert-mode t)
 
@@ -145,7 +147,7 @@
 
 ;;                                 ))
 
-; (force-mode-line-update)
+                                        ; (force-mode-line-update)
 ;; (load "my_mu4e.el")
 
 (use-package evil
@@ -201,7 +203,7 @@
   ;;   ;; :prefix my-leader
   ;;   :prefix ",")
 
-   (my-space-def
+  (my-space-def
     :states '( normal )
     :keymaps 'override
     "s" 'save-buffer
@@ -261,9 +263,9 @@
               ("C-p" . company-select-previous)
               ("<tab>" . company-complete-selection))
   (:map lsp-mode-map
-              ("C-n" . company-select-next)
-              ("C-p" . company-select-previous)
-              ("<tab>" . company-complete-selection))
+        ("C-n" . company-select-next)
+        ("C-p" . company-select-previous)
+        ("<tab>" . company-complete-selection))
   :custom
   (company-minimum-prefix-length 3)
   (company-idle-delay 0.0))
@@ -299,9 +301,9 @@
 ;; (setq lsp-java-java-path "path_to_java_folder/Contents/Home/")
 
 (use-package org)
-  ; :hook
-  ; (org-mode . (lambda nil
-  ;               (visual-line-mode))))
+                                        ; :hook
+                                        ; (org-mode . (lambda nil
+                                        ;               (visual-line-mode))))
 
 (use-package lua-mode
   :mode "\\.lua\\'")
