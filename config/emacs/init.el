@@ -40,6 +40,7 @@
 (add-to-list 'load-path (concat user-emacs-directory "lisp"))
 (add-to-list 'custom-theme-load-path (concat user-emacs-directory "lisp"))
 (setq custom-file (concat user-emacs-directory "custom.el"))
+
 (load custom-file)
 
 (use-package no-littering)
@@ -120,34 +121,33 @@
   (interactive)
   (ansi-term (executable-find "zsh")))
 
-;; (setq-default mode-line-format (list
-;;                                 " "
-;;                                 mode-line-client
-;;                                 '(:eval
-;;                                   (propertize
-;;                                    (cond ((eq 'emacs evil-state) " EMACS " )
-;;                                          ((eq 'normal evil-state) " NORMAL ")
-;;                                          ((eq 'visual evil-state) " VISUAL ")
-;;                                          ((eq 'insert evil-state) " INSERT ")
-;;                                          (t " U " )
-;;                                          )))
-;;                                 " %& "
-;;                                 vc-mode
-;;                                 " %m "
-;;                                 '(:eval
-;;                                   (propertize
-;;                                    (if (buffer-file-name)
-;;                                        (mapconcat 'identity (nthcdr 4 (split-string (buffer-file-name) "/")) "/")
-;;                                      " ")))
-
-;;                                 " "
-;;                                 mode-line-percent-position
-;;                                 " "
-;;                                 " L:%l "
-
-;;                                 ))
-
-                                        ; (force-mode-line-update)
+;; ***** modeline *****
+(setq-default mode-line-format (list
+                                " "
+                                mode-line-client
+                                '(:eval
+                                  (propertize
+                                   (cond ((eq 'emacs evil-state) " E " )
+                                         ((eq 'normal evil-state) " N ")
+                                         ((eq 'visual evil-state) " V ")
+                                         ((eq 'insert evil-state) " I ")
+                                         (t " U " )
+                                         )))
+                                " %*%* "
+                                vc-mode
+                                " %m "
+                                '(:eval
+                                  (propertize
+                                   (if (buffer-file-name)
+                                       (mapconcat 'identity (nthcdr 4 (split-string (buffer-file-name) "/")) "/")
+                                     " ")))
+                                " "
+                                mode-line-percent-position
+                                " "
+                                " L:%0l "
+                                mode-line-modes
+                                ))
+(force-mode-line-update)
 ;; (load "my_mu4e.el")
 
 (use-package evil
