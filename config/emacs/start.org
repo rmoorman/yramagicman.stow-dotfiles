@@ -7,8 +7,9 @@
 
 
 * Local file shortcuts
-| File/Directory | Org Link |
-| stow-dotfiles  | [[~/Documents/dots][Dotfiles]] |
+| File/Directory      | Org Link      |
+| stow-dotfiles       | [[~/Documents/dots][Dotfiles]]      |
+| emacs configuration | [[~/Documents/dots/config/emacs/init.el][emacs init.el]] |
 
 * Local Machines
 

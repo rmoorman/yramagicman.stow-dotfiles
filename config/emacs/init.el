@@ -207,7 +207,8 @@
     :states '( normal )
     :keymaps 'override
     "s"  'save-buffer
-    "d"  'dired
+    "dd"  'dired
+    "df"  'dired-other-frame
     ","  'evil-switch-to-windows-last-buffer
     "b"  'ivy-switch-buffer
     "B"  'ibuffer
