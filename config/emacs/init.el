@@ -206,21 +206,22 @@
   (my-space-def
     :states '( normal )
     :keymaps 'override
-    "s" 'save-buffer
-    "d" 'dired
-    "," 'evil-switch-to-windows-last-buffer
-    "b" 'ivy-switch-buffer
-    "B" 'ibuffer
-    "e" 'eval-defun
-    "t" 'ansiterm-vert
-    "f" 'projectile-find-file
-    "p" 'projectile-switch-project
-    "n" 'flymake-goto-next-error
+    "s"  'save-buffer
+    "d"  'dired
+    ","  'evil-switch-to-windows-last-buffer
+    "b"  'ivy-switch-buffer
+    "B"  'ibuffer
+    "e"  'eval-defun
+    "t"  'ansiterm-vert
+    "f"  'projectile-find-file
+    "p"  'projectile-switch-project
+    "n"  'flymake-goto-next-error
     "gs" 'magit-status
     "gc" 'magit-checkout
     "jr" 'lsp-find-references
     "jd" 'lsp-find-definition
-    "F" 'find-file)
+    "w"  'visual-line-mode
+    "F"  'find-file)
 
   ;; (my-leader-def
   ;;   :states '( normal visual )
