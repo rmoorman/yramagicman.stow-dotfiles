@@ -24,8 +24,11 @@
     amdvlk
     microcodeAmd
     xorg.xf86videoamdgpu
+    virt-manager
   ];
 
+  virtualisation.libvirtd.enable = true;
+  programs.dconf.enable = true;
   services.flatpak.enable = true;
 
   #nixpkgs.config.packageOverrides = pkgs: {
