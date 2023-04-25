@@ -66,7 +66,6 @@ let
     vimHugeX
     vlc
     w3m
-    waybar
     wezterm
     wl-clipboard
     wofi

@@ -27,6 +27,7 @@
     libinput.mouse.naturalScrolling = true;
   };
   programs.hyprland.enable = true;
+  programs.waybar.enable = true;
   programs.hyprland.xwayland.enable = true;
   programs.hyprland.xwayland.hidpi = true;
 }
