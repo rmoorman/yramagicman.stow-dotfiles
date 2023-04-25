@@ -210,7 +210,8 @@
     "dd"  'dired
     "df"  'dired-other-frame
     ","  'evil-switch-to-windows-last-buffer
-    "b"  'ivy-switch-buffer
+    "bb"  'ivy-switch-buffer
+    "bf"  'ido-switch-buffer-other-frame
     "B"  'ibuffer
     "e"  'eval-defun
     "t"  'ansiterm-vert
