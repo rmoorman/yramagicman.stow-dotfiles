@@ -1,9 +1,0 @@
-[Unit]
-Description=Notify on battery low
-
-[Service]
-ExecStart=/home/jonathan/.local/systemd/update_notify
-
-
-[Install]
-WantedBy=default.target

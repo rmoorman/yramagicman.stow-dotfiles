@@ -1,6 +1,0 @@
-[Unit]
-Description=Update flakes daily
-
-[Service]
-Type=oneshot
-ExecStart=/home/jonathan/.local/systemd/flake_update

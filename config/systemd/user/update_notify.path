@@ -1,9 +1,0 @@
-[Unit]
-Description=Watch actual file for battery notification
-PartOf=update_notify.service
-
-[Path]
-PathModified=/dev/shm/pc-flake
-
-[Install]
-WantedBy=default.target
