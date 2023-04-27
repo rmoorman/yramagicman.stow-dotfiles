@@ -207,11 +207,11 @@
     :states '( normal )
     :keymaps 'override
     "s"  'save-buffer
-    "dd"  'dired
-    "df"  'dired-other-frame
+    "d"  'dired
+    "D"  'dired-other-frame
     ","  'evil-switch-to-windows-last-buffer
-    "bb"  'ivy-switch-buffer
-    "bf"  'ido-switch-buffer-other-frame
+    "b"  'ivy-switch-buffer
+    "o"  'ido-switch-buffer-other-frame
     "B"  'ibuffer
     "e"  'eval-defun
     "t"  'ansiterm-vert
