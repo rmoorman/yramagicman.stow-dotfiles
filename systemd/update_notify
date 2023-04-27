@@ -1,6 +1,6 @@
 #!/bin/sh
 
 export PATH="/etc/profiles/per-user/jonathan/bin/:/run/current-system/sw/bin/:$PATH"
-[ -n "$(cat /dev/shm/pc-flake)" ] && notify-send "Update available"
+[ -n "$(grep -v 'warning: Git tree' /dev/shm/pc-flake)" ] && notify-send "Update available"
 # notify-send "$(cat /dev/shm/server-flake)"
 # rm /dev/shm/server-flake
