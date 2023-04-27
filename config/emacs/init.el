@@ -249,11 +249,15 @@
    "C-0" 'text-scale-adjust
    "C-w C-f" 'toggle-frame-fullscreen
    "C-w t" 'ansiterm-vert))
+(defun my/reload nil
+  (interactive)
+  (load user-init-file))
 
 ;; keybind
 (global-set-key (kbd "C-c b") 'buffer-menu)
 (global-set-key (kbd "C-c t") 'ttymode)
 (global-set-key (kbd "C-c f") 'set-x-faces)
+(global-set-key (kbd "C-c r") 'my/reload)
 
 ;; Make ESC quit prompts
 (global-set-key (kbd "<escape>") 'keyboard-escape-quit)
