@@ -34,4 +34,16 @@
       hinting.style = "hintmedium";
   };
 
+
+
+    system.autoUpgrade = {
+        enable = true;
+        dates = "21:00";
+        flake = "${config.users.users.jonathan.home}/Repos/dots";
+        flags = [
+            "--commit-lock-file"
+        ];
+        allowReboot = false;
+    };
+
 }

@@ -1,5 +1,17 @@
 { config, pkgs, ... }:
 {
+
+    system.autoUpgrade = {
+        enable = true;
+        dates = "13:00";
+        flake = "${config.users.users.jonathan.home}/Documents/dots";
+        flags = [
+            "--commit-lock-file"
+        ];
+        allowReboot = false;
+    };
+
+
   boot.kernelPackages = pkgs.linuxPackages_zen;
   # boot.extraModulePackages = with config.boot.kernelPackages; [ v4l2loopback.out ];
 
