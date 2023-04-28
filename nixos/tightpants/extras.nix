@@ -42,6 +42,7 @@
         flake = "${config.users.users.jonathan.home}/Repos/dots";
         flags = [
             "--commit-lock-file"
+             "--update-input" "nixpkgs home-manager"
         ];
         allowReboot = false;
     };
