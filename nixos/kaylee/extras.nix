@@ -7,13 +7,16 @@
         flake = "${config.users.users.jonathan.home}/Documents/dots";
         flags = [
             "--commit-lock-file"
-             "--update-input" "nixpkgs home-manager"
+            "--update-input" "home-manager"
+            "--update-input" "nixpkgs"
+            "-L"
+
         ];
         allowReboot = false;
     };
 
 
-  boot.kernelPackages = pkgs.linuxPackages_zen;
+    boot.kernelPackages = pkgs.linuxPackages_zen;
   # boot.extraModulePackages = with config.boot.kernelPackages; [ v4l2loopback.out ];
 
   # boot.kernelModules = [
@@ -34,10 +37,10 @@
   fileSystems."/".options = ["compress=zstd"];
 
   environment.systemPackages = with pkgs; [
-    amdvlk
-    microcodeAmd
-    xorg.xf86videoamdgpu
-    virt-manager
+      amdvlk
+      microcodeAmd
+      xorg.xf86videoamdgpu
+      virt-manager
   ];
 
   virtualisation.libvirtd.enable = true;
