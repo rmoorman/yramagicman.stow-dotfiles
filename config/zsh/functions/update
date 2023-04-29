@@ -40,7 +40,7 @@ function update() {
         sudo pkg upgrade
     fi
 
-    if [[ $(command -v home-manager) ]] &&  [[ ! $(command -v nixos-rebuild) ]] ; then
+    if [[ $(command -v home-manager) ]] ; then
         home-manager switch
         nix-collect-garbage -d --delete-older-than 14d
         nix store optimise
