@@ -6,8 +6,6 @@ function update() {
         home-manager expire-generations "-14 days"
     fi
     if [[ $(command -v nixos-rebuild) ]] ; then
-        # Git/nix are fixed, but committing the flake.lock is not
-        # something I'm interested in.
         (
             conf="$(builtin cd $HOME/Documents/dots && git rev-parse --show-toplevel )"
             cd $conf || return
@@ -42,8 +40,8 @@ function update() {
 
     if [[ $(command -v home-manager) ]] ; then
         home-manager switch
-        nix-collect-garbage -d --delete-older-than 14d
-        nix store optimise
+        # nix-collect-garbage -d --delete-older-than 14d
+        # nix store optimise
     fi
     if [[ $(command -v flatpak) ]] && [[ -z $SSH_CLIENT ]] ; then
         echo "\n flatpak \n"
