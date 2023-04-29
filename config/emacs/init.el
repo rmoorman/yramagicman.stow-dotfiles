@@ -308,9 +308,9 @@
 ;; (setq lsp-java-java-path "path_to_java_folder/Contents/Home/")
 
 (use-package org)
-                                        ; :hook
-                                        ; (org-mode . (lambda nil
-                                        ;               (visual-line-mode))))
+;; :hook
+;; (org-mode . (lambda nil
+;;               (visual-line-mode))))
 
 (use-package lua-mode
   :mode "\\.lua\\'")
@@ -358,12 +358,6 @@
 
 (use-package dockerfile-mode
   :mode "\\Dockerfile|dockerfile\\'")
-
-(use-package highlight-indent-guides
-  :config
-  (setq highlight-indent-guides-method 'character)
-  (setq highlight-indent-guides-character "|")
-  )
 
 ;; hooks
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
