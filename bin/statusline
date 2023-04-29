@@ -57,9 +57,10 @@ function my_load() {
 function my_mail() {
     personal=$(ls ~/.config/mail/gilsons/Inbox.personal/new/ | grep -Evc '*,T$' )
     bills=$(ls ~/.config/mail/bills/Inbox.bills/new/  | grep -Evc '*,T$')
-    work=$(ls ~/.config/mail/work/Inbox.work/new/  | grep -Evc '*,T$' )
+    # work=$(ls ~/.config/mail/work/Inbox.work/new/  | grep -Evc '*,T$' )
+    work=0
     if test "$personal" -gt 0 || test "$work" -gt 0; then
-        echo "M: $personal/$work/$bills - "
+        echo "M: $personal/$bills - "
     fi
 }
 
