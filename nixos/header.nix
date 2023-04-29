@@ -43,7 +43,4 @@
     };
     system.stateVersion = "22.05"; # Did you read the comment?
 
-    nixpkgs.config.permittedInsecurePackages = [
-        "python-2.7.18.6" # GNUbg is old
-    ];
 }

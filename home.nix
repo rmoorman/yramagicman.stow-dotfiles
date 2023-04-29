@@ -40,8 +40,7 @@ let
     mpv
     msmtp
     mutt
-    mypaint
-    neovim
+    # neovim
     # newsflash
     pandoc
     pass
@@ -63,7 +62,7 @@ let
     ungoogled-chromium
     universal-ctags
     urlview
-    vimHugeX
+    # vimHugeX
     vlc
     w3m
     wezterm
@@ -122,48 +121,91 @@ let
 
 in {
 
+  nixpkgs.config.allowUnfree = true;
+  nixpkgs.config.permittedInsecurePackages = [
+    "python-2.7.18.6" # GNUbg is old
+  ];
 
   home.username = "jonathan";
   home.homeDirectory = home;
   home.packages = packages;
 
-  # programs.neovim = {
-  #   enable = true;
-  #   extraConfig =  ( builtins.readFile (builtins.toPath "${dotfiles}/vim/vimrc")  );
+  programs.neovim = {
+    enable = true;
+    extraConfig =  ( builtins.readFile (builtins.toPath "${dotfiles}/vim/vimrc")  );
+  };
+
+  programs.vim = {
+    enable = true;
+    extraConfig =  builtins.readFile (builtins.toPath "${dotfiles}/vim/vimrc");
+    packageConfigurable = pkgs.vimHugeX;
+  };
+
+  # programs.emacs = {
+  #     enable = true;
+  #     extraConfig =  builtins.readFile (builtins.toPath "${dotfiles}/config/emacs/init.el");
+  #     extraPackages =  epkgs: with epkgs; [
+  #         no-littering
+  #         projectile
+  #         magit
+  #         disable-mouse
+  #         base16-theme
+  #         auto-package-update
+  #         evil
+  #         evil-collection
+  #         evil-escape
+  #         evil-numbers
+  #         evil-visualstar
+  #         evil-commentary
+  #         evil-surround
+  #         evil-matchit
+  #         general
+  #         company
+  #         lsp-mode
+  #         which-key
+  #         ivy
+  #         org
+  #         lua-mode
+  #         markdown-mode
+  #         php-mode
+  #         racket-mode
+  #         web-mode
+  #         haskell-mode
+  #         typescript-mode
+  #         nroff-mode
+  #         rust-mode
+  #         nix-mode
+  #         dockerfile-mode
+  #         highlight-indent-guides
+  #     ];
   # };
 
-  # programs.vim = {
-  #   enable = true;
-  #   extraConfig =  builtins.readFile (builtins.toPath "${dotfiles}/vim/vimrc");
-  #   packageConfigurable = pkgs.vimHugeX;
-  # };
+  programs.zsh = {
+    enable = true;
+    completionInit = "";
+    initExtra =  builtins.readFile (
+      builtins.toPath "${dotfiles}/config/zsh/zshrc"
+    );
+    logoutExtra =  builtins.readFile (
+      builtins.toPath "${dotfiles}/config/zsh/zlogout"
+    );
+    loginExtra =  builtins.readFile (
+      builtins.toPath "${dotfiles}/config/zsh/zlogin"
+    );
+    dotDir=".config/zsh";
+    envExtra =  builtins.readFile (
+      builtins.toPath "${dotfiles}/root/zshenv"
+    );
+  };
 
-  # programs.zsh = {
-  #   enable = true;
-  #   completionInit = "";
-  #   initExtra =  builtins.readFile (
-  #     builtins.toPath "${dotfiles}/config/zsh/zshrc"
-  #   );
-  #   logoutExtra =  builtins.readFile (
-  #     builtins.toPath "${dotfiles}/config/zsh/zlogout"
-  #   );
-  #   loginExtra =  builtins.readFile (
-  #     builtins.toPath "${dotfiles}/config/zsh/zlogin"
-  #   );
-  #   dotDir=".config/zsh";
-  #   envExtra =  builtins.readFile (
-  #     builtins.toPath "${dotfiles}/root/zshenv"
-  #   );
-  # };
-
-  # home.file = builtins.listToAttrs (
-  #   builtins.concatLists [
-  #     bin
-  #     nvim
-  #     vim
-  #     zsh
-  #   ]
-  # );
+  home.file = builtins.listToAttrs (
+    builtins.concatLists [
+      bin
+      nvim
+      vim
+      zsh
+    ]
+  );
 
   xdg.userDirs.desktop = "$HOME/";
 
