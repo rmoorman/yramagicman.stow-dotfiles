@@ -46,6 +46,21 @@
   # virtualisation.libvirtd.enable = true;
   programs.dconf.enable = true;
   services.flatpak.enable = true;
+  services.syncthing = {
+    user = "jonathan";
+    group="users";
+    enable = true;
+    dataDir = "/home/syncthing";
+    devices = {
+      "browncoat" = { id = "H2CBPQ3-VYQ7GUS-TFJEPMO-MBSUUI2-ACPLSCP-PLDH5IZ-P3XJN4B-HLPXMAE"; };
+    };
+    folders = {
+      "home" = {
+        path = "/home/jonathan/";    # Which folder to add to Syncthing
+        devices = [ "browncoat" ];      # Which devices to share the folder with
+      };
+    };
+  };
 
   #nixpkgs.config.packageOverrides = pkgs: {
   #    vaapiIntel = pkgs.vaapiIntel.override { enableHybridCodec = true; };

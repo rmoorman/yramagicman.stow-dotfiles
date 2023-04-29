@@ -2,15 +2,15 @@
 {
 
 
-system.autoUpgrade = {
+  system.autoUpgrade = {
     enable = true;
     dates = "monthly";
     flake = "${config.users.users.jonathan.home}/Documents/dots/nixos/browncoat";
     flags = [
-        "--commit-lock-file"
+      "--commit-lock-file"
     ];
     allowReboot = true;
-};
+  };
 
   # Mount secondary drive
   fileSystems."/home/jonathan/Storage".device = "/dev/disk/by-label/storage";
@@ -26,7 +26,7 @@ system.autoUpgrade = {
   # services.flatpak.enable = true;
   # xdg.portal.enable = true;
   # xdg.portal.extraPortals = [
-  #     pkgs.xdg-desktop-portal-gnome
+  #   pkgs.xdg-desktop-portal-gnome
   # ];
 
   virtualisation.podman = {
@@ -49,7 +49,7 @@ system.autoUpgrade = {
     enable = true;
     extraPackages = with pkgs; [
       intel-media-driver # LIBVA_DRIVER_NAME=iHD
-      # vaapiIntel       # LIBVA_DRIVER_NAME=i965 (older but works better for Firefox/Chromium)
+      # vaapiIntel     # LIBVA_DRIVER_NAME=i965 (older but works better for Firefox/Chromium)
       vaapiVdpau
       libvdpau-va-gl
     ];
@@ -94,4 +94,41 @@ system.autoUpgrade = {
       "100.94.223.34"
     ];
   };
+
+  services.syncthing = {
+      user = "jonathan";
+      group="users";
+      enable = true;
+      dataDir = "/home/syncthing";
+      guiAddress = "0.0.0.0:8384";
+
+      extraOptions= {
+          gui = {
+              user = "jonathan";
+              password = "syncmystuff";
+          };
+          options = {
+              ignoredFolder = "Storage";
+          };
+      };
+
+
+      devices = {
+          "kaylee" = { id = "RQZIUDO-R6463VZ-M5SSAUF-M4IYNFZ-HWVSZBL-JCBWNK4-X2WIWVU-KZNFOAR"; };
+      };
+      folders = {
+          "home" = {
+              path = "/home/jonathan/";  # Which folder to add to Syncthing
+              devices = [ "kaylee" ];    # Which devices to share the folder with
+          };
+      };
+  };
+
+  networking.firewall.allowedTCPPorts = [
+    8384
+  ];
+
+
+
+
 }
