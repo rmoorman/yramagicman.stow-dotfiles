@@ -96,7 +96,7 @@
   services.syncthing = {
       user = "jonathan";
       group="users";
-      enable = true;
+      enable = false;
       dataDir = "/home/syncthing";
       guiAddress = "0.0.0.0:8384";
 
