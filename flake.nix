@@ -65,11 +65,12 @@
       nixosConfigurations.tightpants = with base; nixpkgs.lib.nixosSystem {
         inherit system;
         modules = base ++ [
-          ./nixos/tightpants
-          ./nixos/yubikey.nix
-          ./nixos/xserver.nix
+          ./nixos/auto-upgrade.nix
           ./nixos/doas.nix
           ./nixos/systemd
+          ./nixos/tightpants
+          ./nixos/xserver.nix
+          ./nixos/yubikey.nix
         ];
       };
 
@@ -77,11 +78,12 @@
       nixosConfigurations."kaylee" = with base; nixpkgs.lib.nixosSystem {
         inherit system;
         modules = base ++ [
-          ./nixos/kaylee
-          ./nixos/yubikey.nix
-          ./nixos/xserver.nix
+          ./nixos/auto-upgrade.nix
           ./nixos/doas.nix
+          ./nixos/kaylee
           ./nixos/systemd
+          ./nixos/xserver.nix
+          ./nixos/yubikey.nix
         ];
       };
     };

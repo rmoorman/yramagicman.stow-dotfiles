@@ -1,21 +1,8 @@
 { config, pkgs, ... }:
 {
 
-    system.autoUpgrade = {
-        enable = true;
-        dates = "13:00";
-        flake = "${config.users.users.jonathan.home}/Documents/dots";
-        flags = [
-            "--commit-lock-file"
-            "--update-input" "home-manager"
-            "--update-input" "nixpkgs"
-            "-L"
 
-        ];
-        allowReboot = false;
-    };
-
-    boot.kernelPackages = pkgs.linuxPackages_zen;
+  boot.kernelPackages = pkgs.linuxPackages_zen;
   # boot.extraModulePackages = with config.boot.kernelPackages; [ v4l2loopback.out ];
 
   # boot.kernelModules = [
@@ -36,10 +23,10 @@
   fileSystems."/".options = ["compress=zstd"];
 
   environment.systemPackages = with pkgs; [
-      amdvlk
-      microcodeAmd
-      xorg.xf86videoamdgpu
-      virt-manager
+    amdvlk
+    microcodeAmd
+    xorg.xf86videoamdgpu
+    virt-manager
   ];
 
   # virtualisation.libvirtd.enable = true;
@@ -50,14 +37,14 @@
     group="users";
     enable = false;
     dataDir = "/home/syncthing";
-      guiAddress = "0.0.0.0:8384";
+    guiAddress = "0.0.0.0:8384";
 
-      extraOptions= {
-          gui = {
-              user = "jonathan";
-              password = "syncmystuff";
-          };
+    extraOptions= {
+      gui = {
+        user = "jonathan";
+        password = "syncmystuff";
       };
+    };
 
     devices = {
       "browncoat" = { id = "H2CBPQ3-VYQ7GUS-TFJEPMO-MBSUUI2-ACPLSCP-PLDH5IZ-P3XJN4B-HLPXMAE"; };
