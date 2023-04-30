@@ -9,6 +9,7 @@ let
     arandr
     breeze-icons
     btop
+    nextcloud-client
     calibre
     chessx
     cmus
@@ -39,6 +40,7 @@ let
     maim
     mpv
     msmtp
+    mu
     mutt
     # neovim
     # newsflash
@@ -132,7 +134,7 @@ in {
 
   programs.neovim = {
     enable = true;
-    extraConfig =  ( builtins.readFile (builtins.toPath "${dotfiles}/vim/vimrc")  );
+    extraConfig =  builtins.readFile (builtins.toPath "${dotfiles}/vim/vimrc");
   };
 
   programs.vim = {

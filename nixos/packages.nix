@@ -17,9 +17,7 @@
         libva
         man-pages
         mariadb
-        mu
         neovim
-        nextcloud-client
         nfs-utils
         nodejs
         nvtop
