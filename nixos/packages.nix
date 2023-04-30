@@ -6,6 +6,7 @@
         apacheHttpd
         # cachix
         cryptsetup
+        pinentry-gtk2
         file
         gcc
         git
