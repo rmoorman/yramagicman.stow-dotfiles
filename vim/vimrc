@@ -36,7 +36,7 @@ syntax on
 let g:polyglot_is_disabled = {}
 let g:javascript_sql_dialect = 'javascript'
  if filereadable($HOME.'/Documents/dots/vim/autoload/plug.vim') == 0
-     echom system([ 'curl', 'https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim', '-o', $HOME. '/Documents/dots/vim/autoload/plug.vim' ])
+     echom system( 'curl https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim -o '. $HOME. '/Documents/dots/vim/autoload/plug.vim' )
  endif
 call plug#begin($HOME.'/.local/share/vim')
 " Plug 'git@gitlab.com:yramagicman/auto-omnicomplete'
