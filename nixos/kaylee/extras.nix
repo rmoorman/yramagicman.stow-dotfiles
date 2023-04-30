@@ -51,6 +51,15 @@
     group="users";
     enable = true;
     dataDir = "/home/syncthing";
+      guiAddress = "0.0.0.0:8384";
+
+      extraOptions= {
+          gui = {
+              user = "jonathan";
+              password = "syncmystuff";
+          };
+      };
+
     devices = {
       "browncoat" = { id = "H2CBPQ3-VYQ7GUS-TFJEPMO-MBSUUI2-ACPLSCP-PLDH5IZ-P3XJN4B-HLPXMAE"; };
     };

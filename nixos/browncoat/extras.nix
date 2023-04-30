@@ -107,9 +107,6 @@
               user = "jonathan";
               password = "syncmystuff";
           };
-          options = {
-              ignoredFolder = "Storage";
-          };
       };
 
 
