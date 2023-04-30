@@ -46,6 +46,8 @@ let
     # newsflash
     pandoc
     pass
+    pinentry-gtk2
+    haskellPackages.xmobar
     pavucontrol
     pcmanfm
     picom

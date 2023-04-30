@@ -10,7 +10,6 @@
         gcc
         git
         gnumake
-        haskellPackages.xmobar
         home-manager
         htop
         killall
@@ -22,12 +21,10 @@
         nodejs
         nvtop
         openssl
-        pinentry-gtk2
         powertop
         python3Full
         racket
         rsync
-        rxvt-unicode
         tmux
         unzip
         vim

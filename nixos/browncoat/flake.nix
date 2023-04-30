@@ -10,7 +10,6 @@
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
       base = [
-        ../fonts.nix
         ../header.nix
         ../packages.nix
         ../services.nix
