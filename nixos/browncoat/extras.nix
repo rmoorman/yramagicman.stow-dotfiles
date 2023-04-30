@@ -1,7 +1,6 @@
 { config, pkgs, ... }:
 {
 
-
   system.autoUpgrade = {
     enable = true;
     dates = "monthly";
@@ -15,7 +14,6 @@
   # Mount secondary drive
   fileSystems."/home/jonathan/Storage".device = "/dev/disk/by-label/storage";
   fileSystems."/home/jonathan/Storage".options = ["compress=zstd"];
-
 
   environment.systemPackages = with pkgs; [
     btrfs-progs
@@ -109,7 +107,6 @@
           };
       };
 
-
       devices = {
           "kaylee" = { id = "RQZIUDO-R6463VZ-M5SSAUF-M4IYNFZ-HWVSZBL-JCBWNK4-X2WIWVU-KZNFOAR"; };
       };
@@ -124,8 +121,5 @@
   networking.firewall.allowedTCPPorts = [
     8384
   ];
-
-
-
 
 }

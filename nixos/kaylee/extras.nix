@@ -15,7 +15,6 @@
         allowReboot = false;
     };
 
-
     boot.kernelPackages = pkgs.linuxPackages_zen;
   # boot.extraModulePackages = with config.boot.kernelPackages; [ v4l2loopback.out ];
 
@@ -70,6 +69,10 @@
       };
     };
   };
+
+  networking.firewall.allowedTCPPorts = [
+    8384
+  ];
 
   #nixpkgs.config.packageOverrides = pkgs: {
   #    vaapiIntel = pkgs.vaapiIntel.override { enableHybridCodec = true; };
