@@ -3,7 +3,7 @@
 
   system.autoUpgrade = {
     enable = true;
-    dates = "monthly";
+    startAt = "*-*-10 00:00:00";
     flake = "${config.users.users.jonathan.home}/Documents/dots/nixos/browncoat";
     flags = [
       "--commit-lock-file"
@@ -94,28 +94,28 @@
   };
 
   services.syncthing = {
-      user = "jonathan";
-      group="users";
-      enable = false;
-      dataDir = "/home/syncthing";
-      guiAddress = "0.0.0.0:8384";
+    user = "jonathan";
+    group="users";
+    enable = false;
+    dataDir = "/home/syncthing";
+    guiAddress = "0.0.0.0:8384";
 
-      extraOptions= {
-          gui = {
-              user = "jonathan";
-              password = "syncmystuff";
-          };
+    extraOptions= {
+      gui = {
+        user = "jonathan";
+        password = "syncmystuff";
       };
+    };
 
-      devices = {
-          "kaylee" = { id = "RQZIUDO-R6463VZ-M5SSAUF-M4IYNFZ-HWVSZBL-JCBWNK4-X2WIWVU-KZNFOAR"; };
+    devices = {
+      "kaylee" = { id = "RQZIUDO-R6463VZ-M5SSAUF-M4IYNFZ-HWVSZBL-JCBWNK4-X2WIWVU-KZNFOAR"; };
+    };
+    folders = {
+      "home" = {
+        path = "/home/jonathan/";  # Which folder to add to Syncthing
+        devices = [ "kaylee" ];    # Which devices to share the folder with
       };
-      folders = {
-          "home" = {
-              path = "/home/jonathan/";  # Which folder to add to Syncthing
-              devices = [ "kaylee" ];    # Which devices to share the folder with
-          };
-      };
+    };
   };
 
   networking.firewall.allowedTCPPorts = [

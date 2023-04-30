@@ -1,28 +1,19 @@
 { config, pkgs, ... }:
 {
-    systemd.timers = {
-
-        "store-balance" = {
-            wantedBy = [ "timers.target" ];
-            enable = true;
-            after = [ "time-set.target" "time-sync.target" ];
-            partOf=[ "btrfs-store-balance.service" ];
-            timerConfig = {
-                Unit = "btrfs-store-balance.service";
-                OnCalendar = "*-*-15 00:00:00";
-                Persistent=true;
-            };
-        };
+  systemd.services = {
+    store-balance = {
+      after = [ "network-online.target" ];
+      description = "Run btrfs balance monthly";
+      enable=true;
+      script = "/run/current-system/sw/bin/btrfs balance start --full-balance /srv/storage/";
+      serviceConfig.Type = "oneshot";
+      startAt = "*-*-15 00:00:00";
+      wants = [ "network-online.target" ];
     };
-
-    systemd.services = {
-        "btrfs-store-balance" = {
-            partOf=[ "btrfs-store-balance.service" ];
-            serviceConfig.Type = "oneshot";
-            description = "Run btrfs balance monthly";
-            script = "/run/current-system/sw/bin/btrfs balance start --full-balance /srv/storage/";
-            wantedBy = [ "store-balance.timer" ];
-        };
+  };
+  systemd.timers.store-balance = {
+    timerConfig = {
+      Persistent = true;
     };
-
+  };
 }

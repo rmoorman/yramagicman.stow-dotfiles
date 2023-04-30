@@ -1,28 +1,22 @@
 { config, pkgs, ... }:
 {
-    systemd.timers = {
 
-        "scrub" = {
-            wantedBy = [ "timers.target" ];
-            enable = true;
-            after = [ "time-set.target" "time-sync.target" ];
-            partOf=[ "btrfs-scrub-store.service" ];
-            timerConfig = {
-                Unit = "btrfs-scrub-store.service";
-                OnCalendar = "monthly";
-                Persistent=true;
-            };
-        };
+  systemd.services = {
+    store-scrub = {
+      after = [ "network-online.target" ];
+      description = "Run btrfs scrub monthly";
+      enable=true;
+      script = "/run/current-system/sw/bin/btrfs scrub start /srv/storage/";
+      serviceConfig.Type = "oneshot";
+      startAt = "monthly";
+      wants = [ "network-online.target" ];
     };
+  };
 
-    systemd.services = {
-        "btrfs-scrub-store" = {
-            serviceConfig.Type = "oneshot";
-            partOf=[ "btrfs-scrub-store.service" ];
-            description = "Run btrfs scrub monthly";
-            script = "/run/current-system/sw/bin/btrfs scrub start /srv/storage/";
-            wantedBy = [ "scrub.timer" ];
-        };
+  systemd.timers.store-scrub = {
+    timerConfig = {
+      Persistent = true;
     };
+  };
 
 }

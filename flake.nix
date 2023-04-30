@@ -62,18 +62,14 @@
         # to pass through arguments to home.nix
       };
 
-      nixosConfigurations."tightpants" =with base; nixpkgs.lib.nixosSystem {
+      nixosConfigurations.tightpants = with base; nixpkgs.lib.nixosSystem {
         inherit system;
         modules = base ++ [
           ./nixos/tightpants
           ./nixos/yubikey.nix
           ./nixos/xserver.nix
           ./nixos/doas.nix
-          ./nixos/systemd/backup.nix
-          ./nixos/systemd/scrub.nix
-          ./nixos/systemd/balance.nix
-          ./nixos/systemd/scrub-status.nix
-          ./nixos/systemd/snapshot.nix
+          ./nixos/systemd
         ];
       };
 
@@ -85,11 +81,7 @@
           ./nixos/yubikey.nix
           ./nixos/xserver.nix
           ./nixos/doas.nix
-          ./nixos/systemd/backup.nix
-          ./nixos/systemd/scrub.nix
-          ./nixos/systemd/scrub-status.nix
-          ./nixos/systemd/snapshot.nix
-          ./nixos/systemd/balance.nix
+          ./nixos/systemd
         ];
       };
     };
