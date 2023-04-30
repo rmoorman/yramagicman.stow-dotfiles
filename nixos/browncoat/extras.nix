@@ -3,7 +3,7 @@
 
   system.autoUpgrade = {
     enable = true;
-    startAt = "*-*-10 00:00:00";
+    dates = "*-*-10 00:00:00";
     flake = "${config.users.users.jonathan.home}/Documents/dots/nixos/browncoat";
     flags = [
       "--commit-lock-file"
