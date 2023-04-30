@@ -3,4 +3,4 @@ Description=Mailbox indexer
 
 [Service]
 Type=oneshot
-ExecStart=/run/current-system/sw/bin/mu index
+ExecStart=/home/jonathan/.nix-profile/bin/mu index
