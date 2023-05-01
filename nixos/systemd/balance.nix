@@ -6,7 +6,7 @@
       description = "Run btrfs balance monthly";
       enable=true;
       script = "/run/current-system/sw/bin/btrfs balance start --full-balance /";
-      serviceConfig.Type = "oneshot";
+      serviceConfig.Type = "simple";
       startAt = "*-*-15 00:00:00";
       wants = [ "network-online.target" ];
     };

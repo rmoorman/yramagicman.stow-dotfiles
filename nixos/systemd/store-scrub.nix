@@ -7,7 +7,7 @@
       description = "Run btrfs scrub monthly";
       enable=true;
       script = "/run/current-system/sw/bin/btrfs scrub start /srv/storage/";
-      serviceConfig.Type = "oneshot";
+      serviceConfig.Type = "simple";
       startAt = "monthly";
       wants = [ "network-online.target" ];
     };
