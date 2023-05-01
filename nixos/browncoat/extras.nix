@@ -20,6 +20,7 @@
     intel-gpu-tools
     podman-compose
     microcodeIntel
+    emacs-nox
   ];
   # services.flatpak.enable = true;
   # xdg.portal.enable = true;
