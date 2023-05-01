@@ -437,6 +437,7 @@
       (save-some-buffers 1)
     nil))
 (add-function :after after-focus-change-function #'save-on-focus-lost)
+(add-function :after after-focus-change-function #'evil-normal-state)
 
 (add-function :after after-focus-change-function #'set-x-faces)
 (set-x-faces)
