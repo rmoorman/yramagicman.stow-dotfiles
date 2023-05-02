@@ -29,7 +29,7 @@
     virt-manager
   ];
 
-  # virtualisation.libvirtd.enable = true;
+  virtualisation.libvirtd.enable = true;
   programs.dconf.enable = true;
   services.flatpak.enable = true;
   services.syncthing = {
