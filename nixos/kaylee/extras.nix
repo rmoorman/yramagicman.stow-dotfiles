@@ -1,4 +1,12 @@
 { config, pkgs, ... }:
+let sharedDirectories = [
+      "Documents"
+      "Calibre Library"
+      "Pictures"
+      "Videos"
+      "Music"
+    ];
+in
 {
 
 
@@ -35,7 +43,7 @@
   services.syncthing = {
     user = "jonathan";
     group="users";
-    enable = false;
+    enable = true;
     dataDir = "/home/syncthing";
     guiAddress = "0.0.0.0:8384";
 
@@ -50,29 +58,14 @@
       "browncoat" = { id = "H2CBPQ3-VYQ7GUS-TFJEPMO-MBSUUI2-ACPLSCP-PLDH5IZ-P3XJN4B-HLPXMAE"; };
     };
 
-    folders = {
-      "documents" = {
-        path = "/home/jonathan/Documents";    # Which folder to add to Syncthing
-        devices = [ "browncoat" ];      # Which devices to share the folder with
-      };
-      "calibre_library" = {
-        path = "/home/jonathan/Calibre Library";    # Which folder to add to Syncthing
-        devices = [ "browncoat" ];      # Which devices to share the folder with
-      };
-      "pictures" = {
-        path = "/home/jonathan/Pictures";    # Which folder to add to Syncthing
-        devices = [ "browncoat" ];      # Which devices to share the folder with
-      };
-      "videos" = {
-        path = "/home/jonathan/Videos";    # Which folder to add to Syncthing
-        devices = [ "browncoat" ];      # Which devices to share the folder with
-      };
-      "music" = {
-        path = "/home/jonathan/Music";    # Which folder to add to Syncthing
-        devices = [ "browncoat" ];      # Which devices to share the folder with
-      };
-
-    };
+    folders = builtins.listToAttrs ( map (f:
+      {
+        name="${f}";
+        value = (builtins.listToAttrs [
+          {name="path"; value="${config.users.users.jonathan.home}/${f}";}
+          {name="devices"; value=["browncoat"];}
+        ]);
+      }) sharedDirectories ) ;
   };
 
   networking.firewall.allowedTCPPorts = [

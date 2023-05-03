@@ -1,4 +1,12 @@
 { config, pkgs, ... }:
+let sharedDirectories = [
+      "Documents"
+      "Calibre Library"
+      "Pictures"
+      "Videos"
+      "Music"
+    ];
+in
 {
 
   system.autoUpgrade = {
@@ -97,7 +105,7 @@
   services.syncthing = {
     user = "jonathan";
     group="users";
-    enable = false;
+    enable = true;
     dataDir = "/home/syncthing";
     guiAddress = "0.0.0.0:8384";
 
@@ -111,12 +119,14 @@
     devices = {
       "kaylee" = { id = "RQZIUDO-R6463VZ-M5SSAUF-M4IYNFZ-HWVSZBL-JCBWNK4-X2WIWVU-KZNFOAR"; };
     };
-    folders = {
-      "home" = {
-        path = "/home/jonathan/";  # Which folder to add to Syncthing
-        devices = [ "kaylee" ];    # Which devices to share the folder with
-      };
-    };
+    folders = builtins.listToAttrs ( map (f:
+      {
+        name="${f}";
+        value = (builtins.listToAttrs [
+          {name="path"; value="${config.users.users.jonathan.home}/${f}";}
+          {name="devices"; value=["kaylee"];}
+        ]);
+      }) sharedDirectories ) ;
   };
 
   networking.firewall.allowedTCPPorts = [
