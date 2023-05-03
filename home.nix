@@ -2,14 +2,15 @@
 let
 
   home = "/home/jonathan";
-  dotfiles = "${home}/Documents/dots";
+  dotfiles = "${home}/Repos/dots";
   gitPath = "${pkgs.git}/bin/git";
   mkStartScript = name: pkgs.writeShellScript "${name}.sh" ''
         set -euo pipefail
         PATH="/run/current-system/sw/bin:${pkgs.home-manager}/bin:$PATH"
         printf $PATH
         export NIX_PATH="nixpkgs=/nix/var/nix/profiles/per-user/root/channels/nixos:nixos-config=/etc/nixos/configuration.nix"
-        ${pkgs.home-manager}/bin/home-manager switch --impure --flake /home/jonathan/Repos/dots/#${host};
+        ( cd ${dotfiles} && nix flake update --commit-lock-file )
+        ${pkgs.home-manager}/bin/home-manager switch --impure --flake /home/jonathan/Repos/dots/#${host}
         ${pkgs.home-manager}/bin/home-manager expire-generations "-14 days"
       '';
 
@@ -20,7 +21,6 @@ let
     arandr
     breeze-icons
     btop
-    nextcloud-client
     calibre
     chessx
     cmus
@@ -31,6 +31,7 @@ let
     feh
     ffmpeg
     firefox
+    gammastep
     ghostscript
     git
     gnome.adwaita-icon-theme
@@ -41,6 +42,7 @@ let
     gnubg
     grim
     guvcview
+    haskellPackages.xmobar
     htop
     iconpack-obsidian
     isync
@@ -55,9 +57,9 @@ let
     mutt
     # neovim
     # newsflash
+    nextcloud-client
     pandoc
     pass
-    haskellPackages.xmobar
     pavucontrol
     pcmanfm
     picom
