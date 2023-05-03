@@ -7,7 +7,7 @@
     # emacs-overlay.url = "github:nix-community/emacs-overlay";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
   };
-  outputs = { nixpkgs,  home-manager, ... }@inputs:
+  outputs = { nixpkgs, home-manager, ... }@inputs:
     let
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
@@ -44,6 +44,9 @@
           ./nixos/tightpants/packages.nix
         ];
 
+        extraSpecialArgs = {
+          host="tightpants";
+        };
         # Optionally use extraSpecialArgs
         # to pass through arguments to home.nix
       };
@@ -58,6 +61,9 @@
           ./nixos/kaylee/packages.nix
         ];
 
+        extraSpecialArgs = {
+          host="kaylee";
+        };
         # Optionally use extraSpecialArgs
         # to pass through arguments to home.nix
       };

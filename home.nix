@@ -1,8 +1,19 @@
-{ config, pkgs, lib, ... }:
+{ config, pkgs, lib, host,... }:
 let
 
   home = "/home/jonathan";
   dotfiles = "${home}/Documents/dots";
+  gitPath = "${pkgs.git}/bin/git";
+  mkStartScript = name: pkgs.writeShellScript "${name}.sh" ''
+        set -euo pipefail
+        PATH="/run/current-system/sw/bin:${pkgs.home-manager}/bin:$PATH"
+        printf $PATH
+        export NIX_PATH="nixpkgs=/nix/var/nix/profiles/per-user/root/channels/nixos:nixos-config=/etc/nixos/configuration.nix"
+        ${pkgs.home-manager}/bin/home-manager switch --impure --flake /home/jonathan/Repos/dots/#${host};
+        ${pkgs.home-manager}/bin/home-manager expire-generations "-14 days"
+      '';
+
+
 
   packages = with pkgs; [
     alacritty
@@ -209,6 +220,35 @@ in {
       zsh
     ]
   );
+
+  systemd.user.services = {
+    hm-switch = {
+      Unit = {
+        Description = "Example description";
+      };
+      Service = {
+        Type = "oneshot";
+        ExecStart = "${mkStartScript "hm-switch"}";
+      };
+    };
+  };
+
+
+  systemd.user.timers = {
+    hm-switch = {
+      Unit = {
+        Description = "Example description";
+      };
+
+      Install = {
+        WantedBy = [ "timers.target" ];
+      };
+      Timer = {
+        OnBootSec="1m";
+          Unit="hm-switch.service";
+      };
+    };
+  };
 
   xdg.userDirs.desktop = "$HOME/";
 
