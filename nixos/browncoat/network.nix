@@ -40,18 +40,18 @@
     options = ["bind"];
   };
 
-  services.nfs.server.enable=true;
-  services.nfs.server.exports = ''
-        /srv 192.168.1.0/24(rw,sync,crossmnt,fsid=0)
-        /srv/music 192.168.1.0/24(rw,sync)
-        /srv/video 192.168.1.0/24(rw,sync)
-        /srv/storage 192.168.1.0/24(rw,sync)
-        /srv/home 192.168.1.0/24(rw,sync)
-    '';
+  # services.nfs.server.enable=true;
+  # services.nfs.server.exports = ''
+  #       /srv 192.168.1.0/24(rw,sync,crossmnt,fsid=0)
+  #       /srv/music 192.168.1.0/24(rw,sync)
+  #       /srv/video 192.168.1.0/24(rw,sync)
+  #       /srv/storage 192.168.1.0/24(rw,sync)
+  #       /srv/home 192.168.1.0/24(rw,sync)
+  #   '';
   services.samba-wsdd.enable = true; # make shares visible for windows 10 clients
   networking.firewall.allowedTCPPorts = [
     5357 # wsdd
-    2049 # nfs
+    # 2049 # nfs
     8443
     19999
     80
@@ -81,6 +81,28 @@
         path = "/srv/storage/";
         browseable = "yes";
         "read only" = "no";
+        "guest ok" = "yes";
+        "create mask" = "0644";
+        "directory mask" = "0755";
+        "force user" = "jonathan";
+        "force group" = "users";
+      };
+
+      music = {
+        path = "/srv/music/";
+        browseable = "yes";
+        "read only" = "yes";
+        "guest ok" = "yes";
+        "create mask" = "0644";
+        "directory mask" = "0755";
+        "force user" = "jonathan";
+        "force group" = "users";
+      };
+
+      video = {
+        path = "/srv/video/";
+        browseable = "yes";
+        "read only" = "yes";
         "guest ok" = "yes";
         "create mask" = "0644";
         "directory mask" = "0755";
