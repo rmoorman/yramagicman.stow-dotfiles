@@ -86,7 +86,7 @@ let
     wl-clipboard
     wofi
     xclip
-    xonotic
+    # xonotic
     xorg.xcursorthemes
     xorg.xkill
     xorg.xmessage
