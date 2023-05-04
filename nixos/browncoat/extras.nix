@@ -12,7 +12,7 @@ in
   system.autoUpgrade = {
     enable = true;
     dates = "*-*-10 00:00:00";
-    flake = "${config.users.users.jonathan.home}/Documents/dots/nixos/browncoat";
+    flake = "${config.users.users.jonathan.home}/Repos/dots/nixos/browncoat";
     flags = [
       "--commit-lock-file"
     ];
