@@ -70,6 +70,12 @@ in
         { command = "/opt/dad-backup"; options = [ "NOPASSWD" ]; }
       ];
     }
+    {
+      users = ["netdata"];
+      commands = [
+        { command = "/run/current-system/sw/bin/smbstatus"; options = [ "NOPASSWD" ]; }
+      ];
+    }
   ];
 
   services.apcupsd.enable = true;
