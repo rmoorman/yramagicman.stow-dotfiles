@@ -247,7 +247,7 @@ in {
       };
       Timer = {
         OnBootSec="1m";
-          Unit="hm-switch.service";
+        Unit="hm-switch.service";
       };
     };
   };
