@@ -9,6 +9,7 @@ let
         PATH="/run/current-system/sw/bin:${pkgs.home-manager}/bin:$PATH"
         printf $PATH
         export NIX_PATH="nixpkgs=/nix/var/nix/profiles/per-user/root/channels/nixos:nixos-config=/etc/nixos/configuration.nix"
+        ( cd ${dotfiles} && git pull )
         ( cd ${dotfiles} && nix flake update --commit-lock-file )
         ${pkgs.home-manager}/bin/home-manager switch --impure --flake /home/jonathan/Repos/dots/#${host}
         ${pkgs.home-manager}/bin/home-manager expire-generations "-14 days"
