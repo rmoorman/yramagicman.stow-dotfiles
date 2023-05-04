@@ -6,7 +6,6 @@
         apacheHttpd
         # cachix
         cryptsetup
-        pinentry-gtk2
         file
         gcc
         git
@@ -20,8 +19,10 @@
         neovim
         nfs-utils
         nodejs
+        nvme-cli
         nvtop
         openssl
+        pinentry-gtk2
         powertop
         python3Full
         racket
