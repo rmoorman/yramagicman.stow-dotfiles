@@ -6,7 +6,6 @@
 
   fileSystems."/".options = ["compress=zstd"];
 
- # environment.systemPackages = [ pkgs.cifs-utils ];
   fileSystems."/home/jonathan/Storage" = {
       device = "//100.94.223.34/public";
       fsType = "cifs";
