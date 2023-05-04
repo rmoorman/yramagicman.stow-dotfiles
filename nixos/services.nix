@@ -81,4 +81,8 @@ programs.wireshark.package = pkgs.wireshark-qt;
 security.rtkit.enable = true;
 xdg.portal.enable = true;
 
+
+security.pam.services.swaylock = {};
+
+
 }

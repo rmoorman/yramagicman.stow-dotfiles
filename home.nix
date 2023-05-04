@@ -251,6 +251,7 @@ in {
       };
     };
   };
+  programs.swaylock.enable = true;
 
   xdg.userDirs.desktop = "$HOME/";
 
