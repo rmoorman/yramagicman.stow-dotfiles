@@ -27,6 +27,7 @@
         python3Full
         racket
         rsync
+        samba4Full
         tmux
         unzip
         vim
