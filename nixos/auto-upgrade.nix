@@ -3,7 +3,7 @@
 
   system.autoUpgrade = {
     enable = true;
-    dates = "13:00";
+    dates = "23:59";
     flake = "${config.users.users.jonathan.home}/Repos/dots";
     flags = [
       "--commit-lock-file"
@@ -12,7 +12,7 @@
       "-L"
 
     ];
-    allowReboot = false;
+    allowReboot = true;
   };
 
 
