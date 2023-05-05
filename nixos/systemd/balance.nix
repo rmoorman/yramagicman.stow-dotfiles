@@ -3,11 +3,11 @@
   systemd.services = {
     btrfs-balance = {
       after = [ "network-online.target" ];
-      description = "Run btrfs balance monthly";
+      description = "Run btrfs balance yearly";
       enable=true;
-      script = "/run/current-system/sw/bin/btrfs balance start --full-balance /";
+      script = "/run/current-system/sw/bin/btrfs balance start -dusage=50 -dlimit=2 -musage=50 -mlimit=4 /";
       serviceConfig.Type = "simple";
-      startAt = "*-*-15 23:00:00";
+      startAt = "*-01-15 23:00:00";
       wants = [ "network-online.target" ];
     };
   };
