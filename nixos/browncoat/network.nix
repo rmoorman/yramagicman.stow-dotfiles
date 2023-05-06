@@ -130,4 +130,5 @@
   # services.unifi.openFirewall=true;
   # services.unifi.unifiPackage = pkgs.unifi;
 
+  services.jellyfin.enable = true;
 }
