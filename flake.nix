@@ -77,6 +77,7 @@
         inherit system;
         modules = base ++ [
           ./nixos/tightpants
+          ./nixos/virtualization.nix
         ];
       };
 
@@ -85,6 +86,7 @@
         inherit system;
         modules = base ++ [
           ./nixos/kaylee
+          ./nixos/virtualization.nix
         ];
       };
     };
