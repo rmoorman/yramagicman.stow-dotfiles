@@ -7,6 +7,13 @@
   # Per-interface useDHCP will be mandatory in the future, so this generated config
   # replicates the default behaviour.
   networking.useDHCP = false;
+  networking.defaultGateway.address = "192.168.1.1";
+  networking.nameservers = [
+      "192.168.1.1"
+      "1.1.1.1"
+      "1.0.0.1"
+
+  ];
   networking.interfaces.enp4s0.ipv4.addresses = [
     {
       address = "192.168.1.224";
