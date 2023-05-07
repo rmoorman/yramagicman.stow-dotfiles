@@ -77,7 +77,6 @@
         inherit system;
         modules = base ++ [
           ./nixos/tightpants
-          ./nixos/virtualization.nix
         ];
       };
 
