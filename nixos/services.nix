@@ -31,7 +31,6 @@
     locate.interval = "*:0/15";
     locate.localuser = null;
 
-
     # Enable the OpenSSH daemon.
     openssh.enable = true;
 
@@ -49,7 +48,6 @@
     geoclue2.enable = true;
     fstrim.enable = true;
     atd.enable = true;
-    netdata.enable = true;
     nscd.enableNsncd = true;
     # enable tailscale
     tailscale.enable=true;
@@ -81,8 +79,6 @@ programs.wireshark.package = pkgs.wireshark-qt;
 security.rtkit.enable = true;
 xdg.portal.enable = true;
 
-
+# This is unfortuantely necessary for swaylock to actually unlock
 security.pam.services.swaylock = {};
-
-
 }

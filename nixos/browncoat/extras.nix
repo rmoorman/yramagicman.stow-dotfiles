@@ -23,6 +23,8 @@ in
   fileSystems."/home/jonathan/Storage".device = "/dev/disk/by-label/storage";
   fileSystems."/home/jonathan/Storage".options = ["compress=zstd"];
 
+  services.netdata.enable = true;
+
   environment.systemPackages = with pkgs; [
     btrfs-progs
     intel-gpu-tools
