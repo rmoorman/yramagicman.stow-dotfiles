@@ -63,6 +63,7 @@
     19999
     80
     443
+
   ];
   networking.firewall.allowedUDPPorts = [
     3702 # wsdd
@@ -138,4 +139,5 @@
   # services.unifi.unifiPackage = pkgs.unifi;
 
   services.jellyfin.enable = true;
+  services.jellyfin.openFirewall = true;
 }
