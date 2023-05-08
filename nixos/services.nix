@@ -11,14 +11,14 @@
     # Enable CUPS to print documents.
     printing.enable = true;
     avahi = {
+      enable = true;
+      publish = {
         enable = true;
-        publish = {
-            enable = true;
-            workstation = true;
-            userServices = true;
-        };
-        openFirewall = true;
-        nssmdns = true;
+        workstation = true;
+        userServices = true;
+      };
+      openFirewall = true;
+      nssmdns = true;
     };
 
     pipewire.enable = true;
@@ -55,32 +55,30 @@
     lshd.tcpForwarding="true";
     gnome.gnome-keyring.enable = true;
     smartd = {
-        enable = true;
-        extraOptions = [
-            "-A /var/log/smartd/"
-            "--interval=3600"
-        ];
+      enable = true;
+      extraOptions = [
+        "-A /var/log/smartd/"
+        "--interval=3600"
+      ];
     };
-};
-networking.firewall.checkReversePath = "loose";
-networking.firewall.allowedTCPPorts = [
+  };
+  networking.firewall.checkReversePath = "loose";
+  networking.firewall.allowedTCPPorts = [
     19999
-];
-security.polkit.enable = true;
+  ];
+  security.polkit.enable = true;
 
-location.provider = "geoclue2";
-hardware.logitech.wireless.enable = true;
-hardware.logitech.wireless.enableGraphical = true;
-hardware.pulseaudio.enable = false;
-programs.wireshark.enable = true;
-programs.wireshark.package = pkgs.wireshark-qt;
+  location.provider = "geoclue2";
+  hardware.logitech.wireless.enable = true;
+  hardware.logitech.wireless.enableGraphical = true;
+  hardware.pulseaudio.enable = false;
+  programs.wireshark.enable = true;
+  programs.wireshark.package = pkgs.wireshark-qt;
 
-security.rtkit.enable = true;
-xdg.portal.enable = true;
+  security.rtkit.enable = true;
+  xdg.portal.enable = true;
 
-# This is unfortuantely necessary for swaylock to actually unlock
-security.pam.services.swaylock = {};
+  # This is unfortuantely necessary for swaylock to actually unlock
+  security.pam.services.swaylock = {};
 
-  services.jellyfin.enable = true;
-  services.jellyfin.openFirewall = true;
 }
