@@ -9,6 +9,7 @@ let sharedDirectories = [
 in
 {
 
+  users.users.jonathan.extraGroups = ["jellyfin"];
   system.autoUpgrade = {
     enable = true;
     dates = "*-*-10 00:00:00";
