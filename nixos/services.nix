@@ -72,7 +72,6 @@ location.provider = "geoclue2";
 hardware.logitech.wireless.enable = true;
 hardware.logitech.wireless.enableGraphical = true;
 hardware.pulseaudio.enable = false;
-programs.firejail.enable = true;
 programs.wireshark.enable = true;
 programs.wireshark.package = pkgs.wireshark-qt;
 
@@ -81,4 +80,7 @@ xdg.portal.enable = true;
 
 # This is unfortuantely necessary for swaylock to actually unlock
 security.pam.services.swaylock = {};
+
+  services.jellyfin.enable = true;
+  services.jellyfin.openFirewall = true;
 }
