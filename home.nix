@@ -30,7 +30,7 @@ let
     dzen2
     emacs
     feh
-    ffmpeg
+    ffmpeg_6-full
     firefox
     gammastep
     ghostscript
