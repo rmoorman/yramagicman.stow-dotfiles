@@ -64,6 +64,7 @@
         modules = [
           ./home.nix
           ./nixos/kaylee/packages.nix
+          ./nixos/vlc.nix
         ];
 
         extraSpecialArgs = {
@@ -77,6 +78,7 @@
         inherit system;
         modules = base ++ [
           ./nixos/tightpants
+          ./nixos/vlc.nix
         ];
       };
 

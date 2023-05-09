@@ -80,7 +80,6 @@ let
     universal-ctags
     urlview
     # vimHugeX
-    vlc
     w3m
     wezterm
     wl-clipboard
