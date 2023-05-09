@@ -57,7 +57,6 @@ alternative_order text/plain text/enriched text/html     # save html for last
 # directories that are shown as mailboxes in the sidebar.
 # mailboxes + ~/.config/mail/gilsons/Inbox.personal
 mailboxes + ~/.config/mail/bills/Inbox.bills
-mailboxes + ~/.config/mail/work/Inbox.work
 
 #}}}
 # {{{ Index Key Bindings, apply when viewing the message list
@@ -77,7 +76,6 @@ macro index \Cr "!mbsync -a"<enter>
 macro index \Cs "!mu find --format=links --linksdir=$HOME/.config/mail/results "
 
 # ctrl + <key> to jump to mailbox
-macro index \Cw ":set from='jgilson@omnispear.com'<enter>c ~/.config/mail/work/Inbox.work"<enter>
 macro index \Ci ":set from='jonathandavis@gilsons.org'<enter>c ~/.config/mail/gilsons/Inbox.personal"<enter>
 macro index \Cb "c ~/.config/mail/bills/Inbox.bills"<enter>
 
@@ -176,7 +174,6 @@ set sidebar_new_mail_only = no
 # sidebar_new_mail_only option is enabled.
 sidebar_whitelist  ~/.config/mail/gilsons/Inbox.personal
 sidebar_whitelist  ~/.config/mail/bills/Inbox.bills
-sidebar_whitelist  ~/.config/mail/work/Inbox.work
 
 # When searching for mailboxes containing new mail, should the search wrap
 # around when it reaches the end of the list?
