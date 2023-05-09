@@ -5,7 +5,7 @@ if [[ -z $1 ]]; then
     exit 1
 fi
 
-path="/srv/storage/bakerst/$1/$(date -I)/"
+path="/srv/storage/bakerst/$1/$(date +"%m")"
 mkdir -p $path
 echo $path
 btrfs receive $path
