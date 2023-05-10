@@ -81,4 +81,8 @@
   # This is unfortuantely necessary for swaylock to actually unlock
   security.pam.services.swaylock = {};
 
+  # security.apparmor.enable = true;
+  # security.apparmor.packages = [
+  #     pkgs.apparmor-profiles
+  # ];
 }
