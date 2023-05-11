@@ -47,7 +47,6 @@
     redshift.enable = true;
     geoclue2.enable = true;
     fstrim.enable = true;
-    atd.enable = true;
     nscd.enableNsncd = true;
     # enable tailscale
     tailscale.enable=true;
