@@ -13,7 +13,7 @@ in
   users.users.jonathan.extraGroups = ["jellyfin"];
   system.autoUpgrade = {
     enable = true;
-    dates = "*-*-10 00:00:00";
+    dates = "weekly";
     flake = "${config.users.users.jonathan.home}/Repos/dots/nixos/browncoat";
     flags = [
       "--commit-lock-file"
