@@ -5,6 +5,7 @@ let sharedDirectories = [
       "Pictures"
       "Videos"
       "Music"
+      "Sites"
     ];
 in
 {
