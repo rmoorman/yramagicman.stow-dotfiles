@@ -34,11 +34,6 @@ in
     microcodeIntel
     emacs-nox
   ];
-  # services.flatpak.enable = true;
-  # xdg.portal.enable = true;
-  # xdg.portal.extraPortals = [
-  #   pkgs.xdg-desktop-portal-gnome
-  # ];
 
   virtualisation.podman = {
     enable = true;
@@ -128,7 +123,6 @@ in
         password = "syncmystuff";
       };
     };
-
     devices = {
       "kaylee" = { id = "RQZIUDO-R6463VZ-M5SSAUF-M4IYNFZ-HWVSZBL-JCBWNK4-X2WIWVU-KZNFOAR"; };
     };

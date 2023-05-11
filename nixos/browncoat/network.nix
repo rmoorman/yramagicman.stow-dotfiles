@@ -47,26 +47,26 @@
     options = ["bind"];
   };
 
-  # services.nfs.server.enable=true;
-  # services.nfs.server.exports = ''
-  #       /srv 192.168.1.0/24(rw,sync,crossmnt,fsid=0)
-  #       /srv/music 192.168.1.0/24(rw,sync)
-  #       /srv/video 192.168.1.0/24(rw,sync)
-  #       /srv/storage 192.168.1.0/24(rw,sync)
-  #       /srv/home 192.168.1.0/24(rw,sync)
-  #   '';
+   services.nfs.server.enable=true;
+   services.nfs.server.exports = ''
+         /srv 192.168.1.0/24(rw,sync,crossmnt,fsid=0)
+         /srv/music 192.168.1.0/24(rw,sync)
+         /srv/video 192.168.1.0/24(rw,sync)
+         /srv/storage 192.168.1.0/24(rw,sync)
+         /srv/home 192.168.1.0/24(rw,sync)
+     '';
   services.samba-wsdd.enable = true; # make shares visible for windows 10 clients
   networking.firewall.allowedTCPPorts = [
-    5357 # wsdd
-    # 2049 # nfs
+    5357 # wsdd/samba
+    2049 # nfs
     8443
-    19999
+    19999 #netdata
     80
     443
 
   ];
   networking.firewall.allowedUDPPorts = [
-    3702 # wsdd
+    3702 # wsdd/samba
   ];
   services.samba = {
     enable = true;
@@ -134,9 +134,6 @@
   networking.firewall.allowPing = true;
   services.samba.openFirewall = true;
   services.tailscale.port=48612;
-  # services.unifi.enable = true;
-  # services.unifi.openFirewall=true;
-  # services.unifi.unifiPackage = pkgs.unifi;
 
   services.jellyfin.enable = true;
   services.jellyfin.openFirewall = true;
