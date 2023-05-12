@@ -9,7 +9,7 @@
     # Use the systemd-boot EFI boot loader.
     boot.loader.systemd-boot.configurationLimit = 15;
     boot.loader.systemd-boot.enable = true;
-    boot.loader.timeout = 3;
+    boot.loader.timeout = 1;
     boot.loader.efi.canTouchEfiVariables = true;
     boot.tmp.cleanOnBoot = true;
 
@@ -41,6 +41,6 @@
         optimise.automatic = true;
         optimise.dates = [ "11:50" "21:40" ];
     };
-    system.stateVersion = "22.05"; # Did you read the comment?
+    system.stateVersion = "22.05";
 
 }
