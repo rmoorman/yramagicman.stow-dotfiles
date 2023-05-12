@@ -21,6 +21,7 @@
         inherit system;
         modules = base ++ [
           ./default.nix
+          ./pihole.nix
           ../systemd/store-scrub.nix
           ../systemd/store-status.nix
           ../systemd/store-balance.nix
