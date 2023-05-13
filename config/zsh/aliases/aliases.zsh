@@ -206,4 +206,6 @@ function tsup-exit() {
 }
 alias debspeed="wget https://cdimage.debian.org/cdimage/unofficial/non-free/cd-including-firmware/11.5.0-live+nonfree/amd64/iso-hybrid/debian-live-11.5.0-amd64-cinnamon+nonfree.iso -O /dev/null"
 
+alias pihole="sudo docker exec -it pihole pihole"
+
 #}}}
