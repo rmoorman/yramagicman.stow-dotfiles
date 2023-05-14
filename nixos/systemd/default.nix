@@ -6,5 +6,6 @@
     ./scrub.nix
     ./snapshot.nix
     ./backup.nix
+    ./dnshack.nix
   ];
 }
