@@ -3,6 +3,7 @@
   virtualisation.oci-containers = {
     containers = {
       "pihole" = {
+        autoStart = true;
         image = "pihole/pihole:latest";
         ports = [
           "53:53"
