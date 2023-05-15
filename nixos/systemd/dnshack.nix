@@ -18,7 +18,7 @@ in {
       timerConfig = {
         OnBootSec= "25s";
         Unit = "dns-hack.service";
-        OnCalendar = "daily";
+        OnCalendar = "5m";
       };
     };
   };
