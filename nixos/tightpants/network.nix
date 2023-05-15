@@ -4,6 +4,12 @@
 
     networking.useDHCP = false;
 
+
+  services.udev.extraRules = ''
+    KERNEL=="wlan*", ATTR{address}=="80:fa:5b:5c:be:bc", NAME="wlan0"
+  '';
+
+
     # Configure network proxy if necessary
     # networking.proxy.default = "http://user:password@proxy:port/";
     # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
