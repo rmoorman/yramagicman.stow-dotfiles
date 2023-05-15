@@ -43,4 +43,5 @@
     };
     system.stateVersion = "22.05";
 
+    networking.nftables.enable = true;
 }
