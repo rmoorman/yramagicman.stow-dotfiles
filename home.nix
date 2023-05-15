@@ -26,6 +26,7 @@ let
     chessx
     cmus
     dmenu
+    du-dust
     dunst
     dzen2
     emacs
