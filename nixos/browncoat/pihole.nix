@@ -6,7 +6,8 @@
         autoStart = true;
         image = "pihole/pihole:latest";
         ports = [
-          "53:53"
+          "53:53/udp"
+          "53:53/tcp"
           "8080:80/tcp"
         ];
         volumes = [
