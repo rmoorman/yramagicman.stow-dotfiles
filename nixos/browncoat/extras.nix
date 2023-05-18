@@ -91,6 +91,13 @@ in
     initialPassword = "v/d7xBMgrZnLO[H[W`6z:3Ru@}";
   };
 
+  users.users.emily = {
+    isNormalUser = true;
+    createHome  = false;
+    shell = pkgs.shadow;
+    group="users";
+  };
+
   services.nextcloud = {
     enable = true;
     hostName = "browncoat.local";
