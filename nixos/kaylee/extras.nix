@@ -39,7 +39,7 @@ in
 
 
   fileSystems."/home/jonathan/Storage" = {
-      device = "//100.94.223.34/public";
+      device = "//192.168.1.224/public";
       fsType = "cifs";
       options = let
         # this line prevents hanging on network split
