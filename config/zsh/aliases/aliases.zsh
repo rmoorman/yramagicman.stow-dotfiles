@@ -186,7 +186,6 @@ function tsup-browncoat() {
          --reset \
          --exit-node '100.94.223.34' \
          --exit-node-allow-lan-access=true
-    sudo resolvectl dns tailscale0 100.94.223.34
 }
 
 function tsup-fast() {
