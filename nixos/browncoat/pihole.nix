@@ -14,6 +14,8 @@
           "/srv/pihole/etc/pihole:/etc/pihole"
           "/srv/pihole/etc/dnsmasq.d:/etc/dnsmasq.d"
         ];
+
+        extraOptions = [ "--hostname pihole" ];
         environment = {
           WEBPASSWORD =  "fcXC2zkU5y8zvRuFugb9k9zOoIbwkkCEXOsxdvCCwNFd3IomyLBFIVfiLz4j";
         };
