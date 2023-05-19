@@ -193,12 +193,12 @@ function tsup-fast() {
          --operator=jonathan \
          --reset \
          --exit-node '100.87.149.57'
-
 }
 alias tsdown="sudo tailscale down"
 function tsup-exit() {
     sudo tailscale up \
          --operator=jonathan \
+         --accept-dns=false \
          --advertise-exit-node \
          --accept-routes \
          --advertise-routes=192.168.0.0/24,192.168.1.0/24
