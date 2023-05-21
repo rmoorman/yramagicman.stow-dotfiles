@@ -124,24 +124,23 @@ in
     dataDir = "/home/syncthing";
     guiAddress = "0.0.0.0:8384";
 
-    settings = {
+    extraOptions= {
       gui = {
         user = "jonathan";
         password = "syncmystuff";
       };
-      devices = {
-        "kaylee" = { id = "RQZIUDO-R6463VZ-M5SSAUF-M4IYNFZ-HWVSZBL-JCBWNK4-X2WIWVU-KZNFOAR"; };
-      };
-
-      folders = builtins.listToAttrs ( map (f:
-        {
-          name="${f}";
-          value = (builtins.listToAttrs [
-            {name="path"; value="${config.users.users.jonathan.home}/${f}";}
-            {name="devices"; value=["kaylee"];}
-          ]);
-        }) sharedDirectories ) ;
     };
+    devices = {
+      "kaylee" = { id = "RQZIUDO-R6463VZ-M5SSAUF-M4IYNFZ-HWVSZBL-JCBWNK4-X2WIWVU-KZNFOAR"; };
+    };
+    folders = builtins.listToAttrs ( map (f:
+      {
+        name="${f}";
+        value = (builtins.listToAttrs [
+          {name="path"; value="${config.users.users.jonathan.home}/${f}";}
+          {name="devices"; value=["kaylee"];}
+        ]);
+      }) sharedDirectories ) ;
   };
 
   networking.firewall.allowedTCPPorts = [
