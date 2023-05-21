@@ -67,10 +67,12 @@
     19999 #netdata
     80
     443
+    5001
 
   ];
   networking.firewall.allowedUDPPorts = [
     3702 # wsdd/samba
+    5001
   ];
   services.samba = {
     enable = true;
