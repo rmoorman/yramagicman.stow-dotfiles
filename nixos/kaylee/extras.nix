@@ -37,15 +37,14 @@ in
     virt-manager
   ];
 
-
   fileSystems."/home/jonathan/Storage" = {
-      device = "//192.168.1.224/public";
-      fsType = "cifs";
-      options = let
-        # this line prevents hanging on network split
-        automount_opts = "x-systemd.automount,noauto,x-systemd.idle-timeout=60,x-systemd.device-timeout=5s,x-systemd.mount-timeout=5s,uid=1000,gid=100";
+    device = "//192.168.1.224/public";
+    fsType = "cifs";
+    options = let
+      # this line prevents hanging on network split
+      automount_opts = "x-systemd.automount,noauto,x-systemd.idle-timeout=60,x-systemd.device-timeout=5s,x-systemd.mount-timeout=5s,uid=1000,gid=100";
 
-      in ["${automount_opts}"];
+    in ["${automount_opts}"];
   };
 
   programs.dconf.enable = true;
@@ -57,25 +56,25 @@ in
     dataDir = "/home/syncthing";
     guiAddress = "0.0.0.0:8384";
 
-    extraOptions= {
+    settings = {
       gui = {
         user = "jonathan";
         password = "syncmystuff";
       };
-    };
 
-    devices = {
-      "browncoat" = { id = "H2CBPQ3-VYQ7GUS-TFJEPMO-MBSUUI2-ACPLSCP-PLDH5IZ-P3XJN4B-HLPXMAE"; };
-    };
+      devices = {
+        "browncoat" = { id = "H2CBPQ3-VYQ7GUS-TFJEPMO-MBSUUI2-ACPLSCP-PLDH5IZ-P3XJN4B-HLPXMAE"; };
+      };
 
-    folders = builtins.listToAttrs ( map (f:
-      {
-        name="${f}";
-        value = (builtins.listToAttrs [
-          {name="path"; value="${config.users.users.jonathan.home}/${f}";}
-          {name="devices"; value=["browncoat"];}
-        ]);
-      }) sharedDirectories ) ;
+      folders = builtins.listToAttrs ( map (f:
+        {
+          name="${f}";
+          value = (builtins.listToAttrs [
+            {name="path"; value="${config.users.users.jonathan.home}/${f}";}
+            {name="devices"; value=["browncoat"];}
+          ]);
+        }) sharedDirectories ) ;
+    };
   };
 
   networking.firewall.allowedTCPPorts = [
@@ -83,6 +82,6 @@ in
   ];
 
   hardware.opengl = {
-      enable = true;
+    enable = true;
   };
 }
