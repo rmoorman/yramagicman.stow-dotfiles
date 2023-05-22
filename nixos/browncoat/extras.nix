@@ -33,6 +33,7 @@ in
     podman-compose
     microcodeIntel
     emacs-nox
+    pass
   ];
 
   virtualisation.podman = {
