@@ -29,6 +29,7 @@
         racket
         rsync
         samba4Full
+        smartmontools
         tmux
         unzip
         vim
