@@ -90,10 +90,22 @@
         '';
     shares = {
       public = {
-        path = "/srv/storage/";
+        path = "/srv/storage/Public";
         browseable = "yes";
         "read only" = "no";
         "guest ok" = "yes";
+        "create mask" = "0644";
+        "directory mask" = "0755";
+        "force user" = "jonathan";
+        "force group" = "users";
+      };
+
+      root = {
+        path = "/srv/storage/";
+        browseable = "yes";
+        "read only" = "no";
+        "guest ok" = "no";
+        "valid users" = "jonathan";
         "create mask" = "0644";
         "directory mask" = "0755";
         "force user" = "jonathan";
