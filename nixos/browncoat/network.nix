@@ -68,12 +68,15 @@
     80
     443
     5001
+    631
 
   ];
   networking.firewall.allowedUDPPorts = [
     3702 # wsdd/samba
     5001
+    631
   ];
+
   services.samba = {
     enable = true;
     securityType = "user";
