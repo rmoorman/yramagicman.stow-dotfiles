@@ -15,7 +15,7 @@
           "/srv/pihole/etc/dnsmasq.d:/etc/dnsmasq.d"
         ];
 
-        extraOptions = [ "--health-on-failure=restart" "-h=pihole" ];
+        extraOptions = [ "-h=pihole" ];
         environment = {
           WEBPASSWORD =  "fcXC2zkU5y8zvRuFugb9k9zOoIbwkkCEXOsxdvCCwNFd3IomyLBFIVfiLz4j";
         };
