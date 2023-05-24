@@ -3,7 +3,6 @@
     nixpkgs.config.allowUnfree = true;
     programs.zsh.enable = true;
     environment.systemPackages = with pkgs; [
-        apacheHttpd
         btop
         # cachix
         cryptsetup
@@ -19,6 +18,7 @@
         mariadb
         neovim
         nfs-utils
+        nmap
         nodejs
         nvme-cli
         nvtop
