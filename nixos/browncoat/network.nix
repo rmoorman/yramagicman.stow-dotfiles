@@ -69,7 +69,6 @@
     443
     5001
     631
-
   ];
   networking.firewall.allowedUDPPorts = [
     3702 # wsdd/samba
