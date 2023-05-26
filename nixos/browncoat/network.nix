@@ -20,6 +20,7 @@
       prefixLength = 24;
     }
   ];
+
   # networking.interfaces.enp0s31f6.ipv4.addresses = [
   #     {
   #         address = "192.168.1.203";
@@ -27,46 +28,25 @@
   #     }
   # ];
 
-  fileSystems."/srv/music" = {
-    device = "/home/jonathan/Music";
-    options = ["bind"];
-  };
-
-  fileSystems."/srv/video" = {
-    device = "/home/jonathan/Videos";
-    options = ["bind"];
-  };
-
-  fileSystems."/srv/storage" = {
-    device = "/home/jonathan/Storage";
-    options = ["bind"];
-  };
-
-  fileSystems."/srv/jonathan" = {
-    device = "/srv/storage/Jonathan";
-    options = ["bind"];
-  };
-  fileSystems."/srv/home" = {
-    device = "/home/jonathan/";
-    options = ["bind"];
-  };
-
   networking.firewall.allowedTCPPorts = [
     8443
     19999 #netdata
     80
     443
-    5001
     631
   ];
+
   networking.firewall.allowedUDPPorts = [
-    5001
     631
   ];
 
 
   networking.firewall.allowPing = true;
   services.tailscale.port=48612;
+
+  services.iperf3.enable = true;
+  services.iperf3.verbose = true;
+  services.iperf3.openFirewall = true;
 
   services.jellyfin.enable = true;
   services.jellyfin.openFirewall = true;

@@ -21,9 +21,6 @@ in
     allowReboot = true;
   };
 
-  # Mount secondary drive
-  fileSystems."/home/jonathan/Storage".device = "/dev/disk/by-label/storage";
-  fileSystems."/home/jonathan/Storage".options = ["compress=zstd"];
 
   services.netdata.enable = true;
 
