@@ -17,6 +17,9 @@ in
     flake = "${config.users.users.jonathan.home}/Repos/dots/nixos/browncoat";
     flags = [
       "--commit-lock-file"
+      "--update-input" "home-manager"
+      "--update-input" "nixpkgs"
+      "-L"
     ];
     allowReboot = true;
   };
