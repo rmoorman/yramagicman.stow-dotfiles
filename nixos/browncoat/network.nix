@@ -29,7 +29,6 @@
   # ];
 
   networking.firewall.allowedTCPPorts = [
-    8443
     19999 #netdata
     80
     443
