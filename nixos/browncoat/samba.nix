@@ -8,8 +8,8 @@
     securityType = "user";
     extraConfig = ''
             workgroup = WORKGROUP
-            server string = smbnix
-            netbios name = smbnix
+            server string = browncoat
+            netbios name = browncoat
             security = user
             guest account = nobody
             map to guest = bad user
