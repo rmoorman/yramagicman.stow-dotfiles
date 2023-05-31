@@ -12,6 +12,7 @@
         gnumake
         home-manager
         htop
+        iperf
         killall
         libva
         man-pages
