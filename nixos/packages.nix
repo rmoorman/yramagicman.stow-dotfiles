@@ -7,6 +7,7 @@
         # cachix
         cryptsetup
         file
+        fio
         gcc
         git
         gnumake
