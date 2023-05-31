@@ -34,6 +34,7 @@ in
     microcodeIntel
     emacs-nox
     pass
+    iftop
   ];
 
   virtualisation.podman = {
