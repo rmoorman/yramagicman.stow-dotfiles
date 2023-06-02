@@ -1,6 +1,6 @@
 { config, pkgs, lib, ... }:
 {
-  system.activationScripts.makeVaultWardenDir = lib.stringAfter [ "var" ] '' mkdir -p /srv/rediary/ '';
+  system.activationScripts.makeRediaryDir = lib.stringAfter [ "var" ] '' mkdir -p /srv/rediary/ '';
   virtualisation.oci-containers = {
     containers = {
       "rediary" = {

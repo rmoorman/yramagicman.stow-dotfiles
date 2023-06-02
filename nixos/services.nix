@@ -1,6 +1,6 @@
 { config, pkgs, lib, ... }:
 {
-  system.activationScripts.makeVaultWardenDir = lib.stringAfter [ "var" ] '' mkdir -p /var/log/smartd/ '';
+  system.activationScripts.makeSmartdDir = lib.stringAfter [ "var" ] '' mkdir -p /var/log/smartd/ '';
   # Enable sound.
   sound.enable = true;
 

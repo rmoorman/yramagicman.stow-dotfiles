@@ -41,7 +41,7 @@
         optimise.automatic = true;
         optimise.dates = [ "11:50" "21:40" ];
     };
-    system.stateVersion = "22.05";
+    system.stateVersion = "23.05";
 
     networking.nftables.enable = true;
 }
