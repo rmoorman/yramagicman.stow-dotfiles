@@ -4,7 +4,7 @@
     containers = {
       "pihole" = {
         autoStart = true;
-        image = "pihole/pihole:latest";
+        image = "pihole/pihole:2023.05.2";
         ports = [
           "53:53/udp"
           "53:53/tcp"
