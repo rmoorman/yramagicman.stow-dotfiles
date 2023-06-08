@@ -23,7 +23,6 @@
         nmap
         nodejs
         nvme-cli
-        nvtop
         openssl
         pinentry-gtk2
         powertop
