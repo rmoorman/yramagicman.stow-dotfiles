@@ -1,5 +1,8 @@
 { config, pkgs, ... }:
 {
+  system.activationScripts.makeRediaryDir = lib.stringAfter [ "var" ] ''
+    mkdir -p /srv/pihole/etc/pihole /srv/pihole/etc/dnsmasq.d
+  '';
   virtualisation.oci-containers = {
     containers = {
       "pihole" = {
