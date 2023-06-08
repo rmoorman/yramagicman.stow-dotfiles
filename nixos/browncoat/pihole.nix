@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 {
   system.activationScripts.makeRediaryDir = lib.stringAfter [ "var" ] ''
     mkdir -p /srv/pihole/etc/pihole /srv/pihole/etc/dnsmasq.d
