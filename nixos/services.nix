@@ -36,6 +36,8 @@
     # Enable the OpenSSH daemon.
     openssh.enable = true;
 
+    netdata.enable = true;
+
     # httpd.enable = true;
     # httpd.adminAddr = "yramagicman@gmail.com";
     # httpd.enablePHP = true;
@@ -75,7 +77,6 @@
   hardware.pulseaudio.enable = false;
   programs.wireshark.enable = true;
   programs.wireshark.package = pkgs.wireshark-qt;
-  netdata.enable = true;
 
   security.rtkit.enable = true;
   xdg.portal.enable = true;
