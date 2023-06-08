@@ -75,6 +75,7 @@
   hardware.pulseaudio.enable = false;
   programs.wireshark.enable = true;
   programs.wireshark.package = pkgs.wireshark-qt;
+  netdata.enable = true;
 
   security.rtkit.enable = true;
   xdg.portal.enable = true;
