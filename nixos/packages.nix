@@ -6,6 +6,7 @@
         btop
         # cachix
         cryptsetup
+        lm_sensors
         file
         fio
         gcc
