@@ -29,6 +29,7 @@ in
   # '';
 
   fileSystems."/".options = ["compress=zstd"];
+  services.xserver.dpi = 140;
 
   environment.systemPackages = with pkgs; [
     amdvlk
