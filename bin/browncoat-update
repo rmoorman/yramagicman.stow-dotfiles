@@ -1,9 +1,0 @@
-#!/usr/bin/env bash
-[[ $HOSTNAME != "browncoat" ]] && echo "wrong machine" && exit
-(
-cd ~/Documents/dots/nixos/browncoat/
-git pull
-nix flake update --commit-lock-file
-sudo nixos-rebuild switch --flake './#'
-git push
-)
