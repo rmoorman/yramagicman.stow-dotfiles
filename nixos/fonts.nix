@@ -8,4 +8,12 @@
         corefonts
         winePackages.fonts
     ];
+
+  fonts.fontconfig = {
+    enable = true;
+    hinting.enable = true;
+    hinting.style = "medium";
+  };
+
+
 }
