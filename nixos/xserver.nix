@@ -12,8 +12,8 @@
     displayManager.defaultSession = "hyprland";
     displayManager.hiddenUsers =[ "jonathan_backup" ];
     # windowManager.awesome.enable = true;
-    windowManager.xmonad.enable = true;
-    windowManager.xmonad.enableContribAndExtras = true;
+    # windowManager.xmonad.enable = true;
+    # windowManager.xmonad.enableContribAndExtras = true;
 
     # Configure keymap in X11
     layout = "us";

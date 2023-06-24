@@ -25,10 +25,10 @@ let
     calibre
     chessx
     cmus
-    dmenu
+    # dmenu
     du-dust
     dunst
-    dzen2
+    # dzen2
     emacs
     feh
     ffmpeg_6-full
@@ -44,7 +44,7 @@ let
     gnubg
     grim
     guvcview
-    haskellPackages.xmobar
+    # haskellPackages.xmobar
     htop
     iconpack-obsidian
     isync
@@ -85,11 +85,11 @@ let
     wezterm
     wl-clipboard
     wofi
-    xclip
+    # xclip
     # xonotic
-    xorg.xcursorthemes
-    xorg.xkill
-    xorg.xmessage
+    # xorg.xcursorthemes
+    # xorg.xkill
+    # xorg.xmessage
     yt-dlp
     zathura
   ];
