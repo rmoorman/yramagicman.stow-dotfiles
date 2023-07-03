@@ -4,6 +4,6 @@
     openrgb
     gphoto2
     asunder
-    # handbrake
+    handbrake
   ];
 }
