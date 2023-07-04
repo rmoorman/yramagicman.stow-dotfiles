@@ -3,7 +3,7 @@
 
   system.autoUpgrade = {
     enable = true;
-    dates = "daily";
+    dates = "weekly";
     flake = "${config.users.users.jonathan.home}/Repos/dots";
     flags = [
       "--commit-lock-file"
