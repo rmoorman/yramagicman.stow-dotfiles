@@ -353,6 +353,8 @@
 (use-package haskell-mode
   :mode "\\.hs\\'")
 
+(use-package yaml-mode
+  :mode "\\.yaml\\'")
 (use-package typescript-mode
   :hook (typescript-mode . lsp-deferred)
   :mode "\\.\\(ts\\|js\\)\\'")

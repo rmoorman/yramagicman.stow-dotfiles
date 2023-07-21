@@ -6,7 +6,6 @@
         btop
         # cachix
         cryptsetup
-        lm_sensors
         file
         fio
         gcc
@@ -17,6 +16,7 @@
         iperf
         killall
         libva
+        lm_sensors
         man-pages
         mariadb
         neovim
@@ -31,6 +31,7 @@
         racket
         rsync
         samba4Full
+        silver-searcher
         smartmontools
         tmux
         unzip
