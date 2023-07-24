@@ -164,6 +164,7 @@ alias gco="git checkout"
 alias gs="git status --short"
 #}}}
 # {{{ docker
+alias docker-compose="podman-compose"
 alias dc='docker-compose'
 alias drc='docker-compose exec'
 alias dupd='docker-compose up -d'
