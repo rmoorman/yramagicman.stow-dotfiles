@@ -29,7 +29,7 @@ let
     du-dust
     dunst
     # dzen2
-    emacs
+    emacs29-pgtk
     feh
     ffmpeg_6-full
     firefox
@@ -227,7 +227,7 @@ in {
   systemd.user.services = {
     hm-switch = {
       Unit = {
-        Description = "Example description";
+        Description = "Auto-switch home manager on login";
       };
       Service = {
         Type = "oneshot";
