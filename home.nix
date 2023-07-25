@@ -19,7 +19,7 @@ let
 
   packages = with pkgs; [
     alacritty
-    arandr
+    # arandr
     breeze-icons
     btop
     calibre
@@ -67,7 +67,7 @@ let
     picom
     pulsemixer
     pwgen
-    rxvt-unicode
+    # rxvt-unicode
     signal-desktop
     silver-searcher
     slurp
