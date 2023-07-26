@@ -63,7 +63,7 @@
 
 (define (pull)
   (let ([git (list "git" "pull" "--rebase")])
-  ((execute-command (first git)) (rest git))))
+    ((execute-command (first git)) (rest git))))
 
 (define (push)
   (let ([git (list "git" "push")])
@@ -76,7 +76,7 @@
          (define cur-dir (path->string (current-directory)))
          (displayln (string-append cur-dir "..."))
          (pull-push pull push repo)
-       ))
+         ))
       #f
       ))
 
