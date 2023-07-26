@@ -42,7 +42,7 @@
     linuxKernel.packages.linux_zen.system76
     system76-firmware
     microcodeIntel
-    # podman-compose
+    podman-compose
   ];
 
   hardware.system76.enableAll = true;
@@ -62,13 +62,12 @@
   };
 
 
-  # virtualisation.podman = {
-  #   enable = true;
-  #   autoPrune.enable = true;
-  #   dockerCompat = true;
-
-  #   # Required for containers under podman-compose to be able to talk to each other.
-  #   defaultNetwork.settings.dns_enabled = true;
-  # };
+  virtualisation.podman = {
+    enable = true;
+    autoPrune.enable = true;
+    dockerCompat = true;
+    # Required for containers under podman-compose to be able to talk to each other.
+    defaultNetwork.settings.dns_enabled = true;
+  };
 
 }
