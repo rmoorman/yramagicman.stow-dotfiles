@@ -1,0 +1,8 @@
+#!/usr/bin/env zsh
+
+function private-mount() {
+    doas mkdir -p /mnt/private
+    pass show storage_credentials > /tmp/creds
+    chmod 0600 /tmp/creds
+    doas mount -t cifs -o uid=1000,gid=100,credentials=/tmp/creds //100.94.223.34/jonathan /mnt/private
+}
