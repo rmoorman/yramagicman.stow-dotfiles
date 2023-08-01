@@ -50,7 +50,7 @@ alias bc='bc -l'
 alias getmail="$HOME/.local/bin/getallmail"
 alias remacs="emacsclient --eval '(kill-emacs)' && emacs --bg-daemon"
 if [[ $( command -v doas ) ]]; then
-    alias sudo='echo "use doas... dork!" '
+    alias sudo='doas '
 else
     alias sudo='sudo '
 fi
