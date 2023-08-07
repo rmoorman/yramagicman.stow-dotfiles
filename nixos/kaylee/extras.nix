@@ -57,25 +57,27 @@ in
     dataDir = "/home/syncthing";
     guiAddress = "0.0.0.0:8384";
 
-    extraOptions = {
+    settings = {
       gui = {
         user = "jonathan";
         password = "syncmystuff";
       };
+
+      devices = {
+        "browncoat" = { id = "H2CBPQ3-VYQ7GUS-TFJEPMO-MBSUUI2-ACPLSCP-PLDH5IZ-P3XJN4B-HLPXMAE"; };
+      };
+
+      folders = builtins.listToAttrs ( map (f:
+        {
+          name="${f}";
+          value = (builtins.listToAttrs [
+            {name="path"; value="${config.users.users.jonathan.home}/${f}";}
+            {name="devices"; value=["browncoat"];}
+          ]);
+        }) sharedDirectories ) ;
     };
 
-    devices = {
-      "browncoat" = { id = "H2CBPQ3-VYQ7GUS-TFJEPMO-MBSUUI2-ACPLSCP-PLDH5IZ-P3XJN4B-HLPXMAE"; };
-    };
 
-    folders = builtins.listToAttrs ( map (f:
-      {
-        name="${f}";
-        value = (builtins.listToAttrs [
-          {name="path"; value="${config.users.users.jonathan.home}/${f}";}
-          {name="devices"; value=["browncoat"];}
-        ]);
-      }) sharedDirectories ) ;
 
   };
 
