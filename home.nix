@@ -13,6 +13,7 @@ let
         ( cd ${dotfiles} && nix flake update --commit-lock-file )
         ${pkgs.home-manager}/bin/home-manager switch --impure --flake /home/jonathan/Repos/dots/#${host}
         ${pkgs.home-manager}/bin/home-manager expire-generations "-14 days"
+        nix-collect-garbage --delete-older-than '14d'
       '';
 
 
