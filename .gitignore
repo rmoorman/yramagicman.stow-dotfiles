@@ -73,3 +73,5 @@ xmonad/xmonad.o
 xmonad/xmonad-x86_64-linux
 *.zwc
 /vim/init.lua
+/config/systemd/user/hm-switch.service
+/config/systemd/user/hm-switch.timer
