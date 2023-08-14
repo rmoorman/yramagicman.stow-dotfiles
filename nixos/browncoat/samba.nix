@@ -13,7 +13,6 @@
             security = user
             guest account = nobody
             map to guest = bad user
-            profiling support = on
         '';
     shares = {
       public = {
