@@ -30,7 +30,7 @@
         python3Full
         racket
         rsync
-        samba4Full
+        samba
         silver-searcher
         smartmontools
         tmux
