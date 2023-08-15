@@ -63,7 +63,6 @@ in
       intel-media-driver
       intel-ocl
       libvdpau-va-gl
-      vaapiIntel
       vaapiVdpau
     ];
   };
