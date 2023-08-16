@@ -72,8 +72,8 @@
   security.polkit.enable = true;
 
   location.provider = "geoclue2";
-  hardware.logitech.wireless.enable = true;
-  hardware.logitech.wireless.enableGraphical = true;
+  # hardware.logitech.wireless.enable = true;
+  # hardware.logitech.wireless.enableGraphical = true;
   hardware.pulseaudio.enable = false;
   programs.wireshark.enable = true;
   programs.wireshark.package = pkgs.wireshark-qt;
