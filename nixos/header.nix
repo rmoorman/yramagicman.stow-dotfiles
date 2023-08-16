@@ -36,7 +36,7 @@
 
         gc.automatic = true;
         gc.dates = "18:40" ;
-        gc.options = "--delete-older-than 14d";
+        gc.options = "--delete-older-than 28d";
         settings.auto-optimise-store = true;
         optimise.automatic = true;
         optimise.dates = [ "11:50" "21:40" ];
