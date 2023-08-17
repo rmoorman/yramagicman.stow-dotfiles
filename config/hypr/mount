@@ -1,0 +1,4 @@
+#!/usr/bin/env zsh
+
+pass show storage_credentials > /tmp/creds
+chmod 0600 /tmp/creds
