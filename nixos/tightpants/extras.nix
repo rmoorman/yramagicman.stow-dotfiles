@@ -6,6 +6,16 @@
 
   fileSystems."/".options = ["compress=zstd"];
 
+  fileSystems."/mnt/private" = {
+    device = "//100.94.223.34/jonathan";
+    fsType = "cifs";
+    options = let
+      # this line prevents hanging on network split
+      automount_opts =
+          "x-systemd.automount,noauto,x-systemd.idle-timeout=60,x-systemd.device-timeout=5s,x-systemd.mount-timeout=5s,uid=1000,gid=100,credentials=/tmp/creds";
+
+    in ["${automount_opts}"];
+  };
   fileSystems."/home/jonathan/Storage" = {
     device = "//100.94.223.34/public";
     fsType = "cifs";
