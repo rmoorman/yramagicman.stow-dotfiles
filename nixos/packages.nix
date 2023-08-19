@@ -21,6 +21,7 @@
         mariadb
         neovim
         nfs-utils
+        nix-index
         nmap
         nodejs
         nvme-cli
