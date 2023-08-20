@@ -2,7 +2,7 @@
 {
   services.xserver.dpi = 192;
   hardware.acpilight.enable = true;
-  boot.kernelPackages = pkgs.linuxPackages_zen;
+  boot.kernelPackages = pkgs.linuxPackages_latest;
 
   fileSystems."/".options = ["compress=zstd"];
 
@@ -49,7 +49,11 @@
 
   environment.systemPackages = with pkgs; [
     intel-gpu-tools
-    linuxKernel.packages.linux_zen.system76
+    linuxPackages_latest.system76
+    # linuxPackages_latest.system76-acpi
+    linuxPackages_latest.system76-io
+    linuxPackages_latest.system76-power
+    linuxPackages_latest.system76-scheduler
     system76-firmware
     microcodeIntel
     podman-compose
